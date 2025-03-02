@@ -1,0 +1,54 @@
+<!-- views/partials/footer.ejs -->
+<footer class="mt-5 py-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <h5 class="mb-3">About This Site</h5>
+          <p class="text-muted small">
+            &copy; <%= new Date().getFullYear() %> Arjun Bishnoi. All rights reserved.<br>
+            Built with Node.js, Express, and EJS.
+          </p>
+        </div>
+  
+        <div class="col-md-3">
+          <h5 class="mb-3">Navigation</h5>
+          <ul class="list-unstyled">
+            <li><a href="/" class="text-decoration-none link-secondary">Home</a></li>
+            <li><a href="/about" class="text-decoration-none link-secondary">About</a></li>
+            <li><a href="/contact" class="text-decoration-none link-secondary">Contact</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-md-3">
+          <h5 class="mb-3">Connect</h5>
+          <div class="d-flex gap-3">
+            <% const socials = [
+              { name: 'GitHub', icon: 'github', url: '#' },
+              { name: 'LinkedIn', icon: 'linkedin', url: '#' },
+              { name: 'Twitter', icon: 'twitter', url: '#' }
+            ]; %>
+            
+            <% socials.forEach(social => { %>
+              <a 
+                href="<%= social.url %>" 
+                class="text-decoration-none link-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="<%= social.name %>"
+              >
+                <i class="fab fa-<%= social.icon %> fa-lg"></i>
+              </a>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+  
+      <% if (typeof copyright !== 'undefined') { %>
+        <div class="row mt-4">
+          <div class="col-12 text-center small">
+            <%- copyright %>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </footer>
