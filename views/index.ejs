@@ -1,25 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= message %></title>
+    <title>Arjun Bishnoi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
+        @font-face {
+    font-family: monofont;
+    src: url(fonts/TestSohneMono-Buch-BF663d89cbcec64.otf);
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: monofont;
         }
-        h1 {
-            color: #2c3e50;
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        .navbar {
+            background: #222;
+            padding: 1rem 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #444;
+        }
+
+        .hero {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .animated-text {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #fff;
+            color: #6e8efb;
+            font-size: 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #ddd;
+        }
+
+        .footer {
+            background: #222;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background: white;
+            color: #222;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 18px;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #6e8efb;
+            color: white;
+        }
+
+        .copytext {
+            color: white;
+            margin-top: 10px;
+            font-size: 14px;
         }
     </style>
 </head>
+
 <body>
-    <h1><%= message %></h1>
-    <p>Welcome to arjunbishnoi.com. Let us do this! Yay!</p>
-    <footer>
-        &copy; <%= year %> Arjun Bishnoi
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Arjun Bishnoi</h1>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="hero">
+        <div class="container">
+            <h1 class="animated-text">Stay Tuned</h1>
+            <p>Exciting projects are on the way. Connect with me and stay updated!</p>
+            <a href="mailto:contact@arjunbishnoi.com" class="cta-button">Get in Touch</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p class="copytext">&copy; 2025 Arjun Bishnoi. All rights reserved.</p>
+        </div>
     </footer>
 </body>
+
 </html>
