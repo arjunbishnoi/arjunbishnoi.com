@@ -1,4 +1,5 @@
-const express = require('express');
+const express = require('express')
+const favicon = require('serve-favicon');;
 const app = express();
 const path = require('path');
 
@@ -16,6 +17,9 @@ app.get('/', (req, res) => {
     year: new Date().getFullYear()
   });
 });
+
+// Serve favicon
+app.use(favicon(path.join(__dirname, 'public', 'images', 'icons', 'favicon.ico')));
 
 // Start server
 const PORT = process.env.PORT || 3000;
