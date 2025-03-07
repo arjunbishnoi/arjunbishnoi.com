@@ -1,171 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arjun Bishnoi</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @font-face {
-    font-family: monofont;
-    src: url(fonts/TestSohneMono-Buch-BF663d89cbcec64.otf);
-}
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: arial;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arjun Bishnoi</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            background-color: #222;
-            color: #333;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
+    /* Body styling (mimics OpenAI's neutral look) */
+    body {
+      background-color: #000000; /* Similar to OpenAI's clean background */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #ffffff;
+      line-height: 1.6;
+    }
 
-        .navbar {
-            padding: 1rem 0;
-            background-color: white;
-        }
+    /* Header with logo and contact link */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
 
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-        }
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+    }
 
-        .logo {
-            color: #fff;
-            font-size: 24px;
-            text-transform: uppercase;
-        }
+    nav a {
+      font-size: 16px;
+      text-decoration: none;
+      padding: 8px 20px;
+      color: white;
+      background-color: #1f1f1f;
+      font-weight: 500;
+      border-radius: 400px;
+      transition: all 0.3s ease;
+    }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+    nav a:hover {
+        background-color: #333333;
+    }
 
-        .nav-links li {
-            display: inline;
-        }
+    /* Layout container for sidebar and main content */
+    .container {
+      display: flex;
+      min-height: calc(100vh - 70px); /* Adjust based on header height */
+    }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #222;
-            font-size: 18px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: 0.3s;
-        }
+    /* Sidebar styling */
+    .sidebar {
+      width: 220px;
+      padding: 20px;
+    }
 
-        .nav-links a:hover {
-            background: #444;
-        }
+    .sidebar ul {
+      list-style: none;
+      margin-left: 20px;
+      max-width: 100px;
+      margin-top: 25px;
+      overflow:hidden;
+    }
 
-        .hero {
-            padding: 50px 20px;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            color: white;
-            margin: auto 65px;
-            margin-top: 200px;
-            border-radius: 30px;
-        }
+    .sidebar ul li {
+      margin-bottom: 10px;
+     
+    }
 
-        .animated-text {
-            font-size: 50px;
-            font-weight: bold;
-        }
+    .sidebar ul li a {
+      font-size: 13px;
+      transition: all 0.3s ease;
+      color: white;
+      padding: 8px 60px;
+      border-radius: 10px;
+      padding-left: 10px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
 
-        .hero p {
-            font-size: 20px;
-            margin: 20px 0;
-        }
+    .sidebar ul li a:hover {
+      background-color: #333333;
+    }
 
-        .cta-button {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #fff;
-            color: #6e8efb;
-            font-size: 18px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    /* Main content area */
+    .main-content {
+      flex: 1;
+      padding: 40px;
+    }
 
-        .cta-button:hover {
-            background: #ddd;
-        }
+    /* Example header for main content */
+    .main-content h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
 
-        .footer {
-            background: #222;
-            padding: 20px 0;
-            margin-top: 40px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            background: rgb(210, 210, 210);
-            color: #222;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 18px;
-            margin: 0 10px;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            background: #6e8efb;
-            color: white;
-        }
-
-        .copytext {
-            color: rgb(210, 210, 210);
-            margin-top: 10px;
-            font-size: 14px;
-        }
-    </style>
+    .main-content p {
+      font-size: 1.2em;
+    }
+  </style>
 </head>
-
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
+  <!-- Top Navigation -->
+  <header>
+    <a href="#" class="logo">Arjun Bishnoi</a>
+    <nav>
+      <a href="mailto:contact@arjunbishnoi.com">Contact</a>
     </nav>
+  </header>
 
-    <main class="hero">
-        <div class="container">
-            <h1 class="animated-text">Stay Tuned</h1>
-            <p>Exciting projects are on the way. Connect with me and stay updated!</p>
-            <a href="mailto:contact@arjunbishnoi.com" class="cta-button">Get in Touch</a>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <p class="copytext">arjunbishnoi.com  &copy; All rights reserved - 2025</p>
-        </div>
-    </footer>
+  <!-- Page Layout: Sidebar + Main Content -->
+  <div class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#others">Others</a></li>
+      </ul>
+    </aside>
+    <div class="main-content">
+      <h1>Stay Tuned</h1>
+    </div>
+  </div>
 </body>
-
 </html>
