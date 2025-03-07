@@ -19,14 +19,17 @@
         }
 
         body {
-            background-color: #f4f4f4;
+            background-color: #222;
             color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             text-align: center;
         }
 
         .navbar {
-            background: #222;
             padding: 1rem 0;
+            background-color: white;
         }
 
         .container {
@@ -54,7 +57,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #fff;
+            color: #222;
             font-size: 18px;
             padding: 8px 16px;
             border-radius: 20px;
@@ -66,10 +69,12 @@
         }
 
         .hero {
-            padding: 80px 20px;
+            padding: 50px 20px;
             background: linear-gradient(135deg, #6e8efb, #a777e3);
             color: white;
-            border-radius: 10px;
+            margin: auto 65px;
+            margin-top: 200px;
+            border-radius: 30px;
         }
 
         .animated-text {
@@ -109,7 +114,7 @@
             width: 40px;
             height: 40px;
             line-height: 40px;
-            background: white;
+            background: rgb(210, 210, 210);
             color: #222;
             border-radius: 50%;
             text-align: center;
@@ -124,7 +129,7 @@
         }
 
         .copytext {
-            color: white;
+            color: rgb(210, 210, 210);
             margin-top: 10px;
             font-size: 14px;
         }
@@ -134,7 +139,6 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <h1 class="logo">Arjun Bishnoi</h1>
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
@@ -159,7 +163,7 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-linkedin"></i></a>
             </div>
-            <p class="copytext">&copy; 2025 Arjun Bishnoi. All rights reserved.</p>
+            <p class="copytext">arjunbishnoi.com  &copy; All rights reserved - 2025</p>
         </div>
     </footer>
 </body>
