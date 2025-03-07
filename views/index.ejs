@@ -9,45 +9,55 @@
     * {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
-    /* Body styling (mimics OpenAI's neutral look) */
-    body {
-      background-color: #000000; /* Similar to OpenAI's clean background */
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    html {
+        font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: start;
+        min-height: 100vh;
+        background-color: #000000; /* Similar to OpenAI's clean background */
       color: #ffffff;
-      line-height: 1.6;
+        letter-spacing: normal;
     }
 
     /* Header with logo and contact link */
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
+      font-size: 17px;
+      letter-spacing: -0.17px;
+      line-height: 27.999px;
+      width: 100%;
     }
 
     .logo {
-      font-size: 24px;
       font-weight: 700;
+      line-height: 27.999px;
+      font-size: 17px;
       color: #ffffff;
+      letter-spacing: normal;
       text-decoration: none;
     }
 
     nav a {
       font-size: 16px;
       text-decoration: none;
-      padding: 8px 20px;
+      margin: 0px;
+      padding: 9px 20px;
+      width: 79px;
+      height: 40px;
       color: white;
-      background-color: #1f1f1f;
-      font-weight: 500;
-      border-radius: 400px;
-      transition: all 0.3s ease;
+      background-color:rgb(255, 255, 255, 0.12);
+      font-weight: 400;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 2.5rem;
+      backdrop-filter: blur(3xl);
+      transition: all 0.2s ease;
     }
 
     nav a:hover {
-        background-color: #333333;
+        background-color:rgba(255, 255, 255, 0.2);
     }
 
     /* Layout container for sidebar and main content */
@@ -59,15 +69,11 @@
     /* Sidebar styling */
     .sidebar {
       width: 220px;
-      padding: 20px;
     }
 
     .sidebar ul {
       list-style: none;
-      margin-left: 20px;
-      max-width: 100px;
       margin-top: 25px;
-      overflow:hidden;
     }
 
     .sidebar ul li {
@@ -76,12 +82,12 @@
     }
 
     .sidebar ul li a {
-      font-size: 13px;
-      transition: all 0.3s ease;
+      font-size: 14px;
       color: white;
       padding: 8px 60px;
       border-radius: 10px;
-      padding-left: 10px;
+      padding-left: 0;
+      line-height: 14px;
       font-weight: 500;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -89,22 +95,6 @@
 
     .sidebar ul li a:hover {
       background-color: #333333;
-    }
-
-    /* Main content area */
-    .main-content {
-      flex: 1;
-      padding: 40px;
-    }
-
-    /* Example header for main content */
-    .main-content h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-
-    .main-content p {
-      font-size: 1.2em;
     }
   </style>
 </head>
@@ -122,6 +112,7 @@
     <aside class="sidebar">
       <ul>
         <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#connect">Connect</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#others">Others</a></li>
       </ul>
