@@ -1,6 +1,6 @@
 [Unit]
 Description=Arjun Bishnoi Personal Website
-Documentation=https://github.com/yourusername/arjunbishnoi.com
+Documentation=https://github.com/arjunbishnoi/arjunbishnoi.com
 After=network.target
 
 [Service]
