@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+# Update and install dependencies
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y nginx git certbot python3-certbot-nginx
+
+# Install Node.js if not already installed
+if ! command -v node &> /dev/null; then
+    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    sudo apt install -y nodejs
+fi
+
+# Verify Node.js and npm are installed correctly
+node -v
+npm -v
+
+# Install PM2 globally for process management
+sudo npm install -g pm2
+
+# Clone repository (if not already cloned)
+if [ ! -d "/home/ubuntu/arjunbishnoi.com" ]; then
+    git clone https://github.com/yourusername/arjunbishnoi.com.git /home/ubuntu/arjunbishnoi.com
+else
+    cd /home/ubuntu/arjunbishnoi.com
+    git pull origin main
+fi
+
+# Install dependencies and build application
+cd /home/ubuntu/arjunbishnoi.com
+npm ci
+npm run build
+
+# Set up Nginx
+sudo cp /home/ubuntu/arjunbishnoi.com/nginx.conf /etc/nginx/sites-available/arjunbishnoi.com
+sudo ln -sf /etc/nginx/sites-available/arjunbishnoi.com /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+
+# Set up SSL certificate with Certbot
+sudo certbot --nginx -d arjunbishnoi.com -d www.arjunbishnoi.com --non-interactive --agree-tos --email your-email@example.com
+
+# Set up systemd service
+sudo cp /home/ubuntu/arjunbishnoi.com/arjunbishnoi.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable arjunbishnoi.service
+sudo systemctl start arjunbishnoi.service
+
+# Alternative: Start with PM2 and enable startup
+# pm2 start .output/server/index.mjs --name arjunbishnoi.com
+# pm2 save
+# pm2 startup
+
+echo "Setup completed successfully!"
+echo "Your website should now be accessible at https://arjunbishnoi.com" 
