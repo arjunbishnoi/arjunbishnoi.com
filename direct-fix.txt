@@ -1,0 +1,67 @@
+Run these commands directly on your server:
+
+```bash
+# Go to the directory
+cd /arjunbishnoi
+
+# Create the emergency script directly
+sudo tee emergency-fix.sh > /dev/null << 'EOL'
+#!/bin/bash
+# SUPER SIMPLE EMERGENCY FIX FOR WEBSITE
+
+# Display commands as they run
+set -x
+
+echo "==== EMERGENCY FIX STARTING ===="
+
+# Create a minimal Nginx configuration
+sudo tee /etc/nginx/sites-available/arjunbishnoi.com > /dev/null << 'NGINX'
+server {
+    listen 80;
+    server_name arjunbishnoi.com www.arjunbishnoi.com;
+    
+    # Use default web root
+    root /var/www/html;
+    
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+NGINX
+
+# Create a basic index file
+sudo mkdir -p /var/www/html
+sudo tee /var/www/html/index.html > /dev/null << 'HTML'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arjun Bishnoi</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #ddd; padding: 20px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Arjun Bishnoi</h1>
+        <p>Website under maintenance</p>
+        <p>We'll be back online soon!</p>
+    </div>
+</body>
+</html>
+HTML
+
+# Enable site and restart Nginx
+sudo ln -sf /etc/nginx/sites-available/arjunbishnoi.com /etc/nginx/sites-enabled/
+sudo rm -f /etc/nginx/sites-enabled/default
+sudo nginx -t
+sudo systemctl restart nginx
+
+echo "==== EMERGENCY FIX COMPLETE ===="
+EOL
+
+# Make executable
+sudo chmod +x emergency-fix.sh
+
+# Run the script
+sudo ./emergency-fix.sh 
