@@ -2,37 +2,15 @@
   <div class="min-h-screen bg-black">
     <!-- Navigation -->
     <header class="fixed w-full top-0 z-50">
-      <!-- Mobile Navigation - Fullscreen overlay (Apple-style) -->
-      <transition
-        enter-active-class="transition-all duration-500 ease-out"
-        enter-class="opacity-0 translate-y-[-100%]"
-        enter-to-class="opacity-100 translate-y-0"
-        leave-active-class="transition-all duration-300 ease-in"
-        leave-class="opacity-100 translate-y-0"
-        leave-to-class="opacity-0 translate-y-[-100%]"
+      <!-- Navbar with integrated mobile menu -->
+      <div 
+        class="bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden"
+        :class="isMobileMenuOpen ? 'h-auto pb-8' : 'h-12'"
+        style="max-height: 100vh"
       >
-        <div 
-          v-if="isMobileMenuOpen" 
-          class="fixed inset-0 bg-black/80 backdrop-blur-sm md:hidden"
-          style="z-index: 40; top: 0;"
-        >
-          <div class="flex flex-col items-center justify-center h-full">
-            <NuxtLink 
-              v-for="item in navigationItems" 
-              :key="item.name"
-              :to="item.href"
-              class="text-white text-xl font-bold lowercase mb-4"
-            >
-              {{ item.name }}
-            </NuxtLink>
-          </div>
-        </div>
-      </transition>
-
-      <!-- Navbar (always visible, stays on top of overlay) -->
-      <nav class="mx-auto max-w-7xl relative bg-black/80 backdrop-blur-sm z-50">
-        <div class="px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between">
-          <!-- Logo aligned to left -->
+        <!-- Top navbar section -->
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between">
+          <!-- Logo -->
           <div class="flex-none">
             <NuxtLink to="/" class="text-xl font-bold relative">
               <div class="relative">
@@ -100,38 +78,59 @@
             </NuxtLink>
           </div>
 
-          <!-- Placeholder to maintain layout -->
-          <div class="w-5 flex-none md:hidden"></div>
+          <!-- Hamburger button -->
+          <button 
+            type="button"
+            class="md:hidden flex items-center justify-center cursor-pointer relative"
+            style="width: 48px; height: 48px;"
+            @click.prevent="toggleMobileMenu"
+          >
+            <span class="sr-only">Open main menu</span>
+            <div class="w-4 h-3 relative">
+              <!-- First line -->
+              <div 
+                class="absolute h-[1px] transition-all duration-300 ease-in-out"
+                style="background-color: #9CA3AF;"
+                :class="[
+                  isMobileMenuOpen ? 'w-3 top-[6px] rotate-45' : 'w-4 top-[3px]'
+                ]"
+              ></div>
+              <!-- Second line -->
+              <div 
+                class="absolute h-[1px] transition-all duration-300 ease-in-out"
+                style="background-color: #9CA3AF;"
+                :class="[
+                  isMobileMenuOpen ? 'w-3 top-[6px] -rotate-45' : 'w-4 top-[9px]'
+                ]"
+              ></div>
+            </div>
+          </button>
         </div>
         
-        <!-- Hamburger - with balanced clickable area -->
-        <button 
-          type="button"
-          class="md:hidden absolute top-0 h-12 flex items-center justify-center cursor-pointer z-50"
-          style="width: 48px; right: 4px;"
-          @click.prevent="toggleMobileMenu"
-        >
-          <span class="sr-only">Open main menu</span>
-          <div class="w-4 h-3 relative">
-            <!-- First line -->
-            <div 
-              class="absolute h-[1px] transition-all duration-300 ease-in-out"
-              style="background-color: #9CA3AF;"
-              :class="[
-                isMobileMenuOpen ? 'w-3 top-[6px] rotate-45' : 'w-4 top-[3px]'
-              ]"
-            ></div>
-            <!-- Second line -->
-            <div 
-              class="absolute h-[1px] transition-all duration-300 ease-in-out"
-              style="background-color: #9CA3AF;"
-              :class="[
-                isMobileMenuOpen ? 'w-3 top-[6px] -rotate-45' : 'w-4 top-[9px]'
-              ]"
-            ></div>
+        <!-- Mobile menu items (part of the same container) -->
+        <div class="md:hidden px-4 pt-4">
+          <div 
+            v-for="(item, index) in navigationItems" 
+            :key="item.name"
+            class="transform transition-all duration-400 ease-out mb-6"
+            :style="{
+              opacity: isMobileMenuOpen ? 1 : 0,
+              transform: `translateY(${isMobileMenuOpen ? 0 : -15}px)`,
+              transitionDelay: isMobileMenuOpen 
+                ? `${50 * index}ms` 
+                : `${50 * (navigationItems.length - index - 1)}ms`
+            }"
+          >
+            <NuxtLink 
+              :to="item.href"
+              class="text-white text-xl font-bold lowercase"
+              @click="toggleMobileMenu"
+            >
+              {{ item.name }}
+            </NuxtLink>
           </div>
-        </button>
-      </nav>
+        </div>
+      </div>
     </header>
 
     <!-- Main Content -->
@@ -157,9 +156,9 @@ const navigationItems = [
 watch(isMobileMenuOpen, (isOpen) => {
   // Lock/unlock body scroll when menu opens/closes
   if (isOpen) {
-    document.body.classList.add('overflow-hidden', 'fixed', 'inset-0');
+    document.body.classList.add('overflow-hidden');
   } else {
-    document.body.classList.remove('overflow-hidden', 'fixed', 'inset-0');
+    document.body.classList.remove('overflow-hidden');
   }
 });
 
@@ -167,13 +166,6 @@ watch(isMobileMenuOpen, (isOpen) => {
 const toggleMobileMenu = (event) => {
   event.preventDefault(); // Prevent default action
   isMobileMenuOpen.value = !isMobileMenuOpen.value; // Toggle the menu
-  if (isMobileMenuOpen.value) {
-    // Lock body scroll when menu opens
-    document.body.classList.add('overflow-hidden', 'fixed', 'inset-0');
-  } else {
-    // Unlock body scroll when menu closes
-    document.body.classList.remove('overflow-hidden', 'fixed', 'inset-0');
-  }
 };
 
 onMounted(() => {
@@ -185,7 +177,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  document.body.classList.remove('overflow-hidden', 'fixed', 'inset-0');
+  document.body.classList.remove('overflow-hidden');
 })
 </script>
 
@@ -208,5 +200,17 @@ body {
 
 .translate-x-2 {
   transform: translateX(0.5rem);
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.origin-top {
+  transform-origin: top;
 }
 </style>
