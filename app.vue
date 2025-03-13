@@ -1,8 +1,36 @@
 <template>
   <div class="min-h-screen bg-black">
     <!-- Navigation -->
-    <header class="fixed w-full top-0 z-50 bg-black/80 backdrop-blur-sm">
-      <nav class="mx-auto max-w-7xl relative">
+    <header class="fixed w-full top-0 z-50">
+      <!-- Mobile Navigation - Fullscreen overlay (Apple-style) -->
+      <transition
+        enter-active-class="transition-all duration-500 ease-out"
+        enter-class="opacity-0 translate-y-[-100%]"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition-all duration-300 ease-in"
+        leave-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 translate-y-[-100%]"
+      >
+        <div 
+          v-if="isMobileMenuOpen" 
+          class="fixed inset-0 bg-black/80 backdrop-blur-sm md:hidden"
+          style="z-index: 40; top: 0;"
+        >
+          <div class="flex flex-col items-center justify-center h-full">
+            <NuxtLink 
+              v-for="item in navigationItems" 
+              :key="item.name"
+              :to="item.href"
+              class="text-white text-xl font-bold lowercase mb-4"
+            >
+              {{ item.name }}
+            </NuxtLink>
+          </div>
+        </div>
+      </transition>
+
+      <!-- Navbar (always visible, stays on top of overlay) -->
+      <nav class="mx-auto max-w-7xl relative bg-black/80 backdrop-blur-sm z-50">
         <div class="px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between">
           <!-- Logo aligned to left -->
           <div class="flex-none">
@@ -11,37 +39,37 @@
                 <!-- Full name version -->
                 <div 
                   class="transition-all duration-300 ease-in-out absolute left-0"
-                  :class="isScrolled ? 'opacity-0 transform scale-95' : 'opacity-100'"
+                  :class="!showFullLogo ? 'opacity-0 transform scale-95' : 'opacity-100'"
                 >
                   <span style="color: white;">a</span>
                   <span 
                     :style="{
                       color: 'white',
                       transition: 'all 300ms ease-in-out',
-                      opacity: isScrolled ? 0 : 1
+                      opacity: !showFullLogo ? 0 : 1
                     }"
                   >rjun</span>
                   <span 
                     :style="{
                       color: 'white',
                       transition: 'all 300ms ease-in-out',
-                      transform: isScrolled ? 'translateX(-3.8rem)' : 'translateX(0)',
-                      opacity: isScrolled ? 0 : 1
+                      transform: !showFullLogo ? 'translateX(-3.8rem)' : 'translateX(0)',
+                      opacity: !showFullLogo ? 0 : 1
                     }"
                   >b</span>
                   <span 
                     :style="{
                       color: 'white',
                       transition: 'all 300ms ease-in-out',
-                      opacity: isScrolled ? 0 : 1
+                      opacity: !showFullLogo ? 0 : 1
                     }"
                   >ishnoi</span>
                   <span 
                     :style="{
                       color: '#9CA3AF',
                       transition: 'all 300ms ease-in-out',
-                      transform: isScrolled ? 'translateX(-7.2rem)' : 'translateX(0)',
-                      opacity: isScrolled ? 0 : 1
+                      transform: !showFullLogo ? 'translateX(-7.2rem)' : 'translateX(0)',
+                      opacity: !showFullLogo ? 0 : 1
                     }"
                   >_</span>
                 </div>
@@ -49,7 +77,7 @@
                 <div 
                   class="transition-all duration-300 ease-in-out absolute left-0 overflow-visible"
                   :style="{
-                    opacity: !isScrolled ? 0 : 1
+                    opacity: showFullLogo ? 0 : 1
                   }"
                 >
                   <span style="color: white;">a</span><span style="color: white;">b</span><span style="color: #9CA3AF;">_</span>
@@ -79,9 +107,9 @@
         <!-- Hamburger - with balanced clickable area -->
         <button 
           type="button"
-          class="md:hidden absolute top-0 h-12 flex items-center justify-center cursor-pointer"
+          class="md:hidden absolute top-0 h-12 flex items-center justify-center cursor-pointer z-50"
           style="width: 48px; right: 4px;"
-          @click="isMobileMenuOpen = !isMobileMenuOpen"
+          @click.prevent="toggleMobileMenu"
         >
           <span class="sr-only">Open main menu</span>
           <div class="w-4 h-3 relative">
@@ -104,37 +132,10 @@
           </div>
         </button>
       </nav>
-
-      <!-- Mobile Navigation -->
-      <transition
-        enter-class="opacity-0 max-h-0"
-        enter-active-class="transition-all duration-300 ease-in-out"
-        enter-to-class="opacity-100 max-h-96"
-        leave-class="opacity-100 max-h-96"
-        leave-active-class="transition-all duration-300 ease-in-out"
-        leave-to-class="opacity-0 max-h-0"
-      >
-        <div 
-          v-if="isMobileMenuOpen" 
-          class="md:hidden overflow-hidden bg-black/95"
-        >
-          <div class="space-y-0 py-3 px-4">
-            <NuxtLink
-              v-for="item in navigationItems"
-              :key="item.name"
-              :to="item.href"
-              class="block py-2.5 text-sm font-medium text-gray-400 hover:text-white transition-colors"
-              @click="isMobileMenuOpen = false"
-            >
-              {{ item.name }}
-            </NuxtLink>
-          </div>
-        </div>
-      </transition>
     </header>
 
     <!-- Main Content -->
-    <main class="pt-12 bg-black text-white">
+    <main class="pt-12 bg-black text-white" :class="{ 'overflow-hidden': isMobileMenuOpen }">
       <NuxtPage />
     </main>
   </div>
@@ -143,14 +144,37 @@
 <script setup>
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
+const showFullLogo = computed(() => !isScrolled.value || isMobileMenuOpen.value)
 
 const navigationItems = [
-  { name: 'About', href: '/#about' },
-  { name: 'Skills', href: '/#skills' },
-  { name: 'Projects', href: '/#projects' },
-  { name: 'Experience', href: '/#experience' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'about', href: '/#about' },
+  { name: 'skills', href: '/#skills' },
+  { name: 'projects', href: '/#projects' },
+  { name: 'experience', href: '/#experience' },
+  { name: 'contact', href: '/#contact' },
 ]
+
+watch(isMobileMenuOpen, (isOpen) => {
+  // Lock/unlock body scroll when menu opens/closes
+  if (isOpen) {
+    document.body.classList.add('overflow-hidden', 'fixed', 'inset-0');
+  } else {
+    document.body.classList.remove('overflow-hidden', 'fixed', 'inset-0');
+  }
+});
+
+// Method to toggle mobile menu
+const toggleMobileMenu = (event) => {
+  event.preventDefault(); // Prevent default action
+  isMobileMenuOpen.value = !isMobileMenuOpen.value; // Toggle the menu
+  if (isMobileMenuOpen.value) {
+    // Lock body scroll when menu opens
+    document.body.classList.add('overflow-hidden', 'fixed', 'inset-0');
+  } else {
+    // Unlock body scroll when menu closes
+    document.body.classList.remove('overflow-hidden', 'fixed', 'inset-0');
+  }
+};
 
 onMounted(() => {
   const handleScroll = () => {
@@ -158,6 +182,10 @@ onMounted(() => {
   }
   window.addEventListener('scroll', handleScroll)
   handleScroll() // Initial check
+})
+
+onBeforeUnmount(() => {
+  document.body.classList.remove('overflow-hidden', 'fixed', 'inset-0');
 })
 </script>
 
