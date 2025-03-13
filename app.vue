@@ -149,6 +149,7 @@
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
 const showFullLogo = computed(() => !isScrolled.value || isMobileMenuOpen.value)
+const scrollPosition = ref(0)
 
 const navigationItems = [
   { name: 'about', href: '/#about' },
@@ -159,16 +160,29 @@ const navigationItems = [
 ]
 
 watch(isMobileMenuOpen, (isOpen) => {
-  // Lock/unlock body scroll when menu opens/closes
   if (isOpen) {
-    document.body.classList.add('overflow-hidden');
+    // Save current scroll position
+    scrollPosition.value = window.scrollY
+    
+    // Add class to disable scrolling but keep scrollbar visible
+    document.body.classList.add('overflow-hidden')
+    
+    // Maintain scroll position
+    document.body.style.top = `-${scrollPosition.value}px`
   } else {
     // Add a small delay before removing the overflow class to allow the animation to complete
     setTimeout(() => {
-      document.body.classList.remove('overflow-hidden');
-    }, 400);
+      // Remove the class that disables scrolling
+      document.body.classList.remove('overflow-hidden')
+      
+      // Reset the body position
+      document.body.style.top = ''
+      
+      // Restore scroll position
+      window.scrollTo(0, scrollPosition.value)
+    }, 400)
   }
-});
+})
 
 // Method to toggle mobile menu
 const toggleMobileMenu = (event) => {
@@ -185,17 +199,34 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  document.body.classList.remove('overflow-hidden');
+  // Clean up scroll locking if component is unmounted while menu is open
+  document.body.classList.remove('overflow-hidden')
+  document.body.style.top = ''
+  window.scrollTo(0, scrollPosition.value)
 })
 </script>
 
 <style>
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll; /* Always show vertical scrollbar to prevent layout shift */
 }
 
 body {
   @apply font-sans antialiased text-white;
+  /* Remove the overflow-y from here since html handles it */
+  overflow: unset;
+}
+
+/* Class to disable scrolling without removing scrollbar */
+body.overflow-hidden {
+  /* Remove overflow-y: scroll from here since html handles it */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* Add top: 0 to ensure proper positioning */
+  top: 0;
+  left: 0;
 }
 
 .transform {
