@@ -1,75 +1,140 @@
 <template>
-  <div class="min-h-screen bg-white">
+  <div class="min-h-screen bg-black">
     <!-- Navigation -->
-    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
-      <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
-          <!-- Logo -->
-          <div class="flex-shrink-0">
-            <NuxtLink to="/" class="text-2xl font-bold text-dark">
-              Arjun Bishnoi
+    <header class="fixed w-full top-0 z-50 bg-black/80 backdrop-blur-sm">
+      <nav class="mx-auto max-w-7xl relative">
+        <div class="px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between">
+          <!-- Logo aligned to left -->
+          <div class="flex-none">
+            <NuxtLink to="/" class="text-xl font-bold relative">
+              <div class="relative">
+                <!-- Full name version -->
+                <div 
+                  class="transition-all duration-300 ease-in-out absolute left-0"
+                  :class="isScrolled ? 'opacity-0 transform scale-95' : 'opacity-100'"
+                >
+                  <span style="color: white;">a</span>
+                  <span 
+                    :style="{
+                      color: 'white',
+                      transition: 'all 300ms ease-in-out',
+                      opacity: isScrolled ? 0 : 1
+                    }"
+                  >rjun</span>
+                  <span 
+                    :style="{
+                      color: 'white',
+                      transition: 'all 300ms ease-in-out',
+                      transform: isScrolled ? 'translateX(-3.8rem)' : 'translateX(0)',
+                      opacity: isScrolled ? 0 : 1
+                    }"
+                  >b</span>
+                  <span 
+                    :style="{
+                      color: 'white',
+                      transition: 'all 300ms ease-in-out',
+                      opacity: isScrolled ? 0 : 1
+                    }"
+                  >ishnoi</span>
+                  <span 
+                    :style="{
+                      color: '#9CA3AF',
+                      transition: 'all 300ms ease-in-out',
+                      transform: isScrolled ? 'translateX(-7.2rem)' : 'translateX(0)',
+                      opacity: isScrolled ? 0 : 1
+                    }"
+                  >_</span>
+                </div>
+                <!-- Shortened version -->
+                <div 
+                  class="transition-all duration-300 ease-in-out absolute left-0 overflow-visible"
+                  :style="{
+                    opacity: !isScrolled ? 0 : 1
+                  }"
+                >
+                  <span style="color: white;">a</span><span style="color: white;">b</span><span style="color: #9CA3AF;">_</span>
+                </div>
+              </div>
+              <!-- Spacer to maintain layout -->
+              <span class="opacity-0">arjunbishnoi_</span>
             </NuxtLink>
           </div>
 
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex md:items-center md:space-x-8">
+          <!-- Desktop Navigation in center -->
+          <div class="hidden md:flex md:items-center md:space-x-8 md:flex-auto md:justify-center">
             <NuxtLink 
               v-for="item in navigationItems" 
               :key="item.name"
               :to="item.href"
-              class="text-sm font-medium text-gray-500 hover:text-dark transition-colors"
+              class="text-sm font-medium text-gray-400 hover:text-white transition-colors"
             >
               {{ item.name }}
             </NuxtLink>
           </div>
 
-          <!-- Mobile menu button -->
-          <div class="flex md:hidden">
-            <button 
-              type="button"
-              class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-              @click="isMobileMenuOpen = !isMobileMenuOpen"
-            >
-              <span class="sr-only">Open main menu</span>
-              <svg 
-                class="h-6 w-6" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path 
-                  stroke-linecap="round" 
-                  stroke-linejoin="round" 
-                  stroke-width="2" 
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
+          <!-- Placeholder to maintain layout -->
+          <div class="w-5 flex-none md:hidden"></div>
         </div>
+        
+        <!-- Hamburger - with balanced clickable area -->
+        <button 
+          type="button"
+          class="md:hidden absolute top-0 h-12 flex items-center justify-center cursor-pointer"
+          style="width: 48px; right: 4px;"
+          @click="isMobileMenuOpen = !isMobileMenuOpen"
+        >
+          <span class="sr-only">Open main menu</span>
+          <div class="w-4 h-3 relative">
+            <!-- First line -->
+            <div 
+              class="absolute h-[1px] transition-all duration-300 ease-in-out"
+              style="background-color: #9CA3AF;"
+              :class="[
+                isMobileMenuOpen ? 'w-3 top-[6px] rotate-45' : 'w-4 top-[3px]'
+              ]"
+            ></div>
+            <!-- Second line -->
+            <div 
+              class="absolute h-[1px] transition-all duration-300 ease-in-out"
+              style="background-color: #9CA3AF;"
+              :class="[
+                isMobileMenuOpen ? 'w-3 top-[6px] -rotate-45' : 'w-4 top-[9px]'
+              ]"
+            ></div>
+          </div>
+        </button>
       </nav>
 
       <!-- Mobile Navigation -->
-      <div 
-        v-show="isMobileMenuOpen" 
-        class="md:hidden"
+      <transition
+        enter-class="opacity-0 max-h-0"
+        enter-active-class="transition-all duration-300 ease-in-out"
+        enter-to-class="opacity-100 max-h-96"
+        leave-class="opacity-100 max-h-96"
+        leave-active-class="transition-all duration-300 ease-in-out"
+        leave-to-class="opacity-0 max-h-0"
       >
-        <div class="space-y-1 px-2 pb-3 pt-2">
-          <NuxtLink
-            v-for="item in navigationItems"
-            :key="item.name"
-            :to="item.href"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-dark"
-            @click="isMobileMenuOpen = false"
-          >
-            {{ item.name }}
-          </NuxtLink>
+        <div 
+          v-if="isMobileMenuOpen" 
+          class="md:hidden overflow-hidden bg-black/95"
+        >
+          <div class="space-y-0 py-3 px-4">
+            <NuxtLink
+              v-for="item in navigationItems"
+              :key="item.name"
+              :to="item.href"
+              class="block py-2.5 text-sm font-medium text-gray-400 hover:text-white transition-colors"
+              @click="isMobileMenuOpen = false"
+            >
+              {{ item.name }}
+            </NuxtLink>
+          </div>
         </div>
-      </div>
+      </transition>
     </header>
 
     <!-- Main Content -->
-    <main class="pt-16">
+    <main class="pt-12 bg-black text-white">
       <NuxtPage />
     </main>
   </div>
@@ -77,6 +142,7 @@
 
 <script setup>
 const isMobileMenuOpen = ref(false)
+const isScrolled = ref(false)
 
 const navigationItems = [
   { name: 'About', href: '/#about' },
@@ -85,6 +151,14 @@ const navigationItems = [
   { name: 'Experience', href: '/#experience' },
   { name: 'Contact', href: '/#contact' },
 ]
+
+onMounted(() => {
+  const handleScroll = () => {
+    isScrolled.value = window.scrollY > 50
+  }
+  window.addEventListener('scroll', handleScroll)
+  handleScroll() // Initial check
+})
 </script>
 
 <style>
@@ -93,6 +167,18 @@ html {
 }
 
 body {
-  @apply font-sans antialiased text-dark;
+  @apply font-sans antialiased text-white;
+}
+
+.transform {
+  transform-origin: left;
+}
+
+.scale-95 {
+  transform: scale(0.95);
+}
+
+.translate-x-2 {
+  transform: translateX(0.5rem);
 }
 </style>

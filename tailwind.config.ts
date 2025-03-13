@@ -11,11 +11,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#0066FF',
-        secondary: '#10a37f',
-        dark: '#202123',
+        primary: '#3C82F6',
+        secondary: '#10B981',
+        dark: '#000000',
         light: '#F7F7F8',
-        'gray-custom': '#353740',
+        'gray-custom': '#9CA3AF',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

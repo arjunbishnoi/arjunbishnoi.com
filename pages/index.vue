@@ -1,14 +1,14 @@
 <template>
   <div>
     <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-white">
+    <section class="relative overflow-hidden bg-black">
       <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
         <div class="text-center">
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
             Full Stack Developer
             <span class="block text-primary">& UI/UX Designer</span>
           </h1>
-          <p class="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
+          <p class="mt-6 text-lg leading-8 text-gray-300 max-w-2xl mx-auto">
             Building modern web applications with cutting-edge technologies.
             Specializing in Vue.js, Node.js, and creating beautiful user experiences.
           </p>
@@ -19,7 +19,7 @@
             >
               View My Work
             </a>
-            <a href="#contact" class="text-sm font-semibold leading-6 text-gray-900">
+            <a href="#contact" class="text-sm font-semibold leading-6 text-gray-300">
               Contact Me <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -36,27 +36,27 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-light">
+    <section id="about" class="py-24 bg-gray-900">
       <!-- About content will go here -->
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-24">
+    <section id="skills" class="py-24 bg-black">
       <!-- Skills content will go here -->
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-light">
+    <section id="projects" class="py-24 bg-gray-900">
       <!-- Projects content will go here -->
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-24">
+    <section id="experience" class="py-24 bg-black">
       <!-- Experience content will go here -->
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-light">
+    <section id="contact" class="py-24 bg-gray-900">
       <!-- Contact content will go here -->
     </section>
   </div>
