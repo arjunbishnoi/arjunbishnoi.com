@@ -8,337 +8,279 @@
           <span class="block text-xl text-primary mt-2">My professional journey</span>
         </h1>
         <p class="mt-4 text-lg text-gray-300 max-w-2xl">
-          A timeline of my career showcasing my roles, responsibilities, and achievements 
-          across various positions in the tech industry.
+          A timeline of my professional experience, showcasing my growth as a developer
+          and the impact I've made across different organizations.
         </p>
       </div>
     </div>
 
     <!-- Experience Timeline -->
     <div class="mx-auto max-w-7xl px-6 py-10 lg:px-8">
-      <div class="relative border-l border-gray-800 pl-8 ml-4">
-        <!-- Current Position -->
-        <div class="mb-16 relative">
-          <!-- Timeline node -->
-          <div class="absolute w-4 h-4 bg-primary rounded-full -left-[2.25rem] top-1"></div>
-          
-          <!-- Year label -->
-          <div class="absolute -left-28 top-0 hidden md:block">
-            <span class="text-primary font-semibold">2021 - Present</span>
-          </div>
+      <div class="relative border-l border-gray-800 ml-4 md:ml-8 pl-8 space-y-20">
+        <!-- Experience Item 1 -->
+        <div class="relative">
+          <!-- Timeline marker -->
+          <div class="absolute w-5 h-5 bg-primary rounded-full -left-[42px] top-1"></div>
           
           <!-- Content -->
           <div>
-            <h2 class="text-2xl font-bold text-white">Senior Frontend Developer</h2>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mt-1 mb-4 text-gray-400">
-              <span class="text-primary font-medium">TechCorp Inc.</span>
-              <span class="hidden sm:inline text-gray-600">•</span>
-              <span class="md:hidden">2021 - Present</span>
-              <span class="text-gray-400">San Francisco, CA</span>
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+              <h2 class="text-2xl font-bold text-white">Senior Frontend Developer</h2>
+              <div class="text-primary mt-1 md:mt-0">2021 - Present</div>
             </div>
+            <h3 class="text-xl font-medium text-gray-300 mb-4">TechCorp Inc.</h3>
             
-            <p class="text-gray-300 mb-6">
-              Led the development of the company's flagship SaaS product, implementing 
-              modern frontend architecture with React and TypeScript. Collaborated with UX designers 
-              to create an intuitive and responsive interface that improved user retention by 35%.
-            </p>
-            
-            <div class="space-y-4">
-              <h3 class="text-lg font-semibold text-white">Key Responsibilities</h3>
-              <ul class="space-y-3 text-gray-300">
+            <div class="bg-gray-900/50 rounded-lg p-6 mb-6">
+              <p class="text-gray-300 mb-4">
+                Leading the development of TechCorp's flagship SaaS platform, focusing on performance 
+                optimization, component architecture, and mentoring junior developers.
+              </p>
+              
+              <h4 class="text-lg font-semibold text-primary mb-3">Key Responsibilities</h4>
+              <ul class="space-y-2 text-gray-300 mb-6">
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Architected and implemented a new component system using React and TypeScript</span>
+                  <span>Lead a team of 5 frontend developers, managing sprint planning and code reviews</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Led a team of 4 frontend developers, conducting code reviews and mentoring junior developers</span>
+                  <span>Architect and implement new features using React, TypeScript, and GraphQL</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Collaborated with design team to implement a comprehensive design system</span>
+                  <span>Collaborate with product managers and designers to refine product requirements</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Optimized application performance, reducing initial load time by 40%</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Implemented CI/CD pipelines using GitHub Actions, ensuring code quality and automated deployments</span>
+                  <span>Establish coding standards and best practices for the frontend team</span>
                 </li>
               </ul>
               
-              <h3 class="text-lg font-semibold text-white mt-6">Key Achievements</h3>
-              <ul class="space-y-3 text-gray-300">
+              <h4 class="text-lg font-semibold text-primary mb-3">Key Achievements</h4>
+              <ul class="space-y-2 text-gray-300">
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Reduced bundle size by 30% through code splitting and lazy loading strategies</span>
+                  <span>Reduced application load time by 40% through code splitting, lazy loading, and performance optimizations</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Implemented accessibility improvements that increased WCAG compliance from 65% to 98%</span>
+                  <span>Implemented a comprehensive component library that increased development velocity by 30%</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Developed a reusable component library that accelerated development speed by 25%</span>
+                  <span>Led the migration from REST to GraphQL, reducing API calls by 60% and improving data fetching efficiency</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2 text-primary mt-1">▹</span> 
+                  <span>Introduced automated testing that increased test coverage from 40% to 80%</span>
                 </li>
               </ul>
             </div>
             
-            <div class="mt-6 flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-3">
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">React</span>
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">TypeScript</span>
-              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Redux</span>
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">GraphQL</span>
-              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Jest</span>
-              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">CI/CD</span>
+              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Redux</span>
+              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Design Systems</span>
+              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Team Leadership</span>
             </div>
           </div>
         </div>
         
-        <!-- Previous Position -->
-        <div class="mb-16 relative">
-          <!-- Timeline node -->
-          <div class="absolute w-4 h-4 bg-primary rounded-full -left-[2.25rem] top-1"></div>
-          
-          <!-- Year label -->
-          <div class="absolute -left-28 top-0 hidden md:block">
-            <span class="text-primary font-semibold">2018 - 2021</span>
-          </div>
+        <!-- Experience Item 2 -->
+        <div class="relative">
+          <!-- Timeline marker -->
+          <div class="absolute w-5 h-5 bg-primary rounded-full -left-[42px] top-1"></div>
           
           <!-- Content -->
           <div>
-            <h2 class="text-2xl font-bold text-white">Full Stack Developer</h2>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mt-1 mb-4 text-gray-400">
-              <span class="text-primary font-medium">Web Solutions Ltd.</span>
-              <span class="hidden sm:inline text-gray-600">•</span>
-              <span class="md:hidden">2018 - 2021</span>
-              <span class="text-gray-400">Austin, TX</span>
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+              <h2 class="text-2xl font-bold text-white">Full Stack Developer</h2>
+              <div class="text-primary mt-1 md:mt-0">2018 - 2021</div>
             </div>
+            <h3 class="text-xl font-medium text-gray-300 mb-4">Web Solutions Ltd.</h3>
             
-            <p class="text-gray-300 mb-6">
-              Developed and maintained multiple client websites and web applications, focusing on responsive design 
-              and cross-browser compatibility. Built RESTful APIs and integrated third-party services for various projects.
-            </p>
-            
-            <div class="space-y-4">
-              <h3 class="text-lg font-semibold text-white">Key Responsibilities</h3>
-              <ul class="space-y-3 text-gray-300">
+            <div class="bg-gray-900/50 rounded-lg p-6 mb-6">
+              <p class="text-gray-300 mb-4">
+                Developed and maintained multiple client projects, ranging from e-commerce platforms 
+                to content management systems, while focusing on responsive design and cross-browser compatibility.
+              </p>
+              
+              <h4 class="text-lg font-semibold text-primary mb-3">Key Responsibilities</h4>
+              <ul class="space-y-2 text-gray-300 mb-6">
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Built RESTful APIs using Node.js and Express for various client projects</span>
+                  <span>Built and maintained full-stack applications using Vue.js, Node.js, and MongoDB</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Designed and implemented responsive frontend interfaces using React and Vue.js</span>
+                  <span>Designed and implemented RESTful APIs for client projects</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Created and optimized database schemas for MongoDB and PostgreSQL</span>
+                  <span>Collaborated with designers to implement responsive, pixel-perfect UIs</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Implemented authentication and authorization systems using JWT and OAuth</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Participated in client meetings and assisted in gathering requirements</span>
+                  <span>Managed deployment and maintenance of applications on cloud platforms</span>
                 </li>
               </ul>
               
-              <h3 class="text-lg font-semibold text-white mt-6">Key Achievements</h3>
-              <ul class="space-y-3 text-gray-300">
+              <h4 class="text-lg font-semibold text-primary mb-3">Key Achievements</h4>
+              <ul class="space-y-2 text-gray-300">
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Delivered 12+ successful projects, each meeting or exceeding client expectations</span>
+                  <span>Successfully delivered 12+ client projects with 100% satisfaction rate</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Implemented a CI/CD pipeline that reduced deployment time by 70%</span>
+                  <span>Developed a custom e-commerce solution that increased client's online sales by 45%</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Created a custom CMS solution that was adopted for multiple client projects</span>
+                  <span>Created a CI/CD pipeline that reduced deployment time by 70%</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2 text-primary mt-1">▹</span> 
+                  <span>Implemented responsive design strategies that increased mobile conversions by 35%</span>
                 </li>
               </ul>
             </div>
             
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">React</span>
+            <div class="flex flex-wrap gap-3">
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Vue.js</span>
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Node.js</span>
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Express</span>
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">MongoDB</span>
-              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">PostgreSQL</span>
+              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">REST APIs</span>
+              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">AWS</span>
             </div>
           </div>
         </div>
         
-        <!-- Earlier Position -->
-        <div class="mb-16 relative">
-          <!-- Timeline node -->
-          <div class="absolute w-4 h-4 bg-primary rounded-full -left-[2.25rem] top-1"></div>
-          
-          <!-- Year label -->
-          <div class="absolute -left-28 top-0 hidden md:block">
-            <span class="text-primary font-semibold">2016 - 2018</span>
-          </div>
+        <!-- Experience Item 3 -->
+        <div class="relative">
+          <!-- Timeline marker -->
+          <div class="absolute w-5 h-5 bg-primary rounded-full -left-[42px] top-1"></div>
           
           <!-- Content -->
           <div>
-            <h2 class="text-2xl font-bold text-white">Frontend Developer</h2>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mt-1 mb-4 text-gray-400">
-              <span class="text-primary font-medium">Digital Innovators</span>
-              <span class="hidden sm:inline text-gray-600">•</span>
-              <span class="md:hidden">2016 - 2018</span>
-              <span class="text-gray-400">Boston, MA</span>
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+              <h2 class="text-2xl font-bold text-white">Junior Web Developer</h2>
+              <div class="text-primary mt-1 md:mt-0">2016 - 2018</div>
             </div>
+            <h3 class="text-xl font-medium text-gray-300 mb-4">Digital Creations Agency</h3>
             
-            <p class="text-gray-300 mb-6">
-              Started as a junior developer and quickly progressed to taking on more responsibilities. 
-              Focused on implementing responsive interfaces and optimizing website performance while adhering to design guidelines.
-            </p>
-            
-            <div class="space-y-4">
-              <h3 class="text-lg font-semibold text-white">Key Responsibilities</h3>
-              <ul class="space-y-3 text-gray-300">
+            <div class="bg-gray-900/50 rounded-lg p-6 mb-6">
+              <p class="text-gray-300 mb-4">
+                Started my professional journey as part of a creative agency, working on various 
+                client websites and digital marketing campaigns.
+              </p>
+              
+              <h4 class="text-lg font-semibold text-primary mb-3">Key Responsibilities</h4>
+              <ul class="space-y-2 text-gray-300 mb-6">
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Developed responsive websites using HTML5, CSS3, and JavaScript</span>
+                  <span>Developed responsive websites using HTML, CSS, JavaScript, and jQuery</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Implemented designs from Sketch and Figma files with pixel-perfect accuracy</span>
+                  <span>Implemented design mockups from Photoshop and Sketch files</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Optimized website performance through lazy loading and code optimization</span>
+                  <span>Managed WordPress websites and custom theme development</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Created interactive UI components using jQuery and React</span>
+                  <span>Assisted with SEO optimization and analytics implementation</span>
                 </li>
               </ul>
               
-              <h3 class="text-lg font-semibold text-white mt-6">Key Achievements</h3>
-              <ul class="space-y-3 text-gray-300">
+              <h4 class="text-lg font-semibold text-primary mb-3">Key Achievements</h4>
+              <ul class="space-y-2 text-gray-300">
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Promoted from Junior to Frontend Developer within 10 months</span>
+                  <span>Created a custom WordPress theme that became the agency's best-selling product</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Implemented a mobile-first approach that improved mobile conversion rates by 25%</span>
+                  <span>Built an interactive landing page that achieved a 28% conversion rate</span>
                 </li>
                 <li class="flex items-start">
                   <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Received client commendation for exceptional attention to detail</span>
+                  <span>Implemented responsive design best practices that became agency standards</span>
                 </li>
               </ul>
             </div>
             
-            <div class="mt-6 flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-3">
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">HTML5</span>
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">CSS3</span>
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">JavaScript</span>
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">jQuery</span>
-              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">React</span>
+              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">WordPress</span>
               <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Responsive Design</span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Education -->
-        <div class="relative">
-          <!-- Timeline node -->
-          <div class="absolute w-4 h-4 bg-primary rounded-full -left-[2.25rem] top-1"></div>
-          
-          <!-- Year label -->
-          <div class="absolute -left-28 top-0 hidden md:block">
-            <span class="text-primary font-semibold">2012 - 2016</span>
-          </div>
-          
-          <!-- Content -->
-          <div>
-            <h2 class="text-2xl font-bold text-white">Education</h2>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mt-1 mb-4 text-gray-400">
-              <span class="text-primary font-medium">Boston University</span>
-              <span class="hidden sm:inline text-gray-600">•</span>
-              <span class="md:hidden">2012 - 2016</span>
-              <span class="text-gray-400">Boston, MA</span>
-            </div>
-            
-            <p class="text-gray-300 mb-4">
-              <strong>Bachelor of Science in Computer Science</strong>
-            </p>
-            
-            <p class="text-gray-300 mb-6">
-              Focus on software engineering and web technologies. Completed a senior project developing a collaborative note-taking application using the MERN stack.
-            </p>
-            
-            <div class="space-y-4">
-              <h3 class="text-lg font-semibold text-white">Relevant Coursework</h3>
-              <ul class="space-y-3 text-gray-300">
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Data Structures and Algorithms</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Web Application Development</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Database Systems</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>User Interface Design</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Computer Science</span>
-              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Web Development</span>
-              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">UI/UX Design</span>
-              <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Software Engineering</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Certifications -->
+    <!-- Education Section -->
     <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-      <h2 class="text-2xl font-bold text-white mb-8">Certifications & Training</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-gray-900/50 rounded-lg p-6">
-          <div class="flex justify-between items-start">
-            <div>
-              <h3 class="text-lg font-semibold text-white">AWS Certified Developer - Associate</h3>
-              <p class="text-gray-400 mt-1">Amazon Web Services</p>
-            </div>
-            <span class="text-primary text-sm">2022</span>
+      <h2 class="text-2xl font-bold text-white mb-8">Education</h2>
+      <div class="bg-gray-900/50 rounded-lg p-6">
+        <div class="flex flex-col md:flex-row justify-between mb-4">
+          <div>
+            <h3 class="text-xl font-semibold text-white">Bachelor of Science in Computer Science</h3>
+            <p class="text-gray-300">University of Technology</p>
           </div>
-          <p class="text-gray-300 mt-4">
-            Validation of understanding of core AWS services, uses, and basic AWS architecture best practices, 
-            as well as proficiency in developing, deploying, and debugging cloud-based applications.
-          </p>
+          <div class="text-primary mt-2 md:mt-0">2012 - 2016</div>
+        </div>
+        <p class="text-gray-400">
+          Specialized in web development and user interface design. Graduated with honors.
+          Relevant coursework included algorithms, data structures, database systems, 
+          human-computer interaction, and web application development.
+        </p>
+      </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+      <h2 class="text-2xl font-bold text-white mb-8">Certifications</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gray-900/50 rounded-lg p-6">
+          <div class="flex justify-between mb-2">
+            <h3 class="text-lg font-semibold text-white">AWS Certified Developer - Associate</h3>
+            <span class="text-primary">2022</span>
+          </div>
+          <p class="text-gray-400">Amazon Web Services</p>
         </div>
         
         <div class="bg-gray-900/50 rounded-lg p-6">
-          <div class="flex justify-between items-start">
-            <div>
-              <h3 class="text-lg font-semibold text-white">Professional Scrum Master I (PSM I)</h3>
-              <p class="text-gray-400 mt-1">Scrum.org</p>
-            </div>
-            <span class="text-primary text-sm">2020</span>
+          <div class="flex justify-between mb-2">
+            <h3 class="text-lg font-semibold text-white">Professional Scrum Master I</h3>
+            <span class="text-primary">2021</span>
           </div>
-          <p class="text-gray-300 mt-4">
-            Certification demonstrating fundamental knowledge of Scrum and its application in real-world scenarios. 
-            Focus on the Scrum framework, roles, events, and artifacts.
-          </p>
+          <p class="text-gray-400">Scrum.org</p>
+        </div>
+        
+        <div class="bg-gray-900/50 rounded-lg p-6">
+          <div class="flex justify-between mb-2">
+            <h3 class="text-lg font-semibold text-white">MongoDB Certified Developer</h3>
+            <span class="text-primary">2020</span>
+          </div>
+          <p class="text-gray-400">MongoDB University</p>
+        </div>
+        
+        <div class="bg-gray-900/50 rounded-lg p-6">
+          <div class="flex justify-between mb-2">
+            <h3 class="text-lg font-semibold text-white">React.js Certification</h3>
+            <span class="text-primary">2019</span>
+          </div>
+          <p class="text-gray-400">Frontend Masters</p>
         </div>
       </div>
     </div>
@@ -346,18 +288,14 @@
     <!-- Contact CTA -->
     <div class="bg-gray-900/50 py-12 mt-10">
       <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        <h2 class="text-2xl font-bold text-white mb-3">Interested in my background?</h2>
+        <h2 class="text-2xl font-bold text-white mb-3">Want to work together?</h2>
         <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
-          Download my resume for a comprehensive overview of my experience, or reach out if you'd like to discuss potential opportunities.
+          I'm currently open to new opportunities and would love to discuss how my experience
+          can help your team or project succeed.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/resume.pdf" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-md inline-block transition-colors" download>
-            Download Resume
-          </a>
-          <NuxtLink to="/contact" class="px-6 py-3 border border-gray-700 text-gray-300 hover:text-white hover:border-gray-600 rounded-md inline-block transition-colors">
-            Contact Me
-          </NuxtLink>
-        </div>
+        <NuxtLink to="/contact" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-md inline-block transition-colors">
+          Get In Touch
+        </NuxtLink>
       </div>
     </div>
 
@@ -375,7 +313,7 @@
 useHead({
   title: 'Experience | Arjun Bishnoi',
   meta: [
-    { name: 'description', content: 'Explore my professional experience, career journey, and achievements in web development and design.' }
+    { name: 'description', content: 'Explore my professional experience as a web developer, including my work history, responsibilities, and key achievements.' }
   ]
 })
 </script> 
