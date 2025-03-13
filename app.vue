@@ -190,7 +190,7 @@
             >
               <NuxtLink 
                 :to="item.href"
-                class="text-white text-xl font-bold lowercase"
+                class="text-gray-400 text-xl font-bold lowercase hover:text-white transition-colors"
                 @click="toggleMobileMenu"
               >
                 {{ item.name }}
@@ -200,7 +200,7 @@
           
           <!-- Footer text -->
           <div 
-            class="px-4 sm:px-6 lg:px-8 pb-8 text-sm text-gray-400 text-center absolute bottom-0 left-0 right-0 transition-all duration-500 ease-out"
+            class="px-4 sm:px-6 lg:px-8 pb-24 text-sm font-medium text-[#9CA3AF] text-center absolute bottom-0 left-0 right-0 transition-all duration-500 ease-out"
             :style="{
               opacity: isMobileMenuOpen ? 1 : 0,
               transform: `translateY(${isMobileMenuOpen ? 0 : -8}px)`,
