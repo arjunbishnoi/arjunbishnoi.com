@@ -4,20 +4,16 @@
     <header class="fixed w-full top-0 z-50">
       <!-- Navbar with integrated mobile menu -->
       <div 
-        class="bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out relative z-10"
-        :class="{'overflow-auto': isMobileMenuOpen, 'overflow-hidden': !isMobileMenuOpen}"
-        style="transition-property: max-height, height, padding-bottom;"
+        class="bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden"
         :style="{
-          maxHeight: isMobileMenuOpen ? '100vh' : 'var(--navbar-height)',
-          minHeight: 'var(--navbar-height)',
           height: isMobileMenuOpen ? '100vh' : 'var(--navbar-height)',
-          paddingBottom: isMobileMenuOpen ? '2rem' : '0'
+          minHeight: 'var(--navbar-height)'
         }"
       >
         <!-- Top navbar section -->
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between sticky top-0 bg-black/80 backdrop-blur-md z-20">
+        <div class="mx-auto max-w-7xl h-12 flex items-center justify-between">
           <!-- Logo -->
-          <div class="flex-none">
+          <div class="flex-none px-4 sm:px-6 lg:px-8">
             <NuxtLink to="/" class="text-xl font-bold relative">
               <div class="relative">
                 <!-- Full name version -->
@@ -87,8 +83,8 @@
           <!-- Hamburger button -->
           <button 
             type="button"
-            class="md:hidden flex items-center justify-center cursor-pointer relative"
-            style="width: 48px; height: 48px;"
+            class="md:hidden flex items-center justify-center cursor-pointer relative px-4 sm:px-6 lg:px-8"
+            style="height: 48px;"
             @click.prevent="toggleMobileMenu"
           >
             <span class="sr-only">Open main menu</span>
@@ -114,30 +110,30 @@
         </div>
         
         <!-- Mobile menu items (part of the same container) -->
-        <div class="md:hidden px-4 pt-4">
-          <div 
-            v-for="(item, index) in navigationItems" 
-            :key="item.name"
-            class="transform transition-all duration-400 ease-out mb-6"
-            :style="{
-              opacity: isMobileMenuOpen ? 1 : 0,
-              transform: `translateY(${isMobileMenuOpen ? 0 : -15}px)`,
-              transitionDelay: isMobileMenuOpen 
-                ? `${100 * index}ms` 
-                : `${50 * (navigationItems.length - index - 1)}ms`
-            }"
-          >
-            <NuxtLink 
-              :to="item.href"
-              class="text-white text-xl font-bold lowercase"
-              @click="toggleMobileMenu"
+        <div class="md:hidden">
+          <div class="menu-items-container px-4 sm:px-6 lg:px-8">
+            <div 
+              v-for="(item, index) in navigationItems" 
+              :key="item.name"
+              class="transform transition-all duration-500 ease-out mb-6"
+              :style="{
+                opacity: isMobileMenuOpen ? 1 : 0,
+                transform: `translateY(${isMobileMenuOpen ? 0 : -8}px)`,
+                filter: `blur(${isMobileMenuOpen ? 0 : 2}px)`,
+                transitionDelay: isMobileMenuOpen 
+                  ? `${80 * index}ms` 
+                  : `${30 * (navigationItems.length - index - 1)}ms`
+              }"
             >
-              {{ item.name }}
-            </NuxtLink>
+              <NuxtLink 
+                :to="item.href"
+                class="text-white text-xl font-bold lowercase"
+                @click="toggleMobileMenu"
+              >
+                {{ item.name }}
+              </NuxtLink>
+            </div>
           </div>
-          
-          <!-- Empty div to fill the remaining space -->
-          <div class="flex-grow" style="min-height: calc(80vh - 300px);"></div>
         </div>
       </div>
     </header>
@@ -228,5 +224,10 @@ body {
 
 .origin-top {
   transform-origin: top;
+}
+
+.menu-items-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 </style>
