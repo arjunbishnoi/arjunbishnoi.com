@@ -4,7 +4,7 @@
     <header class="fixed w-full top-0 z-50">
       <!-- Navbar with integrated mobile menu -->
       <div 
-        class="bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden"
+        class="bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden border-b border-gray-800"
         :style="{
           height: isMobileMenuOpen ? '100vh' : 'var(--navbar-height)',
           minHeight: 'var(--navbar-height)'
@@ -13,59 +13,73 @@
         <!-- Top navbar section -->
         <div class="mx-auto max-w-7xl h-12 flex items-center justify-between">
           <!-- Logo -->
-          <div class="flex-none px-4 sm:px-6 lg:px-8">
-            <NuxtLink to="/" class="text-xl font-bold relative">
-              <div class="relative">
-                <!-- Full name version -->
-                <div 
-                  class="transition-all duration-300 ease-in-out absolute left-0"
-                  :class="!showFullLogo ? 'opacity-0 transform scale-95' : 'opacity-100'"
-                >
-                  <span style="color: white;">a</span>
-                  <span 
+          <div class="flex-none px-6 lg:px-8">
+            <!-- Use a wrapper div to handle click events -->
+            <div class="relative">
+              <!-- Clickable area that adapts based on logo state -->
+              <NuxtLink 
+                to="/" 
+                class="absolute inset-y-0 z-10 cursor-pointer" 
+                :class="showFullLogo ? 'w-[10rem]' : 'w-[2.5rem]'"
+                aria-label="Go to homepage"
+              >
+                <!-- Transparent hit area that matches visible logo dimensions -->
+              </NuxtLink>
+              
+              <!-- Logo content (unchanged visually) -->
+              <div class="text-xl font-bold relative">
+                <div class="relative">
+                  <!-- Full name version -->
+                  <div 
+                    class="transition-all duration-300 ease-in-out absolute left-0"
+                    :class="!showFullLogo ? 'opacity-0 transform scale-95' : 'opacity-100'"
+                  >
+                    <span style="color: white;">a</span>
+                    <span 
+                      :style="{
+                        color: 'white',
+                        transition: 'all 300ms ease-in-out',
+                        opacity: !showFullLogo ? 0 : 1
+                      }"
+                    >rjun</span>
+                    <span 
+                      :style="{
+                        color: 'white',
+                        transition: 'all 300ms ease-in-out',
+                        transform: !showFullLogo ? 'translateX(-3.8rem)' : 'translateX(0)',
+                        opacity: !showFullLogo ? 0 : 1
+                      }"
+                    >b</span>
+                    <span 
+                      :style="{
+                        color: 'white',
+                        transition: 'all 300ms ease-in-out',
+                        opacity: !showFullLogo ? 0 : 1
+                      }"
+                    >ishnoi</span>
+                    <span 
+                      :style="{
+                        color: '#9CA3AF',
+                        transition: 'all 300ms ease-in-out',
+                        transform: !showFullLogo ? 'translateX(-7.2rem)' : 'translateX(0)',
+                        opacity: !showFullLogo ? 0 : 1
+                      }"
+                    >_</span>
+                  </div>
+                  <!-- Shortened version -->
+                  <div 
+                    class="transition-all duration-300 ease-in-out absolute left-0 overflow-visible"
                     :style="{
-                      color: 'white',
-                      transition: 'all 300ms ease-in-out',
-                      opacity: !showFullLogo ? 0 : 1
+                      opacity: showFullLogo ? 0 : 1
                     }"
-                  >rjun</span>
-                  <span 
-                    :style="{
-                      color: 'white',
-                      transition: 'all 300ms ease-in-out',
-                      transform: !showFullLogo ? 'translateX(-3.8rem)' : 'translateX(0)',
-                      opacity: !showFullLogo ? 0 : 1
-                    }"
-                  >b</span>
-                  <span 
-                    :style="{
-                      color: 'white',
-                      transition: 'all 300ms ease-in-out',
-                      opacity: !showFullLogo ? 0 : 1
-                    }"
-                  >ishnoi</span>
-                  <span 
-                    :style="{
-                      color: '#9CA3AF',
-                      transition: 'all 300ms ease-in-out',
-                      transform: !showFullLogo ? 'translateX(-7.2rem)' : 'translateX(0)',
-                      opacity: !showFullLogo ? 0 : 1
-                    }"
-                  >_</span>
+                  >
+                    <span style="color: white;">a</span><span style="color: white;">b</span><span style="color: #9CA3AF;">_</span>
+                  </div>
                 </div>
-                <!-- Shortened version -->
-                <div 
-                  class="transition-all duration-300 ease-in-out absolute left-0 overflow-visible"
-                  :style="{
-                    opacity: showFullLogo ? 0 : 1
-                  }"
-                >
-                  <span style="color: white;">a</span><span style="color: white;">b</span><span style="color: #9CA3AF;">_</span>
-                </div>
+                <!-- Spacer to maintain layout -->
+                <span class="opacity-0">arjunbishnoi_</span>
               </div>
-              <!-- Spacer to maintain layout -->
-              <span class="opacity-0">arjunbishnoi_</span>
-            </NuxtLink>
+            </div>
           </div>
 
           <!-- Desktop Navigation in center -->
@@ -81,7 +95,7 @@
           </div>
 
           <!-- Mobile actions: theme toggle, email, and menu -->
-          <div class="md:hidden flex items-center px-4 sm:px-6 lg:px-8 relative h-full">
+          <div class="md:hidden flex items-center px-6 lg:px-8 relative h-full">
             <!-- Theme Toggle -->
             <button
               type="button"
@@ -90,8 +104,8 @@
               style="height: var(--navbar-height);"
             >
               <span class="sr-only">Toggle theme</span>
-              <!-- Hit area for theme toggle (extends left to screen edge, right to half way to email) -->
-              <span class="absolute inset-y-0 left-[-999px] right-[calc(50%-3px)]"></span>
+              <!-- Reduced hit area for theme toggle -->
+              <span class="absolute inset-y-0 left-[-20px] right-[20px]"></span>
               <!-- Sun icon when in dark mode -->
               <svg
                 v-if="isDarkMode"
