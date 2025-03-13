@@ -4,12 +4,18 @@
     <header class="fixed w-full top-0 z-50">
       <!-- Navbar with integrated mobile menu -->
       <div 
-        class="bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden"
-        :class="isMobileMenuOpen ? 'h-auto pb-8' : 'h-12'"
-        style="max-height: 100vh"
+        class="bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out relative z-10"
+        :class="{'overflow-auto': isMobileMenuOpen, 'overflow-hidden': !isMobileMenuOpen}"
+        style="transition-property: max-height, height, padding-bottom;"
+        :style="{
+          maxHeight: isMobileMenuOpen ? '100vh' : 'var(--navbar-height)',
+          minHeight: 'var(--navbar-height)',
+          height: isMobileMenuOpen ? '100vh' : 'var(--navbar-height)',
+          paddingBottom: isMobileMenuOpen ? '2rem' : '0'
+        }"
       >
         <!-- Top navbar section -->
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between sticky top-0 bg-black/80 backdrop-blur-md z-20">
           <!-- Logo -->
           <div class="flex-none">
             <NuxtLink to="/" class="text-xl font-bold relative">
@@ -117,7 +123,7 @@
               opacity: isMobileMenuOpen ? 1 : 0,
               transform: `translateY(${isMobileMenuOpen ? 0 : -15}px)`,
               transitionDelay: isMobileMenuOpen 
-                ? `${50 * index}ms` 
+                ? `${100 * index}ms` 
                 : `${50 * (navigationItems.length - index - 1)}ms`
             }"
           >
@@ -129,6 +135,9 @@
               {{ item.name }}
             </NuxtLink>
           </div>
+          
+          <!-- Empty div to fill the remaining space -->
+          <div class="flex-grow" style="min-height: calc(80vh - 300px);"></div>
         </div>
       </div>
     </header>
@@ -158,7 +167,10 @@ watch(isMobileMenuOpen, (isOpen) => {
   if (isOpen) {
     document.body.classList.add('overflow-hidden');
   } else {
-    document.body.classList.remove('overflow-hidden');
+    // Add a small delay before removing the overflow class to allow the animation to complete
+    setTimeout(() => {
+      document.body.classList.remove('overflow-hidden');
+    }, 400);
   }
 });
 
@@ -202,8 +214,12 @@ body {
   transform: translateX(0.5rem);
 }
 
+:root {
+  --navbar-height: 3rem;
+}
+
 .h-12 {
-  height: 3rem;
+  height: var(--navbar-height);
 }
 
 .h-screen {
