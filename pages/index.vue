@@ -13,7 +13,7 @@
                 <span class="hero-title-line hero-line-2 block mx-auto text-8xl md:text-6xl lg:text-7xl tracking-tight" style="font-size: 30px !important; line-height: 1.0;">Designer / Developer</span>
               </span>
             </h1>
-            <p class="mt-5 sm:mt-8 text-lg leading-7 xs:leading-8 text-gray-300 mx-auto w-[90%] sm:w-auto sm:max-w-2xl hero-text font-medium">
+            <p class="mt-5 sm:mt-8 text-sm sm:text-base md:text-lg leading-6 xs:leading-7 sm:leading-7 text-gray-300 mx-auto w-[90%] sm:w-auto sm:max-w-2xl hero-text font-medium">
               Crafting elegant web solutions with precision.
               Specialized in React, Vue.js, and 
               intuitive experiences that solve real problems.
@@ -163,8 +163,8 @@
         </div>
       </div>
       
-      <!-- Bottom area with buttons and scroll arrow - with moderate bottom margin -->
-      <div class="w-full flex flex-col items-center justify-center mb-16 sm:mb-20 mt-auto">
+      <!-- Bottom area with buttons and scroll arrow - with adaptive margins for different devices -->
+      <div class="w-full flex flex-col items-center justify-center mb-24 pb-8 sm:pb-0 sm:mb-16 md:mb-20 mt-auto">
         <!-- Buttons -->
         <div class="flex items-center justify-center gap-x-6">
           <a
@@ -179,8 +179,8 @@
           </a>
         </div>
         
-        <!-- Scroll down indicator -->
-        <div class="scroll-indicator mt-6 pb-4 flex justify-center">
+        <!-- Scroll down indicator - moved up on mobile -->
+        <div class="scroll-indicator mt-4 sm:mt-6 pb-4 flex justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-gray-700 animate-bounce-subtle" :class="{'opacity-0': scrolledDown}">
             <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
           </svg>
