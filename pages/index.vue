@@ -13,7 +13,7 @@
                 <span class="hero-title-line hero-line-2 block mx-auto text-8xl md:text-6xl lg:text-7xl tracking-tight" style="font-size: 30px !important; line-height: 1.0;">Designer / Developer</span>
               </span>
             </h1>
-            <p class="mt-5 sm:mt-8 text-sm sm:text-base md:text-lg leading-6 xs:leading-7 sm:leading-7 text-gray-300 mx-auto w-[90%] sm:w-auto sm:max-w-2xl hero-text font-medium">
+            <p class="mt-5 sm:mt-8 text-sm sm:text-base md:text-lg leading-6 xs:leading-7 sm:leading-7 text-gray-300 w-[95%] max-w-md sm:w-auto sm:max-w-2xl hero-text font-medium px-2 sm:px-0">
               Crafting elegant web solutions with precision.
               Specialized in React, Vue.js, and 
               intuitive experiences that solve real problems.
@@ -22,8 +22,8 @@
         </div>
       </div>
           
-      <!-- Technology Icons with scroll animation - FIXED in center of viewport -->
-      <div class="fixed inset-x-0 h-[120px] flex items-center justify-center" style="top: calc(50vh - 60px); z-index: 20;">
+      <!-- Technology Icons with scroll animation - RELATIVE positioning within hero section -->
+      <div class="relative inset-x-0 h-[120px] flex items-center justify-center my-auto">
         <div class="tech-scroll-container w-full">
           <div class="tech-scroll">
             <!-- Vue.js -->
