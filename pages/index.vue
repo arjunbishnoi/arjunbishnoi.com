@@ -9,12 +9,15 @@
             <h1 class="font-bold tracking-tight text-white text-center max-w-full leading-none w-full">
               <!-- Mobile-first hero title with controlled line breaks and smooth size scaling -->
               <span class="hero-title-container inline-block text-center w-full">
-                <span class="hero-title-line hero-line-1 block mx-auto text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight">Web &amp; Mobile</span>
-                <span class="hero-title-line hero-line-2 block mx-auto text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight">Designer / Developer</span>
+                <span class="hero-title-line hero-line-1 block mx-auto text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight">Web &amp; Mobile</span>
+                <span class="hero-title-line hero-line-2 block mx-auto text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight">Designer / Developer</span>
               </span>
             </h1>
-            <p class="mt-5 sm:mt-8 text-lg leading-8 text-gray-300 mx-auto w-4/5 sm:w-auto max-w-2xl hero-text font-medium">
-              Crafting elegant web solutions with precision. Specialized in React, Vue.js, and intuitive experiences that solve real problems.
+            <p class="mt-5 sm:mt-8 text-lg leading-8 text-gray-300 mx-auto w-11/12 sm:w-auto max-w-2xl hero-text">
+              Crafting elegant web solutions with 
+              precision.<br> Specialized in React, 
+              Vue.js, and intuitive experiences 
+              that solve real problems.
             </p>
           </div>
           
@@ -772,16 +775,11 @@ html {
 /* Mobile-optimized hero text with balanced lines */
 @media (max-width: 640px) {
   .hero-text {
-    text-align: center;
+    text-align-last: center;
     hyphens: auto;
     -webkit-hyphens: auto;
     word-spacing: -0.05em;
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    max-height: 4.8em;
+    line-height: 1.8;
   }
 }
 
