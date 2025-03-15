@@ -9,8 +9,8 @@
             <h1 class="font-bold tracking-tight text-white text-center max-w-full leading-none w-full">
               <!-- Mobile-first hero title with controlled line breaks and smooth size scaling -->
               <span class="hero-title-container inline-block text-center w-full">
-                <span class="hero-title-line hero-line-1 block mx-auto text-8xl md:text-6xl lg:text-7xl tracking-tight" style="font-size: 36px !important; line-height: 1.1;">Web &amp; Mobile</span>
-                <span class="hero-title-line hero-line-2 block mx-auto text-8xl md:text-6xl lg:text-7xl tracking-tight" style="font-size: 36px !important; line-height: 1.1;">Designer / Developer</span>
+                <span class="hero-title-line hero-line-1 block mx-auto text-8xl md:text-6xl lg:text-7xl tracking-tight" style="font-size: 30px !important; line-height: 1.1;">Web &amp; Mobile</span>
+                <span class="hero-title-line hero-line-2 block mx-auto text-8xl md:text-6xl lg:text-7xl tracking-tight" style="font-size: 30px !important; line-height: 1.1;">Designer / Developer</span>
               </span>
             </h1>
             <p class="mt-5 sm:mt-8 text-lg leading-7 xs:leading-8 text-gray-300 mx-auto w-[90%] sm:w-auto sm:max-w-2xl hero-text font-medium">
