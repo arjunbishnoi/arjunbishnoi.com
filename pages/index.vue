@@ -13,7 +13,7 @@
                 <span class="hero-title-line hero-line-2 block mx-auto text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">Designer / Developer</span>
               </span>
             </h1>
-            <p class="mt-5 sm:mt-8 text-lg leading-7 xs:leading-8 text-gray-300 mx-auto w-full max-w-7xl px-6 sm:px-0 sm:w-auto sm:max-w-2xl hero-text font-medium">
+            <p class="mt-5 sm:mt-8 text-lg leading-7 xs:leading-8 text-gray-300 mx-auto w-[90%] sm:w-auto sm:max-w-2xl hero-text font-medium">
               Crafting elegant web solutions with precision.
               Specialized in React, Vue.js, and 
               intuitive experiences that solve real problems.
