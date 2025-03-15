@@ -5,15 +5,15 @@
       <!-- Top padding stays consistent across all breakpoints -->
       <div class="mx-auto max-w-7xl px-4 pt-16 pb-2 sm:pb-4 lg:px-8 w-full flex items-center justify-center">
         <div class="text-center hero-content w-full flex items-center justify-center flex-col">
-          <div class="inline-block hero-title-wrapper w-full">
+          <div class="inline-block hero-title-wrapper w-full px-1 xs:px-0">
             <h1 class="font-bold tracking-tight text-white text-center max-w-full leading-none w-full">
               <!-- Mobile-first hero title with controlled line breaks and smooth size scaling -->
               <span class="hero-title-container inline-block text-center w-full">
-                <span class="hero-title-line hero-line-1 block mx-auto text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight">Web &amp; Mobile</span>
-                <span class="hero-title-line hero-line-2 block mx-auto text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight">Designer / Developer</span>
+                <span class="hero-title-line hero-line-1 block mx-auto text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight whitespace-nowrap">Web &amp; Mobile</span>
+                <span class="hero-title-line hero-line-2 block mx-auto text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight whitespace-nowrap">Designer / Developer</span>
               </span>
             </h1>
-            <p class="mt-5 sm:mt-8 text-lg leading-8 text-gray-300 mx-auto w-11/12 sm:w-auto max-w-2xl hero-text">
+            <p class="mt-5 sm:mt-8 text-lg font-medium leading-8 text-gray-300 mx-auto w-11/12 sm:w-auto max-w-2xl hero-text">
               Crafting elegant web solutions with 
               precision.<br> Specialized in React, 
               Vue.js, and intuitive experiences 
