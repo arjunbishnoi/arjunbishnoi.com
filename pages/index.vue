@@ -5,11 +5,11 @@
       <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 pb-4 sm:pb-8">
         <div class="text-center">
           <div class="inline-block">
-            <h1 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">
-              WEB & MOBILE
-              <span class="block text-primary">DESIGNER / DEVELOPER</span>
-            </h1>
-            <p class="mt-3 sm:mt-6 text-lg leading-8 text-gray-300 mx-auto w-11/12 sm:w-auto max-w-2xl hero-text">
+            <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+              Web & Mobile
+              <span class="block text-primary">Designer / Developer</span>
+          </h1>
+            <p class="mt-5 sm:mt-8 text-lg leading-8 text-gray-300 mx-auto w-11/12 sm:w-auto max-w-2xl hero-text">
               Crafting elegant web solutions with 
               precision. Specialized in React, 
               Vue.js, and intuitive experiences 
