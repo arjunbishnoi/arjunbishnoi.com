@@ -4,14 +4,14 @@
     <header class="fixed w-full top-0 z-50">
       <!-- Navbar with integrated mobile menu -->
       <div 
-        class="bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden border-b border-gray-800"
+        class="bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden"
         :style="{
           height: isMobileMenuOpen ? '100vh' : 'var(--navbar-height)',
           minHeight: 'var(--navbar-height)'
         }"
       >
         <!-- Top navbar section -->
-        <div class="mx-auto max-w-7xl h-12 flex items-center justify-between">
+        <div class="mx-auto max-w-7xl h-12 flex items-center">
           <!-- Logo -->
           <div class="flex-none px-6 lg:px-8">
             <!-- Use a wrapper div to handle click events -->
@@ -28,74 +28,139 @@
               
               <!-- Logo content (unchanged visually) -->
               <div class="text-xl font-bold relative">
-                <div class="relative">
-                  <!-- Full name version -->
-                  <div 
-                    class="transition-all duration-300 ease-in-out absolute left-0"
-                    :class="!showFullLogo ? 'opacity-0 transform scale-95' : 'opacity-100'"
-                  >
-                    <span style="color: white;">a</span>
-                    <span 
-                      :style="{
-                        color: 'white',
-                        transition: 'all 300ms ease-in-out',
-                        opacity: !showFullLogo ? 0 : 1
-                      }"
-                    >rjun</span>
-                    <span 
-                      :style="{
-                        color: 'white',
-                        transition: 'all 300ms ease-in-out',
-                        transform: !showFullLogo ? 'translateX(-3.8rem)' : 'translateX(0)',
-                        opacity: !showFullLogo ? 0 : 1
-                      }"
-                    >b</span>
-                    <span 
-                      :style="{
-                        color: 'white',
-                        transition: 'all 300ms ease-in-out',
-                        opacity: !showFullLogo ? 0 : 1
-                      }"
-                    >ishnoi</span>
-                    <span 
-                      :style="{
-                        color: '#9CA3AF',
-                        transition: 'all 300ms ease-in-out',
-                        transform: !showFullLogo ? 'translateX(-7.2rem)' : 'translateX(0)',
-                        opacity: !showFullLogo ? 0 : 1
-                      }"
-                    >_</span>
-                  </div>
-                  <!-- Shortened version -->
-                  <div 
-                    class="transition-all duration-300 ease-in-out absolute left-0 overflow-visible"
+              <div class="relative">
+                <!-- Full name version -->
+                <div 
+                  class="transition-all duration-300 ease-in-out absolute left-0"
+                  :class="!showFullLogo ? 'opacity-0 transform scale-95' : 'opacity-100'"
+                >
+                  <span :style="{ color: isDarkMode ? 'white' : '#111827' }">a</span>
+                  <span 
                     :style="{
-                      opacity: showFullLogo ? 0 : 1
+                      color: isDarkMode ? 'white' : '#111827',
+                      transition: 'all 300ms ease-in-out',
+                      opacity: !showFullLogo ? 0 : 1
                     }"
-                  >
-                    <span style="color: white;">a</span><span style="color: white;">b</span><span style="color: #9CA3AF;">_</span>
-                  </div>
+                  >rjun</span>
+                  <span 
+                    :style="{
+                      color: isDarkMode ? 'white' : '#111827',
+                      transition: 'all 300ms ease-in-out',
+                      transform: !showFullLogo ? 'translateX(-3.8rem)' : 'translateX(0)',
+                      opacity: !showFullLogo ? 0 : 1
+                    }"
+                  >b</span>
+                  <span 
+                    :style="{
+                      color: isDarkMode ? 'white' : '#111827',
+                      transition: 'all 300ms ease-in-out',
+                      opacity: !showFullLogo ? 0 : 1
+                    }"
+                  >ishnoi</span>
+                  <span 
+                    :style="{
+                      color: isDarkMode ? '#9CA3AF' : '#6B7280',
+                      transition: 'all 300ms ease-in-out',
+                      transform: !showFullLogo ? 'translateX(-7.2rem)' : 'translateX(0)',
+                      opacity: !showFullLogo ? 0 : 1
+                    }"
+                  >_</span>
                 </div>
-                <!-- Spacer to maintain layout -->
-                <span class="opacity-0">arjunbishnoi_</span>
+                <!-- Shortened version -->
+                <div 
+                  class="transition-all duration-300 ease-in-out absolute left-0 overflow-visible"
+                  :style="{
+                    opacity: showFullLogo ? 0 : 1
+                  }"
+                >
+                  <span :style="{ color: isDarkMode ? 'white' : '#111827' }">a</span>
+                  <span :style="{ color: isDarkMode ? 'white' : '#111827' }">b</span>
+                  <span :style="{ color: isDarkMode ? '#9CA3AF' : '#6B7280' }">_</span>
+                </div>
+              </div>
+              <!-- Spacer to maintain layout -->
+              <span class="opacity-0">arjunbishnoi_</span>
               </div>
             </div>
           </div>
 
           <!-- Desktop Navigation in center -->
-          <div class="hidden md:flex md:items-center md:space-x-8 md:flex-auto md:justify-start pl-6 lg:pl-8">
+          <div class="hidden md:flex items-center justify-center w-full absolute left-0 right-0">
+            <div class="flex items-center space-x-8">
             <NuxtLink 
               v-for="item in navigationItems" 
               :key="item.name"
               :to="item.href"
-              class="text-sm font-medium text-gray-400 hover:text-white transition-colors mr-8"
+              class="text-sm font-medium text-gray-400 hover:text-white transition-colors nav-link"
             >
-              {{ item.name.charAt(0).toUpperCase() + item.name.slice(1) }}
+                {{ item.name.charAt(0).toUpperCase() + item.name.slice(1) }}
             </NuxtLink>
+            </div>
           </div>
 
+          <!-- Desktop actions on right side, symmetrical to logo on left -->
+          <div class="hidden md:flex items-center ml-auto px-6 lg:px-8">
+            <!-- Theme Toggle -->
+            <button
+              type="button"
+              class="flex items-center justify-center w-4 h-4 text-gray-400 hover:text-white transition-colors z-10 relative"
+              @click="toggleTheme"
+              style="height: var(--navbar-height);"
+            >
+              <span class="sr-only">Toggle theme</span>
+              <!-- Extended hit area -->
+              <span class="absolute inset-y-0 left-[-20px] right-[20px]"></span>
+              <!-- Sun icon when in dark mode -->
+              <svg
+                v-if="isDarkMode"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+              </svg>
+              <!-- Moon icon when in light mode -->
+              <svg
+                v-else
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg>
+            </button>
+
+            <!-- Email Button -->
+            <button
+              type="button"
+              class="flex items-center justify-center w-4 h-4 text-gray-400 hover:text-white transition-colors ml-6 z-10 relative"
+              @click="sendEmail"
+              style="height: var(--navbar-height);"
+            >
+              <span class="sr-only">Send email</span>
+              <!-- Extended hit area -->
+              <span class="absolute inset-y-0 left-[-3px] right-[-3px]"></span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+            </button>
+        </div>
+        
           <!-- Mobile actions: theme toggle, email, and menu -->
-          <div class="md:hidden flex items-center px-6 lg:px-8 relative h-full">
+          <div class="md:hidden flex items-center px-6 lg:px-8 relative h-full ml-auto">
             <!-- Theme Toggle -->
             <button
               type="button"
@@ -155,34 +220,34 @@
             </button>
             
             <!-- Hamburger button -->
-            <button 
-              type="button"
+        <button 
+          type="button"
               class="flex items-center justify-center cursor-pointer relative ml-6 z-10"
               style="height: var(--navbar-height);"
               @click.prevent="toggleMobileMenu"
-            >
-              <span class="sr-only">Open main menu</span>
+        >
+          <span class="sr-only">Open main menu</span>
               <!-- Hit area for hamburger (extends from halfway to email on left to right edge) -->
               <span class="absolute inset-y-0 left-[-3px] right-[999px]"></span>
-              <div class="w-4 h-3 relative">
-                <!-- First line -->
-                <div 
-                  class="absolute h-[1px] transition-all duration-300 ease-in-out"
-                  style="background-color: #9CA3AF;"
-                  :class="[
-                    isMobileMenuOpen ? 'w-3 top-[6px] rotate-45' : 'w-4 top-[3px]'
-                  ]"
-                ></div>
-                <!-- Second line -->
-                <div 
-                  class="absolute h-[1px] transition-all duration-300 ease-in-out"
-                  style="background-color: #9CA3AF;"
-                  :class="[
-                    isMobileMenuOpen ? 'w-3 top-[6px] -rotate-45' : 'w-4 top-[9px]'
-                  ]"
-                ></div>
-              </div>
-            </button>
+          <div class="w-4 h-3 relative">
+            <!-- First line -->
+            <div 
+              class="absolute h-[1px] transition-all duration-300 ease-in-out"
+              style="background-color: #9CA3AF;"
+              :class="[
+                isMobileMenuOpen ? 'w-3 top-[6px] rotate-45' : 'w-4 top-[3px]'
+              ]"
+            ></div>
+            <!-- Second line -->
+            <div 
+              class="absolute h-[1px] transition-all duration-300 ease-in-out"
+              style="background-color: #9CA3AF;"
+              :class="[
+                isMobileMenuOpen ? 'w-3 top-[6px] -rotate-45' : 'w-4 top-[9px]'
+              ]"
+            ></div>
+          </div>
+        </button>
           </div>
         </div>
         
@@ -204,7 +269,7 @@
             >
               <NuxtLink 
                 :to="item.href"
-                class="text-gray-400 text-xl font-bold hover:text-white transition-colors"
+                class="text-gray-400 text-xl font-bold hover:text-white transition-colors nav-link"
                 @click="toggleMobileMenu"
               >
                 {{ item.name.charAt(0).toUpperCase() + item.name.slice(1) }}
@@ -397,6 +462,17 @@ watch(isMobileMenuOpen, (isOpen) => {
   }
 })
 
+// Watch for theme changes and apply appropriate classes
+watch(isDarkMode, (isDark) => {
+  if (isDark) {
+    document.documentElement.classList.add('dark-theme')
+    document.documentElement.classList.remove('light-theme')
+  } else {
+    document.documentElement.classList.add('light-theme')
+    document.documentElement.classList.remove('dark-theme')
+  }
+})
+
 // Method to toggle mobile menu
 const toggleMobileMenu = (event) => {
   event.preventDefault(); // Prevent default action
@@ -411,7 +487,6 @@ const sendEmail = () => {
 // Add new method for theme toggle
 const toggleTheme = () => {
   isDarkMode.value = !isDarkMode.value
-  // You can implement the actual theme switching logic here
 }
 
 onMounted(() => {
@@ -420,6 +495,13 @@ onMounted(() => {
   }
   window.addEventListener('scroll', handleScroll)
   handleScroll() // Initial check
+
+  // Set initial theme class
+  if (isDarkMode.value) {
+    document.documentElement.classList.add('dark-theme')
+  } else {
+    document.documentElement.classList.add('light-theme')
+  }
 })
 
 onBeforeUnmount(() => {
@@ -434,6 +516,7 @@ onBeforeUnmount(() => {
 html {
   scroll-behavior: smooth;
   overflow-y: scroll; /* Always show vertical scrollbar to prevent layout shift */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
   background-color: black; /* Ensure black background at root level */
 }
 
@@ -441,8 +524,113 @@ body {
   @apply font-sans antialiased text-white;
   background-color: black; /* Ensure black background */
   min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
   /* Remove the overflow-y from here since html handles it */
   overflow: unset;
+}
+
+/* Dark theme (default) */
+.dark-theme {
+  --background-color: #000000;
+  --text-color: #ffffff;
+  --gray-text: #9CA3AF;
+  --card-bg: rgba(17, 24, 39, 0.5); /* gray-900/50 */
+  --border-color: rgba(31, 41, 55, 1); /* gray-800 */
+  --button-hover-bg: #ffffff;
+  --button-hover-text: #111827;
+}
+
+/* Light theme */
+.light-theme {
+  --background-color: #ffffff;
+  --text-color: #111827; /* gray-900 */
+  --gray-text: #4B5563; /* gray-600 */
+  --card-bg: rgba(243, 244, 246, 0.8); /* gray-100/80 */
+  --border-color: #E5E7EB; /* gray-200 */
+  --button-hover-bg: #111827;
+  --button-hover-text: #ffffff;
+}
+
+/* Apply theme variables */
+.dark-theme {
+  color-scheme: dark;
+}
+
+.light-theme {
+  color-scheme: light;
+}
+
+html.light-theme {
+  background-color: var(--background-color);
+}
+
+html.dark-theme {
+  background-color: var(--background-color);
+}
+
+.light-theme .bg-black {
+  background-color: var(--background-color);
+}
+
+.light-theme .text-white {
+  color: var(--text-color);
+}
+
+.light-theme .text-gray-400, 
+.light-theme .text-gray-300 {
+  color: var(--gray-text);
+}
+
+.light-theme .bg-black\/80 {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+.light-theme .bg-gray-900\/50 {
+  background-color: var(--card-bg);
+}
+
+.light-theme .border-gray-800 {
+  border-color: var(--border-color);
+}
+
+.light-theme .fixed-bg {
+  background-color: var(--background-color);
+}
+
+/* Resume button styles */
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.hover\:bg-primary\/90:hover {
+  background-color: var(--color-primary);
+  opacity: 0.9;
+}
+
+/* Custom hover styles for resume button */
+.dark-theme .resume-btn {
+  background-color: white !important;
+  color: black !important;
+  border-color: white !important;
+}
+
+.dark-theme .resume-btn:hover {
+  background-color: transparent !important;
+  color: white !important;
+  border-color: white !important;
+}
+
+.light-theme .resume-btn {
+  background-color: black !important;
+  color: white !important;
+  border-color: black !important;
+}
+
+.light-theme .resume-btn:hover {
+  background-color: transparent !important;
+  color: black !important;
+  border-color: black !important;
 }
 
 /* Class to disable scrolling without removing scrollbar */
@@ -514,5 +702,14 @@ body.overflow-hidden {
 /* Adjust the sticky header positioning to account for navbar height */
 .sticky.top-12 {
   top: var(--navbar-height);
+}
+
+/* Theme-specific navigation hover states */
+.dark-theme .nav-link:hover {
+  color: white !important;
+}
+
+.light-theme .nav-link:hover {
+  color: black !important;
 }
 </style>

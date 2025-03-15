@@ -250,7 +250,7 @@
           <NuxtLink to="/contact" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-md inline-block transition-colors">
             Get In Touch
           </NuxtLink>
-          <a href="/resume.pdf" class="px-6 py-3 border border-gray-700 text-gray-300 hover:text-white hover:border-gray-600 rounded-md inline-block transition-colors" download>
+          <a href="/resume.pdf" class="resume-btn px-6 py-3 rounded-md inline-block transition-colors" download>
             Download Resume
           </a>
         </div>

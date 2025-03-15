@@ -15,7 +15,7 @@
           <div class="mt-10 flex items-center justify-center gap-x-6">
             <a
               href="/resume.pdf"
-              class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              class="resume-btn rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
               download
             >
               Download Resume
@@ -39,7 +39,7 @@
     <!-- Projects Section -->
     <section id="projects" class="relative py-16 bg-black">
       <!-- Sticky header -->
-      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2 border-b border-gray-800" style="top: calc(var(--navbar-height) - 1px);">
+      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <NuxtLink to="/projects" class="flex justify-between items-center w-full group">
             <span class="text-2xl font-bold text-white group-hover:text-primary transition-colors">Projects</span>
@@ -122,7 +122,7 @@
     <!-- Skills Section -->
     <section id="skills" class="relative py-16 bg-black">
       <!-- Sticky header -->
-      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2 border-b border-gray-800" style="top: calc(var(--navbar-height) - 1px);">
+      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <NuxtLink to="/skills" class="flex justify-between items-center w-full group">
             <span class="text-2xl font-bold text-white group-hover:text-primary transition-colors">Skills</span>
@@ -214,7 +214,7 @@
     <!-- Experience Section -->
     <section id="experience" class="relative py-16 bg-black">
       <!-- Sticky header -->
-      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2 border-b border-gray-800" style="top: calc(var(--navbar-height) - 1px);">
+      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <NuxtLink to="/experience" class="flex justify-between items-center w-full group">
             <span class="text-2xl font-bold text-white group-hover:text-primary transition-colors">Experience</span>
@@ -288,7 +288,7 @@
     <!-- About Section -->
     <section id="about" class="relative py-16 bg-black">
       <!-- Sticky header -->
-      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2 border-b border-gray-800" style="top: calc(var(--navbar-height) - 1px);">
+      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <NuxtLink to="/about" class="flex justify-between items-center w-full group">
             <span class="text-2xl font-bold text-white group-hover:text-primary transition-colors">About</span>
@@ -336,7 +336,7 @@
     <!-- Contact Section -->
     <section id="contact" class="relative py-16 bg-black">
       <!-- Sticky header -->
-      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2 border-b border-gray-800" style="top: calc(var(--navbar-height) - 1px);">
+      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <NuxtLink to="/contact" class="flex justify-between items-center w-full group">
             <span class="text-2xl font-bold text-white group-hover:text-primary transition-colors">Contact</span>
@@ -406,7 +406,7 @@
 
 <script setup>
 // Component logic will go here
-</script>
+</script> 
 
 <style>
 /* Ensure smooth scrolling */
