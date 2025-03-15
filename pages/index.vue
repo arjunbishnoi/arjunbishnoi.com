@@ -5,7 +5,7 @@
       <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 pb-4 sm:pb-8">
         <div class="text-center">
           <div class="inline-block">
-            <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">
               Web & Mobile
               <span class="block text-primary">Designer / Developer</span>
           </h1>
