@@ -529,6 +529,183 @@ body {
   overflow: unset;
 }
 
+/* Mobile-first hero title styles with fluid typography */
+.hero-title-wrapper {
+  width: 100%;
+  text-align: center;
+  /* Fixed height container to prevent vertical shifting */
+  position: relative;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title-line {
+  display: block;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  /* Reduced line height for tighter overall spacing */
+  line-height: 0.95;
+  /* Adding transition for smooth size changes */
+  transition: font-size 0.3s ease, margin 0.3s ease, line-height 0.3s ease;
+  /* Ensure perfect centered alignment */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Hero title container with fixed vertical spacing */
+.hero-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  /* Fixed height prevents vertical shifting */
+  height: auto;
+  /* Consistently tight gap between title lines */
+  gap: 0.05em;
+  /* Add significant margin below the title container to push paragraphs down */
+  margin-bottom: 1.75rem;
+}
+
+/* Maintain consistent vertical spacing */
+section.relative.overflow-hidden.bg-black {
+  /* Fixed minimum height to prevent content jumping */
+  min-height: 20rem;
+}
+
+/* Fluid typography and spacing for very small screens */
+@media (max-width: 374px) {
+  .hero-title-container .hero-title-line {
+    font-size: clamp(1.5rem, 6vw, 1.75rem); /* Increased minimum size for better visibility */
+  }
+  /* Gap value now set at the root level for consistency */
+}
+
+/* Fluid typography and spacing for small to medium screens */
+@media (min-width: 375px) and (max-width: 639px) {
+  .hero-title-container .hero-title-line {
+    font-size: clamp(1.625rem, 6.5vw, 1.875rem); /* Increased minimum size for better visibility */
+  }
+  /* Reduce gap for small-medium screens to match smallest/largest screens */
+  .hero-title-container {
+    gap: 0.02em;
+  }
+  
+  /* Add negative margins for even tighter appearance */
+  .hero-line-1 {
+    margin-bottom: -0.08em;
+  }
+  
+  .hero-line-2 {
+    margin-top: -0.08em;
+  }
+}
+
+/* Fluid typography and spacing for medium to large screens */
+@media (min-width: 640px) and (max-width: 767px) {
+  .hero-title-container .hero-title-line {
+    font-size: clamp(1.875rem, 7vw, 2.25rem); /* Updated for smoother progression */
+  }
+  /* Reduce gap for medium screens */
+  .hero-title-container {
+    gap: 0.02em;
+  }
+  
+  /* Tighten spacing for medium screens */
+  .hero-line-1 {
+    margin-bottom: -0.08em; /* Increased negative margin for consistent spacing */
+  }
+  
+  .hero-line-2 {
+    margin-top: -0.08em; /* Increased negative margin for consistent spacing */
+  }
+}
+
+/* Fluid typography and spacing for large to extra large screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-title-container .hero-title-line {
+    font-size: clamp(2.25rem, 5vw, 2.5rem); /* Updated for smoother progression */
+  }
+  /* Reduce gap for large screens to match smallest/largest screens */
+  .hero-title-container {
+    gap: 0.02em;
+  }
+  
+  /* Add negative margins for tighter appearance */
+  .hero-line-1 {
+    margin-bottom: -0.07em;
+  }
+  
+  .hero-line-2 {
+    margin-top: -0.07em;
+  }
+}
+
+/* Fluid typography and spacing for extra large screens */
+@media (min-width: 1024px) {
+  .hero-title-container .hero-title-line {
+    font-size: clamp(2.5rem, 4vw, 3rem); /* Updated for smoother progression */
+  }
+  /* Override to reduce gap for largest screens only */
+  .hero-title-container {
+    gap: 0.02em; /* Tighter gap only on larger screens */
+  }
+  
+  /* Additional negative margin for extra closeness on large screens */
+  .hero-line-1 {
+    margin-bottom: -0.05em;
+  }
+  
+  .hero-line-2 {
+    margin-top: -0.05em;
+  }
+}
+
+/* Ensure proper spacing for smaller devices with larger text */
+@media (max-width: 639px) {
+  .hero-title-wrapper {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+  }
+  
+  .hero-title-line {
+    line-height: 1;
+    margin-bottom: 0;
+  }
+  
+  /* Enhanced control with specific line classes */
+  .hero-line-1 {
+    margin-bottom: -0.1em; /* Increased negative margin for extra closeness */
+  }
+  
+  .hero-line-2 {
+    margin-top: -0.1em; /* Increased negative margin for extra closeness */
+  }
+}
+
+/* Extra small devices need tighter spacing */
+@media (max-width: 374px) {
+  .hero-title-container {
+    gap: 0.02em; /* Reduced gap for very small screens */
+  }
+  
+  .hero-line-1 {
+    margin-bottom: -0.15em; /* Increased negative margin for very close spacing */
+  }
+  
+  .hero-line-2 {
+    margin-top: -0.15em; /* Increased negative margin for very close spacing */
+  }
+}
+
 /* Dark theme (default) */
 .dark-theme {
   --background-color: #000000;
@@ -711,5 +888,179 @@ body.overflow-hidden {
 
 .light-theme .nav-link:hover {
   color: black !important;
+}
+
+/* Hero-specific styles to prevent vertical shifting */
+.hero-section {
+  /* Fixed position from the top of the page */
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+/* Tighter paragraph spacing in hero section */
+.hero-section p, 
+.hero-content p {
+  line-height: 1.4; /* Reduced from default (typically 1.5-1.7) */
+  margin-bottom: 0.8em; /* Reduced paragraph spacing */
+  max-width: 650px; /* Prevent overly long line lengths */
+  margin-left: auto;
+  margin-right: auto;
+  color: #d1d5db; /* Slightly darker text color (gray-300) for better readability */
+  /* Add margin-top to create space after the title */
+  margin-top: 0.5rem;
+}
+
+/* At smaller screen sizes, further reduce paragraph spacing and width */
+@media (max-width: 640px) {
+  .hero-section p,
+  .hero-content p {
+    line-height: 1.3; /* Even tighter on mobile */
+    margin-bottom: 0.6em;
+    max-width: 90%; /* Narrower on small screens */
+    /* Maintain space below title on small screens */
+    margin-top: 0.75rem;
+  }
+  
+  /* Adjust title spacing on mobile */
+  .hero-title-container {
+    margin-bottom: 1.2rem; /* Reduced from 1.5rem to bring paragraph closer */
+  }
+}
+
+/* Specifically for the smallest screens (phones), make paragraph even narrower */
+@media (max-width: 480px) {
+  .hero-section p,
+  .hero-content p {
+    max-width: 85%; /* Much narrower on smallest screens */
+  }
+}
+
+/* For extra small devices, tightest paragraph width */
+@media (max-width: 375px) {
+  .hero-section p,
+  .hero-content p {
+    max-width: 80%; /* Extremely narrow for tiny screens */
+    font-size: 0.95em; /* Slightly smaller font to fit better */
+    line-height: 1.25; /* Tighter line height */
+    /* Maintain consistent spacing on smallest screens */
+    margin-top: 0.75rem;
+  }
+  
+  /* Ensure proper spacing on smallest screens */
+  .hero-title-container {
+    margin-bottom: 1rem; /* Reduced from 1.25rem to bring paragraph closer */
+  }
+}
+
+/* At middle screen sizes, use a moderate max-width */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .hero-section p,
+  .hero-content p {
+    max-width: 85%; /* Moderate width on middle screens */
+  }
+}
+
+.hero-content {
+  /* Prevent container expansion */
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* Ensure mobile centering */
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* Extra mobile-specific centering fixes */
+@media (max-width: 640px) {
+  .hero-title-wrapper, 
+  .hero-title-container, 
+  .hero-title-line,
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
+  .hero-title-line {
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+/* Animated gradient text effect for the second hero line */
+.hero-line-2 {
+  /* Beautiful gradient with colors inspired by the primary color */
+  background: linear-gradient(
+    to right,
+    #6366f1, /* Original primary color */
+    #8b5cf6, /* Secondary purple */
+    #a855f7, /* Violet */
+    #d946ef, /* Fuchsia */
+    #e879f9, /* Bright purple */
+    #c084fc, /* Soft lilac */
+    #6366f1  /* Back to primary */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% auto;
+  animation: gradient-text 8s ease infinite;
+  display: inline-block;
+  /* Apply slightly higher font weight for better visibility of gradient */
+  font-weight: 700;
+  /* Add subtle text shadow for better visibility in light mode */
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  /* Additional contrast for light theme */
+  position: relative;
+  /* Smooth transition for hover effect */
+  transition: filter 0.3s ease;
+  /* Add small padding to prevent text clipping */
+  padding-bottom: 0.1em;
+}
+
+/* Hover effect to make gradient more vibrant */
+.hero-line-2:hover {
+  filter: brightness(1.1) saturate(1.05);
+  animation: gradient-text 4s ease infinite; /* Speed up animation on hover */
+  cursor: default; /* Prevent cursor change while keeping hover effect */
+}
+
+/* Smooth gradient animation */
+@keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Ensure gradient works well in light theme */
+.light-theme .hero-line-2 {
+  /* Slightly darker gradient for better visibility on light background */
+  background: linear-gradient(
+    to right,
+    #4f46e5, /* Darker indigo */
+    #7c3aed, /* Darker violet */
+    #9333ea, /* Darker purple */
+    #c026d3, /* Darker fuchsia */
+    #a21caf, /* Darker magenta */
+    #8b5cf6, /* Purple */
+    #4f46e5  /* Back to darker indigo */
+  );
+  /* Slightly stronger text shadow for light mode */
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 }
 </style>
