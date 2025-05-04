@@ -23,7 +23,7 @@ export default defineNuxtConfig({
         }
       ]
     },
-    baseURL: '/',
+    baseURL: 'https://arjunbishnoi.com/',
   },
   typescript: {
     strict: true
