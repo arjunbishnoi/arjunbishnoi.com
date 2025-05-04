@@ -24,29 +24,14 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 18
           cache: 'npm'
-      
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       
       - name: Install dependencies
         run: npm ci
       
-      - name: Build
+      - name: Generate
         run: npm run generate
-        env:
-          NODE_ENV: production
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          static_site_generator: nuxt
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
