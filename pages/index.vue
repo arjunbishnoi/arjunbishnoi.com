@@ -196,7 +196,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="relative py-8 sm:py-10 bg-black">
+    <section id="projects" class="relative py-16 bg-black">
       <!-- Sticky header -->
       <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -365,80 +365,6 @@
                 <span class="mr-2 text-primary">▹</span> CI/CD
               </li>
             </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="relative py-16 bg-black">
-      <!-- Sticky header -->
-      <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <NuxtLink to="/experience" class="flex justify-between items-center w-full group">
-            <span class="text-2xl font-bold text-white group-hover:text-primary transition-colors">Experience</span>
-            <span class="text-gray-400 group-hover:text-primary transition-colors">
-              <span aria-hidden="true">→</span>
-            </span>
-          </NuxtLink>
-        </div>
-      </div>
-      
-      <!-- Experience content -->
-      <div class="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
-        <div class="space-y-12">
-          <!-- Experience Item 1 -->
-          <div class="relative pl-8 border-l border-gray-800">
-            <div class="absolute w-4 h-4 bg-primary rounded-full -left-2 top-1"></div>
-            <div>
-              <h3 class="text-xl font-semibold text-white">Senior Frontend Developer</h3>
-              <p class="text-primary font-medium mb-2">TechCorp Inc. • 2021 - Present</p>
-              <p class="text-gray-400 mb-4">
-                Led the development of the company's flagship SaaS product, implementing 
-                modern frontend architecture and improving performance by 40%.
-              </p>
-              <ul class="space-y-2 text-gray-300">
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Architected and implemented a new component system using React and TypeScript</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Improved application performance and reduced load times by 40%</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Collaborated with design team to implement a new design system</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-          <!-- Experience Item 2 -->
-          <div class="relative pl-8 border-l border-gray-800">
-            <div class="absolute w-4 h-4 bg-primary rounded-full -left-2 top-1"></div>
-            <div>
-              <h3 class="text-xl font-semibold text-white">Full Stack Developer</h3>
-              <p class="text-primary font-medium mb-2">Web Solutions Ltd. • 2018 - 2021</p>
-              <p class="text-gray-400 mb-4">
-                Developed and maintained multiple client projects, focusing on responsive design 
-                and cross-browser compatibility.
-              </p>
-              <ul class="space-y-2 text-gray-300">
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Built RESTful APIs using Node.js and Express for various client projects</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Implemented responsive designs and ensured cross-browser compatibility</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-2 text-primary mt-1">▹</span> 
-                  <span>Integrated third-party services and APIs into client applications</span>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>

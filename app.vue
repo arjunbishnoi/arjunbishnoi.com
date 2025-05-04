@@ -357,9 +357,6 @@
                 <NuxtLink to="/skills" class="text-gray-400 hover:text-white transition-colors">Skills</NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/experience" class="text-gray-400 hover:text-white transition-colors">Experience</NuxtLink>
-              </li>
-              <li>
                 <NuxtLink to="/about" class="text-gray-400 hover:text-white transition-colors">About</NuxtLink>
               </li>
               <li>
