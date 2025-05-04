@@ -31,8 +31,13 @@ export default defineNuxtConfig({
   ssr: true,
   nitro: {
     prerender: {
-      routes: ['/404.html', '/200.html']
+      crawlLinks: true,
+      routes: ['/'],
+      ignore: ['/404.html', '/200.html']
     }
+  },
+  experimental: {
+    payloadExtraction: false
   },
   compatibilityDate: '2025-03-12'
 })
