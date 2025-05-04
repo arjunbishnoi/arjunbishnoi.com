@@ -99,7 +99,7 @@
           </div>
 
           <!-- Desktop actions on right side, symmetrical to logo on left -->
-          <div class="hidden md:flex items-center ml-auto px-6 lg:px-8">
+          <div class="hidden md:flex items-center ml-auto px-6 lg:px-8 space-x-6">
             <!-- Theme Toggle -->
             <button
               type="button"
@@ -136,32 +136,10 @@
               </svg>
             </button>
 
-            <!-- Resume Download Button -->
-            <button
-              type="button"
-              class="flex items-center justify-center w-4 h-4 text-gray-400 hover:text-white transition-colors ml-6 z-10 relative"
-              @click="downloadResume"
-              style="height: var(--navbar-height);"
-            >
-              <span class="sr-only">Download Resume</span>
-              <!-- Extended hit area -->
-              <span class="absolute inset-y-0 left-[-3px] right-[-3px]"></span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-4 h-4"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-              </svg>
-            </button>
-
             <!-- Email Button -->
             <button
               type="button"
-              class="flex items-center justify-center w-4 h-4 text-gray-400 hover:text-white transition-colors ml-6 z-10 relative"
+              class="flex items-center justify-center w-4 h-4 text-gray-400 hover:text-white transition-colors z-10 relative"
               @click="sendEmail"
               style="height: var(--navbar-height);"
             >
@@ -179,10 +157,32 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
             </button>
+
+            <!-- Resume Download Button -->
+            <button
+              type="button"
+              class="flex items-center justify-center w-4 h-4 text-gray-400 hover:text-white transition-colors z-10 relative"
+              @click="downloadResume"
+              style="height: var(--navbar-height);"
+            >
+              <span class="sr-only">Download Resume</span>
+              <!-- Extended hit area -->
+              <span class="absolute inset-y-0 left-[-3px] right-[-3px]"></span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+            </button>
           </div>
         
           <!-- Mobile actions: theme toggle, email, and menu -->
-          <div class="md:hidden flex items-center px-6 lg:px-8 relative h-full ml-auto">
+          <div class="md:hidden flex items-center px-6 lg:px-8 relative h-full ml-auto space-x-6">
             <!-- Theme Toggle -->
             <button
               type="button"
@@ -222,12 +222,12 @@
             <!-- Email Button -->
             <button
               type="button"
-              class="flex items-center justify-center w-4 h-4 text-gray-400 hover:text-white transition-colors ml-6 z-10 relative"
+              class="flex items-center justify-center w-4 h-4 text-gray-400 hover:text-white transition-colors z-10 relative"
               @click="sendEmail"
               style="height: var(--navbar-height);"
             >
               <span class="sr-only">Send email</span>
-              <!-- Hit area for email (extends from halfway to theme toggle on left to halfway to hamburger on right) -->
+              <!-- Hit area for email -->
               <span class="absolute inset-y-0 left-[-3px] right-[-3px]"></span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -240,40 +240,69 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
             </button>
+
+            <!-- Resume Download Button -->
+            <button
+              type="button"
+              class="flex items-center justify-center w-4 h-4 text-gray-400 hover:text-white transition-colors z-10 relative"
+              @click="downloadResume"
+              style="height: var(--navbar-height);"
+            >
+              <span class="sr-only">Download Resume</span>
+              <!-- Extended hit area -->
+              <span class="absolute inset-y-0 left-[-3px] right-[-3px]"></span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+            </button>
             
             <!-- Hamburger button -->
-        <button 
-          type="button"
-              class="flex items-center justify-center cursor-pointer relative ml-6 z-10"
+            <button 
+              type="button"
+              class="flex items-center justify-center cursor-pointer relative z-10"
               style="height: var(--navbar-height);"
               @click.prevent="toggleMobileMenu"
-        >
-          <span class="sr-only">Open main menu</span>
-              <!-- Hit area for hamburger (extends from halfway to email on left to right edge) -->
+            >
+              <span class="sr-only">Open main menu</span>
+              <!-- Hit area for hamburger -->
               <span class="absolute inset-y-0 left-[-3px] right-[999px]"></span>
-          <div class="w-4 h-3 relative">
-            <!-- First line -->
-            <div 
-              class="absolute h-[1.5px] transition-all duration-300 ease-in-out"
-              :style="{
-                backgroundColor: isDarkMode ? '#9CA3AF' : '#4B5563'
-              }"
-              :class="[
-                isMobileMenuOpen ? 'w-3 top-[6px] rotate-45' : 'w-4 top-[3px]'
-              ]"
-            ></div>
-            <!-- Second line -->
-            <div 
-              class="absolute h-[1.5px] transition-all duration-300 ease-in-out"
-              :style="{
-                backgroundColor: isDarkMode ? '#9CA3AF' : '#4B5563'
-              }"
-              :class="[
-                isMobileMenuOpen ? 'w-3 top-[6px] -rotate-45' : 'w-4 top-[9px]'
-              ]"
-            ></div>
-          </div>
-        </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4 text-gray-400 hover:text-white transition-colors"
+              >
+                <path 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  d="M4.5 8h15" 
+                  class="transition-all duration-300 ease-in-out"
+                  :style="{
+                    transform: isMobileMenuOpen ? 'translateY(4px) rotate(45deg)' : 'none',
+                    transformOrigin: 'center'
+                  }"
+                />
+                <path 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  d="M4.5 16h15" 
+                  class="transition-all duration-300 ease-in-out"
+                  :style="{
+                    transform: isMobileMenuOpen ? 'translateY(-4px) rotate(-45deg)' : 'none',
+                    transformOrigin: 'center'
+                  }"
+                />
+              </svg>
+            </button>
           </div>
         </div>
         
@@ -1169,5 +1198,22 @@ body.overflow-hidden {
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
   animation: gradient-text 8s ease infinite;
   filter: blur(0.2px);
+}
+
+/* Hamburger menu animation */
+.hamburger-icon {
+  transition: transform 0.3s ease;
+}
+
+.hamburger-icon.is-active {
+  transform: rotate(45deg);
+}
+
+.hamburger-line {
+  transition: transform 0.3s ease;
+}
+
+.hamburger-icon.is-active .hamburger-line {
+  transform: translateY(4.5px) rotate(90deg);
 }
 </style>

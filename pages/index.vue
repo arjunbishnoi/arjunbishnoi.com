@@ -720,4 +720,91 @@ html {
     line-height: 1.7;
   }
 }
+
+/* Animated gradient text effect for the second hero line */
+.hero-line-2 {
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #8b5cf6,
+    #a855f7,
+    #d946ef,
+    #e879f9,
+    #c084fc,
+    #6366f1
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-text 8s linear infinite;
+  display: inline-block;
+  font-weight: 700;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: filter 0.3s ease;
+  padding-bottom: 0.1em;
+}
+
+/* Hover effect to make gradient more vibrant */
+.hero-line-2:hover {
+  filter: brightness(1.1) saturate(1.05);
+  animation: gradient-text 4s linear infinite;
+  cursor: default;
+}
+
+/* Smooth gradient animation */
+@keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Ensure gradient works well in light theme */
+.light-theme .hero-line-2 {
+  background: linear-gradient(
+    90deg,
+    #4f46e5,
+    #7c3aed,
+    #9333ea,
+    #c026d3,
+    #a21caf,
+    #8b5cf6,
+    #4f46e5
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  animation: gradient-text 8s linear infinite;
+  filter: blur(0.2px);
+}
+
+/* Ensure dark theme gradient remains unchanged */
+.dark-theme .hero-line-2 {
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #8b5cf6,
+    #a855f7,
+    #d946ef,
+    #e879f9,
+    #c084fc,
+    #6366f1
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  animation: gradient-text 8s linear infinite;
+  filter: blur(0.2px);
+}
 </style> 
