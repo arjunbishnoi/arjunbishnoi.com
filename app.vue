@@ -136,6 +136,28 @@
               </svg>
             </button>
 
+            <!-- Resume Download Button -->
+            <button
+              type="button"
+              class="flex items-center justify-center w-4 h-4 text-gray-400 hover:text-white transition-colors ml-6 z-10 relative"
+              @click="downloadResume"
+              style="height: var(--navbar-height);"
+            >
+              <span class="sr-only">Download Resume</span>
+              <!-- Extended hit area -->
+              <span class="absolute inset-y-0 left-[-3px] right-[-3px]"></span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+            </button>
+
             <!-- Email Button -->
             <button
               type="button"
@@ -157,7 +179,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
             </button>
-        </div>
+          </div>
         
           <!-- Mobile actions: theme toggle, email, and menu -->
           <div class="md:hidden flex items-center px-6 lg:px-8 relative h-full ml-auto">
@@ -275,6 +297,24 @@
                 {{ item.name.charAt(0).toUpperCase() + item.name.slice(1) }}
               </NuxtLink>
             </div>
+            
+            <!-- Download Resume Button in Mobile Menu -->
+            <div 
+              class="transform transition-all duration-500 ease-out mb-6"
+              :style="{
+                opacity: isMobileMenuOpen ? 1 : 0,
+                transform: `translateY(${isMobileMenuOpen ? 0 : -8}px)`,
+                filter: `blur(${isMobileMenuOpen ? 0 : 2}px)`,
+                transitionDelay: isMobileMenuOpen ? '400ms' : '0ms'
+              }"
+            >
+              <button
+                @click="downloadResume"
+                class="text-gray-400 text-xl font-bold hover:text-white transition-colors nav-link"
+              >
+                Download Resume
+              </button>
+            </div>
           </div>
           
           <!-- Footer text -->
@@ -348,7 +388,7 @@
             <h3 class="text-lg font-semibold text-white mb-4">Resources</h3>
             <ul class="space-y-2">
               <li>
-                <a href="/resume.pdf" class="text-gray-400 hover:text-white transition-colors">Resume</a>
+                <a href="/Resume - Arjun Bishnoi.pdf" class="text-gray-400 hover:text-white transition-colors">Resume</a>
               </li>
               <li>
                 <a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a>
@@ -436,31 +476,42 @@ const navigationItems = [
   { name: 'contact', href: '/contact' },
 ]
 
+// Add new method for downloading resume
+const downloadResume = () => {
+  const link = document.createElement('a');
+  link.href = '/Resume - Arjun Bishnoi.pdf';
+  link.download = 'Arjun Bishnoi - Resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 watch(isMobileMenuOpen, (isOpen) => {
   if (isOpen) {
     // Save current scroll position
-    scrollPosition.value = window.scrollY
+    scrollPosition.value = window.scrollY;
     
     // Add class to disable scrolling but keep scrollbar visible
-    document.documentElement.style.backgroundColor = 'black' // Ensure black background
-    document.body.classList.add('overflow-hidden')
+    document.documentElement.style.backgroundColor = 'black';
+    document.body.classList.add('overflow-hidden');
     
-    // Maintain scroll position
-    document.body.style.top = `-${scrollPosition.value}px`
+    // Maintain scroll position with requestAnimationFrame
+    requestAnimationFrame(() => {
+      document.body.style.top = `-${scrollPosition.value}px`;
+    });
   } else {
-    // Add a small delay before removing the overflow class to allow the animation to complete
+    // Remove the class that disables scrolling
+    document.body.classList.remove('overflow-hidden');
+    
+    // Reset the body position
+    document.body.style.top = '';
+    
+    // Restore scroll position with a small delay
     setTimeout(() => {
-      // Remove the class that disables scrolling
-      document.body.classList.remove('overflow-hidden')
-      
-      // Reset the body position
-      document.body.style.top = ''
-      
-      // Restore scroll position
-      window.scrollTo(0, scrollPosition.value)
-    }, 400)
+      window.scrollTo(0, scrollPosition.value);
+    }, 50);
   }
-})
+}, { flush: 'post' });
 
 // Watch for theme changes and apply appropriate classes
 watch(isDarkMode, (isDark) => {
@@ -475,8 +526,11 @@ watch(isDarkMode, (isDark) => {
 
 // Method to toggle mobile menu
 const toggleMobileMenu = (event) => {
-  event.preventDefault(); // Prevent default action
-  isMobileMenuOpen.value = !isMobileMenuOpen.value; // Toggle the menu
+  event.preventDefault();
+  // Use requestAnimationFrame to ensure smooth animation
+  requestAnimationFrame(() => {
+    isMobileMenuOpen.value = !isMobileMenuOpen.value;
+  });
 };
 
 // Add new method for email

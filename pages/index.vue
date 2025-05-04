@@ -168,7 +168,7 @@
         <!-- Buttons -->
         <div class="flex items-center justify-center gap-x-6">
           <a
-            href="/resume.pdf"
+            href="/Resume - Arjun Bishnoi.pdf"
             class="resume-btn rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
             download
           >
