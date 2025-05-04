@@ -4,8 +4,8 @@
     <div class="pt-12">
       <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-12 pb-8">
         <h1 class="text-4xl font-bold tracking-tight text-white">
-          About Me
-          <span class="block text-xl text-primary mt-2">The person behind the code</span>
+          About
+          <span class="block text-xl text-primary mt-2">The person behind the code.</span>
         </h1>
         <p class="mt-4 text-lg text-gray-300 max-w-2xl">
           Get to know more about my background, values, approach to development, 
@@ -143,20 +143,7 @@
         <!-- Right Column (2/5) -->
         <div class="lg:col-span-2">
           <!-- Profile Photo -->
-          <div class="bg-gray-900/50 rounded-lg overflow-hidden mb-10">
-            <div class="relative aspect-[3/4] overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" 
-                alt="Arjun Bishnoi" 
-                class="w-full h-full object-cover"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              <div class="absolute bottom-0 left-0 p-6">
-                <h3 class="text-xl font-bold text-white">Arjun Bishnoi</h3>
-                <p class="text-gray-300">Full Stack Developer & Designer</p>
-              </div>
-            </div>
-          </div>
+
           
           <!-- Personal Info -->
           <div class="bg-gray-900/50 rounded-lg p-6 mb-10">
@@ -178,7 +165,7 @@
                 </svg>
                 <div>
                   <p class="text-gray-400 text-sm mb-1">Location</p>
-                  <p class="text-gray-300">San Francisco, CA</p>
+                  <p class="text-gray-300">Toronto, CA</p>
                 </div>
               </li>
               <li class="flex items-start">
@@ -187,7 +174,7 @@
                 </svg>
                 <div>
                   <p class="text-gray-400 text-sm mb-1">Currently</p>
-                  <p class="text-gray-300">Senior Frontend Developer at TechCorp Inc.</p>
+                  <p class="text-gray-300">Freelancing, Leanring and Creating.</p>
                 </div>
               </li>
             </ul>
