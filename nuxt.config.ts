@@ -29,9 +29,10 @@ export default defineNuxtConfig({
     strict: true
   },
   ssr: true,
-  target: 'static',
-  generate: {
-    fallback: true
+  nitro: {
+    prerender: {
+      routes: ['/404.html', '/200.html']
+    }
   },
   compatibilityDate: '2025-03-12'
 })
