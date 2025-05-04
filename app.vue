@@ -254,16 +254,20 @@
           <div class="w-4 h-3 relative">
             <!-- First line -->
             <div 
-              class="absolute h-[1px] transition-all duration-300 ease-in-out"
-              style="background-color: #9CA3AF;"
+              class="absolute h-[1.5px] transition-all duration-300 ease-in-out"
+              :style="{
+                backgroundColor: isDarkMode ? '#9CA3AF' : '#4B5563'
+              }"
               :class="[
                 isMobileMenuOpen ? 'w-3 top-[6px] rotate-45' : 'w-4 top-[3px]'
               ]"
             ></div>
             <!-- Second line -->
             <div 
-              class="absolute h-[1px] transition-all duration-300 ease-in-out"
-              style="background-color: #9CA3AF;"
+              class="absolute h-[1.5px] transition-all duration-300 ease-in-out"
+              :style="{
+                backgroundColor: isDarkMode ? '#9CA3AF' : '#4B5563'
+              }"
               :class="[
                 isMobileMenuOpen ? 'w-3 top-[6px] -rotate-45' : 'w-4 top-[9px]'
               ]"
@@ -279,7 +283,7 @@
             <div 
               v-for="(item, index) in navigationItems" 
               :key="item.name"
-              class="transform transition-all duration-500 ease-out mb-6"
+              class="transform transition-all duration-500 ease-out mb-4"
               :style="{
                 opacity: isMobileMenuOpen ? 1 : 0,
                 transform: `translateY(${isMobileMenuOpen ? 0 : -8}px)`,
@@ -300,7 +304,7 @@
             
             <!-- Download Resume Button in Mobile Menu -->
             <div 
-              class="transform transition-all duration-500 ease-out mb-6"
+              class="transform transition-all duration-500 ease-out mb-4"
               :style="{
                 opacity: isMobileMenuOpen ? 1 : 0,
                 transform: `translateY(${isMobileMenuOpen ? 0 : -8}px)`,
@@ -1116,5 +1120,58 @@ body.overflow-hidden {
   );
   /* Slightly stronger text shadow for light mode */
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  /* Add background clip to ensure gradient stays within text */
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Ensure text is transparent to show gradient */
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  /* Add subtle border to improve visibility */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  /* Adjust animation timing for smoother transition */
+  animation: gradient-text 8s ease infinite;
+  /* Add slight blur for smoother edges */
+  filter: blur(0.2px);
+}
+
+/* Update the gradient animation for both themes */
+@keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Add hover effect for both themes */
+.hero-line-2:hover {
+  filter: brightness(1.1) saturate(1.05);
+  animation: gradient-text 4s ease infinite;
+  cursor: default;
+}
+
+/* Ensure dark theme gradient remains unchanged */
+.dark-theme .hero-line-2 {
+  background: linear-gradient(
+    to right,
+    #6366f1, /* Original primary color */
+    #8b5cf6, /* Secondary purple */
+    #a855f7, /* Violet */
+    #d946ef, /* Fuchsia */
+    #e879f9, /* Bright purple */
+    #c084fc, /* Soft lilac */
+    #6366f1  /* Back to primary */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  animation: gradient-text 8s ease infinite;
+  filter: blur(0.2px);
 }
 </style>
