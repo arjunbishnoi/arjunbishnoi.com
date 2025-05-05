@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      title: 'Arjun Bishnoi - Developer & Designer',
+      title: 'Arjun Bishnoi <Designer/Developer>',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
