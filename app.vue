@@ -1,5 +1,26 @@
 <template>
   <div class="min-h-screen bg-black fixed-bg">
+    <!-- Add Apple-specific meta tags -->
+    <Head>
+      <!-- Apple Touch Icon -->
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="/favicon.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="/favicon.png">
+      <link rel="apple-touch-icon" href="/favicon.png">
+      
+      <!-- Apple Mobile Web App Capable -->
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+      <meta name="apple-mobile-web-app-title" content="Arjun Bishnoi">
+      
+      <!-- Apple Splash Screen Images -->
+      <link rel="apple-touch-startup-image" media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)" href="/favicon.png">
+      <link rel="apple-touch-startup-image" media="screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)" href="/favicon.png">
+      <link rel="apple-touch-startup-image" media="screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)" href="/favicon.png">
+      <link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" href="/favicon.png">
+      <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="/favicon.png">
+    </Head>
+
     <!-- Navigation -->
     <header class="fixed w-full top-0 z-50">
       <!-- Navbar with integrated mobile menu -->
