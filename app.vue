@@ -366,8 +366,17 @@
       </div>
     </header>
 
+    <!-- Favicon Image Section -->
+    <div class="w-full flex justify-center items-center pt-24 pb-0">
+      <img 
+        src="/favicon.png" 
+        alt="Arjun Bishnoi Logo" 
+        class="w-32 h-32 object-contain transition-transform duration-300 hover:scale-105"
+      />
+    </div>
+
     <!-- Main Content -->
-    <main class="pt-12 bg-black text-white" :class="{ 'overflow-hidden': isMobileMenuOpen }">
+    <main class="pt-0 bg-black text-white" :class="{ 'overflow-hidden': isMobileMenuOpen }">
       <NuxtPage />
     </main>
 
