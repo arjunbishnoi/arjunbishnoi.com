@@ -879,6 +879,21 @@ html.dark-theme {
   opacity: 0.9;
 }
 
+/* Base styles for resume button */
+.resume-btn {
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.resume-btn:hover {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+}
+
 /* Custom hover styles for resume button */
 .dark-theme .resume-btn {
   background-color: white !important;
