@@ -24,7 +24,7 @@
       
       
       <!-- Social Links -->
-      <div class="flex items-center justify-center space-x-8 mb-4 mt-8">
+      <div class="flex items-center justify-center space-x-8 mb-20 mt-10">
         <!-- LinkedIn -->
         <a 
           href="https://www.linkedin.com/in/arjunbishnoi" 
@@ -51,7 +51,7 @@
       </div>
       
       <!-- Bottom area with buttons and scroll arrow - with adaptive margins for different devices -->
-      <div class="w-full flex flex-col items-center justify-center mb-12 pb-8 sm:pb-0 sm:mb-8 md:mb-10 mt-auto">
+      <div class="w-full flex flex-col items-center justify-center mb-0 pb-4 sm:pb-4 sm:mb-4 md:mb-6 mt-20">
         <!-- Buttons -->
         <div class="flex items-center justify-center gap-x-6">
           <a
@@ -84,7 +84,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="relative py-16 bg-black">
+    <section id="projects" class="relative py-0 bg-black -mt-80">
       <!-- Sticky header -->
       <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -98,7 +98,7 @@
       </div>
       
       <!-- Projects content -->
-      <div class="mx-auto max-w-7xl px-6 pt-8 lg:px-8">
+      <div class="mx-auto max-w-7xl px-6 pt-2 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- Project Card 1 -->
           <div class="bg-gray-900/50 rounded-lg overflow-hidden">
