@@ -297,10 +297,10 @@
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
-                viewBox="0 0 24 24"
+                viewBox="-2 0 28 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-4 h-4 text-gray-400 hover:text-white transition-colors"
+                class="w-5 h-5 text-gray-400 hover:text-white transition-colors"
               >
                 <path 
                   stroke-linecap="round" 
@@ -525,7 +525,7 @@
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
 const showFullLogo = computed(() => !isScrolled.value || isMobileMenuOpen.value)
-const scrollPosition = ref(0)
+
 const isDarkMode = ref(true) // Start with dark mode by default since your site is dark
 
 const navigationItems = [
@@ -547,28 +547,11 @@ const downloadResume = () => {
 
 watch(isMobileMenuOpen, (isOpen) => {
   if (isOpen) {
-    // Save current scroll position
-    scrollPosition.value = window.scrollY;
-    
-    // Add class to disable scrolling but keep scrollbar visible
-    document.documentElement.style.backgroundColor = 'black';
+    // Add class to disable scrolling
     document.body.classList.add('overflow-hidden');
-    
-    // Maintain scroll position with requestAnimationFrame
-    requestAnimationFrame(() => {
-      document.body.style.top = `-${scrollPosition.value}px`;
-    });
   } else {
     // Remove the class that disables scrolling
     document.body.classList.remove('overflow-hidden');
-    
-    // Reset the body position
-    document.body.style.top = '';
-    
-    // Restore scroll position with a small delay
-    setTimeout(() => {
-      window.scrollTo(0, scrollPosition.value);
-    }, 50);
   }
 }, { flush: 'post' });
 
@@ -619,9 +602,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   // Clean up scroll locking if component is unmounted while menu is open
-  document.body.classList.remove('overflow-hidden')
-  document.body.style.top = ''
-  window.scrollTo(0, scrollPosition.value)
+  document.body.classList.remove('overflow-hidden');
 })
 </script>
 
@@ -925,14 +906,9 @@ html.dark-theme {
 
 /* Class to disable scrolling without removing scrollbar */
 body.overflow-hidden {
-  /* Remove overflow-y: scroll from here since html handles it */
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  /* Add top: 0 to ensure proper positioning */
-  top: 0;
-  left: 0;
-  background-color: black; /* Ensure black background when fixed */
+  /* Prevent scrolling without changing position */
+  overflow: hidden;
+  background-color: black; /* Ensure black background */
 }
 
 /* Ensure background stays black even during transitions */
