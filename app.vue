@@ -373,7 +373,7 @@
           
           <!-- Footer text -->
           <div 
-            class="px-6 lg:px-8 pb-24 text-sm font-medium text-[#9CA3AF] text-center absolute bottom-0 left-0 right-0 transition-all duration-500 ease-out"
+            class="px-6 lg:px-8 pb-32 text-sm font-medium text-[#9CA3AF] text-center absolute bottom-0 left-0 right-0 transition-all duration-500 ease-out"
             :style="{
               opacity: isMobileMenuOpen ? 1 : 0,
               transform: `translateY(${isMobileMenuOpen ? 0 : -8}px)`,
