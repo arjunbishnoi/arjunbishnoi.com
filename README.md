@@ -4,7 +4,7 @@
 
 This repository contains the source code for my personal portfolio website, showcasing my skills, projects, and experience as a Developer & Designer. The site is built with modern web technologies, focusing on performance, responsiveness, and a clean user interface.
 
-**Live Demo:** [arjunbishnoi.com](https://arjunbishnoi.com) *(Replace with your actual live URL if different)*
+**Live Demo:** [arjunbishnoi.com](https://arjunbishnoi.com)
 
 ## ✨ Key Features
 
