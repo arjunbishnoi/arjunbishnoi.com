@@ -27,7 +27,7 @@
       <div class="flex items-center justify-center space-x-8 mb-8 mt-10">
         <!-- LinkedIn -->
         <a 
-          href="https://www.linkedin.com/in/arjunbishnoi" 
+          href="https://www.linkedin.com/in/arjun-bishnoi-b981bb104" 
           target="_blank" 
           rel="noopener noreferrer"
           class="h-12 w-12 md:h-16 md:w-16 rounded-md bg-gray-800/80 border border-gray-700/50 flex items-center justify-center shadow-sm hover:bg-gray-700/80 transition-colors group"
@@ -263,12 +263,7 @@
       <!-- Sticky header -->
       <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <NuxtLink to="/about" class="flex justify-between items-center w-full group">
-            <span class="text-2xl font-bold text-white group-hover:text-primary transition-colors">About</span>
-            <span class="text-gray-400 group-hover:text-primary transition-colors">
-              <span aria-hidden="true">→</span>
-            </span>
-          </NuxtLink>
+          <h2 class="text-2xl font-bold text-white">About</h2>
         </div>
       </div>
       
@@ -311,12 +306,7 @@
       <!-- Sticky header -->
       <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <NuxtLink to="/contact" class="flex justify-between items-center w-full group">
-            <span class="text-2xl font-bold text-white group-hover:text-primary transition-colors">Contact</span>
-            <span class="text-gray-400 group-hover:text-primary transition-colors">
-              <span aria-hidden="true">→</span>
-            </span>
-          </NuxtLink>
+          <h2 class="text-2xl font-bold text-white">Contact</h2>
         </div>
       </div>
       

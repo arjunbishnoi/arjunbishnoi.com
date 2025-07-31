@@ -395,9 +395,9 @@
         <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
           Looking for a developer with the right skill set for your project? Let's discuss how I can help bring your ideas to life.
         </p>
-        <NuxtLink to="/contact" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-md inline-block transition-colors">
+        <a href="/#contact" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-md inline-block transition-colors">
           Contact Me
-        </NuxtLink>
+        </a>
       </div>
     </div>
 
