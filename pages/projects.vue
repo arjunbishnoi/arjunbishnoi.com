@@ -6,9 +6,7 @@
         <div class="max-w-3xl">
           <h1 class="text-4xl font-bold tracking-tight text-white">
             Projects
-            <span class="block text-xl text-primary mt-2">Showcasing my development work</span>
           </h1>
-          <div class="h-1 w-24 bg-gradient-to-r from-primary to-secondary mt-4"></div>
           <p class="mt-6 text-lg text-gray-300 max-w-2xl">
             A curated collection of my recent projects, highlighting my skills in full-stack development, 
             UI/UX design, and problem-solving.
@@ -34,43 +32,39 @@
         </div>
         
         <div class="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800/50 shadow-xl transition-all duration-300 hover:shadow-primary/10">
-          <div class="md:flex">
-            <div class="md:w-1/2 h-72 md:h-auto relative overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                alt="E-Commerce Platform Abstract Visualization" 
-                class="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
-              />
-              <div class="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40 mix-blend-overlay"></div>
-            </div>
-            <div class="md:w-1/2 p-8 md:p-10">
-              <h3 class="text-2xl font-semibold text-white mb-3">E-Commerce Platform</h3>
+          <div class="h-80 relative overflow-hidden">
+            <img 
+              src="/cryptotracker.png" 
+              alt="Cryptocurrency Tracker App" 
+              class="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40 mix-blend-overlay"></div>
+          </div>
+          <div class="p-8 md:p-10">
+              <h3 class="text-2xl font-semibold text-white mb-3">Cryptocurrency Tracker</h3>
               <p class="text-gray-400 mb-6 leading-relaxed">
-                A full-featured e-commerce platform built with React, Node.js, and MongoDB. 
-                This application includes advanced product search, filtering, cart management, user authentication, 
-                payment processing, and an admin dashboard for inventory management.
+                A cross-platform cryptocurrency tracker built with React Native, Expo, and Firebase Firestore. 
+                Features include real-time market data via the CoinLore API, detailed coin statistics, 
+                favorites management, pull-to-refresh, and seamless, native-feel navigation.
               </p>
               
               <div class="flex flex-wrap gap-2 mb-6">
-                <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">React</span>
-                <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Node.js</span>
-                <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">MongoDB</span>
-                <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Stripe</span>
-                <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Redux</span>
+                <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">React Native</span>
+                <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Expo</span>
+                <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Firebase</span>
+                <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">CoinLore API</span>
               </div>
               
               <div class="space-y-3 bg-black/30 p-4 rounded-lg mb-6">
-                <p class="text-gray-300"><span class="text-primary font-semibold">Challenge:</span> Creating a scalable architecture that handles high traffic and complex product relationships.</p>
-                <p class="text-gray-300"><span class="text-primary font-semibold">Solution:</span> Implemented a microservices architecture with caching strategies and optimized database queries.</p>
+                <p class="text-gray-300"><span class="text-primary font-semibold">Challenge:</span> Building a cross-platform mobile app with real-time data synchronization and offline capabilities.</p>
+                <p class="text-gray-300"><span class="text-primary font-semibold">Solution:</span> Implemented Firebase Firestore for real-time data, Expo for cross-platform development, and optimized API calls for smooth performance.</p>
               </div>
               
               <div class="flex gap-4 mt-6">
-                <a href="#" class="px-5 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-md transition-colors text-sm font-medium">View Demo</a>
-                <a href="#" class="px-5 py-2.5 border border-gray-700 text-gray-300 hover:text-white hover:border-primary/50 rounded-md transition-all text-sm font-medium">Source Code</a>
+                <a href="https://github.com/arjunbishnoi/CryptoTracker" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-md transition-colors text-sm font-medium">Source Code</a>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       <!-- Project Grid - Improved layout and consistency -->
@@ -80,39 +74,33 @@
           <div class="h-px flex-grow bg-gray-800 ml-4"></div>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <!-- Project Card 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <!-- Project Card 1 - CryptoTracker -->
           <div class="group">
             <div class="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800/50 shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1">
               <div class="h-56 bg-gray-800/50 relative overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                  alt="E-Commerce Platform Abstract Visualization" 
+                  src="/cryptotracker.png" 
+                  alt="Cryptocurrency Tracker App" 
                   class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
                 <div class="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40 mix-blend-overlay"></div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">E-Commerce Platform</h3>
+                <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">Cryptocurrency Tracker</h3>
                 <p class="text-gray-400 mb-5 line-clamp-3">
-                  A full-featured e-commerce platform built with React, Node.js, and MongoDB. 
-                  Features include product search, filtering, cart management, user authentication, 
-                  and payment processing.
+                  A cross-platform cryptocurrency tracker built with React Native, Expo, and Firebase Firestore. 
+                  Features include real-time market data via the CoinLore API, detailed coin statistics, 
+                  favorites management, pull-to-refresh, and seamless, native-feel navigation.
                 </p>
                 <div class="flex flex-wrap gap-2 mb-5">
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">React</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Node.js</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">MongoDB</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Stripe</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">React Native</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Expo</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Firebase</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">CoinLore API</span>
                 </div>
                 <div class="flex gap-6">
-                  <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
-                    <span>View Demo</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                  </a>
-                  <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
+                  <a href="https://github.com/arjunbishnoi/CryptoTracker" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
                     <span>Source Code</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -123,37 +111,32 @@
             </div>
           </div>
           
-          <!-- Project Card 2 -->
+          <!-- Project Card 2 - 4rent -->
           <div class="group">
             <div class="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800/50 shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1">
               <div class="h-56 bg-gray-800/50 relative overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                  alt="Task Management App Abstract Visualization" 
+                  src="/4rent.png" 
+                  alt="4rent iOS Rental Marketplace App" 
                   class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
                 <div class="absolute inset-0 bg-gradient-to-tl from-secondary/40 to-primary/40 mix-blend-overlay"></div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">Task Management App</h3>
+                <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">4rent</h3>
                 <p class="text-gray-400 mb-5 line-clamp-3">
-                  A productivity app that helps users organize tasks, set priorities, and track progress. 
-                  Built with Vue.js and Firebase, featuring real-time updates and collaborative features.
+                  A modern iOS rental marketplace built with SwiftUI, Combine, and MVVM architecture. 
+                  Features include infinite-scroll property listings, high-resolution image galleries, 
+                  detailed amenity and pricing views, favorites management, and fully adaptive layouts across all iPhone screen sizes.
                 </p>
                 <div class="flex flex-wrap gap-2 mb-5">
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Vue.js</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Firebase</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Tailwind CSS</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Vuex</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">SwiftUI</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Combine</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">MVVM</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">iOS</span>
                 </div>
                 <div class="flex gap-6">
-                  <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
-                    <span>View Demo</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                  </a>
-                  <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
+                  <a href="https://github.com/arjunbishnoi/4rent" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
                     <span>Source Code</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -164,78 +147,34 @@
             </div>
           </div>
 
-          <!-- Project Card 3 -->
+          <!-- Project Card 3 - Car Rental -->
           <div class="group">
             <div class="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800/50 shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1">
               <div class="h-56 bg-gray-800/50 relative overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                  alt="Restaurant Booking System" 
+                  src="/carrental.png" 
+                  alt="Car Rental Android App" 
                   class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
-                <div class="absolute inset-0 bg-gradient-to-br from-secondary/40 to-primary/40 mix-blend-overlay"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40 mix-blend-overlay"></div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">Restaurant Booking System</h3>
+                <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">Car Rental</h3>
                 <p class="text-gray-400 mb-5 line-clamp-3">
-                  A reservation management system for restaurants, allowing customers to book tables online
-                  and restaurant managers to manage bookings, tables, and staff schedules.
+                  A user-friendly Android car rental app built with Kotlin, MVVM, Jetpack Navigation, Retrofit, Room, and Hilt. 
+                  Features include searchable, filterable vehicle listings, seamless booking flows with date selection, 
+                  favorites management, profile & booking history screens, and offline-cached browsing for uninterrupted access.
                 </p>
                 <div class="flex flex-wrap gap-2 mb-5">
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">React</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Express</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">PostgreSQL</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Socket.io</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Kotlin</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">MVVM</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Jetpack Navigation</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Retrofit</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Room</span>
+                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Hilt</span>
                 </div>
                 <div class="flex gap-6">
-                  <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
-                    <span>View Demo</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                  </a>
-                  <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
-                    <span>Source Code</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 4 -->
-          <div class="group">
-            <div class="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800/50 shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1">
-              <div class="h-56 bg-gray-800/50 relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                  alt="Weather Dashboard" 
-                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                />
-                <div class="absolute inset-0 bg-gradient-to-tl from-primary/40 to-secondary/40 mix-blend-overlay"></div>
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">Weather Dashboard</h3>
-                <p class="text-gray-400 mb-5 line-clamp-3">
-                  A sleek, interactive weather dashboard providing real-time weather data, forecasts, 
-                  and historical weather patterns with beautiful visualizations.
-                </p>
-                <div class="flex flex-wrap gap-2 mb-5">
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">TypeScript</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">Next.js</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">D3.js</span>
-                  <span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">OpenWeather API</span>
-                </div>
-                <div class="flex gap-6">
-                  <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
-                    <span>View Demo</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                  </a>
-                  <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
+                  <a href="https://github.com/arjunbishnoi/CarRental" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center">
                     <span>Source Code</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -261,12 +200,12 @@
             I'm constantly working on new projects and experiments. Visit my GitHub profile to see all my repositories, 
             including works in progress and contributions to open source.
           </p>
-          <a href="#" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-md inline-flex items-center transition-colors">
-            <span class="font-medium">View All on GitHub</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </a>
+                     <a href="https://github.com/arjunbishnoi" target="_blank" rel="noopener noreferrer" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-md inline-flex items-center transition-colors">
+             <span class="font-medium">View All on GitHub</span>
+             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
+               <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+             </svg>
+           </a>
         </div>
       </section>
 

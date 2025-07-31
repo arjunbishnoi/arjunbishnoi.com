@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- Hero Section with fixed height container and centered content -->
-    <section class="relative overflow-hidden bg-black hero-section flex flex-col items-center justify-between h-screen">
+    <!-- Hero Section with natural height and centered content -->
+    <section class="relative overflow-hidden bg-black hero-section flex flex-col items-center justify-center min-h-screen">
       <!-- Top area with title and paragraph - keeping original positioning -->
-      <div class="mx-auto max-w-7xl px-4 pt-16 pb-2 sm:pb-4 lg:px-8 w-full">
+      <div class="mx-auto max-w-7xl px-4 pt-12 pb-2 sm:pb-4 lg:px-8 w-full">
         <div class="text-center hero-content w-full flex items-center justify-center flex-col">
           <div class="inline-block hero-title-wrapper w-full">
             <h1 class="font-bold tracking-tight text-white text-center max-w-full leading-none w-full">
@@ -24,7 +24,7 @@
       
       
       <!-- Social Links -->
-      <div class="flex items-center justify-center space-x-8 mb-8 mt-10">
+      <div class="flex items-center justify-center space-x-8 mb-4 mt-6">
         <!-- LinkedIn -->
         <a 
           href="https://www.linkedin.com/in/arjun-bishnoi-b981bb104" 
@@ -51,7 +51,7 @@
       </div>
       
       <!-- Bottom area with buttons and scroll arrow - with adaptive margins for different devices -->
-      <div class="w-full flex flex-col items-center justify-center mb-0 pb-4 sm:pb-4 sm:mb-4 md:mb-6 mt-8 relative z-40">
+      <div class="w-full flex flex-col items-center justify-center mb-0 pb-4 sm:pb-4 sm:mb-4 md:mb-6 mt-4 relative z-40">
         <!-- Buttons -->
         <div class="flex items-center justify-center gap-x-6">
           <a
@@ -67,7 +67,7 @@
         </div>
         
         <!-- Scroll down indicator - moved up on mobile -->
-        <div class="scroll-indicator mt-4 sm:mt-6 pb-4 flex justify-center">
+        <div class="scroll-indicator mt-2 sm:mt-4 pb-4 flex justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-gray-400 animate-bounce-subtle" :class="{'opacity-0': scrolledDown}">
             <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
           </svg>
@@ -84,7 +84,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="relative py-0 bg-black -mt-60">
+    <section id="projects" class="relative py-0 bg-black">
       <!-- Sticky header -->
       <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -98,36 +98,35 @@
       </div>
       
       <!-- Projects content -->
-      <div class="mx-auto max-w-7xl px-6 pt-2 lg:px-8">
+      <div class="mx-auto max-w-7xl px-6 pt-4 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- Project Card 1 -->
           <div class="bg-gray-900/50 rounded-lg overflow-hidden">
             <div class="h-48 bg-gray-800/50 relative overflow-hidden">
-              <!-- Replace with abstract colorful image -->
+              <!-- CryptoTracker logo image -->
               <img 
-                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                alt="E-Commerce Platform Abstract Visualization" 
+                src="/cryptotracker.png" 
+                alt="Cryptocurrency Tracker App" 
                 class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
               />
               <!-- Add colorful overlay gradient -->
               <div class="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40 mix-blend-overlay"></div>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-semibold text-white mb-2">E-Commerce Platform</h3>
+              <h3 class="text-xl font-semibold text-white mb-2">Cryptocurrency Tracker</h3>
               <p class="text-gray-400 mb-4">
-                A full-featured e-commerce platform built with React, Node.js, and MongoDB. 
-                Features include product search, filtering, cart management, user authentication, 
-                and payment processing.
+                A cross-platform cryptocurrency tracker built with React Native, Expo, and Firebase Firestore. 
+                Features include real-time market data via the CoinLore API, detailed coin statistics, 
+                favorites management, pull-to-refresh, and seamless, native-feel navigation.
               </p>
               <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">React</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Node.js</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">MongoDB</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Stripe</span>
+                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">React Native</span>
+                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Expo</span>
+                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Firebase</span>
+                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">CoinLore API</span>
               </div>
               <div class="flex gap-4">
-                <a href="#" class="text-primary hover:text-primary/80 text-sm font-medium">View Demo</a>
-                <a href="#" class="text-primary hover:text-primary/80 text-sm font-medium">Source Code</a>
+                <a href="https://github.com/arjunbishnoi/CryptoTracker" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80 text-sm font-medium">Source Code</a>
               </div>
             </div>
           </div>
@@ -135,30 +134,30 @@
           <!-- Project Card 2 -->
           <div class="bg-gray-900/50 rounded-lg overflow-hidden">
             <div class="h-48 bg-gray-800/50 relative overflow-hidden">
-              <!-- Replace with abstract colorful image -->
+              <!-- 4rent app image -->
               <img 
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                alt="Task Management App Abstract Visualization" 
+                src="/4rent.png" 
+                alt="4rent iOS Rental Marketplace App" 
                 class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
               />
               <!-- Add colorful overlay gradient -->
               <div class="absolute inset-0 bg-gradient-to-tl from-secondary/40 to-primary/40 mix-blend-overlay"></div>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-semibold text-white mb-2">Task Management App</h3>
+              <h3 class="text-xl font-semibold text-white mb-2">4rent</h3>
               <p class="text-gray-400 mb-4">
-                A productivity app that helps users organize tasks, set priorities, and track progress. 
-                Built with Vue.js and Firebase, featuring real-time updates and collaborative features.
+                A modern iOS rental marketplace built with SwiftUI, Combine, and MVVM architecture. 
+                Features include infinite-scroll property listings, high-resolution image galleries, 
+                detailed amenity and pricing views, favorites management, and fully adaptive layouts across all iPhone screen sizes.
               </p>
               <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Vue.js</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Firebase</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Tailwind CSS</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Vuex</span>
+                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">SwiftUI</span>
+                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Combine</span>
+                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">MVVM</span>
+                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">iOS</span>
               </div>
               <div class="flex gap-4">
-                <a href="#" class="text-primary hover:text-primary/80 text-sm font-medium">View Demo</a>
-                <a href="#" class="text-primary hover:text-primary/80 text-sm font-medium">Source Code</a>
+                <a href="https://github.com/arjunbishnoi/4rent" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80 text-sm font-medium">Source Code</a>
               </div>
             </div>
           </div>
@@ -273,28 +272,19 @@
           <div>
             <h3 class="text-xl font-semibold text-primary mb-4">Who I Am</h3>
             <p class="text-gray-300 mb-6">
-              I'm a full stack developer and UI/UX designer with a passion for creating 
-              elegant, responsive, and user-friendly applications. With expertise in modern 
-              frontend and backend technologies, I build solutions that not only work flawlessly 
-              but also provide exceptional user experiences.
+              I'm Arjun Bishnoi, a mobile application developer and UI/UX designer passionate about creating smooth, engaging digital experiences. Whether I'm working in React Native, SwiftUI, or Kotlin for Android, I have one goal in mind: build apps that look polished, perform reliably, and feel intuitive from the very first tap. On the frontend, I focus on clean, responsive layouts. On the backend, I use tools like Firebase and Node.js to keep data flowing effortlessly.
             </p>
             <p class="text-gray-300">
-              My approach combines technical excellence with creative problem-solving, 
-              ensuring that the applications I build are not only functionally robust but 
-              also visually appealing and intuitive to use.
+              My workflow combines careful engineering with a genuine focus on users. Each feature solves a real problem and is crafted with pixel-perfect detail. I break challenges into clear steps and mix technical precision with creative flair so every project stands out.
             </p>
           </div>
           <div>
             <h3 class="text-xl font-semibold text-primary mb-4">My Journey</h3>
             <p class="text-gray-300 mb-6">
-              My journey into web development began with a curiosity about how digital 
-              experiences are built. Over the years, I've honed my skills across the full 
-              stack, from crafting pixel-perfect UIs to architecting scalable backend systems.
+              My passion for development began at George Brown College when I dove into mobile app strategy and implementation. I've built everything from a real-time cryptocurrency tracker in React Native to rental platform clones in SwiftUI and Kotlin. Each project has sharpened my skills and expanded my design sense.
             </p>
             <p class="text-gray-300">
-              I'm constantly learning and adapting to new technologies and best practices, 
-              ensuring that my work remains current and innovative in a rapidly evolving 
-              digital landscape.
+              I'm always curious and eager to learn new things, whether that means exploring emerging libraries or fine-tuning performance. As I grow, I stay committed to trying fresh approaches and delivering user-focused applications that leave a lasting impression.
             </p>
           </div>
         </div>

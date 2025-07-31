@@ -429,13 +429,13 @@
             <h3 class="text-lg font-semibold text-white mb-4">Projects</h3>
             <ul class="space-y-2">
               <li>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">E-Commerce Platform</a>
+                <a href="https://github.com/arjunbishnoi/CryptoTracker" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">Cryptocurrency Tracker</a>
               </li>
               <li>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Task Management App</a>
+                <a href="https://github.com/arjunbishnoi/4rent" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">4rent</a>
               </li>
               <li>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Portfolio Website</a>
+                <a href="https://github.com/arjunbishnoi/CarRental" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">Car Rental</a>
               </li>
               <li>
                 <NuxtLink to="/projects" class="text-primary hover:text-primary/80 transition-colors font-semibold flex items-center group">
