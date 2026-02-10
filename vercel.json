@@ -1,0 +1,4 @@
+{
+    "buildCommand": "nuxt generate",
+    "outputDirectory": ".output/public"
+}
