@@ -4,11 +4,11 @@
     "index.html": {
       "path": ""
     },
-    "skills/index.html": {
-      "path": "skills"
-    },
     "projects/index.html": {
       "path": "projects"
+    },
+    "skills/index.html": {
+      "path": "skills"
     }
   },
   "routes": [
@@ -20,9 +20,23 @@
     },
     {
       "headers": {
+        "Content-Type": "application/xslt+xml"
+      },
+      "src": "/__sitemap__/style.xsl"
+    },
+    {
+      "headers": {
         "cache-control": "public, max-age=1, immutable"
       },
       "src": "/_nuxt/builds/(.*)"
+    },
+    {
+      "headers": {
+        "Content-Type": "text/xml; charset=UTF-8",
+        "Cache-Control": "public, max-age=600, must-revalidate",
+        "X-Sitemap-Prerendered": "2026-02-10T01:05:26.107Z"
+      },
+      "src": "/sitemap.xml"
     },
     {
       "headers": {
@@ -53,14 +67,6 @@
     },
     {
       "handle": "filesystem"
-    },
-    {
-      "src": "/__nuxt_error",
-      "dest": "/__nitro"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/__nitro"
     }
   ]
 }

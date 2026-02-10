@@ -3,7 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/sitemap',
   ],
+  site: {
+    url: 'https://arjunbishnoi.com',
+  },
   app: {
     head: {
       title: 'Arjun Bishnoi <Designer/Developer>',
@@ -33,7 +37,7 @@ export default defineNuxtConfig({
     preset: 'vercel',
     prerender: {
       crawlLinks: true,
-      routes: ['/'],
+      routes: ['/', '/sitemap.xml'],
     }
   },
   experimental: {

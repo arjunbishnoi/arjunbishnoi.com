@@ -19,6 +19,20 @@
       <link rel="apple-touch-startup-image" media="screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)" href="/favicon.png">
       <link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" href="/favicon.png">
       <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="/favicon.png">
+      
+      <!-- Open Graph / Facebook -->
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://arjunbishnoi.com/">
+      <meta property="og:title" content="Arjun Bishnoi - Web & Mobile Designer/Developer">
+      <meta property="og:description" content="Mobile apps, web development, and design. Consistent, hands-on, and always evolving.">
+      <meta property="og:image" content="https://arjunbishnoi.com/4rent.png">
+
+      <!-- Twitter -->
+      <meta property="twitter:card" content="summary_large_image">
+      <meta property="twitter:url" content="https://arjunbishnoi.com/">
+      <meta property="twitter:title" content="Arjun Bishnoi - Web & Mobile Designer/Developer">
+      <meta property="twitter:description" content="Mobile apps, web development, and design. Consistent, hands-on, and always evolving.">
+      <meta property="twitter:image" content="https://arjunbishnoi.com/4rent.png">
     </Head>
 
     <TheAppHeader @toggle-menu="onToggleMenu" />
@@ -52,212 +66,5 @@ const onToggleMenu = (isOpen: boolean) => {
 </script>
 
 <style>
-html {
-  scroll-behavior: smooth;
-  overflow-y: scroll; /* Always show vertical scrollbar to prevent layout shift */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  background-color: black; /* Ensure black background at root level */
-}
-
-body {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background-color: black; /* Ensure black background */
-  min-height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  /* Remove the overflow-y from here since html handles it */
-  overflow: unset;
-}
-
-/* Mobile-first hero title styles with fluid typography */
-.hero-title-wrapper {
-  width: 100%;
-  text-align: center;
-  /* Fixed height container to prevent vertical shifting */
-  position: relative;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-title-line {
-  display: block;
-  white-space: nowrap;
-  text-align: center;
-  width: 100%;
-  /* Reduced line height for tighter overall spacing */
-  line-height: 0.95;
-  /* Adding transition for smooth size changes */
-  transition: font-size 0.3s ease, margin 0.3s ease, line-height 0.3s ease;
-  /* Ensure perfect centered alignment */
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-/* Hero title container with fixed vertical spacing */
-.hero-title-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  /* Fixed height prevents vertical shifting */
-  height: auto;
-  /* Consistently tight gap between title lines */
-  gap: 0.05em;
-  /* Add significant margin below the title container to push paragraphs down */
-  margin-bottom: 1.75rem;
-}
-
-/* Maintain consistent vertical spacing */
-section.relative.overflow-hidden.bg-black {
-  /* Fixed minimum height to prevent content jumping */
-  min-height: 20rem;
-}
-
-/* Fluid typography and spacing for very small screens */
-@media (max-width: 374px) {
-  .hero-title-container .hero-title-line {
-    font-size: clamp(1.5rem, 6vw, 1.75rem); /* Increased minimum size for better visibility */
-  }
-  /* Gap value now set at the root level for consistency */
-}
-
-/* Fluid typography and spacing for small to medium screens */
-@media (min-width: 375px) and (max-width: 639px) {
-  .hero-title-container .hero-title-line {
-    font-size: clamp(1.625rem, 6.5vw, 1.875rem); /* Increased minimum size for better visibility */
-  }
-  /* Reduce gap for small-medium screens to match smallest/largest screens */
-  .hero-title-container {
-    gap: 0.02em;
-  }
-  
-  /* Add negative margins for even tighter appearance */
-  .hero-line-1 {
-    margin-bottom: -0.08em;
-  }
-  
-  .hero-line-2 {
-    margin-top: -0.08em;
-  }
-}
-
-/* Fluid typography and spacing for medium to large screens */
-@media (min-width: 640px) and (max-width: 767px) {
-  .hero-title-container .hero-title-line {
-    font-size: clamp(1.875rem, 7vw, 2.25rem); /* Updated for smoother progression */
-  }
-  /* Reduce gap for medium screens */
-  .hero-title-container {
-    gap: 0.02em;
-  }
-  
-  /* Tighten spacing for medium screens */
-  .hero-line-1 {
-    margin-bottom: -0.08em; /* Increased negative margin for consistent spacing */
-  }
-  
-  .hero-line-2 {
-    margin-top: -0.08em; /* Increased negative margin for consistent spacing */
-  }
-}
-
-/* Fluid typography and spacing for large to extra large screens */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .hero-title-container .hero-title-line {
-    font-size: clamp(2.25rem, 5vw, 2.5rem); /* Updated for smoother progression */
-  }
-  /* Reduce gap for large screens to match smallest/largest screens */
-  .hero-title-container {
-    gap: 0.02em;
-  }
-  
-  /* Add negative margins for tighter appearance */
-  .hero-line-1 {
-    margin-bottom: -0.07em;
-  }
-  
-  .hero-line-2 {
-    margin-top: -0.07em;
-  }
-}
-
-/* Fluid typography and spacing for extra large screens */
-@media (min-width: 1024px) {
-  .hero-title-container .hero-title-line {
-    font-size: clamp(2.5rem, 4vw, 3rem); /* Updated for smoother progression */
-  }
-  /* Override to reduce gap for largest screens only */
-  .hero-title-container {
-    gap: 0.02em; /* Tighter gap only on larger screens */
-  }
-  
-  /* Additional negative margin for extra closeness on large screens */
-  .hero-line-1 {
-    margin-bottom: -0.05em;
-  }
-  
-  .hero-line-2 {
-    margin-top: -0.05em;
-  }
-}
-
-/* Ensure proper spacing for smaller devices with larger text */
-@media (max-width: 639px) {
-  .hero-title-wrapper {
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
-  }
-  
-  .hero-title-line {
-    line-height: 1;
-    margin-bottom: 0;
-  }
-  
-  /* Enhanced control with specific line classes */
-  .hero-line-1 {
-    margin-bottom: -0.1em; /* Increased negative margin for extra closeness */
-  }
-  
-  .hero-line-2 {
-    margin-top: -0.1em; /* Increased negative margin for extra closeness */
-  }
-}
-
-/* Extra small devices need tighter spacing */
-@media (max-width: 374px) {
-  .hero-title-container {
-    gap: 0.02em; /* Reduced gap for very small screens */
-  }
-  
-  .hero-line-1 {
-    margin-bottom: -0.15em; /* Increased negative margin for very close spacing */
-  }
-  
-  .hero-line-2 {
-    margin-top: -0.15em; /* Increased negative margin for very close spacing */
-  }
-}
-
-/* Dark theme (default) */
-.dark-theme {
-  --background-color: #000000;
-  --text-color: #ffffff;
-  --gray-text: #9CA3AF;
-  --card-bg: rgba(17, 24, 39, 0.5); /* gray-900/50 */
-}
-
-/* Light theme */
-.light-theme {
-  --background-color: #ffffff;
-  --text-color: #111827;
-  --gray-text: #6B7280;
-  --card-bg: #f3f4f6; /* gray-100 */
-}
+@import '~/assets/css/main.css';
 </style>
