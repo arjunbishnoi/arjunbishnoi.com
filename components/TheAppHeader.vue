@@ -165,7 +165,7 @@
           <button
             type="button"
             class="flex items-center justify-center w-8 h-8 rounded-md transition-colors cursor-pointer"
-            :class="isDarkMode ? 'text-gray-400 hover:text-white hover:bg-white/10' : 'text-gray-500 hover:text-gray-900 hover:bg-black/5'"
+            :class="isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'"
             @click="toggleTheme"
           >
             <span class="sr-only">Toggle theme</span>
@@ -197,7 +197,7 @@
           <a
             :href="socialLinks.email"
             class="flex items-center justify-center w-8 h-8 rounded-md transition-colors"
-            :class="isDarkMode ? 'text-gray-400 hover:text-white hover:bg-white/10' : 'text-gray-500 hover:text-gray-900 hover:bg-black/5'"
+            :class="isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'"
             aria-label="Send email"
           >
             <svg
@@ -217,7 +217,7 @@
             :href="socialLinks.resume"
             :download="socialLinks.resumeDownloadName"
             class="flex items-center justify-center w-8 h-8 rounded-md transition-colors"
-            :class="isDarkMode ? 'text-gray-400 hover:text-white hover:bg-white/10' : 'text-gray-500 hover:text-gray-900 hover:bg-black/5'"
+            :class="isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'"
             aria-label="Download Resume"
           >
             <svg
@@ -236,7 +236,7 @@
           <button 
             type="button"
             class="flex items-center justify-center w-8 h-8 rounded-md cursor-pointer transition-colors"
-            :class="isDarkMode ? 'text-gray-400 hover:text-white hover:bg-white/10' : 'text-gray-500 hover:text-gray-900 hover:bg-black/5'"
+            :class="isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'"
             @click="toggleMobileMenu"
           >
             <span class="sr-only">Open main menu</span>
