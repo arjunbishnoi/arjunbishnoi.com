@@ -30,6 +30,8 @@
           href="https://www.linkedin.com/in/arjun-bishnoi-b981bb104" 
           target="_blank" 
           rel="noopener noreferrer"
+          aria-label="Visit Arjun's LinkedIn profile"
+          title="LinkedIn"
           class="h-12 w-12 md:h-16 md:w-16 rounded-md bg-gray-800/80 border border-gray-700/50 flex items-center justify-center shadow-sm hover:bg-gray-700/80 transition-colors group"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 md:w-8 md:h-8 fill-gray-300 group-hover:fill-white transition-colors">
@@ -42,6 +44,8 @@
           href="https://github.com/arjunbishnoi" 
           target="_blank" 
           rel="noopener noreferrer"
+          aria-label="Visit Arjun's GitHub profile"
+          title="GitHub"
           class="h-12 w-12 md:h-16 md:w-16 rounded-md bg-gray-800/80 border border-gray-700/50 flex items-center justify-center shadow-sm hover:bg-gray-700/80 transition-colors group"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 md:w-8 md:h-8 fill-gray-300 group-hover:fill-white transition-colors">
@@ -57,11 +61,13 @@
           <a
             href="/Resume - Arjun Bishnoi.pdf"
             class="resume-btn rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
+            aria-label="Download Arjun's resume as PDF"
+            title="Download Resume"
             download
           >
             Download Resume
           </a>
-          <a href="#contact" class="text-sm font-semibold leading-6 text-gray-300">
+          <a href="#contact" class="text-sm font-semibold leading-6 text-gray-300" aria-label="Jump to contact section" title="Contact Me">
             Contact Me <span aria-hidden="true">→</span>
           </a>
         </div>
