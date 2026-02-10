@@ -224,6 +224,7 @@ section.relative.overflow-hidden.bg-black {
 :root {
   --color-primary: #ffffff;
   --color-accent: #6366f1;
+  --navbar-height: 4.5rem;
 }
 
 /* Define primary and secondary colors */
