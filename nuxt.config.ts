@@ -15,9 +15,21 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: 'Full Stack Developer and UI/UX Designer specializing in Vue.js, Node.js, and modern web technologies.' },
+        { name: 'application-name', content: 'Arjun Bishnoi' },
+        { name: 'apple-mobile-web-app-title', content: 'Arjun Bishnoi' },
+        { property: 'og:site_name', content: 'Arjun Bishnoi' },
+      ],
+      script: [
         {
-          name: 'description',
-          content: 'Full Stack Developer and UI/UX Designer specializing in Vue.js, Node.js, and modern web technologies.'
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Arjun Bishnoi',
+            url: 'https://arjunbishnoi.com',
+            alternateName: ['arjunbishnoi.com']
+          })
         }
       ],
       link: [
