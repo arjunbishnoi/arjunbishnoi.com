@@ -227,10 +227,7 @@ section.relative.overflow-hidden.bg-black {
 }
 
 /* Define primary and secondary colors */
-:root {
-  --color-primary: #6366f1;
-  --color-secondary: #8b5cf6;
-}
+
 
 .text-primary {
   color: var(--color-primary);

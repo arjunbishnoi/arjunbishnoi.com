@@ -106,8 +106,6 @@
             style="height: var(--navbar-height);"
           >
             <span class="sr-only">Toggle theme</span>
-            <!-- Extended hit area -->
-            <span class="absolute inset-y-0 left-[-20px] right-[20px]"></span>
             <!-- Sun icon when in dark mode -->
             <svg
               v-if="isDarkMode"
@@ -142,8 +140,6 @@
             style="height: var(--navbar-height);"
           >
             <span class="sr-only">Send email</span>
-            <!-- Extended hit area -->
-            <span class="absolute inset-y-0 left-[-3px] right-[-3px]"></span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -164,8 +160,6 @@
             style="height: var(--navbar-height);"
           >
             <span class="sr-only">Download Resume</span>
-            <!-- Extended hit area -->
-            <span class="absolute inset-y-0 left-[-3px] right-[-3px]"></span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -189,8 +183,6 @@
             style="height: var(--navbar-height);"
           >
             <span class="sr-only">Toggle theme</span>
-            <!-- Reduced hit area for theme toggle -->
-            <span class="absolute inset-y-0 left-[-20px] right-[20px]"></span>
             <!-- Sun icon when in dark mode -->
             <svg
               v-if="isDarkMode"
@@ -225,8 +217,6 @@
             style="height: var(--navbar-height);"
           >
             <span class="sr-only">Send email</span>
-            <!-- Hit area for email -->
-            <span class="absolute inset-y-0 left-[-3px] right-[-3px]"></span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -247,8 +237,6 @@
             style="height: var(--navbar-height);"
           >
             <span class="sr-only">Download Resume</span>
-            <!-- Extended hit area -->
-            <span class="absolute inset-y-0 left-[-3px] right-[-3px]"></span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -269,8 +257,6 @@
             @click.prevent="toggleMobileMenu"
           >
             <span class="sr-only">Open main menu</span>
-            <!-- Hit area for hamburger -->
-            <span class="absolute inset-y-0 left-[-3px] right-[999px]"></span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
