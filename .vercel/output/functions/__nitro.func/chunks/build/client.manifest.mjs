@@ -1,10 +1,10 @@
 const client_manifest = {
-  "_DTuflNOw.js": {
+  "_D5eHcPoq.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DTuflNOw.js",
+    "file": "D5eHcPoq.js",
     "name": "ProjectCard.vue",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js"
@@ -15,7 +15,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "Ds7fIi3C.js",
+    "file": "Cb5guYKV.js",
     "name": "entry",
     "src": "node_modules/nuxt/dist/app/entry.js",
     "isEntry": true,
@@ -36,7 +36,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "nkpnLlJt.js",
+    "file": "j6_-YJfL.js",
     "name": "200",
     "src": "pages/200.vue",
     "isDynamicEntry": true,
@@ -49,7 +49,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "Ux08skh4.js",
+    "file": "DJyGUi6Y.js",
     "name": "404",
     "src": "pages/404.vue",
     "isDynamicEntry": true,
@@ -62,13 +62,13 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DzEXUPxA.js",
+    "file": "BGPnZRSh.js",
     "name": "index",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_DTuflNOw.js"
+      "_D5eHcPoq.js"
     ],
     "css": []
   },
@@ -83,12 +83,12 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "D3HjbKuk.js",
+    "file": "BYwV1oTl.js",
     "name": "projects",
     "src": "pages/projects.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_DTuflNOw.js",
+      "_D5eHcPoq.js",
       "node_modules/nuxt/dist/app/entry.js"
     ]
   },
@@ -97,7 +97,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DPxIAhi6.js",
+    "file": "Cuc_1jEz.js",
     "name": "skills",
     "src": "pages/skills.vue",
     "isDynamicEntry": true,

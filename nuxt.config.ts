@@ -31,6 +31,10 @@ export default defineNuxtConfig({
   ssr: true,
   nitro: {
     preset: 'vercel',
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+    }
   },
   experimental: {
     payloadExtraction: false

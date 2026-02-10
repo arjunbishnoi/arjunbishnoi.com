@@ -3,7 +3,6 @@ import { p as parseQuery, h as hasProtocol, i as joinURL, w as withQuery, k as w
 import { u as useHead$1, h as headSymbol, b as baseURL, p as publicAssetsURL } from '../routes/renderer.mjs';
 import { RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'vue-router';
 import { ssrRenderAttrs, ssrRenderStyle, ssrRenderComponent, ssrRenderClass, ssrRenderList, ssrInterpolate, ssrRenderAttr, ssrRenderSuspense, ssrRenderVNode } from 'vue/server-renderer';
-import { SpeedInsights } from '@vercel/speed-insights/nuxt';
 import 'node:http';
 import 'node:https';
 import 'node:events';
@@ -367,7 +366,7 @@ const unhead_k2P3m_ZDyjlr2mMYnoDPwavjsDN8hBlk9cFai0bbopU = /* @__PURE__ */ defin
     nuxtApp.vueApp.use(head);
   }
 });
-function toArray(value) {
+function toArray$1(value) {
   return Array.isArray(value) ? value : [value];
 }
 async function getRouteRules(arg) {
@@ -394,28 +393,28 @@ const _routes = [
     name: "200",
     path: "/200",
     meta: __nuxt_page_meta$1 || {},
-    component: () => import('./200-CdP6LDo6.mjs')
+    component: () => import('./200-rQPG3Xe4.mjs')
   },
   {
     name: "error",
     path: "/404",
     meta: __nuxt_page_meta || {},
-    component: () => import('./404-2Itldxd8.mjs')
+    component: () => import('./404-BSqSMyol.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-OMMcEpvi.mjs')
+    component: () => import('./index-dfyVlOV5.mjs')
   },
   {
     name: "skills",
     path: "/skills",
-    component: () => import('./skills-DlH1Z7RB.mjs')
+    component: () => import('./skills-CX-T_IBe.mjs')
   },
   {
     name: "projects",
     path: "/projects",
-    component: () => import('./projects-CPMJIHwj.mjs')
+    component: () => import('./projects-DdFqlSLj.mjs')
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;
@@ -553,7 +552,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
     let __temp, __restore;
     let routerBase = (/* @__PURE__ */ useRuntimeConfig()).app.baseURL;
     const history = ((_a = routerOptions.history) == null ? void 0 : _a.call(routerOptions, routerBase)) ?? createMemoryHistory(routerBase);
-    const routes = routerOptions.routes ? ([__temp, __restore] = executeAsync(() => routerOptions.routes(_routes)), __temp = await __temp, __restore(), __temp) ?? _routes : _routes;
+    const routes2 = routerOptions.routes ? ([__temp, __restore] = executeAsync(() => routerOptions.routes(_routes)), __temp = await __temp, __restore(), __temp) ?? _routes : _routes;
     let startPosition;
     const router = createRouter({
       ...routerOptions,
@@ -574,9 +573,9 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
         }
       },
       history,
-      routes
+      routes: routes2
     });
-    handleHotUpdate(router, routerOptions.routes ? routerOptions.routes : (routes2) => routes2);
+    handleHotUpdate(router, routerOptions.routes ? routerOptions.routes : (routes22) => routes22);
     nuxtApp.vueApp.use(router);
     const previousRoute = shallowRef(router.currentRoute.value);
     router.afterEach((_to, from) => {
@@ -657,7 +656,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
           if (!componentMiddleware) {
             continue;
           }
-          for (const entry2 of toArray(componentMiddleware)) {
+          for (const entry2 of toArray$1(componentMiddleware)) {
             middlewareEntries.add(entry2);
           }
         }
@@ -785,11 +784,17 @@ const revive_payload_server_MVtmlZaQpj6ApFmshWfUWl5PehCebzaBf2NuRMiIbms = /* @__
 const components_plugin_z4hgvsiddfKkfXTP6M8M4zG5Cb7sGnDhcryKVM45Di4 = /* @__PURE__ */ defineNuxtPlugin({
   name: "nuxt:global-components"
 });
+const prerender_server_sqIxOBipVr4FbVMA9kqWL0wT8FPop6sKAXLVfifsJzk = /* @__PURE__ */ defineNuxtPlugin(async () => {
+  {
+    return;
+  }
+});
 const plugins = [
   unhead_k2P3m_ZDyjlr2mMYnoDPwavjsDN8hBlk9cFai0bbopU,
   plugin,
   revive_payload_server_MVtmlZaQpj6ApFmshWfUWl5PehCebzaBf2NuRMiIbms,
-  components_plugin_z4hgvsiddfKkfXTP6M8M4zG5Cb7sGnDhcryKVM45Di4
+  components_plugin_z4hgvsiddfKkfXTP6M8M4zG5Cb7sGnDhcryKVM45Di4,
+  prerender_server_sqIxOBipVr4FbVMA9kqWL0wT8FPop6sKAXLVfifsJzk
 ];
 const HeadComponentCtxSymbol = Symbol("head-component");
 const TagPositionProps = {
@@ -1814,7 +1819,6 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
       const _component_NuxtPage = __nuxt_component_2;
       const _component_TheAppFooter = _sfc_main$3;
       _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen bg-black fixed-bg" }, _attrs))}>`);
-      _push(ssrRenderComponent(unref(SpeedInsights), null, null, _parent));
       _push(ssrRenderComponent(_component_Head, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {

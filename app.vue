@@ -1,6 +1,5 @@
 <template>
   <div class="min-h-screen bg-black fixed-bg">
-    <SpeedInsights />
     <!-- Add Apple-specific meta tags -->
     <Head>
       <!-- Apple Touch Icon -->
@@ -43,7 +42,6 @@
 </template>
 
 <script setup lang="ts">
-import { SpeedInsights } from "@vercel/speed-insights/nuxt"
 import { ref } from 'vue'
 
 const isMobileMenuOpen = ref(false)
