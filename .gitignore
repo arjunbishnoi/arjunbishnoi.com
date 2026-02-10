@@ -31,3 +31,5 @@ pnpm-debug.log*
 # Debug files
 .nuxt-dev-server.pid
 .nuxt-dev-server.log
+
+.vercel

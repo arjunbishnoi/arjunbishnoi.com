@@ -33,10 +33,9 @@
         
         <div class="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800/50 shadow-xl transition-all duration-300 hover:shadow-primary/10">
           <div class="h-80 relative overflow-hidden">
-            <NuxtImg 
+            <img 
               :src="featuredProject.image" 
               :alt="featuredProject.title" 
-              format="webp"
               loading="eager"
               class="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
             />

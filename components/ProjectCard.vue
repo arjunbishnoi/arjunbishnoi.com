@@ -1,10 +1,9 @@
 <template>
   <div class="bg-gray-900/50 rounded-lg overflow-hidden h-full flex flex-col">
     <div class="h-48 bg-gray-800/50 relative overflow-hidden group">
-      <NuxtImg 
+      <img 
         :src="project.image" 
         :alt="project.title" 
-        format="webp"
         loading="lazy"
         class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
       />
