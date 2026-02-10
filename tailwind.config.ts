@@ -19,8 +19,10 @@ export default {
     },
     extend: {
       colors: {
-        primary: '#3C82F6',
-        secondary: '#10B981',
+        primary: 'var(--color-primary)',
+        'primary-content': 'var(--color-primary-content)',
+        accent: 'var(--color-accent)',
+        secondary: '#8b5cf6', // Violet
         dark: '#000000',
         light: '#F7F7F8',
         'gray-custom': '#9CA3AF',

@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/sitemap',
+    '@nuxt/image',
   ],
   site: {
     url: 'https://arjunbishnoi.com',
@@ -32,9 +33,9 @@ export default defineNuxtConfig({
   typescript: {
     strict: true
   },
-  ssr: true,
+  // ...
   nitro: {
-    preset: 'vercel',
+    preset: 'static',
     prerender: {
       crawlLinks: true,
       routes: ['/', '/sitemap.xml'],

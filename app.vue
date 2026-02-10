@@ -38,11 +38,11 @@
     <TheAppHeader @toggle-menu="onToggleMenu" />
 
     <!-- Favicon Image Section -->
-    <div class="w-full flex justify-center items-center pt-24 pb-0">
+    <div class="w-full flex justify-center items-center pt-24 pb-0 relative z-10 pointer-events-none">
       <img 
         src="/favicon.png" 
         alt="Arjun Bishnoi Logo" 
-        class="w-32 h-32 object-contain transition-transform duration-300 hover:scale-105"
+        class="w-32 h-32 object-contain transition-transform duration-300 hover:scale-105 pointer-events-auto"
       />
     </div>
 

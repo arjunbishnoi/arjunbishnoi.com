@@ -83,8 +83,8 @@
         </div>
 
         <!-- Desktop Navigation in center -->
-        <div class="hidden md:flex items-center justify-center w-full absolute left-0 right-0">
-          <div class="flex items-center space-x-8">
+        <div class="hidden md:flex items-center justify-center w-full absolute left-0 right-0 pointer-events-none">
+          <div class="flex items-center space-x-8 pointer-events-auto">
           <NuxtLink 
             v-for="item in navigationItems" 
             :key="item.name"

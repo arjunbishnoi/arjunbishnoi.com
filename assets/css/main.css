@@ -196,6 +196,13 @@ section.relative.overflow-hidden.bg-black {
   --text-color: #ffffff;
   --gray-text: #9CA3AF;
   --card-bg: rgba(17, 24, 39, 0.5); /* gray-900/50 */
+  
+  /* Monochrome Primary (Buttons) */
+  --color-primary: #ffffff; 
+  --color-primary-content: #000000;
+  
+  /* Accent Color (Highlights/Progress Bars) */
+  --color-accent: #6366f1; /* Indigo */
 }
 
 /* Light theme */
@@ -204,6 +211,19 @@ section.relative.overflow-hidden.bg-black {
   --text-color: #111827;
   --gray-text: #6B7280;
   --card-bg: #f3f4f6; /* gray-100 */
+  
+  /* Monochrome Primary (Buttons) */
+  --color-primary: #000000;
+  --color-primary-content: #ffffff;
+  
+  /* Accent Color (Highlights/Progress Bars) */
+  --color-accent: #4f46e5; /* Slightly darker Indigo for light mode contrast */
+}
+
+/* Fallback/Root variables */
+:root {
+  --color-primary: #ffffff;
+  --color-accent: #6366f1;
 }
 
 /* Define primary and secondary colors */

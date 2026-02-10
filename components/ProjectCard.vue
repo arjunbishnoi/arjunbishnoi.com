@@ -1,13 +1,15 @@
 <template>
   <div class="bg-gray-900/50 rounded-lg overflow-hidden h-full flex flex-col">
     <div class="h-48 bg-gray-800/50 relative overflow-hidden group">
-      <img 
+      <NuxtImg 
         :src="project.image" 
         :alt="project.title" 
+        format="webp"
+        loading="lazy"
         class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
       />
       <!-- Add colorful overlay gradient -->
-      <div class="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40 mix-blend-overlay"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-accent/40 to-secondary/40 mix-blend-overlay"></div>
     </div>
     <div class="p-6 flex flex-col flex-grow">
       <h3 class="text-xl font-semibold text-white mb-2">{{ project.title }}</h3>
@@ -18,7 +20,7 @@
         <span 
           v-for="tag in project.tags" 
           :key="tag"
-          class="text-xs px-2 py-1 bg-primary/20 text-primary rounded"
+          class="text-xs px-2 py-1 bg-accent/20 text-accent rounded"
         >
           {{ tag }}
         </span>
@@ -28,7 +30,7 @@
           :href="project.sourceUrl" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="text-primary hover:text-primary/80 text-sm font-medium"
+          class="text-accent hover:text-accent/80 text-sm font-medium"
         >
           Source Code
         </a>
