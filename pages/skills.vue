@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black min-h-screen">
+  <main class="bg-black min-h-screen">
     <!-- Header -->
     <div class="pt-12">
       <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-12 pb-8">
@@ -67,7 +67,7 @@
         <span aria-hidden="true">←</span> Back to Home
       </NuxtLink>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
@@ -77,7 +77,15 @@ const { skills, learning } = useSiteData()
 useHead({
   title: 'Skills | Arjun Bishnoi',
   meta: [
-    { name: 'description', content: 'Explore my technical skills and expertise in web development, including frontend, backend, and UI/UX design.' }
+    { name: 'description', content: 'Explore my technical skills and expertise in web development, including frontend, backend, and UI/UX design.' },
+    { property: 'og:title', content: 'Skills | Arjun Bishnoi' },
+    { property: 'og:description', content: 'Explore my technical skills and expertise in web development, including frontend, backend, and UI/UX design.' },
+    { property: 'og:image', content: 'https://arjunbishnoi.com/skills-og.png' },
+    { property: 'og:url', content: 'https://arjunbishnoi.com/skills' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Skills | Arjun Bishnoi' },
+    { name: 'twitter:description', content: 'Explore my technical skills and expertise in web development, including frontend, backend, and UI/UX design.' },
+    { name: 'twitter:image', content: 'https://arjunbishnoi.com/skills-og.png' }
   ]
 })
 </script> 

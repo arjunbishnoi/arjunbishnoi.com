@@ -59,10 +59,43 @@
 import { ref } from 'vue'
 
 const isMobileMenuOpen = ref(false)
+const { socialLinks, navigationItems } = useSiteData()
 
 const onToggleMenu = (isOpen: boolean) => {
   isMobileMenuOpen.value = isOpen
 }
+
+// Add Structured Data for SEO (Person & Sitelinks)
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify([
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: 'Arjun Bishnoi',
+          url: 'https://arjunbishnoi.com',
+          sameAs: [
+            socialLinks.github,
+            socialLinks.linkedin
+          ],
+          jobTitle: 'Full Stack Developer & UI/UX Designer',
+          worksFor: {
+            '@type': 'Organization',
+            name: 'Freelance'
+          }
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'SiteNavigationElement',
+          name: navigationItems.map(item => item.name.charAt(0).toUpperCase() + item.name.slice(1)),
+          url: navigationItems.map(item => `https://arjunbishnoi.com${item.href}`)
+        }
+      ])
+    }
+  ]
+})
 </script>
 
 <style>

@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <main>
     <HeroSection />
     <ProjectsSection />
     <SkillsSection />
     <AboutSection />
     <ContactSection />
-  </div>
+  </main>
 </template>
 
 <script setup>

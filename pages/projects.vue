@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black min-h-screen">
+  <main class="bg-black min-h-screen">
     <!-- Header with animated gradient underline -->
     <div class="pt-16 pb-8 relative overflow-hidden">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -150,7 +150,7 @@
         </NuxtLink>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
@@ -163,7 +163,15 @@ const featuredProject = computed(() => projects.find(p => p.featured))
 useHead({
   title: 'Projects | Arjun Bishnoi',
   meta: [
-    { name: 'description', content: 'Explore my portfolio of web development and design projects showcasing a range of skills and technologies.' }
+    { name: 'description', content: 'Explore my portfolio of web development and design projects showcasing a range of skills and technologies.' },
+    { property: 'og:title', content: 'Projects | Arjun Bishnoi' },
+    { property: 'og:description', content: 'Explore my portfolio of web development and design projects showcasing a range of skills and technologies.' },
+    { property: 'og:image', content: 'https://arjunbishnoi.com/projects-og.png' },
+    { property: 'og:url', content: 'https://arjunbishnoi.com/projects' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Projects | Arjun Bishnoi' },
+    { name: 'twitter:description', content: 'Explore my portfolio of web development and design projects showcasing a range of skills and technologies.' },
+    { name: 'twitter:image', content: 'https://arjunbishnoi.com/projects-og.png' }
   ]
 })
 </script> 

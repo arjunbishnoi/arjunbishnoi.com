@@ -72,7 +72,7 @@
 
         <!-- Desktop Navigation in center -->
         <div class="hidden md:flex items-center justify-center flex-1 absolute left-0 right-0 pointer-events-none" style="z-index: 1;">
-          <div class="flex items-center space-x-8 pointer-events-auto">
+          <nav class="flex items-center space-x-8 pointer-events-auto">
             <NuxtLink 
               v-for="item in navigationItems" 
               :key="item.name"
@@ -82,7 +82,7 @@
             >
               {{ item.name.charAt(0).toUpperCase() + item.name.slice(1) }}
             </NuxtLink>
-          </div>
+          </nav>
         </div>
 
         <!-- Desktop actions on right side -->
@@ -275,7 +275,7 @@
       
       <!-- Mobile menu items (only rendered when open) -->
       <div v-show="isMobileMenuOpen" class="md:hidden">
-        <div class="menu-items-container px-6 lg:px-8 pt-8">
+        <nav class="menu-items-container px-6 lg:px-8 pt-8">
           <div 
             v-for="(item, index) in navigationItems" 
             :key="item.name"
@@ -316,7 +316,7 @@
               Download Resume
             </a>
           </div>
-        </div>
+        </nav>
         
         <!-- Footer text - appears after menu is fully open -->
         <div 
