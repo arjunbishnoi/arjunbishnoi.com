@@ -345,29 +345,34 @@ const isScrolled = ref(false)
 const showFullLogo = computed(() => !isScrolled.value || isMobileMenuOpen.value)
 
 const isDarkMode = ref(true)
-const isClient = ref(false)
 
 const emit = defineEmits(['toggle-menu'])
 
+// SSR-safe: useHead sets the class on <html> during BOTH server and client rendering
+// This prevents hydration mismatch because the static HTML will already have the correct class
+useHead({
+  htmlAttrs: {
+    class: computed(() => isDarkMode.value ? 'dark-theme' : 'light-theme')
+  }
+})
+
 watch(isMobileMenuOpen, (isOpen) => {
   emit('toggle-menu', isOpen)
-  if (isOpen) {
-    document.body.classList.add('overflow-hidden')
-  } else {
-    document.body.classList.remove('overflow-hidden')
+  if (import.meta.client) {
+    if (isOpen) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
   }
 }, { flush: 'post' })
 
 watch(isDarkMode, (isDark) => {
-  if (!isClient.value) return
+  if (!import.meta.client) return
   if (isDark) {
-    document.documentElement.classList.add('dark-theme')
-    document.documentElement.classList.remove('light-theme')
     document.documentElement.style.backgroundColor = '#000000'
     document.body.style.backgroundColor = '#000000'
   } else {
-    document.documentElement.classList.add('light-theme')
-    document.documentElement.classList.remove('dark-theme')
     document.documentElement.style.backgroundColor = '#ffffff'
     document.body.style.backgroundColor = '#ffffff'
   }
@@ -382,22 +387,16 @@ const toggleTheme = () => {
 }
 
 onMounted(() => {
-  isClient.value = true
-  
   const handleScroll = () => {
     isScrolled.value = window.scrollY > 50
   }
   window.addEventListener('scroll', handleScroll)
   handleScroll()
-
-  if (isDarkMode.value) {
-    document.documentElement.classList.add('dark-theme')
-  } else {
-    document.documentElement.classList.add('light-theme')
-  }
 })
 
 onBeforeUnmount(() => {
-  document.body.classList.remove('overflow-hidden')
+  if (import.meta.client) {
+    document.body.classList.remove('overflow-hidden')
+  }
 })
 </script>
