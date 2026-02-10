@@ -26,7 +26,7 @@
       <div class="flex items-center justify-center space-x-8 mb-4 mt-6">
         <!-- LinkedIn -->
         <a 
-          href="https://www.linkedin.com/in/arjun-bishnoi-b981bb104" 
+          :href="socialLinks.linkedin" 
           target="_blank" 
           rel="noopener noreferrer"
           aria-label="Visit Arjun's LinkedIn profile"
@@ -40,7 +40,7 @@
         
         <!-- GitHub -->
         <a 
-          href="https://github.com/arjunbishnoi" 
+          :href="socialLinks.github" 
           target="_blank" 
           rel="noopener noreferrer"
           aria-label="Visit Arjun's GitHub profile"
@@ -58,7 +58,7 @@
         <!-- Buttons -->
         <div class="flex items-center justify-center gap-x-6">
           <a
-            href="/Resume - Arjun Bishnoi.pdf"
+            :href="socialLinks.resume"
             class="resume-btn rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
             aria-label="Download Arjun's resume as PDF"
             title="Download Resume"
@@ -105,67 +105,11 @@
       <!-- Projects content -->
       <div class="mx-auto max-w-7xl px-6 pt-4 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Project Card 1 -->
-          <div class="bg-gray-900/50 rounded-lg overflow-hidden">
-            <div class="h-48 bg-gray-800/50 relative overflow-hidden">
-              <!-- CryptoTracker logo image -->
-              <img 
-                src="/cryptotracker.png" 
-                alt="Cryptocurrency Tracker App" 
-                class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
-              />
-              <!-- Add colorful overlay gradient -->
-              <div class="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40 mix-blend-overlay"></div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-white mb-2">Cryptocurrency Tracker</h3>
-              <p class="text-gray-400 mb-4">
-                A cross-platform cryptocurrency tracker built with React Native, Expo, and Firebase Firestore. 
-                Features include real-time market data via the CoinLore API, detailed coin statistics, 
-                favorites management, pull-to-refresh, and seamless, native-feel navigation.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">React Native</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Expo</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Firebase</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">CoinLore API</span>
-              </div>
-              <div class="flex gap-4">
-                <a href="https://github.com/arjunbishnoi/CryptoTracker" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80 text-sm font-medium">Source Code</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Project Card 2 -->
-          <div class="bg-gray-900/50 rounded-lg overflow-hidden">
-            <div class="h-48 bg-gray-800/50 relative overflow-hidden">
-              <!-- 4rent app image -->
-              <img 
-                src="/4rent.png" 
-                alt="4rent iOS Rental Marketplace App" 
-                class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
-              />
-              <!-- Add colorful overlay gradient -->
-              <div class="absolute inset-0 bg-gradient-to-tl from-secondary/40 to-primary/40 mix-blend-overlay"></div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-white mb-2">4rent</h3>
-              <p class="text-gray-400 mb-4">
-                A modern iOS rental marketplace built with SwiftUI, Combine, and MVVM architecture. 
-                Features include infinite-scroll property listings, high-resolution image galleries, 
-                detailed amenity and pricing views, favorites management, and fully adaptive layouts across all iPhone screen sizes.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">SwiftUI</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">Combine</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">MVVM</span>
-                <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded">iOS</span>
-              </div>
-              <div class="flex gap-4">
-                <a href="https://github.com/arjunbishnoi/4rent" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80 text-sm font-medium">Source Code</a>
-              </div>
-            </div>
-          </div>
+          <ProjectCard 
+            v-for="project in projects.filter(p => p.featured)" 
+            :key="project.id" 
+            :project="project" 
+          />
         </div>
       </div>
     </section>
@@ -187,77 +131,12 @@
       <!-- Skills content -->
       <div class="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-gray-900/50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold text-primary mb-4">Frontend</h3>
-            <ul class="space-y-2 text-gray-300">
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> React.js
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> Vue.js
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> Next.js
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> Nuxt.js
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> Tailwind CSS
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> JavaScript/TypeScript
-              </li>
-            </ul>
-          </div>
-          
-          <div class="bg-gray-900/50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold text-primary mb-4">Backend</h3>
-            <ul class="space-y-2 text-gray-300">
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> Node.js
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> Express
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> MongoDB
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> PostgreSQL
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> REST API Design
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> GraphQL
-              </li>
-            </ul>
-          </div>
-          
-          <div class="bg-gray-900/50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold text-primary mb-4">Design & Tools</h3>
-            <ul class="space-y-2 text-gray-300">
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> UI/UX Design
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> Figma
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> Git & GitHub
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> Docker
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> AWS
-              </li>
-              <li class="flex items-center">
-                <span class="mr-2 text-primary">▹</span> CI/CD
-              </li>
-            </ul>
-          </div>
+          <SkillListCard 
+            v-for="skillCategory in shortSkillList" 
+            :key="skillCategory.category" 
+            :category="skillCategory.category" 
+            :items="skillCategory.items" 
+          />
         </div>
       </div>
     </section>
@@ -364,6 +243,8 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+
+const { projects, shortSkillList, socialLinks } = useSiteData()
 
 // Reactive state for scroll indicator visibility
 const scrolledDown = ref(false);

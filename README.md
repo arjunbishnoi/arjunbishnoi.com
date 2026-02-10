@@ -70,19 +70,15 @@ Open [http://localhost:3000](http://localhost:3000) (or the port specified in th
 
 ## 🏗️ Building for Production
 
-### Static Generation (SSG)
+This project is optimized for deployment on **Vercel**.
 
-To build the application for static hosting (generates pre-rendered HTML files):
+### Vercel Deployment (Recommended)
 
-```bash
-npm run generate
-```
+The easiest way to deploy is to connect your GitHub repository to Vercel. Zones, caching, and edge functions are handled automatically by the Nuxt Vercel preset.
 
-The output will be in the `.output/public` directory. You can deploy this folder to any static hosting service (like GitHub Pages, Netlify, Vercel).
+### Local Build
 
-### Server-Side Rendering (SSR)
-
-To build the application with a Node.js server for SSR:
+To build the application locally for testing:
 
 ```bash
 npm run build
@@ -91,23 +87,8 @@ npm run build
 The output will be in the `.output` directory. To start the production server:
 
 ```bash
-npm run start
-```
-or
-```bash
 node .output/server/index.mjs
 ```
-
-## 🚢 Deployment
-
-This project includes configuration files that suggest potential deployment setups:
-
-*   `deploy.sh`: A shell script likely used for automating deployment steps.
-*   `nginx.conf`: Configuration for using Nginx as a reverse proxy or web server.
-*   `arjunbishnoi.service`: A systemd service file, possibly for running the Node.js server on a Linux machine.
-*   `setup-aws.sh`: A script suggesting deployment to AWS infrastructure.
-
-Refer to these files or your hosting provider's documentation for specific deployment instructions.
 
 ## 🧹 Code Quality
 
