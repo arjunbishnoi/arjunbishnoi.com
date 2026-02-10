@@ -14,8 +14,7 @@
               </span>
             </h1>
             <p class="mt-5 sm:mt-8 text-sm sm:text-base md:text-lg leading-6 xs:leading-7 sm:leading-7 text-gray-300 w-[95%] max-w-md sm:w-auto sm:max-w-2xl hero-text font-medium px-2 sm:px-0">
-              Learning and building in full stack development, mobile apps, and design.
-              Consistent, hands-on, and always evolving.
+              Mobile apps, web development, and design. Consistent, hands-on, and always evolving.
             </p>
           </div>
         </div>
