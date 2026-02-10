@@ -80,6 +80,7 @@ useHead({
             socialLinks.github,
             socialLinks.linkedin
           ],
+          image: 'https://arjunbishnoi.com/arjun-bishnoi-profile.png',
           jobTitle: 'Full Stack Developer & UI/UX Designer',
           worksFor: {
             '@type': 'Organization',
