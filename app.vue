@@ -20,19 +20,21 @@
       <link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" href="/favicon.png">
       <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="/favicon.png">
       
+      <link rel="canonical" :href="`https://arjunbishnoi.com${$route.path}`">
+      
       <!-- Open Graph / Facebook -->
       <meta property="og:type" content="website">
       <meta property="og:url" content="https://arjunbishnoi.com/">
       <meta property="og:title" content="Arjun Bishnoi - Web & Mobile Designer/Developer">
       <meta property="og:description" content="Mobile apps, web development, and design. Consistent, hands-on, and always evolving.">
-      <meta property="og:image" content="https://arjunbishnoi.com/4rent.png">
+      <meta property="og:image" content="https://arjunbishnoi.com/arjun-bishnoi-profile.png">
 
       <!-- Twitter -->
       <meta property="twitter:card" content="summary_large_image">
       <meta property="twitter:url" content="https://arjunbishnoi.com/">
       <meta property="twitter:title" content="Arjun Bishnoi - Web & Mobile Designer/Developer">
       <meta property="twitter:description" content="Mobile apps, web development, and design. Consistent, hands-on, and always evolving.">
-      <meta property="twitter:image" content="https://arjunbishnoi.com/4rent.png">
+      <meta property="twitter:image" content="https://arjunbishnoi.com/arjun-bishnoi-profile.png">
     </Head>
 
     <TheAppHeader @toggle-menu="onToggleMenu" />
