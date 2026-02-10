@@ -1,10 +1,11 @@
 <template>
-  <section class="relative overflow-hidden bg-black hero-section flex flex-col items-center justify-center min-h-screen">
+  <section class="relative overflow-hidden hero-section flex flex-col items-center justify-center min-h-screen" style="background-color: var(--background-color);">
     <!-- Top area with title and paragraph - keeping original positioning -->
-    <div class="mx-auto max-w-7xl px-4 pt-12 pb-2 sm:pb-4 lg:px-8 w-full">
+    <div class="mx-auto max-w-7xl px-4 pt-4 pb-2 sm:pb-4 lg:px-8 w-full">
       <div class="text-center hero-content w-full flex items-center justify-center flex-col">
         <div class="inline-block hero-title-wrapper w-full">
-          <h1 class="font-bold tracking-tight text-white text-center max-w-full leading-none w-full">
+          <h1 class="font-bold tracking-tight text-center max-w-full leading-none w-full" style="color: var(--text-color);">
+
             <!-- Mobile-first hero title with controlled line breaks and smooth size scaling -->
             <span class="hero-title-container inline-block text-center w-full">
               <span class="hero-title-line hero-line-1 block mx-auto text-8xl md:text-6xl lg:text-7xl tracking-tight" style="font-size: 30px !important; line-height: 1.0;">Web &amp; Mobile</span>

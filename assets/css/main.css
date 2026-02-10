@@ -1,17 +1,20 @@
 html {
   scroll-behavior: smooth;
-  overflow-y: scroll; /* Always show vertical scrollbar to prevent layout shift */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  background-color: black; /* Ensure black background at root level */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: var(--background-color, #000000);
+  color: var(--text-color, #ffffff);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background-color: black; /* Ensure black background */
+  background-color: var(--background-color, #000000);
+  color: var(--text-color, #ffffff);
   min-height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  /* Remove the overflow-y from here since html handles it */
+  overflow-x: hidden;
   overflow: unset;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Mobile-first hero title with fluid typography */
@@ -61,7 +64,7 @@ body {
 }
 
 /* Maintain consistent vertical spacing */
-section.relative.overflow-hidden.bg-black {
+section.relative.overflow-hidden.hero-section {
   /* Fixed minimum height to prevent content jumping */
   min-height: 20rem;
 }
@@ -190,45 +193,223 @@ section.relative.overflow-hidden.bg-black {
   }
 }
 
+/* ============================
+   ROOT VARIABLES & THEME TOKENS
+   ============================ */
+:root {
+  --color-primary: #ffffff;
+  --color-primary-content: #000000;
+  --color-accent: #6366f1;
+  --navbar-height: 2.75rem;
+  --background-color: #000000;
+  --text-color: #ffffff;
+  --gray-text: #9CA3AF;
+  --card-bg: rgba(17, 24, 39, 0.5);
+  --card-border: rgba(55, 65, 81, 0.5);
+  --input-bg: rgba(17, 24, 39, 0.5);
+  --divider-color: #1f2937;
+  --progress-bg: #374151;
+  --secondary-text: #d1d5db;
+  --muted-text: #9ca3af;
+  color-scheme: dark;
+}
+
 /* Dark theme (default) */
 .dark-theme {
   --background-color: #000000;
   --text-color: #ffffff;
   --gray-text: #9CA3AF;
-  --card-bg: rgba(17, 24, 39, 0.5); /* gray-900/50 */
-  
-  /* Monochrome Primary (Buttons) */
-  --color-primary: #ffffff; 
+  --card-bg: rgba(17, 24, 39, 0.5);
+  --color-primary: #ffffff;
   --color-primary-content: #000000;
-  
-  /* Accent Color (Highlights/Progress Bars) */
-  --color-accent: #6366f1; /* Indigo */
+  --color-accent: #6366f1;
+  --card-border: rgba(55, 65, 81, 0.5);
+  --input-bg: rgba(17, 24, 39, 0.5);
+  --divider-color: #1f2937;
+  --progress-bg: #374151;
+  --secondary-text: #d1d5db;
+  --muted-text: #9ca3af;
+  color-scheme: dark;
 }
 
-/* Light theme */
+/* Light theme — Apple-standard clean light */
 .light-theme {
   --background-color: #ffffff;
-  --text-color: #111827;
-  --gray-text: #6B7280;
-  --card-bg: #f3f4f6; /* gray-100 */
-  
-  /* Monochrome Primary (Buttons) */
-  --color-primary: #000000;
+  --text-color: #1c1c1e;
+  --gray-text: #636366;
+  --card-bg: #f2f2f7;
+  --color-primary: #1c1c1e;
   --color-primary-content: #ffffff;
-  
-  /* Accent Color (Highlights/Progress Bars) */
-  --color-accent: #4f46e5; /* Slightly darker Indigo for light mode contrast */
+  --color-accent: #5856d6;
+  --card-border: #d1d1d6;
+  --input-bg: #f2f2f7;
+  --divider-color: #d1d1d6;
+  --progress-bg: #d1d1d6;
+  --secondary-text: #3a3a3c;
+  --muted-text: #8e8e93;
+  color-scheme: light;
 }
 
-/* Fallback/Root variables */
-:root {
-  --color-primary: #ffffff;
-  --color-accent: #6366f1;
-  --navbar-height: 4.5rem;
+/* ============================
+   SITE-WIDE LIGHT THEME OVERRIDES
+   Using attribute selectors for
+   guaranteed Tailwind class matching
+   ============================ */
+
+/* ---------- BACKGROUNDS ---------- */
+
+/* Pure black backgrounds → white */
+html.light-theme [class*="bg-black"] {
+  background-color: var(--background-color) !important;
 }
 
-/* Define primary and secondary colors */
+/* Semi-transparent black overlays → semi-transparent white */
+html.light-theme [class*="bg-black/"] {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
 
+/* Dark gray card backgrounds → Apple system gray 6 */
+html.light-theme [class*="bg-gray-900"] {
+  background-color: var(--card-bg) !important;
+}
+
+/* Medium gray backgrounds */
+html.light-theme [class*="bg-gray-800"] {
+  background-color: #e5e7eb !important;
+}
+
+/* Progress bar track */
+html.light-theme [class*="bg-gray-700"] {
+  background-color: var(--progress-bg) !important;
+}
+
+/* ---------- TEXT COLORS ---------- */
+
+/* White text → near-black (Apple standard) */
+html.light-theme [class*="text-white"] {
+  color: var(--text-color) !important;
+}
+
+/* Gray-300 text → darker gray for readability */
+html.light-theme [class*="text-gray-300"] {
+  color: var(--secondary-text) !important;
+}
+
+/* Gray-400 text → medium gray */
+html.light-theme [class*="text-gray-400"] {
+  color: var(--muted-text) !important;
+}
+
+/* ---------- BORDERS ---------- */
+
+html.light-theme [class*="border-gray-800"],
+html.light-theme [class*="border-gray-700"] {
+  border-color: var(--divider-color) !important;
+}
+
+/* ---------- SVG FILLS ---------- */
+
+html.light-theme [class*="fill-gray-300"] {
+  fill: var(--muted-text) !important;
+}
+
+html.light-theme [class*="fill-gray-400"] {
+  fill: var(--muted-text) !important;
+}
+
+html.light-theme [class*="fill-white"] {
+  fill: var(--text-color) !important;
+}
+
+/* ---------- FORM ELEMENTS ---------- */
+
+html.light-theme input,
+html.light-theme textarea {
+  background-color: var(--input-bg) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--divider-color) !important;
+}
+
+html.light-theme input::placeholder,
+html.light-theme textarea::placeholder {
+  color: var(--muted-text) !important;
+}
+
+html.light-theme input:focus,
+html.light-theme textarea:focus {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 2px rgba(88, 86, 214, 0.25) !important;
+}
+
+/* ---------- HOVER STATES ---------- */
+
+html.light-theme [class*="hover:text-white"]:hover {
+  color: var(--text-color) !important;
+}
+
+html.light-theme [class*="hover:bg-gray"]:hover {
+  background-color: #e5e7eb !important;
+}
+
+html.light-theme .group:hover [class*="group-hover:fill-white"] {
+  fill: var(--text-color) !important;
+}
+
+/* ---------- INLINE STYLES (set by JS) ---------- */
+/* These catch elements using style="background-color: var(--background-color)" */
+
+/* ---------- HERO SECTION ---------- */
+
+html.light-theme .hero-section {
+  background-color: var(--background-color) !important;
+}
+
+html.light-theme .resume-btn {
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-content) !important;
+}
+
+/* ---------- GRADIENTS ---------- */
+
+html.light-theme [class*="from-gray-900"] {
+  --tw-gradient-from: #f2f2f7 !important;
+}
+
+html.light-theme [class*="to-black"] {
+  --tw-gradient-to: #ffffff !important;
+}
+
+html.light-theme [class*="from-accent"] {
+  --tw-gradient-from: rgba(88, 86, 214, 0.3) !important;
+}
+
+/* ---------- FOOTER ---------- */
+
+html.light-theme footer {
+  background-color: #f2f2f7 !important;
+  border-color: var(--divider-color) !important;
+}
+
+/* ---------- SCROLLBAR (WebKit) ---------- */
+
+html.light-theme::-webkit-scrollbar-track {
+  background: #f2f2f7;
+}
+
+html.light-theme::-webkit-scrollbar-thumb {
+  background: #c7c7cc;
+}
+
+/* ---------- SELECTION ---------- */
+
+html.light-theme ::selection {
+  background-color: rgba(88, 86, 214, 0.2);
+  color: var(--text-color);
+}
+
+/* ============================
+   UTILITY CSS VARIABLE CLASSES
+   ============================ */
 
 .text-primary {
   color: var(--color-primary);
@@ -240,4 +421,8 @@ section.relative.overflow-hidden.bg-black {
 
 .border-primary {
   border-color: var(--color-primary);
+}
+
+.text-primary-content {
+  color: var(--color-primary-content);
 }

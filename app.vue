@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-black fixed-bg">
+  <div class="min-h-screen fixed-bg" style="background-color: var(--background-color); color: var(--text-color); transition: background-color 0.3s ease, color 0.3s ease;">
     <!-- Add Apple-specific meta tags -->
     <Head>
       <!-- Apple Touch Icon -->
@@ -38,7 +38,7 @@
     <TheAppHeader @toggle-menu="onToggleMenu" />
 
     <!-- Favicon Image Section -->
-    <div class="w-full flex justify-center items-center pt-24 pb-0 relative z-10 pointer-events-none">
+    <div class="w-full flex justify-center items-center pt-16 pb-2 relative z-10 pointer-events-none">
       <img 
         src="/favicon.png" 
         alt="Arjun Bishnoi Logo" 
@@ -47,7 +47,7 @@
     </div>
 
     <!-- Main Content -->
-    <main class="pt-0 bg-black text-white" :class="{ 'overflow-hidden': isMobileMenuOpen }">
+    <main class="pt-0" :class="{ 'overflow-hidden': isMobileMenuOpen }" style="background-color: var(--background-color); color: var(--text-color); transition: background-color 0.3s ease, color 0.3s ease;">
       <NuxtPage />
     </main>
     
