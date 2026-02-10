@@ -1,5 +1,6 @@
 <template>
   <div class="min-h-screen bg-black fixed-bg">
+    <SpeedInsights />
     <!-- Add Apple-specific meta tags -->
     <Head>
       <!-- Apple Touch Icon -->
@@ -512,6 +513,7 @@
 </template>
 
 <script setup>
+import { SpeedInsights } from "@vercel/speed-insights/nuxt"
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
 const showFullLogo = computed(() => !isScrolled.value || isMobileMenuOpen.value)
