@@ -27,7 +27,7 @@
       <a 
         :href="socialLinks.linkedin" 
         target="_blank" 
-        rel="noopener noreferrer"
+        rel="me noopener noreferrer"
         aria-label="Visit Arjun's LinkedIn profile"
         title="LinkedIn"
         class="h-12 w-12 md:h-16 md:w-16 rounded-md bg-gray-800/80 border border-gray-700/50 flex items-center justify-center shadow-sm hover:bg-gray-700/80 transition-colors group"
@@ -41,7 +41,7 @@
       <a 
         :href="socialLinks.github" 
         target="_blank" 
-        rel="noopener noreferrer"
+        rel="me noopener noreferrer"
         aria-label="Visit Arjun's GitHub profile"
         title="GitHub"
         class="h-12 w-12 md:h-16 md:w-16 rounded-md bg-gray-800/80 border border-gray-700/50 flex items-center justify-center shadow-sm hover:bg-gray-700/80 transition-colors group"
