@@ -363,7 +363,17 @@ const emit = defineEmits(['toggle-menu'])
 useHead({
   htmlAttrs: {
     class: computed(() => isDarkMode.value ? 'dark-theme' : 'light-theme')
-  }
+  },
+  meta: [
+    { 
+      name: 'theme-color', 
+      content: computed(() => isDarkMode.value ? '#000000' : '#ffffff') 
+    },
+    { 
+      name: 'apple-mobile-web-app-status-bar-style', 
+      content: computed(() => isDarkMode.value ? 'black-translucent' : 'default') 
+    }
+  ]
 })
 
 watch(isMobileMenuOpen, (isOpen) => {

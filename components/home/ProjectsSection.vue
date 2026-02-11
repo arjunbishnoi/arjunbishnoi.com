@@ -1,5 +1,5 @@
 <template>
-  <section id="projects" class="relative py-0 bg-black">
+  <section id="projects" class="relative py-0" style="background-color: var(--background-color);">
     <!-- Sticky header -->
     <SectionStickyHeader title="Projects" to="/projects" />
     

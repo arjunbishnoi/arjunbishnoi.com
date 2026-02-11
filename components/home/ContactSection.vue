@@ -1,6 +1,9 @@
 <template>
-  <section id="contact" class="relative py-16 bg-black">
-    <SectionStickyHeader title="Contact" to="/#contact" :show-view-all="false" />
+  <section id="contact" class="relative py-16 z-40" style="background-color: var(--background-color);">
+    <!-- Static Header -->
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mb-8">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl" style="color: var(--text-color);">Contact</h2>
+    </div>
     
     <!-- Contact content -->
     <div class="mx-auto max-w-7xl px-6 pt-10 lg:px-8">

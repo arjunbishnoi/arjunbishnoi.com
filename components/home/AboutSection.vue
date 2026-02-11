@@ -1,7 +1,9 @@
 <template>
-  <section id="about" class="relative py-16 bg-black">
-    <!-- Sticky header -->
-    <SectionStickyHeader title="About" to="/#about" :show-view-all="false" />
+  <section id="about" class="relative py-16 z-40" style="background-color: var(--background-color);">
+    <!-- Static Header -->
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mb-8">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl" style="color: var(--text-color);">About</h2>
+    </div>
     
     <!-- About content -->
     <div class="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
