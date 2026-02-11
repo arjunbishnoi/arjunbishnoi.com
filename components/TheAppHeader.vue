@@ -14,7 +14,7 @@
       <div class="mx-auto max-w-7xl h-10 flex items-center relative">
         <!-- Logo -->
         <div class="flex-none px-6 lg:px-8">
-          <NuxtLink to="/" class="text-xl font-bold relative block cursor-pointer" aria-label="Go to homepage">
+          <NuxtLink to="/" class="text-xl font-bold relative block cursor-pointer" aria-label="Go to homepage" @click="handleLogoClick">
             <div class="relative">
               <!-- Full name version -->
               <div 
@@ -165,7 +165,7 @@
           <button
             type="button"
             class="flex items-center justify-center w-8 h-8 rounded-md transition-colors cursor-pointer"
-            :class="isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'"
+            :class="isDarkMode ? 'text-gray-400 active:text-white' : 'text-gray-500 active:text-gray-900'"
             @click="toggleTheme"
           >
             <span class="sr-only">Toggle theme</span>
@@ -197,7 +197,7 @@
           <a
             :href="socialLinks.email"
             class="flex items-center justify-center w-8 h-8 rounded-md transition-colors"
-            :class="isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'"
+            :class="isDarkMode ? 'text-gray-400 active:text-white' : 'text-gray-500 active:text-gray-900'"
             aria-label="Send email"
           >
             <svg
@@ -217,7 +217,7 @@
             :href="socialLinks.resume"
             :download="socialLinks.resumeDownloadName"
             class="flex items-center justify-center w-8 h-8 rounded-md transition-colors"
-            :class="isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'"
+            :class="isDarkMode ? 'text-gray-400 active:text-white' : 'text-gray-500 active:text-gray-900'"
             aria-label="Download Resume"
           >
             <svg
@@ -236,7 +236,7 @@
           <button 
             type="button"
             class="flex items-center justify-center w-8 h-8 rounded-md cursor-pointer transition-colors"
-            :class="isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'"
+            :class="isDarkMode ? 'text-gray-400 active:text-white' : 'text-gray-500 active:text-gray-900'"
             @click="toggleMobileMenu"
           >
             <span class="sr-only">Open main menu</span>
@@ -273,8 +273,15 @@
         </div>
       </div>
       
-      <!-- Mobile menu items (only rendered when open) -->
-      <div v-show="isMobileMenuOpen" class="md:hidden">
+      <!-- Mobile menu items (only rendered when open) - removed v-show to allow animations -->
+      <div 
+        class="md:hidden"
+        :class="{ 'pointer-events-none': !isMobileMenuOpen }"
+        :style="{
+          opacity: isMobileMenuOpen ? 1 : 0,
+          transition: 'opacity 300ms ease-in-out'
+        }"
+      >
         <nav class="menu-items-container px-6 lg:px-8 pt-8">
           <div 
             v-for="(item, index) in navigationItems" 
@@ -282,10 +289,10 @@
             class="transform transition-all duration-500 ease-out mb-4"
             :style="{
               opacity: isMobileMenuOpen ? 1 : 0,
-              transform: `translateY(${isMobileMenuOpen ? 0 : -8}px)`,
+              transform: `translateY(${isMobileMenuOpen ? 0 : 20}px) scale(${isMobileMenuOpen ? 1 : 0.95})`,
               transitionDelay: isMobileMenuOpen 
-                ? `${80 * index}ms` 
-                : `${30 * (navigationItems.length - index - 1)}ms`
+                ? `${100 * index + 150}ms` 
+                : '0ms'
             }"
           >
             <NuxtLink 
@@ -303,8 +310,8 @@
             class="transform transition-all duration-500 ease-out mb-4"
             :style="{
               opacity: isMobileMenuOpen ? 1 : 0,
-              transform: `translateY(${isMobileMenuOpen ? 0 : -8}px)`,
-            transitionDelay: isMobileMenuOpen ? '500ms' : '0ms'
+              transform: `translateY(${isMobileMenuOpen ? 0 : 20}px) scale(${isMobileMenuOpen ? 1 : 0.95})`,
+            transitionDelay: isMobileMenuOpen ? `${100 * navigationItems.length + 150}ms` : '0ms'
             }"
           >
           <a
@@ -324,8 +331,9 @@
           :style="{
             color: isDarkMode ? '#9CA3AF' : '#8e8e93',
             opacity: isMobileMenuOpen ? 1 : 0,
-            transform: `translateY(${isMobileMenuOpen ? 0 : 10}px)`,
-            transitionDelay: isMobileMenuOpen ? '700ms' : '0ms'
+            transform: `translateY(${isMobileMenuOpen ? 0 : 20}px)`,
+            transitionDelay: isMobileMenuOpen ? '800ms' : '0ms',
+            transitionDuration: '1000ms'
           }"
         >
           made with <span class="text-red-500">❤</span> by arjun
@@ -339,6 +347,7 @@
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 
 const { navigationItems, socialLinks } = useSiteData()
+const route = useRoute()
 
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
@@ -384,6 +393,16 @@ const toggleMobileMenu = () => {
 
 const toggleTheme = () => {
   isDarkMode.value = !isDarkMode.value
+}
+
+const handleLogoClick = (e: Event) => {
+  if (route.path === '/') {
+    e.preventDefault()
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
 }
 
 onMounted(() => {

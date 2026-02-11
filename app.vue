@@ -39,14 +39,7 @@
 
     <TheAppHeader @toggle-menu="onToggleMenu" />
 
-    <!-- Favicon Image Section -->
-    <div class="w-full flex justify-center items-center pt-16 pb-2 relative z-10 pointer-events-none">
-      <img 
-        src="/favicon.png" 
-        alt="Arjun Bishnoi Logo" 
-        class="w-32 h-32 object-contain transition-transform duration-300 hover:scale-105 pointer-events-auto"
-      />
-    </div>
+    <!-- Favicon Image Section Removed -->
 
     <!-- Main Content -->
     <main class="pt-0" :class="{ 'overflow-hidden': isMobileMenuOpen }" style="background-color: var(--background-color); color: var(--text-color); transition: background-color 0.3s ease, color 0.3s ease;">

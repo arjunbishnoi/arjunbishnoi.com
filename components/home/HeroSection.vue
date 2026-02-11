@@ -1,5 +1,5 @@
 <template>
-  <section class="relative overflow-hidden hero-section flex flex-col items-center justify-center min-h-screen" style="background-color: var(--background-color);">
+  <section class="relative overflow-hidden hero-section flex flex-col items-center justify-center min-h-screen pt-24" style="background-color: var(--background-color);">
     <!-- Top area with title and paragraph - keeping original positioning -->
     <div class="mx-auto max-w-7xl px-4 pt-4 pb-2 sm:pb-4 lg:px-8 w-full">
       <div class="text-center hero-content w-full flex items-center justify-center flex-col">
