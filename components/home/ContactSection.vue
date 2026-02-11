@@ -1,11 +1,6 @@
 <template>
   <section id="contact" class="relative py-16 bg-black">
-    <!-- Sticky header -->
-    <div class="sticky z-30 bg-black/80 backdrop-blur-md py-2" style="top: calc(var(--navbar-height) - 1px);">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-white">Contact</h2>
-      </div>
-    </div>
+    <SectionStickyHeader title="Contact" to="/#contact" :show-view-all="false" />
     
     <!-- Contact content -->
     <div class="mx-auto max-w-7xl px-6 pt-10 lg:px-8">

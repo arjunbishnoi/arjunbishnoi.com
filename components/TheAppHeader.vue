@@ -55,9 +55,10 @@
               </div>
               <!-- Shortened version -->
               <div 
-                class="transition-all duration-300 ease-in-out absolute left-0 overflow-visible"
+                class="transition-all duration-300 ease-in-out absolute left-0 overflow-visible whitespace-nowrap flex items-center"
                 :style="{
-                  opacity: showFullLogo ? 0 : 1
+                  opacity: showFullLogo ? 0 : 1,
+                  transform: showFullLogo ? 'translateX(-20px)' : 'translateX(0)'
                 }"
               >
                 <span :style="{ color: isDarkMode ? 'white' : '#111827' }">a</span>
