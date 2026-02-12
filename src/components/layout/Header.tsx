@@ -59,7 +59,7 @@ export function Header() {
     <header className="fixed w-full top-0 z-50">
       <div 
         className={cn(
-          "backdrop-blur-md overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]", // Speeding up to 500ms
+          "backdrop-blur-md overflow-hidden transition-[background-color,height] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]", // Speeding up to 500ms
           mounted && theme === "dark" ? "bg-black/80" : "bg-white/80"
         )}
         style={{
@@ -67,9 +67,9 @@ export function Header() {
           minHeight: "var(--navbar-height, 3.5rem)",
         }}
       >
-        <div className="mx-auto max-w-7xl h-[var(--navbar-height)] flex items-center relative">
-          {/* Logo */}
-          <div className="flex-none px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl h-[var(--navbar-height)] relative">
+          {/* Logo - Anchored Left */}
+          <div className="absolute left-6 lg:left-8 top-1/2 -translate-y-1/2" style={{ zIndex: 3 }}>
             <Link 
               href="/" 
               className="text-xl font-bold relative block cursor-pointer" 
@@ -113,8 +113,8 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center justify-center flex-1 absolute left-0 right-0 pointer-events-none" style={{ zIndex: 1 }}>
+          {/* Desktop Nav - Centered */}
+          <div className="hidden md:flex items-center justify-center absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
             <nav className="flex items-center space-x-8 pointer-events-auto">
                 {navigationItems.map(item => (
                     <Link
@@ -128,8 +128,8 @@ export function Header() {
             </nav>
           </div>
 
-          {/* Desktop Actions */}
-          <div className="hidden md:flex items-center ml-auto pl-6 pr-4 lg:pl-8 lg:pr-6 space-x-4" style={{ zIndex: 2 }}>
+          {/* Desktop Actions - Anchored Right */}
+          <div className="hidden md:flex items-center absolute right-6 lg:right-8 top-1/2 -translate-y-1/2 space-x-4" style={{ zIndex: 2 }}>
              {mounted && (
                 <button
                 onClick={toggleTheme}
@@ -158,8 +158,8 @@ export function Header() {
             </a>
           </div>
 
-          {/* Mobile Actions */}
-          <div className="md:hidden flex items-center pl-2 pr-4 relative h-full ml-auto space-x-4" style={{ zIndex: 2 }}>
+          {/* Mobile Actions - Anchored Right */}
+          <div className="md:hidden flex items-center absolute right-4 top-1/2 -translate-y-1/2 space-x-4" style={{ zIndex: 2 }}>
              {mounted && (
                  <button
                  onClick={toggleTheme}
