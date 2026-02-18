@@ -29,22 +29,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: [
-      { url: "/favicon.png" },
-      { url: "/favicon.png", sizes: "180x180" },
-      { url: "/favicon.png", sizes: "152x152" },
-      { url: "/favicon.png", sizes: "120x120" },
-    ],
-    other: [
-      {
-        rel: "apple-touch-startup-image",
-        url: "/favicon.png",
-      },
-    ],
-  },
+
   openGraph: {
     title: "Arjun Bishnoi - Web & Mobile Designer/Developer",
     description: "Mobile apps, web development, and design. Consistent, hands-on, and always evolving.",
