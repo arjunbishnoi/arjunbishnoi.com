@@ -52,10 +52,14 @@ export const metadata: Metadata = {
     description: "Consistent, hands-on, and always evolving.",
     images: ["https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg"],
   },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
   appleWebApp: {
     capable: true,
     title: "Arjun Bishnoi",
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
   },
   other: {
     "mobile-web-app-capable": "yes",

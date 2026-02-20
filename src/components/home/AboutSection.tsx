@@ -13,15 +13,15 @@ export function AboutSection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
           {/* Profile Image */}
           <div className="md:col-span-4 flex justify-center md:justify-start">
-            <div className="relative w-full md:max-w-xs aspect-square rounded-2xl overflow-hidden border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/50 hover:border-border transition-all duration-300 group">
+            <div className="relative w-full md:max-w-xs aspect-square rounded-2xl overflow-hidden border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm">
               <Image 
                 src="/arjun-bishnoi-profile-square.jpg" 
                 alt="Arjun Bishnoi - Full Stack Developer & UI/UX Designer" 
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 320px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
             </div>
           </div>
 
