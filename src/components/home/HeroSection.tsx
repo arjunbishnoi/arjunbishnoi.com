@@ -18,7 +18,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden flex flex-col items-center justify-start min-h-[85vh] md:min-h-screen pt-20 bg-background">
+    <section className="relative overflow-hidden flex flex-col items-center justify-start min-h-[85vh] md:min-h-0 pt-20 bg-background">
       {/* Top area with title and paragraph */}
       <div className="mx-auto max-w-7xl px-4 pt-4 pb-2 sm:pb-4 lg:px-8 w-full">
         <div className="text-center w-full flex items-center justify-center flex-col">
@@ -102,13 +102,15 @@ export function HeroSection() {
       </div>
       {/* Utility Cards */}
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 mt-3 sm:mt-4">
+        {/* Desktop: 2-row layout to avoid tall socials stretching the row */}
+        {/* Row 1: Resume, Contact, Blog + socials top half on desktop */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {/* Resume */}
           <a
             href={socialLinks.resume}
             download={socialLinks.resumeDownloadName}
             className="group relative rounded-2xl border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/50 hover:border-border transition-all duration-300 overflow-hidden
-                       h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80"
+                       h-24 sm:h-28 md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
           >
             <ArrowUpRight className="md:hidden absolute top-3 right-3 w-4 h-4 text-muted-foreground/40 group-hover:text-foreground/70 transition-colors z-10" />
             <div className="absolute inset-0 flex items-end px-4 pb-5 md:pb-5 md:pl-5 z-10">
@@ -122,7 +124,7 @@ export function HeroSection() {
           <a
             href="#contact"
             className="group relative rounded-2xl border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/50 hover:border-border transition-all duration-300 overflow-hidden
-                       h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80"
+                       h-24 sm:h-28 md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
           >
             <ArrowUpRight className="md:hidden absolute top-3 right-3 w-4 h-4 text-muted-foreground/40 group-hover:text-foreground/70 transition-colors z-10" />
             <div className="absolute inset-0 flex items-end px-4 pb-5 md:pb-5 md:pl-5 z-10">
@@ -136,7 +138,7 @@ export function HeroSection() {
           <Link
             href="/blog"
             className="group relative rounded-2xl border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/50 hover:border-border transition-all duration-300 overflow-hidden
-                       h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80"
+                       h-24 sm:h-28 md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
           >
             <ArrowUpRight className="md:hidden absolute top-3 right-3 w-4 h-4 text-muted-foreground/40 group-hover:text-foreground/70 transition-colors z-10" />
             <div className="absolute inset-0 flex items-end px-4 pb-5 md:pb-5 md:pl-5 z-10">
@@ -146,8 +148,30 @@ export function HeroSection() {
             </div>
           </Link>
 
-          {/* Socials */}
-          <div className="h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80 grid grid-cols-2 md:grid-cols-2 md:grid-rows-2 gap-3 sm:gap-4">
+          {/* Socials - mobile only: side by side in one cell */}
+          <div className="h-24 sm:h-28 grid grid-cols-2 gap-3 sm:gap-4 md:hidden">
+              <a
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="me noopener noreferrer"
+                aria-label="LinkedIn"
+                className="rounded-xl border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/50 hover:border-border transition-all duration-300 flex items-center justify-center group/icon"
+              >
+                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground group-hover/icon:text-foreground transition-colors" />
+              </a>
+              <a
+                href={socialLinks.github}
+                target="_blank"
+                rel="me noopener noreferrer"
+                aria-label="GitHub"
+                className="rounded-xl border border-border/75 bg-gray-50/80 dark:bg-card/30 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/60 hover:border-border transition-all duration-300 flex items-center justify-center group/icon"
+              >
+                <Github className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground group-hover/icon:text-foreground transition-colors" />
+              </a>
+          </div>
+
+          {/* Socials - desktop only: 2x1 column in the 4th grid cell */}
+          <div className="hidden md:grid md:grid-cols-2 gap-3 sm:gap-4 md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
@@ -171,9 +195,9 @@ export function HeroSection() {
       </div>
 
       {/* Scroll down indicator */}
-      <div className="w-full flex flex-col items-center justify-center mb-0 pb-4 sm:pb-4 sm:mb-4 md:mb-6 mt-4 relative z-40">
+      <div className="w-full flex flex-col items-center justify-center mb-0 pb-3 sm:pb-3 sm:mb-3 md:mb-6 md:pb-0 mt-4 md:mt-16 relative z-40">
         <div className={cn(
-            "mt-8 pb-4 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
+            "mt-4 md:mt-2 pb-2 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
         )}>
           <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
