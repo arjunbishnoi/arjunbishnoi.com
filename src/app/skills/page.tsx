@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     title: "Skills | Arjun Bishnoi",
     description: "Explore my technical skills and expertise in web development, including frontend, backend, and UI/UX design.",
     url: "https://arjunbishnoi.com/skills",
-    images: [{ url: "https://arjunbishnoi.com/skills-og.png" }],
+    images: [{ url: "https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Skills | Arjun Bishnoi",
     description: "Explore my technical skills and expertise in web development, including frontend, backend, and UI/UX design.",
-    images: ["https://arjunbishnoi.com/skills-og.png"],
+    images: ["https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg"],
   },
 }
 

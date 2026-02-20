@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     title: "Projects | Arjun Bishnoi",
     description: "Explore my portfolio of web development and design projects showcasing a range of skills and technologies.",
     url: "https://arjunbishnoi.com/projects",
-    images: [{ url: "https://arjunbishnoi.com/projects-og.png" }],
+    images: [{ url: "https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Projects | Arjun Bishnoi",
     description: "Explore my portfolio of web development and design projects showcasing a range of skills and technologies.",
-    images: ["https://arjunbishnoi.com/projects-og.png"],
+    images: ["https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg"],
   },
 }
 
