@@ -42,7 +42,7 @@ export function HeroSection() {
       </div>
 
       {/* Service Cards */}
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 mt-6 sm:mt-8">
+      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 mt-6 sm:mt-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {[
             { 
@@ -101,7 +101,7 @@ export function HeroSection() {
         </div>
       </div>
       {/* Utility Cards */}
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 mt-3 sm:mt-4">
+      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 mt-3 sm:mt-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {/* Resume */}
           <a

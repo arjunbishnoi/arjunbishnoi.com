@@ -14,7 +14,7 @@ interface ProjectProps {
 
 export function ProjectCard({ project }: ProjectProps) {
   return (
-    <div className="bg-card rounded-lg overflow-hidden h-full flex flex-col border border-border/50 hover:border-border transition-colors">
+    <div className="bg-card rounded-2xl overflow-hidden h-full flex flex-col border border-border/50 hover:border-border transition-colors">
       <div className="h-48 relative overflow-hidden group bg-muted">
         <Image
           src={project.image}
