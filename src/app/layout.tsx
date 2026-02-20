@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Arjun Bishnoi <Designer/Developer>",
+  title: "Arjun Bishnoi — Mobile Apps, AI & Design",
   description: "Full Stack Developer and UI/UX Designer specializing in Vue.js, Node.js, and modern web technologies.",
   applicationName: "Arjun Bishnoi",
   authors: [{ name: "Arjun Bishnoi", url: "https://arjunbishnoi.com" }],

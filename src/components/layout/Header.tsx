@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Moon, Sun, Mail, Download, Heart } from "lucide-react"
+import { X, Moon, Sun, Mail, Download, Heart, ArrowUpRight } from "lucide-react"
 import { navigationItems, socialLinks } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -120,9 +120,10 @@ export function Header() {
                     <Link
                         key={item.name}
                         href={item.href}
-                        className="text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
+                        className="text-sm font-medium transition-colors text-muted-foreground hover:text-foreground inline-flex items-center gap-0.5 group"
                     >
                         {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                        <ArrowUpRight className="w-3 h-3 opacity-40 group-hover:opacity-100 transition-opacity -mt-1" />
                     </Link>
                 ))}
             </nav>
@@ -237,10 +238,11 @@ export function Header() {
                              >
                                 <Link
                                     href={item.href}
-                                    className="text-xl font-bold transition-colors text-muted-foreground hover:text-foreground block"
+                                    className="text-xl font-bold transition-colors text-muted-foreground hover:text-foreground inline-flex items-center gap-1 group"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                      {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                                     <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
                                 </Link>
                              </motion.div>
                         ))}

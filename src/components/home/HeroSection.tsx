@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react"
 import { socialLinks } from "@/lib/site-data"
-import { Github, Linkedin, ArrowRight, ChevronDown } from "lucide-react"
+import { Github, Linkedin, ArrowUpRight, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 export function HeroSection() {
   const [scrolledDown, setScrolledDown] = useState(false)
@@ -26,77 +27,145 @@ export function HeroSection() {
               {/* Mobile-first hero title with controlled line breaks and fluid typography */}
               <span className="flex flex-col items-center justify-center w-full gap-[0.05em] mb-2">
                 <span 
-                    className="block text-center w-full whitespace-nowrap leading-[0.95]"
+                    className="block text-center w-full whitespace-nowrap leading-[0.95] pb-2"
                     style={{ fontSize: "clamp(1.5rem, 6vw, 3rem)" }}
                 >
-                    Mobile, AI &amp; Web
-                </span>
-                <span 
-                    className="block text-center w-full whitespace-nowrap leading-[0.95] bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 animate-gradient bg-[length:200%_auto] pb-2"
-                    style={{ fontSize: "clamp(1.5rem, 6vw, 3rem)" }}
-                >
-                    Designer / Developer
+                    <span className="text-foreground">Mobile Apps, AI &amp; </span><span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 animate-gradient bg-[length:200%_auto]">Design</span>
                 </span>
               </span>
             </h1>
-            <p className="mt-2 sm:mt-3 text-sm sm:text-base md:text-lg leading-tight text-muted-foreground w-[95%] max-w-md sm:w-auto sm:max-w-2xl font-medium px-2 sm:px-0">
-              Mobile apps, AI, web and design.<br />Consistent, hands-on, and always evolving.
+            <p className="-mt-0.5 sm:mt-0.5 text-sm sm:text-base text-muted-foreground font-medium">
+                Consistent, hands-on, and always evolving.
             </p>
           </div>
         </div>
       </div>
-          
-      {/* Social Links */}
-      <div className="flex items-center justify-center space-x-8 mb-4 mt-auto">
-        {/* LinkedIn */}
-        <a 
-          href={socialLinks.linkedin} 
-          target="_blank" 
-          rel="me noopener noreferrer"
-          aria-label="Visit Arjun's LinkedIn profile"
-          title="LinkedIn"
-          className="h-12 w-12 md:h-16 md:w-16 rounded-md bg-gray-800/80 border border-gray-700/50 flex items-center justify-center shadow-sm hover:bg-gray-700/80 transition-colors group"
-        >
-          <Linkedin className="w-6 h-6 md:w-8 md:h-8 text-gray-300 group-hover:text-white transition-colors" />
-        </a>
-        
-        {/* GitHub */}
-        <a 
-          href={socialLinks.github} 
-          target="_blank" 
-          rel="me noopener noreferrer"
-          aria-label="Visit Arjun's GitHub profile"
-          title="GitHub"
-          className="h-12 w-12 md:h-16 md:w-16 rounded-md bg-gray-800/80 border border-gray-700/50 flex items-center justify-center shadow-sm hover:bg-gray-700/80 transition-colors group"
-        >
-          <Github className="w-6 h-6 md:w-8 md:h-8 text-gray-300 group-hover:text-white transition-colors" />
-        </a>
+
+      {/* Service Cards */}
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 mt-6 sm:mt-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          {[
+            { 
+              href: "/mobile-apps", 
+              label: "Cross-platform Mobile Apps", 
+              accent: "iOS · Android · React Native",
+              gradient: "from-blue-500/30 via-cyan-500/20 to-transparent"
+            },
+            { 
+              href: "/ai-engineering", 
+              label: "AI Engineering", 
+              accent: "ML · LLMs · Intelligent Systems",
+              gradient: "from-emerald-500/30 via-teal-500/20 to-transparent"
+            },
+            { 
+              href: "/web-development", 
+              label: "Web Development", 
+              accent: "React · Next.js · Full-stack",
+              gradient: "from-violet-500/30 via-purple-500/20 to-transparent"
+            },
+            { 
+              href: "/ui-ux-design", 
+              label: "UI/UX Design", 
+              accent: "Figma · Prototyping · Design Systems",
+              gradient: "from-rose-500/30 via-pink-500/20 to-transparent"
+            },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="group relative rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm hover:bg-card/60 hover:border-border transition-all duration-300 overflow-hidden
+                         h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80"
+            >
+              {/* Gradient background */}
+              <div className={cn("absolute inset-0 bg-gradient-to-b opacity-80 group-hover:opacity-100 transition-opacity duration-300", item.gradient)} />
+              
+              <ArrowUpRight className="md:hidden absolute top-3 right-3 w-4 h-4 text-muted-foreground/40 group-hover:text-foreground/70 transition-colors z-10" />
+              <div className="absolute inset-0 flex items-end px-4 pb-5 md:pb-5 md:pl-5 z-10">
+                <div>
+                  <span className="text-sm sm:text-base font-semibold text-foreground/80 group-hover:text-foreground transition-colors leading-tight block">
+                    {item.label}
+                  </span>
+                  <span className="hidden md:block text-xs text-muted-foreground/50 group-hover:text-muted-foreground/70 transition-colors mt-1">
+                    {item.accent}
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
-      
-      {/* Bottom area with buttons and scroll arrow */}
-      <div className="w-full flex flex-col items-center justify-center mb-0 pb-4 sm:pb-4 sm:mb-4 md:mb-6 mt-4 relative z-40">
-        {/* Buttons */}
-        <div className="flex items-center justify-center gap-x-6 flex-wrap gap-y-4">
+      {/* Utility Cards */}
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 mt-3 sm:mt-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          {/* Resume */}
           <a
             href={socialLinks.resume}
-            className="rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm transition-colors bg-primary text-primary-content hover:bg-transparent hover:text-primary border border-transparent hover:border-primary"
-            aria-label="Download Arjun's resume as PDF"
-            title="Download Resume"
-            download
+            download={socialLinks.resumeDownloadName}
+            className="group relative rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm hover:bg-card/60 hover:border-border transition-all duration-300 overflow-hidden
+                       h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80"
           >
-            Download Resume
+            <ArrowUpRight className="md:hidden absolute top-3 right-3 w-4 h-4 text-muted-foreground/40 group-hover:text-foreground/70 transition-colors z-10" />
+            <div className="absolute inset-0 flex items-end px-4 pb-5 md:pb-5 md:pl-5 z-10">
+              <span className="text-sm sm:text-base font-semibold text-foreground/80 group-hover:text-foreground transition-colors leading-tight">
+                Resume
+              </span>
+            </div>
           </a>
-          <a 
-            href="#contact" 
-            className="text-sm font-semibold leading-6 text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1" 
-            aria-label="Jump to contact section" 
-            title="Contact Me"
+
+          {/* Contact */}
+          <a
+            href="#contact"
+            className="group relative rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm hover:bg-card/60 hover:border-border transition-all duration-300 overflow-hidden
+                       h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80"
           >
-            Contact Me <ArrowRight className="w-4 h-4" />
+            <ArrowUpRight className="md:hidden absolute top-3 right-3 w-4 h-4 text-muted-foreground/40 group-hover:text-foreground/70 transition-colors z-10" />
+            <div className="absolute inset-0 flex items-end px-4 pb-5 md:pb-5 md:pl-5 z-10">
+              <span className="text-sm sm:text-base font-semibold text-foreground/80 group-hover:text-foreground transition-colors leading-tight">
+                Contact
+              </span>
+            </div>
           </a>
+
+          {/* Blog */}
+          <Link
+            href="/blog"
+            className="group relative rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm hover:bg-card/60 hover:border-border transition-all duration-300 overflow-hidden
+                       h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80"
+          >
+            <ArrowUpRight className="md:hidden absolute top-3 right-3 w-4 h-4 text-muted-foreground/40 group-hover:text-foreground/70 transition-colors z-10" />
+            <div className="absolute inset-0 flex items-end px-4 pb-5 md:pb-5 md:pl-5 z-10">
+              <span className="text-sm sm:text-base font-semibold text-foreground/80 group-hover:text-foreground transition-colors leading-tight">
+                Blog
+              </span>
+            </div>
+          </Link>
+
+          {/* Socials */}
+          <div className="h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80 grid grid-cols-2 md:grid-cols-2 md:grid-rows-2 gap-3 sm:gap-4">
+              <a
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="me noopener noreferrer"
+                aria-label="LinkedIn"
+                className="rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm hover:bg-card/60 hover:border-border transition-all duration-300 flex items-center justify-center group/icon"
+              >
+                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-muted-foreground group-hover/icon:text-foreground transition-colors" />
+              </a>
+              <a
+                href={socialLinks.github}
+                target="_blank"
+                rel="me noopener noreferrer"
+                aria-label="GitHub"
+                className="rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm hover:bg-card/60 hover:border-border transition-all duration-300 flex items-center justify-center group/icon"
+              >
+                <Github className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-muted-foreground group-hover/icon:text-foreground transition-colors" />
+              </a>
+          </div>
         </div>
-        
-        {/* Scroll down indicator */}
+      </div>
+
+      {/* Scroll down indicator */}
+      <div className="w-full flex flex-col items-center justify-center mb-0 pb-4 sm:pb-4 sm:mb-4 md:mb-6 mt-4 relative z-40">
         <div className={cn(
             "mt-8 pb-4 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
