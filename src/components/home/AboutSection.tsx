@@ -15,7 +15,7 @@ export function AboutSection() {
           <div className="md:col-span-4 flex justify-center md:justify-start">
             <div className="relative w-full max-w-xs aspect-square rounded-2xl overflow-hidden border border-border/50 shadow-2xl group bg-muted">
               <Image 
-                src="/arjun-bishnoi-profile.png" 
+                src="/arjun-bishnoi-profile-square.jpg" 
                 alt="Arjun Bishnoi - Full Stack Developer & UI/UX Designer" 
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -31,16 +31,16 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Arjun Bishnoi - Web & Mobile Designer/Developer",
-    description: "Mobile apps, web development, and design. Consistent, hands-on, and always evolving.",
+    title: "Arjun Bishnoi — Mobile Apps, AI & Design",
+    description: "Consistent, hands-on, and always evolving.",
     url: "https://arjunbishnoi.com/",
     siteName: "Arjun Bishnoi",
     images: [
       {
-        url: "https://arjunbishnoi.com/arjun-bishnoi-profile.png",
+        url: "https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg",
         width: 1200,
-        height: 630,
-        alt: "Arjun Bishnoi Profile",
+        height: 1200,
+        alt: "Arjun Bishnoi",
       },
     ],
     locale: "en_US",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arjun Bishnoi - Web & Mobile Designer/Developer",
-    description: "Mobile apps, web development, and design. Consistent, hands-on, and always evolving.",
-    images: ["https://arjunbishnoi.com/arjun-bishnoi-profile.png"],
+    title: "Arjun Bishnoi — Mobile Apps, AI & Design",
+    description: "Consistent, hands-on, and always evolving.",
+    images: ["https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg"],
   },
   appleWebApp: {
     capable: true,
@@ -79,7 +79,7 @@ const jsonLd = {
         "https://github.com/arjunbishnoi",
         "https://linkedin.com/in/arjunbishnoi"
       ],
-      "image": "https://arjunbishnoi.com/arjun-bishnoi-profile.png",
+      "image": "https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg",
       "jobTitle": "Full Stack Developer & UI/UX Designer",
       "worksFor": {
         "@type": "Organization",
