@@ -32,7 +32,7 @@ export function HeroSection() {
                     Mobile, AI &amp; Web
                 </span>
                 <span 
-                    className="block text-center w-full whitespace-nowrap leading-[0.95] bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 animate-gradient bg-[length:200%_auto] pb-2" // Changed py-2 to pb-2
+                    className="block text-center w-full whitespace-nowrap leading-[0.95] bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 animate-gradient bg-[length:200%_auto] pb-2"
                     style={{ fontSize: "clamp(1.5rem, 6vw, 3rem)" }}
                 >
                     Designer / Developer

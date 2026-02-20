@@ -68,7 +68,7 @@ const jsonLd = {
     {
       "@type": "WebSite",
       "name": "Arjun Bishnoi",
-      "url": "https://arjunbishnoi.com",
+      "url": "https://arjunbishnoi.com/",
       "alternateName": ["arjunbishnoi.com"]
     },
     {
