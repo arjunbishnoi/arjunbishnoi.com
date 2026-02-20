@@ -184,7 +184,18 @@ export function HeroSection() {
                 </svg>
               ),
             }
-          ].map((item: any) => (
+          ].map((item: {
+            href: string
+            label: string
+            accent: string
+            customBg?: string
+            titleColor?: string
+            accentColor?: string
+            iconColor?: string
+            gradient?: string
+            borderColor?: string
+            shapeElement: React.ReactNode
+          }) => (
             <Link
               key={item.href}
               href={item.href}

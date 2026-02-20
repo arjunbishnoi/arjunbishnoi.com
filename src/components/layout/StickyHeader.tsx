@@ -80,11 +80,11 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                     (isStuck) ? "opacity-100" : "opacity-100"
                 )}
             >
-                <div className="w-full flex justify-center transition-all duration-700 ease-[cubic-bezier(0.32,_0.72,_0,_1)]">
+                <div className="w-full flex justify-center transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
                      <Link
                         href={to}
                         className={cn(
-                            "group flex items-center relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.32,_0.72,_0,_1)] border",
+                            "group flex items-center relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] border",
                             isStuck
                              ? cn(
                                  "backdrop-blur-md rounded-full pl-6 pr-2 py-2 shadow-lg w-[150px]",
@@ -97,7 +97,7 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                      >
                         <div 
                           className={cn(
-                            "overflow-hidden flex items-center flex-grow transition-all ease-[cubic-bezier(0.32,_0.72,_0,_1)] py-1",
+                            "overflow-hidden flex items-center flex-grow transition-all ease-[cubic-bezier(0.32,0.72,0,1)] py-1",
                             isStuck 
                             ? "duration-500 delay-400 opacity-100" 
                             : "max-w-0 duration-300 opacity-0"
@@ -117,7 +117,7 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                          {/* Title (Large / Unstuck State) */}
                         <div
                             className={cn(
-                                "overflow-hidden flex items-center transition-all ease-[cubic-bezier(0.32,_0.72,_0,_1)] pr-4",
+                                "overflow-hidden flex items-center transition-all ease-[cubic-bezier(0.32,0.72,0,1)] pr-4",
                                 isStuck ? "max-w-0 duration-500 opacity-0" : "max-w-[500px] duration-500 opacity-100"
                             )}
                         >
