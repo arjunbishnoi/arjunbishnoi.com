@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -53,10 +53,6 @@ export const metadata: Metadata = {
     description: "Consistent, hands-on, and always evolving.",
     images: ["https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg"],
   },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
   appleWebApp: {
     capable: true,
     title: "Arjun Bishnoi",
@@ -65,6 +61,13 @@ export const metadata: Metadata = {
   other: {
     "mobile-web-app-capable": "yes",
   }
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
 };
 
 const jsonLd = {
