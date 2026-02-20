@@ -1,5 +1,4 @@
 import { skills, learning } from "@/lib/site-data"
-import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { SkillCard } from "@/components/skills/SkillCard"
 import Link from "next/link"
@@ -26,7 +25,6 @@ export const metadata: Metadata = {
 export default function SkillsPage() {
   return (
     <main className="min-h-screen bg-background text-foreground pt-24">
-      <Header />
 
       {/* Header */}
       <div className="pt-8 pb-8 relative overflow-hidden">

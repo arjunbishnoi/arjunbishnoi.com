@@ -1,6 +1,5 @@
 import { ProjectCard } from "@/components/projects/ProjectCard"
 import { projects } from "@/lib/site-data"
-import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import Image from "next/image"
 import { ExternalLink } from "lucide-react"
@@ -29,7 +28,6 @@ export default function ProjectsPage() {
   
   return (
     <main className="min-h-screen bg-background text-foreground pt-24">
-      <Header />
       
       {/* Header with animated gradient underline */}
       <div className="pt-8 pb-8 relative overflow-hidden">
