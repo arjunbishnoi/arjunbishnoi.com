@@ -33,18 +33,20 @@ export function HeroSection() {
                     <span className="text-foreground">Mobile Apps, </span>
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 animate-gradient bg-[length:200%_auto]">AI</span>
                     <span className="text-foreground"> &amp; </span>
-                    <span className="relative inline-block text-foreground">
-                      Design
+                    <span className="relative inline-block text-foreground z-10">
+                      <span className="relative z-10 [text-shadow:0_4px_6px_rgba(255,255,255,0.8),0_8px_12px_rgba(255,255,255,0.6),32px_14px_8px_#fff,32px_16px_14px_#fff] dark:[text-shadow:0_4px_6px_rgba(0,0,0,0.8),0_8px_12px_rgba(0,0,0,0.6)]">
+                        Design
+                      </span>
                       <svg 
-                        className="absolute -bottom-2 md:-bottom-3 left-[-2%] w-[104%] h-3 md:h-4 text-indigo-500/80 dark:text-indigo-400/80 -rotate-2" 
+                        className="absolute -bottom-2 md:-bottom-3 left-[-2%] w-[104%] h-3 md:h-4 text-black dark:text-white -rotate-2 -z-10" 
                         viewBox="0 0 100 20" 
                         preserveAspectRatio="none" 
                         aria-hidden="true"
                       >
                         <path 
-                          d="M5 15 Q 30 5 60 12 T 95 8" 
+                          d="M5 15 Q 50 5 95 15" 
                           stroke="currentColor" 
-                          strokeWidth="3.5" 
+                          strokeWidth="5.5" 
                           fill="none" 
                           strokeLinecap="round" 
                         />
