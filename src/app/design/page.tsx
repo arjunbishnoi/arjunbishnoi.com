@@ -3,7 +3,7 @@ import { Footer } from "@/components/layout/Footer"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "UI/UX Design | Arjun Bishnoi",
+  title: "Design — Arjun Bishnoi",
   description: "User interface and experience design with Figma, prototyping, and design systems.",
   robots: { index: false, follow: true },
 }

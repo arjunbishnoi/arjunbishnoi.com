@@ -3,7 +3,7 @@ import { Footer } from "@/components/layout/Footer"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Mobile Apps | Arjun Bishnoi",
+  title: "Mobile Apps — Arjun Bishnoi",
   description: "Cross-platform mobile app development with React Native, SwiftUI, and Kotlin.",
   robots: { index: false, follow: true },
 }
