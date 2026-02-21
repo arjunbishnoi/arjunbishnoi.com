@@ -67,7 +67,7 @@ export function HeroSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {[
             { 
-              href: "/mobile-apps", 
+              href: "/apps", 
               label: "Cross-platform Mobile Apps", 
               accent: "iOS · Android · React Native",
               gradient: "from-violet-500/40 via-purple-500/25 to-transparent dark:from-violet-500/30 dark:via-purple-500/20",
@@ -94,7 +94,7 @@ export function HeroSection() {
               ),
             },
             { 
-              href: "/ai-engineering", 
+              href: "/ai", 
               label: "AI Engineering", 
               accent: "ML · LLMs · Intelligent Systems",
               gradient: "from-emerald-500/40 via-teal-500/25 to-transparent dark:from-emerald-500/30 dark:via-teal-500/20",
@@ -132,7 +132,7 @@ export function HeroSection() {
               ),
             },
             { 
-              href: "/ui-ux-design", 
+              href: "/design", 
               label: "Design", 
               accent: "Figma · Prototyping · Design Systems",
               gradient: "from-rose-500/40 via-pink-500/25 to-transparent dark:from-rose-500/30 dark:via-pink-500/20",

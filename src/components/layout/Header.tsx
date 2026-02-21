@@ -140,13 +140,14 @@ export function Header() {
             </button>
              )}
             
-            <a
-                href={socialLinks.email}
+            <Link
+                href="/#contact"
                 className="flex items-center justify-center w-8 h-8 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
-                aria-label="Send email"
+                aria-label="Contact section"
+                onClick={() => setIsMobileMenuOpen(false)}
             >
                 <Mail className="w-4 h-4" strokeWidth={2} />
-            </a>
+            </Link>
 
             <a
                 href={socialLinks.resume}
@@ -169,12 +170,13 @@ export function Header() {
              </button>
              )}
             
-            <a
-                href={socialLinks.email}
+            <Link
+                href="/#contact"
                 className="flex items-center justify-center w-8 h-8 rounded-md transition-colors text-muted-foreground active:text-foreground"
+                onClick={() => setIsMobileMenuOpen(false)}
             >
                 <Mail className="w-4 h-4" strokeWidth={2} />
-            </a>
+            </Link>
 
             <a
                 href={socialLinks.resume}

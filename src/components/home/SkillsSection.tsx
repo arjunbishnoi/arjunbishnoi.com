@@ -8,7 +8,7 @@ export function SkillsSection() {
   return (
     <section id="skills" className="relative py-16 bg-background">
       {/* Sticky header */}
-      <StickyHeader title="Skills" to="/skills" />
+      <StickyHeader title="Skills" to="/#skills" />
       
       {/* Skills content */}
       <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
