@@ -1,8 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { Loader2, Check } from "lucide-react"
+import { Loader2, Check, Github, Linkedin, Download, Mail } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { socialLinks } from "@/lib/site-data"
 
 // import { useStickyObserver } from "@/hooks/use-sticky-observer"
 
@@ -62,23 +63,65 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" ref={sectionRef} className="relative py-16 z-40 bg-background">
+    <section id="contact" ref={sectionRef} className="relative py-10 z-40 bg-background">
       {/* Static Header */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-2 sm:pb-4">
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">Contact</h2>
       </div>
       
       {/* Contact content */}
-      <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center mb-12">
-          <h3 className="text-xl font-semibold text-foreground mb-4">Get In Touch</h3>
-          <p className="text-muted-foreground">
+      <div className="mx-auto max-w-7xl px-6 pt-6 sm:pt-8 lg:px-8">
+        <div className="max-w-2xl mx-auto text-left sm:text-center mb-12">
+          <p className="text-muted-foreground mb-8">
             I&apos;m currently open to new opportunities and collaborations. Whether you have a question, 
             a project in mind, or just want to say hello, feel free to reach out!
           </p>
+
+          {/* Social & Direct Contact Links */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 mb-2 mt-4 w-full">
+            {/* Top row on mobile: Social + Resume */}
+            <div className="flex gap-3 w-full sm:w-auto">
+              <a
+                href={socialLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-12 h-12 rounded-2xl bg-muted text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition-all shadow-sm shrink-0"
+                aria-label="GitHub Profile"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-12 h-12 rounded-2xl bg-muted text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition-all shadow-sm shrink-0"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+
+              <a
+                href={socialLinks.resume}
+                download={socialLinks.resumeDownloadName}
+                className="flex flex-1 sm:flex-auto items-center justify-center gap-2 px-5 h-12 rounded-2xl bg-muted text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition-all font-medium text-sm shadow-sm whitespace-nowrap"
+              >
+                <Download className="w-4 h-4" />
+                <span>Resume</span>
+              </a>
+            </div>
+
+            {/* Bottom row on mobile: Email */}
+            <a
+              href={socialLinks.email}
+              className="flex w-full sm:w-auto items-center justify-center gap-2 px-5 h-12 rounded-2xl bg-muted text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition-all font-medium text-sm shadow-sm whitespace-nowrap"
+            >
+              <Mail className="w-4 h-4" />
+              <span>contact@arjunbishnoi.com</span>
+            </a>
+          </div>
         </div>
         
-        <div className="max-w-xl mx-auto">
+        <div className="max-w-xl mx-auto mt-12 border-t border-border/50 pt-10">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-1">Name</label>
@@ -88,7 +131,7 @@ export function ContactSection() {
                 type="text" 
                 name="name"
                 id="name" 
-                className="block w-full rounded-md border-0 bg-muted text-foreground shadow-sm px-4 py-2.5 focus:ring-2 focus:ring-primary placeholder:text-muted-foreground/50"
+                className="block w-full rounded-2xl border-0 bg-muted text-foreground shadow-sm px-4 py-2.5 focus:ring-2 focus:ring-primary placeholder:text-muted-foreground/50"
                 placeholder="Your name"
                 required
                 disabled={isLoading || isSuccess}
@@ -103,7 +146,7 @@ export function ContactSection() {
                 type="email" 
                 name="email"
                 id="email" 
-                className="block w-full rounded-md border-0 bg-muted text-foreground shadow-sm px-4 py-2.5 focus:ring-2 focus:ring-primary placeholder:text-muted-foreground/50"
+                className="block w-full rounded-2xl border-0 bg-muted text-foreground shadow-sm px-4 py-2.5 focus:ring-2 focus:ring-primary placeholder:text-muted-foreground/50"
                 placeholder="your.email@example.com"
                 required
                 disabled={isLoading || isSuccess}
@@ -118,7 +161,7 @@ export function ContactSection() {
                 name="message"
                 id="message" 
                 rows={4} 
-                className="block w-full rounded-md border-0 bg-muted text-foreground shadow-sm px-4 py-2.5 focus:ring-2 focus:ring-primary placeholder:text-muted-foreground/50"
+                className="block w-full rounded-2xl border-0 bg-muted text-foreground shadow-sm px-4 py-2.5 focus:ring-2 focus:ring-primary placeholder:text-muted-foreground/50"
                 placeholder="Your message here..."
                 required
                 disabled={isLoading || isSuccess}
@@ -129,7 +172,7 @@ export function ContactSection() {
               <button 
                 type="submit" 
                 className={cn(
-                  "w-full rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-content shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-300 flex items-center justify-center min-h-[44px]",
+                  "w-full rounded-2xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-content shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-300 flex items-center justify-center min-h-[44px]",
                   isSuccess && "bg-green-600 hover:bg-green-700 text-white",
                   isLoading && "opacity-80 cursor-not-allowed"
                 )}

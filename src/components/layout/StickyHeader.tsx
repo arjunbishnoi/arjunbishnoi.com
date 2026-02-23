@@ -67,10 +67,10 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
     <div ref={placeholderRef} className="h-16 relative z-30">
         <div
             className={cn(
-                "transition-all duration-0 h-16 flex items-center", // Added h-16 and flex items-center
+                "transition-all duration-0 h-16 flex items-center",
                 isStuck 
-                ? "fixed left-0 right-0 z-40 justify-center pointer-events-none"
-                : "absolute inset-0 z-30 justify-center"
+                ? "fixed md:relative left-0 right-0 z-40 justify-center pointer-events-none md:pointer-events-auto md:!top-auto"
+                : "absolute md:relative inset-0 z-30 justify-center"
             )}
             style={{ top: isStuck ? "calc(var(--navbar-height, 3.5rem) + 0.25rem)" : "0" }}
         >
@@ -87,50 +87,52 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                             "group flex items-center relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] border",
                             isStuck
                              ? cn(
-                                 "backdrop-blur-md rounded-full pl-6 pr-2 py-2 shadow-lg w-[150px]",
+                                 "backdrop-blur-md rounded-full shadow-lg transition-all",
+                                 "md:w-full md:px-0 md:bg-transparent md:border-transparent md:shadow-none md:rounded-none", // Desktop sticky: full width, transparent
+                                 "w-[150px] pl-6 pr-2 py-2", // Mobile sticky: pill shape
                                  mounted && theme === "dark" 
-                                    ? "bg-black/80 border-white/10 hover:bg-white/10" 
-                                    : "bg-white/80 border-black/5 hover:bg-black/5"
+                                    ? "bg-black/80 border-white/10 hover:bg-white/10 md:bg-transparent md:border-transparent md:hover:bg-transparent" 
+                                    : "bg-white/80 border-black/5 hover:bg-black/5 md:bg-transparent md:border-transparent md:hover:bg-transparent"
                                )
                              : "w-full bg-transparent border-transparent"
                         )}
                      >
+                        {/* Title - MOBILE MORPHING ANIMATED */}
                         <div 
                           className={cn(
-                            "overflow-hidden flex items-center flex-grow transition-all ease-[cubic-bezier(0.32,0.72,0,1)] py-1",
+                            "overflow-hidden flex items-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden", 
                             isStuck 
-                            ? "duration-500 delay-400 opacity-100" 
-                            : "max-w-0 duration-300 opacity-0"
+                            ? "flex-grow pl-1 pr-0" 
+                            : "flex-grow-0 pl-0 pr-4"
                           )}
                         >
                           <span 
                             className={cn(
-                              "text-sm font-medium whitespace-nowrap transition-all ease-out pl-0 -translate-y-[1px]", 
-                              mounted && theme === "dark" ? "text-white group-hover:text-white" : "text-foreground group-hover:text-foreground",
-                              isStuck ? "opacity-100 duration-300 delay-500" : "opacity-0 duration-200"
+                              "whitespace-nowrap transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]", 
+                              isStuck ? "text-sm font-medium -translate-y-[1px]" : "text-2xl font-bold translate-y-0",
+                              mounted && theme === "dark" 
+                                ? (isStuck ? "text-white group-hover:text-white" : "text-white group-hover:text-accent")
+                                : (isStuck ? "text-foreground group-hover:text-foreground" : "text-foreground group-hover:text-accent")
                             )}
                           >
                            {title}
                           </span>
                         </div>
-                        
-                         {/* Title (Large / Unstuck State) */}
+
+                         {/* Title (Large / Unstuck State - DESKTOP STATIC) */}
                         <div
                             className={cn(
-                                "overflow-hidden flex items-center transition-all ease-[cubic-bezier(0.32,0.72,0,1)] pr-4",
-                                isStuck ? "max-w-0 duration-500 opacity-0" : "max-w-[500px] duration-500 opacity-100"
+                                "hidden md:flex overflow-hidden items-center transition-all pr-4 max-w-[500px] opacity-100"
                             )}
                         >
-                            {!isStuck && (
-                                <span
-                                    className={cn(
-                                        "text-2xl font-bold whitespace-nowrap transition-all ease-out delay-200",
-                                        mounted && theme === "dark" ? "text-white group-hover:text-accent" : "text-foreground group-hover:text-accent"
-                                    )}
-                                >
-                                    {title}
-                                </span>
-                            )}
+                            <span
+                                className={cn(
+                                    "text-2xl font-bold whitespace-nowrap transition-all ease-out",
+                                    mounted && theme === "dark" ? "text-white group-hover:text-accent" : "text-foreground group-hover:text-accent"
+                                )}
+                            >
+                                {title}
+                            </span>
                         </div>
 
                         {/* Arrow (Circle Background) - Always visible */}

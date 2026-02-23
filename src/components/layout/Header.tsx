@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Moon, Sun, Mail, Download, Heart, ArrowUpRight } from "lucide-react"
+import { X, Moon, Sun, Mail, Heart, ArrowUpRight } from "lucide-react"
 import { navigationItems, socialLinks } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -133,30 +133,21 @@ export function Header() {
              {mounted && (
                 <button
                 onClick={toggleTheme}
-                className="flex items-center justify-center w-8 h-8 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
                 aria-label="Toggle theme"
             >
-                {theme === "dark" ? <Sun className="w-4 h-4" strokeWidth={2} /> : <Moon className="w-4 h-4" strokeWidth={2} />}
+                {theme === "dark" ? <Sun className="w-5 h-5" strokeWidth={2} /> : <Moon className="w-5 h-5" strokeWidth={2} />}
             </button>
              )}
             
             <Link
                 href="/#contact"
-                className="flex items-center justify-center w-8 h-8 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
                 aria-label="Contact section"
                 onClick={() => setIsMobileMenuOpen(false)}
             >
-                <Mail className="w-4 h-4" strokeWidth={2} />
+                <Mail className="w-5 h-5" strokeWidth={2} />
             </Link>
-
-            <a
-                href={socialLinks.resume}
-                download={socialLinks.resumeDownloadName}
-                 className="flex items-center justify-center w-8 h-8 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
-                 aria-label="Download Resume"
-            >
-                <Download className="w-4 h-4" strokeWidth={2} />
-            </a>
           </div>
 
           {/* Mobile Actions - Anchored Right */}
@@ -164,34 +155,26 @@ export function Header() {
              {mounted && (
                  <button
                  onClick={toggleTheme}
-                 className="flex items-center justify-center w-8 h-8 rounded-md transition-colors text-muted-foreground active:text-foreground"
+                 className="flex items-center justify-center w-10 h-10 rounded-md transition-colors text-muted-foreground active:text-foreground"
              >
-                  {theme === "dark" ? <Sun className="w-4 h-4" strokeWidth={2} /> : <Moon className="w-4 h-4" strokeWidth={2} />}
+                  {theme === "dark" ? <Sun className="w-5 h-5" strokeWidth={2} /> : <Moon className="w-5 h-5" strokeWidth={2} />}
              </button>
              )}
             
             <Link
                 href="/#contact"
-                className="flex items-center justify-center w-8 h-8 rounded-md transition-colors text-muted-foreground active:text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-md transition-colors text-muted-foreground active:text-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
             >
-                <Mail className="w-4 h-4" strokeWidth={2} />
+                <Mail className="w-5 h-5" strokeWidth={2} />
             </Link>
-
-            <a
-                href={socialLinks.resume}
-                download={socialLinks.resumeDownloadName}
-                className="flex items-center justify-center w-8 h-8 rounded-md transition-colors text-muted-foreground active:text-foreground"
-            >
-                 <Download className="w-4 h-4" strokeWidth={2} />
-            </a>
 
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="flex items-center justify-center w-8 h-8 rounded-md cursor-pointer transition-colors text-muted-foreground active:text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-md cursor-pointer transition-colors text-muted-foreground active:text-foreground"
             >
                  <span className="sr-only">Open main menu</span>
-                 <div className="relative w-4 h-4 flex items-center justify-center">
+                 <div className="relative w-6 h-6 flex items-center justify-center">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -201,16 +184,16 @@ export function Header() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         className={cn(
-                            "w-4 h-4 absolute transition-all duration-300 ease-in-out",
+                            "w-6 h-6 absolute transition-all duration-300 ease-in-out",
                              isMobileMenuOpen ? "opacity-0 rotate-90 scale-0" : "opacity-100 rotate-0 scale-100"
                         )}
                     >
-                        <line x1="4" x2="20" y1="8" y2="8" />
-                        <line x1="4" x2="20" y1="16" y2="16" />
+                        <line x1="3" x2="21" y1="8" y2="8" />
+                        <line x1="3" x2="21" y1="16" y2="16" />
                     </svg>
                     <X 
                         className={cn(
-                            "w-4 h-4 absolute transition-all duration-300 ease-in-out",
+                            "w-6 h-6 absolute transition-all duration-300 ease-in-out",
                             isMobileMenuOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-0"
                         )}
                         strokeWidth={2}

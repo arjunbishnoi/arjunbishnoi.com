@@ -13,7 +13,7 @@ export function ProjectsSection() {
       <StickyHeader title="Projects" to="/projects" />
       
       {/* Projects content */}
-      <div className="mx-auto max-w-7xl px-6 pt-4 lg:px-8 pb-24">
+      <div className="mx-auto max-w-7xl px-6 pt-4 lg:px-8 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {featuredProjects.map((project) => (
             <ProjectCard 

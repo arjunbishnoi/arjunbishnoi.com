@@ -30,9 +30,7 @@ export function HeroSection() {
                     className="block text-center w-full whitespace-nowrap leading-[0.95] pb-2"
                     style={{ fontSize: "clamp(1.5rem, 6vw, 3rem)" }}
                 >
-                    <span className="text-foreground">Mobile Apps, </span>
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 animate-gradient bg-[length:200%_auto]">AI</span>
-                    <span className="text-foreground"> &amp; </span>
+                    <span className="text-foreground">Mobile Apps, AI &amp; </span>
                     <span className="relative inline-block text-foreground z-10">
                       <span className="relative z-10 [text-shadow:0_4px_6px_rgba(255,255,255,0.8),0_8px_12px_rgba(255,255,255,0.6),32px_14px_8px_#fff,32px_16px_14px_#fff] dark:[text-shadow:0_4px_6px_rgba(0,0,0,0.8),0_8px_12px_rgba(0,0,0,0.6)]">
                         Design
@@ -68,28 +66,28 @@ export function HeroSection() {
           {[
             { 
               href: "/apps", 
-              label: "Cross-platform Mobile Apps", 
+              label: "Mobile Apps", 
               accent: "iOS · Android · React Native",
-              gradient: "from-violet-500/40 via-purple-500/25 to-transparent dark:from-violet-500/30 dark:via-purple-500/20",
-              borderColor: "border-violet-500/20 dark:border-violet-500/30 hover:border-violet-500/50 dark:hover:border-violet-500/50",
+              gradient: "from-rose-500/40 via-pink-500/25 to-transparent dark:from-rose-500/30 dark:via-pink-500/20",
+              borderColor: "border-rose-500/20 dark:border-rose-500/30 hover:border-rose-500/50 dark:hover:border-rose-500/50",
               shapeElement: (
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 300" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                   {/* Floating phone screens / app cards */}
-                  <rect x="110" y="30" width="50" height="80" rx="10" fill="currentColor" className="text-violet-600/[0.25] dark:text-violet-400/[0.1]" transform="rotate(12 135 70)" />
-                  <rect x="120" y="40" width="50" height="80" rx="10" stroke="currentColor" strokeWidth="1.5" className="text-violet-600/[0.4] dark:text-violet-400/[0.15]" transform="rotate(12 145 80)" />
-                  <rect x="30" y="60" width="44" height="72" rx="9" fill="currentColor" className="text-purple-600/[0.25] dark:text-purple-400/[0.09]" transform="rotate(-8 52 96)" />
-                  <rect x="35" y="65" width="44" height="72" rx="9" stroke="currentColor" strokeWidth="1.2" className="text-purple-600/[0.35] dark:text-purple-400/[0.13]" transform="rotate(-8 57 101)" />
+                  <rect x="110" y="30" width="50" height="80" rx="10" fill="currentColor" className="text-rose-600/[0.25] dark:text-rose-400/[0.1]" transform="rotate(12 135 70)" />
+                  <rect x="120" y="40" width="50" height="80" rx="10" stroke="currentColor" strokeWidth="1.5" className="text-rose-600/[0.4] dark:text-rose-400/[0.15]" transform="rotate(12 145 80)" />
+                  <rect x="30" y="60" width="44" height="72" rx="9" fill="currentColor" className="text-pink-600/[0.25] dark:text-pink-400/[0.09]" transform="rotate(-8 52 96)" />
+                  <rect x="35" y="65" width="44" height="72" rx="9" stroke="currentColor" strokeWidth="1.2" className="text-pink-600/[0.35] dark:text-pink-400/[0.13]" transform="rotate(-8 57 101)" />
                   {/* Small dots for app icons */}
-                  <circle cx="135" cy="55" r="4" fill="currentColor" className="text-violet-600/[0.5] dark:text-violet-400/[0.18]" />
-                  <circle cx="148" cy="55" r="4" fill="currentColor" className="text-violet-500/[0.4] dark:text-violet-300/[0.15]" />
-                  <circle cx="135" cy="68" r="4" fill="currentColor" className="text-purple-600/[0.4] dark:text-purple-400/[0.14]" />
-                  <circle cx="148" cy="68" r="4" fill="currentColor" className="text-violet-600/[0.3] dark:text-violet-400/[0.12]" />
+                  <circle cx="135" cy="55" r="4" fill="currentColor" className="text-rose-600/[0.5] dark:text-rose-400/[0.18]" />
+                  <circle cx="148" cy="55" r="4" fill="currentColor" className="text-rose-500/[0.4] dark:text-rose-300/[0.15]" />
+                  <circle cx="135" cy="68" r="4" fill="currentColor" className="text-pink-600/[0.4] dark:text-pink-400/[0.14]" />
+                  <circle cx="148" cy="68" r="4" fill="currentColor" className="text-rose-600/[0.3] dark:text-rose-400/[0.12]" />
                   {/* Floating notification pill */}
-                  <rect x="85" y="140" width="60" height="18" rx="9" fill="currentColor" className="text-violet-600/[0.2] dark:text-violet-400/[0.08]" />
-                  <rect x="80" y="170" width="45" height="14" rx="7" fill="currentColor" className="text-purple-600/[0.15] dark:text-purple-400/[0.07]" />
+                  <rect x="85" y="140" width="60" height="18" rx="9" fill="currentColor" className="text-rose-600/[0.2] dark:text-rose-400/[0.08]" />
+                  <rect x="80" y="170" width="45" height="14" rx="7" fill="currentColor" className="text-pink-600/[0.15] dark:text-pink-400/[0.07]" />
                   {/* Decorative circles */}
-                  <circle cx="160" cy="200" r="20" stroke="currentColor" strokeWidth="1" className="text-violet-600/[0.25] dark:text-violet-400/[0.1]" />
-                  <circle cx="40" cy="180" r="14" fill="currentColor" className="text-purple-600/[0.15] dark:text-purple-400/[0.07]" />
+                  <circle cx="160" cy="200" r="20" stroke="currentColor" strokeWidth="1" className="text-rose-600/[0.25] dark:text-rose-400/[0.1]" />
+                  <circle cx="40" cy="180" r="14" fill="currentColor" className="text-pink-600/[0.15] dark:text-pink-400/[0.07]" />
                 </svg>
               ),
             },
@@ -97,70 +95,71 @@ export function HeroSection() {
               href: "/ai", 
               label: "AI Engineering", 
               accent: "ML · LLMs · Intelligent Systems",
-              gradient: "from-emerald-500/40 via-teal-500/25 to-transparent dark:from-emerald-500/30 dark:via-teal-500/20",
-              borderColor: "border-emerald-500/20 dark:border-emerald-500/30 hover:border-emerald-500/50 dark:hover:border-emerald-500/50",
+              gradient: "from-violet-500/40 via-purple-500/25 to-transparent dark:from-violet-500/30 dark:via-purple-500/20",
+              borderColor: "border-violet-500/20 dark:border-violet-500/30 hover:border-violet-500/50 dark:hover:border-violet-500/50",
               shapeElement: (
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 300" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                   {/* Neural network nodes and connections */}
                   {/* Layer 1 nodes */}
-                  <circle cx="40" cy="50" r="8" fill="currentColor" className="text-emerald-600/[0.3] dark:text-emerald-400/[0.12]" />
-                  <circle cx="40" cy="100" r="6" fill="currentColor" className="text-teal-600/[0.25] dark:text-teal-400/[0.1]" />
-                  <circle cx="40" cy="150" r="7" fill="currentColor" className="text-emerald-600/[0.25] dark:text-emerald-400/[0.11]" />
+                  <circle cx="40" cy="50" r="8" fill="currentColor" className="text-violet-600/[0.3] dark:text-violet-400/[0.12]" />
+                  <circle cx="40" cy="100" r="6" fill="currentColor" className="text-purple-600/[0.25] dark:text-purple-400/[0.1]" />
+                  <circle cx="40" cy="150" r="7" fill="currentColor" className="text-violet-600/[0.25] dark:text-violet-400/[0.11]" />
                   {/* Layer 2 nodes */}
-                  <circle cx="110" cy="70" r="10" fill="currentColor" className="text-emerald-600/[0.35] dark:text-emerald-400/[0.15]" />
-                  <circle cx="110" cy="130" r="8" fill="currentColor" className="text-teal-600/[0.3] dark:text-teal-400/[0.12]" />
+                  <circle cx="110" cy="70" r="10" fill="currentColor" className="text-violet-600/[0.35] dark:text-violet-400/[0.15]" />
+                  <circle cx="110" cy="130" r="8" fill="currentColor" className="text-purple-600/[0.3] dark:text-purple-400/[0.12]" />
                   {/* Layer 3 node */}
-                  <circle cx="170" cy="100" r="12" fill="currentColor" className="text-emerald-600/[0.25] dark:text-emerald-400/[0.1]" />
-                  <circle cx="170" cy="100" r="12" stroke="currentColor" strokeWidth="1.5" className="text-emerald-600/[0.35] dark:text-emerald-400/[0.15]" />
+                  <circle cx="170" cy="100" r="12" fill="currentColor" className="text-violet-600/[0.25] dark:text-violet-400/[0.1]" />
+                  <circle cx="170" cy="100" r="12" stroke="currentColor" strokeWidth="1.5" className="text-violet-600/[0.35] dark:text-violet-400/[0.15]" />
                   {/* Connection lines */}
-                  <line x1="48" y1="50" x2="100" y2="70" stroke="currentColor" strokeWidth="1" className="text-emerald-600/[0.25] dark:text-emerald-400/[0.1]" />
-                  <line x1="48" y1="50" x2="100" y2="130" stroke="currentColor" strokeWidth="0.8" className="text-teal-600/[0.2] dark:text-teal-400/[0.08]" />
-                  <line x1="46" y1="100" x2="100" y2="70" stroke="currentColor" strokeWidth="0.8" className="text-emerald-600/[0.2] dark:text-emerald-400/[0.09]" />
-                  <line x1="46" y1="100" x2="100" y2="130" stroke="currentColor" strokeWidth="1" className="text-teal-600/[0.25] dark:text-teal-400/[0.1]" />
-                  <line x1="47" y1="150" x2="100" y2="130" stroke="currentColor" strokeWidth="0.8" className="text-emerald-600/[0.2] dark:text-emerald-400/[0.08]" />
-                  <line x1="120" y1="70" x2="158" y2="100" stroke="currentColor" strokeWidth="1.2" className="text-emerald-600/[0.3] dark:text-emerald-400/[0.12]" />
-                  <line x1="118" y1="130" x2="158" y2="100" stroke="currentColor" strokeWidth="1" className="text-teal-600/[0.25] dark:text-teal-400/[0.1]" />
+                  <line x1="48" y1="50" x2="100" y2="70" stroke="currentColor" strokeWidth="1" className="text-violet-600/[0.25] dark:text-violet-400/[0.1]" />
+                  <line x1="48" y1="50" x2="100" y2="130" stroke="currentColor" strokeWidth="0.8" className="text-purple-600/[0.2] dark:text-purple-400/[0.08]" />
+                  <line x1="46" y1="100" x2="100" y2="70" stroke="currentColor" strokeWidth="0.8" className="text-violet-600/[0.2] dark:text-violet-400/[0.09]" />
+                  <line x1="46" y1="100" x2="100" y2="130" stroke="currentColor" strokeWidth="1" className="text-purple-600/[0.25] dark:text-purple-400/[0.1]" />
+                  <line x1="47" y1="150" x2="100" y2="130" stroke="currentColor" strokeWidth="0.8" className="text-violet-600/[0.2] dark:text-violet-400/[0.08]" />
+                  <line x1="120" y1="70" x2="158" y2="100" stroke="currentColor" strokeWidth="1.2" className="text-violet-600/[0.3] dark:text-violet-400/[0.12]" />
+                  <line x1="118" y1="130" x2="158" y2="100" stroke="currentColor" strokeWidth="1" className="text-purple-600/[0.25] dark:text-purple-400/[0.1]" />
                   {/* Pulsing data dots along connections */}
-                  <circle cx="75" cy="60" r="2.5" fill="currentColor" className="text-emerald-600/[0.5] dark:text-emerald-400/[0.22]" />
-                  <circle cx="75" cy="115" r="2" fill="currentColor" className="text-teal-600/[0.4] dark:text-teal-400/[0.18]" />
-                  <circle cx="140" cy="85" r="2.5" fill="currentColor" className="text-emerald-600/[0.45] dark:text-emerald-400/[0.2]" />
+                  <circle cx="75" cy="60" r="2.5" fill="currentColor" className="text-violet-600/[0.5] dark:text-violet-400/[0.22]" />
+                  <circle cx="75" cy="115" r="2" fill="currentColor" className="text-purple-600/[0.4] dark:text-purple-400/[0.18]" />
+                  <circle cx="140" cy="85" r="2.5" fill="currentColor" className="text-violet-600/[0.45] dark:text-violet-400/[0.2]" />
                   {/* Scatter more subtle brain-like dots */}
-                  <circle cx="150" cy="40" r="3" fill="currentColor" className="text-teal-600/[0.2] dark:text-teal-400/[0.08]" />
-                  <circle cx="60" cy="200" r="5" fill="currentColor" className="text-emerald-600/[0.15] dark:text-emerald-400/[0.07]" />
-                  <circle cx="140" cy="190" r="4" stroke="currentColor" strokeWidth="1" className="text-emerald-600/[0.25] dark:text-emerald-400/[0.1]" />
+                  <circle cx="150" cy="40" r="3" fill="currentColor" className="text-purple-600/[0.2] dark:text-purple-400/[0.08]" />
+                  <circle cx="60" cy="200" r="5" fill="currentColor" className="text-violet-600/[0.15] dark:text-violet-400/[0.07]" />
+                  <circle cx="140" cy="190" r="4" stroke="currentColor" strokeWidth="1" className="text-violet-600/[0.25] dark:text-violet-400/[0.1]" />
                 </svg>
               ),
             },
             { 
               href: "/design", 
               label: "Design", 
-              accent: "Figma · Prototyping · Design Systems",
-              gradient: "from-rose-500/40 via-pink-500/25 to-transparent dark:from-rose-500/30 dark:via-pink-500/20",
-              borderColor: "border-rose-500/20 dark:border-rose-500/30 hover:border-rose-500/50 dark:hover:border-rose-500/50",
+              accent: "Prototyping · Design Systems",
+              gradient: "from-[#FFDE59]/70 via-[#FFDE59]/30 to-transparent dark:from-[#FFDE59]/30 dark:via-[#FFDE59]/15",
+              borderColor: "border-[#FFDE59]/50 dark:border-[#FFDE59]/30 hover:border-[#FFDE59]/80 dark:hover:border-[#FFDE59]/50",
+              shapeWrapperClass: "group-hover:opacity-90 group-hover:saturate-110",
               shapeElement: (
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 300" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                   {/* Overlapping design circles */}
-                  <circle cx="80" cy="70" r="35" fill="currentColor" className="text-rose-600/[0.2] dark:text-rose-400/[0.08]" />
-                  <circle cx="110" cy="55" r="28" fill="currentColor" className="text-pink-600/[0.15] dark:text-pink-400/[0.07]" />
-                  <circle cx="130" cy="85" r="32" stroke="currentColor" strokeWidth="1.5" className="text-rose-600/[0.3] dark:text-rose-400/[0.13]" />
+                  <circle cx="80" cy="70" r="35" fill="currentColor" className="text-[#FFDE59]/[0.45] dark:text-[#FFDE59]/[0.15]" />
+                  <circle cx="110" cy="55" r="28" fill="currentColor" className="text-[#FFDE59]/[0.4] dark:text-[#FFDE59]/[0.1]" />
+                  <circle cx="130" cy="85" r="32" stroke="currentColor" strokeWidth="1.5" className="text-[#FFDE59]/[0.5] dark:text-[#FFDE59]/[0.2]" />
                   {/* Pen tool bezier curve */}
-                  <path d="M40 110 C60 60, 120 160, 170 100" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="text-rose-600/[0.35] dark:text-rose-400/[0.15]" />
+                  <path d="M40 110 C60 60, 120 160, 170 100" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="text-[#FFDE59]/[0.6] dark:text-[#FFDE59]/[0.25]" />
                   {/* Bezier control handles */}
-                  <line x1="40" y1="110" x2="60" y2="60" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" className="text-pink-600/[0.3] dark:text-pink-400/[0.12]" />
-                  <line x1="170" y1="100" x2="120" y2="160" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" className="text-pink-600/[0.3] dark:text-pink-400/[0.12]" />
+                  <line x1="40" y1="110" x2="60" y2="60" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" className="text-[#FFDE59]/[0.5] dark:text-[#FFDE59]/[0.15]" />
+                  <line x1="170" y1="100" x2="120" y2="160" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" className="text-[#FFDE59]/[0.5] dark:text-[#FFDE59]/[0.15]" />
                   {/* Handle anchor points */}
-                  <circle cx="40" cy="110" r="3.5" fill="currentColor" className="text-rose-600/[0.5] dark:text-rose-400/[0.2]" />
-                  <circle cx="60" cy="60" r="2.5" stroke="currentColor" strokeWidth="1.2" className="text-pink-600/[0.4] dark:text-pink-400/[0.18]" />
-                  <circle cx="120" cy="160" r="2.5" stroke="currentColor" strokeWidth="1.2" className="text-pink-600/[0.4] dark:text-pink-400/[0.18]" />
-                  <circle cx="170" cy="100" r="3.5" fill="currentColor" className="text-rose-600/[0.5] dark:text-rose-400/[0.2]" />
+                  <circle cx="40" cy="110" r="3.5" fill="currentColor" className="text-[#FFDE59]/[0.8] dark:text-[#FFDE59]/[0.4]" />
+                  <circle cx="60" cy="60" r="2.5" stroke="currentColor" strokeWidth="1.2" className="text-[#FFDE59]/[0.7] dark:text-[#FFDE59]/[0.3]" />
+                  <circle cx="120" cy="160" r="2.5" stroke="currentColor" strokeWidth="1.2" className="text-[#FFDE59]/[0.7] dark:text-[#FFDE59]/[0.3]" />
+                  <circle cx="170" cy="100" r="3.5" fill="currentColor" className="text-[#FFDE59]/[0.8] dark:text-[#FFDE59]/[0.4]" />
                   {/* Design grid/layout guide lines */}
-                  <rect x="50" y="170" width="90" height="50" rx="4" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" className="text-rose-600/[0.25] dark:text-rose-400/[0.1]" />
-                  <line x1="95" y1="170" x2="95" y2="220" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 4" className="text-pink-600/[0.2] dark:text-pink-400/[0.08]" />
-                  <line x1="50" y1="195" x2="140" y2="195" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 4" className="text-pink-600/[0.2] dark:text-pink-400/[0.08]" />
+                  <rect x="50" y="170" width="90" height="50" rx="4" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" className="text-[#FFDE59]/[0.45] dark:text-[#FFDE59]/[0.15]" />
+                  <line x1="95" y1="170" x2="95" y2="220" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 4" className="text-[#FFDE59]/[0.4] dark:text-[#FFDE59]/[0.1]" />
+                  <line x1="50" y1="195" x2="140" y2="195" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 4" className="text-[#FFDE59]/[0.4] dark:text-[#FFDE59]/[0.1]" />
                   {/* Color swatch circles */}
-                  <circle cx="155" cy="180" r="8" fill="currentColor" className="text-rose-600/[0.25] dark:text-rose-400/[0.1]" />
-                  <circle cx="155" cy="200" r="6" fill="currentColor" className="text-pink-600/[0.2] dark:text-pink-400/[0.08]" />
-                  <circle cx="155" cy="215" r="4" fill="currentColor" className="text-rose-500/[0.15] dark:text-rose-300/[0.07]" />
+                  <circle cx="155" cy="180" r="8" fill="currentColor" className="text-[#FFDE59]/[0.5] dark:text-[#FFDE59]/[0.2]" />
+                  <circle cx="155" cy="200" r="6" fill="currentColor" className="text-[#FFDE59]/[0.45] dark:text-[#FFDE59]/[0.15]" />
+                  <circle cx="155" cy="215" r="4" fill="currentColor" className="text-[#FFDE59]/[0.4] dark:text-[#FFDE59]/[0.1]" />
                 </svg>
               ),
             },
@@ -169,20 +168,27 @@ export function HeroSection() {
               label: "All Projects",
               accent: "Portfolio · Case Studies",
               customBg: "bg-gray-900 dark:bg-white border-transparent",
-              titleColor: "text-white dark:text-gray-900",
-              accentColor: "text-gray-400 dark:text-gray-500",
-              iconColor: "text-gray-500 group-hover:text-white dark:text-gray-400 dark:group-hover:text-gray-900",
-              gradient: "from-gray-800/50 via-gray-900/50 to-transparent dark:from-gray-100/30 dark:via-white/50 dark:to-transparent",
+              titleColor: "text-white dark:text-white",
+              accentColor: "text-gray-300 dark:text-gray-300",
+              iconColor: "text-gray-400 group-hover:text-white dark:text-gray-400 dark:group-hover:text-white",
+              gradient: "from-transparent from-50% to-black/60 dark:from-transparent dark:from-50% dark:to-black/60",
               borderColor: "border-gray-800 dark:border-gray-200 hover:border-gray-700 dark:hover:border-gray-300",
               shapeElement: (
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 300" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                  <pattern id="faded-dots-bg" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <circle cx="2" cy="2" r="1.5" className="text-gray-700/50 dark:text-gray-200/60" fill="currentColor" />
-                  </pattern>
-                  <rect x="0" y="0" width="100%" height="100%" fill="url(#faded-dots-bg)" />
-                  {/* Decorative faint circles */}
-                  <circle cx="160" cy="50" r="40" className="text-gray-800/60 dark:text-gray-100/80" fill="currentColor" />
-                  <circle cx="40" cy="250" r="60" className="text-black/20 dark:text-gray-50/90" fill="currentColor" />
+                  <defs>
+                    <pattern id="faded-dots-bg" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <circle cx="2" cy="2" r="1.5" className="text-gray-500/80 dark:text-gray-400/80" fill="currentColor" />
+                    </pattern>
+                    <linearGradient id="dots-mask-gradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="white" stopOpacity="1" />
+                      <stop offset="40%" stopColor="white" stopOpacity="0.8" />
+                      <stop offset="70%" stopColor="white" stopOpacity="0" />
+                    </linearGradient>
+                    <mask id="dots-mask">
+                      <rect x="0" y="0" width="100%" height="100%" fill="url(#dots-mask-gradient)" />
+                    </mask>
+                  </defs>
+                  <rect x="0" y="0" width="100%" height="100%" fill="url(#faded-dots-bg)" mask="url(#dots-mask)" />
                 </svg>
               ),
             }
@@ -197,6 +203,7 @@ export function HeroSection() {
             gradient?: string
             borderColor?: string
             shapeElement: React.ReactNode
+            shapeWrapperClass?: string
           }) => (
             <Link
               key={item.href}
@@ -211,7 +218,7 @@ export function HeroSection() {
               <div className={cn("absolute inset-0 bg-gradient-to-b opacity-100 group-hover:brightness-110 transition-all duration-300", item.gradient)} />
               
               {/* Abstract shape background */}
-              <div className="absolute inset-0 opacity-100 group-hover:brightness-125 transition-all duration-500">
+              <div className={cn("absolute inset-0 opacity-100 transition-all duration-500", item.shapeWrapperClass || "group-hover:brightness-125")}>
                 {item.shapeElement}
               </div>
 

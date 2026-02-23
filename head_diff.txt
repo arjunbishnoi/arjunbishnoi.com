@@ -1,0 +1,74 @@
+﻿commit 76e53e3ca42f3dd306a4c43592588533a594b705
+Author: Arjun <arjunbishnoi1@gmail.com>
+Date:   Fri Feb 20 20:14:42 2026 -0500
+
+    feat: Implement core website components (Hero, Skills, Header) and sitemap generation.
+
+diff --git a/src/components/home/HeroSection.tsx b/src/components/home/HeroSection.tsx
+index fb46eef..394c6fd 100644
+--- a/src/components/home/HeroSection.tsx
++++ b/src/components/home/HeroSection.tsx
+@@ -67,7 +67,7 @@ export function HeroSection() {
+         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+           {[
+             { 
+-              href: "/mobile-apps", 
++              href: "/apps", 
+               label: "Cross-platform Mobile Apps", 
+               accent: "iOS ┬╖ Android ┬╖ React Native",
+               gradient: "from-violet-500/40 via-purple-500/25 to-transparent dark:from-violet-500/30 dark:via-purple-500/20",
+@@ -94,7 +94,7 @@ export function HeroSection() {
+               ),
+             },
+             { 
+-              href: "/ai-engineering", 
++              href: "/ai", 
+               label: "AI Engineering", 
+               accent: "ML ┬╖ LLMs ┬╖ Intelligent Systems",
+               gradient: "from-emerald-500/40 via-teal-500/25 to-transparent dark:from-emerald-500/30 dark:via-teal-500/20",
+@@ -132,7 +132,7 @@ export function HeroSection() {
+               ),
+             },
+             { 
+-              href: "/ui-ux-design", 
++              href: "/design", 
+               label: "Design", 
+               accent: "Figma ┬╖ Prototyping ┬╖ Design Systems",
+               gradient: "from-rose-500/40 via-pink-500/25 to-transparent dark:from-rose-500/30 dark:via-pink-500/20",
+
+commit 5a7ef6a7573597b78ad77097f65c03f5245895f0
+Author: Arjun <arjunbishnoi1@gmail.com>
+Date:   Fri Feb 20 20:00:32 2026 -0500
+
+    feat: add HeroSection component featuring a dynamic title, social links, and interactive service cards for mobile, AI, design, and web development.
+
+diff --git a/src/components/home/HeroSection.tsx b/src/components/home/HeroSection.tsx
+index a1d7a71..fb46eef 100644
+--- a/src/components/home/HeroSection.tsx
++++ b/src/components/home/HeroSection.tsx
+@@ -33,18 +33,20 @@ export function HeroSection() {
+                     <span className="text-foreground">Mobile Apps, </span>
+                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 animate-gradient bg-[length:200%_auto]">AI</span>
+                     <span className="text-foreground"> &amp; </span>
+-                    <span className="relative inline-block text-foreground">
+-                      Design
++                    <span className="relative inline-block text-foreground z-10">
++                      <span className="relative z-10 [text-shadow:0_4px_6px_rgba(255,255,255,0.8),0_8px_12px_rgba(255,255,255,0.6),32px_14px_8px_#fff,32px_16px_14px_#fff] dark:[text-shadow:0_4px_6px_rgba(0,0,0,0.8),0_8px_12px_rgba(0,0,0,0.6)]">
++                        Design
++                      </span>
+                       <svg 
+-                        className="absolute -bottom-2 md:-bottom-3 left-[-2%] w-[104%] h-3 md:h-4 text-indigo-500/80 dark:text-indigo-400/80 -rotate-2" 
++                        className="absolute -bottom-2 md:-bottom-3 left-[-2%] w-[104%] h-3 md:h-4 text-black dark:text-white -rotate-2 -z-10" 
+                         viewBox="0 0 100 20" 
+                         preserveAspectRatio="none" 
+                         aria-hidden="true"
+                       >
+                         <path 
+-                          d="M5 15 Q 30 5 60 12 T 95 8" 
++                          d="M5 15 Q 50 5 95 15" 
+                           stroke="currentColor" 
+-                          strokeWidth="3.5" 
++                          strokeWidth="5.5" 
+                           fill="none" 
+                           strokeLinecap="round" 
+                         />
