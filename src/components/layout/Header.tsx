@@ -136,7 +136,7 @@ export function Header() {
                 className="flex items-center justify-center w-10 h-10 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
                 aria-label="Toggle theme"
             >
-                {theme === "dark" ? <Sun className="w-5 h-5" strokeWidth={2} /> : <Moon className="w-5 h-5" strokeWidth={2} />}
+                 {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
             </button>
              )}
             
@@ -157,7 +157,7 @@ export function Header() {
                  onClick={toggleTheme}
                  className="flex items-center justify-center w-10 h-10 rounded-md transition-colors text-muted-foreground active:text-foreground"
              >
-                  {theme === "dark" ? <Sun className="w-5 h-5" strokeWidth={2} /> : <Moon className="w-5 h-5" strokeWidth={2} />}
+                  {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
              </button>
              )}
             

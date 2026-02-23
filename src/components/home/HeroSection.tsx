@@ -18,7 +18,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden flex flex-col items-center justify-start min-h-[85vh] md:min-h-0 pt-20 bg-background">
+    <section className="relative overflow-hidden flex flex-col items-center justify-start min-h-[85vh] md:min-h-0 pt-[5.5rem] md:pt-20 bg-background">
       {/* Top area with title and paragraph */}
       <div className="mx-auto max-w-7xl px-4 pt-4 pb-2 sm:pb-4 lg:px-8 w-full">
         <div className="text-center w-full flex items-center justify-center flex-col">
@@ -61,7 +61,7 @@ export function HeroSection() {
       </div>
 
       {/* Service Cards */}
-      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 mt-6 sm:mt-8">
+      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 mt-10 sm:mt-10 md:mt-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {[
             { 
@@ -168,15 +168,15 @@ export function HeroSection() {
               label: "All Projects",
               accent: "Portfolio · Case Studies",
               customBg: "bg-gray-900 dark:bg-white border-transparent",
-              titleColor: "text-white dark:text-white",
-              accentColor: "text-gray-300 dark:text-gray-300",
-              iconColor: "text-gray-400 group-hover:text-white dark:text-gray-400 dark:group-hover:text-white",
-              gradient: "from-transparent from-50% to-black/60 dark:from-transparent dark:from-50% dark:to-black/60",
+              titleColor: "text-white dark:text-black",
+              accentColor: "text-gray-300 dark:text-gray-600",
+              iconColor: "text-gray-400 group-hover:text-white dark:text-gray-400 dark:group-hover:text-black",
+              gradient: "from-transparent from-50% to-white/5 dark:from-transparent dark:from-50% dark:to-black/5",
               borderColor: "border-gray-800 dark:border-gray-200 hover:border-gray-700 dark:hover:border-gray-300",
               shapeElement: (
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 300" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                   <defs>
-                    <pattern id="faded-dots-bg" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <pattern id="faded-dots-bg" x="4" y="4" width="20" height="20" patternUnits="userSpaceOnUse">
                       <circle cx="2" cy="2" r="1.5" className="text-gray-500/80 dark:text-gray-400/80" fill="currentColor" />
                     </pattern>
                     <linearGradient id="dots-mask-gradient" x1="0" y1="0" x2="0" y2="1">
@@ -241,32 +241,46 @@ export function HeroSection() {
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 mt-3 sm:mt-4">
         {/* Desktop: 2-row layout to avoid tall socials stretching the row */}
         {/* Row 1: Resume, Contact, Blog + socials top half on desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid auto-rows-fr grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {/* Resume */}
           <a
             href={socialLinks.resume}
             download={socialLinks.resumeDownloadName}
-            className="group relative rounded-2xl border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/50 hover:border-border transition-all duration-300 overflow-hidden
-                       h-24 sm:h-28 md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
+            className="group relative rounded-2xl border border-white/40 dark:border-white/10 hover:border-white/60 dark:hover:border-white/20 bg-gray-200 dark:bg-white/10 backdrop-blur-sm hover:bg-gray-300 dark:hover:bg-white/20 transition-all duration-300 overflow-hidden
+                       md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
           >
+            {/* Gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-b opacity-100 group-hover:brightness-110 transition-all duration-300 from-transparent from-50% to-white/80 dark:from-transparent dark:from-50% dark:to-black/80 pointer-events-none" />
             {/* Abstract shape background */}
             <div className="absolute inset-0 opacity-100 group-hover:brightness-125 transition-all duration-500">
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 150" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                {/* Document with folded corner */}
-                <rect x="110" y="20" width="55" height="70" rx="4" stroke="currentColor" strokeWidth="1.2" className="text-muted-foreground/[0.12]" />
-                <path d="M145 20 L165 20 L165 40 Z" fill="currentColor" className="text-muted-foreground/[0.06]" />
-                <path d="M145 20 L145 40 L165 40" stroke="currentColor" strokeWidth="1" className="text-muted-foreground/[0.1]" />
-                {/* Text lines on document */}
-                <rect x="120" y="48" width="30" height="2.5" rx="1.2" fill="currentColor" className="text-muted-foreground/[0.1]" />
-                <rect x="120" y="55" width="38" height="2.5" rx="1.2" fill="currentColor" className="text-muted-foreground/[0.08]" />
-                <rect x="120" y="62" width="24" height="2.5" rx="1.2" fill="currentColor" className="text-muted-foreground/[0.06]" />
-                <rect x="120" y="69" width="34" height="2.5" rx="1.2" fill="currentColor" className="text-muted-foreground/[0.07]" />
-                {/* Download arrow */}
-                <path d="M55 55 L55 75 M45 68 L55 78 L65 68" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground/[0.1]" />
-                <line x1="42" y1="82" x2="68" y2="82" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-muted-foreground/[0.08]" />
-                {/* Small decorative dots */}
-                <circle cx="160" cy="110" r="8" stroke="currentColor" strokeWidth="0.8" className="text-muted-foreground/[0.06]" />
-                <circle cx="30" cy="35" r="5" fill="currentColor" className="text-muted-foreground/[0.04]" />
+                <defs>
+                  <linearGradient id="resume-mask-gradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="white" stopOpacity="1" />
+                    <stop offset="40%" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="70%" stopColor="white" stopOpacity="0" />
+                  </linearGradient>
+                  <mask id="resume-mask">
+                    <rect x="0" y="0" width="100%" height="100%" fill="url(#resume-mask-gradient)" />
+                  </mask>
+                </defs>
+                <g mask="url(#resume-mask)">
+                  {/* Document with folded corner */}
+                  <rect x="110" y="20" width="55" height="70" rx="4" stroke="currentColor" strokeWidth="1.2" className="text-muted-foreground/[0.24]" />
+                  <path d="M145 20 L165 20 L165 40 Z" fill="currentColor" className="text-muted-foreground/[0.12]" />
+                  <path d="M145 20 L145 40 L165 40" stroke="currentColor" strokeWidth="1" className="text-muted-foreground/[0.2]" />
+                  {/* Text lines on document */}
+                  <rect x="120" y="48" width="30" height="2.5" rx="1.2" fill="currentColor" className="text-muted-foreground/[0.2]" />
+                  <rect x="120" y="55" width="38" height="2.5" rx="1.2" fill="currentColor" className="text-muted-foreground/[0.16]" />
+                  <rect x="120" y="62" width="24" height="2.5" rx="1.2" fill="currentColor" className="text-muted-foreground/[0.12]" />
+                  <rect x="120" y="69" width="34" height="2.5" rx="1.2" fill="currentColor" className="text-muted-foreground/[0.14]" />
+                  {/* Download arrow */}
+                  <path d="M55 55 L55 75 M45 68 L55 78 L65 68" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground/[0.2]" />
+                  <line x1="42" y1="82" x2="68" y2="82" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-muted-foreground/[0.16]" />
+                  {/* Small decorative dots */}
+                  <circle cx="160" cy="110" r="8" stroke="currentColor" strokeWidth="0.8" className="text-muted-foreground/[0.12]" />
+                  <circle cx="30" cy="35" r="5" fill="currentColor" className="text-muted-foreground/[0.08]" />
+                </g>
               </svg>
             </div>
 
@@ -281,27 +295,41 @@ export function HeroSection() {
           {/* Contact */}
           <a
             href="#contact"
-            className="group relative rounded-2xl border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/50 hover:border-border transition-all duration-300 overflow-hidden
-                       h-24 sm:h-28 md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
+            className="group relative rounded-2xl border border-white/40 dark:border-white/10 hover:border-white/60 dark:hover:border-white/20 bg-gray-200 dark:bg-white/10 backdrop-blur-sm hover:bg-gray-300 dark:hover:bg-white/20 transition-all duration-300 overflow-hidden
+                       md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
           >
+            {/* Gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-b opacity-100 group-hover:brightness-110 transition-all duration-300 from-transparent from-50% to-white/80 dark:from-transparent dark:from-50% dark:to-black/80 pointer-events-none" />
             {/* Abstract shape background */}
             <div className="absolute inset-0 opacity-100 group-hover:brightness-125 transition-all duration-500">
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 150" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                {/* Envelope shape */}
-                <rect x="100" y="30" width="65" height="45" rx="5" stroke="currentColor" strokeWidth="1.2" className="text-muted-foreground/[0.12]" />
-                <path d="M100 35 L132.5 58 L165 35" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" className="text-muted-foreground/[0.1]" />
-                {/* @ symbol */}
-                <circle cx="50" cy="50" r="16" stroke="currentColor" strokeWidth="1.2" className="text-muted-foreground/[0.08]" />
-                <path d="M50 42 C43 42, 40 48, 40 52 C40 58, 45 60, 50 60 C55 60, 58 56, 58 52 L58 44" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" fill="none" className="text-muted-foreground/[0.1]" />
-                {/* Chat bubble */}
-                <rect x="115" y="90" width="50" height="28" rx="10" stroke="currentColor" strokeWidth="1" className="text-muted-foreground/[0.08]" />
-                <path d="M125 118 L130 128 L138 118" fill="currentColor" className="text-muted-foreground/[0.06]" />
-                {/* Dots inside chat */}
-                <circle cx="132" cy="104" r="2" fill="currentColor" className="text-muted-foreground/[0.1]" />
-                <circle cx="140" cy="104" r="2" fill="currentColor" className="text-muted-foreground/[0.08]" />
-                <circle cx="148" cy="104" r="2" fill="currentColor" className="text-muted-foreground/[0.06]" />
-                {/* Decorative */}
-                <circle cx="35" cy="110" r="6" fill="currentColor" className="text-muted-foreground/[0.04]" />
+                <defs>
+                  <linearGradient id="contact-mask-gradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="white" stopOpacity="1" />
+                    <stop offset="40%" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="70%" stopColor="white" stopOpacity="0" />
+                  </linearGradient>
+                  <mask id="contact-mask">
+                    <rect x="0" y="0" width="100%" height="100%" fill="url(#contact-mask-gradient)" />
+                  </mask>
+                </defs>
+                <g mask="url(#contact-mask)">
+                  {/* Envelope shape */}
+                  <rect x="100" y="30" width="65" height="45" rx="5" stroke="currentColor" strokeWidth="1.2" className="text-muted-foreground/[0.24]" />
+                  <path d="M100 35 L132.5 58 L165 35" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" className="text-muted-foreground/[0.2]" />
+                  {/* @ symbol */}
+                  <circle cx="50" cy="50" r="16" stroke="currentColor" strokeWidth="1.2" className="text-muted-foreground/[0.16]" />
+                  <path d="M50 42 C43 42, 40 48, 40 52 C40 58, 45 60, 50 60 C55 60, 58 56, 58 52 L58 44" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" fill="none" className="text-muted-foreground/[0.2]" />
+                  {/* Chat bubble */}
+                  <rect x="115" y="90" width="50" height="28" rx="10" stroke="currentColor" strokeWidth="1" className="text-muted-foreground/[0.16]" />
+                  <path d="M125 118 L130 128 L138 118" fill="currentColor" className="text-muted-foreground/[0.12]" />
+                  {/* Dots inside chat */}
+                  <circle cx="132" cy="104" r="2" fill="currentColor" className="text-muted-foreground/[0.2]" />
+                  <circle cx="140" cy="104" r="2" fill="currentColor" className="text-muted-foreground/[0.16]" />
+                  <circle cx="148" cy="104" r="2" fill="currentColor" className="text-muted-foreground/[0.12]" />
+                  {/* Decorative */}
+                  <circle cx="35" cy="110" r="6" fill="currentColor" className="text-muted-foreground/[0.08]" />
+                </g>
               </svg>
             </div>
 
@@ -316,26 +344,40 @@ export function HeroSection() {
           {/* Blog */}
           <Link
             href="/blog"
-            className="group relative rounded-2xl border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/50 hover:border-border transition-all duration-300 overflow-hidden
-                       h-24 sm:h-28 md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
+            className="group relative rounded-2xl border border-white/40 dark:border-white/10 hover:border-white/60 dark:hover:border-white/20 bg-gray-200 dark:bg-white/10 backdrop-blur-sm hover:bg-gray-300 dark:hover:bg-white/20 transition-all duration-300 overflow-hidden
+                       md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
           >
+            {/* Gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-b opacity-100 group-hover:brightness-110 transition-all duration-300 from-transparent from-50% to-white/80 dark:from-transparent dark:from-50% dark:to-black/80 pointer-events-none" />
             {/* Abstract shape background */}
             <div className="absolute inset-0 opacity-100 group-hover:brightness-125 transition-all duration-500">
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 150" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                {/* Large quotation mark */}
-                <path d="M110 30 C110 30, 100 30, 100 42 C100 50, 105 54, 112 54 C118 54, 122 50, 122 45 C122 40, 118 37, 114 37 C110 37, 108 40, 108 40" fill="currentColor" className="text-muted-foreground/[0.08]" />
-                <path d="M138 30 C138 30, 128 30, 128 42 C128 50, 133 54, 140 54 C146 54, 150 50, 150 45 C150 40, 146 37, 142 37 C138 37, 136 40, 136 40" fill="currentColor" className="text-muted-foreground/[0.06]" />
-                {/* Blog text lines */}
-                <rect x="30" y="40" width="45" height="3" rx="1.5" fill="currentColor" className="text-muted-foreground/[0.08]" />
-                <rect x="30" y="48" width="55" height="3" rx="1.5" fill="currentColor" className="text-muted-foreground/[0.06]" />
-                <rect x="30" y="56" width="35" height="3" rx="1.5" fill="currentColor" className="text-muted-foreground/[0.07]" />
-                {/* Pencil */}
-                <line x1="155" y1="80" x2="170" y2="65" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-muted-foreground/[0.1]" />
-                <path d="M155 80 L152 85 L157 82 Z" fill="currentColor" className="text-muted-foreground/[0.08]" />
-                <line x1="168" y1="67" x2="172" y2="63" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-muted-foreground/[0.06]" />
-                {/* Decorative shapes */}
-                <circle cx="50" cy="100" r="10" stroke="currentColor" strokeWidth="0.8" className="text-muted-foreground/[0.06]" />
-                <rect x="130" y="100" width="30" height="20" rx="4" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" className="text-muted-foreground/[0.06]" />
+                <defs>
+                  <linearGradient id="blog-mask-gradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="white" stopOpacity="1" />
+                    <stop offset="40%" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="70%" stopColor="white" stopOpacity="0" />
+                  </linearGradient>
+                  <mask id="blog-mask">
+                    <rect x="0" y="0" width="100%" height="100%" fill="url(#blog-mask-gradient)" />
+                  </mask>
+                </defs>
+                <g mask="url(#blog-mask)">
+                  {/* Large quotation mark */}
+                  <path d="M110 30 C110 30, 100 30, 100 42 C100 50, 105 54, 112 54 C118 54, 122 50, 122 45 C122 40, 118 37, 114 37 C110 37, 108 40, 108 40" fill="currentColor" className="text-muted-foreground/[0.16]" />
+                  <path d="M138 30 C138 30, 128 30, 128 42 C128 50, 133 54, 140 54 C146 54, 150 50, 150 45 C150 40, 146 37, 142 37 C138 37, 136 40, 136 40" fill="currentColor" className="text-muted-foreground/[0.12]" />
+                  {/* Blog text lines */}
+                  <rect x="30" y="40" width="45" height="3" rx="1.5" fill="currentColor" className="text-muted-foreground/[0.16]" />
+                  <rect x="30" y="48" width="55" height="3" rx="1.5" fill="currentColor" className="text-muted-foreground/[0.12]" />
+                  <rect x="30" y="56" width="35" height="3" rx="1.5" fill="currentColor" className="text-muted-foreground/[0.14]" />
+                  {/* Pencil */}
+                  <line x1="155" y1="80" x2="170" y2="65" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-muted-foreground/[0.2]" />
+                  <path d="M155 80 L152 85 L157 82 Z" fill="currentColor" className="text-muted-foreground/[0.16]" />
+                  <line x1="168" y1="67" x2="172" y2="63" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-muted-foreground/[0.12]" />
+                  {/* Decorative shapes */}
+                  <circle cx="50" cy="100" r="10" stroke="currentColor" strokeWidth="0.8" className="text-muted-foreground/[0.12]" />
+                  <rect x="130" y="100" width="30" height="20" rx="4" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" className="text-muted-foreground/[0.12]" />
+                </g>
               </svg>
             </div>
 
@@ -348,13 +390,13 @@ export function HeroSection() {
           </Link>
 
           {/* Socials - mobile only: side by side in one cell */}
-          <div className="h-24 sm:h-28 grid grid-cols-2 gap-3 sm:gap-4 md:hidden">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:hidden">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="me noopener noreferrer"
                 aria-label="LinkedIn"
-                className="rounded-xl border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/50 hover:border-border transition-all duration-300 flex items-center justify-center group/icon"
+                className="aspect-square rounded-xl border border-white/40 dark:border-white/10 hover:border-white/60 dark:hover:border-white/20 bg-gray-200 dark:bg-white/10 backdrop-blur-sm hover:bg-gray-300 dark:hover:bg-white/20 transition-all duration-300 flex items-center justify-center group/icon"
               >
                 <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground group-hover/icon:text-foreground transition-colors" />
               </a>
@@ -363,7 +405,7 @@ export function HeroSection() {
                 target="_blank"
                 rel="me noopener noreferrer"
                 aria-label="GitHub"
-                className="rounded-xl border border-border/75 bg-gray-50/80 dark:bg-card/30 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/60 hover:border-border transition-all duration-300 flex items-center justify-center group/icon"
+                className="aspect-square rounded-xl border border-white/40 dark:border-white/10 hover:border-white/60 dark:hover:border-white/20 bg-gray-200 dark:bg-white/10 backdrop-blur-sm hover:bg-gray-300 dark:hover:bg-white/20 transition-all duration-300 flex items-center justify-center group/icon"
               >
                 <Github className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground group-hover/icon:text-foreground transition-colors" />
               </a>
@@ -376,7 +418,7 @@ export function HeroSection() {
                 target="_blank"
                 rel="me noopener noreferrer"
                 aria-label="LinkedIn"
-                className="rounded-xl border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/50 hover:border-border transition-all duration-300 flex items-center justify-center group/icon"
+                className="rounded-xl border border-white/40 dark:border-white/10 hover:border-white/60 dark:hover:border-white/20 bg-gray-200 dark:bg-white/10 backdrop-blur-sm hover:bg-gray-300 dark:hover:bg-white/20 transition-all duration-300 flex items-center justify-center group/icon"
               >
                 <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-muted-foreground group-hover/icon:text-foreground transition-colors" />
               </a>
@@ -385,7 +427,7 @@ export function HeroSection() {
                 target="_blank"
                 rel="me noopener noreferrer"
                 aria-label="GitHub"
-                className="rounded-xl border border-border/75 bg-gray-50/80 dark:bg-card/30 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-card/60 hover:border-border transition-all duration-300 flex items-center justify-center group/icon"
+                className="rounded-xl border border-white/40 dark:border-white/10 hover:border-white/60 dark:hover:border-white/20 bg-gray-200 dark:bg-white/10 backdrop-blur-sm hover:bg-gray-300 dark:hover:bg-white/20 transition-all duration-300 flex items-center justify-center group/icon"
               >
                 <Github className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-muted-foreground group-hover/icon:text-foreground transition-colors" />
               </a>
