@@ -61,9 +61,7 @@ export function Header() {
       <motion.div 
         className={cn(
           "overflow-hidden transition-[background-color,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] pointer-events-auto w-full rounded-[2rem]",
-          isScrolled || isMobileMenuOpen
-            ? "backdrop-blur-md bg-white/80 dark:bg-black/80 border border-black/5 dark:border-white/10"
-            : "bg-transparent border border-transparent"
+          "backdrop-blur-md bg-white/80 dark:bg-black/80 border border-black/5 dark:border-white/10"
         )}
         initial={false}
         animate={{

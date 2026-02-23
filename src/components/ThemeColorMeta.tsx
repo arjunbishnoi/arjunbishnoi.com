@@ -13,7 +13,8 @@ export function ThemeColorMeta() {
   const { resolvedTheme } = useTheme()
 
   useEffect(() => {
-    const color = resolvedTheme === "dark" ? "#000000" : "#ffffff"
+    // Match the exact neumorphic surface background colors to eliminate the top status bar "filling" line
+    const color = resolvedTheme === "dark" ? "#18181b" : "#e4e4e7"
 
     // Update existing theme-color meta tags or create one
     const existingMetas = document.querySelectorAll('meta[name="theme-color"]')
