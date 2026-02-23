@@ -2,9 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   NEUMORPHIC DESIGN SYSTEM
+   ============================================
+   Soft UI / Neumorphism: elements emerge from 
+   or press into the surface via dual box-shadows.
+   Light source: top-left, consistent everywhere.
+   ============================================ */
+
+@layer components {
+  /* --- Neumorphic CSS Custom Properties --- */
+  :root {
+    /* Light mode neumorphic surface */
+    --neu-surface: #e0e5ec;
+    --neu-shadow-dark: rgba(163, 177, 198, 0.6);
+    --neu-shadow-light: rgba(255, 255, 255, 0.7);
+    --neu-shadow-distance: 6px;
+    --neu-shadow-blur: 12px;
+    --neu-inset-shadow-dark: rgba(163, 177, 198, 0.5);
+    --neu-inset-shadow-light: rgba(255, 255, 255, 0.5);
+  }
+
+  .dark {
+    /* Dark mode neumorphic surface — neutral charcoal, no blue tint */
+    --neu-surface: #1e1e22;
+    --neu-shadow-dark: rgba(5, 5, 8, 0.7);
+    --neu-shadow-light: rgba(50, 50, 55, 0.35);
+    --neu-inset-shadow-dark: rgba(5, 5, 8, 0.6);
+    --neu-inset-shadow-light: rgba(50, 50, 55, 0.3);
+  }
+
+  /* --- Raised state: element pops out of surface --- */
+  .neu-raised {
+    background: var(--neu-surface);
+    box-shadow:
+      calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
+      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
+    border: none !important;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  /* --- Pressed state: element sinks into surface --- */
+  .neu-pressed {
+    background: var(--neu-surface);
+    box-shadow:
+      inset 3px 3px 6px var(--neu-inset-shadow-dark),
+      inset -3px -3px 6px var(--neu-inset-shadow-light);
+    border: none !important;
+  }
+
+  /* --- Hover: lift up — card rises off surface with bigger shadow --- */
+  .neu-raised:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      calc(-1 * var(--neu-shadow-distance) - 2px) calc(-1 * var(--neu-shadow-distance) - 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-light),
+      calc(var(--neu-shadow-distance) + 2px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-dark);
+  }
+
+  /* --- Active/click: press into surface --- */
+  .neu-raised:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow:
+      inset 4px 4px 8px var(--neu-inset-shadow-dark),
+      inset -4px -4px 8px var(--neu-inset-shadow-light);
+  }
+
+  /* --- Accent-colored cards: same lift/press with color-appropriate shadows --- */
+  .neu-raised-accent:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      -8px -9px 16px var(--neu-shadow-light),
+      8px 9px 16px var(--neu-shadow-dark);
+  }
+  .neu-raised-accent:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow:
+      inset 4px 4px 8px rgba(0, 0, 0, 0.45),
+      inset -4px -4px 8px rgba(255, 255, 255, 0.12);
+  }
+
+  /* --- Subtle flat neumorphic (for small elements like social icons) --- */
+  .neu-flat {
+    background: var(--neu-surface);
+    box-shadow:
+      calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
+      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
+    border: none !important;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .neu-flat:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      calc(-1 * var(--neu-shadow-distance) - 2px) calc(-1 * var(--neu-shadow-distance) - 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-light),
+      calc(var(--neu-shadow-distance) + 2px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-dark);
+  }
+
+  .neu-flat:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow:
+      inset 4px 4px 8px var(--neu-inset-shadow-dark),
+      inset -4px -4px 8px var(--neu-inset-shadow-light);
+  }
+}
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 220 12% 90.6%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
@@ -31,7 +135,7 @@
     --radius: 0.5rem;
   }
   .dark {
-    --background: 0 0% 0%;
+    --background: 240 4% 12.5%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;

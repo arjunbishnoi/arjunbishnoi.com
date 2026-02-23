@@ -59,7 +59,10 @@ export function Header() {
     <header className="fixed w-full top-0 z-50">
       <div 
         className={cn(
-          "backdrop-blur-md overflow-hidden transition-[background-color,height] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] bg-white/80 dark:bg-black/80"
+          "overflow-hidden transition-[background-color,height] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+          isScrolled || isMobileMenuOpen
+            ? "backdrop-blur-md bg-white/80 dark:bg-black/80"
+            : "bg-transparent"
         )}
         style={{
           height: isMobileMenuOpen ? "100vh" : "var(--navbar-height, 3.5rem)",
