@@ -23,7 +23,7 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
 
 
 
-  const STICKY_THRESHOLD = 60 // Matches top: calc(3.5rem + 0.25rem) approx 60px to prevent jump
+  const STICKY_THRESHOLD = 80 // Increased to clear the floating header margin
 
   useEffect(() => {
     setMounted(true)
@@ -72,7 +72,7 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                 ? "fixed md:relative left-0 right-0 z-40 justify-center pointer-events-none md:pointer-events-auto md:!top-auto"
                 : "absolute md:relative inset-0 z-30 justify-center"
             )}
-            style={{ top: isStuck ? "calc(var(--navbar-height, 3.5rem) + 0.25rem)" : "0" }}
+            style={{ top: isStuck ? "calc(var(--navbar-height, 3.5rem) + 1.25rem)" : "0" }}
         >
             <div
                 className={cn(

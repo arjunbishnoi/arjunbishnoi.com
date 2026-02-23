@@ -56,22 +56,24 @@ export function Header() {
   }
 
   return (
-    <header className="fixed w-full top-0 z-50">
-      <div 
+    <header className="fixed w-full top-2 sm:top-4 z-50 flex justify-center pointer-events-none">
+      <div className="w-full max-w-5xl px-6 mx-auto">
+      <motion.div 
         className={cn(
-          "overflow-hidden transition-[background-color,height] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+          "overflow-hidden transition-[background-color,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] pointer-events-auto w-full rounded-[2rem]",
           isScrolled || isMobileMenuOpen
-            ? "backdrop-blur-md bg-white/80 dark:bg-black/80"
-            : "bg-transparent"
+            ? "backdrop-blur-md bg-white/80 dark:bg-black/80 border border-black/5 dark:border-white/10"
+            : "bg-transparent border border-transparent"
         )}
-        style={{
-          height: isMobileMenuOpen ? "100vh" : "var(--navbar-height, 3.5rem)",
-          minHeight: "var(--navbar-height, 3.5rem)",
+        initial={false}
+        animate={{
+          height: isMobileMenuOpen ? "auto" : "3.5rem"
         }}
+        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
       >
-        <div className="mx-auto max-w-7xl h-[var(--navbar-height)] relative">
+        <div className="relative h-[3.5rem] w-full">
           {/* Logo - Anchored Left */}
-          <div className="absolute left-6 lg:left-8 top-1/2 -translate-y-1/2" style={{ zIndex: 3 }}>
+          <div className="absolute left-5 lg:left-6 top-1/2 -translate-y-1/2" style={{ zIndex: 3 }}>
             <Link 
               href="/" 
               className="text-xl font-bold relative block cursor-pointer" 
@@ -132,11 +134,11 @@ export function Header() {
           </div>
 
           {/* Desktop Actions - Anchored Right */}
-          <div className="hidden md:flex items-center absolute right-6 lg:right-8 top-1/2 -translate-y-1/2 space-x-4" style={{ zIndex: 2 }}>
+          <div className="hidden md:flex items-center absolute right-5 lg:right-6 top-1/2 -translate-y-1/2 space-x-4" style={{ zIndex: 2 }}>
              {mounted && (
                 <button
                 onClick={toggleTheme}
-                className="flex items-center justify-center w-10 h-10 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
                 aria-label="Toggle theme"
             >
                  {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
@@ -145,7 +147,7 @@ export function Header() {
             
             <Link
                 href="/#contact"
-                className="flex items-center justify-center w-10 h-10 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
                 aria-label="Contact section"
                 onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -154,11 +156,11 @@ export function Header() {
           </div>
 
           {/* Mobile Actions - Anchored Right */}
-          <div className="md:hidden flex items-center absolute right-4 top-1/2 -translate-y-1/2 space-x-4" style={{ zIndex: 2 }}>
+          <div className="md:hidden flex items-center absolute right-3 top-1/2 -translate-y-1/2 space-x-1" style={{ zIndex: 2 }}>
              {mounted && (
                  <button
                  onClick={toggleTheme}
-                 className="flex items-center justify-center w-10 h-10 rounded-md transition-colors text-muted-foreground active:text-foreground"
+                 className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
              >
                   {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
              </button>
@@ -166,7 +168,7 @@ export function Header() {
             
             <Link
                 href="/#contact"
-                className="flex items-center justify-center w-10 h-10 rounded-md transition-colors text-muted-foreground active:text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
                 onClick={() => setIsMobileMenuOpen(false)}
             >
                 <Mail className="w-5 h-5" strokeWidth={2} />
@@ -174,7 +176,7 @@ export function Header() {
 
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="flex items-center justify-center w-10 h-10 rounded-md cursor-pointer transition-colors text-muted-foreground active:text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
             >
                  <span className="sr-only">Open main menu</span>
                  <div className="relative w-6 h-6 flex items-center justify-center">
@@ -206,20 +208,26 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Content */}
         <AnimatePresence>
             {isMobileMenuOpen && (
-                <div className="md:hidden px-6 lg:px-8 pt-8 h-full flex flex-col">
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="md:hidden px-6 lg:px-8 pt-6 pb-6 w-full flex flex-col"
+                >
                     <nav className="flex flex-col space-y-4">
                         {navigationItems.map((item, index) => (
                              <motion.div
                                 key={item.name}
-                                initial={{ opacity: 0, y: -20 }}
+                                initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
+                                exit={{ opacity: 0, y: -10 }}
                                 transition={{ 
-                                  delay: 0.05 + (index * 0.05), // Faster stagger
-                                  duration: 0.35, // Faster duration
+                                  delay: 0.05 + (index * 0.05),
+                                  duration: 0.3,
                                   ease: [0.22, 1, 0.36, 1] 
                                 }}
                              >
@@ -235,12 +243,12 @@ export function Header() {
                         ))}
                         
                          <motion.div
-                             initial={{ opacity: 0, y: -20 }}
+                             initial={{ opacity: 0, y: -10 }}
                              animate={{ opacity: 1, y: 0 }}
-                             exit={{ opacity: 0, y: -20 }}
+                             exit={{ opacity: 0, y: -10 }}
                              transition={{ 
                                delay: 0.05 + (navigationItems.length * 0.05), 
-                               duration: 0.35, 
+                               duration: 0.3, 
                                ease: [0.22, 1, 0.36, 1] 
                              }}
                          >
@@ -255,16 +263,17 @@ export function Header() {
                     </nav>
 
                     <motion.div
-                         className="mt-auto pb-32 text-center text-sm font-medium text-muted-foreground flex items-center justify-center gap-1"
-                         initial={{ opacity: 0, y: 20 }}
+                         className="mt-8 pt-6 border-t border-black/5 dark:border-white/10 text-center text-sm font-medium text-muted-foreground flex items-center justify-center gap-1"
+                         initial={{ opacity: 0, y: 10 }}
                          animate={{ opacity: 1, y: 0 }}
-                         transition={{ delay: 0.3, duration: 0.4 }}
+                         transition={{ delay: 0.1, duration: 0.3 }}
                     >
                          made with <Heart className="w-4 h-4 text-red-500 fill-current pb-[1px]" /> by arjun
                     </motion.div>
-                </div>
+                </motion.div>
             )}
         </AnimatePresence>
+      </motion.div>
       </div>
     </header>
   )
