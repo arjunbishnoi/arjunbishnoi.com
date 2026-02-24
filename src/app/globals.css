@@ -256,7 +256,7 @@ section.relative.overflow-hidden.hero-section {
 
 @media (min-width: 640px) and (max-width: 767px) {
   .hero-title-container .hero-title-line {
-    font-size: clamp(1.875rem, 7vw, 2.25rem);
+    font-size: clamp(1.75rem, 6.5vw, 2.125rem);
   }
   .hero-title-container {
     gap: 0.02em;
@@ -271,7 +271,7 @@ section.relative.overflow-hidden.hero-section {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero-title-container .hero-title-line {
-    font-size: clamp(2.25rem, 5vw, 2.5rem);
+    font-size: clamp(2rem, 4.5vw, 2.25rem);
   }
   .hero-title-container {
     gap: 0.02em;
@@ -286,7 +286,7 @@ section.relative.overflow-hidden.hero-section {
 
 @media (min-width: 1024px) {
   .hero-title-container .hero-title-line {
-    font-size: clamp(2.5rem, 4vw, 3rem);
+    font-size: clamp(2.25rem, 3.5vw, 2.625rem);
   }
   .hero-title-container {
     gap: 0.02em;

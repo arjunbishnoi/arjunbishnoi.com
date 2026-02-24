@@ -19,7 +19,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-start min-h-[85vh] md:min-h-0 pt-[5.5rem] md:pt-20"
+      className="relative overflow-hidden flex flex-col items-center justify-start min-h-[85vh] md:min-h-0 pt-[6.5rem] md:pt-28 lg:pt-28"
       style={{ background: "var(--neu-surface)" }}
     >
       {/* Top area with title and paragraph */}
@@ -28,16 +28,16 @@ export function HeroSection() {
           <div className="inline-block w-full text-center py-2 flex flex-col items-center justify-center">
             <h1 className="font-bold tracking-tight text-center max-w-full leading-none w-full text-foreground">
               {/* Mobile-first hero title with controlled line breaks and fluid typography */}
-              <span className="flex flex-col items-center justify-center w-full gap-[0.05em] mb-2">
+              <span className="flex flex-col items-center justify-center w-full gap-[0.05em] mb-0 sm:mb-0">
                 <span 
-                    className="block text-center w-full whitespace-nowrap leading-[0.95] pb-2"
-                    style={{ fontSize: "clamp(1.5rem, 6vw, 3rem)" }}
+                    className="block text-center w-full whitespace-nowrap leading-[0.95]"
+                    style={{ fontSize: "clamp(1.35rem, 4.5vw, 2.25rem)" }}
                 >
                     <span className="text-foreground">Mobile Apps, AI &amp; Design</span>
                 </span>
               </span>
             </h1>
-            <p className="-mt-0.5 sm:mt-0.5 text-sm sm:text-base text-muted-foreground font-medium">
+            <p className="mt-0.5 sm:mt-0 text-sm sm:text-base text-muted-foreground font-medium">
                 Consistent, hands-on, and always evolving.
             </p>
           </div>
@@ -78,7 +78,7 @@ export function HeroSection() {
             >
               {/* Inset accent fill — leaves a visible rim of the neumorphic surface as a border */}
               <div 
-                className="absolute inset-[6px] rounded-[12px] pointer-events-none"
+                className="absolute inset-[4px] rounded-[12px] pointer-events-none"
                 style={{ 
                   backgroundColor: item.solidAccent,
                   boxShadow: "inset 2px 2px 4px rgba(0,0,0,0.3), inset -1px -1px 3px rgba(255,255,255,0.08)",
@@ -109,7 +109,7 @@ export function HeroSection() {
           >
             {/* Inset accent fill for light gray */}
             <div 
-              className="absolute inset-[6px] rounded-[12px] pointer-events-none"
+              className="absolute inset-[4px] rounded-[12px] pointer-events-none"
               style={{ 
                 backgroundColor: "#d4d4d8",
                 boxShadow: "inset 2px 2px 4px rgba(0,0,0,0.3), inset -1px -1px 3px rgba(255,255,255,0.08)",

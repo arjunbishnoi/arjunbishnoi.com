@@ -84,7 +84,7 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                      <Link
                         href={to}
                         className={cn(
-                            "group flex items-center relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] border",
+                            "group flex items-center relative transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] border",
                             isStuck
                              ? cn(
                                  "backdrop-blur-md rounded-full shadow-lg transition-all",
@@ -97,10 +97,21 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                              : "w-full bg-transparent border-transparent"
                         )}
                      >
+                        {/* Gradient fade layer for smoother transition to neumorphic button */}
+                        <div 
+                          className={cn(
+                            "absolute inset-0 rounded-full md:hidden pointer-events-none transition-opacity duration-700",
+                            isStuck ? "opacity-100" : "opacity-0"
+                          )}
+                          style={{
+                            background: "linear-gradient(to right, transparent 30%, var(--neu-surface) 80%)"
+                          }}
+                        />
+
                         {/* Title - MOBILE MORPHING ANIMATED */}
                         <div 
                           className={cn(
-                            "overflow-hidden flex items-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden", 
+                            "relative z-10 overflow-hidden flex items-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden", 
                             isStuck 
                             ? "flex-grow pl-1 pr-0" 
                             : "flex-grow-0 pl-0 pr-4"
@@ -135,20 +146,34 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                             </span>
                         </div>
 
-                        {/* Arrow (Circle Background) - Always visible */}
+                        {/* Arrow (Circle Background) - Neumorphic design with inset fill */}
                         <div 
                           className={cn(
-                              "flex-none flex items-center justify-center w-8 h-8 rounded-full ml-auto transition-all duration-300 scale-100 opacity-100", // Always visible
-                              mounted && theme === "dark" ? "bg-white" : "bg-black"
+                              "relative z-10 flex-none flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full ml-auto transition-transform duration-300 active:scale-95",
+                              "neu-raised"
                           )}
+                          style={{
+                              "--neu-shadow-distance": "4px",
+                              "--neu-shadow-blur": "8px"
+                          } as React.CSSProperties}
                         >
+                            {/* Inset black/white fill for contrast matching the hero rectangles */}
+                            <div 
+                              className="absolute inset-[3px] md:inset-[4px] rounded-full pointer-events-none"
+                              style={{ 
+                                backgroundColor: mounted && theme === "dark" ? "#ffffff" : "#000000",
+                                boxShadow: mounted && theme === "dark" 
+                                   ? "inset 1px 1px 3px rgba(0,0,0,0.2), inset -1px -1px 3px rgba(255,255,255,0.5)" 
+                                   : "inset 2px 2px 4px rgba(0,0,0,0.5), inset -1px -1px 3px rgba(255,255,255,0.15)",
+                              }}
+                            />
                             <span 
                             className={cn(
-                                "transition-colors duration-300",
+                                "relative z-10 transition-colors duration-300",
                                 mounted && theme === "dark" ? "text-black" : "text-white"
                             )}
                             >
-                             <ArrowRight className="w-5 h-5" /> 
+                             <ArrowRight className="w-5 h-5 md:w-6 md:h-6" /> 
                             </span>
                         </div>
                      </Link>

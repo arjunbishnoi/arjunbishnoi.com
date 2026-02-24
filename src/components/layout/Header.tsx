@@ -57,7 +57,7 @@ export function Header() {
 
   return (
     <header className="fixed w-full top-2 sm:top-4 z-50 flex justify-center pointer-events-none">
-      <div className="w-full max-w-5xl px-6 mx-auto">
+      <div className="w-full max-w-7xl px-6 lg:px-8 mx-auto">
       <motion.div 
         className={cn(
           "overflow-hidden transition-[background-color,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] pointer-events-auto w-full rounded-[2rem]",
@@ -69,7 +69,7 @@ export function Header() {
         }}
         transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
       >
-        <div className="relative h-[3.5rem] w-full">
+        <div className="relative h-[calc(3.5rem-2px)] w-full">
           {/* Logo - Anchored Left */}
           <div className="absolute left-5 lg:left-6 top-1/2 -translate-y-1/2" style={{ zIndex: 3 }}>
             <Link 
@@ -170,7 +170,10 @@ export function Header() {
                         initial={{ width: 0, opacity: 0, scale: 0.5, marginLeft: 0 }}
                         animate={{ width: "auto", opacity: 1, scale: 1, marginLeft: 8 }}
                         exit={{ width: 0, opacity: 0, scale: 0.5, marginLeft: 0 }}
-                        transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+                        transition={{ 
+                            duration: 0.4, ease: [0.32, 0.72, 0, 1],
+                            opacity: { duration: 0.1 } 
+                        }}
                         className="overflow-hidden flex items-center justify-center"
                     >
                         <Link
@@ -274,7 +277,7 @@ export function Header() {
                     </nav>
 
                     <motion.div
-                         className="mt-8 pt-6 border-t border-black/5 dark:border-white/10 text-center text-sm font-medium text-muted-foreground flex items-center justify-center gap-1"
+                         className="mt-8 pt-6 text-center text-sm font-medium text-muted-foreground flex items-center justify-center gap-1"
                          initial={{ opacity: 0, y: 10 }}
                          animate={{ opacity: 1, y: 0 }}
                          transition={{ delay: 0.1, duration: 0.3 }}
