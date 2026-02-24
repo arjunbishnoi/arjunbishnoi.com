@@ -226,9 +226,9 @@ export function Header() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="md:hidden px-6 lg:px-8 pt-6 pb-6 w-full flex flex-col"
+                    className="md:hidden px-5 sm:px-6 pt-2 pb-6 w-full flex flex-col"
                 >
-                    <nav className="flex flex-col space-y-4">
+                    <nav className="flex flex-col space-y-3">
                         {navigationItems.map((item, index) => (
                              <motion.div
                                 key={item.name}
@@ -243,7 +243,7 @@ export function Header() {
                              >
                                 <Link
                                     href={item.href}
-                                    className="text-xl font-bold transition-colors text-muted-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                                    className="text-xl font-bold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                      {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
@@ -265,9 +265,10 @@ export function Header() {
                             <a 
                                 href={socialLinks.resume} 
                                 download={socialLinks.resumeDownloadName}
-                                className="text-xl font-bold transition-colors text-muted-foreground hover:text-foreground block"
+                                className="text-xl font-bold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
                             >
-                                Download Resume
+                                Resume
+                                <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
                             </a>
                          </motion.div>
                     </nav>
