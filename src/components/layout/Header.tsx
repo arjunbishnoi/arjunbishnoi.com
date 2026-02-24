@@ -12,19 +12,13 @@ import { cn } from "@/lib/utils"
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(1200) // Default to desktop for SSR
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
 
-  // Hydration fix for theme and window width
+  // Hydration fix for theme
   useEffect(() => {
     setMounted(true)
-    setWindowWidth(window.innerWidth)
-    
-    const handleResize = () => setWindowWidth(window.innerWidth)
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   useEffect(() => {
@@ -63,114 +57,66 @@ export function Header() {
 
   return (
     <header className="fixed w-full top-2 sm:top-4 z-50 flex justify-center pointer-events-none">
-      {/* Background fade/blur when menu is opened */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-            className={cn(
-              "fixed inset-0 pointer-events-auto h-[100dvh] w-[100dvw]",
-              isScrolled && "backdrop-blur-sm bg-black/10 dark:bg-white/5"
-            )}
-            style={{ 
-              backgroundColor: !isScrolled ? "var(--neu-surface)" : undefined,
-              zIndex: -1
-            }}
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
+      <div className="w-full max-w-7xl px-6 lg:px-8 mx-auto">
+      <motion.div 
+        className={cn(
+          "overflow-hidden transition-[background-color,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] pointer-events-auto w-full rounded-[2rem]",
+          "backdrop-blur-md bg-white/80 dark:bg-black/80 border border-black/5 dark:border-white/10"
         )}
-      </AnimatePresence>
-
-      <div className="w-full max-w-7xl px-6 lg:px-8 mx-auto pointer-events-none">
-        <div className="w-full relative flex justify-end">
-          {/* Logo - Pulled outside the expanding pill so it stays anchored left */}
-          <div className="absolute left-5 lg:left-6 top-7 -translate-y-[calc(50%+1px)] pointer-events-auto" style={{ zIndex: 60 }}>
+        initial={false}
+        animate={{
+          height: isMobileMenuOpen ? "auto" : "3.5rem"
+        }}
+        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+      >
+        <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] w-full px-5 lg:px-6">
+          {/* Logo - Anchored Left */}
+          <div className="flex-shrink-0 relative z-10 pb-[1px]">
             <Link 
               href="/" 
               className="text-xl font-bold relative block cursor-pointer" 
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
-                <div className="relative h-6 flex items-center">
+              <div className="relative h-6 flex items-center">
                  {/* Logo Morphing Animation - Framer Motion */}
-                 <motion.div layout className="flex items-center">
-                    <motion.span layout="position" className="text-foreground">a</motion.span>
-                    <AnimatePresence initial={false} mode="wait">
+                 <div className="flex items-center">
+                    <motion.span layout className="text-foreground">a</motion.span>
+                    <AnimatePresence initial={false}>
                         {showFullLogo && (
                             <motion.span
-                                layout="position"
                                 initial={{ width: 0, opacity: 0 }}
                                 animate={{ width: "auto", opacity: 1 }}
                                 exit={{ width: 0, opacity: 0 }}
                                 transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                                className="text-foreground whitespace-nowrap overflow-hidden origin-left"
+                                className="text-foreground whitespace-nowrap overflow-hidden"
                             >
                                 rjun
                             </motion.span>
                         )}
                     </AnimatePresence>
-                    <motion.span layout="position" className="text-foreground">b</motion.span>
-                     <AnimatePresence initial={false} mode="wait">
+                    <motion.span layout className="text-foreground">b</motion.span>
+                     <AnimatePresence initial={false}>
                         {showFullLogo && (
                             <motion.span
-                                layout="position"
                                 initial={{ width: 0, opacity: 0 }}
                                 animate={{ width: "auto", opacity: 1 }}
                                 exit={{ width: 0, opacity: 0 }}
                                 transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                                className="text-foreground whitespace-nowrap overflow-hidden origin-left"
+                                className="text-foreground whitespace-nowrap overflow-hidden"
                             >
                                 ishnoi
                             </motion.span>
                         )}
                     </AnimatePresence>
-                    <motion.span layout="position" className="text-muted-foreground">_</motion.span>
-                 </motion.div>
+                    <motion.span layout className="text-muted-foreground">_</motion.span>
+                 </div>
               </div>
             </Link>
           </div>
 
-          <motion.div 
-            className={cn(
-              "overflow-hidden transition-[background-color,border-color,border-radius,box-shadow,backdrop-filter,-webkit-backdrop-filter] pointer-events-auto border",
-              "rounded-[2rem]",
-              isScrolled 
-                ? "backdrop-blur-xl bg-white/80 dark:bg-black/80 border-black/5 dark:border-white/10"
-                : cn(
-                    "border-black/0 dark:border-white/0",
-                    isMobileMenuOpen ? "neu-raised" : "neu-flat"
-                  )
-            )}
-            initial={false}
-            animate={{
-              height: isMobileMenuOpen ? "auto" : "3.5rem",
-              width: (isScrolled || isMobileMenuOpen || windowWidth >= 768) ? "100%" : "7rem"
-            }}
-            transition={{ 
-                duration: 0.5, 
-                ease: [0.22, 1, 0.36, 1], // Smoother ease-out for all transitions
-                // Only sequence the transition when at the top of the page (on mobile)
-                height: { 
-                    duration: 0.4, 
-                    ease: [0.22, 1, 0.36, 1],
-                    // Strictly delay height when opening so width is exactly 100% finished
-                    delay: (isMobileMenuOpen && !isScrolled && windowWidth < 768) ? 0.4 : 0 
-                },
-                width: { 
-                    duration: 0.4, 
-                    ease: [0.22, 1, 0.36, 1],
-                    // Strictly delay width when closing so height is perfectly tucked first
-                    delay: (!isMobileMenuOpen && !isScrolled && windowWidth < 768) ? 0.4 : 0 
-                }
-            }}
-          >
-            <div className="relative h-14 w-full">
-
           {/* Desktop Nav - Centered */}
-          <div className="hidden md:flex items-center justify-center absolute inset-0 pb-[2px] pointer-events-none" style={{ zIndex: 1 }}>
+          <div className="hidden md:flex items-center justify-center absolute inset-0 pointer-events-none pb-[2px]" style={{ zIndex: 1 }}>
             <nav className="flex items-center space-x-8 pointer-events-auto">
                 {navigationItems.map(item => (
                     <Link
@@ -179,14 +125,14 @@ export function Header() {
                         className="text-sm font-medium transition-colors text-muted-foreground hover:text-foreground inline-flex items-center gap-0.5 group"
                     >
                         {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                        <ArrowUpRight className="w-3 h-3 opacity-40 group-hover:opacity-100 transition-opacity -mt-1" />
+                        <ArrowUpRight className="w-3 h-3 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
                     </Link>
                 ))}
             </nav>
           </div>
 
           {/* Desktop Actions - Anchored Right */}
-          <div className="hidden md:flex items-center absolute right-5 lg:right-6 top-1/2 -translate-y-[calc(50%+1px)] space-x-4" style={{ zIndex: 2 }}>
+          <div className="hidden md:flex items-center space-x-4 flex-shrink-0 relative z-10 pb-[1px]">
              {mounted && (
                 <button
                 onClick={toggleTheme}
@@ -208,21 +154,19 @@ export function Header() {
           </div>
 
           {/* Mobile Actions - Anchored Right */}
-          <div className="md:hidden flex items-center absolute right-3 top-1/2 -translate-y-[calc(50%+1px)]" style={{ zIndex: 2 }}>
+          <div className="md:hidden flex items-center flex-shrink-0 relative z-10 pb-[1px]">
              {mounted && (
-                 <motion.button
-                 layout
+                 <button
                  onClick={toggleTheme}
                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
              >
                   {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
-             </motion.button>
+             </button>
              )}
             
             <AnimatePresence>
                 {!showFullLogo && (
                     <motion.div
-                        layout
                         initial={{ width: 0, opacity: 0, scale: 0.5, marginLeft: 0 }}
                         animate={{ width: "auto", opacity: 1, scale: 1, marginLeft: 8 }}
                         exit={{ width: 0, opacity: 0, scale: 0.5, marginLeft: 0 }}
@@ -243,8 +187,7 @@ export function Header() {
                 )}
             </AnimatePresence>
 
-            <motion.button
-                layout
+            <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
             >
@@ -263,7 +206,7 @@ export function Header() {
                              isMobileMenuOpen ? "opacity-0 rotate-90 scale-0" : "opacity-100 rotate-0 scale-100"
                         )}
                     >
-                         <line x1="3" x2="21" y1="8" y2="8" />
+                        <line x1="3" x2="21" y1="8" y2="8" />
                         <line x1="3" x2="21" y1="16" y2="16" />
                     </svg>
                     <X 
@@ -274,7 +217,7 @@ export function Header() {
                         strokeWidth={2}
                     />
                  </div>
-            </motion.button>
+            </button>
           </div>
         </div>
 
@@ -296,7 +239,7 @@ export function Header() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
                                 transition={{ 
-                                  delay: (!isScrolled && windowWidth < 768 ? 0.4 : 0) + 0.05 + (index * 0.05),
+                                  delay: 0.05 + (index * 0.05),
                                   duration: 0.3,
                                   ease: [0.22, 1, 0.36, 1] 
                                 }}
@@ -317,7 +260,7 @@ export function Header() {
                              animate={{ opacity: 1, y: 0 }}
                              exit={{ opacity: 0, y: -10 }}
                              transition={{ 
-                               delay: (!isScrolled && windowWidth < 768 ? 0.4 : 0) + 0.05 + (navigationItems.length * 0.05), 
+                               delay: 0.05 + (navigationItems.length * 0.05), 
                                duration: 0.3, 
                                ease: [0.22, 1, 0.36, 1] 
                              }}
@@ -337,7 +280,7 @@ export function Header() {
                          className="mt-8 pt-6 text-center text-sm font-medium text-muted-foreground flex items-center justify-center gap-1"
                          initial={{ opacity: 0, y: 10 }}
                          animate={{ opacity: 1, y: 0 }}
-                         transition={{ delay: (!isScrolled && windowWidth < 768 ? 0.4 : 0) + 0.1, duration: 0.3 }}
+                         transition={{ delay: 0.1, duration: 0.3 }}
                     >
                          made with <Heart className="w-4 h-4 text-red-500 fill-current pb-[1px]" /> by arjun
                     </motion.div>
@@ -345,7 +288,6 @@ export function Header() {
             )}
         </AnimatePresence>
       </motion.div>
-        </div>
       </div>
     </header>
   )
