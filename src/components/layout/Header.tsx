@@ -154,27 +154,39 @@ export function Header() {
           </div>
 
           {/* Mobile Actions - Anchored Right */}
-          <div className="md:hidden flex items-center absolute right-3 top-1/2 -translate-y-1/2 space-x-1" style={{ zIndex: 2 }}>
+          <div className="md:hidden flex items-center absolute right-3 top-1/2 -translate-y-1/2" style={{ zIndex: 2 }}>
              {mounted && (
                  <button
                  onClick={toggleTheme}
-                 className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
+                 className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
              >
                   {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
              </button>
              )}
             
-            <Link
-                href="/#contact"
-                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
-                onClick={() => setIsMobileMenuOpen(false)}
-            >
-                <Mail className="w-5 h-5" strokeWidth={2} />
-            </Link>
+            <AnimatePresence>
+                {!showFullLogo && (
+                    <motion.div
+                        initial={{ width: 0, opacity: 0, scale: 0.5, marginLeft: 0 }}
+                        animate={{ width: "auto", opacity: 1, scale: 1, marginLeft: 8 }}
+                        exit={{ width: 0, opacity: 0, scale: 0.5, marginLeft: 0 }}
+                        transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+                        className="overflow-hidden flex items-center justify-center"
+                    >
+                        <Link
+                            href="/#contact"
+                            className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            <Mail className="w-5 h-5" strokeWidth={2} />
+                        </Link>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
+                className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
             >
                  <span className="sr-only">Open main menu</span>
                  <div className="relative w-6 h-6 flex items-center justify-center">
