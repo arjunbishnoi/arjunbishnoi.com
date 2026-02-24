@@ -57,11 +57,42 @@ export function Header() {
 
   return (
     <header className="fixed w-full top-2 sm:top-4 z-50 flex justify-center pointer-events-none">
+      {/* Background fade/blur when menu is opened */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+            className={cn(
+              "fixed inset-0 pointer-events-auto",
+              isScrolled && "backdrop-blur-sm bg-black/10 dark:bg-white/5"
+            )}
+            style={{ 
+              backgroundColor: !isScrolled ? "var(--neu-surface)" : undefined,
+              zIndex: -1,
+              top: "-50vh", /* ensure it covers everything even if nesting affects fixed positioning */
+              bottom: "-50vh",
+              left: "-50vw",
+              right: "-50vw"
+            }}
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
       <div className="w-full max-w-7xl px-6 lg:px-8 mx-auto">
       <motion.div 
         className={cn(
-          "overflow-hidden transition-[background-color,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] pointer-events-auto w-full rounded-[2rem]",
-          "backdrop-blur-md bg-white/80 dark:bg-black/80 border border-black/5 dark:border-white/10"
+          "overflow-hidden transition-[background-color,border-color,border-radius,box-shadow,transform,backdrop-filter,-webkit-backdrop-filter] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] pointer-events-auto w-full border",
+          "rounded-[2rem]",
+          isScrolled 
+            ? "backdrop-blur-xl bg-white/80 dark:bg-black/80 border-black/5 dark:border-white/10"
+            : cn(
+                "border-black/0 dark:border-white/0",
+                isMobileMenuOpen ? "neu-raised" : "neu-flat"
+              )
         )}
         initial={false}
         animate={{
@@ -69,7 +100,7 @@ export function Header() {
         }}
         transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
       >
-        <div className="relative h-[calc(3.5rem-2px)] w-full">
+        <div className="relative h-14 w-full">
           {/* Logo - Anchored Left */}
           <div className="absolute left-5 lg:left-6 top-1/2 -translate-y-1/2" style={{ zIndex: 3 }}>
             <Link 
@@ -78,39 +109,41 @@ export function Header() {
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
-              <div className="relative h-6 flex items-center">
+                <div className="relative h-6 flex items-center">
                  {/* Logo Morphing Animation - Framer Motion */}
-                 <div className="flex items-center">
-                    <motion.span layout className="text-foreground">a</motion.span>
-                    <AnimatePresence initial={false}>
+                 <motion.div layout className="flex items-center">
+                    <motion.span layout="position" className="text-foreground">a</motion.span>
+                    <AnimatePresence initial={false} mode="wait">
                         {showFullLogo && (
                             <motion.span
+                                layout="position"
                                 initial={{ width: 0, opacity: 0 }}
                                 animate={{ width: "auto", opacity: 1 }}
                                 exit={{ width: 0, opacity: 0 }}
                                 transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                                className="text-foreground whitespace-nowrap overflow-hidden"
+                                className="text-foreground whitespace-nowrap overflow-hidden origin-left"
                             >
                                 rjun
                             </motion.span>
                         )}
                     </AnimatePresence>
-                    <motion.span layout className="text-foreground">b</motion.span>
-                     <AnimatePresence initial={false}>
+                    <motion.span layout="position" className="text-foreground">b</motion.span>
+                     <AnimatePresence initial={false} mode="wait">
                         {showFullLogo && (
                             <motion.span
+                                layout="position"
                                 initial={{ width: 0, opacity: 0 }}
                                 animate={{ width: "auto", opacity: 1 }}
                                 exit={{ width: 0, opacity: 0 }}
                                 transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                                className="text-foreground whitespace-nowrap overflow-hidden"
+                                className="text-foreground whitespace-nowrap overflow-hidden origin-left"
                             >
                                 ishnoi
                             </motion.span>
                         )}
                     </AnimatePresence>
-                    <motion.span layout className="text-muted-foreground">_</motion.span>
-                 </div>
+                    <motion.span layout="position" className="text-muted-foreground">_</motion.span>
+                 </motion.div>
               </div>
             </Link>
           </div>
@@ -156,17 +189,19 @@ export function Header() {
           {/* Mobile Actions - Anchored Right */}
           <div className="md:hidden flex items-center absolute right-3 top-1/2 -translate-y-1/2" style={{ zIndex: 2 }}>
              {mounted && (
-                 <button
+                 <motion.button
+                 layout
                  onClick={toggleTheme}
                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
              >
                   {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
-             </button>
+             </motion.button>
              )}
             
             <AnimatePresence>
                 {!showFullLogo && (
                     <motion.div
+                        layout
                         initial={{ width: 0, opacity: 0, scale: 0.5, marginLeft: 0 }}
                         animate={{ width: "auto", opacity: 1, scale: 1, marginLeft: 8 }}
                         exit={{ width: 0, opacity: 0, scale: 0.5, marginLeft: 0 }}
@@ -187,7 +222,8 @@ export function Header() {
                 )}
             </AnimatePresence>
 
-            <button
+            <motion.button
+                layout
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
             >
@@ -206,7 +242,7 @@ export function Header() {
                              isMobileMenuOpen ? "opacity-0 rotate-90 scale-0" : "opacity-100 rotate-0 scale-100"
                         )}
                     >
-                        <line x1="3" x2="21" y1="8" y2="8" />
+                         <line x1="3" x2="21" y1="8" y2="8" />
                         <line x1="3" x2="21" y1="16" y2="16" />
                     </svg>
                     <X 
@@ -217,7 +253,7 @@ export function Header() {
                         strokeWidth={2}
                     />
                  </div>
-            </button>
+            </motion.button>
           </div>
         </div>
 

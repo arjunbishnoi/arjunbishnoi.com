@@ -38,7 +38,6 @@
     box-shadow:
       calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
       var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
-    border: none !important;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
@@ -48,7 +47,6 @@
     box-shadow:
       inset 3px 3px 6px var(--neu-inset-shadow-dark),
       inset -3px -3px 6px var(--neu-inset-shadow-light);
-    border: none !important;
   }
 
   /* --- Hover: lift up — card rises off surface with bigger shadow --- */
@@ -87,7 +85,6 @@
     box-shadow:
       calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
       var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
-    border: none !important;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
@@ -174,6 +171,7 @@
 /* Custom Styles from main.css */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Offset for fixed header */
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: var(--neu-surface);
