@@ -53,19 +53,19 @@ export function HeroSection() {
               href: "/apps", 
               label: "Mobile Apps", 
               accent: "iOS · Android · React Native",
-              solidAccent: "#e11d48",
+              solidAccent: "#e54259",
             },
             { 
               href: "/ai", 
               label: "AI Engineering", 
               accent: "ML · LLMs · Intelligent Systems",
-              solidAccent: "#7c3aed",
+              solidAccent: "#8a59f2",
             },
             { 
               href: "/design", 
               label: "Design", 
               accent: "Prototyping · Design Systems",
-              solidAccent: "#D4B818",
+              solidAccent: "#ebae15",
             },
           ]).map((item) => (
             <Link
