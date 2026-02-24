@@ -12,13 +12,19 @@ import { cn } from "@/lib/utils"
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(1200) // Default to desktop for SSR
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
 
-  // Hydration fix for theme
+  // Hydration fix for theme and window width
   useEffect(() => {
     setMounted(true)
+    setWindowWidth(window.innerWidth)
+    
+    const handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   useEffect(() => {
@@ -66,43 +72,22 @@ export function Header() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
             className={cn(
-              "fixed inset-0 pointer-events-auto",
+              "fixed inset-0 pointer-events-auto h-[100dvh] w-[100dvw]",
               isScrolled && "backdrop-blur-sm bg-black/10 dark:bg-white/5"
             )}
             style={{ 
               backgroundColor: !isScrolled ? "var(--neu-surface)" : undefined,
-              zIndex: -1,
-              top: "-50vh", /* ensure it covers everything even if nesting affects fixed positioning */
-              bottom: "-50vh",
-              left: "-50vw",
-              right: "-50vw"
+              zIndex: -1
             }}
             onClick={() => setIsMobileMenuOpen(false)}
           />
         )}
       </AnimatePresence>
 
-      <div className="w-full max-w-7xl px-6 lg:px-8 mx-auto">
-      <motion.div 
-        className={cn(
-          "overflow-hidden transition-[background-color,border-color,border-radius,box-shadow,transform,backdrop-filter,-webkit-backdrop-filter] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] pointer-events-auto w-full border",
-          "rounded-[2rem]",
-          isScrolled 
-            ? "backdrop-blur-xl bg-white/80 dark:bg-black/80 border-black/5 dark:border-white/10"
-            : cn(
-                "border-black/0 dark:border-white/0",
-                isMobileMenuOpen ? "neu-raised" : "neu-flat"
-              )
-        )}
-        initial={false}
-        animate={{
-          height: isMobileMenuOpen ? "auto" : "3.5rem"
-        }}
-        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-      >
-        <div className="relative h-14 w-full">
-          {/* Logo - Anchored Left */}
-          <div className="absolute left-5 lg:left-6 top-1/2 -translate-y-1/2" style={{ zIndex: 3 }}>
+      <div className="w-full max-w-7xl px-6 lg:px-8 mx-auto pointer-events-none">
+        <div className="w-full relative flex justify-end">
+          {/* Logo - Pulled outside the expanding pill so it stays anchored left */}
+          <div className="absolute left-5 lg:left-6 top-7 -translate-y-[calc(50%+1px)] pointer-events-auto" style={{ zIndex: 60 }}>
             <Link 
               href="/" 
               className="text-xl font-bold relative block cursor-pointer" 
@@ -148,8 +133,44 @@ export function Header() {
             </Link>
           </div>
 
+          <motion.div 
+            className={cn(
+              "overflow-hidden transition-[background-color,border-color,border-radius,box-shadow,backdrop-filter,-webkit-backdrop-filter] pointer-events-auto border",
+              "rounded-[2rem]",
+              isScrolled 
+                ? "backdrop-blur-xl bg-white/80 dark:bg-black/80 border-black/5 dark:border-white/10"
+                : cn(
+                    "border-black/0 dark:border-white/0",
+                    isMobileMenuOpen ? "neu-raised" : "neu-flat"
+                  )
+            )}
+            initial={false}
+            animate={{
+              height: isMobileMenuOpen ? "auto" : "3.5rem",
+              width: (isScrolled || isMobileMenuOpen || windowWidth >= 768) ? "100%" : "7rem"
+            }}
+            transition={{ 
+                duration: 0.5, 
+                ease: [0.22, 1, 0.36, 1], // Smoother ease-out for all transitions
+                // Only sequence the transition when at the top of the page (on mobile)
+                height: { 
+                    duration: 0.4, 
+                    ease: [0.22, 1, 0.36, 1],
+                    // Strictly delay height when opening so width is exactly 100% finished
+                    delay: (isMobileMenuOpen && !isScrolled && windowWidth < 768) ? 0.4 : 0 
+                },
+                width: { 
+                    duration: 0.4, 
+                    ease: [0.22, 1, 0.36, 1],
+                    // Strictly delay width when closing so height is perfectly tucked first
+                    delay: (!isMobileMenuOpen && !isScrolled && windowWidth < 768) ? 0.4 : 0 
+                }
+            }}
+          >
+            <div className="relative h-14 w-full">
+
           {/* Desktop Nav - Centered */}
-          <div className="hidden md:flex items-center justify-center absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
+          <div className="hidden md:flex items-center justify-center absolute inset-0 pb-[2px] pointer-events-none" style={{ zIndex: 1 }}>
             <nav className="flex items-center space-x-8 pointer-events-auto">
                 {navigationItems.map(item => (
                     <Link
@@ -165,7 +186,7 @@ export function Header() {
           </div>
 
           {/* Desktop Actions - Anchored Right */}
-          <div className="hidden md:flex items-center absolute right-5 lg:right-6 top-1/2 -translate-y-1/2 space-x-4" style={{ zIndex: 2 }}>
+          <div className="hidden md:flex items-center absolute right-5 lg:right-6 top-1/2 -translate-y-[calc(50%+1px)] space-x-4" style={{ zIndex: 2 }}>
              {mounted && (
                 <button
                 onClick={toggleTheme}
@@ -187,7 +208,7 @@ export function Header() {
           </div>
 
           {/* Mobile Actions - Anchored Right */}
-          <div className="md:hidden flex items-center absolute right-3 top-1/2 -translate-y-1/2" style={{ zIndex: 2 }}>
+          <div className="md:hidden flex items-center absolute right-3 top-1/2 -translate-y-[calc(50%+1px)]" style={{ zIndex: 2 }}>
              {mounted && (
                  <motion.button
                  layout
@@ -275,7 +296,7 @@ export function Header() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
                                 transition={{ 
-                                  delay: 0.05 + (index * 0.05),
+                                  delay: (!isScrolled && windowWidth < 768 ? 0.4 : 0) + 0.05 + (index * 0.05),
                                   duration: 0.3,
                                   ease: [0.22, 1, 0.36, 1] 
                                 }}
@@ -296,7 +317,7 @@ export function Header() {
                              animate={{ opacity: 1, y: 0 }}
                              exit={{ opacity: 0, y: -10 }}
                              transition={{ 
-                               delay: 0.05 + (navigationItems.length * 0.05), 
+                               delay: (!isScrolled && windowWidth < 768 ? 0.4 : 0) + 0.05 + (navigationItems.length * 0.05), 
                                duration: 0.3, 
                                ease: [0.22, 1, 0.36, 1] 
                              }}
@@ -316,7 +337,7 @@ export function Header() {
                          className="mt-8 pt-6 text-center text-sm font-medium text-muted-foreground flex items-center justify-center gap-1"
                          initial={{ opacity: 0, y: 10 }}
                          animate={{ opacity: 1, y: 0 }}
-                         transition={{ delay: 0.1, duration: 0.3 }}
+                         transition={{ delay: (!isScrolled && windowWidth < 768 ? 0.4 : 0) + 0.1, duration: 0.3 }}
                     >
                          made with <Heart className="w-4 h-4 text-red-500 fill-current pb-[1px]" /> by arjun
                     </motion.div>
@@ -324,6 +345,7 @@ export function Header() {
             )}
         </AnimatePresence>
       </motion.div>
+        </div>
       </div>
     </header>
   )
