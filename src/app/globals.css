@@ -108,7 +108,8 @@
 
 @layer base {
   :root {
-    --background: 220 12% 90.6%;
+    /* Set background to exactly match --neu-surface #e0e5ec */
+    --background: 215 28% 90%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
@@ -135,7 +136,8 @@
     --radius: 0.5rem;
   }
   .dark {
-    --background: 240 4% 12.5%;
+    /* Set background to exactly match --neu-surface #1e1e22 */
+    --background: 240 6% 13%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;

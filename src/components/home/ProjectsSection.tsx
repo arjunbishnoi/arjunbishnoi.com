@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { cn } from "@/lib/utils"
 
 import { projects } from "@/lib/site-data"
 import { ProjectCard } from "@/components/projects/ProjectCard"
@@ -11,12 +12,12 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="relative py-0 bg-background">
       {/* Static Full-Width Header */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-4 pt-10">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-4 pt-2 md:pt-10 lg:pt-12">
         <div className="flex items-center justify-between w-full relative">
           
           {/* Title Left */}
-          <div className="overflow-hidden flex items-center pr-4">
-            <span className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">
+          <div className="flex items-center pr-4 pb-1">
+            <span className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground leading-normal">
               Projects
             </span>
           </div>
@@ -50,14 +51,35 @@ export function ProjectsSection() {
       </div>
       
       {/* Projects content */}
-      <div className="mx-auto max-w-7xl px-6 pt-4 lg:px-8 pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {featuredProjects.map((project) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-            />
-          ))}
+      <div className="mx-auto max-w-7xl px-0 pt-4 lg:px-8 pb-10">
+        <div 
+          className="flex md:grid md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory px-6 md:px-0 scroll-pl-6 scroll-pr-6 md:scroll-pl-0 md:scroll-pr-0 pb-4 md:pb-0 scrollbar-hide"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {/* Hide scrollbar for Chrome, Safari and Opera via hidden style block */}
+          <style>{`
+            .scrollbar-hide::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
+          
+          {featuredProjects.map((project, index) => {
+            const isLast = index === featuredProjects.length - 1;
+            return (
+              <div 
+                key={project.id} 
+                className={cn(
+                  "snap-always w-[78vw] flex-none md:w-auto",
+                  isLast ? "snap-end" : "snap-start"
+                )}
+              >
+                <ProjectCard project={project} />
+              </div>
+            );
+          })}
+          
+          {/* Spacer to guarantee right padding for iOS Safari */}
+          <div className="w-[1px] shrink-0 md:hidden" />
         </div>
       </div>
     </section>

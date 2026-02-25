@@ -18,9 +18,9 @@ export const projects = [
     {
         id: 'cryptotracker',
         title: 'Cryptocurrency Tracker',
-        description: 'A cross-platform cryptocurrency tracker built with React Native, Expo, and Firebase Firestore. Features include real-time market data via the CoinLore API, detailed coin statistics, favorites management, pull-to-refresh, and seamless, native-feel navigation.',
+        description: 'Monitor the live cryptocurrency market in real-time. Track your favorite coins, view detailed statistics, and manage your personal portfolio on the go.',
         image: '/cryptotracker.png',
-        tags: ['React Native', 'Expo', 'Firebase', 'CoinLore API'],
+        tags: ['Mobile App', 'React Native', 'Expo', 'Firebase', 'CoinLore API'],
         sourceUrl: 'https://github.com/arjunbishnoi/CryptoTracker',
         featured: true,
         challenge: 'Building a cross-platform mobile app with real-time data synchronization and offline capabilities.',
@@ -29,20 +29,20 @@ export const projects = [
     {
         id: '4rent',
         title: '4rent',
-        description: 'A modern iOS rental marketplace built with SwiftUI, Combine, and MVVM architecture. Features include infinite-scroll property listings, high-resolution image galleries, detailed amenity and pricing views, favorites management, and fully adaptive layouts across all iPhone screen sizes.',
+        description: 'Find your next home with this modern rental marketplace. Browse through high-resolution property galleries, check detailed pricing, and save your favorite listings.',
         image: '/4rent.png',
-        tags: ['SwiftUI', 'Combine', 'MVVM', 'iOS'],
+        tags: ['Mobile App', 'SwiftUI', 'Combine', 'MVVM', 'iOS'],
         sourceUrl: 'https://github.com/arjunbishnoi/4rent',
         featured: true
     },
     {
         id: 'carrental',
         title: 'Car Rental',
-        description: 'A user-friendly Android car rental app built with Kotlin, MVVM, Jetpack Navigation, Retrofit, Room, and Hilt. Features include searchable, filterable vehicle listings, seamless booking flows with date selection, favorites management, profile & booking history screens, and offline-cached browsing for uninterrupted access.',
+        description: 'Make booking your next vehicle effortless. Search through available cars, filter by your specific needs, pick your dates, and complete your reservation.',
         image: '/carrental.png',
-        tags: ['Kotlin', 'MVVM', 'Jetpack Navigation', 'Retrofit', 'Room', 'Hilt'],
+        tags: ['Mobile App', 'Kotlin', 'MVVM', 'Jetpack Navigation', 'Retrofit', 'Room', 'Hilt'],
         sourceUrl: 'https://github.com/arjunbishnoi/CarRental',
-        featured: false
+        featured: true
     }
 ]
 

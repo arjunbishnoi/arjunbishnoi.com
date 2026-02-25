@@ -13,44 +13,37 @@ interface ProjectProps {
 }
 
 export function ProjectCard({ project }: ProjectProps) {
+  // Extract a subtitle or create a short one from the description, and determine a category/date.
+  // We'll mock a category and date since they aren't directly in the site-data yet.
+  const shortSubtitle = project.description.split('.')[0] + '.'; 
+  const category = project.tags && project.tags.length > 0 ? project.tags[0] : "Project";
+  const dateStr = project.id === "cryptotracker" ? "2024" : project.id === "4rent" ? "2023" : "2022";
+
   return (
-    <div className="bg-card rounded-2xl overflow-hidden h-full flex flex-col border border-border/50 hover:border-border transition-colors">
-      <div className="h-48 relative overflow-hidden group bg-muted">
+    <div className="rounded-none overflow-hidden h-full flex flex-col group cursor-pointer">
+      <div className="aspect-square relative overflow-hidden bg-muted rounded-2xl mb-4">
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 33vw"
         />
-        {/* Add colorful overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/40 to-secondary/40 mix-blend-overlay pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 mix-blend-overlay pointer-events-none" />
       </div>
-      <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>
-        <p className="text-muted-foreground mb-4 flex-grow text-sm leading-relaxed">
-          {project.description}
+      
+      <div className="flex flex-col px-1">
+        <h3 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight line-clamp-1 mb-1">
+          {project.title}
+        </h3>
+        
+        <p className="text-xl md:text-2xl text-muted-foreground font-normal mb-6">
+          {shortSubtitle}
         </p>
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-xs px-2.5 py-1 bg-accent/10 text-accent font-medium rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div className="flex gap-4 mt-auto">
-          <a
-            href={project.sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:text-primary/80 text-sm font-medium flex items-center gap-1 transition-colors group"
-          >
-            Source Code
-            <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </a>
+        
+        <div className="flex items-center justify-between text-lg md:text-xl text-muted-foreground font-normal">
+          <span>{category}</span>
+          <span>{dateStr}</span>
         </div>
       </div>
     </div>

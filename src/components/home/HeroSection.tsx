@@ -53,19 +53,22 @@ export function HeroSection() {
               href: "/apps", 
               label: "Mobile Apps", 
               accent: "iOS · Android · React Native",
-              solidAccent: "#e54259",
+              solidAccent: "#FCA5B2",
+              foregroundColor: "#4A0F16",
             },
             { 
               href: "/ai", 
               label: "AI Engineering", 
               accent: "ML · LLMs · Intelligent Systems",
-              solidAccent: "#8a59f2",
+              solidAccent: "#CEC4FF",
+              foregroundColor: "#1D0D49",
             },
             { 
               href: "/design", 
               label: "Design", 
               accent: "Prototyping · Design Systems",
-              solidAccent: "#ebae15",
+              solidAccent: "#FCE09D",
+              foregroundColor: "#4D3300",
             },
           ]).map((item) => (
             <Link
@@ -85,13 +88,22 @@ export function HeroSection() {
                 }}
               />
 
-              <ArrowUpRight className="md:hidden absolute top-3 right-3 w-4 h-4 text-white/60 group-hover:text-white transition-colors z-10" />
+              <ArrowUpRight 
+                className="md:hidden absolute top-3 right-3 w-4 h-4 transition-colors z-10 opacity-70 group-hover:opacity-100" 
+                style={{ color: item.foregroundColor }}
+              />
               <div className="absolute inset-0 flex items-end px-4 pb-5 md:pb-5 md:pl-5 z-10">
                 <div>
-                  <span className="text-sm sm:text-base font-semibold text-white leading-tight block">
+                  <span 
+                    className="text-sm sm:text-base font-semibold leading-tight block"
+                    style={{ color: item.foregroundColor }}
+                  >
                     {item.label}
                   </span>
-                  <span className="hidden md:block text-xs text-white/70 group-hover:text-white/90 transition-colors mt-1">
+                  <span 
+                    className="hidden md:block text-xs transition-colors mt-1 opacity-70 group-hover:opacity-100"
+                    style={{ color: item.foregroundColor }}
+                  >
                     {item.accent}
                   </span>
                 </div>
@@ -227,9 +239,9 @@ export function HeroSection() {
       </div>
 
       {/* Scroll down indicator */}
-      <div className="w-full flex flex-col items-center justify-center mb-0 pb-3 sm:pb-3 sm:mb-3 md:mb-6 md:pb-0 mt-4 md:mt-16 relative z-40">
+      <div className="w-full flex flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-8 md:mt-16 relative z-40">
         <div className={cn(
-            "mt-4 md:mt-2 pb-2 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
+            "mt-4 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
         )}>
           <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
