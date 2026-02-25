@@ -12,7 +12,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="relative py-0 bg-background">
       {/* Static Full-Width Header */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-4 pt-2 md:pt-10 lg:pt-12">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-4 pt-0 md:pt-10 lg:pt-12">
         <div className="flex items-center justify-between w-full relative">
           
           {/* Title Left */}

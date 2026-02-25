@@ -19,30 +19,9 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-start min-h-[85vh] md:min-h-0 pt-[6.5rem] md:pt-28 lg:pt-28"
+      className="relative overflow-hidden flex flex-col items-center justify-start pt-[6.5rem] md:pt-40 lg:pt-44 pb-14 md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
-      {/* Top area with title and paragraph */}
-      <div className="mx-auto max-w-7xl px-4 pt-4 pb-2 sm:pb-4 lg:px-8 w-full">
-        <div className="text-center w-full flex items-center justify-center flex-col">
-          <div className="inline-block w-full text-center py-2 flex flex-col items-center justify-center">
-            <h1 className="font-bold text-center max-w-full leading-none w-full text-foreground">
-              {/* Mobile-first hero title with controlled line breaks and fluid typography */}
-              <span className="flex flex-col items-center justify-center w-full gap-[0.05em] mb-0 sm:mb-0">
-                <span 
-                    className="block text-center w-full whitespace-nowrap leading-[0.95]"
-                    style={{ fontSize: "clamp(1.35rem, 4.5vw, 2.25rem)" }}
-                >
-                    <span className="text-foreground">Mobile Apps, AI &amp; Design</span>
-                </span>
-              </span>
-            </h1>
-            <p className="mt-0.5 sm:mt-0 text-sm sm:text-base text-muted-foreground font-medium">
-                Consistent, hands-on, and always evolving.
-            </p>
-          </div>
-        </div>
-      </div>
 
       {/* Service Cards — Neumorphic */}
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 mt-10 sm:mt-10 md:mt-8">
