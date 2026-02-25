@@ -9,7 +9,7 @@ export function SkillsSection() {
       {/* Static Header */}
       {/* Static Header */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-2 sm:pb-4">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">Skills</h2>
+        <h2 className="text-3xl font-bold sm:text-4xl text-foreground">Skills</h2>
       </div>
       
       {/* Skills content */}

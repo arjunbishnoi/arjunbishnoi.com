@@ -17,7 +17,7 @@ export function ProjectsSection() {
           
           {/* Title Left */}
           <div className="flex items-center pr-4 pb-1">
-            <span className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground leading-normal">
+            <span className="text-3xl font-bold sm:text-4xl text-foreground leading-normal">
               Projects
             </span>
           </div>
@@ -29,7 +29,7 @@ export function ProjectsSection() {
             aria-label="View all projects"
           >
             <div
-              className="relative z-10 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full transition-transform duration-300 active:scale-95 neu-raised"
+              className="relative z-10 flex items-center justify-center h-12 pl-6 pr-5 md:h-[56px] md:pl-8 md:pr-6 rounded-full transition-transform duration-300 active:scale-95 neu-raised"
               style={{
                 "--neu-shadow-distance": "4px",
                 "--neu-shadow-blur": "8px"
@@ -41,9 +41,10 @@ export function ProjectsSection() {
                   boxShadow: "inset 2px 2px 4px rgba(0,0,0,0.5), inset -1px -1px 3px rgba(255,255,255,0.15)",
                 }}
               />
-              <span className="relative z-10 transition-colors duration-300 text-white dark:text-black">
+              <div className="relative z-10 flex items-center justify-center gap-1.5 transition-colors duration-300 text-white dark:text-black mt-[-1px]">
+                <span className="font-semibold text-sm md:text-base mr-0.5 relative -translate-y-[1px]">View all</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right w-5 h-5 md:w-6 md:h-6"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </span>
+              </div>
             </div>
           </Link>
           

@@ -26,7 +26,7 @@ export function HeroSection() {
       <div className="mx-auto max-w-7xl px-4 pt-4 pb-2 sm:pb-4 lg:px-8 w-full">
         <div className="text-center w-full flex items-center justify-center flex-col">
           <div className="inline-block w-full text-center py-2 flex flex-col items-center justify-center">
-            <h1 className="font-bold tracking-tight text-center max-w-full leading-none w-full text-foreground">
+            <h1 className="font-bold text-center max-w-full leading-none w-full text-foreground">
               {/* Mobile-first hero title with controlled line breaks and fluid typography */}
               <span className="flex flex-col items-center justify-center w-full gap-[0.05em] mb-0 sm:mb-0">
                 <span 

@@ -19,28 +19,28 @@ export function ProjectCard({ project }: ProjectProps) {
   const dateStr = project.id === "cryptotracker" ? "2024" : project.id === "4rent" ? "2023" : "2022";
 
   return (
-    <div className="rounded-none overflow-hidden h-full flex flex-col group cursor-pointer">
+    <div className="rounded-none overflow-hidden h-full flex flex-col">
       <div className="aspect-square relative overflow-hidden bg-muted rounded-2xl mb-4">
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-cover"
           sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 mix-blend-overlay pointer-events-none" />
       </div>
       
-      <div className="flex flex-col px-1">
-        <h3 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight line-clamp-1 mb-1">
+      <div className="flex flex-col flex-grow px-1">
+        <h3 className="text-xl md:text-2xl font-semibold text-foreground line-clamp-1 mb-1">
           {project.title}
         </h3>
         
-        <p className="text-xl md:text-2xl text-muted-foreground font-normal mb-6">
+        <p className="text-lg md:text-xl text-muted-foreground font-normal mb-6">
           {shortSubtitle}
         </p>
         
-        <div className="flex items-center justify-between text-lg md:text-xl text-muted-foreground font-normal">
+        <div className="mt-auto flex items-center justify-between text-lg md:text-xl text-muted-foreground font-normal">
           <span>{category}</span>
           <span>{dateStr}</span>
         </div>
