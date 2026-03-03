@@ -111,7 +111,7 @@ export function Header() {
                             </motion.span>
                         )}
                     </AnimatePresence>
-                    <motion.span layout className="text-muted-foreground" style={{ WebkitTextStroke: "0.5px" }}>_</motion.span>
+                    <motion.span layout className="text-muted-foreground" style={{ WebkitTextStroke: "0.3px" }}>_</motion.span>
                  </div>
               </div>
             </Link>
