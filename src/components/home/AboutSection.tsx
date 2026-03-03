@@ -10,7 +10,7 @@ export function AboutSection() {
       
       {/* About content */}
       <div className="mx-auto max-w-7xl px-6 pt-6 sm:pt-8 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-start">
           {/* Profile Image */}
           <div className="md:col-span-4 flex justify-center md:justify-start">
             <div className="relative w-full md:max-w-xs aspect-square rounded-2xl overflow-hidden border border-border/75 bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm">
@@ -26,23 +26,13 @@ export function AboutSection() {
           </div>
 
           {/* Content Columns */}
-          <div className="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                I&apos;m Arjun Bishnoi, a mobile application developer and UI/UX designer passionate about creating smooth, engaging digital experiences. Whether I&apos;m working in React Native, SwiftUI, or Kotlin for Android, I have one goal in mind: build apps that look polished, perform reliably, and feel intuitive from the very first tap. On the frontend, I focus on clean, responsive layouts. On the backend, I use tools like Firebase and Node.js to keep data flowing effortlessly.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                My workflow combines careful engineering with a genuine focus on users. Each feature solves a real problem and is crafted with pixel-perfect detail. I break challenges into clear steps and mix technical precision with creative flair so every project stands out.
-              </p>
-            </div>
-            <div>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                My passion for development began at George Brown College when I dove into mobile app strategy and implementation. I&apos;ve built everything from a real-time cryptocurrency tracker in React Native to rental platform clones in SwiftUI and Kotlin. Each project has sharpened my skills and expanded my design sense.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                I&apos;m always curious and eager to learn new things, whether that means exploring emerging libraries or fine-tuning performance. As I grow, I stay committed to trying fresh approaches and delivering user-focused applications that leave a lasting impression.
-              </p>
-            </div>
+          <div className="md:col-span-8 flex flex-col justify-center">
+            <p className="text-xl md:text-2xl text-foreground font-normal mb-6 leading-relaxed">
+              I am Arjun Bishnoi. I build cross-platform mobile apps, work with AI engineering, and design user interfaces. Whether I am making native apps for iOS and Android, using React Native, or creating design systems, I focus on building tools that look good and are easy to use.
+            </p>
+            <p className="text-xl md:text-2xl text-foreground font-normal leading-relaxed">
+              Right now, I am studying Applied A.I. Solutions Development at George Brown College to learn how to add smart, AI-driven features to the products I build.
+            </p>
           </div>
         </div>
       </div>

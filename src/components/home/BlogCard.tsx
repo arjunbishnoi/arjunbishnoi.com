@@ -1,30 +1,28 @@
 import Image from "next/image"
 
-interface ProjectProps {
-  project: {
+interface BlogProps {
+  blog: {
     id: string
     title: string
     description: string
     image: string
     tags: string[]
-    sourceUrl: string
+    date: string
+    url: string
   }
-  showDate?: boolean
 }
 
-export function ProjectCard({ project, showDate = false }: ProjectProps) {
-  // Extract a subtitle or create a short one from the description, and determine a category/date.
-  // We'll mock a category and date since they aren't directly in the site-data yet.
-  const shortSubtitle = project.description.split('.')[0] + '.'; 
-  const category = project.tags && project.tags.length > 0 ? project.tags[0] : "Project";
-  const dateStr = project.id === "cryptotracker" ? "12 Nov 2024" : project.id === "4rent" ? "05 Mar 2023" : "22 Jul 2022";
+export function BlogCard({ blog }: BlogProps) {
+  // Use first sentence of description, similar to project cards
+  const shortSubtitle = blog.description.split('.')[0] + '.'; 
+  const category = blog.tags && blog.tags.length > 0 ? blog.tags[0] : "Blog";
 
   return (
     <div className="rounded-none overflow-hidden h-full flex flex-col">
       <div className="aspect-square relative overflow-hidden bg-muted rounded-2xl mb-4">
         <Image
-          src={project.image}
-          alt={project.title}
+          src={blog.image}
+          alt={blog.title}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 33vw"
@@ -34,7 +32,7 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
       
       <div className="flex flex-col flex-grow pt-1">
         <h3 className="text-xl md:text-2xl text-black dark:text-white font-bold tracking-normal line-clamp-1 mb-2">
-          {project.title}
+          {blog.title}
         </h3>
         
         <p className="text-xl md:text-2xl text-foreground font-normal mb-4">
@@ -47,11 +45,9 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
           </span>
         </div>
         
-        {showDate && (
-          <div className="text-sm md:text-base text-muted-foreground font-normal">
-            {dateStr}
-          </div>
-        )}
+        <div className="text-sm md:text-base text-muted-foreground font-normal">
+          {blog.date}
+        </div>
       </div>
     </div>
   )
