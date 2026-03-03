@@ -69,7 +69,7 @@ export function Header() {
         }}
         transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
       >
-        <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] w-full px-5 lg:px-6">
+        <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] w-full pl-8 pr-5 lg:pl-9 lg:pr-6">
           {/* Logo - Anchored Left */}
           <div className="flex-shrink-0 relative z-10 pb-[1px]">
             <Link 
