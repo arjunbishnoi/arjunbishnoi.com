@@ -74,8 +74,7 @@ export function Header() {
           <div className="flex-shrink-0 relative z-10 pb-[1px]">
             <Link 
               href="/" 
-              className="text-xl font-normal tracking-wide relative block cursor-pointer" 
-              style={{ fontFamily: "var(--font-dm-serif)" }}
+              className="text-xl font-bold relative block cursor-pointer" 
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
@@ -110,7 +109,7 @@ export function Header() {
                             </motion.span>
                         )}
                     </AnimatePresence>
-                    <motion.span layout className="text-muted-foreground font-normal" style={{ fontFamily: "var(--font-geist-sans)" }}>_</motion.span>
+                    <motion.span layout className="text-muted-foreground">_</motion.span>
                  </div>
               </div>
             </Link>
