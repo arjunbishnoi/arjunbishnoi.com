@@ -9,14 +9,15 @@ interface ProjectProps {
     tags: string[]
     sourceUrl: string
   }
+  showDate?: boolean
 }
 
-export function ProjectCard({ project }: ProjectProps) {
+export function ProjectCard({ project, showDate = false }: ProjectProps) {
   // Extract a subtitle or create a short one from the description, and determine a category/date.
   // We'll mock a category and date since they aren't directly in the site-data yet.
   const shortSubtitle = project.description.split('.')[0] + '.'; 
   const category = project.tags && project.tags.length > 0 ? project.tags[0] : "Project";
-  const dateStr = project.id === "cryptotracker" ? "2024" : project.id === "4rent" ? "2023" : "2022";
+  const dateStr = project.id === "cryptotracker" ? "12 Nov 2024" : project.id === "4rent" ? "05 Mar 2023" : "22 Jul 2022";
 
   return (
     <div className="rounded-none overflow-hidden h-full flex flex-col">
@@ -31,19 +32,26 @@ export function ProjectCard({ project }: ProjectProps) {
         <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 mix-blend-overlay pointer-events-none" />
       </div>
       
-      <div className="flex flex-col flex-grow px-1">
-        <h3 className="text-xl md:text-2xl font-semibold text-foreground line-clamp-1 mb-1">
+      <div className="flex flex-col flex-grow pt-1">
+        <div className="mb-2">
+          <span className="inline-block text-sm md:text-base font-medium text-muted-foreground bg-muted/80 border border-border/50 rounded-full px-4 py-1">
+            {category}
+          </span>
+        </div>
+        
+        <h3 className="text-xl md:text-2xl font-bold text-foreground line-clamp-1 mb-1">
           {project.title}
         </h3>
         
-        <p className="text-lg md:text-xl text-muted-foreground font-normal mb-6">
+        <p className="text-xl md:text-2xl text-foreground font-normal mb-2">
           {shortSubtitle}
         </p>
         
-        <div className="mt-auto flex items-center justify-between text-lg md:text-xl text-muted-foreground font-normal">
-          <span>{category}</span>
-          <span>{dateStr}</span>
-        </div>
+        {showDate && (
+          <div className="text-sm md:text-base text-muted-foreground font-normal">
+            {dateStr}
+          </div>
+        )}
       </div>
     </div>
   )
