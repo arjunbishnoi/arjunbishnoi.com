@@ -5,7 +5,7 @@ export function AboutSection() {
     <section id="about" className="relative py-10 z-40 bg-background">
       {/* Static Header */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-2 sm:pb-4">
-        <h2 className="text-3xl font-bold sm:text-4xl text-foreground">About</h2>
+        <h2 className="text-[1.625rem] md:text-3xl lg:text-4xl text-black dark:text-white font-bold tracking-normal leading-normal">About</h2>
       </div>
       
       {/* About content */}

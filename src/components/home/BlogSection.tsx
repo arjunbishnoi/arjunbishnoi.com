@@ -15,7 +15,7 @@ export function BlogSection() {
           
           {/* Title Left */}
           <div className="flex items-center pr-4 pb-1">
-            <span className="text-3xl font-bold sm:text-4xl text-foreground leading-normal">
+            <span className="text-[1.625rem] md:text-3xl lg:text-4xl text-black dark:text-white font-bold tracking-normal leading-normal">
               Blog
             </span>
           </div>
@@ -27,21 +27,15 @@ export function BlogSection() {
             aria-label="View all posts"
           >
             <div
-              className="relative z-10 flex items-center justify-center h-12 pl-6 pr-5 md:h-[56px] md:pl-8 md:pr-6 rounded-full transition-transform duration-300 active:scale-95 neu-raised"
+              className="relative z-10 flex items-center justify-center h-12 pl-6 pr-5 md:h-[56px] md:pl-8 md:pr-6 rounded-full transition-transform duration-300 active:scale-95 neu-raised overflow-hidden"
               style={{
                 "--neu-shadow-distance": "4px",
                 "--neu-shadow-blur": "8px"
               } as React.CSSProperties}
             >
-              <div
-                className="absolute inset-[3px] md:inset-[4px] rounded-full pointer-events-none dark:bg-white bg-black"
-                style={{
-                  boxShadow: "inset 2px 2px 4px rgba(0,0,0,0.5), inset -1px -1px 3px rgba(255,255,255,0.15)",
-                }}
-              />
-              <div className="relative z-10 flex items-center justify-center gap-1.5 transition-colors duration-300 text-white dark:text-black mt-[-1px]">
-                <span className="font-semibold text-sm md:text-base mr-0.5 relative -translate-y-[1px]">View all</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right w-5 h-5 md:w-6 md:h-6"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              <div className="relative z-10 flex items-center justify-center gap-1.5 transition-colors duration-300 text-black dark:text-white">
+                <span className="font-semibold text-sm md:text-base mr-0.5">View all</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right w-5 h-5 md:w-6 md:h-6 opacity-70 group-hover:opacity-100 transition-opacity"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </div>
             </div>
           </Link>

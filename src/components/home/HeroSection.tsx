@@ -5,6 +5,7 @@ import { socialLinks } from "@/lib/site-data"
 import { Github, Linkedin, ArrowUpRight, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import Image from "next/image"
 
 export function HeroSection() {
   const [scrolledDown, setScrolledDown] = useState(false)
@@ -186,7 +187,7 @@ export function HeroSection() {
                 aria-label="LinkedIn"
                 className="aspect-square rounded-xl neu-flat flex items-center justify-center group/icon"
               >
-                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
+                <Image src="/linkedin-icon.png" alt="LinkedIn" width={36} height={36} className="w-7 h-7 sm:w-9 sm:h-9 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
               </a>
               <a
                 href={socialLinks.github}
@@ -195,7 +196,7 @@ export function HeroSection() {
                 aria-label="GitHub"
                 className="aspect-square rounded-xl neu-flat flex items-center justify-center group/icon"
               >
-                <Github className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
+                <Image src="/github-icon.png" alt="GitHub" width={36} height={36} className="w-7 h-7 sm:w-9 sm:h-9 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
               </a>
           </div>
 
@@ -208,7 +209,7 @@ export function HeroSection() {
                 aria-label="LinkedIn"
                 className="rounded-xl neu-flat flex items-center justify-center group/icon"
               >
-                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-muted-foreground" />
+                <Image src="/linkedin-icon.png" alt="LinkedIn" width={44} height={44} className="w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
               </a>
               <a
                 href={socialLinks.github}
@@ -217,7 +218,7 @@ export function HeroSection() {
                 aria-label="GitHub"
                 className="rounded-xl neu-flat flex items-center justify-center group/icon"
               >
-                <Github className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-muted-foreground" />
+                <Image src="/github-icon.png" alt="GitHub" width={44} height={44} className="w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
               </a>
           </div>
         </div>
