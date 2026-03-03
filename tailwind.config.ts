@@ -58,6 +58,7 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
+				serif: ['var(--font-playfair)', 'Georgia', 'serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

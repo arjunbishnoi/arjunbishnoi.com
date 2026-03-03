@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Moon, Sun, Mail, Heart, ArrowUpRight } from "lucide-react"
+import { X, Moon, Sun, Mail, ArrowUpRight } from "lucide-react"
 import { navigationItems, socialLinks } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -141,7 +141,15 @@ export function Header() {
                 className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-foreground"
                 aria-label="Toggle theme"
             >
-                 {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
+                 {theme === "dark" ? (
+                   <motion.div key="sun" initial={{ rotate: -90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: 90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
+                     <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} />
+                   </motion.div>
+                 ) : (
+                   <motion.div key="moon" initial={{ rotate: 90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: -90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
+                     <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />
+                   </motion.div>
+                 )}
             </button>
              )}
             
@@ -156,13 +164,21 @@ export function Header() {
           </div>
 
           {/* Mobile Actions - Anchored Right */}
-          <div className="md:hidden flex items-center flex-shrink-0 relative z-10 pb-[1px]">
+          <div className="md:hidden absolute right-4 top-0 bottom-0 flex items-center z-10">
              {mounted && (
                  <button
                  onClick={toggleTheme}
                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
              >
-                  {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
+                  {theme === "dark" ? (
+                    <motion.div key="sun" initial={{ rotate: -90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: 90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
+                      <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} />
+                    </motion.div>
+                  ) : (
+                    <motion.div key="moon" initial={{ rotate: 90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: -90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
+                      <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />
+                    </motion.div>
+                  )}
              </button>
              )}
             
@@ -231,10 +247,18 @@ export function Header() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="md:hidden pl-6 pr-4 pt-2 pb-6 w-full flex flex-col"
+                    className="md:hidden pl-6 pr-4 pt-2 pb-9 w-full flex flex-col"
                 >
                     <nav className="flex flex-col space-y-3">
-                        {navigationItems.map((item, index) => (
+                        {[
+                            { name: 'Blog', href: '/blog' },
+                            { name: 'Projects', href: '/projects' },
+                            { name: 'Resume', href: socialLinks.resume, isDownload: true },
+                            { name: 'Contact', href: '/#contact' },
+                            { name: 'LinkedIn', href: socialLinks.linkedin, isExternal: true },
+                            { name: 'Github', href: socialLinks.github, isExternal: true },
+                            { name: 'About', href: '/#about' },
+                        ].map((item, index) => (
                              <motion.div
                                 key={item.name}
                                 initial={{ opacity: 0, y: -10 }}
@@ -246,46 +270,39 @@ export function Header() {
                                   ease: [0.22, 1, 0.36, 1] 
                                 }}
                              >
-                                <Link
-                                    href={item.href}
-                                    className="text-xl font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                     {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                                     <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
-                                </Link>
+                                {item.isDownload ? (
+                                    <a 
+                                        href={item.href} 
+                                        download={socialLinks.resumeDownloadName}
+                                        className="text-xl font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                                    >
+                                        {item.name}
+                                        <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
+                                    </a>
+                                ) : item.isExternal ? (
+                                    <a 
+                                        href={item.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-xl font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                                    >
+                                        {item.name}
+                                        <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
+                                    </a>
+                                ) : (
+                                    <Link
+                                        href={item.href}
+                                        className="text-xl font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        {item.name}
+                                        <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
+                                    </Link>
+                                )}
                              </motion.div>
                         ))}
-                        
-                         <motion.div
-                             initial={{ opacity: 0, y: -10 }}
-                             animate={{ opacity: 1, y: 0 }}
-                             exit={{ opacity: 0, y: -10 }}
-                             transition={{ 
-                               delay: 0.05 + (navigationItems.length * 0.05), 
-                               duration: 0.3, 
-                               ease: [0.22, 1, 0.36, 1] 
-                             }}
-                         >
-                            <a 
-                                href={socialLinks.resume} 
-                                download={socialLinks.resumeDownloadName}
-                                className="text-xl font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
-                            >
-                                Resume
-                                <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
-                            </a>
-                         </motion.div>
                     </nav>
 
-                    <motion.div
-                         className="mt-6 text-center text-xs font-normal text-muted-foreground opacity-25 flex items-center justify-center gap-1"
-                         initial={{ opacity: 0, y: 10 }}
-                         animate={{ opacity: 1, y: 0 }}
-                         transition={{ delay: 0.1, duration: 0.3 }}
-                    >
-                         made with <Heart className="w-3.5 h-3.5 fill-current pb-[1px]" /> by arjun
-                    </motion.div>
                 </motion.div>
             )}
         </AnimatePresence>
