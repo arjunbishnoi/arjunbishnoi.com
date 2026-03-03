@@ -71,7 +71,7 @@ export function Header() {
         }}
         transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
       >
-        <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] w-full pl-8 pr-5 lg:pl-9 lg:pr-6">
+        <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] w-full pl-6 pr-4 lg:pl-7 lg:pr-5">
           {/* Logo - Anchored Left */}
           <div className="flex-shrink-0 relative z-10 pb-[1px]">
             <Link 
@@ -134,7 +134,7 @@ export function Header() {
           </div>
 
           {/* Desktop Actions - Anchored Right */}
-          <div className="hidden md:flex items-center space-x-4 flex-shrink-0 relative z-10 pb-[1px]">
+          <div className="hidden md:flex items-center space-x-2 flex-shrink-0 relative z-10 pb-[1px]">
              {mounted && (
                 <button
                 onClick={toggleTheme}
@@ -231,7 +231,7 @@ export function Header() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="md:hidden pl-8 pr-5 pt-2 pb-6 w-full flex flex-col"
+                    className="md:hidden pl-6 pr-4 pt-2 pb-6 w-full flex flex-col"
                 >
                     <nav className="flex flex-col space-y-3">
                         {navigationItems.map((item, index) => (
