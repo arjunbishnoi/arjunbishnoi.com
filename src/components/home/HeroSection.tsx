@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import { socialLinks } from "@/lib/site-data"
-import { Github, Linkedin, ArrowUpRight, ChevronDown } from "lucide-react"
+import { ArrowUpRight, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import Image from "next/image"

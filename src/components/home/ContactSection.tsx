@@ -72,57 +72,61 @@ export function ContactSection() {
       
       {/* Contact content */}
       <div className="mx-auto max-w-7xl px-6 pt-6 sm:pt-8 lg:px-8">
-        <div className="max-w-2xl mx-auto text-left sm:text-center mb-16">
-          <p className="text-xl md:text-2xl text-foreground font-normal mb-8 leading-relaxed">
-            I&apos;m currently open to new opportunities and collaborations. Whether you have a question, 
-            a project in mind, or just want to say hello, feel free to reach out!
-          </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 xl:gap-16 items-start">
+          
+          {/* Left Column: Text & Socials */}
+          <div className="flex flex-col text-left sm:text-center lg:text-left h-full">
+            <p className="text-xl md:text-2xl text-foreground font-normal mb-8 leading-relaxed">
+              I&apos;m currently open to new opportunities and collaborations. Whether you have a question, 
+              a project in mind, or just want to say hello, feel free to reach out!
+            </p>
 
-          {/* Social & Direct Contact Links */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 md:gap-4 mb-2 mt-4 w-full">
-            {/* Top row on mobile: Social + Resume */}
-            <div className="flex gap-3 md:gap-4 w-full sm:w-auto">
-              <a
-                href={socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center aspect-square h-[3.25rem] sm:h-14 md:h-[3.75rem] rounded-2xl neu-raised group/icon transition-all shrink-0"
-                aria-label="GitHub Profile"
-              >
-                <Image src="/github-icon.png" alt="GitHub" width={28} height={28} className="w-6 h-6 sm:w-7 sm:h-7 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
-              </a>
-              <a
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center aspect-square h-[3.25rem] sm:h-14 md:h-[3.75rem] rounded-2xl neu-raised group/icon transition-all shrink-0"
-                aria-label="LinkedIn Profile"
-              >
-                <Image src="/linkedin-icon.png" alt="LinkedIn" width={28} height={28} className="w-6 h-6 sm:w-7 sm:h-7 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
-              </a>
+            {/* Social & Direct Contact Links */}
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-3 md:gap-4 mt-auto w-full">
+              {/* Top row on mobile: Social + Resume */}
+              <div className="flex gap-3 md:gap-4 w-full sm:w-auto">
+                <a
+                  href={socialLinks.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center aspect-square h-[3.25rem] sm:h-14 md:h-[3.75rem] rounded-2xl neu-raised group/icon transition-all shrink-0"
+                  aria-label="GitHub Profile"
+                >
+                  <Image src="/github-icon.png" alt="GitHub" width={28} height={28} className="w-6 h-6 sm:w-7 sm:h-7 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
+                </a>
+                <a
+                  href={socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center aspect-square h-[3.25rem] sm:h-14 md:h-[3.75rem] rounded-2xl neu-raised group/icon transition-all shrink-0"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Image src="/linkedin-icon.png" alt="LinkedIn" width={28} height={28} className="w-6 h-6 sm:w-7 sm:h-7 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
+                </a>
 
+                <a
+                  href={socialLinks.resume}
+                  download={socialLinks.resumeDownloadName}
+                  className="flex flex-1 sm:flex-auto items-center justify-center gap-2 px-6 h-[3.25rem] sm:h-14 md:h-[3.75rem] rounded-2xl neu-raised text-foreground transition-all font-medium text-base sm:text-lg whitespace-nowrap group/icon"
+                >
+                  <Download className="w-5 h-5 sm:w-6 sm:h-6 opacity-70 group-hover/icon:opacity-100 transition-all" />
+                  <span>Resume</span>
+                </a>
+              </div>
+
+              {/* Bottom row on mobile: Email */}
               <a
-                href={socialLinks.resume}
-                download={socialLinks.resumeDownloadName}
-                className="flex flex-1 sm:flex-auto items-center justify-center gap-2 px-6 h-[3.25rem] sm:h-14 md:h-[3.75rem] rounded-2xl neu-raised text-foreground transition-all font-medium text-base sm:text-lg whitespace-nowrap group/icon"
+                href={socialLinks.email}
+                className="flex w-full sm:w-auto items-center justify-center gap-2 px-6 h-[3.25rem] sm:h-14 md:h-[3.75rem] rounded-2xl neu-raised text-foreground transition-all font-medium text-base sm:text-lg whitespace-nowrap group/icon"
               >
-                <Download className="w-5 h-5 sm:w-6 sm:h-6 opacity-70 group-hover/icon:opacity-100 transition-all" />
-                <span>Resume</span>
+                <Mail className="w-5 h-5 sm:w-6 sm:h-6 opacity-70 group-hover/icon:opacity-100 transition-all" />
+                <span>contact@arjunbishnoi.com</span>
               </a>
             </div>
-
-            {/* Bottom row on mobile: Email */}
-            <a
-              href={socialLinks.email}
-              className="flex w-full sm:w-auto items-center justify-center gap-2 px-6 h-[3.25rem] sm:h-14 md:h-[3.75rem] rounded-2xl neu-raised text-foreground transition-all font-medium text-base sm:text-lg whitespace-nowrap group/icon"
-            >
-              <Mail className="w-5 h-5 sm:w-6 sm:h-6 opacity-70 group-hover/icon:opacity-100 transition-all" />
-              <span>contact@arjunbishnoi.com</span>
-            </a>
           </div>
-        </div>
-        
-        <div className="max-w-xl mx-auto mt-12 border-t border-border/50 pt-10">
+          
+          {/* Right Column: Form */}
+          <div className="w-full border-t lg:border-t-0 lg:border-l border-border/50 pt-10 lg:pt-0 lg:pl-8 xl:pl-12">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label htmlFor="name" className="block text-base font-medium text-foreground mb-1.5 ml-1">Name</label>
@@ -193,6 +197,7 @@ export function ContactSection() {
               {errorMessage && <p className="mt-2 text-sm text-red-500 text-center">{errorMessage}</p>}
             </div>
           </form>
+        </div>
         </div>
       </div>
     </section>
