@@ -229,7 +229,7 @@ export function Header() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="md:hidden px-5 sm:px-6 pt-2 pb-6 w-full flex flex-col"
+                    className="md:hidden pl-8 pr-5 pt-2 pb-6 w-full flex flex-col"
                 >
                     <nav className="flex flex-col space-y-3">
                         {navigationItems.map((item, index) => (
