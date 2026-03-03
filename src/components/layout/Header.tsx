@@ -73,14 +73,14 @@ export function Header() {
       >
         <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] min-h-[calc(3.5rem-2px)] w-full pl-6 pr-4 lg:pl-7 lg:pr-5">
           {/* Logo - Anchored Left */}
-          <div className="flex-shrink-0 relative z-10 pb-[1px]">
+          <div className="flex-shrink-0 relative z-10">
             <Link 
               href="/" 
-              className="text-xl font-semibold font-serif relative block cursor-pointer" 
+              className="text-xl font-semibold font-serif leading-tight -translate-y-[1px] relative block cursor-pointer" 
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
-              <div className="relative h-6 flex items-center">
+              <div className="relative flex items-center">
                  {/* Logo Morphing Animation - Framer Motion */}
                  <div className="flex items-center">
                     <motion.span layout className="text-foreground">a</motion.span>
@@ -118,7 +118,7 @@ export function Header() {
           </div>
 
           {/* Desktop Nav - Centered */}
-          <div className="hidden md:flex items-center justify-center absolute inset-0 pointer-events-none pb-[2px]" style={{ zIndex: 1 }}>
+          <div className="hidden md:flex items-center justify-center absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
             <nav className="flex items-center space-x-8 pointer-events-auto">
                 {navigationItems.map(item => (
                     <Link
@@ -134,7 +134,7 @@ export function Header() {
           </div>
 
           {/* Desktop Actions - Anchored Right */}
-          <div className="hidden md:flex items-center space-x-2 flex-shrink-0 relative z-10 pb-[1px]">
+          <div className="hidden md:flex items-center space-x-2 flex-shrink-0 relative z-10">
              {mounted && (
                 <button
                 onClick={toggleTheme}
