@@ -76,7 +76,7 @@ export function Header() {
           <div className="flex-shrink-0 relative z-10 pb-[1px]">
             <Link 
               href="/" 
-              className="text-xl font-bold relative block cursor-pointer" 
+              className="text-xl font-semibold relative block cursor-pointer" 
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
@@ -138,7 +138,7 @@ export function Header() {
              {mounted && (
                 <button
                 onClick={toggleTheme}
-                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-foreground"
                 aria-label="Toggle theme"
             >
                  {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
@@ -147,7 +147,7 @@ export function Header() {
             
             <Link
                 href="/#contact"
-                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-foreground"
                 aria-label="Contact section"
                 onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -160,7 +160,7 @@ export function Header() {
              {mounted && (
                  <button
                  onClick={toggleTheme}
-                 className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
+                 className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
              >
                   {theme === "dark" ? <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} /> : <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />}
              </button>
@@ -180,7 +180,7 @@ export function Header() {
                     >
                         <Link
                             href="/#contact"
-                            className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
+                            className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             <Mail className="w-5 h-5" strokeWidth={2} />
@@ -191,7 +191,7 @@ export function Header() {
 
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-muted-foreground active:text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
+                className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
             >
                  <span className="sr-only">Open main menu</span>
                  <div className="relative w-6 h-6 flex items-center justify-center">
@@ -248,7 +248,7 @@ export function Header() {
                              >
                                 <Link
                                     href={item.href}
-                                    className="text-xl font-bold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                                    className="text-xl font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                      {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
@@ -270,7 +270,7 @@ export function Header() {
                             <a 
                                 href={socialLinks.resume} 
                                 download={socialLinks.resumeDownloadName}
-                                className="text-xl font-bold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                                className="text-xl font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
                             >
                                 Resume
                                 <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
@@ -279,12 +279,12 @@ export function Header() {
                     </nav>
 
                     <motion.div
-                         className="mt-8 pt-6 text-center text-sm font-medium text-muted-foreground flex items-center justify-center gap-1"
+                         className="mt-6 text-center text-xs font-normal text-muted-foreground opacity-25 flex items-center justify-center gap-1"
                          initial={{ opacity: 0, y: 10 }}
                          animate={{ opacity: 1, y: 0 }}
                          transition={{ delay: 0.1, duration: 0.3 }}
                     >
-                         made with <Heart className="w-4 h-4 text-red-500 fill-current pb-[1px]" /> by arjun
+                         made with <Heart className="w-3.5 h-3.5 fill-current pb-[1px]" /> by arjun
                     </motion.div>
                 </motion.div>
             )}
