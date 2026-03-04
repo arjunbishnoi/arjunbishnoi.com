@@ -89,7 +89,8 @@ export function Header() {
           <div className="flex-shrink-0 relative z-10">
             <Link 
               href="/" 
-              className="text-xl font-bold md:font-semibold font-serif -translate-y-[1px] relative block cursor-pointer" 
+              className="text-xl font-bold md:font-semibold font-serif -translate-y-[1px] relative block cursor-pointer subpixel-antialiased" 
+              style={{ WebkitTextStroke: '0.4px' }}
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
@@ -236,12 +237,12 @@ export function Header() {
             <AnimatePresence>
                 {!showFullLogo && (
                     <motion.div
-                        initial={{ width: 0, opacity: 0, scale: 0.5, marginLeft: 0 }}
-                        animate={{ width: "auto", opacity: 1, scale: 1, marginLeft: 8 }}
-                        exit={{ width: 0, opacity: 0, scale: 0.5, marginLeft: 0 }}
+                        initial={{ width: 0, opacity: 0, marginLeft: 0 }}
+                        animate={{ width: "auto", opacity: 1, marginLeft: 8 }}
+                        exit={{ width: 0, opacity: 0, marginLeft: 0 }}
                         transition={{ 
-                            duration: 0.4, ease: [0.32, 0.72, 0, 1],
-                            opacity: { duration: 0.1 } 
+                            duration: 0.5, ease: [0.32, 0.72, 0, 1],
+                            opacity: { duration: 0.2 }
                         }}
                         className="overflow-hidden flex items-center justify-center"
                     >
