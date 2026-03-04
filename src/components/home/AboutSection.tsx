@@ -5,7 +5,7 @@ export function AboutSection() {
     <section id="about" className="relative py-10 z-40 bg-background">
       {/* Static Header */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-2 sm:pb-4">
-        <h2 className="text-[1.625rem] md:text-3xl lg:text-4xl text-black dark:text-white font-bold tracking-normal leading-normal">About</h2>
+        <h2 className="text-[1.625rem] md:text-3xl lg:text-4xl text-black dark:text-white font-bold">About</h2>
       </div>
       
       {/* About content */}
@@ -27,10 +27,10 @@ export function AboutSection() {
 
           {/* Content Columns */}
           <div className="md:col-span-8 flex flex-col justify-center">
-            <p className="text-xl md:text-2xl text-foreground font-normal mb-6 leading-relaxed">
+            <p className="text-xl md:text-2xl text-foreground mb-6">
               I am Arjun Bishnoi. I build cross-platform mobile apps, work with AI engineering, and design user interfaces. Whether I am making native apps for iOS and Android, using React Native, or creating design systems, I focus on building tools that look good and are easy to use.
             </p>
-            <p className="text-xl md:text-2xl text-foreground font-normal leading-relaxed">
+            <p className="text-xl md:text-2xl text-foreground">
               Right now, I am studying Applied A.I. Solutions Development at George Brown College to learn how to add smart, AI-driven features to the products I build.
             </p>
           </div>

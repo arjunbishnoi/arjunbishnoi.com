@@ -31,21 +31,21 @@ export function BlogCard({ blog }: BlogProps) {
       </div>
       
       <div className="flex flex-col flex-grow pt-1">
-        <h3 className="text-xl md:text-2xl text-black dark:text-white font-bold tracking-normal line-clamp-1 mb-2">
+        <h3 className="text-xl md:text-2xl text-black dark:text-white font-bold line-clamp-1 mb-2">
           {blog.title}
         </h3>
         
-        <p className="text-xl md:text-2xl text-foreground font-normal mb-4">
+        <p className="text-xl md:text-2xl text-foreground mb-4">
           {shortSubtitle}
         </p>
         
         <div className="mb-2">
-          <span className="inline-block text-sm md:text-base font-normal text-foreground/80 bg-muted/80 border border-border/50 rounded-full px-4 py-1">
+          <span className="inline-block text-sm md:text-base text-foreground/80 bg-muted/80 border border-border/50 rounded-full px-4 py-1">
             {category}
           </span>
         </div>
         
-        <div className="text-sm md:text-base text-muted-foreground font-normal">
+        <div className="text-sm md:text-base text-muted-foreground">
           {blog.date}
         </div>
       </div>

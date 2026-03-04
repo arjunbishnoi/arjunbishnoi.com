@@ -75,7 +75,7 @@ export function HeroSection() {
                 />
                 <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
                   <span 
-                    className="text-sm sm:text-base font-semibold leading-none block"
+                    className="text-sm sm:text-base font-semibold block"
                     style={{ color: item.foregroundColor }}
                   >
                     {item.label}
@@ -111,7 +111,7 @@ export function HeroSection() {
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
               <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-zinc-500 group-hover:text-zinc-700 transition-colors" />
               <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
-                <span className="text-sm sm:text-base font-semibold text-zinc-900 leading-none block">
+                <span className="text-sm sm:text-base font-semibold text-zinc-900 block">
                   All Projects
                 </span>
                 <span className="hidden md:block text-xs text-zinc-800/70 group-hover:text-zinc-800/90 transition-colors mt-1">
@@ -126,60 +126,60 @@ export function HeroSection() {
       {/* Utility Cards — Neumorphic */}
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 mt-3 sm:mt-4">
         <div className="grid auto-rows-fr grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-          {/* Resume */}
-          <a
-            href={socialLinks.resume}
-            download={socialLinks.resumeDownloadName}
-            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
-          >
-
-
-            <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
-              <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
-              <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
-                <span className="text-sm sm:text-base font-semibold text-foreground group-hover:text-foreground transition-colors leading-none block">
-                  Resume
-                </span>
-              </div>
-            </div>
-          </a>
-
-          {/* Contact */}
-          <a
-            href="#contact"
-            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
-          >
-
-
-            <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
-              <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
-              <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
-                <span className="text-sm sm:text-base font-semibold text-foreground group-hover:text-foreground transition-colors leading-none block">
-                  Contact
-                </span>
-              </div>
-            </div>
-          </a>
-
-          {/* Blog */}
+          {/* Blog — Desktop: 1st, Mobile: 3rd */}
           <Link
             href="/blog"
-            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]"
+            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem] order-2 md:order-1"
           >
 
 
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
               <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
               <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
-                <span className="text-sm sm:text-base font-semibold text-foreground group-hover:text-foreground transition-colors leading-none block">
+                <span className="text-sm sm:text-base font-semibold text-foreground group-hover:text-foreground transition-colors block">
                   Blog
                 </span>
               </div>
             </div>
           </Link>
 
+          {/* Resume — Desktop: 2nd, Mobile: 2nd */}
+          <a
+            href={socialLinks.resume}
+            download={socialLinks.resumeDownloadName}
+            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem] order-1 md:order-2"
+          >
+
+
+            <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
+              <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
+              <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
+                <span className="text-sm sm:text-base font-semibold text-foreground group-hover:text-foreground transition-colors block">
+                  Resume
+                </span>
+              </div>
+            </div>
+          </a>
+
+          {/* Contact — Desktop: 3rd, Mobile: 1st */}
+          <a
+            href="#contact"
+            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem] order-3 md:order-3"
+          >
+
+
+            <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
+              <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
+              <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
+                <span className="text-sm sm:text-base font-semibold text-foreground group-hover:text-foreground transition-colors block">
+                  Contact
+                </span>
+              </div>
+            </div>
+          </a>
+
           {/* Socials - mobile only: side by side in one cell */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:hidden">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:hidden order-4">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
@@ -201,7 +201,7 @@ export function HeroSection() {
           </div>
 
           {/* Socials - desktop only: 2x1 column in the 4th grid cell */}
-          <div className="hidden md:grid md:grid-cols-2 gap-3 sm:gap-4 md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem]">
+          <div className="hidden md:grid md:grid-cols-2 gap-3 sm:gap-4 md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem] order-4">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"

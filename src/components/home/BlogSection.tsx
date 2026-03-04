@@ -15,7 +15,7 @@ export function BlogSection() {
           
           {/* Title Left */}
           <div className="flex items-center pr-4 pb-1">
-            <span className="text-[1.625rem] md:text-3xl lg:text-4xl text-black dark:text-white font-bold tracking-normal leading-normal">
+            <span className="text-[1.625rem] md:text-3xl lg:text-4xl text-black dark:text-white font-bold">
               Blog
             </span>
           </div>

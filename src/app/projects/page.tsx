@@ -33,7 +33,7 @@ export default function ProjectsPage() {
       <div className="pt-8 pb-8 relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="text-4xl font-bold text-foreground sm:text-5xl">
               Projects
               <span className="block text-xl text-primary mt-2">My work and contributions</span>
             </h1>
@@ -65,7 +65,7 @@ export default function ProjectsPage() {
             </div>
             <div className="p-8 md:p-10">
                 <h3 className="text-2xl font-semibold text-foreground mb-3">{featuredProject.title}</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-muted-foreground mb-6">
                   {featuredProject.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">

@@ -6,12 +6,13 @@ import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Moon, Sun, Mail, ArrowUpRight } from "lucide-react"
-import { navigationItems, socialLinks } from "@/lib/site-data"
+import { socialLinks } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
@@ -23,10 +24,18 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 500)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Track desktop breakpoint for logo behavior
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768)
+    checkDesktop()
+    window.addEventListener('resize', checkDesktop)
+    return () => window.removeEventListener('resize', checkDesktop)
   }, [])
 
   // Lock body scroll when mobile menu is open
@@ -38,7 +47,8 @@ export function Header() {
     }
   }, [isMobileMenuOpen])
 
-  const showFullLogo = !isScrolled || isMobileMenuOpen
+  // On desktop, always show full logo. On mobile, shrink when scrolled.
+  const showFullLogo = !isScrolled || isMobileMenuOpen || isDesktop
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (pathname === "/") {
@@ -57,7 +67,10 @@ export function Header() {
 
   return (
     <header className="fixed w-full top-2 sm:top-4 z-50 flex justify-center pointer-events-none">
-      <div className="w-full max-w-7xl px-6 lg:px-8 mx-auto">
+      <div className={cn(
+        "w-full mx-auto transition-[max-width,padding] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] px-6",
+        isScrolled ? "max-w-7xl lg:px-8" : "md:max-w-[33rem] max-w-5xl"
+      )}>
       <motion.div 
         className={cn(
           "relative overflow-hidden transition-[background-color,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] pointer-events-auto w-full rounded-[2rem]",
@@ -76,7 +89,7 @@ export function Header() {
           <div className="flex-shrink-0 relative z-10">
             <Link 
               href="/" 
-              className="text-xl font-semibold font-serif leading-tight -translate-y-[1px] relative block cursor-pointer" 
+              className="text-xl font-semibold font-serif -translate-y-[1px] relative block cursor-pointer" 
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
@@ -111,34 +124,66 @@ export function Header() {
                             </motion.span>
                         )}
                     </AnimatePresence>
-                    <motion.span layout className="text-muted-foreground" style={{ WebkitTextStroke: "0.3px" }}>_</motion.span>
+                    <motion.span layout className="text-black dark:text-white font-bold">_</motion.span>
                  </div>
               </div>
             </Link>
           </div>
 
-          {/* Desktop Nav - Centered */}
-          <div className="hidden md:flex items-center justify-center absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
-            <nav className="flex items-center space-x-8 pointer-events-auto">
-                {navigationItems.map(item => (
-                    <Link
-                        key={item.name}
-                        href={item.href}
-                        className="text-sm font-medium transition-colors text-muted-foreground hover:text-foreground inline-flex items-center gap-0.5 group"
-                    >
-                        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                        <ArrowUpRight className="w-3 h-3 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
-                    </Link>
-                ))}
+          {/* Desktop Nav - Centered (hidden at top) */}
+          <div className={cn(
+            "hidden md:flex items-center justify-center absolute inset-0 pointer-events-none transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+            isScrolled ? "opacity-100" : "opacity-0"
+          )} style={{ zIndex: 1 }}>
+            <nav className={cn(
+              "flex items-center space-x-8",
+              isScrolled ? "pointer-events-auto" : "pointer-events-none"
+            )}>
+                <Link
+                    href="/blog"
+                    className="text-base font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                >
+                    Blog
+                    <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
+                </Link>
+                <Link
+                    href="/projects"
+                    className="text-base font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                >
+                    Projects
+                    <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
+                </Link>
+                <a
+                    href={socialLinks.resume}
+                    download={socialLinks.resumeDownloadName}
+                    className="text-base font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                >
+                    Resume
+                    <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
+                </a>
+                <Link
+                    href="/#contact"
+                    className="text-base font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                >
+                    Contact
+                    <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
+                </Link>
+                <Link
+                    href="/#about"
+                    className="text-base font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                >
+                    About
+                    <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
+                </Link>
             </nav>
           </div>
 
           {/* Desktop Actions - Anchored Right */}
-          <div className="hidden md:flex items-center space-x-2 flex-shrink-0 relative z-10">
+          <div className="hidden md:flex items-center space-x-1 flex-shrink-0 relative z-10">
              {mounted && (
                 <button
                 onClick={toggleTheme}
-                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-foreground"
+                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white"
                 aria-label="Toggle theme"
             >
                  {theme === "dark" ? (
@@ -153,14 +198,20 @@ export function Header() {
             </button>
              )}
             
-            <Link
-                href="/#contact"
-                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-foreground"
-                aria-label="Contact section"
-                onClick={() => setIsMobileMenuOpen(false)}
-            >
-                <Mail className="w-5 h-5" strokeWidth={2} />
-            </Link>
+            {/* Mail icon - only visible when scrolled */}
+            <div className={cn(
+              "flex items-center overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+              isScrolled ? "max-w-[50px] opacity-100" : "max-w-0 opacity-0 pointer-events-none"
+            )}>
+              <Link
+                  href="/#contact"
+                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white"
+                  aria-label="Contact section"
+                  onClick={() => setIsMobileMenuOpen(false)}
+              >
+                  <Mail className="w-5 h-5" strokeWidth={2} />
+              </Link>
+            </div>
           </div>
 
           {/* Mobile Actions - Anchored Right */}
@@ -168,7 +219,7 @@ export function Header() {
              {mounted && (
                  <button
                  onClick={toggleTheme}
-                 className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
+                 className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
              >
                   {theme === "dark" ? (
                     <motion.div key="sun" initial={{ rotate: -90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: 90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
@@ -196,7 +247,7 @@ export function Header() {
                     >
                         <Link
                             href="/#contact"
-                            className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
+                            className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             <Mail className="w-5 h-5" strokeWidth={2} />
@@ -207,7 +258,7 @@ export function Header() {
 
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-foreground active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
+                className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
             >
                  <span className="sr-only">Open main menu</span>
                  <div className="relative w-6 h-6 flex items-center justify-center">

@@ -67,7 +67,7 @@ export function ContactSection() {
     <section id="contact" ref={sectionRef} className="relative py-10 z-40 bg-background">
       {/* Static Header */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-2 sm:pb-4">
-        <h2 className="text-[1.625rem] md:text-3xl lg:text-4xl text-black dark:text-white font-bold tracking-normal leading-normal">Contact</h2>
+        <h2 className="text-[1.625rem] md:text-3xl lg:text-4xl text-black dark:text-white font-bold">Contact</h2>
       </div>
       
       {/* Contact content */}
@@ -76,7 +76,7 @@ export function ContactSection() {
           
           {/* Left Column: Text & Socials */}
           <div className="flex flex-col text-left sm:text-center lg:text-left h-full">
-            <p className="text-xl md:text-2xl text-foreground font-normal mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-foreground mb-8">
               I&apos;m currently open to new opportunities and collaborations. Whether you have a question, 
               a project in mind, or just want to say hello, feel free to reach out!
             </p>

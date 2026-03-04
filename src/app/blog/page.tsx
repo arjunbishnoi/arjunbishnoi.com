@@ -13,7 +13,7 @@ export default function BlogPage() {
     <main className="min-h-screen bg-background text-foreground">
       <div className="pt-32 pb-24 px-6">
         <div className="mx-auto max-w-7xl">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="text-4xl font-bold text-foreground sm:text-5xl">
             Blog
             <span className="block text-xl text-primary mt-2">Thoughts &amp; insights</span>
           </h1>
