@@ -89,7 +89,7 @@ export function Header() {
           <div className="flex-shrink-0 relative z-10">
             <Link 
               href="/" 
-              className="text-xl font-semibold font-serif -translate-y-[1px] relative block cursor-pointer" 
+              className="text-xl font-bold md:font-semibold font-serif -translate-y-[1px] relative block cursor-pointer" 
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
