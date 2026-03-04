@@ -89,8 +89,7 @@ export function Header() {
           <div className="flex-shrink-0 relative z-10">
             <Link 
               href="/" 
-              className="text-xl font-bold md:font-semibold font-serif -translate-y-[1px] relative block cursor-pointer subpixel-antialiased" 
-              style={{ WebkitTextStroke: '0.4px' }}
+              className="text-xl font-bold md:font-semibold font-serif -translate-y-[1px] relative block cursor-pointer max-md:subpixel-antialiased max-md:[-webkit-text-stroke:0.4px]" 
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
@@ -218,6 +217,7 @@ export function Header() {
           {/* Mobile Actions - Anchored Right */}
           <div className="md:hidden absolute right-4 top-0 bottom-0 flex items-center z-10">
              {mounted && (
+                 <motion.div layout transition={{ layout: { duration: 0.5, ease: [0.32, 0.72, 0, 1] } }}>
                  <button
                  onClick={toggleTheme}
                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
@@ -232,31 +232,38 @@ export function Header() {
                     </motion.div>
                   )}
              </button>
+                 </motion.div>
              )}
             
             <AnimatePresence>
                 {!showFullLogo && (
                     <motion.div
-                        initial={{ width: 0, opacity: 0, marginLeft: 0 }}
-                        animate={{ width: "auto", opacity: 1, marginLeft: 8 }}
-                        exit={{ width: 0, opacity: 0, marginLeft: 0 }}
-                        transition={{ 
-                            duration: 0.5, ease: [0.32, 0.72, 0, 1],
-                            opacity: { duration: 0.2 }
-                        }}
-                        className="overflow-hidden flex items-center justify-center"
+                        initial={{ width: 0 }}
+                        animate={{ width: 48 }}
+                        exit={{ width: 0 }}
+                        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                        className="overflow-hidden flex items-center justify-end"
                     >
-                        <Link
-                            href="/#contact"
-                            className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                        <motion.div
+                            initial={{ scale: 0.5, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.5, opacity: 0 }}
+                            transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                            className="origin-right will-change-transform [backface-visibility:hidden]"
                         >
-                            <Mail className="w-5 h-5" strokeWidth={2} />
-                        </Link>
+                            <Link
+                                href="/#contact"
+                                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                <Mail className="w-5 h-5" strokeWidth={2} />
+                            </Link>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
+            <motion.div layout transition={{ layout: { duration: 0.5, ease: [0.32, 0.72, 0, 1] } }}>
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
@@ -288,6 +295,7 @@ export function Header() {
                     />
                  </div>
             </button>
+            </motion.div>
           </div>
         </div>
 
