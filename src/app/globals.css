@@ -21,6 +21,9 @@
     --neu-shadow-blur: 14px;
     --neu-inset-shadow-dark: rgba(170, 170, 170, 0.5);
     --neu-inset-shadow-light: rgba(255, 255, 255, 0.5);
+    /* Hero title gradient: black at top, lighter grey at bottom */
+    --hero-gradient-top: #000000;
+    --hero-gradient-bottom: #8a8a8a;
   }
 
   .dark {
@@ -30,6 +33,9 @@
     --neu-shadow-light: rgba(50, 50, 50, 0.35);
     --neu-inset-shadow-dark: rgba(5, 5, 5, 0.6);
     --neu-inset-shadow-light: rgba(50, 50, 50, 0.3);
+    /* Hero title gradient: white at top, medium grey at bottom */
+    --hero-gradient-top: #ffffff;
+    --hero-gradient-bottom: #444444;
   }
 
   /* --- Raised state: element pops out of surface --- */

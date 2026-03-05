@@ -20,12 +20,28 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-start pt-[6.5rem] md:pt-40 lg:pt-44 pb-14 md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center justify-start pt-[4.25rem] md:pt-20 lg:pt-24 pb-14 md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
 
+      {/* Hero Title — vertically centered in the gap between header bar and cards */}
+      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 text-center flex items-center justify-center h-[12rem] sm:h-[14rem] md:h-[16rem] lg:h-[18rem] xl:h-[20rem]">
+        <h1
+          className="font-serif font-bold md:font-semibold text-[2rem] sm:text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] xl:text-[4.5rem] leading-[1.1] whitespace-nowrap inline-block pb-2"
+          style={{
+            background: "linear-gradient(to bottom, var(--hero-gradient-top) 0%, var(--hero-gradient-top) 30%, var(--hero-gradient-bottom) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          <span className="block">AI-powered mobile apps.</span>
+          <span className="block">Designed with precision.</span>
+        </h1>
+      </div>
+
       {/* Service Cards — Neumorphic */}
-      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 mt-10 sm:mt-10 md:mt-8">
+      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {/* Accent-fill service cards: Mobile Apps, AI, Design */}
           {([
@@ -55,7 +71,7 @@ export function HeroSection() {
               key={item.href}
               href={item.href}
               className={cn(
-                "group relative rounded-2xl overflow-hidden h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80",
+                "group relative rounded-2xl overflow-hidden h-24 sm:h-28 md:h-36 lg:h-40 xl:h-44",
                 "neu-raised neu-raised-accent"
               )}
             >
@@ -95,7 +111,7 @@ export function HeroSection() {
           <Link
             href="/projects"
             className={cn(
-              "group relative rounded-2xl overflow-hidden h-24 sm:h-28 md:h-56 lg:h-72 xl:h-80",
+              "group relative rounded-2xl overflow-hidden h-24 sm:h-28 md:h-36 lg:h-40 xl:h-44",
               "neu-raised neu-raised-accent"
             )}
           >
@@ -129,7 +145,7 @@ export function HeroSection() {
           {/* Blog — Desktop: 1st, Mobile: 3rd */}
           <Link
             href="/blog"
-            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem] order-2 md:order-1"
+            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-2 md:order-1"
           >
 
 
@@ -147,7 +163,7 @@ export function HeroSection() {
           <a
             href={socialLinks.resume}
             download={socialLinks.resumeDownloadName}
-            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem] order-1 md:order-2"
+            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-1 md:order-2"
           >
 
 
@@ -164,7 +180,7 @@ export function HeroSection() {
           {/* Contact — Desktop: 3rd, Mobile: 1st */}
           <a
             href="#contact"
-            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem] order-3 md:order-3"
+            className="group relative rounded-2xl overflow-hidden neu-raised md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-3 md:order-3"
           >
 
 
@@ -201,7 +217,7 @@ export function HeroSection() {
           </div>
 
           {/* Socials - desktop only: 2x1 column in the 4th grid cell */}
-          <div className="hidden md:grid md:grid-cols-2 gap-3 sm:gap-4 md:h-[6.5rem] lg:h-[8.5rem] xl:h-[9.5rem] order-4">
+          <div className="hidden md:grid md:grid-cols-2 gap-3 sm:gap-4 md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-4">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
