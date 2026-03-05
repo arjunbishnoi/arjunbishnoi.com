@@ -27,7 +27,7 @@ export function HeroSection() {
       {/* Hero Title — vertically centered in the gap between header bar and cards */}
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 text-center flex items-center justify-center h-[12rem] sm:h-[14rem] md:h-[16rem] lg:h-[18rem] xl:h-[20rem]">
         <h1
-          className="font-serif font-bold md:font-semibold text-[2rem] sm:text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] xl:text-[4.5rem] leading-[1.1] whitespace-nowrap inline-block pb-2 max-md:subpixel-antialiased max-md:[-webkit-text-stroke:0.6px]"
+          className="font-serif max-md:font-black md:font-semibold text-[2rem] sm:text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] xl:text-[4.5rem] leading-[1.1] whitespace-nowrap inline-block pb-2 max-md:subpixel-antialiased"
           style={{
             background: "linear-gradient(to bottom, var(--hero-gradient-top) 0%, var(--hero-gradient-top) 30%, var(--hero-gradient-bottom) 100%)",
             WebkitBackgroundClip: "text",
