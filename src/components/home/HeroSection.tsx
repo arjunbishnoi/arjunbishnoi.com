@@ -29,7 +29,7 @@ export function HeroSection() {
         <h1
           className="font-serif max-md:font-extrabold font-bold md:font-semibold text-[1.75rem] sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.1] whitespace-nowrap inline-block pb-2 max-md:subpixel-antialiased max-md:[-webkit-text-stroke:0.75px_transparent]"
           style={{
-            background: "linear-gradient(to bottom, var(--hero-gradient-top) 0%, var(--hero-gradient-top) 30%, var(--hero-gradient-bottom) 100%)",
+            background: "linear-gradient(to bottom, var(--hero-gradient-top) 0%, var(--hero-gradient-top) var(--hero-gradient-stop, 30%), var(--hero-gradient-bottom) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
