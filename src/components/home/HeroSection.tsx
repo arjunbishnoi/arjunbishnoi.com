@@ -25,7 +25,7 @@ export function HeroSection() {
     >
 
       {/* Hero Title — vertically centered in the gap between header bar and cards */}
-      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 text-center flex items-center justify-center h-[12rem] sm:h-[14rem] md:h-[16rem] lg:h-[18rem] xl:h-[20rem]">
+      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 text-center flex items-center justify-center h-[9rem] sm:h-[14rem] md:h-[16rem] lg:h-[18rem] xl:h-[20rem]">
         <h1
           className="font-serif font-bold md:font-semibold text-[1.75rem] sm:text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] xl:text-[4.5rem] leading-[1.1] whitespace-nowrap inline-block pb-2 max-md:subpixel-antialiased max-md:[-webkit-text-stroke:0.5px_transparent]"
           style={{
@@ -241,7 +241,7 @@ export function HeroSection() {
       </div>
 
       {/* Scroll down indicator */}
-      <div className="w-full flex flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-8 md:mt-16 relative z-40">
+      <div className="w-full flex flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-4 md:mt-16 relative z-40">
         <div className={cn(
             "mt-4 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
