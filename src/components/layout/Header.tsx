@@ -66,7 +66,7 @@ export function Header() {
   }
 
   return (
-    <header className="fixed w-full top-2 sm:top-4 z-50 flex justify-center pointer-events-none">
+    <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
       <div className={cn(
         "w-full mx-auto transition-[max-width,padding] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] px-6",
         isScrolled ? "max-w-7xl lg:px-8" : "md:max-w-[33rem] max-w-5xl"
