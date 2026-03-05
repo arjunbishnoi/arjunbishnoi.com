@@ -37,7 +37,7 @@
     /* Hero title gradient: white at top, medium grey at bottom */
     --hero-gradient-top: #ffffff;
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 75%, #ffffff);
-    --hero-gradient-stop: 55%;
+    --hero-gradient-stop: 52%;
   }
 
   /* --- Raised state: element pops out of surface --- */
