@@ -20,7 +20,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-start pt-[4.25rem] md:pt-20 lg:pt-24 pb-14 md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center justify-start pt-[5.5rem] md:pt-20 lg:pt-24 pb-14 md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
 
@@ -241,7 +241,7 @@ export function HeroSection() {
       </div>
 
       {/* Scroll down indicator */}
-      <div className="w-full flex flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-4 md:mt-16 relative z-40">
+      <div className="w-full flex flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-8 md:mt-16 relative z-40">
         <div className={cn(
             "mt-4 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
