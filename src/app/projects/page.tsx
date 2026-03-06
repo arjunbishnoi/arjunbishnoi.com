@@ -52,7 +52,10 @@ export default function ProjectsPage() {
             <div className="h-px flex-grow bg-border ml-4"></div>
           </div>
           <div className="bg-card rounded-xl overflow-hidden border border-border/50 shadow-xl transition-all duration-300 hover:shadow-primary/10 group">
-            <div className="h-80 relative overflow-hidden bg-muted">
+            <div 
+              className="h-80 relative overflow-hidden bg-muted neu-pressed"
+              style={{ '--neu-surface': 'var(--projects-surface, var(--background))' } as React.CSSProperties}
+            >
               <Image
                 src={featuredProject.image}
                 alt={featuredProject.title}

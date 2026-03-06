@@ -5,9 +5,9 @@ import { Mail, ArrowRight } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-[#1e1e22] dark:bg-[#e0e5ec] border-t border-black/10 dark:border-white/10 transition-colors">
+    <footer className="bg-[#121212] dark:bg-[#e0e0e0] border-t border-white/10 dark:border-black/10 transition-colors">
       {/* Sitemap Section */}
-      <div className="py-12 border-b border-black/10 dark:border-white/10">
+      <div className="py-12 border-b border-white/10 dark:border-black/10">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Site Navigation */}

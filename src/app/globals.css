@@ -25,19 +25,27 @@
     --hero-gradient-top: #000000;
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 55%, #000000);
     --hero-gradient-stop: 30%;
+    
+    /* Project-specific background matching main background in light mode */
+    --projects-background: 0 0% 88%;
+    --projects-surface: #e0e0e0;
   }
 
   .dark {
     /* Dark mode neumorphic surface — perfectly neutral, darker gray */
-    --neu-surface: #202020; 
-    --neu-shadow-dark: rgba(0, 0, 0, 0.5); /* Clean, deep drop shadow */
-    --neu-shadow-light: rgba(255, 255, 255, 0.07); /* Crisp, subtle white highlight */
-    --neu-inset-shadow-dark: rgba(0, 0, 0, 0.5); /* Deep dark inset shadow */
-    --neu-inset-shadow-light: rgba(255, 255, 255, 0.07); /* Subtle inset highlight */
+    --neu-surface: #121212; 
+    --neu-shadow-dark: rgba(0, 0, 0, 0.6); /* Deeper drop shadow for darker bg */
+    --neu-shadow-light: rgba(255, 255, 255, 0.05); /* Softer highlight for darker bg */
+    --neu-inset-shadow-dark: rgba(0, 0, 0, 0.6);
+    --neu-inset-shadow-light: rgba(255, 255, 255, 0.05);
     /* Hero title gradient: white at top, medium grey at bottom */
     --hero-gradient-top: #ffffff;
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 60%, #ffffff);
     --hero-gradient-stop: 52%;
+
+    /* Project-specific background: slightly lighter than main background in dark mode */
+    --projects-background: 0 0% 7%; /* #1c1c1c -> #121212 */
+    --projects-surface: #121212;
   }
 
   /* --- Raised state: element pops out of surface --- */
@@ -54,8 +62,8 @@
   .neu-pressed {
     background: var(--neu-surface);
     box-shadow:
-      inset 3px 3px 6px var(--neu-inset-shadow-dark),
-      inset -3px -3px 6px var(--neu-inset-shadow-light);
+      inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
+      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light);
     border: none !important;
   }
 
@@ -73,8 +81,8 @@
   .neu-raised:active {
     transform: translateY(1px) scale(0.98);
     box-shadow:
-      inset 4px 4px 8px var(--neu-inset-shadow-dark),
-      inset -4px -4px 8px var(--neu-inset-shadow-light);
+      inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
+      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light);
   }
 
   /* --- Accent-colored cards: same lift/press with color-appropriate shadows --- */
@@ -89,8 +97,8 @@
   .neu-raised-accent:active {
     transform: translateY(1px) scale(0.98);
     box-shadow:
-      inset 4px 4px 8px var(--neu-inset-shadow-dark),
-      inset -4px -4px 8px var(--neu-inset-shadow-light);
+      inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
+      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light);
   }
 
   /* --- Subtle flat neumorphic (for small elements like social icons) --- */
@@ -115,8 +123,8 @@
   .neu-flat:active {
     transform: translateY(1px) scale(0.98);
     box-shadow:
-      inset 4px 4px 8px var(--neu-inset-shadow-dark),
-      inset -4px -4px 8px var(--neu-inset-shadow-light);
+      inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
+      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light);
   }
 }
 
@@ -150,12 +158,12 @@
     --radius: 0.5rem;
   }
   .dark {
-    /* Set background to exactly match --neu-surface #202020 (HSL: 0, 0%, 12.5%) */
-    --background: 0 0% 12.5%; 
+    /* Set background to exactly match --neu-surface #121212 (HSL: 0, 0%, 7%) */
+    --background: 0 0% 7%; 
     --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
+    --card: 0 0% 7%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
+    --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 9%;
@@ -349,7 +357,7 @@ section.relative.overflow-hidden.hero-section {
   --color-primary-content: #000000;
   --color-accent: #6366f1;
   --navbar-height: 3.5rem;
-  --background-color: #000000;
+  --background-color: #121212;
   --text-color: #ffffff;
   --gray-text: #9CA3AF;
   --card-bg: rgba(17, 24, 39, 0.5);
@@ -363,7 +371,7 @@ section.relative.overflow-hidden.hero-section {
 }
 
 .dark-theme {
-  --background-color: #000000;
+  --background-color: #121212;
   --text-color: #ffffff;
   --gray-text: #9CA3AF;
   --card-bg: rgba(17, 24, 39, 0.5);

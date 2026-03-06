@@ -21,7 +21,10 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
 
   return (
     <div className="rounded-none overflow-hidden h-full flex flex-col">
-      <div className="aspect-square relative overflow-hidden bg-muted rounded-2xl mb-4">
+      <div 
+        className="aspect-square relative overflow-hidden bg-muted rounded-2xl mb-4 neu-pressed"
+        style={{ '--neu-surface': 'var(--projects-surface, var(--background))' } as React.CSSProperties}
+      >
         <Image
           src={project.image}
           alt={project.title}
