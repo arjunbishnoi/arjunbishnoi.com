@@ -80,11 +80,11 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                     (isStuck) ? "opacity-100" : "opacity-100"
                 )}
             >
-                <div className="w-full flex justify-center transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                <div className="w-full flex justify-center transition-all duration-700 ease-soft-out">
                      <Link
                         href={to}
                         className={cn(
-                            "group flex items-center relative transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] border",
+                            "group flex items-center relative transition-all duration-700 ease-soft-out border",
                             isStuck
                              ? cn(
                                  "backdrop-blur-md rounded-full shadow-lg transition-all",
@@ -111,7 +111,7 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                         {/* Title - MOBILE MORPHING ANIMATED */}
                         <div 
                           className={cn(
-                            "relative z-10 overflow-hidden flex items-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden", 
+                            "relative z-10 overflow-hidden flex items-center transition-all duration-500 ease-soft-out md:hidden", 
                             isStuck 
                             ? "flex-grow pl-1 pr-0" 
                             : "flex-grow-0 pl-0 pr-4"
@@ -119,7 +119,7 @@ export function StickyHeader({ title, to }: StickyHeaderProps) {
                         >
                           <span 
                             className={cn(
-                              "whitespace-nowrap transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]", 
+                              "whitespace-nowrap transition-all duration-500 ease-soft-out", 
                               isStuck ? "text-sm font-medium -translate-y-[1px]" : "text-2xl font-bold translate-y-0",
                               mounted && theme === "dark" 
                                 ? (isStuck ? "text-white group-hover:text-white" : "text-white group-hover:text-accent")

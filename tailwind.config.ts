@@ -65,6 +65,9 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			transitionTimingFunction: {
+				'soft-out': 'cubic-bezier(0.32, 0.72, 0, 1)',
+			},
 			animation: {
 				'gradient': 'gradient 8s linear infinite',
 				'accordion-down': 'accordion-down 0.2s ease-out',
