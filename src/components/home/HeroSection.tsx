@@ -80,7 +80,7 @@ export function HeroSection() {
                   <ArrowUpRight 
                     className="md:hidden absolute top-0 right-0 w-4 h-4 transition-colors opacity-70 group-hover:opacity-100 text-zinc-500 dark:text-zinc-400" 
                   />
-                  <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
+                  <div className="absolute bottom-0 md:bottom-0 left-1.5 md:left-0">
                     <span 
                       className="text-sm sm:text-base font-semibold block text-zinc-900 dark:text-zinc-50"
                     >
@@ -108,14 +108,14 @@ export function HeroSection() {
             <div 
               className="absolute inset-[6px] rounded-[18px] pointer-events-none bg-[#cccccc] dark:bg-[#181818]"
               style={{ 
-                boxShadow: "inset 2px 2px 4px rgba(0,0,0,0.3), inset -1px -1px 3px rgba(255,255,255,0.08)",
+                boxShadow: "inset 4px 4px 10px rgba(0,0,0,0.15), inset -4px -4px 10px rgba(255,255,255,0.5)",
               }}
             />
 
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
-              <ArrowUpRight className="md:hidden absolute top-0 right-0 w-6 h-6 stroke-[3] text-zinc-500 dark:text-neutral-500 group-hover:text-zinc-700 dark:group-hover:text-neutral-400 transition-colors" />
-              <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
-                <span className="text-lg sm:text-base md:text-base font-bold sm:font-semibold md:font-semibold text-zinc-900 dark:text-neutral-50 block">
+              <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-zinc-500 dark:text-neutral-500 group-hover:text-zinc-700 dark:group-hover:text-neutral-400 transition-colors" />
+              <div className="absolute bottom-0.5 left-1.5 md:bottom-0 md:left-0">
+                <span className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-neutral-50 block">
                   All Projects
                 </span>
                 <span className="hidden md:block text-xs text-zinc-800/70 dark:text-neutral-400/70 group-hover:text-zinc-800/90 dark:group-hover:text-neutral-400/90 transition-colors mt-1">
@@ -151,7 +151,7 @@ export function HeroSection() {
 
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
               <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
-              <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
+              <div className="absolute bottom-0 md:bottom-0 left-1.5 md:left-0">
                 <span className="text-sm sm:text-base font-semibold text-foreground group-hover:text-foreground transition-colors block">
                   Resume
                 </span>
@@ -168,7 +168,7 @@ export function HeroSection() {
 
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
               <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
-              <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
+              <div className="absolute bottom-0 md:bottom-0 left-1.5 md:left-0">
                 <span className="text-sm sm:text-base font-semibold text-foreground group-hover:text-foreground transition-colors block">
                   Contact
                 </span>
