@@ -113,9 +113,9 @@ export function HeroSection() {
             />
 
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
-              <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-zinc-500 dark:text-neutral-500 group-hover:text-zinc-700 dark:group-hover:text-neutral-400 transition-colors" />
+              <ArrowUpRight className="md:hidden absolute top-0 right-0 w-6 h-6 stroke-[3] text-zinc-500 dark:text-neutral-500 group-hover:text-zinc-700 dark:group-hover:text-neutral-400 transition-colors" />
               <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
-                <span className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-neutral-50 block">
+                <span className="text-lg sm:text-base md:text-base font-bold sm:font-semibold md:font-semibold text-zinc-900 dark:text-neutral-50 block">
                   All Projects
                 </span>
                 <span className="hidden md:block text-xs text-zinc-800/70 dark:text-neutral-400/70 group-hover:text-zinc-800/90 dark:group-hover:text-neutral-400/90 transition-colors mt-1">
