@@ -49,24 +49,28 @@ export function HeroSection() {
               href: "/apps", 
               label: "Mobile Apps", 
               accent: "iOS · Android · React Native",
+              orderClass: "order-2 md:order-1",
             },
             { 
               href: "/ai", 
               label: "AI Engineering", 
               accent: "ML · LLMs · Intelligent Systems",
+              orderClass: "order-3 md:order-2",
             },
             { 
               href: "/design", 
               label: "Design", 
               accent: "Prototyping · Design Systems",
+              orderClass: "order-4 md:order-3",
             },
           ]).map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "group relative rounded-3xl overflow-hidden h-24 sm:h-28 md:h-36 lg:h-40 xl:h-44",
-                "neu-raised neu-raised-accent"
+                "group relative rounded-3xl overflow-hidden aspect-[2.15/1] md:aspect-auto h-auto md:h-36 lg:h-40 xl:h-44",
+                "neu-raised neu-raised-accent",
+                item.orderClass
               )}
             >
               {/* Inset accent fill — leaves a visible rim of the neumorphic surface as a border */}
@@ -96,7 +100,7 @@ export function HeroSection() {
           <Link
             href="/projects"
             className={cn(
-              "group relative rounded-3xl overflow-hidden h-24 sm:h-28 md:h-36 lg:h-40 xl:h-44",
+              "group relative rounded-3xl overflow-hidden h-32 sm:h-36 md:h-36 lg:h-40 xl:h-44 col-span-2 md:col-span-1 order-1 md:order-4",
               "neu-raised neu-raised-accent"
             )}
           >
@@ -120,16 +124,10 @@ export function HeroSection() {
               </div>
             </div>
           </Link>
-        </div>
-      </div>
-
-      {/* Utility Cards — Neumorphic */}
-      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 mt-3 sm:mt-4">
-        <div className="grid auto-rows-fr grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-          {/* Blog — Desktop: 1st, Mobile: 3rd */}
+          {/* Blog — Desktop: 1st, Mobile: hidden */}
           <Link
             href="/blog"
-            className="group relative rounded-3xl overflow-hidden neu-raised md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-2 md:order-1"
+            className="hidden md:block group relative rounded-3xl overflow-hidden neu-raised md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] md:order-5"
           >
 
 
@@ -143,11 +141,11 @@ export function HeroSection() {
             </div>
           </Link>
 
-          {/* Resume — Desktop: 2nd, Mobile: 2nd */}
+          {/* Resume — Desktop: 2nd, Mobile: 5th */}
           <a
             href={socialLinks.resume}
             download={socialLinks.resumeDownloadName}
-            className="group relative rounded-3xl overflow-hidden neu-raised md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-1 md:order-2"
+            className="group relative rounded-3xl overflow-hidden neu-raised aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-5 md:order-6"
           >
 
 
@@ -161,10 +159,10 @@ export function HeroSection() {
             </div>
           </a>
 
-          {/* Contact — Desktop: 3rd, Mobile: 1st */}
+          {/* Contact — Desktop: 3rd, Mobile: 6th */}
           <a
             href="#contact"
-            className="group relative rounded-3xl overflow-hidden neu-raised md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-3 md:order-3"
+            className="group relative rounded-3xl overflow-hidden neu-raised aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-6 md:order-7"
           >
 
 
@@ -178,30 +176,8 @@ export function HeroSection() {
             </div>
           </a>
 
-          {/* Socials - mobile only: side by side in one cell */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:hidden order-4">
-              <a
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="me noopener noreferrer"
-                aria-label="LinkedIn"
-                className="aspect-square rounded-3xl neu-flat flex items-center justify-center group/icon"
-              >
-                <Image src="/linkedin-icon.png" alt="LinkedIn" width={36} height={36} className="w-7 h-7 sm:w-9 sm:h-9 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
-              </a>
-              <a
-                href={socialLinks.github}
-                target="_blank"
-                rel="me noopener noreferrer"
-                aria-label="GitHub"
-                className="aspect-square rounded-3xl neu-flat flex items-center justify-center group/icon"
-              >
-                <Image src="/github-icon.png" alt="GitHub" width={36} height={36} className="w-7 h-7 sm:w-9 sm:h-9 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
-              </a>
-          </div>
-
-          {/* Socials - desktop only: 2x1 column in the 4th grid cell */}
-          <div className="hidden md:grid md:grid-cols-2 gap-3 sm:gap-4 md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-4">
+          {/* Socials - unified for mobile and desktop */}
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-7 md:order-8">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
