@@ -15,12 +15,12 @@
   :root {
     /* Light mode neumorphic surface */
     --neu-surface: #e0e0e0;
-    --neu-shadow-dark: rgba(170, 170, 170, 0.6);
-    --neu-shadow-light: rgba(255, 255, 255, 0.7);
+    --neu-shadow-dark: rgba(140, 140, 140, 0.75); /* Darker drop shadow */
+    --neu-shadow-light: rgba(255, 255, 255, 0.95); /* Brighter highlight */
     --neu-shadow-distance: 6px;
     --neu-shadow-blur: 14px;
-    --neu-inset-shadow-dark: rgba(170, 170, 170, 0.5);
-    --neu-inset-shadow-light: rgba(255, 255, 255, 0.5);
+    --neu-inset-shadow-dark: rgba(140, 140, 140, 0.65); /* Darker inset shadow */
+    --neu-inset-shadow-light: rgba(255, 255, 255, 0.85); /* Brighter inset highlight */
     /* Hero title gradient: black at top, lighter grey at bottom */
     --hero-gradient-top: #000000;
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 55%, #000000);
@@ -28,15 +28,15 @@
   }
 
   .dark {
-    /* Dark mode neumorphic surface — neutral charcoal, no blue tint */
-    --neu-surface: #1f1f1f;
-    --neu-shadow-dark: rgba(5, 5, 5, 0.7);
-    --neu-shadow-light: rgba(50, 50, 50, 0.35);
-    --neu-inset-shadow-dark: rgba(5, 5, 5, 0.6);
-    --neu-inset-shadow-light: rgba(50, 50, 50, 0.3);
+    /* Dark mode neumorphic surface — perfectly neutral, darker gray */
+    --neu-surface: #202020; 
+    --neu-shadow-dark: rgba(0, 0, 0, 0.5); /* Clean, deep drop shadow */
+    --neu-shadow-light: rgba(255, 255, 255, 0.07); /* Crisp, subtle white highlight */
+    --neu-inset-shadow-dark: rgba(0, 0, 0, 0.5); /* Deep dark inset shadow */
+    --neu-inset-shadow-light: rgba(255, 255, 255, 0.07); /* Subtle inset highlight */
     /* Hero title gradient: white at top, medium grey at bottom */
     --hero-gradient-top: #ffffff;
-    --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 75%, #ffffff);
+    --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 60%, #ffffff);
     --hero-gradient-stop: 52%;
   }
 
@@ -150,8 +150,8 @@
     --radius: 0.5rem;
   }
   .dark {
-    /* Set background to exactly match --neu-surface #1f1f1f */
-    --background: 0 0% 12%;
+    /* Set background to exactly match --neu-surface #202020 (HSL: 0, 0%, 12.5%) */
+    --background: 0 0% 12.5%; 
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -497,8 +497,18 @@ html.light-theme [class*="from-accent"] {
 }
 
 html.light-theme footer {
-  background-color: #f2f2f7 !important;
+  background-color: #202020 !important;
+  color: #ffffff !important;
   border-color: var(--divider-color) !important;
+}
+
+html.light-theme footer [class*="text-gray-"], 
+html.light-theme footer p {
+  color: #a1a1aa !important;
+}
+
+html.light-theme footer a:hover {
+  color: #ffffff !important;
 }
 
 html.light-theme::-webkit-scrollbar-track {
