@@ -104,12 +104,8 @@ export function HeroSection() {
               "neu-raised neu-raised-accent"
             )}
           >
-            {/* Inset accent fill for light gray */}
             <div 
-              className="absolute inset-[6px] rounded-[18px] pointer-events-none bg-[#cccccc] dark:bg-[#181818]"
-              style={{ 
-                boxShadow: "inset 4px 4px 10px rgba(0,0,0,0.15), inset -4px -4px 10px rgba(255,255,255,0.5)",
-              }}
+              className="absolute inset-[6px] rounded-[18px] pointer-events-none bg-[#cccccc] dark:bg-[#242424] shadow-[inset_4px_4px_10px_rgba(0,0,0,0.15),inset_-4px_-4px_10px_rgba(255,255,255,0.5)] dark:shadow-[inset_6px_6px_14px_rgba(0,0,0,0.65),inset_-3px_-3px_10px_rgba(255,255,255,0.15)]"
             />
 
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
