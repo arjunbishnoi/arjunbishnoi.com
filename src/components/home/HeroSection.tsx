@@ -42,7 +42,7 @@ export function HeroSection() {
 
       {/* Service Cards — Neumorphic */}
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-4 md:gap-5">
           {/* Accent-fill service cards: Mobile Apps, AI, Design */}
           {([
             { 
@@ -101,7 +101,7 @@ export function HeroSection() {
             href="/projects"
             className={cn(
               "group relative rounded-3xl overflow-hidden h-32 md:h-full col-span-2 md:col-span-1 md:row-span-2 order-1 md:order-4",
-              "neu-raised neu-raised-accent transform-gpu"
+              "neu-raised neu-raised-accent neu-mobile-neumorphic transform-gpu mb-2 md:mb-0"
             )}
           >
             {/* 1. Underlying Dreamy Glow Layer - No hard edges */}
@@ -207,7 +207,7 @@ export function HeroSection() {
           </a>
 
           {/* Socials - unified for mobile and desktop */}
-          <div className="grid grid-cols-2 gap-3 md:gap-4 aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-7 md:order-5">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-4 md:gap-5 aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-7 md:order-5">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"

@@ -33,6 +33,9 @@
     /* Project-specific background matching main background in light mode */
     --projects-background: 0 0% 88%;
     --projects-surface: #e0e0e0;
+    
+    /* Mobile flat border */
+    --neu-flat-border: rgba(0, 0, 0, 0.1);
   }
 
   .dark {
@@ -52,19 +55,38 @@
     /* Project-specific background: slightly lighter than main background in dark mode */
     --projects-background: 0 0% 7%; /* #1c1c1c -> #121212 */
     --projects-surface: #121212;
+    
+    /* Mobile flat border */
+    --neu-flat-border: rgba(255, 255, 255, 0.1);
   }
 
   /* --- Raised state: element pops out of surface --- */
   .neu-raised {
     background: var(--neu-surface);
+    border: 3px solid var(--neu-flat-border); /* Flat on mobile with subtle border */
+    box-shadow: none; /* Removed for flat mobile design */
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* --- Class to keep neumorphism on mobile for specific elements --- */
+  .neu-mobile-neumorphic {
     box-shadow:
       calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
       var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border-color: transparent;
+  }
+  .neu-mobile-neumorphic:active {
+    box-shadow:
+      inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
+      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
   }
 
   @media (min-width: 768px) {
-    .neu-raised {
+    .neu-raised,
+    .neu-mobile-neumorphic {
+      border: none;
       box-shadow:
         calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
         var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
@@ -128,14 +150,14 @@
   /* --- Subtle flat neumorphic (for small elements like social icons) --- */
   .neu-flat {
     background: var(--neu-surface);
-    box-shadow:
-      calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border: 3px solid var(--neu-flat-border); /* Flat on mobile with subtle border */
+    box-shadow: none; /* Removed for flat mobile design */
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
   }
 
   @media (min-width: 768px) {
     .neu-flat {
+      border: none;
       box-shadow:
         calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
         var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
