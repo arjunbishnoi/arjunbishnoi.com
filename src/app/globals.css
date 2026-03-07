@@ -37,7 +37,7 @@
 
   .dark {
     /* Dark mode neumorphic surface — perfectly neutral, darker gray */
-    --neu-surface: #121212; 
+    --neu-surface: #0a0a0a; 
     --neu-shadow-dark: rgba(0, 0, 0, 0.6); /* Deeper drop shadow for darker bg */
     --neu-shadow-light: rgba(255, 255, 255, 0.05); /* Softer highlight for darker bg */
     --neu-inset-shadow-dark: rgba(0, 0, 0, 0.6);
@@ -48,10 +48,10 @@
     --hero-gradient-top: #ffffff;
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 60%, #ffffff);
     --hero-gradient-stop: 52%;
-
+    
     /* Project-specific background: slightly lighter than main background in dark mode */
-    --projects-background: 0 0% 7%; /* #1c1c1c -> #121212 */
-    --projects-surface: #121212;
+    --projects-background: 0 0% 4%; /* #121212 -> #0a0a0a */
+    --projects-surface: #0a0a0a;
   }
 
   /* --- Raised state: element pops out of surface --- */
