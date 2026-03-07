@@ -15,12 +15,17 @@
   :root {
     /* Light mode neumorphic surface */
     --neu-surface: #e0e0e0;
+    --neu-border: 1px solid rgba(255, 255, 255, 0.45);
     --neu-shadow-dark: rgba(140, 140, 140, 0.75); /* Darker drop shadow */
     --neu-shadow-light: rgba(255, 255, 255, 0.95); /* Brighter highlight */
     --neu-shadow-distance: 6px;
     --neu-shadow-blur: 14px;
     --neu-inset-shadow-dark: rgba(140, 140, 140, 0.65); /* Darker inset shadow */
     --neu-inset-shadow-light: rgba(255, 255, 255, 0.85); /* Brighter inset highlight */
+    --neu-sweep-distance: 16px;
+    --neu-sweep-blur: 40px;
+    --neu-sweep-shadow-dark: rgba(0, 0, 0, 0.1);
+    --neu-sweep-shadow-light: rgba(255, 255, 255, 0.7);
     /* Hero title gradient: black at top, lighter grey at bottom */
     --hero-gradient-top: #000000;
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 55%, #000000);
@@ -34,10 +39,13 @@
   .dark {
     /* Dark mode neumorphic surface — perfectly neutral, darker gray */
     --neu-surface: #121212; 
+    --neu-border: 1.5px solid rgba(255, 255, 255, 0.04);
     --neu-shadow-dark: rgba(0, 0, 0, 0.6); /* Deeper drop shadow for darker bg */
     --neu-shadow-light: rgba(255, 255, 255, 0.05); /* Softer highlight for darker bg */
     --neu-inset-shadow-dark: rgba(0, 0, 0, 0.6);
     --neu-inset-shadow-light: rgba(255, 255, 255, 0.05);
+    --neu-sweep-shadow-dark: rgba(0, 0, 0, 0.65);
+    --neu-sweep-shadow-light: rgba(255, 255, 255, 0.04);
     /* Hero title gradient: white at top, medium grey at bottom */
     --hero-gradient-top: #ffffff;
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 60%, #ffffff);
@@ -53,8 +61,10 @@
     background: var(--neu-surface);
     box-shadow:
       calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
-    border: none !important;
+      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+    border: var(--neu-border) !important;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
@@ -63,8 +73,10 @@
     background: var(--neu-surface);
     box-shadow:
       inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
-      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light);
-    border: none !important;
+      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+    border: var(--neu-border) !important;
   }
 
   /* --- Hover: lift up — card rises off surface with bigger shadow --- */
@@ -73,7 +85,9 @@
       transform: translateY(-3px);
       box-shadow:
         calc(-1 * var(--neu-shadow-distance) - 2px) calc(-1 * var(--neu-shadow-distance) - 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-light),
-        calc(var(--neu-shadow-distance) + 2px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-dark);
+        calc(var(--neu-shadow-distance) + 2px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-dark),
+        inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+        inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
     }
   }
 
@@ -82,7 +96,9 @@
     transform: translateY(1px) scale(0.98);
     box-shadow:
       inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
-      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light);
+      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
   }
 
   /* --- Accent-colored cards: same lift/press with color-appropriate shadows --- */
@@ -91,14 +107,18 @@
       transform: translateY(-3px);
       box-shadow:
         -8px -9px 16px var(--neu-shadow-light),
-        8px 9px 16px var(--neu-shadow-dark);
+        8px 9px 16px var(--neu-shadow-dark),
+        inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+        inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
     }
   }
   .neu-raised-accent:active {
     transform: translateY(1px) scale(0.98);
     box-shadow:
       inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
-      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light);
+      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
   }
 
   /* --- Subtle flat neumorphic (for small elements like social icons) --- */
@@ -106,8 +126,10 @@
     background: var(--neu-surface);
     box-shadow:
       calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
-    border: none !important;
+      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+    border: var(--neu-border) !important;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
@@ -116,7 +138,9 @@
       transform: translateY(-3px);
       box-shadow:
         calc(-1 * var(--neu-shadow-distance) - 2px) calc(-1 * var(--neu-shadow-distance) - 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-light),
-        calc(var(--neu-shadow-distance) + 2px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-dark);
+        calc(var(--neu-shadow-distance) + 2px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-dark),
+        inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+        inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
     }
   }
 
@@ -124,7 +148,9 @@
     transform: translateY(1px) scale(0.98);
     box-shadow:
       inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
-      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light);
+      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
   }
 }
 
@@ -547,3 +573,41 @@ html.light-theme ::selection {
 .text-primary-content {
   color: var(--color-primary-content);
 }
+
+  /* --- Dreamy Glow Animations --- */
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(10%, 15%); }
+    50% { transform: translate(-5%, 20%); }
+    75% { transform: translate(-15%, -10%); }
+  }
+
+  @keyframes drift-wide {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(25%, 8%); }
+    50% { transform: translate(-20%, 12%); }
+    75% { transform: translate(-30%, -8%); }
+  }
+
+  @keyframes morph {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  }
+
+  @keyframes morph-alt {
+    0%, 100% { border-radius: 40% 60% 60% 40% / 70% 30% 30% 70%; }
+    50% { border-radius: 60% 40% 40% 60% / 30% 70% 70% 30%; }
+  }
+
+  @keyframes colorShift {
+    0%, 100% { filter: blur(var(--glow-blur, 0px)) hue-rotate(0deg); }
+    50% { filter: blur(var(--glow-blur, 0px)) hue-rotate(180deg); }
+  }
+
+  /* --- Unified Lava Flow Class --- */
+  .animate-lava {
+    animation: 
+      var(--drift-name, drift) var(--drift-duration, 20s) ease-in-out infinite var(--drift-delay, 0s),
+      var(--morph-name, morph) var(--morph-duration, 18s) ease-in-out infinite var(--morph-delay, 0s),
+      colorShift var(--color-duration, 25s) linear infinite var(--color-delay, 0s);
+  }
