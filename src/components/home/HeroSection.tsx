@@ -42,7 +42,7 @@ export function HeroSection() {
 
       {/* Service Cards — Neumorphic */}
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           {/* Accent-fill service cards: Mobile Apps, AI, Design */}
           {([
             { 
@@ -159,7 +159,7 @@ export function HeroSection() {
 
             {/* 3. Dedicated Pressed State Overlay — ensures click feedback is visible over the gradient */}
             <div 
-              className="absolute inset-0 rounded-3xl pointer-events-none z-[15] opacity-0 group-active:opacity-100 transition-opacity duration-300 shadow-[inset_var(--neu-shadow-distance)_var(--neu-shadow-distance)_var(--neu-shadow-blur)_var(--neu-inset-shadow-dark),inset_calc(-1*var(--neu-shadow-distance))_calc(-1*var(--neu-shadow-distance))_var(--neu-shadow-blur)_var(--neu-inset-shadow-light)]"
+              className="absolute inset-0 rounded-3xl pointer-events-none z-[15] opacity-0 group-active:opacity-100 transition-opacity duration-0 shadow-[inset_6px_6px_12px_rgba(0,0,0,0.1),inset_-6px_-6px_12px_rgba(255,255,255,0.7)] dark:shadow-[inset_6px_6px_12px_rgba(0,0,0,0.5),inset_-6px_-6px_12px_rgba(255,255,255,0.05)]"
             />
 
             {/* 4. Content Layer */}
@@ -207,7 +207,7 @@ export function HeroSection() {
           </a>
 
           {/* Socials - unified for mobile and desktop */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-4 aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-7 md:order-7">
+          <div className="grid grid-cols-2 gap-3 md:gap-4 aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-7 md:order-7">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
