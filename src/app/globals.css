@@ -59,10 +59,18 @@
     background: var(--neu-surface);
     box-shadow:
       calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
-      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .neu-raised {
+      box-shadow:
+        calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
+        var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
+        inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+        inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+    }
   }
 
   /* --- Pressed state: element sinks into surface --- */
@@ -122,10 +130,18 @@
     background: var(--neu-surface);
     box-shadow:
       calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
-      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .neu-flat {
+      box-shadow:
+        calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
+        var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
+        inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+        inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+    }
   }
 
   @media (hover: hover) {

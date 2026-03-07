@@ -179,7 +179,7 @@ export function HeroSection() {
           <a
             href={socialLinks.resume}
             download={socialLinks.resumeDownloadName}
-            className="group relative rounded-3xl overflow-hidden neu-raised aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-5 md:order-5"
+            className="group relative rounded-3xl overflow-hidden neu-raised aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-5 md:order-6"
           >
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
               <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
@@ -194,7 +194,7 @@ export function HeroSection() {
           {/* Contact — Desktop: 3rd, Mobile: 6th */}
           <a
             href="#contact"
-            className="group relative rounded-3xl overflow-hidden neu-raised aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-6 md:order-6"
+            className="group relative rounded-3xl overflow-hidden neu-raised aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-6 md:order-7"
           >
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
               <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
@@ -207,7 +207,7 @@ export function HeroSection() {
           </a>
 
           {/* Socials - unified for mobile and desktop */}
-          <div className="grid grid-cols-2 gap-3 md:gap-4 aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-7 md:order-7">
+          <div className="grid grid-cols-2 gap-3 md:gap-4 aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-7 md:order-5">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
