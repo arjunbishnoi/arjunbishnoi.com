@@ -154,7 +154,7 @@ export function HeroSection() {
             {/* 2. Neumorphic Surface Overlay (Concave Shadow Layer) */}
             {/* We use a semi-transparent surface so the glow bleeds through the 'bowl' */}
             <div 
-              className="absolute inset-0 rounded-3xl pointer-events-none z-10 bg-[var(--neu-surface)]/10 dark:bg-[var(--neu-surface)]/10 shadow-[inset_16px_16px_40px_rgba(0,0,0,0.1),inset_-16px_-16px_40px_rgba(255,255,255,0.7)] dark:shadow-[inset_16px_16px_40px_rgba(0,0,0,0.65),inset_-16px_-16px_40px_rgba(255,255,255,0.04)]"
+              className="hidden md:block absolute inset-0 rounded-3xl pointer-events-none z-10 bg-[var(--neu-surface)]/10 dark:bg-[var(--neu-surface)]/10 shadow-[inset_16px_16px_40px_rgba(0,0,0,0.1),inset_-16px_-16px_40px_rgba(255,255,255,0.7)] dark:shadow-[inset_16px_16px_40px_rgba(0,0,0,0.65),inset_-16px_-16px_40px_rgba(255,255,255,0.04)]"
             />
 
             {/* 3. Dedicated Pressed State Overlay — ensures click feedback is visible over the gradient */}
