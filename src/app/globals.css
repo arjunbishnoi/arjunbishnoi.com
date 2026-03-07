@@ -89,7 +89,7 @@
 
   /* --- Active/click: press into surface --- */
   .neu-raised:active {
-    transform: translateY(1px) scale(0.98);
+    transform: translateY(2px) scale(0.95);
     box-shadow:
       inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
       inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
@@ -109,7 +109,7 @@
     }
   }
   .neu-raised-accent:active {
-    transform: translateY(1px) scale(0.98);
+    transform: translateY(2px) scale(0.95);
     box-shadow:
       inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
       inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
@@ -140,7 +140,7 @@
   }
 
   .neu-flat:active {
-    transform: translateY(1px) scale(0.98);
+    transform: translateY(2px) scale(0.95);
     box-shadow:
       inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
       inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),

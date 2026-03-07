@@ -42,7 +42,7 @@ export function HeroSection() {
 
       {/* Service Cards — Neumorphic */}
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-4">
           {/* Accent-fill service cards: Mobile Apps, AI, Design */}
           {([
             { 
@@ -100,8 +100,8 @@ export function HeroSection() {
           <Link
             href="/projects"
             className={cn(
-              "group relative rounded-3xl overflow-hidden h-32 sm:h-36 md:h-36 lg:h-40 xl:h-44 col-span-2 md:col-span-1 order-1 md:order-4",
-              "neu-raised neu-raised-accent transition-all duration-300 hover:scale-[1.02]"
+              "group relative rounded-3xl overflow-hidden h-32 md:h-full col-span-2 md:col-span-1 md:row-span-2 order-1 md:order-4",
+              "neu-raised neu-raised-accent transform-gpu"
             )}
           >
             {/* 1. Underlying Dreamy Glow Layer - No hard edges */}
@@ -157,7 +157,12 @@ export function HeroSection() {
               className="absolute inset-0 rounded-3xl pointer-events-none z-10 bg-[var(--neu-surface)]/10 dark:bg-[var(--neu-surface)]/10 shadow-[inset_16px_16px_40px_rgba(0,0,0,0.1),inset_-16px_-16px_40px_rgba(255,255,255,0.7)] dark:shadow-[inset_16px_16px_40px_rgba(0,0,0,0.65),inset_-16px_-16px_40px_rgba(255,255,255,0.04)]"
             />
 
-            {/* 3. Content Layer */}
+            {/* 3. Dedicated Pressed State Overlay — ensures click feedback is visible over the gradient */}
+            <div 
+              className="absolute inset-0 rounded-3xl pointer-events-none z-[15] opacity-0 group-active:opacity-100 transition-opacity duration-300 shadow-[inset_var(--neu-shadow-distance)_var(--neu-shadow-distance)_var(--neu-shadow-blur)_var(--neu-inset-shadow-dark),inset_calc(-1*var(--neu-shadow-distance))_calc(-1*var(--neu-shadow-distance))_var(--neu-shadow-blur)_var(--neu-inset-shadow-light)]"
+            />
+
+            {/* 4. Content Layer */}
             <div className="absolute inset-4 md:inset-5 z-20 pointer-events-none flex items-center justify-center md:block">
               <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-zinc-500 dark:text-neutral-500 group-hover:text-zinc-700 dark:group-hover:text-neutral-400 transition-colors" />
               <div className="md:absolute md:bottom-0 md:left-0 text-center md:text-left">
@@ -170,31 +175,12 @@ export function HeroSection() {
               </div>
             </div>
           </Link>
-          {/* Blog — Desktop: 1st, Mobile: hidden */}
-          <Link
-            href="/blog"
-            className="hidden md:block group relative rounded-3xl overflow-hidden neu-raised md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] md:order-5"
-          >
-
-
-            <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
-              <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
-              <div className="absolute bottom-0.5 left-0.5 md:bottom-0 md:left-0">
-                <span className="text-sm sm:text-base font-semibold text-foreground group-hover:text-foreground transition-colors block">
-                  Blog
-                </span>
-              </div>
-            </div>
-          </Link>
-
           {/* Resume — Desktop: 2nd, Mobile: 5th */}
           <a
             href={socialLinks.resume}
             download={socialLinks.resumeDownloadName}
-            className="group relative rounded-3xl overflow-hidden neu-raised aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-5 md:order-6"
+            className="group relative rounded-3xl overflow-hidden neu-raised aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-5 md:order-5"
           >
-
-
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
               <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
               <div className="absolute bottom-0 md:bottom-0 left-1.5 md:left-0">
@@ -208,10 +194,8 @@ export function HeroSection() {
           {/* Contact — Desktop: 3rd, Mobile: 6th */}
           <a
             href="#contact"
-            className="group relative rounded-3xl overflow-hidden neu-raised aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-6 md:order-7"
+            className="group relative rounded-3xl overflow-hidden neu-raised aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-6 md:order-6"
           >
-
-
             <div className="absolute inset-4 md:inset-5 z-10 pointer-events-none">
               <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-muted-foreground/70 group-hover:text-foreground transition-colors" />
               <div className="absolute bottom-0 md:bottom-0 left-1.5 md:left-0">
@@ -223,7 +207,7 @@ export function HeroSection() {
           </a>
 
           {/* Socials - unified for mobile and desktop */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-7 md:order-8">
+          <div className="grid grid-cols-2 gap-4 sm:gap-4 aspect-[2.15/1] md:aspect-auto h-auto md:h-[5.5rem] lg:h-[6rem] xl:h-[6.5rem] order-7 md:order-7">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
