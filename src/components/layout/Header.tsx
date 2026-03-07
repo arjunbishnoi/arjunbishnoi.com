@@ -74,7 +74,7 @@ export function Header() {
       <motion.div 
         className={cn(
           "relative overflow-hidden transition-[background-color,border-color] duration-500 ease-soft-out pointer-events-auto w-full rounded-[2rem]",
-          "backdrop-blur-2xl backdrop-saturate-150 bg-white/70 dark:bg-black/70 border border-white/20 dark:max-md:border-white/5 md:dark:border-white/10",
+          "backdrop-blur-2xl backdrop-saturate-150 bg-white/70 dark:bg-black/70",
           "before:absolute before:inset-0 before:rounded-[2rem] before:opacity-[0.03] dark:before:opacity-[0.04] before:pointer-events-none before:z-[1]",
           "before:[background-image:url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")]",
         )}

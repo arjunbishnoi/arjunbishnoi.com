@@ -126,7 +126,7 @@ export function ContactSection() {
           </div>
           
           {/* Right Column: Form */}
-          <div className="w-full border-t lg:border-t-0 lg:border-l border-border/50 pt-10 lg:pt-0 lg:pl-8 xl:pl-12">
+          <div className="w-full pt-10 lg:pt-0 lg:pl-8 xl:pl-12">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label htmlFor="name" className="block text-base font-medium text-foreground mb-1.5 ml-1">Name</label>
@@ -136,7 +136,7 @@ export function ContactSection() {
                 type="text" 
                 name="name"
                 id="name" 
-                className="block w-full rounded-2xl border border-black/10 dark:border-white/10 bg-gray-50/60 dark:bg-white/5 backdrop-blur-sm text-foreground shadow-sm px-5 py-3.5 focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black dark:focus:ring-white placeholder:text-muted-foreground/50 transition-all outline-none"
+                className="block w-full rounded-2xl bg-gray-50/60 dark:bg-white/5 backdrop-blur-sm text-foreground shadow-sm px-5 py-3.5 focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black dark:focus:ring-white placeholder:text-muted-foreground/50 transition-all outline-none"
                 placeholder="Your name"
                 required
                 disabled={isLoading || isSuccess}
@@ -151,7 +151,7 @@ export function ContactSection() {
                 type="email" 
                 name="email"
                 id="email" 
-                className="block w-full rounded-2xl border border-black/10 dark:border-white/10 bg-gray-50/60 dark:bg-white/5 backdrop-blur-sm text-foreground shadow-sm px-5 py-3.5 focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black dark:focus:ring-white placeholder:text-muted-foreground/50 transition-all outline-none"
+                className="block w-full rounded-2xl bg-gray-50/60 dark:bg-white/5 backdrop-blur-sm text-foreground shadow-sm px-5 py-3.5 focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black dark:focus:ring-white placeholder:text-muted-foreground/50 transition-all outline-none"
                 placeholder="your.email@example.com"
                 required
                 disabled={isLoading || isSuccess}
@@ -166,7 +166,7 @@ export function ContactSection() {
                 name="message"
                 id="message" 
                 rows={4} 
-                className="block w-full rounded-2xl border border-black/10 dark:border-white/10 bg-gray-50/60 dark:bg-white/5 backdrop-blur-sm text-foreground shadow-sm px-5 py-3.5 focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black dark:focus:ring-white placeholder:text-muted-foreground/50 transition-all outline-none resize-y"
+                className="block w-full rounded-2xl bg-gray-50/60 dark:bg-white/5 backdrop-blur-sm text-foreground shadow-sm px-5 py-3.5 focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black dark:focus:ring-white placeholder:text-muted-foreground/50 transition-all outline-none resize-y"
                 placeholder="Your message here..."
                 required
                 disabled={isLoading || isSuccess}

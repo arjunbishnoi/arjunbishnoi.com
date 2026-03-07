@@ -15,7 +15,6 @@
   :root {
     /* Light mode neumorphic surface */
     --neu-surface: #e0e0e0;
-    --neu-border: 1px solid rgba(255, 255, 255, 0.45);
     --neu-shadow-dark: rgba(140, 140, 140, 0.75); /* Darker drop shadow */
     --neu-shadow-light: rgba(255, 255, 255, 0.95); /* Brighter highlight */
     --neu-shadow-distance: 6px;
@@ -39,10 +38,6 @@
   .dark {
     /* Dark mode neumorphic surface — perfectly neutral, darker gray */
     --neu-surface: #121212; 
-    --neu-border: 1.5px solid rgba(255, 255, 255, 0.04);
-    @media (max-width: 768px) {
-      --neu-border: 1.5px solid rgba(255, 255, 255, 0.03);
-    }
     --neu-shadow-dark: rgba(0, 0, 0, 0.6); /* Deeper drop shadow for darker bg */
     --neu-shadow-light: rgba(255, 255, 255, 0.05); /* Softer highlight for darker bg */
     --neu-inset-shadow-dark: rgba(0, 0, 0, 0.6);
@@ -67,7 +62,6 @@
       var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
       inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
       inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
-    border: var(--neu-border) !important;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
@@ -79,7 +73,6 @@
       inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
       inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
       inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
-    border: var(--neu-border) !important;
   }
 
   /* --- Hover: lift up — card rises off surface with bigger shadow --- */
@@ -132,7 +125,6 @@
       var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
       inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
       inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
-    border: var(--neu-border) !important;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 

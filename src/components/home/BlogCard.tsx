@@ -40,7 +40,7 @@ export function BlogCard({ blog }: BlogProps) {
         </p>
         
         <div className="mb-2">
-          <span className="inline-block text-sm md:text-base text-foreground/80 bg-muted/80 border border-border/50 rounded-full px-4 py-1">
+          <span className="inline-block text-sm md:text-base text-foreground/80 bg-muted/80 rounded-full px-4 py-1">
             {category}
           </span>
         </div>

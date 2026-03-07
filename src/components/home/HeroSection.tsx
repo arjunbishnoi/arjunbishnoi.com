@@ -27,7 +27,7 @@ export function HeroSection() {
       {/* Hero Title — vertically centered in the gap between header bar and cards */}
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 text-center flex items-center justify-center h-[9rem] sm:h-[14rem] md:h-[16rem] lg:h-[18rem] xl:h-[20rem]">
         <h1
-          className="font-serif font-bold md:font-semibold text-[1.625rem] sm:text-[2.125rem] md:text-[3.125rem] lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.1] whitespace-nowrap inline-block px-4 -mx-4 pb-2"
+          className="font-serif max-md:font-extrabold font-bold md:font-semibold text-[1.75rem] sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.1] whitespace-nowrap inline-block px-4 -mx-4 pb-2.5 max-md:subpixel-antialiased max-md:[-webkit-text-stroke:0.6px_transparent]"
           style={{
             background: "linear-gradient(to bottom, var(--hero-gradient-top) 0%, var(--hero-gradient-top) var(--hero-gradient-stop, 30%), var(--hero-gradient-bottom) 100%)",
             WebkitBackgroundClip: "text",
@@ -35,8 +35,8 @@ export function HeroSection() {
             backgroundClip: "text",
           }}
         >
-          <span className="block">AI-powered mobile apps.</span>
-          <span className="block">Designed with precision.</span>
+          <span className="block max-md:scale-y-[1.1] origin-center">AI-powered mobile apps.</span>
+          <span className="block max-md:scale-y-[1.1] origin-center">Designed with precision.</span>
         </h1>
       </div>
 
