@@ -40,6 +40,9 @@
     /* Dark mode neumorphic surface — perfectly neutral, darker gray */
     --neu-surface: #121212; 
     --neu-border: 1.5px solid rgba(255, 255, 255, 0.04);
+    @media (max-width: 768px) {
+      --neu-border: 1.5px solid rgba(255, 255, 255, 0.03);
+    }
     --neu-shadow-dark: rgba(0, 0, 0, 0.6); /* Deeper drop shadow for darker bg */
     --neu-shadow-light: rgba(255, 255, 255, 0.05); /* Softer highlight for darker bg */
     --neu-inset-shadow-dark: rgba(0, 0, 0, 0.6);
