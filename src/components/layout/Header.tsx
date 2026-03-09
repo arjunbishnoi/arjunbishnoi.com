@@ -89,7 +89,8 @@ export function Header() {
           <div className="flex-shrink-0 relative z-10">
             <Link 
               href="/" 
-              className="text-xl font-bold md:font-semibold font-serif -translate-y-[1px] relative block cursor-pointer max-md:subpixel-antialiased max-md:[-webkit-text-stroke:0.4px]" 
+              className="text-lg font-bold font-sans translate-y-[1px] relative block cursor-pointer tracking-[-0.03em] md:text-xl md:font-semibold md:font-serif md:-translate-y-[1px] md:tracking-normal" 
+              style={isDesktop ? {} : { fontFamily: "Arial, sans-serif" }}
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
@@ -124,7 +125,8 @@ export function Header() {
                             </motion.span>
                         )}
                     </AnimatePresence>
-                    <motion.span layout className="text-black dark:text-white font-bold">_</motion.span>
+                    {/* Underscore - Only on desktop */}
+                    <motion.span layout className="hidden md:inline-block text-black dark:text-white font-bold ml-px">_</motion.span>
                  </div>
               </div>
             </Link>

@@ -147,6 +147,27 @@
       inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
   }
 
+  /* --- Container state: for parent elements on mobile --- */
+  .neu-container {
+    background: var(--neu-surface);
+    border-radius: 40px;
+    box-shadow:
+      calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
+      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
+  }
+
+  .neu-separator {
+    border-color: var(--neu-flat-border);
+  }
+
+  @media (min-width: 768px) {
+    .neu-container {
+      box-shadow: none;
+      background: transparent;
+      border-radius: 0;
+    }
+  }
+
   /* --- Subtle flat neumorphic (for small elements like social icons) --- */
   .neu-flat {
     background: var(--neu-surface);
