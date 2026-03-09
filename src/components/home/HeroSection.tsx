@@ -60,15 +60,11 @@ export function HeroSection() {
               
               <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                 <div className="flex items-center gap-2">
-                  <span className="text-[1.125rem] font-semibold text-zinc-900 dark:text-white">View All Projects</span>
-                  <ArrowUpRight className="w-5 h-5 text-zinc-900 dark:text-white" />
+                  <span className="text-[1.125rem] font-medium text-zinc-900 dark:text-white">View All Projects</span>
+                  <ArrowUpRight className="w-6 h-6 text-zinc-900 dark:text-white" />
                 </div>
               </div>
             </Link>
-          </div>
-          
-          <div className="h-3 relative">
-            <div className="absolute top-0 bottom-0 left-1/2 w-[1px] -translate-x-1/2 border-r neu-separator" />
           </div>
 
           {/* Middle: Flat Grid of Categories (responsive row height) */}
@@ -301,6 +297,8 @@ export function HeroSection() {
     </section>
   )
 }
+
+
 
 
 
