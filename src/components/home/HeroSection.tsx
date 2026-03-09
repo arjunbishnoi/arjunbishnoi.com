@@ -19,7 +19,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-start pt-[calc(env(safe-area-inset-top)+clamp(4.75rem,9svh,6.5rem))] md:pt-16 lg:pt-20 pb-[clamp(1rem,4svh,3.5rem)] md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center justify-center md:justify-start min-h-[100svh] md:min-h-0 pt-[calc(env(safe-area-inset-top)+clamp(0.75rem,1.8svh,1.75rem))] md:pt-16 lg:pt-20 pb-[clamp(4rem,9svh,6rem)] md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
 
@@ -85,12 +85,12 @@ export function HeroSection() {
 
           {/* Middle: Flat Grid of Categories (responsive row height) */}
           <div className="grid grid-cols-2">
-            <Link href="/apps" className="flex items-center h-[clamp(5.8rem,12.2svh,6.3rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/apps" className="flex items-center h-[clamp(6rem,12.8svh,6.6rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">Mobile Apps</div>
               </div>
             </Link>
-            <Link href="/ai" className="flex items-center h-[clamp(5.8rem,12.2svh,6.3rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/ai" className="flex items-center h-[clamp(6rem,12.8svh,6.6rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">AI Engineering</div>
               </div>
@@ -313,6 +313,7 @@ export function HeroSection() {
     </section>
   )
 }
+
 
 
 
