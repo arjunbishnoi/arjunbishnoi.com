@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
@@ -87,47 +88,56 @@ export function Header() {
         <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] min-h-[calc(3.5rem-2px)] w-full pl-6 pr-4 lg:pl-7 lg:pr-5">
           {/* Logo - Anchored Left */}
           <div className="flex-shrink-0 relative z-10">
-            <Link 
-              href="/" 
-              className="text-lg font-bold font-sans translate-y-[1px] relative block cursor-pointer tracking-[-0.03em] md:text-xl md:font-semibold md:font-serif md:-translate-y-[1px] md:tracking-normal" 
-              style={isDesktop ? {} : { fontFamily: "Arial, sans-serif" }}
+            <Link
+              href="/"
+              className="relative block cursor-pointer"
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
               <div className="relative flex items-center">
-                 {/* Logo Morphing Animation - Framer Motion */}
-                 <div className="flex items-center">
-                    <motion.span layout className="text-foreground">a</motion.span>
-                    <AnimatePresence initial={false}>
-                        {showFullLogo && (
-                            <motion.span
-                                initial={{ width: 0, opacity: 0 }}
-                                animate={{ width: "auto", opacity: 1 }}
-                                exit={{ width: 0, opacity: 0 }}
-                                transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                                className="text-foreground whitespace-nowrap overflow-hidden"
-                            >
-                                rjun
-                            </motion.span>
-                        )}
-                    </AnimatePresence>
-                    <motion.span layout className="text-foreground">b</motion.span>
-                     <AnimatePresence initial={false}>
-                        {showFullLogo && (
-                            <motion.span
-                                initial={{ width: 0, opacity: 0 }}
-                                animate={{ width: "auto", opacity: 1 }}
-                                exit={{ width: 0, opacity: 0 }}
-                                transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                                className="text-foreground whitespace-nowrap overflow-hidden"
-                            >
-                                ishnoi
-                            </motion.span>
-                        )}
-                    </AnimatePresence>
-                    {/* Underscore - Only on desktop */}
-                    <motion.span layout className="hidden md:inline-block text-black dark:text-white font-bold ml-px">_</motion.span>
-                 </div>
+                <div className="md:hidden">
+                  <Image
+                    src="/arjun-bishnoi-profile-square.jpg"
+                    alt="Arjun Bishnoi"
+                    width={34}
+                    height={34}
+                    className="w-[2.125rem] h-[2.125rem] rounded-full object-cover border border-black/10 dark:border-white/10"
+                    priority
+                  />
+                </div>
+                {/* Logo Morphing Animation - Desktop */}
+                <div className="hidden md:flex items-center text-lg font-bold font-sans translate-y-[1px] tracking-[-0.03em] md:text-xl md:font-semibold md:font-serif md:-translate-y-[1px] md:tracking-normal">
+                  <motion.span layout className="text-foreground">a</motion.span>
+                  <AnimatePresence initial={false}>
+                    {showFullLogo && (
+                      <motion.span
+                        initial={{ width: 0, opacity: 0 }}
+                        animate={{ width: "auto", opacity: 1 }}
+                        exit={{ width: 0, opacity: 0 }}
+                        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                        className="text-foreground whitespace-nowrap overflow-hidden"
+                      >
+                        rjun
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                  <motion.span layout className="text-foreground">b</motion.span>
+                  <AnimatePresence initial={false}>
+                    {showFullLogo && (
+                      <motion.span
+                        initial={{ width: 0, opacity: 0 }}
+                        animate={{ width: "auto", opacity: 1 }}
+                        exit={{ width: 0, opacity: 0 }}
+                        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                        className="text-foreground whitespace-nowrap overflow-hidden"
+                      >
+                        ishnoi
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                  {/* Underscore - Only on desktop */}
+                  <motion.span layout className="hidden md:inline-block text-black dark:text-white font-bold ml-px">_</motion.span>
+                </div>
               </div>
             </Link>
           </div>
@@ -373,3 +383,4 @@ export function Header() {
     </header>
   )
 }
+

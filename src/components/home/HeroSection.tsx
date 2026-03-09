@@ -83,6 +83,8 @@ export function HeroSection() {
             </Link>
           </div>
 
+          <div className="h-2" />
+
           {/* Middle: Flat Grid of Categories (responsive row height) */}
           <div className="grid grid-cols-2">
             <Link href="/apps" className="flex items-center h-[clamp(6.15rem,13.05svh,6.8rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
@@ -319,6 +321,7 @@ export function HeroSection() {
     </section>
   )
 }
+
 
 
 
