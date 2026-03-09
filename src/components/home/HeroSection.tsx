@@ -19,7 +19,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-center gap-3 md:gap-0 md:justify-start min-h-[100dvh] md:min-h-0 pt-[env(safe-area-inset-top)] md:pt-16 lg:pt-20 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center justify-center gap-3 md:gap-0 md:justify-start h-screen h-[100svh] [@supports(height:100dvh)]:h-[100dvh] md:h-auto pt-[env(safe-area-inset-top)] md:pt-16 lg:pt-20 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
 
@@ -313,6 +313,7 @@ export function HeroSection() {
     </section>
   )
 }
+
 
 
 
