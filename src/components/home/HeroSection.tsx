@@ -98,25 +98,17 @@ export function HeroSection() {
 
           {/* Middle: Flat Grid of Categories (responsive row height) */}
           <div className="grid grid-cols-2">
-            <Link href="/apps" className="flex items-center h-[clamp(5.65rem,12.1svh,6.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
-              <div className="w-1/2 flex justify-center">
-                <div className="w-8 text-left whitespace-nowrap">Mobile Apps</div>
-              </div>
+            <Link href="/apps" className="flex items-center justify-center h-[clamp(5.65rem,12.1svh,6.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <div className="whitespace-nowrap">Mobile Apps</div>
             </Link>
-            <Link href="/ai" className="flex items-center h-[clamp(5.65rem,12.1svh,6.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
-              <div className="w-1/2 flex justify-center">
-                <div className="w-8 text-left whitespace-nowrap">AI Engineering</div>
-              </div>
+            <Link href="/ai" className="flex items-center justify-center h-[clamp(5.65rem,12.1svh,6.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <div className="whitespace-nowrap">AI</div>
             </Link>
-            <Link href="/design" className="flex items-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
-              <div className="w-1/2 flex justify-center">
-                <div className="w-8 text-left whitespace-nowrap">Design</div>
-              </div>
+            <Link href="/design" className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <div className="whitespace-nowrap">Design</div>
             </Link>
-            <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
-              <div className="w-1/2 flex justify-center">
-                <div className="w-8 text-left whitespace-nowrap">Resume</div>
-              </div>
+            <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <div className="whitespace-nowrap">Resume</div>
             </a>
           </div>
 
@@ -183,7 +175,7 @@ export function HeroSection() {
             },
             { 
               href: "/ai", 
-              label: "AI Engineering", 
+              label: "AI", 
               accent: "ML · LLMs · Intelligent Systems",
               orderClass: "order-3 md:order-2",
             },
@@ -207,7 +199,7 @@ export function HeroSection() {
                   <ArrowUpRight 
                     className="md:hidden absolute top-0 right-0 w-4 h-4 transition-colors opacity-70 group-hover:opacity-100 text-zinc-500 dark:text-zinc-400" 
                   />
-                  <div className="absolute bottom-0 md:bottom-0 left-1.5 md:left-0">
+                  <div className="absolute bottom-0 left-0 right-0 text-center">
                     <span 
                       className="text-sm sm:text-base font-semibold block text-zinc-900 dark:text-zinc-50"
                     >
@@ -274,7 +266,7 @@ export function HeroSection() {
             />
             <div className="absolute inset-4 md:inset-5 z-20 pointer-events-none flex items-center justify-center md:block">
               <ArrowUpRight className="md:hidden absolute top-0 right-0 w-4 h-4 text-zinc-500 dark:text-neutral-500 group-hover:text-zinc-700 dark:group-hover:text-neutral-400 transition-colors" />
-              <div className="md:absolute md:bottom-0 md:left-0 text-center md:text-left">
+              <div className="md:absolute md:bottom-0 md:left-0 md:right-0 text-center">
                 <span className="text-lg sm:text-xl md:text-base font-semibold text-zinc-900 dark:text-neutral-50 block">
                   All Projects
                 </span>
