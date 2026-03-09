@@ -24,7 +24,7 @@ export function HeroSection() {
     >
 
       {/* Hero Title — vertically centered in the gap between header bar and cards */}
-      <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 text-center flex items-center justify-center h-[clamp(7rem,18svh,9.75rem)] sm:h-[clamp(8rem,20svh,11rem)] md:h-[16rem] lg:h-[18rem] xl:h-[20rem]">
+      <div className="hidden md:flex w-full max-w-5xl mx-auto px-6 sm:px-6 text-center items-center justify-center md:h-[16rem] lg:h-[18rem] xl:h-[20rem]">
         <h1
           className="font-serif max-md:font-extrabold font-bold md:font-semibold text-[1.625rem] sm:text-[2.35rem] md:text-[3.125rem] lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.1] md:whitespace-nowrap inline-block px-4 -mx-4 pb-2.5 max-md:subpixel-antialiased max-md:[-webkit-text-stroke:0.6px_transparent]"
           style={{
@@ -85,12 +85,12 @@ export function HeroSection() {
 
           {/* Middle: Flat Grid of Categories (responsive row height) */}
           <div className="grid grid-cols-2">
-            <Link href="/apps" className="flex items-center h-[clamp(5.65rem,11.95svh,6.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/apps" className="flex items-center h-[clamp(5.8rem,12.2svh,6.3rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">Mobile Apps</div>
               </div>
             </Link>
-            <Link href="/ai" className="flex items-center h-[clamp(5.65rem,11.95svh,6.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/ai" className="flex items-center h-[clamp(5.8rem,12.2svh,6.3rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">AI Engineering</div>
               </div>
@@ -313,6 +313,7 @@ export function HeroSection() {
     </section>
   )
 }
+
 
 
 
