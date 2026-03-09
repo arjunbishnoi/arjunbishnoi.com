@@ -85,12 +85,12 @@ export function HeroSection() {
 
           {/* Middle: Flat Grid of Categories (responsive row height) */}
           <div className="grid grid-cols-2">
-            <Link href="/apps" className="flex items-center h-[clamp(6rem,12.8svh,6.6rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/apps" className="flex items-center h-[clamp(6.15rem,13.05svh,6.8rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">Mobile Apps</div>
               </div>
             </Link>
-            <Link href="/ai" className="flex items-center h-[clamp(6rem,12.8svh,6.6rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/ai" className="flex items-center h-[clamp(6.15rem,13.05svh,6.8rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">AI Engineering</div>
               </div>
@@ -304,7 +304,7 @@ export function HeroSection() {
       {/* Scroll down indicator */}
       <div className="w-full flex flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-0 md:mt-8 relative z-40">
         <div className={cn(
-            "mt-0 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
+            "mt-3 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
         )}>
           <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
@@ -313,6 +313,8 @@ export function HeroSection() {
     </section>
   )
 }
+
+
 
 
 
