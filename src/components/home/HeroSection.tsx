@@ -19,7 +19,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-start pt-[calc(env(safe-area-inset-top)+clamp(4.25rem,8.5svh,6rem))] md:pt-16 lg:pt-20 pb-[clamp(1rem,4svh,3.5rem)] md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center justify-start pt-[calc(env(safe-area-inset-top)+clamp(4.75rem,9svh,6.5rem))] md:pt-16 lg:pt-20 pb-[clamp(1rem,4svh,3.5rem)] md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
 
@@ -292,7 +292,7 @@ export function HeroSection() {
       {/* Scroll down indicator */}
       <div className="w-full flex flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-2 md:mt-8 relative z-40">
         <div className={cn(
-            "mt-4 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
+            "mt-2 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
         )}>
           <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
@@ -301,6 +301,7 @@ export function HeroSection() {
     </section>
   )
 }
+
 
 
 
