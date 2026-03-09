@@ -101,11 +101,11 @@ export function HeroSection() {
             <Link href="/apps" className="flex items-center justify-center h-[clamp(5.65rem,12.1svh,6.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
               <div className="whitespace-nowrap">Mobile Apps</div>
             </Link>
-            <Link href="/ai" className="flex items-center justify-center h-[clamp(5.65rem,12.1svh,6.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
-              <div className="whitespace-nowrap">AI</div>
-            </Link>
-            <Link href="/design" className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+            <Link href="/design" className="flex items-center justify-center h-[clamp(5.65rem,12.1svh,6.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
               <div className="whitespace-nowrap">Design</div>
+            </Link>
+            <Link href="/ai" className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <div className="whitespace-nowrap">AI</div>
             </Link>
             <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
               <div className="whitespace-nowrap">Resume</div>
@@ -177,13 +177,13 @@ export function HeroSection() {
               href: "/ai", 
               label: "AI", 
               accent: "ML · LLMs · Intelligent Systems",
-              orderClass: "order-3 md:order-2",
+              orderClass: "order-4 md:order-3",
             },
             { 
               href: "/design", 
               label: "Design", 
               accent: "Prototyping · Design Systems",
-              orderClass: "order-4 md:order-3",
+              orderClass: "order-3 md:order-2",
             },
           ]).map((item) => (
             <Link
