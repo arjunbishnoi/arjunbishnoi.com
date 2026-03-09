@@ -48,16 +48,32 @@ export function HeroSection() {
               href="/projects"
               className="group relative block rounded-[32px] h-[clamp(7.25rem,19svh,10rem)] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu p-1"
             >
-              {/* Lava lamp effect background */}
+              {/* Aurora background */}
               <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
                 <div className="absolute inset-0 bg-[var(--neu-surface)]" />
-                <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ maskImage: 'radial-gradient(ellipse at center, black 25%, transparent 75%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 25%, transparent 75%)' }}>
-                  <div className="absolute top-[10%] left-[5%] w-[50%] h-[50%] rounded-full bg-blue-500/40 animate-lava [--drift-name:drift-wide] [--drift-duration:12s] [--morph-name:morph] [--morph-duration:10s] [--glow-blur:80px] scale-125" style={{ filter: 'blur(var(--glow-blur))' }} />
-                  <div className="absolute bottom-[5%] right-[5%] w-[45%] h-[45%] rounded-full bg-purple-500/40 animate-lava [--drift-name:drift-wide] [--drift-duration:15s] [--morph-name:morph-alt] [--morph-duration:13s] [--drift-delay:1s] [--glow-blur:75px] scale-110" style={{ filter: 'blur(var(--glow-blur))' }} />
-                  <div className="absolute top-[30%] left-[30%] w-[30%] h-[30%] rounded-full bg-white/50 animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:18s] [--glow-blur:50px] scale-140" style={{ filter: 'blur(var(--glow-blur))' }} />
+                <div
+                  className="absolute inset-0 overflow-hidden pointer-events-none saturate-[1.65] contrast-[1.1] dark:saturate-[1.9] dark:contrast-[1.15] dark:brightness-[1.2]"
+                  style={{
+                    maskImage: "radial-gradient(ellipse at center, black 40%, transparent 88%)",
+                    WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 88%)",
+                  }}
+                >
+                  <div className="absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply dark:mix-blend-screen bg-cyan-500/62 dark:bg-cyan-400/56 animate-lava [--drift-name:drift-wide] [--drift-duration:26s] [--morph-name:morph] [--morph-duration:24s] [--color-duration:44s] [--glow-blur:74px] scale-125" style={{ filter: "blur(var(--glow-blur))" }} />
+                  <div className="absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply dark:mix-blend-screen bg-pink-500/58 dark:bg-pink-400/54 animate-lava [--drift-name:drift-wide] [--drift-duration:30s] [--morph-name:morph-alt] [--morph-duration:26s] [--color-duration:48s] [--drift-delay:2s] [--color-delay:3s] [--glow-blur:80px] scale-120" style={{ filter: "blur(var(--glow-blur))" }} />
+                  <div className="absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply dark:mix-blend-screen bg-violet-500/56 dark:bg-violet-400/56 animate-lava [--drift-name:drift-wide] [--drift-duration:28s] [--morph-name:morph] [--morph-duration:22s] [--color-duration:46s] [--drift-delay:1.4s] [--color-delay:5s] [--glow-blur:76px] scale-125" style={{ filter: "blur(var(--glow-blur))" }} />
+                  <div className="absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply dark:mix-blend-screen bg-lime-500/44 dark:bg-lime-400/46 animate-lava [--drift-name:drift-wide] [--drift-duration:34s] [--morph-name:morph-alt] [--morph-duration:28s] [--color-duration:52s] [--drift-delay:3.2s] [--color-delay:7s] [--glow-blur:78px] scale-115" style={{ filter: "blur(var(--glow-blur))" }} />
+                  <div className="absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply dark:mix-blend-screen bg-orange-500/46 dark:bg-orange-400/50 animate-lava [--drift-name:drift-wide] [--drift-duration:32s] [--morph-name:morph] [--morph-duration:30s] [--color-duration:56s] [--drift-delay:4.1s] [--color-delay:9s] [--glow-blur:80px] scale-110" style={{ filter: "blur(var(--glow-blur))" }} />
+                  <div className="absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply dark:mix-blend-screen bg-rose-400/48 dark:bg-rose-300/48 animate-lava [--drift-name:drift-wide] [--drift-duration:36s] [--morph-name:morph] [--morph-duration:32s] [--color-duration:58s] [--drift-delay:5s] [--glow-blur:54px] scale-140" style={{ filter: "blur(var(--glow-blur))" }} />
                 </div>
+                <div
+                  className="absolute inset-0 opacity-[0.18] dark:opacity-[0.18] mix-blend-multiply dark:mix-blend-screen pointer-events-none"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
+                  }}
+                />
               </div>
-              
+
               <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                 <div className="flex items-center gap-2">
                   <span className="text-[1.125rem] font-medium text-zinc-900 dark:text-white">View All Projects</span>
@@ -69,12 +85,12 @@ export function HeroSection() {
 
           {/* Middle: Flat Grid of Categories (responsive row height) */}
           <div className="grid grid-cols-2">
-            <Link href="/apps" className="flex items-center h-[clamp(5.25rem,11svh,5.75rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/apps" className="flex items-center h-[clamp(5.55rem,11.7svh,6.05rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">Mobile Apps</div>
               </div>
             </Link>
-            <Link href="/ai" className="flex items-center h-[clamp(5.25rem,11svh,5.75rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/ai" className="flex items-center h-[clamp(5.55rem,11.7svh,6.05rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">AI Engineering</div>
               </div>
@@ -297,6 +313,13 @@ export function HeroSection() {
     </section>
   )
 }
+
+
+
+
+
+
+
 
 
 
