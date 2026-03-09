@@ -95,13 +95,13 @@ export function Header() {
               onClick={handleLogoClick}
             >
               <div className="relative flex items-center">
-                <div className="md:hidden">
+                <div className="md:hidden -ml-1">
                   <Image
                     src="/arjun-bishnoi-profile-square.jpg"
                     alt="Arjun Bishnoi"
                     width={34}
                     height={34}
-                    className="w-[2.125rem] h-[2.125rem] rounded-full object-cover border border-black/10 dark:border-white/10"
+                    className="w-9 h-9 rounded-full object-cover border border-black/10 dark:border-white/10"
                     priority
                   />
                 </div>
@@ -227,7 +227,7 @@ export function Header() {
           </div>
 
           {/* Mobile Actions - Anchored Right */}
-          <div className="md:hidden absolute right-4 top-0 bottom-0 flex items-center z-10">
+          <div className="md:hidden absolute right-5 top-0 bottom-0 flex items-center z-10">
              {mounted && (
                  <motion.div layout transition={{ layout: { duration: 0.5, ease: [0.32, 0.72, 0, 1] } }}>
                  <button
