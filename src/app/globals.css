@@ -283,6 +283,8 @@ html {
   overflow-x: hidden;
   background-color: var(--neu-surface);
   color: var(--text-color, #ffffff);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -665,3 +667,4 @@ html.light-theme ::selection {
       var(--morph-name, morph) var(--morph-duration, 18s) ease-in-out infinite var(--morph-delay, 0s),
       colorShift var(--color-duration, 25s) linear infinite var(--color-delay, 0s);
   }
+
