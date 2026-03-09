@@ -66,6 +66,18 @@ export function Header() {
     setTheme(theme === "dark" ? "light" : "dark")
   }
 
+  // Spacing model (mobile): make the visual glyph-to-glyph gap the single standard.
+  const mobileThemeIconSize = 18
+  const mobileMenuIconSize = 24
+  const mobileActionButtonSize = 40
+  const mobileActionButtonGap = 8
+  const mobileGlyphStandardSpacing =
+    ((mobileActionButtonSize - mobileThemeIconSize) / 2) +
+    mobileActionButtonGap +
+    ((mobileActionButtonSize - mobileMenuIconSize) / 2)
+  const mobileLeftInset = mobileGlyphStandardSpacing
+  const mobileRightInset = mobileGlyphStandardSpacing - ((mobileActionButtonSize - mobileMenuIconSize) / 2)
+
   return (
     <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
       <div className={cn(
@@ -85,9 +97,12 @@ export function Header() {
         }}
         transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
       >
-        <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] min-h-[calc(3.5rem-2px)] w-full pl-6 pr-4 lg:pl-7 lg:pr-5">
+        <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] min-h-[calc(3.5rem-2px)] w-full pl-0 pr-0 md:pl-6 md:pr-4 lg:pl-7 lg:pr-5">
           {/* Logo - Anchored Left */}
-          <div className="flex-shrink-0 relative z-10">
+          <div
+            className="flex-shrink-0 relative z-10 md:static absolute inset-y-0 flex items-center justify-center"
+            style={{ left: `${mobileLeftInset}px` }}
+          >
             <Link
               href="/"
               className="relative block cursor-pointer"
@@ -95,13 +110,13 @@ export function Header() {
               onClick={handleLogoClick}
             >
               <div className="relative flex items-center">
-                <div className="md:hidden -ml-[0.85rem]">
+                <div className="md:hidden flex items-center justify-center">
                   <Image
                     src="/arjun-bishnoi-profile-square.jpg"
                     alt="Arjun Bishnoi"
                     width={34}
                     height={34}
-                    className="w-[2.05rem] h-[2.05rem] rounded-full object-cover border border-black/25 dark:border-white/25"
+                    className="w-[1.875rem] h-[1.875rem] rounded-full object-cover"
                     priority
                   />
                 </div>
@@ -227,13 +242,16 @@ export function Header() {
           </div>
 
           {/* Mobile Actions - Anchored Right */}
-          <div className="md:hidden absolute right-5 top-0 bottom-0 flex items-center z-10">
+          <div
+            className="md:hidden absolute top-0 bottom-0 flex items-center z-10"
+            style={{ right: `${mobileRightInset}px` }}
+          >
              {mounted && (
-                 <motion.div layout transition={{ layout: { duration: 0.5, ease: [0.32, 0.72, 0, 1] } }}>
-                 <button
-                 onClick={toggleTheme}
-                 className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
-             >
+                  <motion.div layout transition={{ layout: { duration: 0.5, ease: [0.32, 0.72, 0, 1] } }}>
+                  <button
+                  onClick={toggleTheme}
+                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
+              >
                   {theme === "dark" ? (
                     <motion.div key="sun" initial={{ rotate: -90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: 90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
                       <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} />
@@ -319,7 +337,7 @@ export function Header() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="md:hidden pl-6 pr-4 pt-2 pb-9 w-full flex flex-col"
+                    className="md:hidden pl-7 pr-4 pt-2 pb-9 w-full flex flex-col"
                 >
                     <nav className="flex flex-col space-y-3">
                         {[
@@ -383,5 +401,3 @@ export function Header() {
     </header>
   )
 }
-
-

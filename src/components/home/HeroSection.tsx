@@ -39,8 +39,19 @@ export function HeroSection() {
         </h1>
       </div>
 
-      {/* Mobile Design: Parent Neumorphic Container (Visible only on small screens) */}
-      <div className="w-full max-w-md mx-auto px-6 md:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+      {/* Mobile Layout: title upper third, hero card around middle, arrow lower third */}
+      <div className="md:hidden absolute inset-0 z-20 grid grid-rows-[auto_auto_1fr] px-6 pt-[max(7.75rem,calc(env(safe-area-inset-top)+6.85rem))] pb-[max(1.15rem,4svh)]">
+        <div className="w-full max-w-md mx-auto px-2 text-center pointer-events-none">
+          <p className="text-[1.18rem] sm:text-[1.28rem] leading-[1.15] tracking-[-0.01em] font-semibold text-black dark:text-white">
+            AI-powered Mobile Apps.
+          </p>
+          <p className="mt-1 text-[1.18rem] sm:text-[1.28rem] leading-[1.15] tracking-[-0.01em] font-semibold text-zinc-500 dark:text-zinc-500">
+            Designed with precision.
+          </p>
+        </div>
+
+        {/* Mobile Design: Parent Neumorphic Container */}
+        <div className="w-full max-w-md mx-auto self-start mt-[clamp(1.9rem,4.2svh,2.8rem)] flex flex-col items-center">
         <div className="w-full neu-container overflow-hidden pt-3">
           {/* Top: Raised All Projects rectangle */}
           <div className="px-3">
@@ -87,22 +98,22 @@ export function HeroSection() {
 
           {/* Middle: Flat Grid of Categories (responsive row height) */}
           <div className="grid grid-cols-2">
-            <Link href="/apps" className="flex items-center h-[clamp(5.95rem,12.7svh,6.55rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/apps" className="flex items-center h-[clamp(5.65rem,12.1svh,6.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">Mobile Apps</div>
               </div>
             </Link>
-            <Link href="/ai" className="flex items-center h-[clamp(5.95rem,12.7svh,6.55rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/ai" className="flex items-center h-[clamp(5.65rem,12.1svh,6.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">AI Engineering</div>
               </div>
             </Link>
-            <Link href="/design" className="flex items-center h-[clamp(5.05rem,10.7svh,5.55rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <Link href="/design" className="flex items-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">Design</div>
               </div>
             </Link>
-            <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center h-[clamp(5.05rem,10.7svh,5.55rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
+            <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] active:bg-zinc-100/10 transition-colors">
               <div className="w-1/2 flex justify-center">
                 <div className="w-8 text-left whitespace-nowrap">Resume</div>
               </div>
@@ -111,38 +122,48 @@ export function HeroSection() {
 
           {/* Bottom: Social Icons Row (responsive row height) */}
           <div className="grid grid-cols-4">
-            <a href={socialLinks.email} className="flex items-center justify-center h-[clamp(5.05rem,10.7svh,5.55rem)] border-r neu-separator group active:bg-zinc-100/10 transition-colors">
+            <a href={socialLinks.email} className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r neu-separator group active:bg-zinc-100/10 transition-colors">
               <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
-                <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-0.4 4.25l-7.07 4.42c-0.32 0.2-0.74 0.2-1.06 0L4.4 8.25c-0.25-0.16-0.4-0.43-0.4-0.72 0-0.67 0.73-1.07 1.27-0.67L12 11l6.73-4.14c0.54-0.4 1.27 0 1.27 0.67 0 0.29-0.15 0.56-0.4 0.72z" />
+                <svg viewBox="0 0 24 24" className="block w-[1.6rem] h-[1.6rem] fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M7 2.75C5.38503 2.75 3.92465 3.15363 2.86466 4.1379C1.79462 5.13152 1.25 6.60705 1.25 8.5V15.5C1.25 17.393 1.79462 18.8685 2.86466 19.8621C3.92465 20.8464 5.38503 21.25 7 21.25H17C18.615 21.25 20.0754 20.8464 21.1353 19.8621C22.2054 18.8685 22.75 17.393 22.75 15.5V8.5C22.75 6.60705 22.2054 5.13152 21.1353 4.1379C20.0754 3.15363 18.615 2.75 17 2.75H7ZM19.2285 8.3623C19.5562 8.10904 19.6166 7.63802 19.3633 7.31026C19.1101 6.98249 18.6391 6.9221 18.3113 7.17537L12.7642 11.4616C12.3141 11.8095 11.6858 11.8095 11.2356 11.4616L5.6886 7.17537C5.36083 6.9221 4.88982 6.98249 4.63655 7.31026C4.38328 7.63802 4.44367 8.10904 4.77144 8.3623L10.3185 12.6486C11.3089 13.4138 12.691 13.4138 13.6814 12.6486L19.2285 8.3623Z"
+                  />
                 </svg>
               </div>
             </a>
-            <a href="#contact" className="flex items-center justify-center h-[clamp(5.05rem,10.7svh,5.55rem)] border-r neu-separator group active:bg-zinc-100/10 transition-colors">
+            <a href="https://www.behance.net/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r neu-separator group active:bg-zinc-100/10 transition-colors">
               <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
-                <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z" />
+                <svg viewBox="-40 -40 3413 3413" className="block w-[1.6rem] h-[1.6rem] fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M1667 0c920 0 1667 746 1667 1667 0 920-746 1667-1667 1667C747 3334 0 2588 0 1667 0 747 746 0 1667 0zm-408 1059c57 0 109 5 156 15s87 27 121 49c33 23 59 53 78 91 18 37 27 85 27 140 0 60-14 110-41 151-28 40-68 73-122 99 74 21 128 58 164 111s54 117 54 192c0 61-12 113-35 157-24 44-55 80-94 108s-85 49-136 62c-50 13-102 20-156 20H696V1060h563zm704 96h484v118h-484v-118zm108 890c36 35 87 52 154 52 48 0 90-12 124-36s55-50 63-77h209c-34 104-85 178-154 223s-153 67-250 67c-68 0-129-11-184-33s-101-53-140-93c-38-40-67-88-88-144-20-56-31-118-31-184 0-65 11-125 32-181 22-56 51-104 91-145 39-41 86-73 140-96 54-24 114-35 181-35 73 0 137 14 192 43 55 28 100 67 135 115s60 103 76 164 21 125 17 193h-624c0 68 23 133 59 167zm273-454c-28-31-76-48-134-48-38 0-69 6-94 19s-45 29-60 48-26 39-32 61c-6 21-10 40-11 57h387c-6-61-27-105-55-137zm-1118-50c47 0 85-11 116-33 30-22 45-58 45-108 0-28-5-51-15-69s-24-32-41-42-36-17-58-21-44-6-67-6H960v279h266zm14 508c26 0 50-2 73-8 24-5 44-13 62-25 17-12 32-27 43-48 11-20 16-46 16-77 0-61-17-105-52-132-34-26-80-39-137-39H960v329h281v1z"
+                  />
                 </svg>
               </div>
             </a>
-            <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-[clamp(5.05rem,10.7svh,5.55rem)] border-r neu-separator group active:bg-zinc-100/10 transition-colors">
+            <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r neu-separator group active:bg-zinc-100/10 transition-colors">
               <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
-                <svg viewBox="0 0 24 24" className="w-[1.55rem] h-[1.55rem] fill-current" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-              </div>
-            </a>
-            <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-[clamp(5.05rem,10.7svh,5.55rem)] group active:bg-zinc-100/10 transition-colors">
-              <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
-                <svg viewBox="0 0 24 24" className="w-[1.55rem] h-[1.55rem] fill-current" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 24 24" className="block w-[1.6rem] h-[1.6rem] fill-current" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+              </div>
+            </a>
+            <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] group active:bg-zinc-100/10 transition-colors">
+              <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
+                <svg viewBox="0 0 24 24" className="block w-[1.6rem] h-[1.6rem] fill-current" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </div>
             </a>
           </div>
         </div>
+        </div>
+
         <div className={cn(
-            "mt-3 pb-0 flex justify-center transition-opacity duration-300",
+            "mt-[clamp(1.9rem,4.2svh,2.8rem)] pb-0 flex justify-center transition-opacity duration-300",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
         )}>
           <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
@@ -321,4 +342,5 @@ export function HeroSection() {
     </section>
   )
 }
+
 
