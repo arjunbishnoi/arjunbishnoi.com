@@ -19,7 +19,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-center md:justify-start min-h-[100svh] md:min-h-0 pt-[calc(env(safe-area-inset-top)+clamp(0.75rem,1.8svh,1.75rem))] md:pt-16 lg:pt-20 pb-[clamp(4rem,9svh,6rem)] md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center justify-center gap-3 md:gap-0 md:justify-start min-h-[100dvh] md:min-h-0 pt-[env(safe-area-inset-top)] md:pt-16 lg:pt-20 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
 
@@ -40,7 +40,7 @@ export function HeroSection() {
       </div>
 
       {/* Mobile Design: Parent Neumorphic Container (Visible only on small screens) */}
-      <div className="w-full max-w-md mx-auto px-6 mb-[clamp(1.25rem,4.5svh,3rem)] md:hidden">
+      <div className="w-full max-w-md mx-auto px-6 mb-0 md:hidden">
         <div className="neu-container overflow-hidden pt-3">
           {/* Top: Raised All Projects rectangle */}
           <div className="px-3">
@@ -302,9 +302,9 @@ export function HeroSection() {
       </div>
 
       {/* Scroll down indicator */}
-      <div className="w-full flex flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-2 md:mt-8 relative z-40">
+      <div className="w-full flex flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-0 md:mt-8 relative z-40">
         <div className={cn(
-            "mt-2 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
+            "mt-0 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
         )}>
           <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
@@ -313,6 +313,7 @@ export function HeroSection() {
     </section>
   )
 }
+
 
 
 
