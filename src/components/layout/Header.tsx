@@ -95,13 +95,13 @@ export function Header() {
               onClick={handleLogoClick}
             >
               <div className="relative flex items-center">
-                <div className="md:hidden -ml-1">
+                <div className="md:hidden -ml-[0.85rem]">
                   <Image
                     src="/arjun-bishnoi-profile-square.jpg"
                     alt="Arjun Bishnoi"
                     width={34}
                     height={34}
-                    className="w-9 h-9 rounded-full object-cover border border-black/10 dark:border-white/10"
+                    className="w-[2.05rem] h-[2.05rem] rounded-full object-cover border border-black/25 dark:border-white/25"
                     priority
                   />
                 </div>
@@ -383,4 +383,5 @@ export function Header() {
     </header>
   )
 }
+
 
