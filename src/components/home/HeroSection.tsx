@@ -19,7 +19,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-center gap-3 md:gap-0 md:justify-start h-screen h-[100svh] [@supports(height:100dvh)]:h-[100dvh] md:h-auto pt-[env(safe-area-inset-top)] md:pt-16 lg:pt-20 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center h-screen h-[100svh] [@supports(height:100dvh)]:h-[100dvh] md:h-auto md:pt-16 lg:pt-20 md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
 
@@ -40,8 +40,8 @@ export function HeroSection() {
       </div>
 
       {/* Mobile Design: Parent Neumorphic Container (Visible only on small screens) */}
-      <div className="w-full max-w-md mx-auto px-6 mb-0 md:hidden">
-        <div className="neu-container overflow-hidden pt-3">
+      <div className="w-full max-w-md mx-auto px-6 md:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+        <div className="w-full neu-container overflow-hidden pt-3">
           {/* Top: Raised All Projects rectangle */}
           <div className="px-3">
             <Link
@@ -138,6 +138,12 @@ export function HeroSection() {
               </div>
             </a>
           </div>
+        </div>
+        <div className={cn(
+            "mt-3 pb-0 flex justify-center transition-opacity duration-300",
+            scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
+        )}>
+          <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
         </div>
       </div>
 
@@ -302,7 +308,7 @@ export function HeroSection() {
       </div>
 
       {/* Scroll down indicator */}
-      <div className="w-full flex flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-0 md:mt-8 relative z-40">
+      <div className="hidden md:flex w-full flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-0 md:mt-8 relative z-40">
         <div className={cn(
             "mt-3 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
@@ -313,6 +319,8 @@ export function HeroSection() {
     </section>
   )
 }
+
+
 
 
 
