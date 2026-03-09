@@ -57,7 +57,7 @@
     --projects-surface: #121212;
     
     /* Mobile flat border */
-    --neu-flat-border: rgba(255, 255, 255, 0.1);
+    --neu-flat-border: rgba(255, 255, 255, 0.06);
   }
 
   /* --- Raised state: element pops out of surface --- */
@@ -667,4 +667,5 @@ html.light-theme ::selection {
       var(--morph-name, morph) var(--morph-duration, 18s) ease-in-out infinite var(--morph-delay, 0s),
       colorShift var(--color-duration, 25s) linear infinite var(--color-delay, 0s);
   }
+
 

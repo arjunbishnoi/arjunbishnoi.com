@@ -19,14 +19,14 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-start pt-[calc(env(safe-area-inset-top)+clamp(3.75rem,7.5svh,5.5rem))] md:pt-16 lg:pt-20 pb-[clamp(1rem,4svh,3.5rem)] md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center justify-start pt-[calc(env(safe-area-inset-top)+clamp(4.25rem,8.5svh,6rem))] md:pt-16 lg:pt-20 pb-[clamp(1rem,4svh,3.5rem)] md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
 
       {/* Hero Title — vertically centered in the gap between header bar and cards */}
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-6 text-center flex items-center justify-center h-[clamp(7rem,18svh,9.75rem)] sm:h-[clamp(8rem,20svh,11rem)] md:h-[16rem] lg:h-[18rem] xl:h-[20rem]">
         <h1
-          className="font-serif max-md:font-extrabold font-bold md:font-semibold text-[1.75rem] sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.1] md:whitespace-nowrap inline-block px-4 -mx-4 pb-2.5 max-md:subpixel-antialiased max-md:[-webkit-text-stroke:0.6px_transparent]"
+          className="font-serif max-md:font-extrabold font-bold md:font-semibold text-[1.625rem] sm:text-[2.35rem] md:text-[3.125rem] lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.1] md:whitespace-nowrap inline-block px-4 -mx-4 pb-2.5 max-md:subpixel-antialiased max-md:[-webkit-text-stroke:0.6px_transparent]"
           style={{
             background: "linear-gradient(to bottom, var(--hero-gradient-top) 0%, var(--hero-gradient-top) var(--hero-gradient-stop, 30%), var(--hero-gradient-bottom) 100%)",
             WebkitBackgroundClip: "text",
@@ -301,6 +301,7 @@ export function HeroSection() {
     </section>
   )
 }
+
 
 
 
