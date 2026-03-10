@@ -15,6 +15,7 @@
   :root {
     /* Light mode neumorphic surface */
     --neu-surface: #e0e0e0;
+    --neu-surface-dimmed: #b8b8b8;
     --neu-shadow-dark: rgba(140, 140, 140, 0.75); /* Darker drop shadow */
     --neu-shadow-light: rgba(255, 255, 255, 0.95); /* Brighter highlight */
     --neu-shadow-distance: 6px;
@@ -41,6 +42,7 @@
   .dark {
     /* Dark mode neumorphic surface — perfectly neutral, darker gray */
     --neu-surface: #121212; 
+    --neu-surface-dimmed: #0f0f0f;
     --neu-shadow-dark: rgba(0, 0, 0, 0.6); /* Deeper drop shadow for darker bg */
     --neu-shadow-light: rgba(255, 255, 255, 0.05); /* Softer highlight for darker bg */
     --neu-inset-shadow-dark: rgba(0, 0, 0, 0.6);
@@ -304,6 +306,11 @@ body {
 html.mobile-menu-open #site-content {
   filter: brightness(0.82) saturate(0.92);
   pointer-events: none;
+}
+
+html.mobile-menu-open,
+html.mobile-menu-open body {
+  background-color: var(--neu-surface-dimmed);
 }
 
 @media (prefers-reduced-motion: reduce) {

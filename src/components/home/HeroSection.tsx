@@ -55,7 +55,7 @@ export function HeroSection() {
           {/* Top: Raised All Projects rectangle */}
           <div className="px-3">
             <Link
-              href="/projects"
+              href="#contact"
               className="group relative block rounded-[32px] h-[clamp(7.25rem,19svh,10rem)] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu p-1"
             >
               {/* Aurora background */}
@@ -127,7 +127,7 @@ export function HeroSection() {
                 </svg>
               </div>
             </a>
-            <a href="https://www.behance.net/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r neu-separator group active:bg-zinc-100/10 transition-colors">
+            <a href="https://www.behance.net/arjunbishnoi" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r neu-separator group active:bg-zinc-100/10 transition-colors">
               <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-500 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
                 <svg viewBox="-40 -40 3413 3413" className="block w-[1.6rem] h-[1.6rem] fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path
@@ -213,7 +213,7 @@ export function HeroSection() {
 
           {/* All Projects — like other 3 rectangles with light gray background */}
           <Link
-            href="/projects"
+            href="#contact"
             className={cn(
               "group relative rounded-3xl overflow-hidden h-32 md:h-full col-span-2 md:col-span-1 md:row-span-2 order-1 md:order-4",
               "neu-raised neu-raised-accent neu-mobile-neumorphic transform-gpu mb-2 md:mb-0"
