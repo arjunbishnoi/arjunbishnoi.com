@@ -50,13 +50,15 @@ export function HeroSection() {
           </p>
         </div>
 
-        {/* Mobile Design: Split hero card and bottom action grid into separate parent shapes */}
-        <div className="w-full max-w-md mx-auto self-start mt-[clamp(2.4rem,5svh,3.3rem)] mb-6 flex flex-col items-center gap-3 hero-mobile-main-shape-wrap">
-          {/* Top: Raised All Projects rectangle */}
-          <Link
-            href="#contact"
-            className="group relative block w-full rounded-[40px] h-[clamp(8rem,20svh,10.75rem)] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
-          >
+        {/* Mobile Design: Combined hero card and bottom action grid into a single parent shape */}
+        <div className="w-full max-w-md mx-auto self-start mt-[clamp(2.4rem,5svh,3.3rem)] mb-6 flex flex-col items-center hero-mobile-main-shape-wrap">
+          <div className="w-full neu-container overflow-hidden">
+            {/* Top: Raised All Projects rectangle */}
+            <div className="p-3 border-b neu-separator">
+              <Link
+                href="#contact"
+                className="group relative block w-full rounded-[32px] h-[clamp(7.25rem,18svh,9.75rem)] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
+              >
             {/* Aurora background */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
               <div className="absolute inset-0 bg-[var(--neu-surface)]" />
@@ -89,9 +91,9 @@ export function HeroSection() {
                 <ArrowUpRight className="w-6 h-6 text-zinc-900 dark:text-white" />
               </div>
             </div>
-          </Link>
+              </Link>
+            </div>
 
-          <div className="w-full neu-container overflow-hidden">
             {/* Middle: Flat Grid of Categories (responsive row height) */}
             <div className="grid grid-cols-2">
               <Link href="/apps" className={cn("flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors", mobileGridRowClass)}>
