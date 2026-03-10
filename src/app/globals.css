@@ -170,6 +170,17 @@
     }
   }
 
+  /* Slightly shrink the full mobile hero neumorphic shape without changing layout flow. */
+  .hero-mobile-main-shape-wrap {
+    transform-origin: top center;
+  }
+
+  @media (max-width: 767px) {
+    .hero-mobile-main-shape-wrap {
+      transform: scale(0.91);
+    }
+  }
+
   /* --- Subtle flat neumorphic (for small elements like social icons) --- */
   .neu-flat {
     background: var(--neu-surface);

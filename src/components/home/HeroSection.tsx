@@ -50,7 +50,7 @@ export function HeroSection() {
         </div>
 
         {/* Mobile Design: Parent Neumorphic Container */}
-        <div className="w-full max-w-md mx-auto self-start mt-[clamp(2.4rem,5svh,3.3rem)] mb-6 flex flex-col items-center">
+        <div className="w-full max-w-md mx-auto self-start mt-[clamp(2.4rem,5svh,3.3rem)] mb-6 flex flex-col items-center hero-mobile-main-shape-wrap">
         <div className="w-full neu-container overflow-hidden pt-3">
           {/* Top: Raised All Projects rectangle */}
           <div className="px-3">
