@@ -389,12 +389,12 @@ export function Header() {
                  <span className="sr-only">Open main menu</span>
                  <motion.svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
+                    width="23"
+                    height="23"
                     viewBox="0 0 20 20"
                     initial={false}
                     animate={mobileMenuAnimationState}
-                    className="w-[1.375rem] h-[1.375rem]"
+                    className="w-[1.4375rem] h-[1.4375rem]"
                  >
                     <motion.path
                       d="M3.5 6H16.5"
