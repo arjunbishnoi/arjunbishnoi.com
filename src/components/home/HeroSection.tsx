@@ -19,7 +19,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center h-screen h-[100svh] [@supports(height:100dvh)]:h-[100dvh] md:h-auto md:pt-16 lg:pt-20 md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center isolate h-screen h-[100svh] [@supports(height:100dvh)]:h-[100dvh] md:h-auto md:pt-16 lg:pt-20 md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
 
