@@ -19,7 +19,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center h-screen h-[100svh] [@supports(height:100dvh)]:h-[100dvh] md:h-auto md:pt-16 lg:pt-20 md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center md:h-auto md:pt-16 lg:pt-20 md:pb-0"
       style={{ background: "var(--neu-surface)" }}
     >
 
@@ -40,7 +40,7 @@ export function HeroSection() {
       </div>
 
       {/* Mobile Layout: title upper third, hero card around middle, arrow lower third */}
-      <div className="md:hidden absolute inset-0 z-20 grid grid-rows-[auto_auto_1fr] px-6 pt-[max(7.75rem,calc(env(safe-area-inset-top)+6.85rem))] pb-[max(1.15rem,4svh)]">
+      <div className="md:hidden w-full z-20 px-6 pt-[max(7.75rem,calc(env(safe-area-inset-top)+6.85rem))] pb-[clamp(1.9rem,4.2svh,2.8rem)]">
         <div className="w-full max-w-md mx-auto px-2 text-center pointer-events-none">
           <p className="text-[1.18rem] sm:text-[1.28rem] leading-[1.15] tracking-[-0.01em] font-semibold text-black dark:text-white">
             AI-powered Mobile Apps.
