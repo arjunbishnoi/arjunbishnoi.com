@@ -300,7 +300,7 @@ body {
 }
 
 #site-content {
-  transition: filter 220ms ease, opacity 220ms ease;
+  transition: filter 300ms ease, opacity 300ms ease;
 }
 
 html.mobile-menu-open #site-content {
