@@ -93,7 +93,10 @@ export function HeroSection() {
             </Link>
           </div>
 
-          <div className="h-2" />
+          <div className="grid grid-cols-2 h-2">
+            <div className="border-r neu-separator"></div>
+            <div></div>
+          </div>
 
           {/* Middle: Flat Grid of Categories (responsive row height) */}
           <div className="grid grid-cols-2">
