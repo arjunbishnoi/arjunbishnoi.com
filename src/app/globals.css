@@ -300,17 +300,31 @@ body {
 }
 
 #site-content {
-  transition: filter 300ms ease, opacity 300ms ease;
+  transition: filter 300ms ease;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: calc(env(safe-area-inset-top, 0px) * -1);
+  height: calc(100vh + env(safe-area-inset-top, 0px));
+  height: calc(100dvh + env(safe-area-inset-top, 0px));
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+  z-index: 45;
 }
 
 html.mobile-menu-open #site-content {
-  filter: brightness(0.82) saturate(0.92);
+  filter: saturate(0.92);
   pointer-events: none;
 }
 
-html.mobile-menu-open,
-html.mobile-menu-open body {
-  background-color: var(--neu-surface-dimmed);
+html.mobile-menu-open body::before {
+  opacity: 0.18;
 }
 
 @media (prefers-reduced-motion: reduce) {
