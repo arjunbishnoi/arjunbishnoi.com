@@ -56,21 +56,10 @@ export function HeroSection() {
           <div className="px-3">
             <Link
               href="#contact"
-              className="group relative isolate block rounded-[32px] h-[clamp(7.25rem,19svh,10rem)] overflow-visible neu-raised neu-mobile-neumorphic transform-gpu p-1"
+              className="group relative block rounded-[32px] h-[clamp(7.25rem,19svh,10rem)] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu p-1"
             >
-              {/* Edge spill / refraction halo */}
-              <div
-                className="absolute -inset-[10px] z-0 pointer-events-none opacity-55 dark:opacity-45 animate-color-shift"
-                style={{
-                  backgroundImage:
-                    "conic-gradient(from 210deg at 50% 50%, rgba(56,189,248,0.36), rgba(236,72,153,0.3), rgba(168,85,247,0.28), rgba(132,204,22,0.25), rgba(249,115,22,0.26), rgba(56,189,248,0.36))",
-                  filter: "blur(12px) saturate(1.25)",
-                  maskImage: "radial-gradient(ellipse at center, transparent 54%, black 69%, transparent 89%)",
-                  WebkitMaskImage: "radial-gradient(ellipse at center, transparent 54%, black 69%, transparent 89%)",
-                }}
-              />
               {/* Aurora background */}
-              <div className="absolute inset-0 z-[1] rounded-[32px] overflow-hidden pointer-events-none animate-color-shift">
+              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
                 <div className="absolute inset-0 bg-[var(--neu-surface)]" />
                 <div
                   className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] dark:saturate-[2] dark:contrast-[1.05] dark:brightness-[1.4]"
