@@ -70,6 +70,7 @@ export default {
 			},
 			animation: {
 				'gradient': 'gradient 8s linear infinite',
+				'color-shift': 'colorShift 25s linear infinite',
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 			},
@@ -91,6 +92,10 @@ export default {
 				'accordion-up': {
 					from: { height: 'var(--radix-accordion-content-height)' },
 					to: { height: '0' }
+				},
+				'colorShift': {
+					'0%, 100%': { filter: 'hue-rotate(0deg)' },
+					'50%': { filter: 'hue-rotate(180deg)' }
 				}
 			},
 		}

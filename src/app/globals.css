@@ -633,16 +633,40 @@ html.light-theme ::selection {
   /* --- Dreamy Glow Animations --- */
   @keyframes drift {
     0%, 100% { transform: translate(0, 0); }
-    25% { transform: translate(10%, 15%); }
-    50% { transform: translate(-5%, 20%); }
-    75% { transform: translate(-15%, -10%); }
+    16% { transform: translate(40%, -30%); }
+    33% { transform: translate(-20%, 50%); }
+    50% { transform: translate(60%, 20%); }
+    66% { transform: translate(-40%, -20%); }
+    83% { transform: translate(20%, 40%); }
   }
 
   @keyframes drift-wide {
     0%, 100% { transform: translate(0, 0); }
-    25% { transform: translate(25%, 8%); }
-    50% { transform: translate(-20%, 12%); }
-    75% { transform: translate(-30%, -8%); }
+    14% { transform: translate(50%, 30%); }
+    28% { transform: translate(-30%, -40%); }
+    42% { transform: translate(70%, -10%); }
+    57% { transform: translate(-50%, 40%); }
+    71% { transform: translate(30%, -50%); }
+    85% { transform: translate(-60%, 10%); }
+  }
+
+  @keyframes drift-cross {
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(60%, 40%); }
+    40% { transform: translate(-40%, -30%); }
+    60% { transform: translate(-60%, 50%); }
+    80% { transform: translate(40%, -40%); }
+  }
+
+  @keyframes drift-orbit {
+    0%, 100% { transform: translate(0, 0); }
+    12% { transform: translate(50%, -20%); }
+    25% { transform: translate(70%, 30%); }
+    37% { transform: translate(20%, 60%); }
+    50% { transform: translate(-40%, 50%); }
+    62% { transform: translate(-70%, 10%); }
+    75% { transform: translate(-50%, -40%); }
+    87% { transform: translate(-10%, -50%); }
   }
 
   @keyframes morph {
