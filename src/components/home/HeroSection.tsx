@@ -42,10 +42,10 @@ export function HeroSection() {
       {/* Mobile Layout: title upper third, hero card around middle, arrow lower third */}
       <div className="md:hidden w-full z-20 px-6 pt-[max(7.75rem,calc(env(safe-area-inset-top)+6.85rem))] pb-[clamp(1.9rem,4.2svh,2.8rem)]">
         <div className="w-full max-w-md mx-auto px-2 text-center pointer-events-none">
-          <p className="text-[1.35rem] sm:text-[1.45rem] leading-[1.15] tracking-[-0.01em] font-semibold text-black dark:text-white">
+          <p className="text-[1.35rem] sm:text-[1.45rem] leading-[1.15] tracking-[-0.025em] font-semibold text-black dark:text-white">
             AI-powered Mobile Apps.
           </p>
-          <p className="mt-1 text-[1.35rem] sm:text-[1.45rem] leading-[1.15] tracking-[-0.01em] font-semibold text-zinc-500 dark:text-zinc-500">
+          <p className="mt-1 text-[1.35rem] sm:text-[1.45rem] leading-[1.15] tracking-[-0.025em] font-semibold text-zinc-500 dark:text-zinc-500">
             Designed with precision.
           </p>
         </div>
