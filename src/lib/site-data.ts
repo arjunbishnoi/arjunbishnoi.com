@@ -19,7 +19,7 @@ export const projects = [
         id: 'cryptotracker',
         title: 'Cryptocurrency Tracker',
         description: 'Monitor the live cryptocurrency market in real-time. Track your favorite coins, view detailed statistics, and manage your personal portfolio on the go. Stay informed with instant price alerts and interactive performance charts.',
-        image: '/cryptotracker.png',
+        image: '/cryptotracker.jpeg',
         tags: ['Mobile App', 'React Native', 'Expo', 'Firebase', 'CoinLore API'],
         sourceUrl: 'https://github.com/arjunbishnoi/CryptoTracker',
         featured: true,

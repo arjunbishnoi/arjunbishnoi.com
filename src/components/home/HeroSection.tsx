@@ -86,7 +86,7 @@ export function HeroSection() {
 
               <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                 <div className="flex items-center gap-1">
-                  <span className="text-[1.1rem] tracking-[-0.005em] font-medium text-zinc-900 dark:text-white">View all projects</span>
+                  <span className="text-[1.1rem] tracking-[-0.005em] font-semibold text-zinc-900 dark:text-white">View all projects</span>
                   <ArrowUpRight className="w-5 h-5 text-zinc-900 dark:text-white" />
                 </div>
               </div>
