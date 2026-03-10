@@ -87,7 +87,7 @@ export function HeroSection() {
 
               <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                 <div className="flex items-center gap-1">
-                  <span className="text-[1.1rem] tracking-[-0.005em] font-medium text-zinc-900 dark:text-white">View All Projects</span>
+                  <span className="text-[1.1rem] tracking-[-0.005em] font-medium text-zinc-900 dark:text-white">View all projects</span>
                   <ArrowUpRight className="w-5 h-5 text-zinc-900 dark:text-white" />
                 </div>
               </div>
@@ -102,7 +102,7 @@ export function HeroSection() {
               <div className="whitespace-nowrap">Mobile Apps</div>
             </Link>
             <Link href="/ai" className="flex items-center justify-center h-[clamp(5.65rem,12.1svh,6.15rem)] border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
-              <div className="whitespace-nowrap">AI Engg.</div>
+              <div className="whitespace-nowrap">AI/ML</div>
             </Link>
             <Link href="/design" className="flex items-center justify-center h-[clamp(4.75rem,10.1svh,5.15rem)] border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
               <div className="whitespace-nowrap">Design</div>
@@ -154,12 +154,6 @@ export function HeroSection() {
         </div>
         </div>
 
-        <div className={cn(
-            "mt-[clamp(1.9rem,4.2svh,2.8rem)] pb-0 flex justify-center transition-opacity duration-300",
-            scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"
-        )}>
-          <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
-        </div>
       </div>
 
       {/* Desktop/Bigger screens Design: (Hidden on mobile) */}
@@ -175,7 +169,7 @@ export function HeroSection() {
             },
             { 
               href: "/ai", 
-              label: "AI Engg.", 
+              label: "AI/ML", 
               accent: "ML · LLMs · Intelligent Systems",
               orderClass: "order-3 md:order-2",
             },

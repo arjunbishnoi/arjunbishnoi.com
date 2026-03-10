@@ -57,7 +57,7 @@ export function Footer() {
                     href="/projects"
                     className="text-primary hover:text-primary/80 transition-colors font-semibold flex items-center group"
                   >
-                    View All Projects
+                    View all projects
                     <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </li>
