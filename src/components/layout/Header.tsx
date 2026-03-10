@@ -6,7 +6,7 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Moon, Sun, Mail, ArrowUpRight } from "lucide-react"
+import { Moon, Sun, Mail, ArrowUpRight } from "lucide-react"
 import { socialLinks } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -18,6 +18,48 @@ export function Header() {
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
+  const mobileMenuAnimationState = isMobileMenuOpen ? "open" : "closed"
+  const menuPanelTransition = { type: "spring" as const, duration: 0.3, bounce: 0.1 }
+  const mobileMenuPanelVariants = {
+    open: { height: "auto" },
+    closed: { height: "3.5rem" },
+  }
+  const mobileMenuItems = [
+    { name: 'Projects', href: '/projects' },
+    { name: 'Mobile Apps', href: '/#mobile-apps' },
+    { name: 'AI/ML', href: '/#ai-ml' },
+    { name: 'Design', href: '/#design' },
+    { name: 'Resume', href: socialLinks.resume, isDownload: true },
+    { name: 'Contact', href: '/#contact' },
+    { name: 'About', href: '/#about' },
+    { name: 'Blog', href: '/blog' },
+  ] as const
+  const mobileMenuListVariants = {
+    open: {
+      opacity: 1,
+      transition: { staggerChildren: 0.03, delayChildren: 0.05 },
+    },
+    closed: {
+      opacity: 0,
+      transition: { staggerChildren: 0.03, staggerDirection: -1 as const },
+    },
+  }
+  const mobileMenuItemVariants = {
+    open: { opacity: 1, y: 0 },
+    closed: { opacity: 0, y: -10 },
+  }
+  const mobileMenuSocialVariants = {
+    open: { opacity: 1, y: 0, transition: { delay: 0.15 } },
+    closed: { opacity: 0, y: -10 },
+  }
+  const mobileMenuIconTopVariants = {
+    open: { rotate: [0, 0, 45], y: [0, 4, 4] },
+    closed: { rotate: [45, 0, 0], y: [4, 4, 0] },
+  }
+  const mobileMenuIconBottomVariants = {
+    open: { rotate: [0, 0, -45], y: [0, -4, -4] },
+    closed: { rotate: [-45, 0, 0], y: [-4, -4, 0] },
+  }
 
   // Hydration fix for theme
   useEffect(() => {
@@ -134,10 +176,9 @@ export function Header() {
           "before:[background-image:url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")]",
         )}
         initial={false}
-        animate={{
-          height: isMobileMenuOpen ? "auto" : "3.5rem"
-        }}
-        transition={{ type: "spring", damping: 32, stiffness: 320 }}
+        animate={mobileMenuAnimationState}
+        variants={mobileMenuPanelVariants}
+        transition={menuPanelTransition}
       >
         <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] min-h-[calc(3.5rem-2px)] w-full pl-0 pr-0 md:pl-6 md:pr-4 lg:pl-7 lg:pr-5">
           {/* Logo - Anchored Left */}
@@ -289,7 +330,7 @@ export function Header() {
             style={{ right: `${mobileRightInset}px` }}
           >
              {mounted && (
-                  <motion.div layout transition={{ layout: { duration: 0.5, ease: [0.32, 0.72, 0, 1] } }}>
+                  <motion.div layout transition={{ layout: menuPanelTransition }}>
                   <button
                   onClick={toggleTheme}
                   className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
@@ -313,14 +354,14 @@ export function Header() {
                         initial={{ width: 0 }}
                         animate={{ width: 48 }}
                         exit={{ width: 0 }}
-                        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                        transition={menuPanelTransition}
                         className="overflow-hidden flex items-center justify-end"
                     >
                         <motion.div
                             initial={{ scale: 0.5, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.5, opacity: 0 }}
-                            transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                            transition={menuPanelTransition}
                             className="origin-right will-change-transform [backface-visibility:hidden]"
                         >
                             <Link
@@ -335,110 +376,92 @@ export function Header() {
                 )}
             </AnimatePresence>
 
-            <motion.div layout transition={{ layout: { duration: 0.5, ease: [0.32, 0.72, 0, 1] } }}>
+            <motion.div layout transition={{ layout: menuPanelTransition }}>
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-black dark:text-white focus:outline-none"
             >
                  <span className="sr-only">Open main menu</span>
-                 <div className="relative w-6 h-6 flex items-center justify-center">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className={cn(
-                            "w-6 h-6 absolute transition-all duration-300 ease-in-out",
-                             isMobileMenuOpen ? "opacity-0 rotate-90 scale-0" : "opacity-100 rotate-0 scale-100"
-                        )}
-                    >
-                        <line x1="3" x2="21" y1="8" y2="8" />
-                        <line x1="3" x2="21" y1="16" y2="16" />
-                    </svg>
-                    <X 
-                        className={cn(
-                            "w-6 h-6 absolute transition-all duration-300 ease-in-out",
-                            isMobileMenuOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-0"
-                        )}
-                        strokeWidth={2}
+                 <motion.svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 20 20"
+                    initial={false}
+                    animate={mobileMenuAnimationState}
+                    className="w-[1.375rem] h-[1.375rem]"
+                 >
+                    <motion.path
+                      d="M3.5 6H16.5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ transformOrigin: "50% 50%", transformBox: "fill-box" }}
+                      variants={mobileMenuIconTopVariants}
+                      transition={{ duration: 0.2 }}
                     />
-                 </div>
+                    <motion.path
+                      d="M3.5 14H16.5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ transformOrigin: "50% 50%", transformBox: "fill-box" }}
+                      variants={mobileMenuIconBottomVariants}
+                      transition={{ duration: 0.2 }}
+                    />
+                 </motion.svg>
             </button>
             </motion.div>
           </div>
         </div>
 
         {/* Mobile Menu Content */}
-        <AnimatePresence mode="wait">
-            {isMobileMenuOpen && (
-                <motion.div 
-                    layout="position"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="md:hidden pl-7 pr-4 pt-3 pb-[22px] w-full flex flex-col"
-                >
-                    <nav className="flex flex-col space-y-3">
-                        {[
-                            { name: 'Projects', href: '/projects' },
-                            { name: 'Mobile Apps', href: '/#mobile-apps' },
-                            { name: 'AI/ML', href: '/#ai-ml' },
-                            { name: 'Design', href: '/#design' },
-                            { name: 'Resume', href: socialLinks.resume, isDownload: true },
-                            { name: 'Contact', href: '/#contact' },
-                            { name: 'About', href: '/#about' },
-                            { name: 'Blog', href: '/blog' },
-                        ].map((item, index) => (
-                             <motion.div
-                                key={item.name}
-                                initial={{ opacity: 0, scale: 0.96, y: -10 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.96, y: -10 }}
-                                transition={{ 
-                                  delay: index * 0.04,
-                                  type: "spring",
-                                  damping: 22,
-                                  stiffness: 300
-                                }}
-                             >
-                                {item.isDownload ? (
-                                    <a 
-                                        href={item.href} 
-                                        download={socialLinks.resumeDownloadName}
-                                        className="text-xl font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
-                                    >
-                                        {item.name}
-                                    </a>
-                                ) : (
-                                    <Link
-                                        href={item.href}
-                                        className="text-xl font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                    >
-                                        {item.name}
-                                    </Link>
-                                )}
-                             </motion.div>
-                        ))}
-                    </nav>
+        <motion.div
+          layout="position"
+          initial={false}
+          animate={mobileMenuAnimationState}
+          className={cn(
+            "md:hidden pl-7 pr-4 pt-3 pb-[22px] w-full flex flex-col",
+            isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+          )}
+        >
+          <motion.ul
+            className="flex flex-col space-y-3"
+            variants={mobileMenuListVariants}
+          >
+            {mobileMenuItems.map((item) => (
+              <motion.li
+                key={item.name}
+                variants={mobileMenuItemVariants}
+              >
+                {item.isDownload ? (
+                  <a
+                    href={item.href}
+                    download={socialLinks.resumeDownloadName}
+                    className="text-xl font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="text-xl font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </motion.li>
+            ))}
+          </motion.ul>
 
-                    {/* Social Icons Row */}
-                    <motion.div 
-                        className="flex items-center gap-[17px] mt-5 opacity-90 -ml-[6px]"
-                        initial={{ opacity: 0, scale: 0.96, y: -10 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.96, y: -10 }}
-                        transition={{ 
-                            delay: 8 * 0.04, // Index 8 logically follows 0-7 from map
-                            type: "spring",
-                            damping: 22,
-                            stiffness: 300
-                        }}
-                    >
+          {/* Social Icons Row */}
+          <motion.div
+            className="flex -ml-7 w-[calc(100%+2.75rem)] items-center justify-center gap-[17px] mt-5 opacity-90"
+            variants={mobileMenuSocialVariants}
+          >
                         <a 
                             href={socialLinks.github} 
                             target="_blank" 
@@ -475,11 +498,8 @@ export function Header() {
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                             </svg>
                         </a>
-                    </motion.div>
-
-                </motion.div>
-            )}
-        </AnimatePresence>
+          </motion.div>
+        </motion.div>
       </motion.div>
       </div>
     </header>
