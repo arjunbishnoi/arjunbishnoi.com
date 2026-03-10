@@ -39,12 +39,21 @@ export function Header() {
     return () => window.removeEventListener('resize', checkDesktop)
   }, [])
 
-  // Lock body scroll when mobile menu is open
+  // Lock scroll and toggle global menu-open state for page dimming.
   useEffect(() => {
+    const root = document.documentElement
+
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = "unset"
+      document.body.style.overflow = ""
+    }
+
+    root.classList.toggle("mobile-menu-open", isMobileMenuOpen)
+
+    return () => {
+      document.body.style.overflow = ""
+      root.classList.remove("mobile-menu-open")
     }
   }, [isMobileMenuOpen])
 

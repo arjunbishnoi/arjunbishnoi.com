@@ -297,6 +297,21 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+#site-content {
+  transition: filter 220ms ease, opacity 220ms ease;
+}
+
+html.mobile-menu-open #site-content {
+  filter: brightness(0.82) saturate(0.92);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #site-content {
+    transition: none;
+  }
+}
+
 /* Mobile-first hero title with fluid typography */
 .hero-title-wrapper {
   width: 100%;

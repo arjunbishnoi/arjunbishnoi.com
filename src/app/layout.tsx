@@ -122,7 +122,9 @@ export default function RootLayout({
           >
           <ThemeColorMeta />
           <Header />
+          <div id="site-content">
             {children}
+          </div>
           </ThemeProvider>
       </body>
     </html>
