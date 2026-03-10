@@ -58,14 +58,15 @@ export function Header() {
     }
   }, [isMobileMenuOpen])
 
-  // Close mobile menu when touching/clicking outside of it.
-  // Use capture + preventDefault so taps do not "fall through" to underlying links.
+  // Close mobile menu when clicking/tapping outside of it.
+  // Use click capture so timing matches the X button (also click-based),
+  // and preventDefault so taps do not "fall through" to underlying links.
   useEffect(() => {
     if (!isMobileMenuOpen) {
       return
     }
 
-    const handleOutsideInteraction = (event: MouseEvent | TouchEvent) => {
+    const handleOutsideInteraction = (event: MouseEvent) => {
       const target = event.target
       if (!(target instanceof Node)) {
         return
@@ -80,15 +81,10 @@ export function Header() {
       setIsMobileMenuOpen(false)
     }
 
-    document.addEventListener("mousedown", handleOutsideInteraction, true)
-    document.addEventListener("touchstart", handleOutsideInteraction, {
-      capture: true,
-      passive: false,
-    })
+    document.addEventListener("click", handleOutsideInteraction, true)
 
     return () => {
-      document.removeEventListener("mousedown", handleOutsideInteraction, true)
-      document.removeEventListener("touchstart", handleOutsideInteraction, true)
+      document.removeEventListener("click", handleOutsideInteraction, true)
     }
   }, [isMobileMenuOpen])
 
@@ -296,7 +292,7 @@ export function Header() {
                   <motion.div layout transition={{ layout: { duration: 0.5, ease: [0.32, 0.72, 0, 1] } }}>
                   <button
                   onClick={toggleTheme}
-                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
+                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
               >
                   {theme === "dark" ? (
                     <motion.div key="sun" initial={{ rotate: -90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: 90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
@@ -329,7 +325,7 @@ export function Header() {
                         >
                             <Link
                                 href="/#contact"
-                                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none shrink-0"
+                                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <Mail className="w-5 h-5" strokeWidth={2} />
@@ -342,7 +338,7 @@ export function Header() {
             <motion.div layout transition={{ layout: { duration: 0.5, ease: [0.32, 0.72, 0, 1] } }}>
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-black dark:text-white active:bg-black/5 dark:active:bg-white/10 focus:outline-none"
+                className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-black dark:text-white focus:outline-none"
             >
                  <span className="sr-only">Open main menu</span>
                  <div className="relative w-6 h-6 flex items-center justify-center">
@@ -447,7 +443,7 @@ export function Header() {
                             href={socialLinks.github} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
                             aria-label="GitHub"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -459,7 +455,7 @@ export function Header() {
                             href="https://www.behance.net/arjunbishnoi" 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
                             aria-label="Behance"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -471,7 +467,7 @@ export function Header() {
                             href={socialLinks.linkedin} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
                             aria-label="LinkedIn"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
