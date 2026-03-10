@@ -79,25 +79,39 @@ export function Header() {
   const mobileRightInset = mobileGlyphStandardSpacing - ((mobileActionButtonSize - mobileMenuIconSize) / 2)
 
   return (
-    <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
-      <div className={cn(
-        "w-full mx-auto transition-[max-width,padding] duration-500 ease-soft-out px-6",
-        isScrolled ? "max-w-7xl lg:px-8" : "md:max-w-[33rem] max-w-5xl"
-      )}>
-      <motion.div 
-        layout
-        className={cn(
-          "relative overflow-hidden transition-[background-color,border-color] duration-500 ease-soft-out pointer-events-auto w-full rounded-[2rem]",
-          "backdrop-blur-2xl backdrop-saturate-150 bg-white/70 dark:bg-black/70",
-          "before:absolute before:inset-0 before:rounded-[2rem] before:opacity-[0.03] dark:before:opacity-[0.04] before:pointer-events-none before:z-[1]",
-          "before:[background-image:url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")]",
+    <>
+      {/* Backdrop with blur */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="fixed inset-0 z-40 bg-white/5 dark:bg-black/5 backdrop-blur-md md:hidden pointer-events-auto"
+          />
         )}
-        initial={false}
-        animate={{
-          height: isMobileMenuOpen ? "auto" : "3.5rem"
-        }}
-        transition={{ type: "spring", damping: 32, stiffness: 320 }}
-      >
+      </AnimatePresence>
+
+      <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
+        <div className={cn(
+          "w-full mx-auto transition-[max-width,padding] duration-500 ease-soft-out px-6",
+          isScrolled ? "max-w-7xl lg:px-8" : "md:max-w-[33rem] max-w-5xl"
+        )}>
+        <motion.div 
+          layout
+          className={cn(
+            "relative overflow-hidden transition-[background-color,border-color] duration-500 ease-soft-out pointer-events-auto w-full rounded-[2rem]",
+            "backdrop-blur-2xl backdrop-saturate-150 bg-white/70 dark:bg-black/70",
+            "before:absolute before:inset-0 before:rounded-[2rem] before:opacity-[0.03] dark:before:opacity-[0.04] before:pointer-events-none before:z-[1]",
+            "before:[background-image:url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")]",
+          )}
+          initial={false}
+          animate={{
+            height: isMobileMenuOpen ? "auto" : "3.5rem"
+          }}
+          transition={{ type: "spring", damping: 32, stiffness: 320 }}
+        >
         <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] min-h-[calc(3.5rem-2px)] w-full pl-0 pr-0 md:pl-6 md:pr-4 lg:pl-7 lg:pr-5">
           {/* Logo - Anchored Left */}
           <div
@@ -400,7 +414,7 @@ export function Header() {
                     >
                         <a 
                             href="mailto:arjunbishnoi@gmail.com" 
-                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
                             aria-label="Email"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -412,7 +426,7 @@ export function Header() {
                             href="https://www.behance.net/" 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
                             aria-label="Behance"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -424,7 +438,7 @@ export function Header() {
                             href={socialLinks.github} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
                             aria-label="GitHub"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -436,7 +450,7 @@ export function Header() {
                             href={socialLinks.linkedin} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                            className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
                             aria-label="LinkedIn"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -452,5 +466,6 @@ export function Header() {
       </motion.div>
       </div>
     </header>
+    </>
   )
 }
