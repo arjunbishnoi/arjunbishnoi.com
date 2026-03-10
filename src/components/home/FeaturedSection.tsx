@@ -10,7 +10,7 @@ export function FeaturedSection() {
   const category = featured.tags?.[0] ?? "Project"
 
   return (
-    <section className="md:hidden -mt-24 pb-14 bg-background relative z-30">
+    <section className="md:hidden pb-14 bg-background">
       <div className="mx-auto max-w-7xl px-6">
         <Link href={featured.sourceUrl} target="_blank" rel="noopener noreferrer">
           {/* Square cover image */}
