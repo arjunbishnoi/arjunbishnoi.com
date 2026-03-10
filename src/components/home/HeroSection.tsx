@@ -40,7 +40,7 @@ export function HeroSection() {
       </div>
 
       {/* Mobile Layout: title upper third, hero card around middle, arrow lower third */}
-      <div className="md:hidden w-full z-20 px-6 pt-[max(7.75rem,calc(env(safe-area-inset-top)+6.85rem))] pb-[clamp(1.9rem,4.2svh,2.8rem)]">
+      <div className="md:hidden w-full z-20 px-6 pt-[max(7.75rem,calc(env(safe-area-inset-top)+6.85rem))] pb-[clamp(2.4rem,5svh,3.3rem)]">
         <div className="w-full max-w-md mx-auto px-2 text-center pointer-events-none">
           <p className="text-[1.35rem] sm:text-[1.45rem] leading-[1.15] tracking-[-0.025em] font-semibold text-black dark:text-white">
             AI-powered Mobile Apps.
@@ -51,7 +51,7 @@ export function HeroSection() {
         </div>
 
         {/* Mobile Design: Parent Neumorphic Container */}
-        <div className="w-full max-w-md mx-auto self-start mt-[clamp(1.9rem,4.2svh,2.8rem)] flex flex-col items-center">
+        <div className="w-full max-w-md mx-auto self-start mt-[clamp(2.4rem,5svh,3.3rem)] flex flex-col items-center">
         <div className="w-full neu-container overflow-hidden pt-3">
           {/* Top: Raised All Projects rectangle */}
           <div className="px-3">
