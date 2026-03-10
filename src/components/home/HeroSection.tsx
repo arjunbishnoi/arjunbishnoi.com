@@ -54,10 +54,10 @@ export function HeroSection() {
         <div className="w-full max-w-md mx-auto self-start mt-[clamp(2.4rem,5svh,3.3rem)] mb-6 flex flex-col items-center hero-mobile-main-shape-wrap">
           <div className="w-full neu-container overflow-hidden">
             {/* Top: Raised All Projects rectangle */}
-            <div className="p-2 relative">
+            <div className="p-2.5 relative">
               <Link
                 href="#contact"
-                className="group relative z-10 block w-full rounded-[32px] h-[clamp(7.75rem,20svh,10.25rem)] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
+                className="group relative z-10 block w-full rounded-[32px] h-[clamp(7.5rem,19svh,10rem)] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
               >
             {/* Aurora background */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
