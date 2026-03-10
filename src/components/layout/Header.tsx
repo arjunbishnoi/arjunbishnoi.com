@@ -24,7 +24,12 @@ export function Header() {
     open: { height: "auto" },
     closed: { height: "3.5rem" },
   }
-  const mobileMenuItems = [
+  type MobileMenuItem = {
+    name: string
+    href: string
+    isDownload?: boolean
+  }
+  const mobileMenuItems: ReadonlyArray<MobileMenuItem> = [
     { name: 'Projects', href: '/projects' },
     { name: 'Mobile Apps', href: '/#mobile-apps' },
     { name: 'AI/ML', href: '/#ai-ml' },
@@ -242,9 +247,9 @@ export function Header() {
 
           {/* Desktop Nav - Centered (hidden at top) */}
           <div className={cn(
-            "hidden md:flex items-center justify-center absolute inset-0 pointer-events-none transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+            "hidden md:flex items-center justify-center absolute inset-0 pointer-events-none transition-opacity duration-500",
             isScrolled ? "opacity-100" : "opacity-0"
-          )} style={{ zIndex: 1 }}>
+          )} style={{ zIndex: 1, transitionTimingFunction: "cubic-bezier(0.32,0.72,0,1)" }}>
             <nav className={cn(
               "flex items-center space-x-8",
               isScrolled ? "pointer-events-auto" : "pointer-events-none"
