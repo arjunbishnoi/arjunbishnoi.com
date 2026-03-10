@@ -10,9 +10,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <HeroSection />
-      <div className="mt-8 md:mt-12">
-        <FeaturedSection />
-      </div>
+      <FeaturedSection />
       <ProjectsSection />
       <BlogSection />
       <AboutSection />
