@@ -54,10 +54,10 @@ export function HeroSection() {
         <div className="w-full max-w-md mx-auto self-start mt-[clamp(2.4rem,5svh,3.3rem)] mb-6 flex flex-col items-center hero-mobile-main-shape-wrap">
           <div className="w-full neu-container overflow-hidden">
             {/* Top: Raised All Projects rectangle */}
-            <div className="p-3 border-b neu-separator">
+            <div className="p-3 relative">
               <Link
                 href="#contact"
-                className="group relative block w-full rounded-[32px] h-[clamp(7.25rem,18svh,9.75rem)] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
+                className="group relative z-10 block w-full rounded-[32px] h-[clamp(7.25rem,18svh,9.75rem)] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
               >
             {/* Aurora background */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
@@ -87,11 +87,12 @@ export function HeroSection() {
 
             <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
               <div className="flex items-center gap-1.5">
-                <span className="text-[1.35rem] tracking-[-0.005em] font-medium text-zinc-900 dark:text-white">View all projects</span>
-                <ArrowUpRight className="w-6 h-6 text-zinc-900 dark:text-white" />
+                <span className="text-[1.125rem] tracking-[-0.005em] font-medium text-zinc-900 dark:text-white">View all projects</span>
+                <ArrowUpRight className="w-5 h-5 text-zinc-900 dark:text-white" />
               </div>
             </div>
               </Link>
+              <div className="absolute bottom-0 left-0 w-1/2 h-3 border-r neu-separator pointer-events-none" />
             </div>
 
             {/* Middle: Flat Grid of Categories (responsive row height) */}
