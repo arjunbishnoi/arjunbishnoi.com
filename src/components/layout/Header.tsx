@@ -153,15 +153,7 @@ export function Header() {
     setTheme(theme === "dark" ? "light" : "dark")
   }
 
-  // Spacing model (mobile): make the visual glyph-to-glyph gap the single standard.
-  const mobileThemeIconSize = 18
-  const mobileMenuIconSize = 24
-  const mobileActionButtonSize = 40
-  const mobileActionButtonGap = 8
-  const mobileGlyphStandardSpacing =
-    ((mobileActionButtonSize - mobileThemeIconSize) / 2) +
-    mobileActionButtonGap +
-    ((mobileActionButtonSize - mobileMenuIconSize) / 2)
+  // Spacing model (mobile)
   const mobileLeftInset = 16
   const mobileRightInset = 12
 
