@@ -437,14 +437,14 @@ export function Header() {
                   <a
                     href={item.href}
                     download={socialLinks.resumeDownloadName}
-                    className="text-xl font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                    className="text-xl tracking-tight font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
                   >
                     {item.name}
                   </a>
                 ) : (
                   <Link
                     href={item.href}
-                    className="text-xl font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
+                    className="text-xl tracking-tight font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
