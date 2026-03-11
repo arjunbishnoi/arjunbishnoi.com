@@ -162,8 +162,8 @@ export function Header() {
     ((mobileActionButtonSize - mobileThemeIconSize) / 2) +
     mobileActionButtonGap +
     ((mobileActionButtonSize - mobileMenuIconSize) / 2)
-  const mobileLeftInset = mobileGlyphStandardSpacing
-  const mobileRightInset = mobileGlyphStandardSpacing - ((mobileActionButtonSize - mobileMenuIconSize) / 2)
+  const mobileLeftInset = 16
+  const mobileRightInset = 12
 
   return (
     <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
@@ -428,7 +428,7 @@ export function Header() {
           initial={false}
           animate={mobileMenuAnimationState}
           className={cn(
-            "md:hidden pl-7 pr-4 pt-3 pb-[22px] w-full flex flex-col",
+            "md:hidden pl-[18px] pr-4 pt-3 pb-[22px] w-full flex flex-col",
             isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
           )}
         >
@@ -464,7 +464,7 @@ export function Header() {
 
           {/* Social Icons Row */}
           <motion.div
-            className="flex -ml-7 w-[calc(100%+2.75rem)] items-center justify-center gap-[17px] mt-5 opacity-90"
+            className="flex -ml-[18px] w-[calc(100%+34px)] items-center justify-center gap-[17px] mt-5 opacity-90"
             variants={mobileMenuSocialVariants}
           >
                         <a 
@@ -510,3 +510,4 @@ export function Header() {
     </header>
   )
 }
+
