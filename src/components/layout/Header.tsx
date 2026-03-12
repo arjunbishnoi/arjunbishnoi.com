@@ -148,14 +148,13 @@ export function Header() {
     }
     setIsMobileMenuOpen(false)
   }
-
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
 
   // Spacing model (mobile)
-  const mobileLeftInset = 14
-  const mobileRightInset = 11
+  const mobileLeftInset = 12
+  const mobileRightInset = 12
 
   return (
     <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
@@ -177,7 +176,7 @@ export function Header() {
         variants={mobileMenuPanelVariants}
         transition={menuPanelTransition}
       >
-        <div className="relative flex items-center justify-between h-[calc(3.5rem-2px)] min-h-[calc(3.5rem-2px)] w-full pl-0 pr-0 md:pl-6 md:pr-4 lg:pl-7 lg:pr-5">
+        <div className="relative flex items-center justify-between h-[3.5rem] min-h-[3.5rem] w-full pl-0 pr-0 md:pl-6 md:pr-4 lg:pl-7 lg:pr-5 -translate-y-px">
           {/* Logo - Anchored Left */}
           <div
             className="flex-shrink-0 relative z-10 md:static absolute inset-y-0 flex items-center justify-center"
@@ -190,7 +189,7 @@ export function Header() {
               onClick={handleLogoClick}
             >
               <div className="relative flex items-center">
-                <div className="md:hidden flex items-center justify-center">
+                <div className="md:hidden flex items-center justify-center w-10 h-10">
                   <Image
                     src="/arjun-bishnoi-profile-square.jpg"
                     alt="Arjun Bishnoi"
@@ -420,7 +419,7 @@ export function Header() {
           initial={false}
           animate={mobileMenuAnimationState}
           className={cn(
-            "md:hidden pl-[14px] pr-4 pt-3 pb-[22px] w-full flex flex-col",
+            "md:hidden pl-[17px] pr-[12px] pt-3 pb-[22px] w-full flex flex-col",
             isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
           )}
         >
@@ -456,7 +455,7 @@ export function Header() {
 
           {/* Social Icons Row */}
           <motion.div
-            className="flex -ml-[14px] w-[calc(100%+30px)] items-center justify-center gap-[17px] mt-5 opacity-90"
+            className="flex -ml-[17px] w-[calc(100%+29px)] items-center justify-center gap-[17px] mt-5 opacity-90"
             variants={mobileMenuSocialVariants}
           >
                         <a 
