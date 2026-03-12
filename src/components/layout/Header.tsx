@@ -22,7 +22,7 @@ export function Header() {
   const menuPanelTransition = { type: "spring" as const, duration: 0.3, bounce: 0.1 }
   const mobileMenuPanelVariants = {
     open: { height: "auto" },
-    closed: { height: "3.5rem" },
+    closed: { height: "3.4375rem" },
   }
   type MobileMenuItem = {
     name: string
@@ -176,7 +176,7 @@ export function Header() {
         variants={mobileMenuPanelVariants}
         transition={menuPanelTransition}
       >
-        <div className="relative flex items-center justify-between h-[3.5rem] min-h-[3.5rem] w-full pl-0 pr-0 md:pl-6 md:pr-4 lg:pl-7 lg:pr-5 -translate-y-px">
+        <div className="relative flex items-center justify-between h-[var(--navbar-height)] min-h-[var(--navbar-height)] w-full pl-0 pr-0 md:pl-6 md:pr-4 lg:pl-7 lg:pr-5">
           {/* Logo - Anchored Left */}
           <div
             className="flex-shrink-0 relative z-10 md:static absolute inset-y-0 flex items-center justify-center"
