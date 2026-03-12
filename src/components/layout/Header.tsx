@@ -135,8 +135,8 @@ export function Header() {
     }
   }, [isMobileMenuOpen])
 
-  // On desktop, always show full logo. On mobile, shrink when scrolled.
-  const showFullLogo = !isScrolled || isMobileMenuOpen || isDesktop
+  // Shrink when scrolled (on all devices now)
+  const showFullLogo = !isScrolled || isMobileMenuOpen
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (pathname === "/") {
@@ -159,8 +159,7 @@ export function Header() {
   return (
     <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
       <div className={cn(
-        "w-full mx-auto transition-[max-width,padding] duration-500 ease-soft-out px-6",
-        isScrolled ? "max-w-7xl lg:px-8" : "md:max-w-[33rem] max-w-5xl"
+        "w-full mx-auto transition-[max-width,padding] duration-500 ease-soft-out px-6 md:max-w-[34.25rem] max-w-5xl"
       )}>
       <motion.div 
         ref={mobileMenuContainerRef}
@@ -176,160 +175,45 @@ export function Header() {
         variants={mobileMenuPanelVariants}
         transition={menuPanelTransition}
       >
-        <div className="relative flex items-center justify-between h-[var(--navbar-height)] min-h-[var(--navbar-height)] w-full pl-0 pr-0 md:pl-6 md:pr-4 lg:pl-7 lg:pr-5">
+        <div className="relative flex items-center justify-between h-[var(--navbar-height)] min-h-[var(--navbar-height)] w-full pl-0 pr-0 md:pl-0 md:pr-0 lg:pl-0 lg:pr-0">
           {/* Logo - Anchored Left */}
           <div
-            className="flex-shrink-0 relative z-10 md:static absolute inset-y-0 flex items-center justify-center"
+            className="flex-shrink-0 relative z-10 flex items-center justify-center translate-y-[1px]"
             style={{ left: `${mobileLeftInset}px` }}
           >
             <Link
               href="/"
-              className="relative flex items-center cursor-pointer"
+              className="relative flex items-center cursor-pointer gap-2.5"
               aria-label="Go to homepage"
               onClick={handleLogoClick}
             >
-              <div className="relative flex items-center">
-                <div className="md:hidden flex items-center justify-center w-10 h-10">
-                  <Image
-                    src="/arjun-bishnoi-profile-square.jpg"
-                    alt="Arjun Bishnoi"
-                    width={34}
-                    height={34}
-                    className="w-[1.875rem] h-[1.875rem] rounded-full object-cover"
-                    priority
-                  />
-                </div>
-                {/* Logo Morphing Animation - Desktop */}
-                <div className="hidden md:flex items-center text-lg font-bold font-sans translate-y-[1px] tracking-[-0.03em] md:text-xl md:font-semibold md:font-serif md:-translate-y-[1px] md:tracking-normal">
-                  <motion.span layout className="text-foreground">a</motion.span>
-                  <AnimatePresence initial={false}>
-                    {showFullLogo && (
-                      <motion.span
-                        initial={{ width: 0, opacity: 0 }}
-                        animate={{ width: "auto", opacity: 1 }}
-                        exit={{ width: 0, opacity: 0 }}
-                        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                        className="text-foreground whitespace-nowrap overflow-hidden"
-                      >
-                        rjun
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                  <motion.span layout className="text-foreground">b</motion.span>
-                  <AnimatePresence initial={false}>
-                    {showFullLogo && (
-                      <motion.span
-                        initial={{ width: 0, opacity: 0 }}
-                        animate={{ width: "auto", opacity: 1 }}
-                        exit={{ width: 0, opacity: 0 }}
-                        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                        className="text-foreground whitespace-nowrap overflow-hidden"
-                      >
-                        ishnoi
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                  {/* Underscore - Only on desktop */}
-                  <motion.span layout className="hidden md:inline-block text-black dark:text-white font-bold ml-px">_</motion.span>
-                </div>
+              <div className="flex items-center justify-center w-10 h-10">
+                <Image
+                  src="/arjun-bishnoi-profile-square.jpg"
+                  alt="Arjun Bishnoi"
+                  width={34}
+                  height={34}
+                  className="w-[1.875rem] h-[1.875rem] rounded-full object-cover"
+                  priority
+                />
               </div>
+              <span className="hidden sm:block text-[1.15rem] tracking-[-0.035em] font-sans font-semibold text-black dark:text-white mt-[-1px] whitespace-nowrap">
+                arjunbishnoi
+              </span>
             </Link>
           </div>
 
-          {/* Desktop Nav - Centered (hidden at top) */}
-          <div className={cn(
-            "hidden md:flex items-center justify-center absolute inset-0 pointer-events-none transition-opacity duration-500",
-            isScrolled ? "opacity-100" : "opacity-0"
-          )} style={{ zIndex: 1, transitionTimingFunction: "cubic-bezier(0.32,0.72,0,1)" }}>
-            <nav className={cn(
-              "flex items-center space-x-8",
-              isScrolled ? "pointer-events-auto" : "pointer-events-none"
-            )}>
-                <Link
-                    href="/blog"
-                    className="text-base font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
-                >
-                    Blog
-                    <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
-                </Link>
-                <Link
-                    href="/projects"
-                    className="text-base font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
-                >
-                    Projects
-                    <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
-                </Link>
-                <a
-                    href={socialLinks.resume}
-                    download={socialLinks.resumeDownloadName}
-                    className="text-base font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
-                >
-                    Resume
-                    <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
-                </a>
-                <Link
-                    href="/#contact"
-                    className="text-base font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
-                >
-                    Contact
-                    <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
-                </Link>
-                <Link
-                    href="/#about"
-                    className="text-base font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
-                >
-                    About
-                    <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity -mt-0.5" />
-                </Link>
-            </nav>
-          </div>
-
-          {/* Desktop Actions - Anchored Right */}
-          <div className="hidden md:flex items-center space-x-1 flex-shrink-0 relative z-10">
-             {mounted && (
-                <button
-                onClick={toggleTheme}
-                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white"
-                aria-label="Toggle theme"
-            >
-                 {theme === "dark" ? (
-                   <motion.div key="sun" initial={{ rotate: -90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: 90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
-                     <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} />
-                   </motion.div>
-                 ) : (
-                   <motion.div key="moon" initial={{ rotate: 90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: -90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
-                     <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />
-                   </motion.div>
-                 )}
-            </button>
-             )}
-            
-            {/* Mail icon - only visible when scrolled */}
-            <div className={cn(
-              "flex items-center overflow-hidden transition-all duration-500 ease-soft-out",
-              isScrolled ? "max-w-[50px] opacity-100" : "max-w-0 opacity-0 pointer-events-none"
-            )}>
-              <Link
-                  href="/#contact"
-                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white"
-                  aria-label="Contact section"
-                  onClick={() => setIsMobileMenuOpen(false)}
-              >
-                  <Mail className="w-5 h-5" strokeWidth={2} />
-              </Link>
-            </div>
-          </div>
-
-          {/* Mobile Actions - Anchored Right */}
+          {/* Actions - Anchored Right */}
           <div
-            className="md:hidden absolute top-0 bottom-0 flex items-center z-10"
+            className="absolute top-0 bottom-0 flex items-center z-10"
             style={{ right: `${mobileRightInset}px` }}
           >
              {mounted && (
                   <motion.div layout transition={{ layout: menuPanelTransition }}>
                   <button
                   onClick={toggleTheme}
-                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
+                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0 hover:bg-black/5 dark:hover:bg-white/10"
+                  aria-label="Toggle theme"
               >
                   {theme === "dark" ? (
                     <motion.div key="sun" initial={{ rotate: -90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: 90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
@@ -341,11 +225,11 @@ export function Header() {
                     </motion.div>
                   )}
              </button>
-                 </motion.div>
+                  </motion.div>
              )}
             
             <AnimatePresence>
-                {!showFullLogo && (
+                {(pathname !== "/" || !showFullLogo) && (
                     <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: 48 }}
@@ -362,7 +246,7 @@ export function Header() {
                         >
                             <Link
                                 href="/#contact"
-                                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
+                                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0 hover:bg-black/5 dark:hover:bg-white/10"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <Mail className="w-5 h-5" strokeWidth={2} />
@@ -375,7 +259,7 @@ export function Header() {
             <motion.div layout transition={{ layout: menuPanelTransition }}>
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="ml-2 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-black dark:text-white focus:outline-none"
+                className="ml-1.5 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-black dark:text-white focus:outline-none hover:bg-black/5 dark:hover:bg-white/10"
             >
                  <span className="sr-only">Open main menu</span>
                  <motion.svg
@@ -413,13 +297,13 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu Content */}
+        {/* Menu Content */}
         <motion.div
           layout="position"
           initial={false}
           animate={mobileMenuAnimationState}
           className={cn(
-            "md:hidden pl-[17px] pr-[12px] pt-3 pb-[22px] w-full flex flex-col",
+            "pl-[17px] pr-[12px] pt-3 pb-[22px] w-full flex flex-col",
             isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
           )}
         >
@@ -501,4 +385,3 @@ export function Header() {
     </header>
   )
 }
-
