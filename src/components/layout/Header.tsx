@@ -6,14 +6,13 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
-import { Moon, Sun, Mail, ArrowUpRight } from "lucide-react"
+import { Moon, Sun, Mail } from "lucide-react"
 import { socialLinks } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isDesktop, setIsDesktop] = useState(false)
   const mobileMenuContainerRef = useRef<HTMLDivElement>(null)
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
@@ -79,13 +78,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Track desktop breakpoint for logo behavior
-  useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768)
-    checkDesktop()
-    window.addEventListener('resize', checkDesktop)
-    return () => window.removeEventListener('resize', checkDesktop)
-  }, [])
 
   // Lock scroll and toggle global menu-open state for page dimming.
   useEffect(() => {
@@ -212,7 +204,7 @@ export function Header() {
                   <motion.div layout transition={{ layout: menuPanelTransition }}>
                   <button
                   onClick={toggleTheme}
-                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0 hover:bg-black/5 dark:hover:bg-white/10"
+                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
                   aria-label="Toggle theme"
               >
                   {theme === "dark" ? (
@@ -246,7 +238,7 @@ export function Header() {
                         >
                             <Link
                                 href="/#contact"
-                                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0 hover:bg-black/5 dark:hover:bg-white/10"
+                                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <Mail className="w-5 h-5" strokeWidth={2} />
@@ -259,7 +251,7 @@ export function Header() {
             <motion.div layout transition={{ layout: menuPanelTransition }}>
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="ml-1.5 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-black dark:text-white focus:outline-none hover:bg-black/5 dark:hover:bg-white/10"
+                className="ml-1.5 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-black dark:text-white focus:outline-none"
             >
                  <span className="sr-only">Open main menu</span>
                  <motion.svg

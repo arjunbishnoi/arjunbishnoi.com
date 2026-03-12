@@ -26,26 +26,18 @@ export function HeroSection() {
 
       {/* Hero Title — vertically centered in the gap between header bar and cards */}
       <div className="hidden md:flex w-full max-w-5xl mx-auto px-6 sm:px-6 text-center items-center justify-center md:h-[16rem] lg:h-[18rem] xl:h-[20rem]">
-        <h1
-          className="font-serif max-md:font-extrabold font-bold md:font-semibold text-[1.625rem] sm:text-[2.35rem] md:text-[3.125rem] lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.1] md:whitespace-nowrap inline-block px-4 -mx-4 pb-2.5 max-md:subpixel-antialiased max-md:[-webkit-text-stroke:0.6px_transparent]"
-          style={{
-            background: "linear-gradient(to bottom, var(--hero-gradient-top) 0%, var(--hero-gradient-top) var(--hero-gradient-stop, 30%), var(--hero-gradient-bottom) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          <span className="block">AI-powered mobile apps.</span>
-          <span className="block">Designed with precision.</span>
+        <h1 className="font-sans font-semibold md:text-[2.25rem] lg:text-[2.75rem] xl:text-[3.25rem] leading-[1.1] md:whitespace-nowrap tracking-[-0.025em] md:tracking-[-0.04em]">
+          <span className="block text-black dark:text-white">AI-powered mobile apps.</span>
+          <span className="block text-zinc-500 dark:text-zinc-500">Designed with precision.</span>
         </h1>
       </div>
 
       <div className="md:hidden w-full z-20 px-6 pt-[max(7.75rem,calc(env(safe-area-inset-top)+6.85rem))] pb-0">
         <div className="w-full max-w-md mx-auto px-2 text-center pointer-events-none">
-          <p className="text-[1.35rem] sm:text-[1.45rem] leading-[1.15] tracking-[-0.025em] font-semibold text-black dark:text-white">
-            AI-powered Mobile Apps.
+          <p className="text-[1.625rem] sm:text-[1.875rem] leading-[1.1] tracking-[-0.025em] font-semibold text-black dark:text-white">
+            AI-powered mobile apps.
           </p>
-          <p className="mt-1 text-[1.35rem] sm:text-[1.45rem] leading-[1.15] tracking-[-0.025em] font-semibold text-zinc-500 dark:text-zinc-500">
+          <p className="mt-1 text-[1.625rem] sm:text-[1.875rem] leading-[1.1] tracking-[-0.025em] font-semibold text-zinc-500 dark:text-zinc-500">
             Designed with precision.
           </p>
         </div>
@@ -326,5 +318,3 @@ export function HeroSection() {
     </section>
   )
 }
-
-
