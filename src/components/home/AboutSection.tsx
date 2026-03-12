@@ -13,7 +13,7 @@ export function AboutSection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-start">
           {/* Profile Image */}
           <div className="md:col-span-4 flex justify-center md:justify-start">
-            <div className="relative w-full md:max-w-xs aspect-square rounded-2xl overflow-hidden bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm">
+            <div className="relative w-full md:max-w-xs aspect-square rounded-[40px] overflow-hidden bg-gray-50/60 dark:bg-card/20 backdrop-blur-sm">
               <Image 
                 src="/arjun-bishnoi-profile-square.jpg" 
                 alt="Arjun Bishnoi - Full Stack Developer & UI/UX Designer" 

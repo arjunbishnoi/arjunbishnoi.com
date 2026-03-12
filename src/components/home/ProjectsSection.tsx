@@ -29,7 +29,7 @@ export function ProjectsSection() {
             aria-label="View all projects"
           >
             <div
-              className="relative z-10 flex items-center justify-center h-12 pl-6 pr-5 md:h-[56px] md:pl-8 md:pr-6 rounded-full transition-transform duration-300 active:scale-95 neu-raised overflow-hidden"
+              className="relative z-10 flex items-center justify-center h-12 pl-6 pr-5 md:h-[56px] md:pl-8 md:pr-6 rounded-full transition-transform duration-300 active:scale-95 neu-raised neu-mobile-neumorphic border-none overflow-hidden"
               style={{
                 "--neu-shadow-distance": "4px",
                 "--neu-shadow-blur": "8px"

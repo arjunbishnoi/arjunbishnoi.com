@@ -22,7 +22,7 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
   return (
     <div className="rounded-none overflow-hidden h-full flex flex-col">
       <div 
-        className="aspect-square relative overflow-hidden bg-muted rounded-2xl mb-4 neu-pressed"
+        className="aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-4 neu-pressed"
         style={{ '--neu-surface': 'var(--projects-surface, var(--background))' } as React.CSSProperties}
       >
         <Image
@@ -45,7 +45,7 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
         </p>
         
         <div className="mb-2">
-          <span className="inline-block text-sm md:text-base text-foreground/80 bg-muted/80 rounded-full px-4 py-1">
+          <span className="inline-block text-sm md:text-base text-foreground/80 bg-black/5 dark:bg-white/10 rounded-full px-4 py-1">
             {category}
           </span>
         </div>

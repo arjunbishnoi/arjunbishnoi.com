@@ -28,12 +28,12 @@ export function FeaturedSection() {
           </div>
 
           {/* Title */}
-          <h2 className="text-xl text-black dark:text-white font-bold mt-4 mb-2">
+          <h2 className="text-xl text-black dark:text-white font-bold mt-4 mb-4">
             {featured.title}
           </h2>
 
           {/* Category pill */}
-          <span className="inline-block text-sm text-foreground/80 bg-muted/80 rounded-full px-4 py-1">
+          <span className="inline-block text-sm text-foreground/80 bg-black/5 dark:bg-white/10 rounded-full px-4 py-1">
             {category}
           </span>
         </Link>
