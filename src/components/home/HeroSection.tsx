@@ -30,7 +30,7 @@ export function HeroSection() {
           <div className="mb-8 md:mb-12">
             <MobbinIconStack />
           </div>
-          <h1 className="font-sans font-semibold text-[3rem] sm:text-[3.125rem] md:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.02] tracking-[-0.025em] md:tracking-[-0.04em]">
+          <h1 className="font-sans font-semibold text-[3rem] sm:text-[3.125rem] md:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.02] tracking-[-0.035em] md:tracking-[-0.04em]">
             <span className="block md:inline text-black dark:text-white">Developer </span>
             <span className="block md:inline text-black dark:text-white">& Designer</span>
           </h1>
@@ -46,7 +46,7 @@ export function HeroSection() {
         <div className="w-full max-w-[342px] mx-auto self-start mt-8 mb-2 flex flex-col items-center hero-mobile-main-shape-wrap">
           <div className="w-full neu-container overflow-hidden aspect-[342/340] grid grid-rows-[40%_20%_20%_20%]">
             {/* Row 1: Raised All Projects rectangle */}
-            <div className="relative h-full p-2 pb-1.5 border-b neu-separator">
+            <div className="relative h-full p-2 pb-1.5">
               <Link
                 href="#contact"
                 className="group relative z-10 block w-full h-full rounded-[30px] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
