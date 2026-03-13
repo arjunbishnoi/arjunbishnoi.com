@@ -129,6 +129,7 @@ export function Header() {
 
   // Shrink when scrolled (on all devices now)
   const showFullLogo = !isScrolled || isMobileMenuOpen
+  const isMailShown = pathname !== "/" || !showFullLogo
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (pathname === "/") {
@@ -221,7 +222,7 @@ export function Header() {
              )}
             
             <AnimatePresence>
-                {(pathname !== "/" || !showFullLogo) && (
+                {isMailShown && (
                     <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: 48 }}

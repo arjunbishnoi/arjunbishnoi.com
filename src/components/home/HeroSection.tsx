@@ -34,10 +34,6 @@ export function HeroSection() {
             <span className="block md:inline text-black dark:text-white">Developer </span>
             <span className="block md:inline text-black dark:text-white">& Designer</span>
           </h1>
-          <p className="hidden md:block mt-3.5 md:mt-3.5 font-sans font-normal text-[1.15rem] sm:text-[1.2rem] md:text-[1.3rem] text-zinc-500 dark:text-zinc-500 tracking-tight leading-snug">
-            <span className="block">AI-powered mobile apps.</span>
-            <span className="block">Designed with precision.</span>
-          </p>
         </div>
       </div>
 
