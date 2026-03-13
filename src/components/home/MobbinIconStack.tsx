@@ -56,8 +56,6 @@ export function MobbinIconStack() {
     return () => clearInterval(timer)
   }, [])
 
-  const getIcon = (i: number) => icons[(index + i) % icons.length]
-
   if (!mounted) return null
 
   const isDark = resolvedTheme === "dark"
@@ -70,7 +68,7 @@ export function MobbinIconStack() {
     <div className="relative w-14 h-14 md:w-[88px] md:h-[88px] flex items-center justify-center pointer-events-none select-none overflow-visible">
       <AnimatePresence initial={false} mode="popLayout">
         {icons.map((icon, i) => {
-          let relPos = (i - index + icons.length) % icons.length
+          const relPos = (i - index + icons.length) % icons.length
           const isFront = relPos === 0
           const isMid = relPos === 1
           const isBack = relPos === 2

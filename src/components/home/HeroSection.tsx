@@ -9,7 +9,6 @@ import { MobbinIconStack } from "./MobbinIconStack"
 
 export function HeroSection() {
   const [scrolledDown, setScrolledDown] = useState(false)
-  const mobileGridRowClass = "h-[clamp(4.35rem,9.25svh,4.95rem)]"
 
   useEffect(() => {
     const handleScroll = () => {
