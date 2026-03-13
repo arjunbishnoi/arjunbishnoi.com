@@ -170,7 +170,7 @@ export function Header() {
         <div className="relative flex items-center justify-between h-[var(--navbar-height)] min-h-[var(--navbar-height)] w-full pl-0 pr-0 md:pl-0 md:pr-0 lg:pl-0 lg:pr-0">
           {/* Logo - Anchored Left */}
           <div
-            className="flex-shrink-0 relative z-10 flex items-center justify-center translate-y-[1px]"
+            className="flex-shrink-0 relative z-10 flex items-center justify-center"
             style={{ left: `${mobileLeftInset}px` }}
           >
             <Link
@@ -189,7 +189,7 @@ export function Header() {
                   priority
                 />
               </div>
-              <span className="hidden sm:block text-[1.15rem] tracking-[-0.035em] font-sans font-semibold text-black dark:text-white mt-[-1px] whitespace-nowrap">
+              <span className="hidden sm:block text-[1.15rem] tracking-[-0.035em] font-sans font-semibold text-black dark:text-white whitespace-nowrap">
                 arjunbishnoi
               </span>
             </Link>
