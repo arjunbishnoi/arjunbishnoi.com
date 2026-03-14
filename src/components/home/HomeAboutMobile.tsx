@@ -26,20 +26,20 @@ export function HomeAboutMobile() {
   // Image stays constant at card width
   const imgWidth = "calc(100vw - 48px)"
 
-  // Padding grows around the image
-  const paddingTop = useTransform(expansionProgress, [0, 1], [0, 32])
+  // Uniform Padding (24px side, 26px top for visual balance)
+  const paddingTop = useTransform(expansionProgress, [0, 1], [0, 26])
   const paddingX = useTransform(expansionProgress, [0, 1], [0, 24])
   const paddingBottom = useTransform(expansionProgress, [0, 1], [0, 40])
   
-  // Translate up to keep content block fixed relative to the original top
-  const y = useTransform(expansionProgress, [0, 1], [0, -32])
+  // Stronger upward translation to push image UP relative to the world
+  const y = useTransform(expansionProgress, [0, 1], [0, -50])
 
-  // Concentric corner radii: colRadius is fixed, imgRadius animates to stay concentric
-  const colRadius = 64
-  const imgRadius = useTransform(expansionProgress, [0, 1], [64, 40])
+  // Concentric corner radii: colRadius grows from 40 to 66 to keep 40px imgRadius concentric (40 + 26 = 66)
+  const colRadius = useTransform(expansionProgress, [0, 1], [40, 66])
+  const imgRadius = 40
 
-  // Section padding grows to offset the column's upward expansion (prevents clipping)
-  const sectionPaddingTop = useTransform(expansionProgress, [0, 1], [16, 48])
+  // Section padding grows to push Hero UP and offset the column's upward movement
+  const sectionPaddingTop = useTransform(expansionProgress, [0, 1], [16, 80])
 
   return (
     <motion.section 
