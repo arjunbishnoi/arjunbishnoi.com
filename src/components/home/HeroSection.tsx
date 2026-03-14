@@ -25,12 +25,12 @@ export function HeroSection() {
     >
 
       {/* Universal Hero Title */}
-      <div className="w-full z-20 px-6 pt-[max(6.75rem,calc(env(safe-area-inset-top)+5.85rem))] md:pt-16 lg:pt-20 pb-0">
+      <div className="w-full z-20 px-6 pt-[max(6.25rem,calc(env(safe-area-inset-top)+5.35rem))] md:pt-14 lg:pt-18 pb-0">
         <div className="w-full max-w-5xl mx-auto px-2 text-center flex flex-col items-center">
           <div className="mb-8 md:mb-12">
             <MobbinIconStack />
           </div>
-          <h1 className="font-sans font-semibold text-[3rem] sm:text-[3.125rem] md:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.02] tracking-[-0.035em] md:tracking-[-0.04em]">
+          <h1 className="font-sans font-semibold text-[2.75rem] sm:text-[2.875rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1.02] tracking-[-0.035em] md:tracking-[-0.04em]">
             <span className="block md:inline text-black dark:text-white">Developer </span>
             <span className="block md:inline text-black dark:text-white">& Designer</span>
           </h1>

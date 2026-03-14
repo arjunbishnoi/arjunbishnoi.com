@@ -14,7 +14,7 @@ export function HomeAboutMobile() {
     <section 
       id="about"
       ref={containerRef}
-      className="pt-4 md:pt-8 pb-14 flex flex-col items-center bg-background overflow-hidden w-full relative px-6"
+      className="pt-6 md:pt-10 pb-14 flex flex-col items-center bg-background overflow-hidden w-full relative px-6"
     >
       <div
         className="w-full max-w-[342px] text-black dark:text-white overflow-hidden flex flex-col items-center rounded-[40px]"
