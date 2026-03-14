@@ -2,86 +2,43 @@
 
 import React, { useRef } from "react"
 import Image from "next/image"
-import { motion, useScroll, useTransform } from "framer-motion"
 import { shortSkillList } from "@/lib/site-data"
 
 export function HomeAboutMobile() {
   const containerRef = useRef<HTMLDivElement>(null)
   
-  // Track scroll progress of this section
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "start center"]
-  })
-
-  // Create a progress MotionValue for the expansion range
-  const expansionProgress = useTransform(scrollYProgress, [0.6, 0.9], [0, 1])
-
-  // Width expands from content width to full screen
-  const width = useTransform(expansionProgress, (p: number) => {
-    const currentMargin = (1 - p) * 48
-    return `calc(100vw - ${currentMargin}px)`
-  })
-
-  // Image stays constant at card width
-  const imgWidth = "calc(100vw - 48px)"
-
-  // Uniform Padding (24px side, 26px top for visual balance)
-  const paddingTop = useTransform(expansionProgress, [0, 1], [0, 26])
-  const paddingX = useTransform(expansionProgress, [0, 1], [0, 24])
-  const paddingBottom = useTransform(expansionProgress, [0, 1], [0, 40])
-  
-  // Stronger upward translation to push image UP relative to the world
-  const y = useTransform(expansionProgress, [0, 1], [0, -50])
-
-  // Concentric corner radii: colRadius grows from 40 to 66 to keep 40px imgRadius concentric (40 + 26 = 66)
-  const colRadius = useTransform(expansionProgress, [0, 1], [40, 66])
+  // Image corner radius to match featured project images
   const imgRadius = 40
 
-  // Section padding grows to push Hero UP and offset the column's upward movement
-  const sectionPaddingTop = useTransform(expansionProgress, [0, 1], [16, 80])
-
   return (
-    <motion.section 
+    <section 
       id="about"
       ref={containerRef}
-      style={{ paddingTop: sectionPaddingTop }}
-      className="pb-10 flex flex-col items-center bg-background overflow-hidden w-full relative"
+      className="pt-4 md:pt-8 pb-14 flex flex-col items-center bg-background overflow-hidden w-full relative px-6"
     >
-      <motion.div
-        style={{
-          width,
-          borderRadius: colRadius,
-          paddingTop,
-          paddingBottom,
-          paddingLeft: paddingX,
-          paddingRight: paddingX,
-          y,
-        }}
-        className="bg-white dark:bg-black text-black dark:text-white overflow-hidden flex flex-col items-center"
+      <div
+        className="w-full max-w-[342px] text-black dark:text-white overflow-hidden flex flex-col items-center rounded-[40px]"
       >
         {/* Profile Image Wrap */}
-        <motion.div 
+        <div 
           style={{
-            width: imgWidth,
-            height: imgWidth,
             borderRadius: imgRadius,
           }}
-          className="mb-8 relative overflow-hidden bg-zinc-100/50 dark:bg-zinc-900/50"
+          className="w-full aspect-square relative overflow-hidden bg-zinc-100/50 dark:bg-zinc-900/50"
         >
           <Image
             src="/arjun-bishnoi-profile-square.jpg"
             alt="Arjun Bishnoi"
             fill
             className="object-cover"
-            sizes="(max-width: 768px) calc(100vw - 48px), 400px"
+            sizes="(max-width: 768px) 342px, 400px"
             priority
           />
-        </motion.div>
+        </div>
 
         {/* Text Area */}
-        <div className="flex flex-col items-center max-w-2xl px-4">
-          <h2 className="text-3xl font-bold mb-6 tracking-tight">
+        <div className="flex flex-col items-center w-full px-4 pt-8 pb-10">
+          <h2 className="text-3xl font-bold mb-6 tracking-tight text-center">
             Arjun Bishnoi
           </h2>
           
@@ -121,7 +78,7 @@ export function HomeAboutMobile() {
             </div>
           </div>
         </div>
-      </motion.div>
-    </motion.section>
+      </div>
+    </section>
   )
 }
