@@ -37,12 +37,16 @@ export function HomeAboutMobile() {
   // Concentric corner radii: colRadius is fixed, imgRadius animates to stay concentric
   const colRadius = 64
   const imgRadius = useTransform(expansionProgress, [0, 1], [64, 40])
-  
+
+  // Section padding grows to offset the column's upward expansion (prevents clipping)
+  const sectionPaddingTop = useTransform(expansionProgress, [0, 1], [16, 48])
+
   return (
-    <section 
+    <motion.section 
       id="about"
       ref={containerRef}
-      className="py-10 flex flex-col items-center bg-background overflow-hidden w-full relative"
+      style={{ paddingTop: sectionPaddingTop }}
+      className="pb-10 flex flex-col items-center bg-background overflow-hidden w-full relative"
     >
       <motion.div
         style={{
@@ -98,15 +102,15 @@ export function HomeAboutMobile() {
             <h3 className="text-xl font-bold mb-6 text-center opacity-80 uppercase tracking-widest text-sm">
               Skills & Technologies
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
               {shortSkillList.map((group) => (
-                <div key={group.category} className="flex flex-col items-center md:items-start text-black dark:text-black">
+                <div key={group.category} className="flex flex-col items-center md:items-start w-full">
                   <span className="text-xs font-bold mb-3 opacity-50 uppercase tracking-wider">{group.category}</span>
                   <div className="flex flex-wrap justify-center md:justify-start gap-2">
                     {group.items.map((skill) => (
                       <span 
                         key={skill}
-                        className="px-3 py-1 text-xs border border-black/20 dark:border-black/20 rounded-full"
+                        className="px-3 py-1 text-xs border border-white/20 dark:border-black/20 rounded-full"
                       >
                         {skill}
                       </span>
@@ -118,6 +122,6 @@ export function HomeAboutMobile() {
           </div>
         </div>
       </motion.div>
-    </section>
+    </motion.section>
   )
 }

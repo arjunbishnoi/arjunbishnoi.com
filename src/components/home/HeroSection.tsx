@@ -39,7 +39,7 @@ export function HeroSection() {
 
       {/* Universal Neumorphic Hero Layout */}
       <div className="w-full z-20 px-6 pb-0">
-        <div className="w-full max-w-[342px] mx-auto self-start mt-8 mb-2 flex flex-col items-center hero-mobile-main-shape-wrap">
+        <div className="w-full max-w-[342px] mx-auto self-start mt-8 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
           <div className="w-full neu-container overflow-hidden aspect-[342/340] grid grid-rows-[40%_20%_20%_20%]">
             {/* Row 1: Raised All Projects rectangle */}
             <div className="relative h-full p-2 pb-1.5">
