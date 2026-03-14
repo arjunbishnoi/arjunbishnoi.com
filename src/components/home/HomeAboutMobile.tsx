@@ -58,7 +58,7 @@ export function HomeAboutMobile() {
           paddingRight: paddingX,
           y,
         }}
-        className="bg-black dark:bg-white text-white dark:text-black overflow-hidden flex flex-col items-center"
+        className="bg-white dark:bg-black text-black dark:text-white overflow-hidden flex flex-col items-center"
       >
         {/* Profile Image Wrap */}
         <motion.div 
@@ -67,7 +67,7 @@ export function HomeAboutMobile() {
             height: imgWidth,
             borderRadius: imgRadius,
           }}
-          className="mb-8 relative overflow-hidden bg-zinc-900/50 dark:bg-zinc-100/50"
+          className="mb-8 relative overflow-hidden bg-zinc-100/50 dark:bg-zinc-900/50"
         >
           <Image
             src="/arjun-bishnoi-profile-square.jpg"
@@ -110,7 +110,7 @@ export function HomeAboutMobile() {
                     {group.items.map((skill) => (
                       <span 
                         key={skill}
-                        className="px-3 py-1 text-xs border border-white/20 dark:border-black/20 rounded-full"
+                        className="px-3 py-1 text-xs border border-black/20 dark:border-white/20 rounded-full"
                       >
                         {skill}
                       </span>
