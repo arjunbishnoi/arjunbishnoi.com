@@ -11,11 +11,11 @@ export function HeroSkillsCard({ className }: HeroSkillsCardProps) {
   return (
     <div
       className={cn(
-        "flex w-full aspect-[4/4.7] overflow-hidden rounded-[40px] bg-white p-5 text-black dark:bg-black dark:text-white sm:aspect-[4/5] sm:p-6 xl:p-7",
+        "flex w-full aspect-[4/4.9] overflow-hidden rounded-[40px] bg-white p-5 text-black dark:bg-black dark:text-white sm:aspect-[4/5] sm:p-6 xl:p-7",
         className
       )}
     >
-      <div className="grid h-full w-full grid-cols-3 place-items-center gap-x-3 gap-y-4.5 sm:gap-x-4 sm:gap-y-6 xl:gap-x-5 xl:gap-y-7">
+      <div className="grid h-full w-full grid-cols-3 place-items-center gap-x-3 gap-y-4 sm:gap-x-4 sm:gap-y-6 xl:gap-x-5 xl:gap-y-7">
         {heroSkills.map((skill) => (
           <div key={skill.name} className="flex h-full min-w-0 flex-col items-center justify-center text-center">
             <div className="flex h-[2.85rem] w-[2.85rem] items-center justify-center sm:h-[2.8rem] sm:w-[2.8rem] xl:h-[2.95rem] xl:w-[2.95rem]">
