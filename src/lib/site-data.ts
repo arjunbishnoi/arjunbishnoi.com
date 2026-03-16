@@ -149,6 +149,21 @@ export const shortSkillList = [
     }
 ]
 
+export const heroSkills = [
+    { name: 'React Native', logoUrl: 'https://cdn.simpleicons.org/react/71717A' },
+    { name: 'Python', logoUrl: 'https://cdn.simpleicons.org/python/71717A' },
+    { name: 'Figma', logoUrl: 'https://cdn.simpleicons.org/figma/71717A' },
+    { name: 'Swift', logoUrl: 'https://cdn.simpleicons.org/swift/71717A' },
+    { name: 'Kotlin', logoUrl: 'https://cdn.simpleicons.org/kotlin/71717A' },
+    { name: 'Typescript', logoUrl: 'https://cdn.simpleicons.org/typescript/71717A' },
+    { name: 'Expo', logoUrl: 'https://cdn.simpleicons.org/expo/71717A' },
+    { name: 'TensorFlow', logoUrl: 'https://cdn.simpleicons.org/tensorflow/71717A' },
+    { name: 'Rest APIs', logoUrl: 'https://cdn.simpleicons.org/swagger/71717A' },
+    { name: 'AI/ML', logoUrl: 'https://cdn.simpleicons.org/pytorch/71717A' },
+    { name: 'Firebase', logoUrl: 'https://cdn.simpleicons.org/firebase/71717A' },
+    { name: 'Git', logoUrl: 'https://cdn.simpleicons.org/git/71717A' }
+]
+
 export const blogs = [
     {
         id: 'the-future-of-ui',
