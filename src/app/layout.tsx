@@ -8,8 +8,7 @@ import { socialLinks } from "@/lib/site-data";
 
 const siteUrl = "https://arjunbishnoi.com";
 const personImageUrl = `${siteUrl}/arjun-bishnoi-headshot-square.jpg`;
-const profileDescription =
-  "Arjun Bishnoi is a Toronto-based mobile application developer, AI engineer, and UI/UX designer building cross-platform products and digital experiences.";
+const profileDescription = "Mobile Apps, AI & Design.";
 
 const inter = Inter({
   subsets: ["latin"],

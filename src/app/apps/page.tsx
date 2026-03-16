@@ -4,7 +4,7 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Mobile Apps — Arjun Bishnoi",
-  description: "Cross-platform mobile app development with React Native, SwiftUI, and Kotlin.",
+  description: "Mobile Apps, AI & Design.",
   robots: { index: false, follow: true },
 }
 

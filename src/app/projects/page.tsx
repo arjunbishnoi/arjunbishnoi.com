@@ -8,17 +8,17 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Projects — Arjun Bishnoi",
-  description: "Explore my portfolio of web development and design projects showcasing a range of skills and technologies.",
+  description: "Mobile Apps, AI & Design.",
   openGraph: {
     title: "Projects — Arjun Bishnoi",
-    description: "Explore my portfolio of web development and design projects showcasing a range of skills and technologies.",
+    description: "Mobile Apps, AI & Design.",
     url: "https://arjunbishnoi.com/projects",
     images: [{ url: "https://arjunbishnoi.com/arjun-bishnoi-headshot-square.jpg" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Projects — Arjun Bishnoi",
-    description: "Explore my portfolio of web development and design projects showcasing a range of skills and technologies.",
+    description: "Mobile Apps, AI & Design.",
     images: ["https://arjunbishnoi.com/arjun-bishnoi-headshot-square.jpg"],
   },
 }

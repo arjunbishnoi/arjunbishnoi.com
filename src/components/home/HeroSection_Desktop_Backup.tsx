@@ -27,8 +27,7 @@ export function HeroSection() {
       {/* Hero Title — vertically centered in the gap between header bar and cards */}
       <div className="hidden md:flex w-full max-w-5xl mx-auto px-6 sm:px-6 text-center items-center justify-center md:h-[16rem] lg:h-[18rem] xl:h-[20rem]">
         <h1 className="font-sans font-semibold md:text-[2.25rem] lg:text-[2.75rem] xl:text-[3.25rem] leading-[1.1] md:whitespace-nowrap tracking-[-0.025em] md:tracking-[-0.04em]">
-          <span className="block text-black dark:text-white">AI-powered mobile apps.</span>
-          <span className="block text-zinc-500 dark:text-zinc-500">Designed with precision.</span>
+              <span className="block text-black dark:text-white">Mobile Apps, AI &amp; Design.</span>
         </h1>
       </div>
 

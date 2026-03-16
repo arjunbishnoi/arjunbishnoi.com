@@ -4,7 +4,7 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Design — Arjun Bishnoi",
-  description: "User interface and experience design with Figma, prototyping, and design systems.",
+  description: "Mobile Apps, AI & Design.",
   robots: { index: false, follow: true },
 }
 

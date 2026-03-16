@@ -4,7 +4,7 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "AI — Arjun Bishnoi",
-  description: "AI engineering, machine learning integration, and intelligent application development.",
+  description: "Mobile Apps, AI & Design.",
   robots: { index: false, follow: true },
 }
 

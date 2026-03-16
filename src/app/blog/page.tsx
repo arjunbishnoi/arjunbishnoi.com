@@ -4,7 +4,7 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Blog — Arjun Bishnoi",
-  description: "Thoughts on mobile development, AI engineering, web development, and design.",
+  description: "Mobile Apps, AI & Design.",
   robots: { index: false, follow: true },
 }
 

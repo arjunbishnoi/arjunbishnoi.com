@@ -37,8 +37,7 @@ export function HeroSection() {
             <span className="inline text-black dark:text-white">& Designer</span>
           </h1>
           <p className="mt-1.5 text-center text-base leading-[1.28] md:mt-2 md:text-lg md:leading-relaxed opacity-90 lg:max-w-none lg:whitespace-nowrap">
-            <span className="block lg:inline">AI-powered mobile apps.</span>
-            <span className="block lg:ml-1 lg:inline">Designed with precision.</span>
+            <span className="block lg:inline">Mobile Apps, AI &amp; Design.</span>
           </p>
         </div>
       </div>
