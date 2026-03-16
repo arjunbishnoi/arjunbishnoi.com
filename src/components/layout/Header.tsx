@@ -182,7 +182,7 @@ export function Header() {
             >
               <div className="flex items-center justify-center w-10 h-10">
                 <Image
-                  src="/arjun-bishnoi-profile-square.jpg"
+                  src="/arjun-bishnoi-logo-circle.png"
                   alt="Arjun Bishnoi"
                   width={34}
                   height={34}
@@ -191,7 +191,7 @@ export function Header() {
                 />
               </div>
               <span className="hidden sm:block text-[1.15rem] tracking-[-0.035em] font-sans font-semibold text-black dark:text-white whitespace-nowrap">
-                arjunbishnoi
+                Arjun Bishnoi
               </span>
             </Link>
           </div>
@@ -336,7 +336,7 @@ export function Header() {
             variants={mobileMenuSocialVariants}
           >
                         <a 
-                            href="https://www.behance.net/arjunbishnoi" 
+                            href={socialLinks.behance} 
                             target="_blank" 
                             rel="noopener noreferrer" 
                             className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"

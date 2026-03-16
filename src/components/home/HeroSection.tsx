@@ -27,10 +27,10 @@ export function HeroSection() {
       {/* Universal Hero Title */}
       <div className="w-full z-20 px-6 pt-[max(6.25rem,calc(env(safe-area-inset-top)+5.35rem))] md:pt-14 lg:pt-18 pb-0">
         <div className="w-full max-w-5xl mx-auto px-2 text-center flex flex-col items-center">
-          <div className="mb-8 md:mb-12">
+          <div className="mt-1 sm:mt-2 md:mt-0 mb-5 sm:mb-6 md:mb-12">
             <MobbinIconStack />
           </div>
-          <h1 className="font-sans font-semibold text-[2.75rem] sm:text-[2.875rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1.02] tracking-[-0.035em] md:tracking-[-0.04em]">
+          <h1 className="font-sans font-semibold text-[2.45rem] sm:text-[2.65rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1.02] tracking-[-0.035em] md:tracking-[-0.04em]">
             <span className="block md:inline text-black dark:text-white">Developer </span>
             <span className="block md:inline text-black dark:text-white">& Designer</span>
           </h1>
@@ -116,7 +116,7 @@ export function HeroSection() {
                   </svg>
                 </div>
               </a>
-              <a href="https://www.behance.net/arjunbishnoi" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors">
+              <a href={socialLinks.behance} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors">
                 <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-500 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
                   <svg viewBox="-40 -40 3413 3413" className="block w-[1.4rem] h-[1.4rem] fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path

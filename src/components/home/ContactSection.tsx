@@ -92,7 +92,7 @@ export function ContactSection() {
                   className="flex items-center justify-center aspect-square h-[3.25rem] sm:h-14 md:h-[3.75rem] rounded-2xl neu-raised group/icon transition-all shrink-0"
                   aria-label="GitHub Profile"
                 >
-                  <Image src="/github-icon.png" alt="GitHub" width={28} height={28} className="w-6 h-6 sm:w-7 sm:h-7 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
+                  <Image src="/github-mark.png" alt="GitHub" width={28} height={28} className="w-6 h-6 sm:w-7 sm:h-7 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
                 </a>
                 <a
                   href={socialLinks.linkedin}
@@ -101,7 +101,7 @@ export function ContactSection() {
                   className="flex items-center justify-center aspect-square h-[3.25rem] sm:h-14 md:h-[3.75rem] rounded-2xl neu-raised group/icon transition-all shrink-0"
                   aria-label="LinkedIn Profile"
                 >
-                  <Image src="/linkedin-icon.png" alt="LinkedIn" width={28} height={28} className="w-6 h-6 sm:w-7 sm:h-7 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
+                  <Image src="/linkedin-mark.png" alt="LinkedIn" width={28} height={28} className="w-6 h-6 sm:w-7 sm:h-7 object-contain filter brightness-0 dark:invert opacity-70 group-hover/icon:opacity-100 transition-all" />
                 </a>
 
                 <a

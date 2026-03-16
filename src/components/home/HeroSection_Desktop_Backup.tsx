@@ -116,7 +116,7 @@ export function HeroSection() {
                   </svg>
                 </div>
               </a>
-              <a href="https://www.behance.net/arjunbishnoi" target="_blank" rel="noopener noreferrer" className={cn("flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors", mobileGridRowClass)}>
+              <a href={socialLinks.behance} target="_blank" rel="noopener noreferrer" className={cn("flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors", mobileGridRowClass)}>
                 <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-500 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
                   <svg viewBox="-40 -40 3413 3413" className="block w-[1.6rem] h-[1.6rem] fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path

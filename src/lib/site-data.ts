@@ -8,7 +8,8 @@ export const navigationItems = [
 
 export const socialLinks = {
     github: 'https://github.com/arjunbishnoi',
-    linkedin: 'https://www.linkedin.com/in/arjun-bishnoi-b981bb104',
+    linkedin: 'https://linkedin.com/in/arjunbishnoi',
+    behance: 'https://behance.net/arjunbishnoi',
     email: 'mailto:contact@arjunbishnoi.com',
     resume: '/Resume - Arjun Bishnoi.pdf',
     resumeDownloadName: 'Arjun Bishnoi - Resume.pdf'

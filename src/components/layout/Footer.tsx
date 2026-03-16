@@ -78,7 +78,7 @@ export function Footer() {
                   </a>
                 </li>
                 <li className="flex items-center">
-                  <Image src="/github-icon.png" alt="GitHub" width={22} height={22} className="mr-2 object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all cursor-pointer" />
+                  <Image src="/github-mark.png" alt="GitHub" width={22} height={22} className="mr-2 object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all cursor-pointer" />
                   <a
                     href={socialLinks.github}
                     rel="me"
@@ -88,13 +88,13 @@ export function Footer() {
                   </a>
                 </li>
                 <li className="flex items-center">
-                  <Image src="/linkedin-icon.png" alt="LinkedIn" width={22} height={22} className="mr-2 object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all cursor-pointer" />
+                  <Image src="/linkedin-mark.png" alt="LinkedIn" width={22} height={22} className="mr-2 object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all cursor-pointer" />
                   <a
                     href={socialLinks.linkedin}
                     rel="me"
                     className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors"
                   >
-                    linkedin.com/in/arjun-bishnoi-b981bb104
+                    linkedin.com/in/arjunbishnoi
                   </a>
                 </li>
               </ul>
@@ -121,7 +121,7 @@ export function Footer() {
                 className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black"
               >
                 <span className="sr-only">GitHub</span>
-                <Image src="/github-icon.png" alt="GitHub" width={28} height={28} className="object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all" />
+                <Image src="/github-mark.png" alt="GitHub" width={28} height={28} className="object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all" />
               </a>
               <a
                 href={socialLinks.linkedin}
@@ -130,7 +130,7 @@ export function Footer() {
                 className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black"
               >
                 <span className="sr-only">LinkedIn</span>
-                <Image src="/linkedin-icon.png" alt="LinkedIn" width={28} height={28} className="object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all" />
+                <Image src="/linkedin-mark.png" alt="LinkedIn" width={28} height={28} className="object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all" />
               </a>
               <a
                 href={socialLinks.email}

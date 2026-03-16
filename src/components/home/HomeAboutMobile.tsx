@@ -6,9 +6,6 @@ import { shortSkillList } from "@/lib/site-data"
 
 export function HomeAboutMobile() {
   const containerRef = useRef<HTMLDivElement>(null)
-  
-  // Image corner radius to match featured project images
-  const imgRadius = 40
 
   return (
     <section 
@@ -19,29 +16,26 @@ export function HomeAboutMobile() {
       <div
         className="w-full max-w-[342px] text-black dark:text-white overflow-hidden flex flex-col items-center rounded-[40px]"
       >
-        {/* Profile Image Wrap */}
-        <div 
-          style={{
-            borderRadius: imgRadius,
-          }}
-          className="w-full aspect-square relative overflow-hidden bg-zinc-100/50 dark:bg-zinc-900/50"
-        >
+        <figure className="relative w-full aspect-[4/5] overflow-hidden rounded-[40px] bg-[#e9e5de] dark:bg-zinc-900/70">
           <Image
-            src="/arjun-bishnoi-profile-square.jpg"
-            alt="Arjun Bishnoi"
+            src="/arjun-bishnoi-portrait.jpg"
+            alt="Portrait of Arjun Bishnoi"
             fill
             className="object-cover"
             sizes="(max-width: 768px) 342px, 400px"
             priority
           />
-        </div>
+          <figcaption className="absolute bottom-5 z-10 flex w-full flex-row flex-wrap items-center justify-center gap-x-2 px-5 text-center text-[14px] leading-[20px] tracking-[0.2px] font-[456]">
+            <span className="text-white">
+              Arjun Bishnoi
+            </span>
+            <span className="text-white/[0.88]">
+              Toronto, Canada
+            </span>
+          </figcaption>
+        </figure>
 
-        {/* Text Area */}
         <div className="flex flex-col items-center w-full px-4 pt-8 pb-10">
-          <h2 className="text-3xl font-bold mb-6 tracking-tight text-center">
-            Arjun Bishnoi
-          </h2>
-          
           <div className="space-y-4 text-center text-base md:text-lg leading-relaxed opacity-90">
             <p>
               I build cross-platform mobile apps, work with AI engineering, and design user interfaces. 

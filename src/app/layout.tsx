@@ -4,6 +4,12 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeColorMeta } from "@/components/ThemeColorMeta";
 import { Header } from "@/components/layout/Header";
+import { socialLinks } from "@/lib/site-data";
+
+const siteUrl = "https://arjunbishnoi.com";
+const personImageUrl = `${siteUrl}/arjun-bishnoi-headshot-square.jpg`;
+const profileDescription =
+  "Arjun Bishnoi is a Toronto-based mobile application developer, AI engineer, and UI/UX designer building cross-platform products and digital experiences.";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,42 +25,61 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Arjun Bishnoi — Mobile Apps, AI & Design",
-  description: "Consistent, hands-on, and always evolving.",
+  description: profileDescription,
   applicationName: "Arjun Bishnoi",
-  authors: [{ name: "Arjun Bishnoi", url: "https://arjunbishnoi.com" }],
+  authors: [{ name: "Arjun Bishnoi", url: siteUrl }],
   generator: "Next.js",
-  keywords: ["Arjun Bishnoi", "Full Stack Developer", "UI/UX Designer", "Web Developer", "React", "Vue", "Node.js"],
+  keywords: [
+    "Arjun Bishnoi",
+    "Mobile Application Developer",
+    "AI Engineer",
+    "UI UX Designer",
+    "Toronto",
+    "Canada",
+    "React Native",
+    "Next.js",
+  ],
   referrer: "origin-when-cross-origin",
   creator: "Arjun Bishnoi",
   publisher: "Arjun Bishnoi",
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-
   openGraph: {
     title: "Arjun Bishnoi — Mobile Apps, AI & Design",
-    description: "Consistent, hands-on, and always evolving.",
-    url: "https://arjunbishnoi.com/",
+    description: profileDescription,
+    url: `${siteUrl}/`,
     siteName: "Arjun Bishnoi",
     images: [
       {
-        url: "https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg",
+        url: personImageUrl,
         width: 1200,
         height: 1200,
-        alt: "Arjun Bishnoi",
+        alt: "Arjun Bishnoi headshot",
       },
     ],
-    locale: "en_US",
-    type: "website",
+    locale: "en_CA",
+    type: "profile",
   },
   twitter: {
     card: "summary_large_image",
     title: "Arjun Bishnoi — Mobile Apps, AI & Design",
-    description: "Consistent, hands-on, and always evolving.",
-    images: ["https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg"],
+    description: profileDescription,
+    images: [personImageUrl],
   },
   appleWebApp: {
     capable: true,
@@ -63,7 +88,7 @@ export const metadata: Metadata = {
   },
   other: {
     "mobile-web-app-capable": "yes",
-  }
+  },
 };
 
 export const viewport: Viewport = {
@@ -78,27 +103,47 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebSite",
-      "name": "Arjun Bishnoi",
-      "url": "https://arjunbishnoi.com/",
-      "alternateName": ["arjunbishnoi.com"]
+      "@id": `${siteUrl}/#website`,
+      url: `${siteUrl}/`,
+      name: "Arjun Bishnoi",
+      alternateName: ["Arjun", "arjunbishnoi.com"],
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${siteUrl}/#profile-page`,
+      url: `${siteUrl}/`,
+      name: "Arjun Bishnoi",
+      description: profileDescription,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#person` },
+      mainEntity: { "@id": `${siteUrl}/#person` },
+      primaryImageOfPage: { "@id": `${siteUrl}/#headshot` },
+    },
+    {
+      "@type": "ImageObject",
+      "@id": `${siteUrl}/#headshot`,
+      url: personImageUrl,
+      contentUrl: personImageUrl,
+      caption: "Arjun Bishnoi headshot",
+      representativeOfPage: true,
     },
     {
       "@type": "Person",
-      "name": "Arjun Bishnoi",
-      "url": "https://arjunbishnoi.com",
-      "sameAs": [
-        "https://github.com/arjunbishnoi",
-        "https://linkedin.com/in/arjunbishnoi"
-      ],
-      "image": "https://arjunbishnoi.com/arjun-bishnoi-profile-square.jpg",
-      "jobTitle": "Full Stack Developer & UI/UX Designer",
-      "worksFor": {
+      "@id": `${siteUrl}/#person`,
+      name: "Arjun Bishnoi",
+      url: siteUrl,
+      image: { "@id": `${siteUrl}/#headshot` },
+      description: profileDescription,
+      jobTitle: "Mobile Application Developer, AI Engineer, and UI/UX Designer",
+      sameAs: [socialLinks.github, socialLinks.linkedin, socialLinks.behance],
+      mainEntityOfPage: { "@id": `${siteUrl}/#profile-page` },
+      worksFor: {
         "@type": "Organization",
-        "name": "Freelance"
-      }
-    }
-  ]
-}
+        name: "Freelance",
+      },
+    },
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -107,25 +152,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${instrumentSerif.variable} font-sans antialiased`}
-      >
+      <body className={`${inter.variable} ${instrumentSerif.variable} font-sans antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-          >
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
           <ThemeColorMeta />
           <Header />
-          <div id="site-content">
-            {children}
-          </div>
-          </ThemeProvider>
+          <div id="site-content">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );
