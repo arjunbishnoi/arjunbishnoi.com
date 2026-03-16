@@ -25,11 +25,11 @@ export function HomeAboutMobile() {
             sizes="(max-width: 768px) 342px, 400px"
             priority
           />
-          <figcaption className="absolute bottom-5 z-10 flex w-full flex-row flex-wrap items-center justify-center gap-x-2 px-5 text-center text-[14px] leading-[20px] tracking-[0.2px] font-[456]">
+          <figcaption className="absolute bottom-5 z-10 flex w-full flex-row flex-wrap items-center justify-center gap-x-2 px-5 text-center text-[14px] leading-[20px] tracking-[-0.015em] font-[440]">
             <span className="text-white">
               Arjun Bishnoi
             </span>
-            <span className="text-white/[0.88]">
+            <span className="text-white/[0.7]">
               Toronto, Canada
             </span>
           </figcaption>
