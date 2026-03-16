@@ -27,16 +27,16 @@ export function HeroSection() {
     >
 
       {/* Universal Hero Title */}
-      <div className="w-full z-20 px-6 pt-[max(6.25rem,calc(env(safe-area-inset-top)+5.35rem))] md:pt-14 lg:pt-18 pb-0">
+      <div className="w-full z-20 px-6 pt-[max(6.85rem,calc(env(safe-area-inset-top)+5.95rem))] md:pt-14 lg:pt-18 pb-0">
         <div className="w-full max-w-7xl mx-auto px-2 text-center flex flex-col items-center">
           <div className="mt-1 sm:mt-2 md:mt-0 mb-5 sm:mb-6 md:mb-12 lg:mb-8 xl:mb-7 lg:scale-[0.9] xl:scale-[0.84] origin-center">
             <MobbinIconStack />
           </div>
-          <h1 className="font-sans font-semibold text-[2.58rem] sm:text-[2.78rem] md:text-[3rem] lg:text-[3.15rem] xl:text-[3.5rem] leading-[1.02] tracking-[-0.035em] md:tracking-[-0.04em]">
-            <span className="block md:inline text-black dark:text-white">Developer </span>
-            <span className="block md:inline text-black dark:text-white">& Designer</span>
+          <h1 className="font-sans font-semibold whitespace-nowrap text-[1.86rem] sm:text-[2.78rem] md:text-[3rem] lg:text-[3.15rem] xl:text-[3.5rem] leading-[1.02] tracking-[-0.05em] sm:tracking-[-0.035em] md:tracking-[-0.04em]">
+            <span className="inline text-black dark:text-white">Developer </span>
+            <span className="inline text-black dark:text-white">& Designer</span>
           </h1>
-          <p className="mt-2.5 text-center text-base leading-[1.28] md:mt-3 md:text-lg md:leading-relaxed opacity-90 lg:max-w-none lg:whitespace-nowrap">
+          <p className="mt-1.5 text-center text-base leading-[1.28] md:mt-2 md:text-lg md:leading-relaxed opacity-90 lg:max-w-none lg:whitespace-nowrap">
             <span className="block lg:inline">AI-powered mobile apps.</span>
             <span className="block lg:ml-1 lg:inline">Designed with precision.</span>
           </p>
@@ -45,7 +45,7 @@ export function HeroSection() {
 
       {/* Universal Neumorphic Hero Layout */}
       <div className="w-full z-20 px-6 pb-0 lg:hidden">
-        <div className="w-full max-w-[342px] mx-auto self-start mt-8 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
+        <div className="w-full max-w-[342px] mx-auto self-start mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
           <div className="w-full neu-container overflow-hidden aspect-[342/340] grid grid-rows-[40%_20%_20%_20%]">
             {/* Row 1: Raised All Projects rectangle */}
             <div className="relative h-full p-2 pb-1.5">
