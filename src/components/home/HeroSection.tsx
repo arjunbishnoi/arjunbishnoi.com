@@ -9,15 +9,6 @@ import { cn } from "@/lib/utils"
 import { MobbinIconStack } from "./MobbinIconStack"
 import { AboutProfileCard } from "./AboutProfileCard"
 
-// Inline helper component for scrolling skills
-const SkillBadge = ({ url, name }: { url: string; name: string }) => (
-  <div className="flex items-center gap-3 xl:gap-4 px-2 py-1 pointer-events-none select-none">
-    <div className="w-7 h-7 xl:w-8 xl:h-8 relative grayscale opacity-90 dark:opacity-80">
-      <Image src={url} alt={name} fill className="object-contain" unoptimized />
-    </div>
-    <span className="font-medium text-[0.95rem] xl:text-[1.05rem] text-zinc-700 dark:text-zinc-300">{name}</span>
-  </div>
-);
 
 export function HeroSection() {
   const [scrolledDown, setScrolledDown] = useState(false)
