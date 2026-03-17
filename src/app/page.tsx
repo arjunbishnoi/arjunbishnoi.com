@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/home/HeroSection";
-import { HomeAboutMobile } from "@/components/home/HomeAboutMobile";
 import { FeaturedSection } from "@/components/home/FeaturedSection";
 import { ProjectsSection } from "@/components/home/ProjectsSection";
 import { BlogSection } from "@/components/home/BlogSection";
@@ -17,7 +16,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <HeroSection />
-      <HomeAboutMobile />
+
       <FeaturedSection />
       <ProjectsSection />
       <BlogSection />

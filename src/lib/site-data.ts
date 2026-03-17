@@ -31,7 +31,7 @@ export const projects = [
         id: '4rent',
         title: '4rent',
         description: 'Find your next home with this modern rental marketplace. Browse through high-resolution property galleries, check detailed pricing, and save your favorite listings. Streamline your search with smart filters and instant landlord communication.',
-        image: '/4rent.png',
+        image: '/4rent.jpeg',
         tags: ['Mobile App', 'SwiftUI', 'Combine', 'MVVM', 'iOS'],
         sourceUrl: 'https://github.com/arjunbishnoi/4rent',
         featured: true

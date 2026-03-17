@@ -73,6 +73,12 @@ export default {
 				'color-shift': 'colorShift 25s linear infinite',
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
+				'marquee': 'marquee 25s linear infinite',
+				'marquee-slow': 'marquee 35s linear infinite',
+				'marquee-extra-slow': 'marquee 60s linear infinite',
+				'marquee-ultra-slow': 'marquee 80s linear infinite',
+				'marquee-fast': 'marquee 20s linear infinite',
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
 			},
 			keyframes: {
 				gradient: {
@@ -96,6 +102,14 @@ export default {
 				'colorShift': {
 					'0%, 100%': { filter: 'hue-rotate(0deg)' },
 					'50%': { filter: 'hue-rotate(180deg)' }
+				},
+				'marquee': {
+					from: { transform: 'translateX(0)' },
+					to: { transform: 'translateX(-50%)' }
+				},
+				'glow-pulse': {
+					'0%, 100%': { opacity: '1', transform: 'scale(1)', filter: 'brightness(1.2) blur(1px)' },
+					'50%': { opacity: '0.7', transform: 'scale(0.9)', filter: 'brightness(1) blur(0px)' }
 				}
 			},
 		}
