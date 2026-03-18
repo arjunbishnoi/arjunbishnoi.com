@@ -42,10 +42,11 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Mobile Neumorphic Hero Layout */}
+      {/* Mobile Stack Layout */}
       <div className="w-full z-20 px-6 pb-20 lg:hidden flex flex-col items-center">
-        {/* 1. Interactive Bento Grid */}
-        <div className="w-full max-w-[342px] mx-auto self-start mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
+        
+        {/* 1. Interactive Featured Bento Grid (Restored to Top) */}
+        <div className="w-full max-w-[342px] mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
           <div className="w-full neu-container overflow-hidden aspect-[342/340] grid grid-rows-[40%_20%_20%_20%]">
             {/* Row 1: Raised All Projects rectangle */}
             <div className="relative h-full p-2 pb-1.5">
@@ -138,55 +139,81 @@ export function HeroSection() {
         {/* 2. Profile Card */}
         <AboutProfileCard
           imageSizes="342px"
-          className="mt-6 max-w-[342px] lg:hidden"
+          className="mt-8 max-w-[342px] lg:hidden"
           priority
         />
 
-        {/* 3. Bio Card */}
-        <div className="w-full max-w-[342px] mt-6 rounded-[40px] bg-white/90 dark:bg-zinc-900/30 border border-zinc-200/50 dark:border-zinc-800/50 p-6 flex flex-col justify-between">
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight">
-              Bridging design <br/>& engineering.
-            </h3>
-            <p className="text-sm font-medium leading-[1.6] text-zinc-600 dark:text-zinc-400">
-              I craft high-performance apps & AI interfaces with technical precision and aesthetic excellence. My work bridges the gap between complex engineering and human-centered design, focusing on creating products that are intuitive, functional, and visually stunning.
-            </p>
-          </div>
-          <div className="mt-8 pt-6 border-t border-zinc-200/60 dark:border-zinc-800/50">
-            <div className="flex items-center gap-2 mb-2.5">
-              <div className="relative">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-glow-pulse" />
-                <div className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-emerald-500/40 animate-ping" />
+        {/* 2. Education Timeline Card (Replicated from Desktop) */}
+        <div className="w-full max-w-[342px] mt-8 relative rounded-[40px] bg-white/90 dark:bg-zinc-900/30 border border-zinc-200/50 dark:border-zinc-800/50 p-8 flex flex-col overflow-hidden">
+          <div className="relative flex flex-col justify-between space-y-8">
+            {/* Vertical Line */}
+            <div className="absolute left-[7px] top-2 bottom-2 w-[1.5px] bg-gradient-to-b from-emerald-500/50 via-zinc-200 dark:via-zinc-800 to-zinc-200/20 dark:to-zinc-800/20" />
+            
+            {/* Timeline Item 1 */}
+            <div className="relative pl-8 group">
+              <div className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full bg-white dark:bg-zinc-950 border-2 border-emerald-500 z-10 box-border shadow-[0_0_10px_rgba(16,185,129,0.3)]" />
+              <div className="space-y-0.5">
+                <p className="text-[0.95rem] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">Applied A.I. Solutions</p>
+                <p className="text-[0.75rem] text-zinc-500 dark:text-zinc-500 font-semibold">George Brown College • <span className="text-emerald-500/90">Ongoing</span></p>
               </div>
-              <span className="text-[0.6rem] font-bold uppercase tracking-[0.15em] text-emerald-600/90 dark:text-emerald-500/80">Ongoing Education</span>
             </div>
-            <div className="space-y-0.5">
-              <p className="text-[0.95rem] font-bold text-zinc-800 dark:text-zinc-100 leading-tight">
-                Applied A.I. Solutions
-              </p>
-              <p className="text-[0.75rem] text-zinc-500 dark:text-zinc-500 font-semibold tracking-wide">
-                George Brown College
-              </p>
+
+            {/* Timeline Item 2 */}
+            <div className="relative pl-8">
+              <div className="absolute left-[3px] top-1.5 w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-700 z-10" />
+              <div className="space-y-0.5 opacity-85">
+                <p className="text-[0.85rem] font-bold text-zinc-800 dark:text-zinc-200 leading-tight">Mobile App Development</p>
+                <p className="text-[0.7rem] text-zinc-500 dark:text-zinc-500 font-semibold">George Brown College</p>
+              </div>
+            </div>
+
+            {/* Timeline Item 3 */}
+            <div className="relative pl-8">
+              <div className="absolute left-[3px] top-1.5 w-[9px] h-[9px] rounded-full bg-zinc-200 dark:bg-zinc-800 z-10" />
+              <div className="space-y-0.5 opacity-70">
+                <p className="text-[0.8rem] font-bold text-zinc-700 dark:text-zinc-300 leading-tight">B.Sc. Information Technology</p>
+                <p className="text-[0.65rem] text-zinc-400 dark:text-zinc-500 font-semibold">Amity University</p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* 4. Skills Card */}
-        <div className="w-full max-w-[342px] mt-6 rounded-[40px] bg-white/90 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 p-6 flex flex-col overflow-hidden shadow-none">
-          <h3 className="text-[1.1rem] font-bold text-zinc-900 dark:text-white mb-4 text-center">Skills</h3>
-          <div className="flex-1 flex items-center justify-center">
-            <div className="grid grid-cols-3 gap-y-7 gap-x-4 w-full">
+        {/* 3. Bio + Skills Integrated Card (Replicated from Desktop Column 1) */}
+        <div className="w-full max-w-[342px] mt-8 relative rounded-[40px] bg-white/90 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
+          <div className="flex flex-col p-8 text-left">
+            {/* Professional Titles */}
+            <div className="flex flex-col gap-3 mb-8 shrink-0">
+              {["Cross-platform App Developer", "AI Engineer", "UI/UX Designer"].map((title, idx) => (
+                <div key={idx} className="flex items-center">
+                  <span className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-none">{title}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Mission Title */}
+            <h3 className="text-xl font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8">
+              Bridging design <br/>& engineering.
+            </h3>
+
+            {/* Description */}
+            <p className="text-[0.85rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-100 mb-8">
+              I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.
+            </p>
+
+            {/* Skill Icons Integration */}
+            <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
               {heroSkills.slice(0, 12).map((skill, i) => (
-                <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
-                  <div className="w-8 h-8 relative grayscale dark:invert-[0.15]">
+                <div key={i} className="flex flex-col items-center gap-1.5 opacity-80">
+                  <div className="w-7 h-7 relative grayscale dark:invert-[0.15]">
                     <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
                   </div>
-                  <span className="text-[0.6rem] font-semibold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-wider">{skill.name}</span>
+                  <span className="text-[0.55rem] font-bold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
+
       </div>
 
       {/* Desktop 2-Row 3-Column Cinematic Layout */}
@@ -195,30 +222,50 @@ export function HeroSection() {
           
           <div className="grid grid-cols-3 gap-6 xl:gap-7 items-stretch">
             
-            {/* COLUMN 1: Projects[0] + Skills */}
-            <div className="flex flex-col gap-6 xl:gap-7">
-              {/* Featured Project 1 (Square) */}
-              <div className="w-full relative aspect-square rounded-[40px] xl:rounded-[40px] overflow-hidden neu-raised shadow-none border-none shrink-0 pointer-events-none select-none">
-                <Image 
-                  src={projects[0].image} 
-                  alt={projects[0].title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Skills Card */}
-              <div className="w-full relative aspect-[4/5] rounded-[40px] bg-white/90 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 p-8 flex flex-col justify-center items-center overflow-hidden shadow-none">
-                <div className="grid grid-cols-3 gap-y-8 gap-x-5 w-full">
-                  {heroSkills.slice(0, 12).map((skill, i) => (
-                    <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
-                      <div className="w-7 h-7 xl:w-8 xl:h-8 relative grayscale dark:invert-[0.15]">
-                        <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
+            {/* COLUMN 1: Bio + Extended Skills */}
+            <div className="flex flex-col">
+              <div className="w-full h-full relative rounded-[40px] bg-white/90 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
+                {/* Unified Bio Section with Consistent Spacing */}
+                <div className="flex flex-col h-full p-8 pt-10 xl:p-10 xl:pt-10 pb-6 text-left overflow-hidden">
+                  
+                  {/* 1. Top 3 Professional Titles */}
+                  <div className="flex flex-col gap-3 mb-8 shrink-0">
+                    {[
+                      "Cross-platform App Developer",
+                      "AI Engineer",
+                      "UI/UX Designer"
+                    ].map((title, idx) => (
+                      <div key={idx} className="flex items-center">
+                        <span className="text-[0.9rem] xl:text-[1rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-none">
+                          {title}
+                        </span>
                       </div>
-                      <span className="text-[0.55rem] xl:text-[0.6rem] font-bold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
+                    ))}
+                  </div>
+
+                  {/* 2. Main Mission Title */}
+                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8">
+                    Bridging design <br/>& engineering.
+                  </h3>
+
+                  {/* 3. Short Description */}
+                  <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-100 mb-auto">I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.</p>
+
+                  {/* 4. Skill Icons at the bottom */}
+                  <div className="mt-8 pt-0">
+                    <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
+                      {heroSkills.slice(0, 12).map((skill, i) => (
+                        <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
+                          <div className="w-7 h-7 xl:w-8 xl:h-8 relative grayscale dark:invert-[0.15]">
+                            <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
+                          </div>
+                          <span className="text-[0.55rem] xl:text-[0.6rem] font-bold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
+
               </div>
             </div>
 
@@ -313,40 +360,51 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* ROW 2: Bio Card */}
-              <div className="w-full relative aspect-square rounded-[40px] bg-white/90 dark:bg-zinc-900/30 border border-zinc-200/50 dark:border-zinc-800/50 p-8 xl:p-10 flex flex-col justify-center items-center text-center overflow-hidden">
-                <div className="space-y-1.5 xl:space-y-2">
-                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight">
-                    Bridging design <br/>& engineering.
-                  </h3>
-                  <p className="text-[0.85rem] xl:text-[0.95rem] font-medium leading-[1.5] text-zinc-600 dark:text-zinc-400">
-                    I craft high-performance apps & AI interfaces, bridging the gap between engineering and human-centered design.
-                  </p>
-                </div>
-                <div className="mt-8 xl:mt-10 flex flex-col items-center">
-                  <div className="flex items-center gap-2 mb-2.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-glow-pulse" />
-                    <span className="text-[0.6rem] xl:text-[0.65rem] font-bold uppercase tracking-[0.15em] text-emerald-600/90 dark:text-emerald-500/80">Ongoing Education</span>
+              {/* ROW 2: Education Timeline Card */}
+              <div className="w-full relative aspect-square rounded-[40px] bg-white/90 dark:bg-zinc-900/30 border border-zinc-200/50 dark:border-zinc-800/50 p-8 xl:p-9 flex flex-col overflow-hidden">
+
+                
+                <div className="relative flex-1 flex flex-col justify-between">
+                  {/* Vertical Line */}
+                  <div className="absolute left-[7px] top-2 bottom-2 w-[1.5px] bg-gradient-to-b from-emerald-500/50 via-zinc-200 dark:via-zinc-800 to-zinc-200/20 dark:to-zinc-800/20" />
+                  
+                  {/* Timeline Item 1 */}
+                  <div className="relative pl-8 group">
+                    <div className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full bg-white dark:bg-zinc-950 border-2 border-emerald-500 z-10 box-border shadow-[0_0_10px_rgba(16,185,129,0.3)]" />
+                    <div className="space-y-0.5">
+                      <p className="text-[0.95rem] xl:text-[1rem] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">Applied A.I. Solutions</p>
+                      <p className="text-[0.75rem] text-zinc-500 dark:text-zinc-500 font-semibold">George Brown College • <span className="text-emerald-500/90">Ongoing</span></p>
+                    </div>
                   </div>
-                  <div className="space-y-0.5">
-                    <p className="text-[0.95rem] xl:text-[1.05rem] font-bold text-zinc-800 dark:text-zinc-100 leading-tight">
-                      Applied A.I. Solutions
-                    </p>
-                    <p className="text-[0.75rem] xl:text-[0.8rem] text-zinc-500 dark:text-zinc-500 font-semibold tracking-wide">
-                      George Brown College
-                    </p>
+
+                  {/* Timeline Item 2 */}
+                  <div className="relative pl-8">
+                    <div className="absolute left-[3px] top-1.5 w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-700 z-10" />
+                    <div className="space-y-0.5 opacity-85">
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-bold text-zinc-800 dark:text-zinc-200 leading-tight">Mobile App Development</p>
+                      <p className="text-[0.7rem] text-zinc-500 dark:text-zinc-500 font-semibold">George Brown College</p>
+                    </div>
+                  </div>
+
+                  {/* Timeline Item 3 */}
+                  <div className="relative pl-8">
+                    <div className="absolute left-[3px] top-1.5 w-[9px] h-[9px] rounded-full bg-zinc-200 dark:bg-zinc-800 z-10" />
+                    <div className="space-y-0.5 opacity-70">
+                      <p className="text-[0.8rem] xl:text-[0.85rem] font-bold text-zinc-700 dark:text-zinc-300 leading-tight">B.Sc. Information Technology</p>
+                      <p className="text-[0.65rem] text-zinc-400 dark:text-zinc-500 font-semibold">Amity University</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* COLUMN 3: Projects[1] + Profile */}
+            {/* COLUMN 3: Projects[0] + Profile */}
             <div className="flex flex-col gap-6 xl:gap-7">
-              {/* ROW 1: Featured Project 2 (Square) */}
+              {/* ROW 1: Featured Project (Square) - Now CryptoTracker (Projects[0]) */}
               <div className="w-full relative aspect-square rounded-[40px] xl:rounded-[40px] overflow-hidden neu-raised shadow-none border-none shrink-0 pointer-events-none select-none">
                 <Image 
-                  src={projects[1].image} 
-                  alt={projects[1].title}
+                  src={projects[0].image} 
+                  alt={projects[0].title}
                   fill
                   className="object-cover"
                 />
