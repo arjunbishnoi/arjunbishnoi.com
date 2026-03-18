@@ -143,42 +143,7 @@ export function HeroSection() {
           priority
         />
 
-        {/* 2. Education Timeline Card (Replicated from Desktop) */}
-        <div className="w-full max-w-[342px] mt-8 relative rounded-[40px] bg-white/90 dark:bg-zinc-900/30 border border-zinc-200/50 dark:border-zinc-800/50 p-8 flex flex-col overflow-hidden">
-          <div className="relative flex flex-col justify-between space-y-8">
-            {/* Vertical Line */}
-            <div className="absolute left-[7px] top-2 bottom-2 w-[1.5px] bg-gradient-to-b from-emerald-500/50 via-zinc-200 dark:via-zinc-800 to-zinc-200/20 dark:to-zinc-800/20" />
-            
-            {/* Timeline Item 1 */}
-            <div className="relative pl-8 group">
-              <div className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full bg-white dark:bg-zinc-950 border-2 border-emerald-500 z-10 box-border shadow-[0_0_10px_rgba(16,185,129,0.3)]" />
-              <div className="space-y-0.5">
-                <p className="text-[0.95rem] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">Applied A.I. Solutions</p>
-                <p className="text-[0.75rem] text-zinc-500 dark:text-zinc-500 font-semibold">George Brown College • <span className="text-emerald-500/90">Ongoing</span></p>
-              </div>
-            </div>
-
-            {/* Timeline Item 2 */}
-            <div className="relative pl-8">
-              <div className="absolute left-[3px] top-1.5 w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-700 z-10" />
-              <div className="space-y-0.5 opacity-85">
-                <p className="text-[0.85rem] font-bold text-zinc-800 dark:text-zinc-200 leading-tight">Mobile App Development</p>
-                <p className="text-[0.7rem] text-zinc-500 dark:text-zinc-500 font-semibold">George Brown College</p>
-              </div>
-            </div>
-
-            {/* Timeline Item 3 */}
-            <div className="relative pl-8">
-              <div className="absolute left-[3px] top-1.5 w-[9px] h-[9px] rounded-full bg-zinc-200 dark:bg-zinc-800 z-10" />
-              <div className="space-y-0.5 opacity-70">
-                <p className="text-[0.8rem] font-bold text-zinc-700 dark:text-zinc-300 leading-tight">B.Sc. Information Technology</p>
-                <p className="text-[0.65rem] text-zinc-400 dark:text-zinc-500 font-semibold">Amity University</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 3. Bio + Skills Integrated Card (Replicated from Desktop Column 1) */}
+        {/* 3. Bio + Education + Skills Integrated Card */}
         <div className="w-full max-w-[342px] mt-8 relative rounded-[40px] bg-white/90 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
           <div className="flex flex-col p-8 text-left">
             {/* Professional Titles */}
@@ -200,8 +165,41 @@ export function HeroSection() {
               I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.
             </p>
 
+            {/* Integrated Education Timeline */}
+            <div className="relative flex flex-col space-y-7 mb-10 pl-1">
+              {/* Vertical Line */}
+              <div className="absolute left-[7px] top-2 bottom-2 w-[1.5px] bg-gradient-to-b from-emerald-500/50 via-zinc-200 dark:via-zinc-800 to-zinc-200/20 dark:to-zinc-800/20" />
+              
+              {/* Timeline Item 1 */}
+              <div className="relative pl-7 group">
+                <div className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full bg-white dark:bg-zinc-950 border-2 border-emerald-500 z-10 box-border shadow-[0_0_8px_rgba(16,185,129,0.3)]" />
+                <div className="space-y-0.5">
+                  <p className="text-[0.85rem] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">Applied A.I. Solutions</p>
+                  <p className="text-[0.7rem] text-zinc-500 dark:text-zinc-500 font-semibold">George Brown College • <span className="text-emerald-500/90 text-[0.65rem]">Ongoing</span></p>
+                </div>
+              </div>
+
+              {/* Timeline Item 2 */}
+              <div className="relative pl-7">
+                <div className="absolute left-[3px] top-1.5 w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-700 z-10" />
+                <div className="space-y-0.5 opacity-85">
+                  <p className="text-[0.8rem] font-bold text-zinc-800 dark:text-zinc-200 leading-tight">Mobile App Development</p>
+                  <p className="text-[0.65rem] text-zinc-500 dark:text-zinc-500 font-semibold">George Brown College</p>
+                </div>
+              </div>
+
+              {/* Timeline Item 3 */}
+              <div className="relative pl-7">
+                <div className="absolute left-[3px] top-1.5 w-[9px] h-[9px] rounded-full bg-zinc-200 dark:bg-zinc-800 z-10" />
+                <div className="space-y-0.5 opacity-70">
+                  <p className="text-[0.75rem] font-bold text-zinc-700 dark:text-zinc-300 leading-tight">B.Sc. Information Technology</p>
+                  <p className="text-[0.6rem] text-zinc-400 dark:text-zinc-500 font-semibold">Amity University</p>
+                </div>
+              </div>
+            </div>
+
             {/* Skill Icons Integration */}
-            <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
+            <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full border-t border-zinc-100 dark:border-zinc-800/50 pt-8">
               {heroSkills.slice(0, 12).map((skill, i) => (
                 <div key={i} className="flex flex-col items-center gap-1.5 opacity-80">
                   <div className="w-7 h-7 relative grayscale dark:invert-[0.15]">
@@ -213,6 +211,7 @@ export function HeroSection() {
             </div>
           </div>
         </div>
+
 
       </div>
 
