@@ -616,15 +616,9 @@ html.light-theme .hero-bio-card :is(.text-zinc-100, .text-zinc-200, .text-zinc-3
 }
 
 html.light-theme .hero-education-card {
-  background-color: #f4f8f4 !important;
-  background-image: linear-gradient(to bottom, #b8dfca 0%, #d0e5d7 55%, #f4f8f4 100%) !important;
+  background: var(--hero-bio-bg) !important;
   border: none !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    inset 0 -16px 32px rgba(124, 154, 127, 0.06) !important;
-  --tw-gradient-from: #b8dfca !important;
-  --tw-gradient-via: #d0e5d7 !important;
-  --tw-gradient-to: #f4f8f4 !important;
+  background-image: none !important;
 }
 
 html.light-theme .hero-education-card :is(.text-zinc-900, .text-zinc-800, .text-zinc-700, .text-zinc-600, .text-zinc-500, .text-black) {
