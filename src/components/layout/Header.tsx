@@ -17,6 +17,7 @@ export function Header() {
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
+
   const mobileMenuAnimationState = isMobileMenuOpen ? "open" : "closed"
   const menuPanelTransition = { type: "spring" as const, duration: 0.3, bounce: 0.1 }
   const mobileMenuPanelVariants = {
@@ -30,9 +31,9 @@ export function Header() {
   }
   const mobileMenuItems: ReadonlyArray<MobileMenuItem> = [
     { name: 'Projects', href: '/projects' },
-    { name: 'Mobile Apps', href: '/#mobile-apps' },
-    { name: 'AI/ML', href: '/#ai-ml' },
-    { name: 'Design', href: '/#design' },
+    { name: 'Mobile Apps', href: '/apps' },
+    { name: 'AI/ML', href: '/ai' },
+    { name: 'Design', href: '/design' },
     { name: 'Resume', href: socialLinks.resume, isDownload: true },
     { name: 'Contact', href: '/#contact' },
     { name: 'About', href: '/#about' },

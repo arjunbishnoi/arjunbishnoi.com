@@ -51,7 +51,7 @@ export function HeroSection() {
             {/* Row 1: Raised All Projects rectangle */}
             <div className="relative h-full p-2 pb-1.5">
               <Link
-                href="#contact"
+                href="/projects"
                 className="group relative z-10 block w-full h-full rounded-[30px] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
               >
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
@@ -104,13 +104,13 @@ export function HeroSection() {
               </a>
             </div>
             <div className="grid grid-cols-4">
-              <a href={socialLinks.email} className="flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors">
+              <Link href="#contact" className="flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors">
                 <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-rose-500 dark:text-rose-400 group-hover:opacity-100 opacity-90">
                   <svg viewBox="0 0 24 24" className="block w-[1.4rem] h-[1.4rem] fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path fillRule="evenodd" clipRule="evenodd" d="M7 2.75C5.38503 2.75 3.92465 3.15363 2.86466 4.1379C1.79462 5.13152 1.25 6.60705 1.25 8.5V15.5C1.25 17.393 1.79462 18.8685 2.86466 19.8621C3.92465 20.8464 5.38503 21.25 7 21.25H17C18.615 21.25 20.0754 20.8464 21.1353 19.8621C22.2054 18.8685 22.75 17.393 22.75 15.5V8.5C22.75 6.60705 22.2054 5.13152 21.1353 4.1379C20.0754 3.15363 18.615 2.75 17 2.75H7ZM19.2285 8.3623C19.5562 8.10904 19.6166 7.63802 19.3633 7.31026C19.1101 6.98249 18.6391 6.9221 18.3113 7.17537L12.7642 11.4616C12.3141 11.8095 11.6858 11.8095 11.2356 11.4616L5.6886 7.17537C5.36083 6.9221 4.88982 6.98249 4.63655 7.31026C4.38328 7.63802 4.44367 8.10904 4.77144 8.3623L10.3185 12.6486C11.3089 13.4138 12.691 13.4138 13.6814 12.6486L19.2285 8.3623Z" />
                   </svg>
                 </div>
-              </a>
+              </Link>
               <a href={socialLinks.behance} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors">
                 <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-[#1769FF] dark:text-[#4D8DFF] group-hover:opacity-100 opacity-90">
                   <svg viewBox="-40 -40 3413 3413" className="block w-[1.4rem] h-[1.4rem] fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -137,6 +137,7 @@ export function HeroSection() {
         </div>
 
         {/* 2. Profile Card */}
+        <div id="about" className="lg:hidden scroll-mt-24" />
         <AboutProfileCard
           imageSizes="(max-width: 768px) 100vw, 342px"
           className="mt-8 lg:hidden"
@@ -144,7 +145,7 @@ export function HeroSection() {
         />
 
         {/* 3. Bio + Education + Skills Integrated Card */}
-        <div className="w-full mt-8 relative rounded-[40px] bg-white/90 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
+        <div className="w-full mt-8 relative rounded-[40px] bg-zinc-100/50 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
           <div className="flex flex-col p-8 text-left">
             {/* Professional Titles */}
             <div className="flex flex-col gap-3 mb-8 shrink-0">
@@ -226,14 +227,14 @@ export function HeroSection() {
       </div>
 
       {/* Desktop 2-Row 3-Column Cinematic Layout */}
-      <div className="hidden lg:flex flex-col w-full z-20 pb-0 mt-12 xl:mt-14 items-center">
+      <div className="hidden lg:flex flex-col w-full z-20 pb-0 mt-12 xl:mt-14 items-center scroll-mt-28" id="about">
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6">
           
           <div className="grid grid-cols-3 gap-6 xl:gap-7 items-stretch">
             
             {/* COLUMN 1: Bio + Extended Skills */}
             <div className="flex flex-col">
-              <div className="w-full h-full relative rounded-[40px] bg-white/90 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
+              <div className="w-full h-full relative rounded-[40px] bg-zinc-100/70 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
                 {/* Unified Bio Section with Consistent Spacing */}
                 <div className="flex flex-col h-full p-8 pt-10 xl:p-10 xl:pt-10 pb-6 text-left overflow-hidden">
                   
@@ -285,7 +286,7 @@ export function HeroSection() {
                   {/* Row 1: Raised All Projects rectangle */}
                   <div className="relative h-full p-2 xl:p-2.5 pb-1.5 xl:pb-2">
                     <Link
-                      href="#contact"
+                      href="/projects"
                       className="group relative z-10 block w-full h-full rounded-[30px] xl:rounded-[36px] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
                     >
                       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
@@ -322,29 +323,29 @@ export function HeroSection() {
                     <div className="absolute bottom-0 left-0 w-1/2 h-full border-r neu-separator pointer-events-none" />
                   </div>
                   <div className="grid grid-cols-2">
-                    <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[1.05rem] xl:text-[1.1rem] hover:bg-zinc-100/10 transition-colors">
+                    <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">Mobile Apps</div>
                     </Link>
-                    <Link href="/ai" className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[1.05rem] xl:text-[1.1rem] hover:bg-zinc-100/10 transition-colors">
+                    <Link href="/ai" className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-zinc-100 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">AI/ML</div>
                     </Link>
                   </div>
                   <div className="grid grid-cols-2">
-                    <Link href="/design" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[1.05rem] xl:text-[1.1rem] hover:bg-zinc-100/10 transition-colors">
+                    <Link href="/design" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">Design</div>
                     </Link>
-                    <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[1.05rem] xl:text-[1.1rem] hover:bg-zinc-100/10 transition-colors">
+                    <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-zinc-100 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">Resume</div>
                     </a>
                   </div>
                   <div className="grid grid-cols-4">
-                    <a href={socialLinks.email} className="flex items-center justify-center border-r neu-separator group hover:bg-zinc-100/10 transition-colors">
+                    <Link href="#contact" className="flex items-center justify-center border-r neu-separator group hover:bg-zinc-100/10 transition-colors">
                       <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center transition-colors text-rose-500 dark:text-rose-400 group-hover:opacity-100 opacity-90 group-hover:scale-110">
                         <svg viewBox="0 0 24 24" className="block w-6 h-6 xl:w-7 xl:h-7 fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                           <path fillRule="evenodd" clipRule="evenodd" d="M7 2.75C5.38503 2.75 3.92465 3.15363 2.86466 4.1379C1.79462 5.13152 1.25 6.60705 1.25 8.5V15.5C1.25 17.393 1.79462 18.8685 2.86466 19.8621C3.92465 20.8464 5.38503 21.25 7 21.25H17C18.615 21.25 20.0754 20.8464 21.1353 19.8621C22.2054 18.8685 22.75 17.393 22.75 15.5V8.5C22.75 6.60705 22.2054 5.13152 21.1353 4.1379C20.0754 3.15363 18.615 2.75 17 2.75H7ZM19.2285 8.3623C19.5562 8.10904 19.6166 7.63802 19.3633 7.31026C19.1101 6.98249 18.6391 6.9221 18.3113 7.17537L12.7642 11.4616C12.3141 11.8095 11.6858 11.8095 11.2356 11.4616L5.6886 7.17537C5.36083 6.9221 4.88982 6.98249 4.63655 7.31026C4.38328 7.63802 4.44367 8.10904 4.77144 8.3623L10.3185 12.6486C11.3089 13.4138 12.691 13.4138 13.6814 12.6486L19.2285 8.3623Z" />
                         </svg>
                       </div>
-                    </a>
+                    </Link>
                     <a href={socialLinks.behance} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group hover:bg-zinc-100/10 transition-colors">
                       <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center transition-colors text-[#1769FF] dark:text-[#4D8DFF] group-hover:opacity-100 opacity-90 group-hover:scale-110">
                         <svg viewBox="-40 -40 3413 3413" className="block w-6 h-6 xl:w-7 xl:h-7 fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -370,7 +371,7 @@ export function HeroSection() {
                 </div>
 
               {/* ROW 2: Education Timeline Card */}
-              <div className="w-full relative aspect-square rounded-[40px] bg-white/90 dark:bg-zinc-900/30 border border-zinc-200/50 dark:border-zinc-800/50 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
+              <div className="w-full relative aspect-square rounded-[40px] bg-gradient-to-br from-emerald-50/50 via-white/80 to-zinc-50/30 dark:from-emerald-950/15 dark:via-zinc-950/75 dark:to-zinc-950/90 border border-emerald-200/30 dark:border-emerald-800/20 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
 
                 
                 <div className="relative flex-1 flex flex-col justify-between">
