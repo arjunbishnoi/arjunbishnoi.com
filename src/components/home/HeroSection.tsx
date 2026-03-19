@@ -144,8 +144,51 @@ export function HeroSection() {
           priority
         />
 
-        {/* 3. Bio + Education + Skills Integrated Card */}
-        <div className="w-full mt-8 relative rounded-[40px] bg-zinc-100/50 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
+        {/* 3. Education Timeline Card */}
+        <div className="hero-education-card w-full mt-8 relative rounded-[40px] bg-gradient-to-b from-[#b8dfca] via-[#d0e5d7] to-[#f4f8f4] dark:from-emerald-950/15 dark:via-zinc-950/75 dark:to-zinc-950/90 border-0 pt-5 pb-5 pl-5 pr-6 min-h-[20rem] sm:min-h-[22rem] flex flex-col overflow-hidden shadow-none">
+          <div className="relative flex-1 flex flex-col justify-between">
+            {/* Vertical Line */}
+            <div className="absolute left-[7px] top-[10.8px] bottom-[41px] w-[1px] bg-gradient-to-b from-[#3f7d66]/90 via-[#79a98e]/70 to-[#d1e3d7]/0 dark:from-emerald-400/70 dark:via-emerald-500/45 dark:to-emerald-900/20" />
+
+            {/* Timeline Item 1 */}
+            <div className="relative pl-7 group">
+              <div className="absolute left-0 top-[3.3px] w-[15px] h-[15px] rounded-full bg-[#f3faf6] dark:bg-zinc-950 border-2 border-[#3f7d66] z-10 box-border shadow-[0_0_8px_rgba(63,125,102,0.22)]" />
+              <div className="space-y-0">
+                <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Applied A.I. Solutions Development</p>
+                <div className="my-2 flex">
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded-md bg-emerald-700/15 text-emerald-800 text-[0.7rem] font-bold uppercase tracking-wider border border-emerald-700/30 leading-none">
+                    Ongoing
+                  </span>
+                </div>
+                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
+                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
+              </div>
+            </div>
+
+            {/* Timeline Item 2 */}
+            <div className="relative pl-7">
+              <div className="absolute left-[3px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-[#6f9c85] dark:bg-[#7db69b] border border-[#4f7d68]/30 z-10 opacity-100" />
+              <div className="space-y-0">
+                <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Mobile Application Development and Strategy</p>
+                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
+                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
+              </div>
+            </div>
+
+            {/* Timeline Item 3 */}
+            <div className="relative pl-7">
+              <div className="absolute left-[3px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-[#88b49b] dark:bg-[#5f8f7a] border border-[#4f7d68]/25 z-10 opacity-100" />
+              <div className="space-y-0">
+                <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">B.Sc. Information Technology</p>
+                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Amity University, Noida</p>
+                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Graduation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 4. Bio Card */}
+        <div className="hero-bio-card w-full mt-8 relative rounded-[40px] bg-zinc-100/50 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
           <div className="flex flex-col p-8 text-left">
             {/* Professional Titles */}
             <div className="flex flex-col gap-3 mb-8 shrink-0">
@@ -166,51 +209,8 @@ export function HeroSection() {
               I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.
             </p>
 
-            {/* Integrated Education Timeline */}
-            <div className="relative flex flex-col space-y-7 mb-10">
-              {/* Vertical Line */}
-              <div className="absolute left-[7px] top-[10.8px] bottom-[41px] w-[1px] bg-gradient-to-b from-emerald-500/50 via-zinc-200 dark:via-zinc-800 to-zinc-200/20 dark:to-zinc-800/20" />
-              
-              <div className="relative flex flex-col space-y-7">
-                {/* Timeline Item 1 */}
-                <div className="relative pl-7 group">
-                  <div className="absolute left-0 top-[3.3px] w-[15px] h-[15px] rounded-full bg-white dark:bg-zinc-950 border-2 border-emerald-500 z-10 box-border shadow-[0_0_8px_rgba(16,185,129,0.3)]" />
-                  <div className="space-y-0">
-                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Applied A.I. Solutions Development</p>
-                    <div className="my-2 flex">
-                      <span className="inline-flex items-center px-1.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-500/90 text-[0.7rem] font-bold uppercase tracking-wider border border-emerald-500/20 leading-none">
-                        Ongoing
-                      </span>
-                    </div>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
-                  </div>
-                </div>
-
-                {/* Timeline Item 2 */}
-                <div className="relative pl-7">
-                  <div className="absolute left-[3px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-700 z-10 opacity-85" />
-                  <div className="space-y-0">
-                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Mobile Application Development and Strategy</p>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
-                  </div>
-                </div>
-
-                {/* Timeline Item 3 */}
-                <div className="relative pl-7">
-                  <div className="absolute left-[3px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-200 dark:bg-zinc-800 z-10 opacity-70" />
-                  <div className="space-y-0">
-                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">B.Sc. Information Technology</p>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Amity University, Noida</p>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Graduation</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             {/* Skill Icons Integration */}
-            <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full border-t border-zinc-100 dark:border-zinc-800/50 pt-8">
+            <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full pt-8">
               {heroSkills.slice(0, 12).map((skill, i) => (
                 <div key={i} className="flex flex-col items-center gap-1.5 opacity-80">
                   <div className="w-7 h-7 relative grayscale dark:invert-[0.15]">
@@ -234,7 +234,7 @@ export function HeroSection() {
             
             {/* COLUMN 1: Bio + Extended Skills */}
             <div className="flex flex-col">
-              <div className="w-full h-full relative rounded-[40px] bg-zinc-100/70 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
+              <div className="hero-bio-card w-full h-full relative rounded-[40px] bg-zinc-100/70 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
                 {/* Unified Bio Section with Consistent Spacing */}
                 <div className="flex flex-col h-full p-8 pt-10 xl:p-10 xl:pt-10 pb-6 text-left overflow-hidden">
                   
@@ -371,20 +371,20 @@ export function HeroSection() {
                 </div>
 
               {/* ROW 2: Education Timeline Card */}
-              <div className="w-full relative aspect-square rounded-[40px] bg-gradient-to-br from-emerald-50/50 via-white/80 to-zinc-50/30 dark:from-emerald-950/15 dark:via-zinc-950/75 dark:to-zinc-950/90 border border-emerald-200/30 dark:border-emerald-800/20 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
+              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-gradient-to-b from-[#b8dfca] via-[#d0e5d7] to-[#f4f8f4] dark:from-emerald-950/15 dark:via-zinc-950/75 dark:to-zinc-950/90 border-0 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
 
                 
                 <div className="relative flex-1 flex flex-col justify-between">
                   {/* Vertical Line */}
-                  <div className="absolute left-[7px] top-[11px] bottom-[42px] w-[1.5px] bg-gradient-to-b from-emerald-500/50 via-zinc-200 dark:via-zinc-800 to-zinc-200/20 dark:to-zinc-800/20" />
+                  <div className="absolute left-[7px] top-[11px] bottom-[42px] w-[1.5px] bg-gradient-to-b from-[#3f7d66]/90 via-[#79a98e]/70 to-[#d1e3d7]/0 dark:from-emerald-400/70 dark:via-emerald-500/45 dark:to-emerald-900/20" />
                   
                   {/* Timeline Item 1 */}
                   <div className="relative pl-6 group">
-                    <div className="absolute left-0 top-[2.27px] xl:top-[3.4px] w-[15px] h-[15px] rounded-full bg-white dark:bg-zinc-950 border-2 border-emerald-500 z-10 box-border shadow-[0_0_10px_rgba(16,185,129,0.3)]" />
+                    <div className="absolute left-0 top-[2.27px] xl:top-[3.4px] w-[15px] h-[15px] rounded-full bg-[#f3faf6] dark:bg-zinc-950 border-2 border-[#3f7d66] z-10 box-border shadow-[0_0_10px_rgba(63,125,102,0.22)]" />
                     <div className="space-y-0">
                       <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">
                         Applied A.I. Solutions Development
-                        <span className="ml-2 inline-flex items-center px-1.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-500/90 text-[0.7rem] font-bold uppercase tracking-wider border border-emerald-500/20 leading-none align-middle mb-0.5">
+                        <span className="ml-2 inline-flex items-center px-1.5 py-0.5 rounded-md bg-emerald-700/15 text-emerald-800 text-[0.7rem] font-bold uppercase tracking-wider border border-emerald-700/30 leading-none align-middle mb-0.5">
                           Ongoing
                         </span>
                       </p>
@@ -395,7 +395,7 @@ export function HeroSection() {
 
                   {/* Timeline Item 2 */}
                   <div className="relative pl-6">
-                    <div className="absolute left-[3px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-700 z-10 opacity-85" />
+                    <div className="absolute left-[3px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-[#6f9c85] dark:bg-[#7db69b] border border-[#4f7d68]/30 z-10 opacity-100" />
                     <div className="space-y-0">
                       <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">Mobile Application Development and Strategy</p>
                       <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
@@ -405,7 +405,7 @@ export function HeroSection() {
 
                   {/* Timeline Item 3 */}
                   <div className="relative pl-6">
-                    <div className="absolute left-[3px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-zinc-200 dark:bg-zinc-800 z-10 opacity-70" />
+                    <div className="absolute left-[3px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-[#88b49b] dark:bg-[#5f8f7a] border border-[#4f7d68]/25 z-10 opacity-100" />
                     <div className="space-y-0">
                       <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">B.Sc. Information Technology</p>
                       <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">Amity University, Noida</p>
