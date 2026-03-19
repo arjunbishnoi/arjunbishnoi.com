@@ -615,12 +615,6 @@ html.light-theme .hero-bio-card :is(.text-zinc-100, .text-zinc-200, .text-zinc-3
   color: #e5e7eb !important;
 }
 
-html.light-theme .hero-education-card {
-  background: var(--hero-bio-bg) !important;
-  border: none !important;
-  background-image: none !important;
-}
-
 html.light-theme .hero-education-card :is(.text-zinc-900, .text-zinc-800, .text-zinc-700, .text-zinc-600, .text-zinc-500, .text-black) {
   color: #f8fafc !important;
 }
