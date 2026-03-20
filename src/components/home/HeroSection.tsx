@@ -48,14 +48,14 @@ export function HeroSection() {
         {/* 1. Interactive Featured Bento Grid (Restored to Top) */}
         <div className="w-full mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
           <div className="w-full neu-container overflow-hidden aspect-[342/340] grid grid-rows-[40%_20%_20%_20%]">
-            {/* Row 1: Raised All Projects rectangle */}
+            {/* Row 1: Flat All Projects rectangle */}
             <div className="relative h-full p-2 pb-1.5">
               <Link
                 href="/projects"
-                className="group relative z-10 block w-full h-full rounded-[30px] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
+                className="group hero-viewall-pill relative z-10 block w-full h-full rounded-[30px] overflow-hidden transform-gpu"
               >
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
-                  <div className="absolute inset-0 bg-[var(--neu-surface)]" />
+                  <div className="hero-viewall-surface absolute inset-0 bg-white dark:bg-zinc-950" />
                   <div
                     className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] dark:saturate-[2] dark:contrast-[1.05] dark:brightness-[1.4]"
                     style={{
@@ -227,7 +227,7 @@ export function HeroSection() {
       </div>
 
       {/* Desktop 2-Row 3-Column Cinematic Layout */}
-      <div className="hidden lg:flex flex-col w-full z-20 pb-0 mt-12 xl:mt-14 items-center scroll-mt-28" id="about">
+      <div className="hidden lg:flex flex-col w-full z-20 pb-0 mt-12 xl:mt-14 items-center scroll-mt-28 hero-flat-desktop" id="about">
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6">
           
           <div className="grid grid-cols-3 gap-6 xl:gap-7 items-stretch">
@@ -287,10 +287,10 @@ export function HeroSection() {
                   <div className="relative h-full p-2 xl:p-2.5 pb-1.5 xl:pb-2">
                     <Link
                       href="/projects"
-                      className="group relative z-10 block w-full h-full rounded-[30px] xl:rounded-[36px] overflow-hidden neu-raised neu-mobile-neumorphic transform-gpu"
+                      className="group hero-viewall-pill relative z-10 block w-full h-full rounded-[30px] xl:rounded-[36px] overflow-hidden transform-gpu"
                     >
                       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
-                        <div className="absolute inset-0 bg-[var(--neu-surface)]" />
+                        <div className="hero-viewall-surface absolute inset-0 bg-white dark:bg-zinc-950" />
                         <div
                           className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] dark:saturate-[2] dark:contrast-[1.05] dark:brightness-[1.4]"
                           style={{
