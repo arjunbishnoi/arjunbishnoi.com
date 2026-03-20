@@ -188,7 +188,7 @@
   }
 
   .hero-mobile-main-shape-wrap .neu-container {
-    background-color: #f4f4f5 !important;
+    background-color: #ffffff !important;
     background-image: none !important;
     box-shadow: none !important;
     border: none !important;
@@ -223,13 +223,13 @@
 
   .hero-mobile-main-shape-wrap .hero-bio-card,
   .hero-mobile-main-shape-wrap .hero-education-card {
-    background-color: #d6d6d6 !important;
+    background-color: #f3f3f4 !important;
     background-image: none !important;
   }
 
-  /* Tint only the Education card (keep the "zone" brightness, shift to green hue) */
+  /* Keep education same as bio (pure white) */
   .hero-mobile-main-shape-wrap .hero-education-card {
-    background-color: #d0e5d7 !important;
+    background-color: #f3f3f4 !important;
   }
 
   .dark .hero-mobile-main-shape-wrap .neu-container {
@@ -273,7 +273,7 @@
 
   /* Keep the entire View-all parent rectangle SAME as light mode in dark mode */
   .dark .hero-mobile-main-shape-wrap .neu-container {
-    background-color: #f4f4f5 !important;
+    background-color: #ffffff !important;
     background-image: none !important;
     box-shadow: none !important;
     border: none !important;
@@ -308,13 +308,13 @@
 
   .dark .hero-mobile-main-shape-wrap .hero-bio-card,
   .dark .hero-mobile-main-shape-wrap .hero-education-card {
-    background-color: #1e1e1e !important;
+    background-color: #f3f3f4 !important;
     background-image: none !important;
   }
 
-  /* Dark mode tint for Education card */
+  /* Keep education same as bio (pure white) */
   .dark .hero-mobile-main-shape-wrap .hero-education-card {
-    background-color: #0e2a1f !important;
+    background-color: #f3f3f4 !important;
   }
 
   /* --- Subtle flat neumorphic (for small elements like social icons) --- */
@@ -741,19 +741,19 @@ html.light-theme .hero-section {
 
 @media (min-width: 1024px) {
   .hero-flat-desktop .neu-container {
-    background-color: #f4f4f5 !important;
+    background-color: #ffffff !important;
     background-image: none !important;
     box-shadow: none !important;
     border: none !important;
   }
 
   .hero-flat-desktop .hero-bio-card {
-    background-color: #d6d6d6 !important;
+    background-color: #f3f3f4 !important;
     background-image: none !important;
   }
 
   .hero-flat-desktop .hero-education-card {
-    background-color: #d0e5d7 !important;
+    background-color: #f3f3f4 !important;
     background-image: none !important;
   }
 
@@ -769,10 +769,10 @@ html.light-theme .hero-section {
 
   html:not(.dark) .hero-flat-desktop .hero-viewall-pill:hover {
     box-shadow:
-      0 0 28px rgba(15, 23, 42, 0.07),
-      0 20px 40px rgba(15, 23, 42, 0.12),
-      0 4px 10px rgba(15, 23, 42, 0.06) !important;
-    transform: translateY(-2px);
+      0 0 38px rgba(15, 23, 42, 0.11),
+      0 24px 54px rgba(15, 23, 42, 0.18),
+      0 8px 18px rgba(15, 23, 42, 0.10) !important;
+    transform: translateY(-2px) scale(1.02);
   }
 
   html:not(.dark) .hero-flat-desktop .hero-viewall-surface {
@@ -795,13 +795,13 @@ html.light-theme .hero-section {
 
   .dark .hero-flat-desktop .hero-bio-card,
   .dark .hero-flat-desktop .hero-education-card {
-    background-color: #1e1e1e !important;
+    background-color: #f3f3f4 !important;
     background-image: none !important;
   }
 
-  /* Dark mode tint for Education card (keep Bio as-is) */
+  /* Keep education same as bio (pure white) */
   .dark .hero-flat-desktop .hero-education-card {
-    background-color: #0e2a1f !important;
+    background-color: #f3f3f4 !important;
   }
 
   .dark .hero-flat-desktop .hero-viewall-pill {
@@ -816,10 +816,10 @@ html.light-theme .hero-section {
 
   .dark .hero-flat-desktop .hero-viewall-pill:hover {
     box-shadow:
-      0 0 28px rgba(15, 23, 42, 0.07),
-      0 20px 40px rgba(15, 23, 42, 0.12),
-      0 4px 10px rgba(15, 23, 42, 0.06) !important;
-    transform: translateY(-2px);
+      0 0 38px rgba(15, 23, 42, 0.11),
+      0 24px 54px rgba(15, 23, 42, 0.18),
+      0 8px 18px rgba(15, 23, 42, 0.10) !important;
+    transform: translateY(-2px) scale(1.02);
   }
 
   .dark .hero-flat-desktop .hero-viewall-surface {
@@ -838,7 +838,7 @@ html.light-theme .hero-section {
 
   /* Keep the entire View-all parent rectangle SAME as light mode in dark mode */
   .dark .hero-flat-desktop .neu-container {
-    background-color: #f4f4f5 !important;
+    background-color: #ffffff !important;
     background-image: none !important;
     box-shadow: none !important;
     border: none !important;
@@ -856,10 +856,10 @@ html.light-theme .hero-section {
 
   .dark .hero-flat-desktop .hero-viewall-pill:hover {
     box-shadow:
-      0 0 28px rgba(15, 23, 42, 0.07),
-      0 20px 40px rgba(15, 23, 42, 0.12),
-      0 4px 10px rgba(15, 23, 42, 0.06) !important;
-    transform: translateY(-2px);
+      0 0 38px rgba(15, 23, 42, 0.11),
+      0 24px 54px rgba(15, 23, 42, 0.18),
+      0 8px 18px rgba(15, 23, 42, 0.10) !important;
+    transform: translateY(-2px) scale(1.02);
   }
 
   .dark .hero-flat-desktop .hero-viewall-surface {

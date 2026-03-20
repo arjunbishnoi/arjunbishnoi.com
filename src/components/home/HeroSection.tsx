@@ -10,8 +10,33 @@ import { cn } from "@/lib/utils"
 import { MobbinIconStack } from "./MobbinIconStack"
 import { AboutProfileCard } from "./AboutProfileCard"
 
+const VIEWALL_BLOB_COLORS = [
+  "bg-cyan-500/62",
+  "bg-pink-500/58",
+  "bg-violet-500/56",
+  "bg-lime-500/44",
+  "bg-orange-500/46",
+  "bg-rose-400/65",
+]
+
+function shuffleColors(colors: string[]) {
+  const next = [...colors]
+  for (let i = next.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[next[i], next[j]] = [next[j], next[i]]
+  }
+  return next
+}
+
+function rotateColors(colors: string[], offset: number) {
+  const next = [...colors]
+  const shift = ((offset % next.length) + next.length) % next.length
+  return next.map((_, i) => next[(i + shift) % next.length])
+}
+
 export function HeroSection() {
   const [scrolledDown, setScrolledDown] = useState(false)
+  const [viewAllBlobColors, setViewAllBlobColors] = useState<string[]>(VIEWALL_BLOB_COLORS)
   const prefersReducedMotion = useReducedMotion()
   const snapTransition = prefersReducedMotion
     ? { duration: 0 }
@@ -29,6 +54,20 @@ export function HeroSection() {
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const shuffled = shuffleColors(VIEWALL_BLOB_COLORS)
+    const unchanged = shuffled.every((color, index) => color === VIEWALL_BLOB_COLORS[index])
+
+    // Guarantee a different starting arrangement on each load.
+    if (unchanged) {
+      const offset = Math.floor(Math.random() * (VIEWALL_BLOB_COLORS.length - 1)) + 1
+      setViewAllBlobColors(rotateColors(VIEWALL_BLOB_COLORS, offset))
+      return
+    }
+
+    setViewAllBlobColors(shuffled)
   }, [])
 
   return (
@@ -77,37 +116,38 @@ export function HeroSection() {
       >
         
         {/* 1. Interactive Featured Bento Grid (Restored to Top) */}
-        <div className="w-full mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
-          <div className="w-full neu-container overflow-hidden aspect-[342/340] grid grid-rows-[40%_20%_20%_20%]">
+        <div className="w-[95%] sm:w-[94%] mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
+          <div className="w-full neu-container overflow-visible aspect-[342/340] grid grid-rows-[40%_20%_20%_20%]">
             {/* Row 1: Flat All Projects rectangle */}
-            <div className="relative h-full p-2 pb-1.5">
+            <div className="relative h-full p-3 pb-2.5">
               <Link
                 href="/projects"
-                className="group hero-viewall-pill relative z-10 block w-full h-full rounded-[30px] overflow-hidden transform-gpu"
+                className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] overflow-hidden transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
               >
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
                   <div className="hero-viewall-surface absolute inset-0 bg-white" />
                   <div
-                    className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2]"
+                    className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                     style={{
                       maskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
                       WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
                     }}
                   >
-                    <div className="absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply bg-cyan-500/62 animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125" style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className="absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply bg-pink-500/58 animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120" style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className="absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply bg-violet-500/56 animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125" style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className="absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply bg-lime-500/44 animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115" style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className="absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply bg-orange-500/46 animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110" style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className="absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply bg-rose-400/65 animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140" style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
                   </div>
                   <div
-                    className="absolute inset-0 opacity-[0.28] mix-blend-multiply pointer-events-none"
+                    className="absolute inset-0 opacity-[0.28] group-hover:opacity-[0.42] mix-blend-multiply pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                     style={{
                       backgroundImage:
                         "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
                     }}
                   />
+                  <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.16] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
                 </div>
                 <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                   <div className="flex items-center gap-1.5">
@@ -117,7 +157,7 @@ export function HeroSection() {
                 </div>
               </Link>
               {/* Mobile: match divider to the view-all pill bottom edge (bottom padding gap) */}
-              <div className="absolute bottom-0 left-0 w-1/2 h-1.5 border-r neu-separator pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-1/2 h-2.5 border-r neu-separator pointer-events-none" />
             </div>
             <div className="grid grid-cols-2">
               <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
@@ -172,67 +212,24 @@ export function HeroSection() {
         <div id="about" className="lg:hidden scroll-mt-24" />
         <AboutProfileCard
           imageSizes="(max-width: 768px) 100vw, 342px"
-          className="mt-8 lg:hidden"
+          className="mt-6 lg:hidden"
           priority
         />
 
-        {/* 3. Education Timeline Card */}
-        <div className="hero-education-card w-full mt-8 relative rounded-[40px] bg-emerald-100/40 dark:bg-emerald-950/85 border-0 pt-5 pb-5 pl-5 pr-6 min-h-[20rem] sm:min-h-[22rem] flex flex-col overflow-hidden shadow-none">
-          <div className="relative flex-1 flex flex-col justify-between">
-            {/* Vertical Line */}
-            <div className="absolute left-[7px] top-[10.8px] bottom-[41px] w-[1px] bg-gradient-to-b from-[#3f7d66]/90 via-[#79a98e]/70 to-[#d1e3d7]/0 dark:from-emerald-400/70 dark:via-emerald-500/45 dark:to-emerald-900/20" />
-
-            {/* Timeline Item 1 */}
-            <div className="relative pl-7 group">
-              <div className="absolute left-0 top-[3.3px] w-[15px] h-[15px] rounded-full bg-[#f3faf6] dark:bg-zinc-950 border-2 border-[#3f7d66] z-10 box-border shadow-[0_0_8px_rgba(63,125,102,0.22)]" />
-              <div className="space-y-0">
-                <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Applied A.I. Solutions Development</p>
-                <div className="my-2 flex">
-                  <span className="inline-flex items-center px-1.5 py-0.5 rounded-md bg-emerald-700/15 text-emerald-800 text-[0.7rem] font-bold uppercase tracking-wider border border-emerald-700/30 leading-none">
-                    Ongoing
-                  </span>
-                </div>
-                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
-                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
-              </div>
-            </div>
-
-            {/* Timeline Item 2 */}
-            <div className="relative pl-7">
-              <div className="absolute left-[3px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-[#6f9c85] dark:bg-[#7db69b] border border-[#4f7d68]/30 z-10 opacity-100" />
-              <div className="space-y-0">
-                <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Mobile Application Development and Strategy</p>
-                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
-                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
-              </div>
-            </div>
-
-            {/* Timeline Item 3 */}
-            <div className="relative pl-7">
-              <div className="absolute left-[3px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-[#88b49b] dark:bg-[#5f8f7a] border border-[#4f7d68]/25 z-10 opacity-100" />
-              <div className="space-y-0">
-                <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">B.Sc. Information Technology</p>
-                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Amity University, Noida</p>
-                <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Graduation</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 4. Bio Card */}
-        <div className="hero-bio-card w-full mt-8 relative rounded-[40px] bg-zinc-100/50 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
-          <div className="flex flex-col p-8 text-left">
+        {/* 3. Unified Mobile Bio + Education Card */}
+        <div className="hero-bio-card w-full mt-8 relative rounded-[40px] bg-[#f3f3f4] dark:bg-[#f3f3f4] border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
+          <div className="flex flex-col pt-8 pb-8 px-8 text-left">
             {/* Professional Titles */}
-            <div className="flex flex-col gap-3 mb-8 shrink-0">
+            <div className="flex flex-col items-center text-center gap-0 mb-8 shrink-0">
               {["Cross-platform App Developer", "AI Engineer", "UI/UX Designer"].map((title, idx) => (
-                <div key={idx} className="flex items-center">
-                  <span className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-none">{title}</span>
+                <div key={idx} className="flex items-center justify-center">
+                  <span className="text-zinc-900 dark:text-zinc-900 text-[14.5px] leading-[1.6] tracking-[-0.015em] font-[500]">{title}</span>
                 </div>
               ))}
             </div>
 
             {/* Mission Title */}
-            <h3 className="text-xl font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8">
+            <h3 className="text-2xl sm:text-xl font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8 text-center">
               Bridging design <br/>& engineering.
             </h3>
 
@@ -241,8 +238,47 @@ export function HeroSection() {
               I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.
             </p>
 
+            {/* Education Timeline (between short bio and skills) - aligned with short bio left edge */}
+            <div className="hero-education-card relative rounded-[28px] bg-[#f3f3f4] dark:bg-[#f3f3f4] border border-zinc-200/40 dark:border-zinc-800/40 pt-5 pb-6 px-0 min-h-[19rem] flex flex-col overflow-visible mb-8">
+              <div className="relative flex-1 flex flex-col justify-between overflow-visible">
+                <div className="absolute left-0 top-[10.8px] bottom-[41px] w-[1px] bg-zinc-300 dark:bg-zinc-600" />
+
+                <div className="relative pl-7 group">
+                  <div className="absolute left-0 top-[3.3px] w-[15px] h-[15px] rounded-full bg-[#3f7d66] border-0 z-10 box-border -translate-x-1/2" />
+                  <div className="space-y-0">
+                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Applied A.I. Solutions Development</p>
+                    <div className="my-2 flex">
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded-md bg-emerald-700/15 text-emerald-800 text-[0.7rem] font-bold uppercase tracking-wider border border-emerald-700/30 leading-none">
+                        Ongoing
+                      </span>
+                    </div>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
+                  </div>
+                </div>
+
+                <div className="relative pl-7">
+                  <div className="absolute left-0 top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
+                  <div className="space-y-0">
+                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Mobile Application Development and Strategy</p>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
+                  </div>
+                </div>
+
+                <div className="relative pl-7">
+                  <div className="absolute left-0 top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
+                  <div className="space-y-0">
+                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">B.Sc. Information Technology</p>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Amity University, Noida</p>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Graduation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Skill Icons Integration */}
-            <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full pt-8">
+            <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
               {heroSkills.slice(0, 12).map((skill, i) => (
                 <div key={i} className="flex flex-col items-center gap-1.5 opacity-80">
                   <div className="w-7 h-7 relative grayscale dark:invert-[0.15]">
@@ -272,7 +308,7 @@ export function HeroSection() {
             
             {/* COLUMN 1: Bio + Extended Skills */}
             <div className="flex flex-col">
-              <div className="hero-bio-card w-full h-full relative rounded-[40px] bg-zinc-100/70 dark:bg-zinc-950/90 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
+              <div className="hero-bio-card w-full h-full relative rounded-[40px] bg-white dark:bg-white border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col overflow-hidden shadow-none">
                 {/* Unified Bio Section with Consistent Spacing */}
                 <div className="flex flex-col h-full p-8 pt-10 xl:p-10 xl:pt-10 pb-6 text-left overflow-hidden">
                   
@@ -320,36 +356,37 @@ export function HeroSection() {
             {/* COLUMN 2: Bento (Row 1) + Bio (Row 2) */}
             <div className="flex flex-col gap-6 xl:gap-7">
               {/* ROW 1: Interactive Bento */}
-              <div className="w-full relative aspect-[4/5] neu-container overflow-hidden rounded-[40px] xl:rounded-[40px] grid grid-rows-[40%_20%_20%_20%] shrink-0 min-h-0">
+              <div className="w-full relative aspect-[4/5] neu-container overflow-visible rounded-[40px] xl:rounded-[40px] grid grid-rows-[40%_20%_20%_20%] shrink-0 min-h-0">
                   {/* Row 1: Raised All Projects rectangle */}
-                  <div className="relative h-full p-2 xl:p-2.5 pb-1.5 xl:pb-2">
+                  <div className="relative h-full p-2.5 xl:p-3.5 pb-2 xl:pb-2.5">
                     <Link
                       href="/projects"
-                      className="group hero-viewall-pill relative z-10 block w-full h-full rounded-[30px] xl:rounded-[36px] overflow-hidden transform-gpu"
+                      className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] xl:rounded-[36px] overflow-hidden transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
                     >
                       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
                         <div className="hero-viewall-surface absolute inset-0 bg-white" />
                         <div
-                          className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2]"
+                          className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                           style={{
                             maskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
                             WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
                           }}
                         >
-                          <div className="absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply bg-cyan-500/62 animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125" style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className="absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply bg-pink-500/58 animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120" style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className="absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply bg-violet-500/56 animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125" style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className="absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply bg-lime-500/44 animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115" style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className="absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply bg-orange-500/46 animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110" style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className="absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply bg-rose-400/65 animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140" style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
                         </div>
                         <div
-                          className="absolute inset-0 opacity-[0.28] mix-blend-multiply pointer-events-none"
+                          className="absolute inset-0 opacity-[0.28] group-hover:opacity-[0.42] mix-blend-multiply pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                           style={{
                             backgroundImage:
                               "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
                           }}
                         />
+                        <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.16] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
                       </div>
                       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                         <div className="flex items-center gap-2 xl:gap-2.5">
@@ -359,7 +396,7 @@ export function HeroSection() {
                       </div>
                     </Link>
                     {/* Draw divider only in the bottom-padding gap so it stops at the view-all section bottom */}
-                    <div className="absolute bottom-0 left-0 w-1/2 h-1.5 xl:h-2 border-r neu-separator pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 w-1/2 h-2 xl:h-2.5 border-r neu-separator pointer-events-none" />
                   </div>
                   <div className="grid grid-cols-2">
                     <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
@@ -410,16 +447,16 @@ export function HeroSection() {
                 </div>
 
               {/* ROW 2: Education Timeline Card */}
-              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-emerald-100/55 dark:bg-emerald-950/85 border-0 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
+              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-white dark:bg-white border-0 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
 
                 
                 <div className="relative flex-1 flex flex-col justify-between">
-                  {/* Vertical Line */}
-                  <div className="absolute left-[7px] top-[11px] bottom-[42px] w-[1.5px] bg-gradient-to-b from-[#3f7d66]/90 via-[#79a98e]/70 to-[#d1e3d7]/0 dark:from-emerald-400/70 dark:via-emerald-500/45 dark:to-emerald-900/20" />
+                  {/* Vertical Line - monochrome */}
+                  <div className="absolute left-[7px] top-[11px] bottom-[42px] w-[1px] bg-zinc-300 dark:bg-zinc-600" />
                   
-                  {/* Timeline Item 1 */}
+                  {/* Timeline Item 1 - top circle solid green, centered on line */}
                   <div className="relative pl-6 group">
-                    <div className="absolute left-0 top-[2.27px] xl:top-[3.4px] w-[15px] h-[15px] rounded-full bg-[#f3faf6] dark:bg-zinc-950 border-2 border-[#3f7d66] z-10 box-border shadow-[0_0_10px_rgba(63,125,102,0.22)]" />
+                    <div className="absolute left-[7.5px] top-[2.27px] xl:top-[3.4px] w-[15px] h-[15px] rounded-full bg-[#3f7d66] border-0 z-10 box-border -translate-x-1/2" />
                     <div className="space-y-0">
                       <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">
                         Applied A.I. Solutions Development
@@ -432,9 +469,9 @@ export function HeroSection() {
                     </div>
                   </div>
 
-                  {/* Timeline Item 2 */}
+                  {/* Timeline Item 2 - dark grey, centered on line */}
                   <div className="relative pl-6">
-                    <div className="absolute left-[3px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-[#6f9c85] dark:bg-[#7db69b] border border-[#4f7d68]/30 z-10 opacity-100" />
+                    <div className="absolute left-[7.5px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
                     <div className="space-y-0">
                       <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">Mobile Application Development and Strategy</p>
                       <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
@@ -442,9 +479,9 @@ export function HeroSection() {
                     </div>
                   </div>
 
-                  {/* Timeline Item 3 */}
+                  {/* Timeline Item 3 - dark grey, centered on line */}
                   <div className="relative pl-6">
-                    <div className="absolute left-[3px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-[#88b49b] dark:bg-[#5f8f7a] border border-[#4f7d68]/25 z-10 opacity-100" />
+                    <div className="absolute left-[7.5px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
                     <div className="space-y-0">
                       <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">B.Sc. Information Technology</p>
                       <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">Amity University, Noida</p>
