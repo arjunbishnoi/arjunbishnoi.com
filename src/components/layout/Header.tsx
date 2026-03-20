@@ -14,9 +14,9 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const mobileMenuContainerRef = useRef<HTMLDivElement>(null)
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
   const pathname = usePathname()
-  const [mounted, setMounted] = useState(false)
+  const [hasMounted, setHasMounted] = useState(false)
 
   const mobileMenuAnimationState = isMobileMenuOpen ? "open" : "closed"
   const menuPanelTransition = { type: "spring" as const, duration: 0.3, bounce: 0.1 }
@@ -66,17 +66,16 @@ export function Header() {
     closed: { rotate: [-45, 0, 0], y: [-4, -4, 0] },
   }
 
-  // Hydration fix for theme
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 500)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    setHasMounted(true)
   }, [])
 
 
@@ -143,7 +142,7 @@ export function Header() {
     setIsMobileMenuOpen(false)
   }
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
+    setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }
 
   // Spacing model (mobile)
@@ -202,25 +201,43 @@ export function Header() {
             className="absolute top-0 bottom-0 flex items-center z-10"
             style={{ right: `${mobileRightInset}px` }}
           >
-             {mounted && (
-                  <motion.div layout transition={{ layout: menuPanelTransition }}>
-                  <button
-                  onClick={toggleTheme}
-                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
-                  aria-label="Toggle theme"
+            <motion.div layout transition={{ layout: menuPanelTransition }}>
+              <button
+                onClick={toggleTheme}
+                className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
+                aria-label="Toggle theme"
               >
-                  {theme === "dark" ? (
-                    <motion.div key="sun" initial={{ rotate: -90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: 90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
-                      <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} />
-                    </motion.div>
-                  ) : (
-                    <motion.div key="moon" initial={{ rotate: 90, scale: 0, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} exit={{ rotate: -90, scale: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
-                      <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />
-                    </motion.div>
-                  )}
-             </button>
+                {resolvedTheme === "dark" ? (
+                  <motion.div
+                    key="sun"
+                    initial={
+                      hasMounted
+                        ? { rotate: -90, scale: 0, opacity: 0 }
+                        : { rotate: 0, scale: 1, opacity: 1 }
+                    }
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: 90, scale: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                  >
+                    <Sun className="w-[1.125rem] h-[1.125rem]" strokeWidth={2.8} />
                   </motion.div>
-             )}
+                ) : (
+                  <motion.div
+                    key="moon"
+                    initial={
+                      hasMounted
+                        ? { rotate: 90, scale: 0, opacity: 0 }
+                        : { rotate: 0, scale: 1, opacity: 1 }
+                    }
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: -90, scale: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                  >
+                    <Moon className="w-[1.125rem] h-[1.125rem]" strokeWidth={2} />
+                  </motion.div>
+                )}
+              </button>
+            </motion.div>
             
             <AnimatePresence>
                 {isMailShown && (

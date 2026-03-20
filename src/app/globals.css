@@ -14,8 +14,8 @@
   /* --- Neumorphic CSS Custom Properties --- */
   :root {
     /* Light mode neumorphic surface */
-    --neu-surface: #e0e0e0;
-    --neu-surface-dimmed: #a5a5a5;
+    --neu-surface: #e6e6e6;
+    --neu-surface-dimmed: #adadad;
     --neu-shadow-dark: rgba(140, 140, 140, 0.75); /* Darker drop shadow */
     --neu-shadow-light: rgba(255, 255, 255, 0.95); /* Brighter highlight */
     --neu-shadow-distance: 6px;
@@ -33,7 +33,7 @@
     
     /* Project-specific background matching main background in light mode */
     --projects-background: 0 0% 88%;
-    --projects-surface: #e0e0e0;
+    --projects-surface: #e6e6e6;
     
     /* Mobile flat border */
     --neu-flat-border: rgba(0, 0, 0, 0.1);
@@ -170,6 +170,17 @@
     transform-origin: top center;
   }
 
+/* MobbinIconStack: responsive translateY spacing via CSS var (prevents SSR/hydration layout shift) */
+.mobbin-icon-stack {
+  --mobbin-icon-offset: 10px;
+}
+
+@media (min-width: 768px) {
+  .mobbin-icon-stack {
+    --mobbin-icon-offset: 16px;
+  }
+}
+
   @media (max-width: 767px) {
   .hero-mobile-main-shape-wrap {
     transform: scale(0.91);
@@ -214,6 +225,11 @@
     background-image: none !important;
   }
 
+  /* Tint only the Education card (keep the "zone" brightness, shift to green hue) */
+  .hero-mobile-main-shape-wrap .hero-education-card {
+    background-color: #d0e5d7 !important;
+  }
+
   .dark .hero-mobile-main-shape-wrap .neu-container {
     background-color: #050505 !important;
     background-image: none !important;
@@ -250,6 +266,11 @@
   .dark .hero-mobile-main-shape-wrap .hero-education-card {
     background-color: #1e1e1e !important;
     background-image: none !important;
+  }
+
+  /* Dark mode tint for Education card */
+  .dark .hero-mobile-main-shape-wrap .hero-education-card {
+    background-color: #0e2a1f !important;
   }
 
   /* --- Subtle flat neumorphic (for small elements like social icons) --- */
@@ -295,7 +316,7 @@
 @layer base {
   :root {
     /* Set background to exactly match --neu-surface #e0e0e0 */
-    --background: 0 0% 88%;
+    --background: 0 0% 90%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
@@ -688,7 +709,7 @@ html.light-theme .hero-section {
   }
 
   .hero-flat-desktop .hero-education-card {
-    background-color: #d6d6d6 !important;
+    background-color: #d0e5d7 !important;
     background-image: none !important;
   }
 
@@ -730,6 +751,11 @@ html.light-theme .hero-section {
   .dark .hero-flat-desktop .hero-education-card {
     background-color: #1e1e1e !important;
     background-image: none !important;
+  }
+
+  /* Dark mode tint for Education card (keep Bio as-is) */
+  .dark .hero-flat-desktop .hero-education-card {
+    background-color: #0e2a1f !important;
   }
 
   .dark .hero-flat-desktop .hero-viewall-pill {

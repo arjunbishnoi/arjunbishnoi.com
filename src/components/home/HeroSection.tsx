@@ -85,7 +85,8 @@ export function HeroSection() {
                   </div>
                 </div>
               </Link>
-              <div className="absolute bottom-0 left-0 w-1/2 h-full border-r neu-separator pointer-events-none" />
+              {/* Mobile: match divider to the view-all pill bottom edge (bottom padding gap) */}
+              <div className="absolute bottom-0 left-0 w-1/2 h-1.5 border-r neu-separator pointer-events-none" />
             </div>
             <div className="grid grid-cols-2">
               <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
@@ -145,7 +146,7 @@ export function HeroSection() {
         />
 
         {/* 3. Education Timeline Card */}
-        <div className="hero-education-card w-full mt-8 relative rounded-[40px] bg-zinc-100/50 dark:bg-zinc-950/90 border-0 pt-5 pb-5 pl-5 pr-6 min-h-[20rem] sm:min-h-[22rem] flex flex-col overflow-hidden shadow-none">
+        <div className="hero-education-card w-full mt-8 relative rounded-[40px] bg-emerald-100/40 dark:bg-emerald-950/85 border-0 pt-5 pb-5 pl-5 pr-6 min-h-[20rem] sm:min-h-[22rem] flex flex-col overflow-hidden shadow-none">
           <div className="relative flex-1 flex flex-col justify-between">
             {/* Vertical Line */}
             <div className="absolute left-[7px] top-[10.8px] bottom-[41px] w-[1px] bg-gradient-to-b from-[#3f7d66]/90 via-[#79a98e]/70 to-[#d1e3d7]/0 dark:from-emerald-400/70 dark:via-emerald-500/45 dark:to-emerald-900/20" />
@@ -320,7 +321,8 @@ export function HeroSection() {
                         </div>
                       </div>
                     </Link>
-                    <div className="absolute bottom-0 left-0 w-1/2 h-full border-r neu-separator pointer-events-none" />
+                    {/* Draw divider only in the bottom-padding gap so it stops at the view-all section bottom */}
+                    <div className="absolute bottom-0 left-0 w-1/2 h-1.5 xl:h-2 border-r neu-separator pointer-events-none" />
                   </div>
                   <div className="grid grid-cols-2">
                     <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-zinc-100 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
@@ -371,7 +373,7 @@ export function HeroSection() {
                 </div>
 
               {/* ROW 2: Education Timeline Card */}
-              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-zinc-100/70 dark:bg-zinc-950/90 border-0 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
+              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-emerald-100/55 dark:bg-emerald-950/85 border-0 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
 
                 
                 <div className="relative flex-1 flex flex-col justify-between">

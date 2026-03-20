@@ -62,29 +62,27 @@ const icons = [
 export function MobbinIconStack() {
   const [index, setIndex] = useState(0)
   const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % icons.length)
     }, 2000)
     return () => clearInterval(timer)
   }, [])
 
-  if (!mounted) return null
-
   const isDark = resolvedTheme === "dark"
-  
-  // Responsive vertical offset: larger on desktop to prevent "squished" look
-  const offsetY = mounted && typeof window !== 'undefined' && window.innerWidth >= 768 ? 16 : 10;
+
+  // Use CSS variables for responsive offset to avoid SSR -> hydration shifts.
+  // Defined in globals.css under `.mobbin-icon-stack`.
+  const midY = "calc(var(--mobbin-icon-offset) * -1)"
+  const backY = "calc(var(--mobbin-icon-offset) * -2)"
   
   // Define background colors for light/dark modes
   const midBg = isDark ? "#8A8A8A" : "#999999"
   const backBg = isDark ? "#505050" : "#D1D1D1" // Colors swapped at user request
 
   return (
-    <div className="relative w-14 h-14 md:w-[88px] md:h-[88px] flex items-center justify-center pointer-events-none select-none overflow-visible">
+    <div className="mobbin-icon-stack relative w-14 h-14 md:w-[88px] md:h-[88px] flex items-center justify-center pointer-events-none select-none overflow-visible">
       <AnimatePresence initial={false} mode="popLayout">
         {icons.map((icon, i) => {
           const relPos = (i - index + icons.length) % icons.length
@@ -97,11 +95,16 @@ export function MobbinIconStack() {
           return (
             <motion.div
               key={icon.name}
-              initial={{ opacity: 0, scale: 0.5, y: -40 }}
+              initial={{
+                opacity: 1,
+                scale: isFront ? 1 : isMid ? 0.85 : 0.7,
+                y: isFront ? 0 : isMid ? midY : backY,
+                background: isFront ? icon.bg : isMid ? midBg : backBg,
+              }}
               animate={{ 
                 opacity: 1,
                 scale: isFront ? 1 : isMid ? 0.85 : 0.7,
-                y: isFront ? 0 : isMid ? -offsetY : -offsetY * 2,
+                y: isFront ? 0 : isMid ? midY : backY,
                 background: isFront ? icon.bg : isMid ? midBg : backBg,
                 zIndex: 10 - relPos,
               }}
@@ -113,7 +116,7 @@ export function MobbinIconStack() {
                 {isFront && (
                   <motion.div
                     key={`logo-${icon.name}`}
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 1, scale: 1 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ delay: 0.1, duration: 0.4 }}
