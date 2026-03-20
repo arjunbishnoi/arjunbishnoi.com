@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, ChevronDown } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
 import { socialLinks, projects, heroSkills } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 import { MobbinIconStack } from "./MobbinIconStack"
@@ -11,6 +12,7 @@ import { AboutProfileCard } from "./AboutProfileCard"
 
 export function HeroSection() {
   const [scrolledDown, setScrolledDown] = useState(false)
+  const prefersReducedMotion = useReducedMotion()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,21 +31,41 @@ export function HeroSection() {
       {/* Universal Hero Title */}
       <div className="w-full z-20 px-6 pt-[max(6.85rem,calc(env(safe-area-inset-top)+5.95rem))] md:pt-14 lg:pt-18 pb-0">
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6 text-center flex flex-col items-center">
-          <div className="mt-1 sm:mt-2 md:mt-0 mb-5 sm:mb-6 md:mb-12 lg:mb-8 xl:mb-7 lg:scale-[0.9] xl:scale-[0.84] origin-center">
+          <motion.div
+            className="mt-1 sm:mt-2 md:mt-0 mb-5 sm:mb-6 md:mb-12 lg:mb-8 xl:mb-7 lg:scale-[0.9] xl:scale-[0.84] origin-center"
+            initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.7, delay: 0 }}
+          >
             <MobbinIconStack />
-          </div>
-          <h1 className="font-sans font-semibold whitespace-nowrap text-[1.86rem] sm:text-[2.78rem] md:text-[3rem] lg:text-[3.15rem] xl:text-[3.5rem] leading-[1.02] tracking-[-0.05em] sm:tracking-[-0.035em] md:tracking-[-0.04em]">
+          </motion.div>
+          <motion.h1
+            className="font-sans font-semibold whitespace-nowrap text-[1.86rem] sm:text-[2.78rem] md:text-[3rem] lg:text-[3.15rem] xl:text-[3.5rem] leading-[1.02] tracking-[-0.05em] sm:tracking-[-0.035em] md:tracking-[-0.04em]"
+            initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.7, delay: 0.18 }}
+          >
             <span className="inline text-black dark:text-white">Developer </span>
             <span className="inline text-black dark:text-white">& Designer</span>
-          </h1>
-          <p className="mt-1.5 text-center text-base leading-[1.28] md:mt-3 md:text-xl lg:text-2xl md:leading-relaxed opacity-90 lg:max-w-none lg:whitespace-nowrap">
+          </motion.h1>
+          <motion.p
+            className="mt-1.5 text-center text-base leading-[1.28] md:mt-3 md:text-xl lg:text-2xl md:leading-relaxed opacity-90 lg:max-w-none lg:whitespace-nowrap"
+            initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.7, delay: 0.30 }}
+          >
             <span className="block lg:inline">Mobile Apps, AI &amp; Design.</span>
-          </p>
+          </motion.p>
         </div>
       </div>
 
       {/* Mobile Stack Layout */}
-      <div className="w-full z-20 px-6 pb-20 lg:hidden flex flex-col items-center">
+      <motion.div
+        className="w-full z-20 px-6 pb-20 lg:hidden flex flex-col items-center"
+        initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 26 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: prefersReducedMotion ? 0 : 0.75, delay: 0.55 }}
+      >
         
         {/* 1. Interactive Featured Bento Grid (Restored to Top) */}
         <div className="w-full mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
@@ -225,10 +247,16 @@ export function HeroSection() {
         </div>
 
 
-      </div>
+      </motion.div>
 
       {/* Desktop 2-Row 3-Column Cinematic Layout */}
-      <div className="hidden lg:flex flex-col w-full z-20 pb-0 mt-12 xl:mt-14 items-center scroll-mt-28 hero-flat-desktop" id="about">
+      <motion.div
+        className="hidden lg:flex flex-col w-full z-20 pb-0 mt-12 xl:mt-14 items-center scroll-mt-28 hero-flat-desktop"
+        id="about"
+        initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 26 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: prefersReducedMotion ? 0 : 0.75, delay: 0.55 }}
+      >
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6">
           
           <div className="grid grid-cols-3 gap-6 xl:gap-7 items-stretch">
@@ -442,7 +470,7 @@ export function HeroSection() {
 
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll down indicator */}
       <div className="hidden md:flex w-full flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-0 md:mt-8 relative z-40">

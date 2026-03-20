@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeColorMeta } from "@/components/ThemeColorMeta";
 import { Header } from "@/components/layout/Header";
+import { PageLoadFadeIn } from "@/components/layout/PageLoadFadeIn";
 import { socialLinks } from "@/lib/site-data";
 
 const siteUrl = "https://arjunbishnoi.com";
@@ -164,7 +165,7 @@ export default function RootLayout({
         >
           <ThemeColorMeta />
           <Header />
-          <div id="site-content">{children}</div>
+          <PageLoadFadeIn>{children}</PageLoadFadeIn>
         </ThemeProvider>
       </body>
     </html>
