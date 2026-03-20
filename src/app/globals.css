@@ -198,13 +198,15 @@
     background-color: #f2f2f2 !important;
     background-image: none !important;
     box-shadow:
+      0 0 24px rgba(15, 23, 42, 0.06),
       0 16px 32px rgba(15, 23, 42, 0.10),
       0 3px 8px rgba(15, 23, 42, 0.05) !important;
-    border: 1px solid rgba(15, 23, 42, 0.04) !important;
+    border: none !important;
   }
 
   html:not(.dark) .hero-mobile-main-shape-wrap .hero-viewall-pill:active {
     box-shadow:
+      0 0 28px rgba(15, 23, 42, 0.07),
       0 20px 40px rgba(15, 23, 42, 0.12),
       0 4px 10px rgba(15, 23, 42, 0.06) !important;
     transform: translateY(-2px);
@@ -214,8 +216,8 @@
     background-color: #ececec !important;
     border-radius: inherit !important;
     box-shadow:
-      inset 10px 10px 18px rgba(15, 23, 42, 0.16),
-      inset -10px -10px 18px rgba(255, 255, 255, 0.98) !important;
+      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
+      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
     opacity: 1 !important;
   }
 
@@ -238,27 +240,29 @@
   }
 
   .dark .hero-mobile-main-shape-wrap .hero-viewall-pill {
-    background-color: #0b0b0b !important;
+    background-color: #f2f2f2 !important;
     background-image: none !important;
     box-shadow:
-      0 18px 36px rgba(0, 0, 0, 0.45),
-      0 2px 6px rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+      0 0 24px rgba(15, 23, 42, 0.06),
+      0 16px 32px rgba(15, 23, 42, 0.10),
+      0 3px 8px rgba(15, 23, 42, 0.05) !important;
+    border: none !important;
   }
 
   .dark .hero-mobile-main-shape-wrap .hero-viewall-pill:active {
     box-shadow:
-      0 22px 44px rgba(0, 0, 0, 0.52),
-      0 3px 8px rgba(255, 255, 255, 0.04) !important;
+      0 0 28px rgba(15, 23, 42, 0.07),
+      0 20px 40px rgba(15, 23, 42, 0.12),
+      0 4px 10px rgba(15, 23, 42, 0.06) !important;
     transform: translateY(-2px);
   }
 
   .dark .hero-mobile-main-shape-wrap .hero-viewall-surface {
-    background-color: #050505 !important;
+    background-color: #ececec !important;
     border-radius: inherit !important;
     box-shadow:
-      inset 12px 12px 22px rgba(0, 0, 0, 0.72),
-      inset -8px -8px 16px rgba(255, 255, 255, 0.03) !important;
+      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
+      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
     opacity: 1 !important;
   }
 
@@ -279,13 +283,15 @@
     background-color: #f2f2f2 !important;
     background-image: none !important;
     box-shadow:
+      0 0 24px rgba(15, 23, 42, 0.06),
       0 16px 32px rgba(15, 23, 42, 0.10),
       0 3px 8px rgba(15, 23, 42, 0.05) !important;
-    border: 1px solid rgba(15, 23, 42, 0.04) !important;
+    border: none !important;
   }
 
   .dark .hero-mobile-main-shape-wrap .hero-viewall-pill:active {
     box-shadow:
+      0 0 28px rgba(15, 23, 42, 0.07),
       0 20px 40px rgba(15, 23, 42, 0.12),
       0 4px 10px rgba(15, 23, 42, 0.06) !important;
     transform: translateY(-2px);
@@ -295,8 +301,8 @@
     background-color: #ececec !important;
     border-radius: inherit !important;
     box-shadow:
-      inset 10px 10px 18px rgba(15, 23, 42, 0.16),
-      inset -10px -10px 18px rgba(255, 255, 255, 0.98) !important;
+      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
+      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
     opacity: 1 !important;
   }
 
@@ -755,13 +761,15 @@ html.light-theme .hero-section {
     background-color: #f2f2f2 !important;
     background-image: none !important;
     box-shadow:
+      0 0 24px rgba(15, 23, 42, 0.06),
       0 16px 32px rgba(15, 23, 42, 0.10),
       0 3px 8px rgba(15, 23, 42, 0.05) !important;
-    border: 1px solid rgba(15, 23, 42, 0.04) !important;
+    border: none !important;
   }
 
   html:not(.dark) .hero-flat-desktop .hero-viewall-pill:hover {
     box-shadow:
+      0 0 28px rgba(15, 23, 42, 0.07),
       0 20px 40px rgba(15, 23, 42, 0.12),
       0 4px 10px rgba(15, 23, 42, 0.06) !important;
     transform: translateY(-2px);
@@ -771,8 +779,8 @@ html.light-theme .hero-section {
     background-color: #ececec !important;
     border-radius: inherit !important;
     box-shadow:
-      inset 10px 10px 18px rgba(15, 23, 42, 0.16),
-      inset -10px -10px 18px rgba(255, 255, 255, 0.98) !important;
+      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
+      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
     opacity: 1 !important;
   }
 }
@@ -797,27 +805,29 @@ html.light-theme .hero-section {
   }
 
   .dark .hero-flat-desktop .hero-viewall-pill {
-    background-color: #0b0b0b !important;
+    background-color: #f2f2f2 !important;
     background-image: none !important;
     box-shadow:
-      0 18px 36px rgba(0, 0, 0, 0.45),
-      0 2px 6px rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+      0 0 24px rgba(15, 23, 42, 0.06),
+      0 16px 32px rgba(15, 23, 42, 0.10),
+      0 3px 8px rgba(15, 23, 42, 0.05) !important;
+    border: none !important;
   }
 
   .dark .hero-flat-desktop .hero-viewall-pill:hover {
     box-shadow:
-      0 22px 44px rgba(0, 0, 0, 0.52),
-      0 3px 8px rgba(255, 255, 255, 0.04) !important;
+      0 0 28px rgba(15, 23, 42, 0.07),
+      0 20px 40px rgba(15, 23, 42, 0.12),
+      0 4px 10px rgba(15, 23, 42, 0.06) !important;
     transform: translateY(-2px);
   }
 
   .dark .hero-flat-desktop .hero-viewall-surface {
-    background-color: #050505 !important;
+    background-color: #ececec !important;
     border-radius: inherit !important;
     box-shadow:
-      inset 12px 12px 22px rgba(0, 0, 0, 0.72),
-      inset -8px -8px 16px rgba(255, 255, 255, 0.03) !important;
+      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
+      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
     opacity: 1 !important;
   }
 
@@ -838,13 +848,15 @@ html.light-theme .hero-section {
     background-color: #f2f2f2 !important;
     background-image: none !important;
     box-shadow:
+      0 0 24px rgba(15, 23, 42, 0.06),
       0 16px 32px rgba(15, 23, 42, 0.10),
       0 3px 8px rgba(15, 23, 42, 0.05) !important;
-    border: 1px solid rgba(15, 23, 42, 0.04) !important;
+    border: none !important;
   }
 
   .dark .hero-flat-desktop .hero-viewall-pill:hover {
     box-shadow:
+      0 0 28px rgba(15, 23, 42, 0.07),
       0 20px 40px rgba(15, 23, 42, 0.12),
       0 4px 10px rgba(15, 23, 42, 0.06) !important;
     transform: translateY(-2px);
@@ -854,8 +866,8 @@ html.light-theme .hero-section {
     background-color: #ececec !important;
     border-radius: inherit !important;
     box-shadow:
-      inset 10px 10px 18px rgba(15, 23, 42, 0.16),
-      inset -10px -10px 18px rgba(255, 255, 255, 0.98) !important;
+      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
+      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
     opacity: 1 !important;
   }
 }
