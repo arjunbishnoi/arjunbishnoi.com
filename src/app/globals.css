@@ -795,15 +795,17 @@ html.light-theme .hero-section {
     border: none !important;
   }
 
-  .dark .hero-flat-desktop .hero-bio-card,
-  .dark .hero-flat-desktop .hero-education-card {
-    background-color: #f3f3f4 !important;
+  /* Dark desktop: bio + education tiles match mobile — pure black */
+  .dark .hero-flat-desktop .hero-bio-card {
+    background-color: #000000 !important;
     background-image: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
   }
 
-  /* Keep education same as bio (pure white) */
   .dark .hero-flat-desktop .hero-education-card {
-    background-color: #f3f3f4 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
   }
 
   .dark .hero-flat-desktop .hero-viewall-pill {
@@ -1066,6 +1068,23 @@ html.light-theme ::selection {
   @media (max-width: 767.98px) {
     .home-stack-gap-after {
       margin-bottom: var(--home-stack-gap-after);
+    }
+  }
+
+  /* Mobile bio block (below hero shape): pure black in dark mode; nested education slightly lifted */
+  @media (max-width: 1023.98px) {
+    .dark .home-mobile-bio-shell.hero-bio-card {
+      background-color: #000000 !important;
+      background-image: none !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+    }
+
+    /* No separate surface behind education — same black as bio card */
+    .dark .home-mobile-bio-shell .hero-education-card {
+      background-color: transparent !important;
+      background-image: none !important;
+      border: none !important;
+      box-shadow: none !important;
     }
   }
 

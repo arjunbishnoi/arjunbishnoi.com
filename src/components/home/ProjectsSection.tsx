@@ -28,6 +28,7 @@ export function ProjectsSection() {
             href="/projects"
             className={cn(
               "flex-none flex items-center justify-center gap-2 rounded-full bg-black text-white px-5 py-2.5 text-[0.85rem] font-medium",
+              "dark:bg-white dark:text-black",
               "transition-transform duration-200 active:scale-[0.98]"
             )}
             aria-label="View all projects"
