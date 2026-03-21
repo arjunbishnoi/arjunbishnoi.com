@@ -14,6 +14,7 @@ interface BlogProps {
 
 export function BlogCard({ blog }: BlogProps) {
   const category = blog.tags && blog.tags.length > 0 ? blog.tags[0] : "Blog";
+  const shortSubtitle = blog.description.split('.')[0] + '.'
 
   return (
     <div className="rounded-none overflow-hidden h-full flex flex-col">
@@ -29,9 +30,13 @@ export function BlogCard({ blog }: BlogProps) {
       </div>
       
       <div className="flex flex-col flex-grow pt-1">
-        <h3 className="text-xl md:text-2xl text-black dark:text-white font-bold mb-4">
+        <h3 className="text-base md:text-lg text-foreground font-semibold mb-2">
           {blog.title}
         </h3>
+
+        <p className="text-base md:text-lg text-foreground font-normal mb-4 line-clamp-1">
+          {shortSubtitle}
+        </p>
         
         <div className="mb-2">
           <span className="inline-block text-sm md:text-base text-foreground/80 bg-black/5 dark:bg-white/10 rounded-full px-4 py-1">

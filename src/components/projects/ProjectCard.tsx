@@ -36,11 +36,11 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
       </div>
       
       <div className="flex flex-col flex-grow pt-1">
-        <h3 className="text-xl md:text-2xl text-black dark:text-white font-bold line-clamp-1 mb-2">
+        <h3 className="text-base md:text-lg text-foreground font-semibold line-clamp-1 mb-2">
           {project.title}
         </h3>
         
-        <p className="text-xl md:text-2xl text-foreground mb-4">
+        <p className="text-base md:text-lg text-foreground font-normal mb-4">
           {shortSubtitle}
         </p>
         
