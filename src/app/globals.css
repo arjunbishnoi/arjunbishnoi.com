@@ -183,6 +183,12 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .mobbin-icon-stack {
+    --mobbin-icon-offset: 12px;
+  }
+}
+
   @media (max-width: 767px) {
   .hero-mobile-main-shape-wrap {
     transform: scale(0.91);

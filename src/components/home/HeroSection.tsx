@@ -81,7 +81,7 @@ export function HeroSection() {
       <div className="w-full z-20 px-6 pt-[max(6.85rem,calc(env(safe-area-inset-top)+5.95rem))] md:pt-14 lg:pt-18 pb-0">
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6 text-center flex flex-col items-center">
           <motion.div
-            className="mt-1 sm:mt-2 md:mt-0 mb-5 sm:mb-6 md:mb-12 lg:mb-8 xl:mb-7 lg:scale-[0.9] xl:scale-[0.84] origin-center"
+            className="mt-1 sm:mt-2 md:mt-0 mb-5 sm:mb-6 md:mb-12 lg:mb-6 xl:mb-5 lg:scale-[0.88] xl:scale-[0.82] origin-center"
             initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0 }}
@@ -89,7 +89,7 @@ export function HeroSection() {
             <MobbinIconStack />
           </motion.div>
           <motion.h1
-            className="font-sans font-semibold whitespace-nowrap text-[1.86rem] sm:text-[2.78rem] md:text-[3rem] lg:text-[3.15rem] xl:text-[3.5rem] leading-[1.02] tracking-[-0.05em] sm:tracking-[-0.035em] md:tracking-[-0.04em]"
+            className="font-sans font-semibold whitespace-nowrap text-[1.86rem] sm:text-[2.78rem] md:text-[3rem] lg:text-[2.35rem] xl:text-[2.55rem] leading-[1.02] tracking-[-0.05em] sm:tracking-[-0.035em] md:tracking-[-0.04em] lg:tracking-[-0.038em]"
             initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0.16 }}
@@ -98,7 +98,7 @@ export function HeroSection() {
             <span className="inline text-black dark:text-white">& Designer</span>
           </motion.h1>
           <motion.p
-            className="mt-1.5 text-center text-base leading-[1.28] md:mt-3 md:text-xl lg:text-2xl md:leading-relaxed opacity-90 lg:max-w-none lg:whitespace-nowrap"
+            className="mt-1.5 text-center text-base leading-[1.28] md:mt-3 md:text-xl lg:text-lg xl:text-xl md:leading-relaxed opacity-90 lg:max-w-none lg:whitespace-nowrap"
             initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0.24 }}
@@ -344,31 +344,8 @@ export function HeroSection() {
                 {/* Unified Bio Section with Consistent Spacing */}
                 <div className="flex flex-col h-full p-8 pt-10 xl:p-10 xl:pt-10 pb-6 text-left overflow-hidden">
                   
-                  {/* 1. Top 3 Professional Titles */}
-                  <div className="flex flex-col gap-3 mb-8 shrink-0">
-                    {[
-                      "Cross-platform App Developer",
-                      "AI Engineer",
-                      "UI/UX Designer"
-                    ].map((title, idx) => (
-                      <div key={idx} className="flex items-center">
-                        <span className="text-[0.9rem] xl:text-[1rem] font-bold text-zinc-900 dark:text-white tracking-tight leading-none">
-                          {title}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* 2. Main Mission Title */}
-                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8">
-                    Bridging design <br/>& engineering.
-                  </h3>
-
-                  {/* 3. Short Description */}
-                  <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-100 mb-auto">I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.</p>
-
-                  {/* 4. Skill Icons at the bottom */}
-                  <div className="mt-8 pt-0">
+                  {/* 1. Skill Icons (desktop: first) */}
+                  <div className="mb-8 pt-0">
                     <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
                       {heroSkills.slice(0, 12).map((skill, i) => (
                         <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
@@ -380,12 +357,35 @@ export function HeroSection() {
                       ))}
                     </div>
                   </div>
+
+                  {/* 2. Short Description */}
+                  <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-100 mb-8">I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.</p>
+
+                  {/* 3. Main Mission Title — centered */}
+                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8 text-center">
+                    Bridging design <br/>& engineering.
+                  </h3>
+
+                  {/* 4. Top 3 Professional Titles — centered */}
+                  <div className="flex flex-col gap-3 shrink-0 items-center text-center">
+                    {[
+                      "Cross-platform App Developer",
+                      "AI Engineer",
+                      "UI/UX Designer"
+                    ].map((title, idx) => (
+                      <div key={idx} className="flex items-center justify-center w-full">
+                        <span className="text-[0.9rem] xl:text-[1rem] font-bold text-zinc-900 dark:text-white tracking-tight leading-none">
+                          {title}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
               </div>
             </div>
 
-            {/* COLUMN 2: Bento (Row 1) + Bio (Row 2) */}
+            {/* COLUMN 2: Bento (Row 1) + Featured project (Row 2) */}
             <div className="flex flex-col gap-6 xl:gap-7">
               {/* ROW 1: Interactive Bento */}
               <div className="w-full relative aspect-[4/5] neu-container overflow-visible rounded-[40px] xl:rounded-[40px] grid grid-rows-[40%_20%_20%_20%] shrink-0 min-h-0">
@@ -478,7 +478,20 @@ export function HeroSection() {
                   </div>
                 </div>
 
-              {/* ROW 2: Education Timeline Card */}
+              {/* ROW 2: Featured Project (Square) — swapped with education (column 3 row 1) */}
+              <div className="w-full relative aspect-square rounded-[40px] xl:rounded-[40px] overflow-hidden neu-raised shadow-none border-none shrink-0 pointer-events-none select-none">
+                <Image 
+                  src={projects[0].image} 
+                  alt={projects[0].title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* COLUMN 3: Education + Profile */}
+            <div className="flex flex-col gap-6 xl:gap-7">
+              {/* ROW 1: Education Timeline Card */}
               <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-white dark:bg-black border-0 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
 
                 
@@ -521,19 +534,6 @@ export function HeroSection() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* COLUMN 3: Projects[0] + Profile */}
-            <div className="flex flex-col gap-6 xl:gap-7">
-              {/* ROW 1: Featured Project (Square) - Now CryptoTracker (Projects[0]) */}
-              <div className="w-full relative aspect-square rounded-[40px] xl:rounded-[40px] overflow-hidden neu-raised shadow-none border-none shrink-0 pointer-events-none select-none">
-                <Image 
-                  src={projects[0].image} 
-                  alt={projects[0].title}
-                  fill
-                  className="object-cover"
-                />
               </div>
 
               {/* ROW 2: Profile Card */}

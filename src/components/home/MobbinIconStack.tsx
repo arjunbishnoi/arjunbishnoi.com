@@ -82,7 +82,7 @@ export function MobbinIconStack() {
   const backBg = isDark ? "#505050" : "#D1D1D1" // Colors swapped at user request
 
   return (
-    <div className="mobbin-icon-stack relative w-14 h-14 md:w-[88px] md:h-[88px] flex items-center justify-center pointer-events-none select-none overflow-visible">
+    <div className="mobbin-icon-stack relative w-14 h-14 md:w-[88px] md:h-[88px] lg:w-[68px] lg:h-[68px] xl:w-16 xl:h-16 flex items-center justify-center pointer-events-none select-none overflow-visible">
       <AnimatePresence initial={false} mode="popLayout">
         {icons.map((icon, i) => {
           const relPos = (i - index + icons.length) % icons.length
@@ -110,7 +110,7 @@ export function MobbinIconStack() {
               }}
               exit={{ opacity: 0, y: 15 }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-              className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-[18px] md:rounded-[26.4px] shadow-sm transform-gpu"
+              className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-[18px] md:rounded-[26.4px] lg:rounded-[20px] xl:rounded-[18px] shadow-sm transform-gpu"
             >
               <AnimatePresence>
                 {isFront && (
