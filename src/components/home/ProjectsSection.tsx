@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 import { projects } from "@/lib/site-data"
@@ -10,9 +11,9 @@ export function ProjectsSection() {
   const featuredProjects = projects.filter(p => p.featured)
 
   return (
-    <section id="projects" className="relative py-0 bg-background">
-      {/* Static Full-Width Header */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-4 pt-0 md:pt-10 lg:pt-12">
+    <section id="projects" className="home-stack-gap-after relative py-0 bg-background">
+      {/* Static Full-Width Header — no top padding <md; gap from Featured is margin-only */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-4 pt-0 md:pt-8 lg:pt-10">
         <div className="flex items-center justify-between w-full relative">
           
           {/* Title Left */}
@@ -22,33 +23,26 @@ export function ProjectsSection() {
             </span>
           </div>
 
-          {/* Button Right */}
+          {/* View all pill (matches home bio CTA) */}
           <Link
             href="/projects"
-            className="group flex-none relative transition-all duration-300 ease-out"
+            className={cn(
+              "flex-none flex items-center justify-center gap-2 rounded-full bg-black text-white px-5 py-2.5 text-[0.85rem] font-medium",
+              "transition-transform duration-200 active:scale-[0.98]"
+            )}
             aria-label="View all projects"
           >
-            <div
-              className="relative z-10 flex items-center justify-center h-12 pl-6 pr-5 md:h-[56px] md:pl-8 md:pr-6 rounded-full transition-transform duration-300 active:scale-95 neu-raised neu-mobile-neumorphic border-none overflow-hidden"
-              style={{
-                "--neu-shadow-distance": "4px",
-                "--neu-shadow-blur": "8px"
-              } as React.CSSProperties}
-            >
-              <div className="relative z-10 flex items-center justify-center gap-1.5 transition-colors duration-300 text-black dark:text-white">
-                <span className="font-semibold text-sm md:text-base mr-0.5">View all</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right w-5 h-5 md:w-6 md:h-6 opacity-70 group-hover:opacity-100 transition-opacity"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </div>
-            </div>
+            View all
+            <ArrowRight className="w-4 h-4 shrink-0" strokeWidth={2.25} aria-hidden />
           </Link>
           
         </div>
       </div>
       
       {/* Projects content */}
-      <div className="mx-auto max-w-7xl px-0 pt-4 lg:px-8 pb-10">
+      <div className="mx-auto max-w-7xl px-0 pt-4 lg:px-8 pb-0 md:pb-6">
         <div 
-          className="flex md:grid md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory px-6 md:px-0 scroll-pl-6 scroll-pr-6 md:scroll-pl-0 md:scroll-pr-0 pb-4 md:pb-0 scrollbar-hide"
+          className="flex md:grid md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory px-6 md:px-0 scroll-pl-6 scroll-pr-6 md:scroll-pl-0 md:scroll-pr-0 pb-0 scrollbar-hide"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {/* Hide scrollbar for Chrome, Safari and Opera via hidden style block */}

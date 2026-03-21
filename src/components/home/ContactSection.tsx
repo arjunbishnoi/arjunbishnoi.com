@@ -64,7 +64,11 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" ref={sectionRef} className="relative py-10 z-40 bg-background">
+    <section
+      id="contact"
+      ref={sectionRef}
+      className="relative z-40 bg-background max-md:pt-0 max-md:pb-6 md:py-6"
+    >
       {/* Static Header */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-2 sm:pb-4">
         <h2 className="text-[1.625rem] md:text-3xl lg:text-4xl text-black dark:text-white font-bold">Contact</h2>

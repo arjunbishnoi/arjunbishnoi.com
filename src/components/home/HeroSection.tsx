@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, ChevronDown } from "lucide-react"
-import { motion, useReducedMotion } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { socialLinks, projects, heroSkills } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 import { MobbinIconStack } from "./MobbinIconStack"
@@ -37,6 +37,7 @@ function rotateColors(colors: string[], offset: number) {
 export function HeroSection() {
   const [scrolledDown, setScrolledDown] = useState(false)
   const [viewAllBlobColors, setViewAllBlobColors] = useState<string[]>(VIEWALL_BLOB_COLORS)
+  const [bioExpanded, setBioExpanded] = useState(false)
   const prefersReducedMotion = useReducedMotion()
   const snapTransition = prefersReducedMotion
     ? { duration: 0 }
@@ -109,7 +110,7 @@ export function HeroSection() {
 
       {/* Mobile Stack Layout */}
       <motion.div
-        className="w-full z-20 px-6 pb-20 lg:hidden flex flex-col items-center"
+        className="w-full z-20 px-6 pb-8 lg:hidden flex flex-col items-center"
         initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 26 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ ...snapTransition, delay: 0.42 }}
@@ -238,7 +239,34 @@ export function HeroSection() {
               I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.
             </p>
 
-            {/* Education Timeline (between short bio and skills) - aligned with short bio left edge */}
+            {/* View more / View less pill button - at bottom with consistent spacing */}
+            <button
+              type="button"
+              onClick={() => setBioExpanded((v) => !v)}
+              className={cn(
+                "mb-0 w-fit mx-auto flex items-center justify-center gap-2 rounded-full bg-black text-white px-5 py-2.5 text-[0.85rem] font-medium",
+                "transition-transform duration-200 active:scale-[0.98]"
+              )}
+              aria-expanded={bioExpanded}
+            >
+              {bioExpanded ? "View less" : "View more"}
+              <ChevronDown
+                className={cn("w-4 h-4 transition-transform duration-200", bioExpanded && "rotate-180")}
+                strokeWidth={2.25}
+              />
+            </button>
+
+            {/* Collapsible: Education + Skills */}
+            <AnimatePresence initial={false}>
+              {bioExpanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: prefersReducedMotion ? 0 : 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden pl-2 -ml-2 mt-8"
+                >
+                  {/* Education Timeline (between short bio and skills) - aligned with short bio left edge */}
             <div className="hero-education-card relative rounded-[28px] bg-[#f3f3f4] dark:bg-[#f3f3f4] border border-zinc-200/40 dark:border-zinc-800/40 pt-5 pb-6 px-0 min-h-[19rem] flex flex-col overflow-visible mb-8">
               <div className="relative flex-1 flex flex-col justify-between overflow-visible">
                 <div className="absolute left-0 top-[10.8px] bottom-[41px] w-[1px] bg-zinc-300 dark:bg-zinc-600" />
@@ -288,6 +316,9 @@ export function HeroSection() {
                 </div>
               ))}
             </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 

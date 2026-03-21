@@ -38,6 +38,8 @@
     /* Mobile flat border */
     --neu-flat-border: rgba(0, 0, 0, 0.1);
     --hero-bio-bg: #121212;
+    /* Home sections under hero: one shared gap (Featured / Projects / Blog) on small screens */
+    --home-stack-gap-after: 4rem;
   }
 
   .dark {
@@ -1058,6 +1060,13 @@ html.light-theme ::selection {
       var(--drift-name, drift) var(--drift-duration, 20s) ease-in-out infinite var(--drift-delay, 0s),
       var(--morph-name, morph) var(--morph-duration, 18s) ease-in-out infinite var(--morph-delay, 0s),
       colorShift var(--color-duration, 25s) linear infinite var(--color-delay, 0s);
+  }
+
+  /* Home (mobile / <md): identical gap between Featured → Projects → Blog → Contact (single margin, no padding stack) */
+  @media (max-width: 767.98px) {
+    .home-stack-gap-after {
+      margin-bottom: var(--home-stack-gap-after);
+    }
   }
 
 
