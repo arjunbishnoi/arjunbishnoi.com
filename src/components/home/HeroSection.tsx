@@ -251,13 +251,13 @@ export function HeroSection() {
                 }}
               >
                 <div className="hero-education-card relative rounded-[28px] bg-[#f3f3f4] border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-3 pb-4 px-0 flex flex-col gap-3">
-                <div className="relative pl-7 group">
-                  <div className="absolute left-[7px] top-[11px] bottom-[-23px] w-[1px] bg-zinc-300 dark:bg-zinc-600 dark:opacity-80" />
-                  <div className="absolute left-[7.5px] top-[3.3px] w-[15px] h-[15px] rounded-full bg-zinc-400 dark:bg-zinc-600 border-0 z-10 box-border -translate-x-1/2" />
+                <div className="relative pl-5 group">
+                  <div className="absolute left-[5px] top-[11px] bottom-[-23px] w-[1px] bg-zinc-300 dark:bg-zinc-600 dark:opacity-80" />
+                  <div className="absolute left-[5.5px] top-[5.3px] w-[11px] h-[11px] rounded-full bg-zinc-400 dark:bg-zinc-600 border-0 z-10 box-border -translate-x-1/2" />
                   <div className="space-y-0">
-                    <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">Applied A.I. Solutions Development</p>
-                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
-                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
+                    <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">Applied A.I. Solutions Development</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
                     <div className="pt-1 pb-2 flex">
                       <span className="inline-flex items-center px-2 py-0.5 rounded-full border border-emerald-700/30 text-[0.7rem] font-bold tracking-wider leading-none bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
                         Ongoing
@@ -266,45 +266,43 @@ export function HeroSection() {
                   </div>
                 </div>
 
-                <div className="relative pl-7">
-                  <div className="absolute left-[7px] top-[11px] bottom-[-23px] w-[1px] bg-zinc-300 dark:bg-zinc-600 dark:opacity-80" />
-                  <div className="absolute left-[7.5px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
+                <div className="relative pl-5">
+                  <div className="absolute left-[5px] top-[11px] bottom-[-23px] w-[1px] bg-zinc-300 dark:bg-zinc-600 dark:opacity-80" />
+                  <div className="absolute left-[5.5px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
                   <div className="space-y-0">
                     <p className={cn(
-                      "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.3] transition-colors duration-300",
+                      "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.4] transition-colors duration-300",
                       !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
                     )}>
                       Mobile Application Development and Strategy
                     </p>
-                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
-                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
                   </div>
                 </div>
 
-                <div className="relative pl-7">
-                  <div className="absolute left-[7.5px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
+                <div className="relative pl-5">
+                  <div className="absolute left-[5.5px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
                   <div className="space-y-0">
-                    <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">B.Sc. Information Technology</p>
-                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Amity University, Noida</p>
-                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Graduation</p>
+                    <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">B.Sc. Information Technology</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">Amity University, Noida</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">Graduation</p>
                   </div>
                 </div>
 
-                {/* When expanded, show the rest (skills) below inside the same block */}
-                {bioExpanded && (
-                  <div className="pt-8">
-                    <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
-                      {heroSkills.slice(0, 12).map((skill, i) => (
-                        <div key={i} className="flex flex-col items-center gap-1.5 opacity-80">
-                          <div className="w-7 h-7 relative grayscale dark:invert-[0.92] dark:opacity-90">
-                            <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
-                          </div>
-                          <span className="text-[0.55rem] font-bold text-zinc-600 dark:text-zinc-300 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
+                {/* Always render the rest (skills) below inside the same block so parent width accurately collapses/expands smoothly */}
+                <div className="pt-8">
+                  <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
+                    {heroSkills.slice(0, 12).map((skill, i) => (
+                      <div key={i} className="flex flex-col items-center gap-1.5 opacity-80">
+                        <div className="w-7 h-7 relative grayscale dark:invert-[0.92] dark:opacity-90">
+                          <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
                         </div>
-                      ))}
-                    </div>
+                        <span className="text-[0.55rem] font-bold text-zinc-600 dark:text-zinc-300 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
+                      </div>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
 
             </motion.div>
@@ -528,7 +526,7 @@ export function HeroSection() {
                   
                   {/* Timeline Item 1 - top circle solid green, centered on line */}
                   <div className="relative pl-6 group">
-                    <div className="absolute left-[7.5px] top-[2.27px] xl:top-[3.4px] w-[15px] h-[15px] rounded-full bg-zinc-400 dark:bg-zinc-600 border-0 z-10 box-border -translate-x-1/2" />
+                    <div className="absolute left-[7.5px] top-[4.27px] xl:top-[5.4px] w-[11px] h-[11px] rounded-full bg-zinc-400 dark:bg-zinc-600 border-0 z-10 box-border -translate-x-1/2" />
                     <div className="space-y-0">
                       <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">
                         Applied A.I. Solutions Development
