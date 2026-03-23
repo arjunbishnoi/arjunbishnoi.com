@@ -222,16 +222,16 @@ export function HeroSection() {
           <div className={cn("flex flex-col pt-8 px-8 text-left transition-all duration-500", bioExpanded ? "pb-10" : "pb-6")}>
             <div className="flex flex-col gap-5">
               {/* Professional Titles */}
-              <div className="flex flex-col items-center text-center gap-0 shrink-0">
+              <div className="flex flex-col items-start text-left gap-0 shrink-0">
                 {["Cross-platform App Developer", "AI Engineer", "UI/UX Designer"].map((title, idx) => (
-                  <div key={idx} className="flex items-center justify-center">
+                  <div key={idx} className="flex items-center justify-start">
                     <span className="text-zinc-900 dark:text-white text-[14.5px] leading-[1.6] tracking-[-0.015em] font-[600]">{title}</span>
                   </div>
                 ))}
               </div>
 
               {/* Mission Title */}
-              <h3 className="text-2xl sm:text-xl font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight text-center">
+              <h3 className="text-2xl sm:text-xl font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight text-left">
                 Bridging design <br/>& engineering.
               </h3>
 
@@ -407,14 +407,14 @@ export function HeroSection() {
                 {/* Unified Bio Section with Consistent Spacing */}
                 <div className="flex flex-col h-full p-8 pt-5 xl:p-10 xl:pt-7 pb-6 text-left overflow-hidden">
                   
-                  {/* 1. Top 3 Professional Titles — centered */}
-                  <div className="flex flex-col gap-0 shrink-0 items-center text-center mb-8 pt-0">
+                  {/* 1. Top 3 Professional Titles */}
+                  <div className="flex flex-col gap-0 shrink-0 items-start text-left mb-8 pt-0">
                     {[
                       "Cross-platform App Developer",
                       "AI Engineer",
                       "UI/UX Designer"
                     ].map((title, idx) => (
-                      <div key={idx} className="flex items-center justify-center w-full">
+                      <div key={idx} className="flex items-center justify-start w-full">
                         <span className="text-zinc-900 dark:text-white text-[14.5px] leading-[1.6] tracking-[-0.015em] font-[600]">
                           {title}
                         </span>
@@ -422,8 +422,8 @@ export function HeroSection() {
                     ))}
                   </div>
 
-                  {/* 2. Main Mission Title — centered */}
-                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8 text-center">
+                  {/* 2. Main Mission Title */}
+                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8 text-left">
                     Bridging design <br/>& engineering.
                   </h3>
 
