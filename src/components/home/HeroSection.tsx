@@ -219,8 +219,8 @@ export function HeroSection() {
 
         {/* 3. Unified Mobile Bio + Education Card */}
         <div className="home-mobile-bio-shell hero-bio-card w-full mt-8 relative rounded-[40px] bg-[#f3f3f4] dark:bg-black border border-zinc-200/50 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
-          <div className="flex flex-col pt-8 pb-6 px-8 text-left">
-            <div className="flex flex-col gap-8">
+          <div className={cn("flex flex-col pt-8 px-8 text-left transition-all duration-500", bioExpanded ? "pb-10" : "pb-6")}>
+            <div className="flex flex-col gap-5">
               {/* Professional Titles */}
               <div className="flex flex-col items-center text-center gap-0 shrink-0">
                 {["Cross-platform App Developer", "AI Engineer", "UI/UX Designer"].map((title, idx) => (
@@ -241,15 +241,16 @@ export function HeroSection() {
               </p>
 
               {/* Education block: collapsed shows clipped/faded preview; expanded reveals full timeline + skills below */}
-              <motion.div
-                className="w-full relative overflow-hidden"
-                initial={{ opacity: 0, height: "9rem" }}
-                animate={{ opacity: 1, height: bioExpanded ? "auto" : "9rem" }}
-                transition={{ 
-                  opacity: { duration: prefersReducedMotion ? 0 : 0.22 },
-                  height: { type: "spring", duration: 0.4, bounce: 0.15 }
-                }}
-              >
+              <div className="relative w-full">
+                <motion.div
+                  className="w-full relative"
+                  initial={{ opacity: 0, height: "10rem" }}
+                  animate={{ opacity: 1, height: bioExpanded ? "auto" : "10rem" }}
+                  transition={{ 
+                    opacity: { duration: prefersReducedMotion ? 0 : 0.22 },
+                    height: { type: "spring", duration: 0.4, bounce: 0.15 }
+                  }}
+                >
                 <div className="hero-education-card relative rounded-[28px] bg-[#f3f3f4] border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-3 pb-4 px-0 flex flex-col gap-3">
                 <div className="relative pl-5 group">
                   <div className="absolute left-[5px] top-[11px] bottom-[-23px] w-[1px] bg-zinc-300 dark:bg-zinc-600 dark:opacity-80" />
@@ -276,17 +277,42 @@ export function HeroSection() {
                     )}>
                       Mobile Application Development and Strategy
                     </p>
-                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
-                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
+                    <p className={cn(
+                      "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
+                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                    )}>
+                      George Brown College, Toronto
+                    </p>
+                    <p className={cn(
+                      "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
+                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                    )}>
+                      Postgraduate
+                    </p>
                   </div>
                 </div>
 
                 <div className="relative pl-5">
                   <div className="absolute left-[5.5px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
                   <div className="space-y-0">
-                    <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">B.Sc. Information Technology</p>
-                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">Amity University, Noida</p>
-                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">Graduation</p>
+                    <p className={cn(
+                      "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.4] transition-colors duration-300",
+                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
+                    )}>
+                      B.Sc. Information Technology
+                    </p>
+                    <p className={cn(
+                      "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
+                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                    )}>
+                      Amity University, Noida
+                    </p>
+                    <p className={cn(
+                      "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
+                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                    )}>
+                      Graduation
+                    </p>
                   </div>
                 </div>
 
@@ -306,6 +332,8 @@ export function HeroSection() {
               </div>
 
             </motion.div>
+            
+          </div>
           </div>
 
           {/* View more / View less pill button - stays at the end of the rectangle */}
@@ -333,16 +361,26 @@ export function HeroSection() {
             </button>
           </motion.div>
 
-          {/* Card-level fade so collapsed gradient always reaches the card's bottom edge */}
           <AnimatePresence>
             {!bioExpanded && (
-              <motion.div 
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-24 rounded-b-[40px] bg-gradient-to-t from-[#f3f3f4] via-[#f3f3f4]/90 to-transparent dark:from-black dark:via-black/90 z-10"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              />
+              <>
+                <motion.div 
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-10 dark:hidden block"
+                  style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(243,243,244,0.2) 30%, rgba(243,243,244,0.85) 75%, rgba(243,243,244,1) 100%)' }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div 
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-10 dark:block hidden"
+                  style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.85) 75%, rgba(0,0,0,1) 100%)' }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </>
             )}
           </AnimatePresence>
           </div>
