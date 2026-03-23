@@ -399,16 +399,21 @@ export function HeroSection() {
       >
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6">
           
-          <div className="grid grid-cols-3 gap-6 xl:gap-7 items-stretch">
+          <div className="grid grid-cols-3 gap-6 xl:gap-7 items-start">
             
-            {/* COLUMN 1: Bio + Extended Skills */}
-            <div className="flex flex-col">
-              <div className="hero-bio-card w-full h-full relative rounded-[40px] bg-white dark:bg-black border border-zinc-200/50 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
-                {/* Unified Bio Section with Consistent Spacing */}
-                <div className="flex flex-col h-full p-8 pt-5 xl:p-10 xl:pt-7 pb-6 text-left overflow-hidden">
+            {/* COLUMN 1: Bio + Extended Skills — height capped to match sibling columns */}
+            <div className="flex flex-col gap-6 xl:gap-7 col-span-1 self-stretch overflow-hidden">
+              {/* TOP CARD: Titles & Mission */}
+              <div className="hero-bio-card w-full relative rounded-[40px] shrink-0 bg-white dark:bg-black border border-zinc-200/50 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
+                <div className="flex flex-col p-8 pt-6 xl:p-10 xl:pt-8 pb-6 xl:pb-8 text-left overflow-hidden">
+
+                  {/* Main Mission Title */}
+                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-3 xl:mb-4 text-left">
+                    Bridging design <br/>& engineering.
+                  </h3>
                   
-                  {/* 1. Top 3 Professional Titles */}
-                  <div className="flex flex-col gap-0 shrink-0 items-start text-left mb-8 pt-0">
+                  {/* 3 Professional Titles */}
+                  <div className="flex flex-col gap-0 shrink-0 items-start text-left">
                     {[
                       "Cross-platform App Developer",
                       "AI Engineer",
@@ -421,16 +426,17 @@ export function HeroSection() {
                       </div>
                     ))}
                   </div>
+                </div>
+              </div>
 
-                  {/* 2. Main Mission Title */}
-                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8 text-left">
-                    Bridging design <br/>& engineering.
-                  </h3>
+              {/* BOTTOM CARD: Short Description & Skills */}
+              <div className="hero-bio-card w-full relative rounded-[40px] bg-white dark:bg-black border border-zinc-200/50 dark:border-white/10 flex flex-col overflow-hidden shadow-none min-h-0 flex-1">
+                <div className="flex flex-col h-full p-8 pt-6 xl:p-10 xl:pt-8 pb-6 text-left overflow-hidden">
+                  
+                  {/* Short Description */}
+                  <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-100 mb-6 xl:mb-8">I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.</p>
 
-                  {/* 3. Short Description */}
-                  <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-100 mb-12">I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.</p>
-
-                  {/* 4. Skill Icons (desktop: last) */}
+                  {/* Skill Icons */}
                   <div className="mt-auto">
                     <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
                       {heroSkills.slice(0, 12).map((skill, i) => (
@@ -444,7 +450,6 @@ export function HeroSection() {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
 
