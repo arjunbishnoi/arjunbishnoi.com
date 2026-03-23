@@ -219,32 +219,109 @@ export function HeroSection() {
 
         {/* 3. Unified Mobile Bio + Education Card */}
         <div className="home-mobile-bio-shell hero-bio-card w-full mt-8 relative rounded-[40px] bg-[#f3f3f4] dark:bg-black border border-zinc-200/50 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
-          <div className="flex flex-col pt-8 pb-8 px-8 text-left">
-            {/* Professional Titles */}
-            <div className="flex flex-col items-center text-center gap-0 mb-8 shrink-0">
-              {["Cross-platform App Developer", "AI Engineer", "UI/UX Designer"].map((title, idx) => (
-                <div key={idx} className="flex items-center justify-center">
-                  <span className="text-zinc-900 dark:text-white text-[14.5px] leading-[1.6] tracking-[-0.015em] font-[500]">{title}</span>
+          <div className="flex flex-col pt-8 pb-6 px-8 text-left">
+            <div className="flex flex-col gap-8">
+              {/* Professional Titles */}
+              <div className="flex flex-col items-center text-center gap-0 shrink-0">
+                {["Cross-platform App Developer", "AI Engineer", "UI/UX Designer"].map((title, idx) => (
+                  <div key={idx} className="flex items-center justify-center">
+                    <span className="text-zinc-900 dark:text-white text-[14.5px] leading-[1.6] tracking-[-0.015em] font-[600]">{title}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mission Title */}
+              <h3 className="text-2xl sm:text-xl font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight text-center">
+                Bridging design <br/>& engineering.
+              </h3>
+
+              {/* Description */}
+              <p className="text-[0.85rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-300">
+                I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.
+              </p>
+
+              {/* Education block: collapsed shows clipped/faded preview; expanded reveals full timeline + skills below */}
+              <motion.div
+                className="w-full relative overflow-hidden"
+                initial={{ opacity: 0, height: "9rem" }}
+                animate={{ opacity: 1, height: bioExpanded ? "auto" : "9rem" }}
+                transition={{ 
+                  opacity: { duration: prefersReducedMotion ? 0 : 0.22 },
+                  height: { type: "spring", duration: 0.4, bounce: 0.15 }
+                }}
+              >
+                <div className="hero-education-card relative rounded-[28px] bg-[#f3f3f4] border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-3 pb-4 px-0 flex flex-col gap-3">
+                <div className="relative pl-7 group">
+                  <div className="absolute left-[7px] top-[11px] bottom-[-23px] w-[1px] bg-zinc-300 dark:bg-zinc-600 dark:opacity-80" />
+                  <div className="absolute left-[7.5px] top-[3.3px] w-[15px] h-[15px] rounded-full bg-zinc-400 dark:bg-zinc-600 border-0 z-10 box-border -translate-x-1/2" />
+                  <div className="space-y-0">
+                    <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">Applied A.I. Solutions Development</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
+                    <div className="pt-1 pb-2 flex">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full border border-emerald-700/30 text-[0.7rem] font-bold tracking-wider leading-none bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
+                        Ongoing
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
 
-            {/* Mission Title */}
-            <h3 className="text-2xl sm:text-xl font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8 text-center">
-              Bridging design <br/>& engineering.
-            </h3>
+                <div className="relative pl-7">
+                  <div className="absolute left-[7px] top-[11px] bottom-[-23px] w-[1px] bg-zinc-300 dark:bg-zinc-600 dark:opacity-80" />
+                  <div className="absolute left-[7.5px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
+                  <div className="space-y-0">
+                    <p className={cn(
+                      "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.3] transition-colors duration-300",
+                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
+                    )}>
+                      Mobile Application Development and Strategy
+                    </p>
+                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
+                  </div>
+                </div>
 
-            {/* Description */}
-            <p className="text-[0.85rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-300 mb-8">
-              I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.
-            </p>
+                <div className="relative pl-7">
+                  <div className="absolute left-[7.5px] top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
+                  <div className="space-y-0">
+                    <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">B.Sc. Information Technology</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Amity University, Noida</p>
+                    <p className="text-[0.85rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Graduation</p>
+                  </div>
+                </div>
 
-            {/* View more / View less pill button - at bottom with consistent spacing */}
+                {/* When expanded, show the rest (skills) below inside the same block */}
+                {bioExpanded && (
+                  <div className="pt-8">
+                    <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
+                      {heroSkills.slice(0, 12).map((skill, i) => (
+                        <div key={i} className="flex flex-col items-center gap-1.5 opacity-80">
+                          <div className="w-7 h-7 relative grayscale dark:invert-[0.92] dark:opacity-90">
+                            <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
+                          </div>
+                          <span className="text-[0.55rem] font-bold text-zinc-600 dark:text-zinc-300 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+            </motion.div>
+          </div>
+
+          {/* View more / View less pill button - stays at the end of the rectangle */}
+          <motion.div 
+            className="relative z-20 flex justify-center"
+            initial={false}
+            animate={{ marginTop: bioExpanded ? "1.25rem" : "-0.5rem" }}
+            transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
+          >
             <button
               type="button"
               onClick={() => setBioExpanded((v) => !v)}
               className={cn(
-                "mb-0 w-fit mx-auto flex items-center justify-center gap-2 rounded-full bg-black text-white px-5 py-2.5 text-[0.85rem] font-medium",
+                "z-20 w-fit mx-auto flex items-center justify-center gap-2 rounded-full bg-black text-white px-5 py-2.5 text-[0.85rem] font-medium",
                 "dark:bg-white dark:text-black",
                 "transition-transform duration-200 active:scale-[0.98]"
               )}
@@ -256,70 +333,20 @@ export function HeroSection() {
                 strokeWidth={2.25}
               />
             </button>
+          </motion.div>
 
-            {/* Collapsible: Education + Skills */}
-            <AnimatePresence initial={false}>
-              {bioExpanded && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: prefersReducedMotion ? 0 : 0.3, ease: "easeInOut" }}
-                  className="overflow-hidden pl-2 -ml-2 mt-8"
-                >
-                  {/* Education Timeline (between short bio and skills) - aligned with short bio left edge */}
-            <div className="hero-education-card relative rounded-[28px] bg-[#f3f3f4] border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-5 pb-6 px-0 min-h-[19rem] flex flex-col overflow-visible mb-8">
-              <div className="relative flex-1 flex flex-col justify-between overflow-visible">
-                <div className="absolute left-0 top-[10.8px] bottom-[41px] w-[1px] bg-zinc-300 dark:bg-zinc-600 dark:opacity-80" />
-
-                <div className="relative pl-7 group">
-                  <div className="absolute left-0 top-[3.3px] w-[15px] h-[15px] rounded-full bg-[#3f7d66] border-0 z-10 box-border -translate-x-1/2" />
-                  <div className="space-y-0">
-                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Applied A.I. Solutions Development</p>
-                    <div className="my-2 flex">
-                      <span className="inline-flex items-center px-1.5 py-0.5 rounded-md border border-emerald-700/30 text-[0.7rem] font-bold uppercase tracking-wider leading-none bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
-                        Ongoing
-                      </span>
-                    </div>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
-                  </div>
-                </div>
-
-                <div className="relative pl-7">
-                  <div className="absolute left-0 top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-400 border-0 z-10 -translate-x-1/2" />
-                  <div className="space-y-0">
-                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Mobile Application Development and Strategy</p>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
-                  </div>
-                </div>
-
-                <div className="relative pl-7">
-                  <div className="absolute left-0 top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-400 border-0 z-10 -translate-x-1/2" />
-                  <div className="space-y-0">
-                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">B.Sc. Information Technology</p>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Amity University, Noida</p>
-                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Graduation</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Skill Icons Integration */}
-            <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
-              {heroSkills.slice(0, 12).map((skill, i) => (
-                <div key={i} className="flex flex-col items-center gap-1.5 opacity-80">
-                  <div className="w-7 h-7 relative grayscale dark:invert-[0.92] dark:opacity-90">
-                    <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
-                  </div>
-                  <span className="text-[0.55rem] font-bold text-zinc-600 dark:text-zinc-300 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+          {/* Card-level fade so collapsed gradient always reaches the card's bottom edge */}
+          <AnimatePresence>
+            {!bioExpanded && (
+              <motion.div 
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-24 rounded-b-[40px] bg-gradient-to-t from-[#f3f3f4] via-[#f3f3f4]/90 to-transparent dark:from-black dark:via-black/90 z-10"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              />
+            )}
+          </AnimatePresence>
           </div>
         </div>
 
@@ -342,10 +369,33 @@ export function HeroSection() {
             <div className="flex flex-col">
               <div className="hero-bio-card w-full h-full relative rounded-[40px] bg-white dark:bg-black border border-zinc-200/50 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
                 {/* Unified Bio Section with Consistent Spacing */}
-                <div className="flex flex-col h-full p-8 pt-10 xl:p-10 xl:pt-10 pb-6 text-left overflow-hidden">
+                <div className="flex flex-col h-full p-8 pt-5 xl:p-10 xl:pt-7 pb-6 text-left overflow-hidden">
                   
-                  {/* 1. Skill Icons (desktop: first) */}
-                  <div className="mb-8 pt-0">
+                  {/* 1. Top 3 Professional Titles — centered */}
+                  <div className="flex flex-col gap-0 shrink-0 items-center text-center mb-8 pt-0">
+                    {[
+                      "Cross-platform App Developer",
+                      "AI Engineer",
+                      "UI/UX Designer"
+                    ].map((title, idx) => (
+                      <div key={idx} className="flex items-center justify-center w-full">
+                        <span className="text-zinc-900 dark:text-white text-[14.5px] leading-[1.6] tracking-[-0.015em] font-[600]">
+                          {title}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* 2. Main Mission Title — centered */}
+                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8 text-center">
+                    Bridging design <br/>& engineering.
+                  </h3>
+
+                  {/* 3. Short Description */}
+                  <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-100 mb-12">I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.</p>
+
+                  {/* 4. Skill Icons (desktop: last) */}
+                  <div className="mt-auto">
                     <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
                       {heroSkills.slice(0, 12).map((skill, i) => (
                         <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
@@ -356,29 +406,6 @@ export function HeroSection() {
                         </div>
                       ))}
                     </div>
-                  </div>
-
-                  {/* 2. Short Description */}
-                  <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-100 mb-8">I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.</p>
-
-                  {/* 3. Main Mission Title — centered */}
-                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8 text-center">
-                    Bridging design <br/>& engineering.
-                  </h3>
-
-                  {/* 4. Top 3 Professional Titles — centered */}
-                  <div className="flex flex-col gap-3 shrink-0 items-center text-center">
-                    {[
-                      "Cross-platform App Developer",
-                      "AI Engineer",
-                      "UI/UX Designer"
-                    ].map((title, idx) => (
-                      <div key={idx} className="flex items-center justify-center w-full">
-                        <span className="text-[0.9rem] xl:text-[1rem] font-bold text-zinc-900 dark:text-white tracking-tight leading-none">
-                          {title}
-                        </span>
-                      </div>
-                    ))}
                   </div>
                 </div>
 
@@ -501,36 +528,36 @@ export function HeroSection() {
                   
                   {/* Timeline Item 1 - top circle solid green, centered on line */}
                   <div className="relative pl-6 group">
-                    <div className="absolute left-[7.5px] top-[2.27px] xl:top-[3.4px] w-[15px] h-[15px] rounded-full bg-[#3f7d66] border-0 z-10 box-border -translate-x-1/2" />
+                    <div className="absolute left-[7.5px] top-[2.27px] xl:top-[3.4px] w-[15px] h-[15px] rounded-full bg-zinc-400 dark:bg-zinc-600 border-0 z-10 box-border -translate-x-1/2" />
                     <div className="space-y-0">
-                      <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">
+                      <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">
                         Applied A.I. Solutions Development
-                        <span className="ml-2 inline-flex items-center px-1.5 py-0.5 rounded-md border border-emerald-700/30 text-[0.7rem] font-bold uppercase tracking-wider leading-none align-middle mb-0.5 bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
+                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border border-emerald-700/30 text-[0.7rem] font-bold tracking-wider leading-none align-middle mb-0.5 bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
                           Ongoing
                         </span>
                       </p>
-                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
-                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">Postgraduate</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
                     </div>
                   </div>
 
                   {/* Timeline Item 2 - dark grey, centered on line */}
                   <div className="relative pl-6">
-                    <div className="absolute left-[7.5px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
+                    <div className="absolute left-[7.5px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
                     <div className="space-y-0">
-                      <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">Mobile Application Development and Strategy</p>
-                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
-                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">Postgraduate</p>
+                      <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">Mobile Application Development and Strategy</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
                     </div>
                   </div>
 
                   {/* Timeline Item 3 - dark grey, centered on line */}
                   <div className="relative pl-6">
-                    <div className="absolute left-[7.5px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-400 border-0 z-10 -translate-x-1/2" />
+                    <div className="absolute left-[7.5px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-zinc-300 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
                     <div className="space-y-0">
-                      <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">B.Sc. Information Technology</p>
-                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">Amity University, Noida</p>
-                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">Graduation</p>
+                      <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">B.Sc. Information Technology</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Amity University, Noida</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Graduation</p>
                     </div>
                   </div>
                 </div>
