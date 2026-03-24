@@ -118,42 +118,43 @@ export function HeroSection() {
         
         {/* 1. Interactive Featured Bento Grid (Restored to Top) */}
         <div className="w-[95%] sm:w-[94%] mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
-          <div className="w-full neu-container overflow-visible aspect-[342/340] grid grid-rows-[40%_20%_20%_20%]">
+          <div className="w-full neu-container overflow-visible aspect-[342/355] grid grid-rows-[45%_18.33%_18.33%_18.33%]">
             {/* Row 1: Flat All Projects rectangle */}
             <div className="relative h-full p-3 pb-2.5">
               <Link
                 href="/projects"
-                className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] overflow-hidden transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+                className="group hero-viewall-pill neu-mobile-neumorphic relative z-20 block w-full h-full rounded-[30px] overflow-hidden transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
               >
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
-                  <div className="hero-viewall-surface absolute inset-0 bg-white" />
+                  <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
                   <div
-                    className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                    className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
                     style={{
-                      maskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
-                      WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
+                      maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
+                      WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
                     }}
                   >
-                    <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
                   </div>
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.28),transparent_75%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.22),transparent_70%)] pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-[1] animate-glow-pulse" />
                   <div
-                    className="absolute inset-0 opacity-[0.28] group-hover:opacity-[0.42] mix-blend-multiply pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                    className="absolute inset-0 opacity-[0.28] dark:opacity-[0.25] group-hover:opacity-[0.42] mix-blend-multiply dark:mix-blend-screen pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                     style={{
                       backgroundImage:
                         "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
                     }}
                   />
-                  <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.16] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                  <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.12] dark:group-hover:bg-white/[0.06] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
                 </div>
                 <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[1.125rem] tracking-[-0.005em] font-semibold text-zinc-900">View all projects</span>
-                    <ArrowUpRight className="w-5 h-5 text-zinc-900" strokeWidth={2.5} />
+                    <span className="text-[1.125rem] tracking-[-0.005em] font-semibold text-zinc-900 dark:text-white">View all projects</span>
+                    <ArrowUpRight className="w-5 h-5 text-zinc-900 dark:text-white" strokeWidth={2.5} />
                   </div>
                 </div>
               </Link>
@@ -161,18 +162,18 @@ export function HeroSection() {
               <div className="absolute bottom-0 left-0 w-1/2 h-2.5 border-r neu-separator pointer-events-none" />
             </div>
             <div className="grid grid-cols-2">
-              <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
                 <div className="whitespace-nowrap">Mobile Apps</div>
               </Link>
-              <Link href="/ai" className="flex items-center justify-center border-b neu-separator text-zinc-900 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <Link href="/ai" className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
                 <div className="whitespace-nowrap">AI/ML</div>
               </Link>
             </div>
             <div className="grid grid-cols-2">
-              <Link href="/design" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <Link href="/design" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
                 <div className="whitespace-nowrap">Design</div>
               </Link>
-              <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center border-b neu-separator text-zinc-900 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
                 <div className="whitespace-nowrap">Resume</div>
               </a>
             </div>
@@ -192,7 +193,7 @@ export function HeroSection() {
                 </div>
               </a>
               <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors">
-                <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-900 group-hover:opacity-100 opacity-90">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90">
                   <svg viewBox="0 0 24 24" className="block w-[1.4rem] h-[1.4rem] fill-current" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
@@ -335,7 +336,7 @@ export function HeroSection() {
                         <div className="w-7 h-7 relative grayscale dark:invert-[0.92] dark:opacity-90">
                           <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
                         </div>
-                        <span className="text-[0.55rem] font-bold text-zinc-600 dark:text-zinc-300 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
+                        <span className="text-[0.55rem] font-bold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
                       </div>
                     ))}
                   </div>
@@ -409,7 +410,7 @@ export function HeroSection() {
           <div className="grid grid-cols-3 gap-6 xl:gap-7 items-start">
             
             {/* COLUMN 1: Bio + Skills (Merged) */}
-            <div className="hero-bio-skills-merged-card col-span-1 self-stretch overflow-hidden bg-[#dedede] dark:bg-black rounded-[40px] flex flex-col">
+            <div className="hero-bio-skills-merged-card col-span-1 self-stretch overflow-hidden bg-[#dedede] dark:bg-[#202020] rounded-[40px] flex flex-col">
               {/* Top Section: Bio */}
               <div className="pt-10 xl:pt-12 px-6 xl:px-8 text-left">
                 {/* 3 Professional Titles */}
@@ -441,7 +442,7 @@ export function HeroSection() {
                       <div className="w-7 h-7 xl:w-8 xl:h-8 relative grayscale dark:invert-[0.92] dark:opacity-90">
                         <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
                       </div>
-                      <span className="text-[0.55rem] xl:text-[0.6rem] font-bold text-zinc-600 dark:text-zinc-300 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
+                      <span className="text-[0.55rem] xl:text-[0.6rem] font-bold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
                     </div>
                   ))}
                 </div>
@@ -459,34 +460,35 @@ export function HeroSection() {
                       className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] xl:rounded-[36px] overflow-hidden transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
                     >
                       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
-                        <div className="hero-viewall-surface absolute inset-0 bg-white" />
+                        <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
                         <div
-                          className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                          className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
                           style={{
-                            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
-                            WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
+                            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
+                            WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
                           }}
                         >
-                          <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
                         </div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.28),transparent_75%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.22),transparent_70%)] pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-[1] animate-glow-pulse" />
                         <div
-                          className="absolute inset-0 opacity-[0.28] group-hover:opacity-[0.42] mix-blend-multiply pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                          className="absolute inset-0 opacity-[0.28] dark:opacity-[0.25] group-hover:opacity-[0.42] mix-blend-multiply dark:mix-blend-screen pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                           style={{
                             backgroundImage:
                               "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
                           }}
                         />
-                        <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.16] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                        <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.12] dark:group-hover:bg-white/[0.06] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
                       </div>
                       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                         <div className="flex items-center gap-2 xl:gap-2.5">
-                          <span className="text-[1.2rem] xl:text-[1.3rem] tracking-[-0.005em] font-semibold text-zinc-900">View all projects</span>
-                          <ArrowUpRight className="w-5 h-5 xl:w-6 xl:h-6 text-zinc-900" strokeWidth={2.5} />
+                          <span className="text-[1.2rem] xl:text-[1.3rem] tracking-[-0.005em] font-semibold text-zinc-900 dark:text-white">View all projects</span>
+                          <ArrowUpRight className="w-5 h-5 xl:w-6 xl:h-6 text-zinc-900 dark:text-white" strokeWidth={2.5} />
                         </div>
                       </div>
                     </Link>
@@ -494,18 +496,18 @@ export function HeroSection() {
                     <div className="absolute bottom-0 left-0 w-1/2 h-2 xl:h-2.5 border-r neu-separator pointer-events-none" />
                   </div>
                   <div className="grid grid-cols-2">
-                    <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
+                    <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">Mobile Apps</div>
                     </Link>
-                    <Link href="/ai" className="flex items-center justify-center border-b neu-separator text-zinc-900 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
+                    <Link href="/ai" className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">AI/ML</div>
                     </Link>
                   </div>
                   <div className="grid grid-cols-2">
-                    <Link href="/design" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
+                    <Link href="/design" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">Design</div>
                     </Link>
-                    <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center border-b neu-separator text-zinc-900 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
+                    <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">Resume</div>
                     </a>
                   </div>
@@ -525,7 +527,7 @@ export function HeroSection() {
                       </div>
                     </a>
                     <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group hover:bg-zinc-100/10 transition-colors">
-                      <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center transition-colors text-zinc-900 group-hover:opacity-100 opacity-90 group-hover:scale-110">
+                      <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center transition-colors text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90 group-hover:scale-110">
                         <svg viewBox="0 0 24 24" className="block w-6 h-6 xl:w-7 xl:h-7 fill-current" xmlns="http://www.w3.org/2000/svg">
                           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
@@ -555,7 +557,7 @@ export function HeroSection() {
             {/* COLUMN 3: Education + Profile */}
             <div className="flex flex-col gap-6 xl:gap-7 col-span-1 self-stretch">
               {/* TOP CARD: Education Timeline Card (Moved from top left) */}
-              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-[#dedede] dark:bg-black border-0 pt-5 pb-5 pl-6 pr-8 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-9 flex flex-col overflow-hidden">
+              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-[#dedede] dark:bg-[#202020] border-0 pt-5 pb-5 pl-6 pr-8 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-9 flex flex-col overflow-hidden">
                 <div className="relative flex-1 flex flex-col pt-1 pb-1">
                   {/* Milestone 1 */}
                   <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">

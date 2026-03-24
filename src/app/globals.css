@@ -44,26 +44,26 @@
 
   .dark {
     /* Dark mode neumorphic surface — perfectly neutral, darker gray */
-    --neu-surface: #121212; 
-    --neu-surface-dimmed: #0d0d0d;
-    --neu-shadow-dark: rgba(0, 0, 0, 0.6); /* Deeper drop shadow for darker bg */
-    --neu-shadow-light: rgba(255, 255, 255, 0.05); /* Softer highlight for darker bg */
-    --neu-inset-shadow-dark: rgba(0, 0, 0, 0.6);
-    --neu-inset-shadow-light: rgba(255, 255, 255, 0.05);
-    --neu-sweep-shadow-dark: rgba(0, 0, 0, 0.65);
-    --neu-sweep-shadow-light: rgba(255, 255, 255, 0.04);
+    --neu-surface: #1a1a1a; 
+    --neu-surface-dimmed: #121212;
+    --neu-shadow-dark: rgba(0, 0, 0, 0.75); /* Deeper drop shadow for darker bg */
+    --neu-shadow-light: rgba(255, 255, 255, 0.04); /* Softer highlight for darker bg */
+    --neu-inset-shadow-dark: rgba(0, 0, 0, 0.7);
+    --neu-inset-shadow-light: rgba(255, 255, 255, 0.04);
+    --neu-sweep-shadow-dark: rgba(0, 0, 0, 0.75);
+    --neu-sweep-shadow-light: rgba(255, 255, 255, 0.03);
     /* Hero title gradient: white at top, medium grey at bottom */
     --hero-gradient-top: #ffffff;
-    --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 60%, #ffffff);
+    --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 65%, #ffffff);
     --hero-gradient-stop: 52%;
-
-    /* Project-specific background: slightly lighter than main background in dark mode */
-    --projects-background: 0 0% 7%; /* #1c1c1c -> #121212 */
-    --projects-surface: #121212;
+ 
+    /* Project-specific background: match main background in dark mode */
+    --projects-background: 0 0% 10%; /* #1a1a1a */
+    --projects-surface: #1a1a1a;
     
     /* Mobile flat border */
-    --neu-flat-border: rgba(255, 255, 255, 0.06);
-    --hero-bio-bg: #121212;
+    --neu-flat-border: rgba(255, 255, 255, 0.08);
+    --hero-bio-bg: #1a1a1a;
   }
 
   /* --- Raised state: element pops out of surface --- */
@@ -195,131 +195,6 @@
   }
   }
 
-  .hero-mobile-main-shape-wrap .neu-container {
-    background-color: #ffffff !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    border: none !important;
-  }
-
-  html:not(.dark) .hero-mobile-main-shape-wrap .hero-viewall-pill {
-    background-color: #f2f2f2 !important;
-    background-image: none !important;
-    box-shadow:
-      0 0 24px rgba(15, 23, 42, 0.06),
-      0 16px 32px rgba(15, 23, 42, 0.10),
-      0 3px 8px rgba(15, 23, 42, 0.05) !important;
-    border: none !important;
-  }
-
-  html:not(.dark) .hero-mobile-main-shape-wrap .hero-viewall-pill:active {
-    box-shadow:
-      0 0 28px rgba(15, 23, 42, 0.07),
-      0 20px 40px rgba(15, 23, 42, 0.12),
-      0 4px 10px rgba(15, 23, 42, 0.06) !important;
-    transform: translateY(-2px);
-  }
-
-  html:not(.dark) .hero-mobile-main-shape-wrap .hero-viewall-surface {
-    background-color: #ececec !important;
-    border-radius: inherit !important;
-    box-shadow:
-      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
-      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
-    opacity: 1 !important;
-  }
-
-  .hero-mobile-main-shape-wrap .hero-bio-card,
-  .hero-mobile-main-shape-wrap .hero-education-card {
-    background-image: none !important;
-  }
-
-  /* Keep education same as bio */
-
-  .dark .hero-mobile-main-shape-wrap .neu-container {
-    background-color: #050505 !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    border: none !important;
-  }
-
-  .dark .hero-mobile-main-shape-wrap .hero-viewall-pill {
-    background-color: #f2f2f2 !important;
-    background-image: none !important;
-    box-shadow:
-      0 0 24px rgba(15, 23, 42, 0.06),
-      0 16px 32px rgba(15, 23, 42, 0.10),
-      0 3px 8px rgba(15, 23, 42, 0.05) !important;
-    border: none !important;
-  }
-
-  .dark .hero-mobile-main-shape-wrap .hero-viewall-pill:active {
-    box-shadow:
-      0 0 28px rgba(15, 23, 42, 0.07),
-      0 20px 40px rgba(15, 23, 42, 0.12),
-      0 4px 10px rgba(15, 23, 42, 0.06) !important;
-    transform: translateY(-2px);
-  }
-
-  .dark .hero-mobile-main-shape-wrap .hero-viewall-surface {
-    background-color: #ececec !important;
-    border-radius: inherit !important;
-    box-shadow:
-      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
-      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
-    opacity: 1 !important;
-  }
-
-  /* Keep separator/border tones same as light mode in this rectangle */
-  .dark .hero-mobile-main-shape-wrap .neu-separator {
-    border-color: rgba(0, 0, 0, 0.1) !important;
-  }
-
-  /* Keep the entire View-all parent rectangle SAME as light mode in dark mode */
-  .dark .hero-mobile-main-shape-wrap .neu-container {
-    background-color: #ffffff !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    border: none !important;
-  }
-
-  .dark .hero-mobile-main-shape-wrap .hero-viewall-pill {
-    background-color: #f2f2f2 !important;
-    background-image: none !important;
-    box-shadow:
-      0 0 24px rgba(15, 23, 42, 0.06),
-      0 16px 32px rgba(15, 23, 42, 0.10),
-      0 3px 8px rgba(15, 23, 42, 0.05) !important;
-    border: none !important;
-  }
-
-  .dark .hero-mobile-main-shape-wrap .hero-viewall-pill:active {
-    box-shadow:
-      0 0 28px rgba(15, 23, 42, 0.07),
-      0 20px 40px rgba(15, 23, 42, 0.12),
-      0 4px 10px rgba(15, 23, 42, 0.06) !important;
-    transform: translateY(-2px);
-  }
-
-  .dark .hero-mobile-main-shape-wrap .hero-viewall-surface {
-    background-color: #ececec !important;
-    border-radius: inherit !important;
-    box-shadow:
-      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
-      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
-    opacity: 1 !important;
-  }
-
-  .dark .hero-mobile-main-shape-wrap .hero-bio-card,
-  .dark .hero-mobile-main-shape-wrap .hero-education-card {
-    background-color: #f3f3f4 !important;
-    background-image: none !important;
-  }
-
-  /* Keep education same as bio (pure white) */
-  .dark .hero-mobile-main-shape-wrap .hero-education-card {
-    background-color: #f3f3f4 !important;
-  }
 
   /* --- Subtle flat neumorphic (for small elements like social icons) --- */
   .neu-flat {
@@ -391,12 +266,12 @@
     --radius: 0.5rem;
   }
   .dark {
-    /* Set background to exactly match --neu-surface #121212 (HSL: 0, 0%, 7%) */
-    --background: 0 0% 7%; 
+    /* Set background to exactly match --neu-surface #1a1a1a (HSL: 0, 0%, 10%) */
+    --background: 0 0% 10%; 
     --foreground: 0 0% 98%;
-    --card: 0 0% 7%;
+    --card: 0 0% 10%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 7%;
+    --popover: 0 0% 10%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 9%;
@@ -744,11 +619,22 @@ html.light-theme .hero-section {
 }
 
 @media (min-width: 1024px) {
-  .hero-flat-desktop .neu-container {
-    background-color: #ffffff !important;
+  .hero-flat-desktop .hero-bio-skills-merged-card,
+  .hero-flat-desktop .hero-education-card {
     background-image: none !important;
-    box-shadow: none !important;
+  }
+
+  html:not(.dark) .hero-flat-desktop .hero-bio-skills-merged-card,
+  html:not(.dark) .hero-flat-desktop .hero-education-card {
+    background-color: #d4d4d4 !important;
+  }
+
+  /* Center Bento Container: Pure Neumorphic (inherits from .neu-container) */
+  .hero-flat-desktop .neu-container {
+    background-color: var(--neu-surface) !important;
+    background-image: none !important;
     border: none !important;
+    /* Shadows are handled by base .neu-container class */
   }
 
   .hero-flat-desktop .hero-bio-card {
@@ -763,121 +649,32 @@ html.light-theme .hero-section {
     background-image: none !important;
   }
 
-  html:not(.dark) .hero-flat-desktop .hero-viewall-pill {
-    background-color: #f2f2f2 !important;
+  /* View-All Pill: Flat Neumorphic (no drop shadows) */
+  .hero-flat-desktop .hero-viewall-pill {
+    background-color: var(--neu-surface) !important;
     background-image: none !important;
-    box-shadow:
-      0 0 24px rgba(15, 23, 42, 0.06),
-      0 16px 32px rgba(15, 23, 42, 0.10),
-      0 3px 8px rgba(15, 23, 42, 0.05) !important;
+    box-shadow: 
+      calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
+      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark) !important;
     border: none !important;
+    transform: none !important;
   }
 
-  html:not(.dark) .hero-flat-desktop .hero-viewall-pill:hover {
-    box-shadow:
-      0 0 38px rgba(15, 23, 42, 0.11),
-      0 24px 54px rgba(15, 23, 42, 0.18),
-      0 8px 18px rgba(15, 23, 42, 0.10) !important;
-    transform: translateY(-2px) scale(1.02);
+  .hero-flat-desktop .hero-viewall-pill:hover {
+    transform: none !important;
+    box-shadow: 
+      calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
+      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark) !important;
   }
 
-  html:not(.dark) .hero-flat-desktop .hero-viewall-surface {
-    background-color: #ececec !important;
+  .hero-flat-desktop .hero-viewall-surface {
+    background-color: var(--neu-surface) !important;
     border-radius: inherit !important;
-    box-shadow:
-      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
-      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
-    opacity: 1 !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .dark .hero-flat-desktop .neu-container {
-    background-color: #050505 !important;
-    background-image: none !important;
     box-shadow: none !important;
-    border: none !important;
-  }
-
-  /* Dark desktop: bio + education tiles match mobile — pure black */
-  .dark .hero-flat-desktop .hero-bio-card {
-    background-color: #000000 !important;
-    background-image: none !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
-  }
-
-  .dark .hero-flat-desktop .hero-education-card {
-    background-color: #000000 !important;
-    background-image: none !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
-  }
-
-  .dark .hero-flat-desktop .hero-viewall-pill {
-    background-color: #f2f2f2 !important;
-    background-image: none !important;
-    box-shadow:
-      0 0 24px rgba(15, 23, 42, 0.06),
-      0 16px 32px rgba(15, 23, 42, 0.10),
-      0 3px 8px rgba(15, 23, 42, 0.05) !important;
-    border: none !important;
-  }
-
-  .dark .hero-flat-desktop .hero-viewall-pill:hover {
-    box-shadow:
-      0 0 38px rgba(15, 23, 42, 0.11),
-      0 24px 54px rgba(15, 23, 42, 0.18),
-      0 8px 18px rgba(15, 23, 42, 0.10) !important;
-    transform: translateY(-2px) scale(1.02);
-  }
-
-  .dark .hero-flat-desktop .hero-viewall-surface {
-    background-color: #ececec !important;
-    border-radius: inherit !important;
-    box-shadow:
-      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
-      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
     opacity: 1 !important;
   }
 
-  /* Keep separator/border tones same as light mode in this rectangle */
-  .dark .hero-flat-desktop .neu-separator {
-    border-color: rgba(0, 0, 0, 0.1) !important;
-  }
-
-  /* Keep the entire View-all parent rectangle SAME as light mode in dark mode */
-  .dark .hero-flat-desktop .neu-container {
-    background-color: #ffffff !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    border: none !important;
-  }
-
-  .dark .hero-flat-desktop .hero-viewall-pill {
-    background-color: #f2f2f2 !important;
-    background-image: none !important;
-    box-shadow:
-      0 0 24px rgba(15, 23, 42, 0.06),
-      0 16px 32px rgba(15, 23, 42, 0.10),
-      0 3px 8px rgba(15, 23, 42, 0.05) !important;
-    border: none !important;
-  }
-
-  .dark .hero-flat-desktop .hero-viewall-pill:hover {
-    box-shadow:
-      0 0 38px rgba(15, 23, 42, 0.11),
-      0 24px 54px rgba(15, 23, 42, 0.18),
-      0 8px 18px rgba(15, 23, 42, 0.10) !important;
-    transform: translateY(-2px) scale(1.02);
-  }
-
-  .dark .hero-flat-desktop .hero-viewall-surface {
-    background-color: #ececec !important;
-    border-radius: inherit !important;
-    box-shadow:
-      inset -10px -10px 18px rgba(15, 23, 42, 0.16),
-      inset 10px 10px 18px rgba(255, 255, 255, 0.98) !important;
-    opacity: 1 !important;
-  }
+  /* Consolidated all desktop states above */
 }
 
 html.light-theme .hero-bio-card {
@@ -1095,4 +892,11 @@ html.light-theme ::selection {
     }
   }
 
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.95); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
 
+  .animate-glow-pulse {
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
