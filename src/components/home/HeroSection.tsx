@@ -213,20 +213,20 @@ export function HeroSection() {
         <div id="about" className="lg:hidden scroll-mt-24" />
         <AboutProfileCard
           imageSizes="(max-width: 768px) 100vw, 342px"
-          className="mt-6 lg:hidden"
+          className="mt-6 lg:hidden relative z-10"
           priority
         />
 
         {/* 3. Unified Mobile Bio + Education Card */}
-        <div className="home-mobile-bio-shell hero-bio-card w-full mt-8 relative rounded-[40px] bg-[#d6d6d6] dark:bg-black border border-zinc-200/50 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
-          <div className={cn("flex flex-col pt-8 px-8 text-left transition-all duration-500", bioExpanded ? "pb-10" : "pb-6")}>
+        <div className="home-mobile-bio-shell hero-bio-card w-full -mt-16 relative z-0 rounded-t-[32px] rounded-b-[40px] bg-[#d6d6d6] dark:bg-black border border-zinc-200/50 border-t-0 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
+          <div className={cn("flex flex-col pt-[84px] px-8 text-left transition-all duration-500", bioExpanded ? "pb-10" : "pb-6")}>
             <div className="flex flex-col gap-5">
               {/* Mission Title */}
 
               {/* Professional Titles */}
-              <div className="flex flex-col items-start text-left gap-0 shrink-0">
+              <div className="flex flex-col items-center text-center gap-0 shrink-0">
                 {["Cross-platform App Developer", "AI Engineer", "UI/UX Designer"].map((title, idx) => (
-                  <div key={idx} className="flex items-center justify-start">
+                  <div key={idx} className="flex items-center justify-center">
                     <span className="text-zinc-900 dark:text-white text-[14.5px] leading-[1.6] tracking-[-0.015em] font-[600]">{title}</span>
                   </div>
                 ))}
@@ -234,15 +234,15 @@ export function HeroSection() {
 
               {/* Description */}
               <p className="text-[0.85rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-300">
-                I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.
+                I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.
               </p>
 
               {/* Education block: collapsed shows clipped/faded preview; expanded reveals full timeline + skills below */}
               <div className="relative w-full">
                 <motion.div
                   className="w-full relative"
-                  initial={{ opacity: 0, height: "10rem" }}
-                  animate={{ opacity: 1, height: bioExpanded ? "auto" : "10rem" }}
+                  initial={{ opacity: 0, height: "7rem" }}
+                  animate={{ opacity: 1, height: bioExpanded ? "auto" : "7rem" }}
                   transition={{ 
                     opacity: { duration: prefersReducedMotion ? 0 : 0.22 },
                     height: { type: "spring", duration: 0.4, bounce: 0.15 }
@@ -250,30 +250,30 @@ export function HeroSection() {
                 >
                 <div className="hero-education-card relative rounded-[28px] bg-[#d6d6d6] border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-4 pb-1 pl-0 pr-5 flex flex-col overflow-hidden ml-[-10px]">
                   {/* Milestone 1 */}
-                  <div className="flex flex-row gap-2 min-h-[5.5rem]">
+                  <div className="flex flex-row gap-2">
                     <div className="flex flex-col items-center w-5 shrink-0">
-                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-white dark:bg-black shrink-0" />
+                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-[#4EB627] shrink-0" />
                       <div className="flex-1 w-1 mt-[9.5px] mb-[2px] bg-[#E1E1E1] rounded-full relative overflow-hidden translate-x-[0.5px]">
-                        <div className="absolute inset-x-0 bottom-0 h-[80%] bg-[#4EB627] rounded-full" />
+                        <div className="absolute inset-x-0 bottom-0 h-[80%] bg-[#B4B4BB] rounded-full" />
                       </div>
                     </div>
                     <div className="flex-1 pt-0 pb-4">
                       <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">Applied A.I. Solutions Development</p>
                       <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
-                      <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
-                      <div className="pt-1 flex">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full border border-emerald-700/30 text-[0.7rem] font-bold tracking-wider leading-none bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
+                      <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400 flex items-center">
+                        Postgraduate
+                        <span className="ml-2.5 inline-flex items-center px-2 py-0.5 rounded-full border-[1.5px] border-[#4EB627]/60 text-[0.65rem] font-semibold tracking-wider leading-none align-middle bg-[#E1E1E1] text-[#4EB627]">
                           Ongoing
                         </span>
-                      </div>
+                      </p>
                     </div>
                   </div>
 
                   {/* Milestone 2 */}
-                  <div className="flex flex-row gap-2 min-h-[5.5rem]">
+                  <div className="flex flex-row gap-2">
                     <div className="flex flex-col items-center w-5 shrink-0">
-                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-[#4EB627] shrink-0" />
-                      <div className="flex-1 w-1 mt-[9.5px] mb-[2px] bg-[#4EB627] rounded-full translate-x-[0.5px]" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0" />
+                      <div className="flex-1 w-1 mt-[9.5px] mb-[2px] bg-[#B4B4BB] rounded-full translate-x-[0.5px]" />
                     </div>
                     <div className="flex-1 pt-0 pb-4">
                       <p className={cn(
@@ -300,7 +300,7 @@ export function HeroSection() {
                   {/* Milestone 3 */}
                   <div className="flex flex-row gap-2">
                     <div className="flex flex-col items-center w-5 shrink-0">
-                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-[#4EB627] shrink-0" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0" />
                     </div>
                     <div className="flex-1 pt-0">
                       <p className={cn(
@@ -344,7 +344,7 @@ export function HeroSection() {
           </div>
           {/* View more / View less pill button - stays at the end of the rectangle */}
           <motion.div 
-            className="relative z-20 flex justify-center mb-5"
+            className="relative z-40 flex justify-center mb-5"
             initial={false}
             animate={{ marginTop: bioExpanded ? "1.25rem" : "-0.5rem" }}
             transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
@@ -371,7 +371,7 @@ export function HeroSection() {
             {!bioExpanded && (
               <>
                 <motion.div 
-                   className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-10 dark:hidden block"
+                   className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-30 dark:hidden block"
                    style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(214, 214, 214, 0.2) 30%, rgba(214, 214, 214, 0.85) 75%, #d6d6d6 100%)' }}
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
@@ -379,7 +379,7 @@ export function HeroSection() {
                    transition={{ duration: 0.3 }}
                  />
                  <motion.div 
-                   className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-10 dark:block hidden"
+                   className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-30 dark:block hidden"
                    style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.85) 75%, black 100%)' }}
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
@@ -414,15 +414,15 @@ export function HeroSection() {
                   {/* Milestone 1 */}
                   <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
                     <div className="flex flex-col items-center w-5 shrink-0 h-full">
-                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-white dark:bg-black shrink-0" />
+                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-[#4EB627] shrink-0" />
                       <div className="flex-1 w-1 mt-[9.5px] mb-[2px] bg-[#E1E1E1] rounded-full relative overflow-hidden -translate-x-[0.5px]">
-                        <div className="absolute inset-x-0 bottom-0 h-[80%] bg-[#4EB627] rounded-full" />
+                        <div className="absolute inset-x-0 bottom-0 h-[80%] bg-[#B4B4BB] rounded-full" />
                       </div>
                     </div>
                     <div className="flex-1 pt-0">
                       <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">
                         Applied A.I. Solutions Development
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border border-emerald-700/30 text-[0.7rem] font-bold tracking-wider leading-none align-middle mb-0.5 bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
+                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border-[1.5px] border-[#4EB627]/60 text-[0.7rem] font-semibold tracking-wider leading-none align-middle mb-0.5 bg-[#E1E1E1] text-[#4EB627]">
                           Ongoing
                         </span>
                       </p>
@@ -434,8 +434,8 @@ export function HeroSection() {
                   {/* Milestone 2 */}
                   <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
                     <div className="flex flex-col items-center w-5 shrink-0 h-full">
-                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-[#4EB627] shrink-0" />
-                      <div className="flex-1 w-1 mt-[9.5px] mb-[2px] bg-[#4EB627] rounded-full -translate-x-[0.5px]" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0" />
+                      <div className="flex-1 w-1 mt-[9.5px] mb-[2px] bg-[#B4B4BB] rounded-full -translate-x-[0.5px]" />
                     </div>
                     <div className="flex-1 pt-0">
                       <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">Mobile Application Development and Strategy</p>
@@ -447,7 +447,7 @@ export function HeroSection() {
                   {/* Milestone 3 */}
                   <div className="flex flex-row gap-2 xl:gap-2.5">
                     <div className="flex flex-col items-center w-5 shrink-0 h-full">
-                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-[#4EB627] shrink-0" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0" />
                     </div>
                     <div className="flex-1 pt-0">
                       <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">B.Sc. Information Technology</p>
