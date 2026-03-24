@@ -231,13 +231,13 @@
 
   .hero-mobile-main-shape-wrap .hero-bio-card,
   .hero-mobile-main-shape-wrap .hero-education-card {
-    background-color: #f3f3f4 !important;
+    background-color: #d6d6d6 !important;
     background-image: none !important;
   }
 
-  /* Keep education same as bio (pure white) */
+  /* Keep education same as bio */
   .hero-mobile-main-shape-wrap .hero-education-card {
-    background-color: #f3f3f4 !important;
+    background-color: #d6d6d6 !important;
   }
 
   .dark .hero-mobile-main-shape-wrap .neu-container {
@@ -756,12 +756,17 @@ html.light-theme .hero-section {
   }
 
   .hero-flat-desktop .hero-bio-card {
-    background-color: #f3f3f4 !important;
+    background-color: #d6d6d6 !important;
+    background-image: none !important;
+  }
+
+  .hero-flat-desktop .hero-skills-card {
+    background-color: transparent !important;
     background-image: none !important;
   }
 
   .hero-flat-desktop .hero-education-card {
-    background-color: #f3f3f4 !important;
+    background-color: #d6d6d6 !important;
     background-image: none !important;
   }
 
@@ -883,11 +888,15 @@ html.light-theme .hero-section {
 }
 
 html.light-theme .hero-bio-card {
-  background: linear-gradient(180deg, #0b0b0b 0%, var(--hero-bio-bg) 100%) !important;
-  background-color: var(--hero-bio-bg) !important;
-  border-color: rgba(255, 255, 255, 0.02) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+  background: #d6d6d6 !important;
+  background-color: #d6d6d6 !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: none !important;
+}
+
+html.light-theme .hero-skills-card {
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 .hero-bio-card,
@@ -897,24 +906,24 @@ html.light-theme .hero-bio-card {
 }
 
 html.light-theme .hero-bio-card :is(.text-zinc-900, .text-zinc-800, .text-zinc-700, .text-zinc-600, .text-zinc-500, .text-black) {
-  color: #f4f4f5 !important;
+  color: #1c1c1e !important;
 }
 
 html.light-theme .hero-bio-card :is(.text-zinc-100, .text-zinc-200, .text-zinc-300, .text-zinc-400) {
-  color: #e5e7eb !important;
+  color: #636366 !important;
 }
 
 html.light-theme .hero-education-card :is(.text-zinc-900, .text-zinc-800, .text-zinc-700, .text-zinc-600, .text-zinc-500, .text-black) {
-  color: #f8fafc !important;
+  color: #1c1c1e !important;
 }
 
 html.light-theme .hero-education-card :is(.text-zinc-100, .text-zinc-200, .text-zinc-300, .text-zinc-400) {
-  color: #f1f5f9 !important;
+  color: #636366 !important;
 }
 
 html.light-theme .hero-education-card {
-  background-color: #f4f8f4 !important;
-  background-image: linear-gradient(to bottom, #b8dfca 0%, #d0e5d7 55%, #f4f8f4 100%) !important;
+  background-color: #dcdcdc !important;
+  background-image: none !important;
 }
 
 html.light-theme .hero-education-card .bg-white {

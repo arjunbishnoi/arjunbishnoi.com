@@ -161,7 +161,10 @@ export const heroSkills = [
     { name: 'Rest APIs', logoUrl: 'https://cdn.simpleicons.org/swagger/71717A' },
     { name: 'AI/ML', logoUrl: 'https://cdn.simpleicons.org/pytorch/71717A' },
     { name: 'Firebase', logoUrl: 'https://cdn.simpleicons.org/firebase/71717A' },
-    { name: 'Git', logoUrl: 'https://cdn.simpleicons.org/git/71717A' }
+    { name: 'Git', logoUrl: 'https://cdn.simpleicons.org/git/71717A' },
+    { name: 'Next.js', logoUrl: 'https://cdn.simpleicons.org/nextdotjs/71717A' },
+    { name: 'Node.js', logoUrl: 'https://cdn.simpleicons.org/nodedotjs/71717A' },
+    { name: 'Docker', logoUrl: 'https://cdn.simpleicons.org/docker/71717A' }
 ]
 
 export const blogs = [
