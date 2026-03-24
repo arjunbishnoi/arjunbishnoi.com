@@ -222,9 +222,6 @@ export function HeroSection() {
           <div className={cn("flex flex-col pt-8 px-8 text-left transition-all duration-500", bioExpanded ? "pb-10" : "pb-6")}>
             <div className="flex flex-col gap-5">
               {/* Mission Title */}
-              <h3 className="text-2xl sm:text-xl font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight text-left">
-                Bridging design <br/>&amp; engineering.
-              </h3>
 
               {/* Professional Titles */}
               <div className="flex flex-col items-start text-left gap-0 shrink-0">
@@ -251,75 +248,87 @@ export function HeroSection() {
                     height: { type: "spring", duration: 0.4, bounce: 0.15 }
                   }}
                 >
-                <div className="hero-education-card relative rounded-[28px] bg-[#d6d6d6] border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-3 pb-4 px-0 flex flex-col gap-3">
-                <div className="relative pl-5 group">
-                  <div className="absolute left-[5px] top-[11px] bottom-[-23px] w-[1px] bg-zinc-500 dark:bg-zinc-600 dark:opacity-80" />
-                  <div className="absolute left-[5.5px] top-[5.3px] w-[9px] h-[9px] rounded-full bg-black dark:bg-zinc-600 border-0 z-10 box-border -translate-x-1/2" />
-                  <div className="space-y-0">
-                    <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">Applied A.I. Solutions Development</p>
-                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
-                    <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
-                    <div className="pt-1 pb-2 flex">
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full border border-emerald-700/30 text-[0.7rem] font-bold tracking-wider leading-none bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
-                        Ongoing
-                      </span>
+                <div className="hero-education-card relative rounded-[28px] bg-[#d6d6d6] border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-4 pb-1 pl-0 pr-5 flex flex-col overflow-hidden ml-[-10px]">
+                  {/* Milestone 1 */}
+                  <div className="flex flex-row gap-2 min-h-[5.5rem]">
+                    <div className="flex flex-col items-center w-5 shrink-0">
+                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-white dark:bg-black shrink-0" />
+                      <div className="flex-1 w-1 mt-[9.5px] mb-[2px] bg-[#E1E1E1] rounded-full relative overflow-hidden translate-x-[0.5px]">
+                        <div className="absolute inset-x-0 bottom-0 h-[80%] bg-[#4EB627] rounded-full" />
+                      </div>
+                    </div>
+                    <div className="flex-1 pt-0 pb-4">
+                      <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">Applied A.I. Solutions Development</p>
+                      <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
+                      <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
+                      <div className="pt-1 flex">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full border border-emerald-700/30 text-[0.7rem] font-bold tracking-wider leading-none bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
+                          Ongoing
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="relative pl-5">
-                  <div className="absolute left-[5px] top-[11px] bottom-[-23px] w-[1px] bg-zinc-500 dark:bg-zinc-600 dark:opacity-80" />
-                  <div className="absolute left-[5.5px] top-[6.3px] w-[7px] h-[7px] rounded-full bg-zinc-500 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
-                  <div className="space-y-0">
-                    <p className={cn(
-                      "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.4] transition-colors duration-300",
-                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
-                    )}>
-                      Mobile Application Development and Strategy
-                    </p>
-                    <p className={cn(
-                      "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
-                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
-                    )}>
-                      George Brown College, Toronto
-                    </p>
-                    <p className={cn(
-                      "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
-                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
-                    )}>
-                      Postgraduate
-                    </p>
+                  {/* Milestone 2 */}
+                  <div className="flex flex-row gap-2 min-h-[5.5rem]">
+                    <div className="flex flex-col items-center w-5 shrink-0">
+                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-[#4EB627] shrink-0" />
+                      <div className="flex-1 w-1 mt-[9.5px] mb-[2px] bg-[#4EB627] rounded-full translate-x-[0.5px]" />
+                    </div>
+                    <div className="flex-1 pt-0 pb-4">
+                      <p className={cn(
+                        "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.4] transition-colors duration-300",
+                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
+                      )}>
+                        Mobile Application Development and Strategy
+                      </p>
+                      <p className={cn(
+                        "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
+                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                      )}>
+                        George Brown College, Toronto
+                      </p>
+                      <p className={cn(
+                        "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
+                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                      )}>
+                        Postgraduate
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="relative pl-5">
-                  <div className="absolute left-[5.5px] top-[6.3px] w-[7px] h-[7px] rounded-full bg-zinc-500 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
-                  <div className="space-y-0">
-                    <p className={cn(
-                      "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.4] transition-colors duration-300",
-                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
-                    )}>
-                      B.Sc. Information Technology
-                    </p>
-                    <p className={cn(
-                      "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
-                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
-                    )}>
-                      Amity University, Noida
-                    </p>
-                    <p className={cn(
-                      "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
-                      !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
-                    )}>
-                      Graduation
-                    </p>
+                  {/* Milestone 3 */}
+                  <div className="flex flex-row gap-2">
+                    <div className="flex flex-col items-center w-5 shrink-0">
+                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-[#4EB627] shrink-0" />
+                    </div>
+                    <div className="flex-1 pt-0">
+                      <p className={cn(
+                        "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.4] transition-colors duration-300",
+                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
+                      )}>
+                        B.Sc. Information Technology
+                      </p>
+                      <p className={cn(
+                        "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
+                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                      )}>
+                        Amity University, Noida
+                      </p>
+                      <p className={cn(
+                        "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
+                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                      )}>
+                        Graduation
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Always render the rest (skills) below inside the same block so parent width accurately collapses/expands smoothly */}
                 <div className="hero-skills-card pt-8 pb-4 flex justify-center w-full">
                   <div className="grid grid-cols-3 gap-y-6 gap-x-8 w-full max-w-[280px]">
-                    {heroSkills.slice(0, 15).map((skill, i) => (
+                    {heroSkills.slice(0, 12).map((skill, i) => (
                       <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
                         <div className="w-7 h-7 relative grayscale dark:invert-[0.92] dark:opacity-90">
                           <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
@@ -329,16 +338,13 @@ export function HeroSection() {
                     ))}
                   </div>
                 </div>
+                </motion.div>
               </div>
-
-            </motion.div>
-            
+            </div>
           </div>
-          </div>
-
           {/* View more / View less pill button - stays at the end of the rectangle */}
           <motion.div 
-            className="relative z-20 flex justify-center"
+            className="relative z-20 flex justify-center mb-5"
             initial={false}
             animate={{ marginTop: bioExpanded ? "1.25rem" : "-0.5rem" }}
             transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
@@ -365,25 +371,24 @@ export function HeroSection() {
             {!bioExpanded && (
               <>
                 <motion.div 
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-10 dark:hidden block"
-                  style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(200,200,200,0.2) 30%, rgba(200,200,200,0.85) 75%, rgba(200,200,200,1) 100%)' }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <motion.div 
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-10 dark:block hidden"
-                  style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.85) 75%, rgba(0,0,0,1) 100%)' }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
+                   className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-10 dark:hidden block"
+                   style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(214, 214, 214, 0.2) 30%, rgba(214, 214, 214, 0.85) 75%, #d6d6d6 100%)' }}
+                   initial={{ opacity: 0 }}
+                   animate={{ opacity: 1 }}
+                   exit={{ opacity: 0 }}
+                   transition={{ duration: 0.3 }}
+                 />
+                 <motion.div 
+                   className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-10 dark:block hidden"
+                   style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.85) 75%, black 100%)' }}
+                   initial={{ opacity: 0 }}
+                   animate={{ opacity: 1 }}
+                   exit={{ opacity: 0 }}
+                   transition={{ duration: 0.3 }}
+                 />
               </>
             )}
           </AnimatePresence>
-          </div>
         </div>
 
 
@@ -404,16 +409,18 @@ export function HeroSection() {
             {/* COLUMN 1: Education + Skills */}
             <div className="flex flex-col gap-6 xl:gap-7 col-span-1 self-stretch overflow-hidden">
               {/* TOP CARD: Education Timeline Card */}
-              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-[#d6d6d6] dark:bg-black border-0 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
-                <div className="relative flex-1 flex flex-col justify-between">
-                  {/* Vertical Line - monochrome */}
-                  <div className="absolute left-[7px] top-[11px] bottom-[42px] w-[1px] bg-zinc-500 dark:bg-zinc-600 dark:opacity-80" />
-                  
-                  {/* Timeline Item 1 - top circle solid green, centered on line */}
-                  <div className="relative pl-6 group">
-                    <div className="absolute left-[7.5px] top-[4.27px] xl:top-[5.4px] w-[9px] h-[9px] rounded-full bg-black dark:bg-zinc-600 border-0 z-10 box-border -translate-x-1/2" />
-                    <div className="space-y-0">
-                      <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">
+              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-[#e2e2e2] dark:bg-black border-0 pt-5 pb-5 pl-4 pr-6 xl:pt-7 xl:pb-7 xl:pl-5.5 xl:pr-8 flex flex-col overflow-hidden">
+                <div className="relative flex-1 flex flex-col pt-1 pb-1">
+                  {/* Milestone 1 */}
+                  <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
+                    <div className="flex flex-col items-center w-5 shrink-0 h-full">
+                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-white dark:bg-black shrink-0" />
+                      <div className="flex-1 w-1 mt-[9.5px] mb-[2px] bg-[#E1E1E1] rounded-full relative overflow-hidden -translate-x-[0.5px]">
+                        <div className="absolute inset-x-0 bottom-0 h-[80%] bg-[#4EB627] rounded-full" />
+                      </div>
+                    </div>
+                    <div className="flex-1 pt-0">
+                      <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">
                         Applied A.I. Solutions Development
                         <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border border-emerald-700/30 text-[0.7rem] font-bold tracking-wider leading-none align-middle mb-0.5 bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
                           Ongoing
@@ -424,21 +431,26 @@ export function HeroSection() {
                     </div>
                   </div>
 
-                  {/* Timeline Item 2 - dark grey, centered on line */}
-                  <div className="relative pl-6">
-                    <div className="absolute left-[7.5px] top-[5.27px] xl:top-[6.4px] w-[7px] h-[7px] rounded-full bg-zinc-500 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
-                    <div className="space-y-0">
-                      <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">Mobile Application Development and Strategy</p>
+                  {/* Milestone 2 */}
+                  <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
+                    <div className="flex flex-col items-center w-5 shrink-0 h-full">
+                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-[#4EB627] shrink-0" />
+                      <div className="flex-1 w-1 mt-[9.5px] mb-[2px] bg-[#4EB627] rounded-full -translate-x-[0.5px]" />
+                    </div>
+                    <div className="flex-1 pt-0">
+                      <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">Mobile Application Development and Strategy</p>
                       <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
                       <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
                     </div>
                   </div>
 
-                  {/* Timeline Item 3 - dark grey, centered on line */}
-                  <div className="relative pl-6">
-                    <div className="absolute left-[7.5px] top-[5.27px] xl:top-[6.4px] w-[7px] h-[7px] rounded-full bg-zinc-500 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
-                    <div className="space-y-0">
-                      <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">B.Sc. Information Technology</p>
+                  {/* Milestone 3 */}
+                  <div className="flex flex-row gap-2 xl:gap-2.5">
+                    <div className="flex flex-col items-center w-5 shrink-0 h-full">
+                      <div className="w-[14px] h-[14px] relative top-[3px] rounded-full bg-[#4EB627] shrink-0" />
+                    </div>
+                    <div className="flex-1 pt-0">
+                      <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">B.Sc. Information Technology</p>
                       <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Amity University, Noida</p>
                       <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Graduation</p>
                     </div>
@@ -449,7 +461,7 @@ export function HeroSection() {
               {/* SKILLS GRID: fills remaining space below education card */}
               <div className="hero-skills-card w-full flex-1 min-h-0 flex items-start justify-center px-4 xl:px-5 pt-2 xl:pt-3">
                 <div className="grid grid-cols-3 gap-y-6 gap-x-8 xl:gap-y-7 xl:gap-x-10 w-full max-w-[280px] xl:max-w-[300px]">
-                  {heroSkills.slice(0, 15).map((skill, i) => (
+                  {heroSkills.slice(0, 12).map((skill, i) => (
                     <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
                       <div className="w-7 h-7 xl:w-8 xl:h-8 relative grayscale dark:invert-[0.92] dark:opacity-90">
                         <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
@@ -572,9 +584,6 @@ export function HeroSection() {
                 <div className="flex flex-col pt-4 pl-2 xl:pt-5 xl:pl-3 pb-2 xl:pb-4 text-left">
 
                   {/* Main Mission Title */}
-                  <h3 className="text-2xl xl:text-[1.6rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-4 xl:mb-5 text-left">
-                    Bridging design <br/>& engineering.
-                  </h3>
                   
                   {/* 3 Professional Titles */}
                   <div className="flex flex-col gap-0 shrink-0 items-start text-left mb-5 xl:mb-6">
