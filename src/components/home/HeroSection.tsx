@@ -118,14 +118,14 @@ export function HeroSection() {
         
         {/* 1. Interactive Featured Bento Grid (Restored to Top) */}
         <div className="w-[95%] sm:w-[94%] mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
-          <div className="w-full neu-container overflow-visible aspect-[342/355] grid grid-rows-[45%_18.33%_18.33%_18.33%]">
+          <div className="w-full neu-container overflow-visible aspect-[4/4.2] grid grid-rows-[40%_20%_20%_20%]">
             {/* Row 1: Flat All Projects rectangle */}
             <div className="relative h-full p-3 pb-2.5">
               <Link
                 href="/projects"
-                className="group hero-viewall-pill neu-mobile-neumorphic relative z-20 block w-full h-full rounded-[30px] overflow-hidden transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+                className="group hero-viewall-pill neu-mobile-neumorphic relative z-20 block w-full h-full rounded-[30px] transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
               >
-                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
+                <div className="absolute inset-0 z-0 overflow-hidden rounded-[30px] pointer-events-none animate-color-shift">
                   <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
                   <div
                     className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
@@ -414,7 +414,7 @@ export function HeroSection() {
           <div className="grid grid-cols-3 gap-6 xl:gap-7 items-start">
             
             {/* COLUMN 1: Bio + Skills (Merged) */}
-            <div className="hero-bio-skills-merged-card col-span-1 self-stretch overflow-hidden bg-[#e5e5e5] dark:bg-[#303030] rounded-[40px] flex flex-col">
+            <div className="hero-bio-skills-merged-card col-span-1 self-stretch overflow-hidden bg-[#e5e5e5] dark:bg-[#161616] rounded-[40px] flex flex-col">
               {/* Top Section: Bio */}
               <div className="pt-10 xl:pt-12 px-6 xl:px-8 text-left">
                 {/* 3 Professional Titles */}
@@ -456,14 +456,14 @@ export function HeroSection() {
             {/* COLUMN 2: Bento (Row 1) + Featured project (Row 2) */}
             <div className="flex flex-col gap-6 xl:gap-7">
               {/* ROW 1: Interactive Bento */}
-              <div className="w-full relative aspect-[4/5] neu-container overflow-visible rounded-[40px] xl:rounded-[40px] grid grid-rows-[40%_20%_20%_20%] shrink-0 min-h-0">
+              <div className="w-full relative aspect-[4/5.6] lg:aspect-[4/5] neu-container overflow-visible rounded-[40px] xl:rounded-[40px] grid grid-rows-[34%_22%_22%_22%] lg:grid-rows-[40%_20%_20%_20%] shrink-0 min-h-0">
                   {/* Row 1: Raised All Projects rectangle */}
                   <div className="relative h-full p-2.5 xl:p-3.5 pb-2 xl:pb-2.5">
                     <Link
                       href="/projects"
-                      className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] xl:rounded-[36px] overflow-hidden transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+                      className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] xl:rounded-[36px] neu-raised transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
                     >
-                      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
+                      <div className="absolute inset-0 z-0 overflow-hidden rounded-[30px] xl:rounded-[36px] pointer-events-none animate-color-shift">
                         <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
                         <div
                           className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
@@ -561,7 +561,7 @@ export function HeroSection() {
             {/* COLUMN 3: Education + Profile */}
             <div className="flex flex-col gap-6 xl:gap-7 col-span-1 self-stretch">
               {/* TOP CARD: Education Timeline Card (Moved from top left) */}
-              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-[#e5e5e5] dark:bg-[#303030] border-0 pt-5 pb-5 pl-6 pr-8 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-9 flex flex-col overflow-hidden">
+              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-[#e5e5e5] dark:bg-[#161616] border-0 pt-5 pb-5 pl-6 pr-8 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-9 flex flex-col overflow-hidden">
                 <div className="relative flex-1 flex flex-col pt-1 pb-1">
                   {/* Milestone 1 */}
                   <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
