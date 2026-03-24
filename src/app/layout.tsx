@@ -26,7 +26,7 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Arjun Bishnoi — Mobile Apps, AI & Design",
+  title: "Arjun Bishnoi — Mobile apps, AI and design",
   description: profileDescription,
   applicationName: "Arjun Bishnoi",
   authors: [{ name: "Arjun Bishnoi", url: siteUrl }],
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Arjun Bishnoi — Mobile Apps, AI & Design",
+    title: "Arjun Bishnoi — Mobile apps, AI and design",
     description: profileDescription,
     url: `${siteUrl}/`,
     siteName: "Arjun Bishnoi",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arjun Bishnoi — Mobile Apps, AI & Design",
+    title: "Arjun Bishnoi — Mobile apps, AI and design",
     description: profileDescription,
     images: [personImageUrl],
   },
@@ -125,7 +125,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#headshot`,
       url: personImageUrl,
       contentUrl: personImageUrl,
-      caption: "Arjun Bishnoi — Mobile Apps, AI & Design",
+      caption: "Arjun Bishnoi — Mobile apps, AI and design",
       representativeOfPage: true,
     },
     {

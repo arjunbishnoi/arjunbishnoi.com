@@ -98,12 +98,12 @@ export function HeroSection() {
             <span className="inline text-black dark:text-white">& Designer</span>
           </motion.h1>
           <motion.p
-            className="mt-1.5 text-center text-base leading-[1.28] md:mt-3 md:text-xl lg:text-xl xl:text-[1.35rem] md:leading-relaxed opacity-90 lg:max-w-none lg:whitespace-nowrap lg:mb-4 xl:mb-6"
+            className="mt-1.5 text-center text-base leading-[1.28] md:mt-3 md:text-xl lg:text-xl xl:text-[1.35rem] md:leading-relaxed text-zinc-500 dark:text-zinc-400 lg:max-w-none lg:whitespace-nowrap lg:mb-4 xl:mb-6"
             initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0.24 }}
           >
-            <span className="block lg:inline">Mobile Apps, AI &amp; Design.</span>
+            <span className="block lg:inline">Mobile apps, AI and design.</span>
           </motion.p>
         </div>
       </div>
@@ -252,20 +252,21 @@ export function HeroSection() {
                 <div className="hero-education-card relative rounded-[28px] bg-[#d6d6d6] border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-4 pb-1 pl-0 pr-5 flex flex-col overflow-hidden ml-[-10px]">
                   {/* Milestone 1 */}
                   <div className="flex flex-row gap-2">
-                    <div className="flex flex-col items-center w-5 shrink-0">
+                    <div className="flex flex-col items-center w-5 shrink-0 relative">
+                      {/* Segment 1: start slightly below circle 1 with rounded top */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[25px] bottom-0 w-[3px] bg-[#B4B4BB] z-0 rounded-t-full" />
                       <motion.div 
-                        className="w-[14px] h-[14px] relative top-[3px] rounded-full shrink-0" 
+                        className="w-[14px] h-[14px] relative top-[3px] rounded-full shrink-0 z-10" 
                         animate={{ backgroundColor: ["#FFFFFF", "#4EB627", "#FFFFFF"] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                       />
-                      <div className="flex-1 w-[3px] mt-[13.5px] mb-[6px] bg-[#B4B4BB] rounded-full translate-x-[0.5px]" />
                     </div>
                     <div className="flex-1 pt-0 pb-4">
                       <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">Applied A.I. Solutions Development</p>
                       <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
                       <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400 flex items-center">
                         Postgraduate
-                        <span className="ml-2.5 inline-flex items-center px-2 py-0.5 rounded-full border-[1.5px] border-[#4EB627]/60 text-[0.65rem] font-semibold tracking-wider leading-none align-middle bg-[#E1E1E1] text-[#4EB627]">
+                        <span className="ml-2.5 inline-flex items-center px-2 py-0.5 rounded-full border-[1px] border-black/80 dark:border-white/80 text-[0.65rem] font-semibold tracking-wider leading-none align-middle bg-transparent text-black dark:text-white">
                           Ongoing
                         </span>
                       </p>
@@ -274,9 +275,10 @@ export function HeroSection() {
 
                   {/* Milestone 2 */}
                   <div className="flex flex-row gap-2">
-                    <div className="flex flex-col items-center w-5 shrink-0">
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0" />
-                      <div className="flex-1 w-[3px] mt-[13.5px] mb-[6px] bg-[#B4B4BB] rounded-full translate-x-[0.5px]" />
+                    <div className="flex flex-col items-center w-5 shrink-0 relative">
+                      {/* Segment 2: pass through row 2 */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#B4B4BB] z-0" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0 pb-4">
                       <p className={cn(
@@ -302,8 +304,10 @@ export function HeroSection() {
 
                   {/* Milestone 3 */}
                   <div className="flex flex-row gap-2">
-                    <div className="flex flex-col items-center w-5 shrink-0">
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0" />
+                    <div className="flex flex-col items-center w-5 shrink-0 relative">
+                      {/* Segment 3: end at center of circle 3 with rounded bottom */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[10px] w-[3px] bg-[#B4B4BB] z-0 rounded-b-full" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0">
                       <p className={cn(
@@ -561,18 +565,19 @@ export function HeroSection() {
                 <div className="relative flex-1 flex flex-col pt-1 pb-1">
                   {/* Milestone 1 */}
                   <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
-                    <div className="flex flex-col items-center w-5 shrink-0 h-full">
+                    <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
+                      {/* Segment 1: start slightly below circle 1 with rounded top */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[25px] bottom-0 w-[3px] bg-[#B4B4BB] z-0 rounded-t-full" />
                       <motion.div 
-                        className="w-[14px] h-[14px] relative top-[3px] rounded-full shrink-0" 
+                        className="w-[14px] h-[14px] relative top-[3px] rounded-full shrink-0 z-10" 
                         animate={{ backgroundColor: ["#FFFFFF", "#4EB627", "#FFFFFF"] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                       />
-                      <div className="flex-1 w-[3px] mt-[13.5px] mb-[6px] bg-[#B4B4BB] rounded-full translate-x-[0.5px]" />
                     </div>
                     <div className="flex-1 pt-0">
                       <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">
                         Applied A.I. Solutions Development
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border-[1.5px] border-[#4EB627]/60 text-[0.7rem] font-semibold tracking-wider leading-none align-middle mb-0.5 bg-[#E1E1E1] text-[#4EB627]">
+                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border-[1px] border-black/80 dark:border-white/80 text-[0.7rem] font-semibold tracking-wider leading-none align-middle mb-0.5 bg-transparent text-black dark:text-white">
                           Ongoing
                         </span>
                       </p>
@@ -583,9 +588,10 @@ export function HeroSection() {
 
                   {/* Milestone 2 */}
                   <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
-                    <div className="flex flex-col items-center w-5 shrink-0 h-full">
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0" />
-                      <div className="flex-1 w-[3px] mt-[13.5px] mb-[6px] bg-[#B4B4BB] rounded-full translate-x-[0.5px]" />
+                    <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
+                      {/* Segment 2: pass through row 2 */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#B4B4BB] z-0" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0">
                       <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">Mobile Application Development and Strategy</p>
@@ -596,8 +602,10 @@ export function HeroSection() {
 
                   {/* Milestone 3 */}
                   <div className="flex flex-row gap-2 xl:gap-2.5">
-                    <div className="flex flex-col items-center w-5 shrink-0 h-full">
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0" />
+                    <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
+                      {/* Segment 3: end at center of circle 3 with rounded bottom */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[10px] w-[3px] bg-[#B4B4BB] z-0 rounded-b-full" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0">
                       <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">B.Sc. Information Technology</p>
