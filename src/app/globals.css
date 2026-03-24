@@ -231,14 +231,10 @@
 
   .hero-mobile-main-shape-wrap .hero-bio-card,
   .hero-mobile-main-shape-wrap .hero-education-card {
-    background-color: #d6d6d6 !important;
     background-image: none !important;
   }
 
   /* Keep education same as bio */
-  .hero-mobile-main-shape-wrap .hero-education-card {
-    background-color: #d6d6d6 !important;
-  }
 
   .dark .hero-mobile-main-shape-wrap .neu-container {
     background-color: #050505 !important;
@@ -756,17 +752,14 @@ html.light-theme .hero-section {
   }
 
   .hero-flat-desktop .hero-bio-card {
-    background-color: #d6d6d6 !important;
     background-image: none !important;
   }
 
   .hero-flat-desktop .hero-skills-card {
-    background-color: transparent !important;
     background-image: none !important;
   }
 
   .hero-flat-desktop .hero-education-card {
-    background-color: #d6d6d6 !important;
     background-image: none !important;
   }
 

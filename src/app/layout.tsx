@@ -8,8 +8,8 @@ import { PageLoadFadeIn } from "@/components/layout/PageLoadFadeIn";
 import { socialLinks } from "@/lib/site-data";
 
 const siteUrl = "https://arjunbishnoi.com";
-const personImageUrl = `${siteUrl}/arjun-bishnoi-headshot-square.jpg`;
-const profileDescription = "Mobile Apps, AI & Design.";
+const personImageUrl = `${siteUrl}/arjun-bishnoi.jpg`;
+const profileDescription = "I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -88,6 +88,8 @@ export const metadata: Metadata = {
   },
   other: {
     "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-title": "Arjun Bishnoi",
+    "og:site_name": "Arjun Bishnoi",
   },
 };
 
@@ -106,7 +108,6 @@ const jsonLd = {
       "@id": `${siteUrl}/#website`,
       url: `${siteUrl}/`,
       name: "Arjun Bishnoi",
-      alternateName: ["Arjun", "arjunbishnoi.com"],
     },
     {
       "@type": "ProfilePage",
@@ -124,7 +125,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#headshot`,
       url: personImageUrl,
       contentUrl: personImageUrl,
-      caption: "Arjun Bishnoi headshot",
+      caption: "Arjun Bishnoi — Mobile Apps, AI & Design",
       representativeOfPage: true,
     },
     {

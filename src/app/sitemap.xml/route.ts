@@ -6,7 +6,7 @@ const sitemapEntries = [
     priority: "1.0",
     changeFrequency: "monthly",
     images: [
-      `${baseUrl}/arjun-bishnoi-headshot-square.jpg`,
+      `${baseUrl}/arjun-bishnoi.jpg`,
       `${baseUrl}/arjun-bishnoi-portrait.jpg`,
     ],
   },
@@ -14,7 +14,7 @@ const sitemapEntries = [
     url: `${baseUrl}/projects`,
     priority: "0.8",
     changeFrequency: "monthly",
-    images: [`${baseUrl}/arjun-bishnoi-headshot-square.jpg`],
+    images: [`${baseUrl}/arjun-bishnoi.jpg`],
   },
 ];
 
