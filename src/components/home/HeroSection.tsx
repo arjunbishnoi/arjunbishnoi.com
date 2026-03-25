@@ -257,7 +257,7 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2">
                     <div className="flex flex-col items-center w-5 shrink-0 relative">
                       {/* Segment 1: start slightly below circle 1 with rounded top */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-[25px] bottom-0 w-[3px] bg-[#636366] dark:bg-zinc-400 z-0 rounded-t-full" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[25px] bottom-0 w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0 rounded-t-full" />
                       <motion.div 
                         className="w-[14px] h-[14px] relative top-[3px] rounded-full shrink-0 z-10" 
                         animate={{ backgroundColor: ["#FFFFFF", "#4EB627", "#FFFFFF"] }}
@@ -280,8 +280,8 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2">
                     <div className="flex flex-col items-center w-5 shrink-0 relative">
                       {/* Segment 2: pass through row 2 */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#636366] dark:bg-zinc-400 z-0" />
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#636366] dark:bg-zinc-400 shrink-0 z-10" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#bababa] dark:bg-zinc-600 shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0 pb-4">
                       <p className={cn(
@@ -309,8 +309,8 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2">
                     <div className="flex flex-col items-center w-5 shrink-0 relative">
                       {/* Segment 3: end at center of circle 3 with rounded bottom */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[10px] w-[3px] bg-[#636366] dark:bg-zinc-400 z-0 rounded-b-full" />
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#636366] dark:bg-zinc-400 shrink-0 z-10" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[10px] w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0 rounded-b-full" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#bababa] dark:bg-zinc-600 shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0 pb-1">
                       <p className={cn(
@@ -573,7 +573,7 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
                     <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
                       {/* Segment 1: start slightly below circle 1 with rounded top */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-[25px] bottom-0 w-[3px] bg-[#636366] dark:bg-zinc-400 z-0 rounded-t-full" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[25px] bottom-0 w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0 rounded-t-full" />
                       <motion.div 
                         className="w-[14px] h-[14px] relative top-[3px] rounded-full shrink-0 z-10" 
                         animate={{ backgroundColor: ["#FFFFFF", "#4EB627", "#FFFFFF"] }}
@@ -596,8 +596,8 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
                     <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
                       {/* Segment 2: pass through row 2 */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#636366] dark:bg-zinc-400 z-0" />
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#636366] dark:bg-zinc-400 shrink-0 z-10" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#bababa] dark:bg-zinc-600 shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0">
                       <p className="text-[15px] xl:text-[15.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">Mobile Application Development and Strategy</p>
@@ -610,8 +610,8 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2 xl:gap-2.5">
                     <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
                       {/* Segment 3: extend past bottom edge */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-[-100px] w-[3px] bg-[#636366] dark:bg-zinc-400 z-0 rounded-none" />
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#636366] dark:bg-zinc-400 shrink-0 z-10" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-[-100px] w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0 rounded-none" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#bababa] dark:bg-zinc-600 shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0">
                       <p className="text-[15px] xl:text-[15.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">B.Sc. Information Technology</p>
