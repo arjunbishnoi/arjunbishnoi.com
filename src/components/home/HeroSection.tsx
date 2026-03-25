@@ -222,7 +222,7 @@ export function HeroSection() {
         />
 
         {/* 3. Unified Mobile Bio + Education Card */}
-        <div className="home-mobile-bio-shell hero-bio-card w-full -mt-16 relative z-0 rounded-t-[32px] rounded-b-[40px] bg-[#d6d6d6] dark:bg-black border border-zinc-200/50 border-t-0 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
+        <div className="home-mobile-bio-shell hero-bio-card w-full -mt-16 relative z-0 rounded-t-[32px] rounded-b-[40px] border border-zinc-200/50 border-t-0 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
           <div className={cn("flex flex-col pt-[84px] px-8 text-left transition-all duration-500", bioExpanded ? "pb-10" : "pb-6")}>
             <div className="flex flex-col gap-5">
               {/* Mission Title */}
@@ -237,7 +237,7 @@ export function HeroSection() {
               </div>
 
               {/* Description */}
-              <p className="text-[0.85rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-300">
+              <p className="text-[0.85rem] font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">
                 I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.
               </p>
 
@@ -252,12 +252,12 @@ export function HeroSection() {
                     height: { type: "spring", duration: 0.4, bounce: 0.15 }
                   }}
                 >
-                <div className="hero-education-card relative rounded-[28px] bg-[#d6d6d6] border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-4 pb-1 pl-0 pr-5 flex flex-col overflow-hidden ml-[-10px]">
+                <div className="hero-education-card relative rounded-[28px] bg-transparent border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-4 pb-1 pl-0 pr-5 flex flex-col overflow-hidden ml-[-10px]">
                   {/* Milestone 1 */}
                   <div className="flex flex-row gap-2">
                     <div className="flex flex-col items-center w-5 shrink-0 relative">
                       {/* Segment 1: start slightly below circle 1 with rounded top */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-[25px] bottom-0 w-[3px] bg-[#B4B4BB] z-0 rounded-t-full" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[25px] bottom-0 w-[3px] bg-[#636366] dark:bg-zinc-400 z-0 rounded-t-full" />
                       <motion.div 
                         className="w-[14px] h-[14px] relative top-[3px] rounded-full shrink-0 z-10" 
                         animate={{ backgroundColor: ["#FFFFFF", "#4EB627", "#FFFFFF"] }}
@@ -265,9 +265,9 @@ export function HeroSection() {
                       />
                     </div>
                     <div className="flex-1 pt-0 pb-4">
-                      <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">Applied A.I. Solutions Development</p>
-                      <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
-                      <p className="text-[0.85rem] font-normal leading-[1.4] text-zinc-600 dark:text-zinc-400 flex items-center">
+                      <p className="text-[14.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.6]">Applied A.I. Solutions Development</p>
+                      <p className="text-[0.85rem] font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">George Brown College, Toronto</p>
+                      <p className="text-[0.85rem] font-normal leading-[1.6] text-[#636366] dark:text-zinc-400 flex items-center">
                         Postgraduate
                         <span className="ml-2.5 inline-flex items-center px-2 py-0.5 rounded-full border-[1px] border-black/80 dark:border-white/80 text-[0.65rem] font-semibold tracking-wider leading-none align-middle bg-transparent text-black dark:text-white">
                           Ongoing
@@ -280,25 +280,25 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2">
                     <div className="flex flex-col items-center w-5 shrink-0 relative">
                       {/* Segment 2: pass through row 2 */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#B4B4BB] z-0" />
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0 z-10" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#636366] dark:bg-zinc-400 z-0" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#636366] dark:bg-zinc-400 shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0 pb-4">
                       <p className={cn(
-                        "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.4] transition-colors duration-300",
+                        "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.6] transition-colors duration-300",
                         !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
                       )}>
                         Mobile Application Development and Strategy
                       </p>
                       <p className={cn(
-                        "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                        "text-[0.85rem] font-normal leading-[1.6] transition-colors duration-300",
+                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
                       )}>
                         George Brown College, Toronto
                       </p>
                       <p className={cn(
-                        "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                        "text-[0.85rem] font-normal leading-[1.6] transition-colors duration-300",
+                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
                       )}>
                         Postgraduate
                       </p>
@@ -309,25 +309,25 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2">
                     <div className="flex flex-col items-center w-5 shrink-0 relative">
                       {/* Segment 3: end at center of circle 3 with rounded bottom */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[10px] w-[3px] bg-[#B4B4BB] z-0 rounded-b-full" />
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0 z-10" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[10px] w-[3px] bg-[#636366] dark:bg-zinc-400 z-0 rounded-b-full" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#636366] dark:bg-zinc-400 shrink-0 z-10" />
                     </div>
-                    <div className="flex-1 pt-0">
+                    <div className="flex-1 pt-0 pb-1">
                       <p className={cn(
-                        "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.4] transition-colors duration-300",
+                        "text-[14.5px] font-[600] tracking-[-0.015em] leading-[1.6] transition-colors duration-300",
                         !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
                       )}>
                         B.Sc. Information Technology
                       </p>
                       <p className={cn(
-                        "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                        "text-[0.85rem] font-normal leading-[1.6] transition-colors duration-300",
+                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
                       )}>
                         Amity University, Noida
                       </p>
                       <p className={cn(
-                        "text-[0.85rem] font-normal leading-[1.4] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-600 dark:text-zinc-400"
+                        "text-[0.85rem] font-normal leading-[1.6] transition-colors duration-300",
+                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
                       )}>
                         Bachelor&apos;s Degree
                       </p>
@@ -380,17 +380,17 @@ export function HeroSection() {
           <AnimatePresence>
             {!bioExpanded && (
               <>
-                <motion.div 
-                   className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-30 dark:hidden block"
-                   style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(214, 214, 214, 0.2) 30%, rgba(214, 214, 214, 0.85) 75%, #d6d6d6 100%)' }}
+                 <motion.div 
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-30 dark:hidden block"
+                    style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(206, 206, 206, 0.2) 30%, rgba(206, 206, 206, 0.85) 75%, #cecece 100%)' }}
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
                    exit={{ opacity: 0 }}
                    transition={{ duration: 0.3 }}
                  />
-                 <motion.div 
-                   className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-30 dark:block hidden"
-                   style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.85) 75%, black 100%)' }}
+                  <motion.div 
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-30 dark:block hidden"
+                    style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(38, 38, 38, 0.2) 30%, rgba(38, 38, 38, 0.85) 75%, #262626 100%)' }}
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
                    exit={{ opacity: 0 }}
@@ -436,7 +436,7 @@ export function HeroSection() {
                 </div>
 
                 {/* Short Description */}
-                <p className="text-[0.9rem] xl:text-[0.95rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-100">
+                <p className="text-[0.9rem] xl:text-[0.95rem] font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">
                   I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.
                 </p>
               </div>
@@ -573,7 +573,7 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
                     <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
                       {/* Segment 1: start slightly below circle 1 with rounded top */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-[25px] bottom-0 w-[3px] bg-[#B4B4BB] z-0 rounded-t-full" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[25px] bottom-0 w-[3px] bg-[#636366] dark:bg-zinc-400 z-0 rounded-t-full" />
                       <motion.div 
                         className="w-[14px] h-[14px] relative top-[3px] rounded-full shrink-0 z-10" 
                         animate={{ backgroundColor: ["#FFFFFF", "#4EB627", "#FFFFFF"] }}
@@ -581,14 +581,14 @@ export function HeroSection() {
                       />
                     </div>
                     <div className="flex-1 pt-0">
-                      <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">
+                      <p className="text-[15px] xl:text-[15.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">
                         Applied A.I. Solutions Development
                         <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border-[1px] border-black/80 dark:border-white/80 text-[0.7rem] font-semibold tracking-wider leading-none align-middle mb-0.5 bg-transparent text-black dark:text-white">
                           Ongoing
                         </span>
                       </p>
-                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
-                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">George Brown College, Toronto</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Postgraduate</p>
                     </div>
                   </div>
 
@@ -596,13 +596,13 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2 xl:gap-2.5 flex-1">
                     <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
                       {/* Segment 2: pass through row 2 */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#B4B4BB] z-0" />
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0 z-10" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#636366] dark:bg-zinc-400 z-0" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#636366] dark:bg-zinc-400 shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0">
-                      <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">Mobile Application Development and Strategy</p>
-                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">George Brown College, Toronto</p>
-                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Postgraduate</p>
+                      <p className="text-[15px] xl:text-[15.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">Mobile Application Development and Strategy</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">George Brown College, Toronto</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Postgraduate</p>
                     </div>
                   </div>
 
@@ -610,13 +610,13 @@ export function HeroSection() {
                   <div className="flex flex-row gap-2 xl:gap-2.5">
                     <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
                       {/* Segment 3: extend past bottom edge */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-[-100px] w-[3px] bg-[#B4B4BB] z-0 rounded-none" />
-                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#B4B4BB] shrink-0 z-10" />
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-[-100px] w-[3px] bg-[#636366] dark:bg-zinc-400 z-0 rounded-none" />
+                      <div className="w-[12px] h-[12px] relative top-[4px] rounded-full bg-[#636366] dark:bg-zinc-400 shrink-0 z-10" />
                     </div>
                     <div className="flex-1 pt-0">
-                      <p className="text-[14.5px] xl:text-[15px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.3]">B.Sc. Information Technology</p>
-                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Amity University, Noida</p>
-                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.3] text-zinc-600 dark:text-zinc-400">Bachelor&apos;s Degree</p>
+                      <p className="text-[15px] xl:text-[15.5px] font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">B.Sc. Information Technology</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Amity University, Noida</p>
+                      <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Bachelor&apos;s Degree</p>
                     </div>
                   </div>
                 </div>

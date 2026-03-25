@@ -39,12 +39,18 @@
     --neu-flat-border: rgba(0, 0, 0, 0.1);
     --neu-gradient-light: #ededed;
     --neu-gradient-dark: #cdcdcd;
-    --hero-bio-bg: #121212;
+    --hero-bio-bg: #cecece;
+    --hero-bio-gradient-light: #d6d6d6;
+    --hero-bio-gradient-dark: #b8b8b8;
     /* Home sections under hero: one shared gap (Featured / Projects / Blog) on small screens */
     --home-stack-gap-after: 4rem;
   }
 
   .dark {
+    /* Set hero bio backgrounds to be slightly lighter in dark mode */
+    --hero-bio-bg: #262626;
+    --hero-bio-gradient-light: #2c2c2c;
+    --hero-bio-gradient-dark: #202020;
     /* Dark mode neumorphic surface — perfectly neutral, darker gray */
     --neu-surface: #1c1c1c; 
     --neu-surface-dimmed: #121212;
@@ -69,7 +75,6 @@
     
     /* Mobile flat border */
     --neu-flat-border: rgba(255, 255, 255, 0.08);
-    --hero-bio-bg: #1a1a1a;
   }
 
   /* --- Raised state: element pops out of surface --- */
@@ -115,6 +120,10 @@
       --neu-shadow-distance: 4px;
       --neu-shadow-blur: 10px;
     }
+  }
+
+  .hero-bio-card {
+    background: var(--hero-bio-bg);
   }
 
   @media (min-width: 768px) {
@@ -883,9 +892,9 @@ html.light-theme ::selection {
   /* Mobile bio block (below hero shape): pure black in dark mode; nested education slightly lifted */
   @media (max-width: 1023.98px) {
     .dark .home-mobile-bio-shell.hero-bio-card {
-      background-color: #000000 !important;
+      background-color: var(--hero-bio-bg) !important;
       background-image: none !important;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+      box-shadow: none !important;
     }
 
     /* No separate surface behind education — same black as bio card */
