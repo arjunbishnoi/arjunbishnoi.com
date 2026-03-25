@@ -123,12 +123,15 @@ export function HeroSection() {
             <div className="relative h-full p-3 pb-2.5">
               <Link
                 href="/projects"
-                className="group hero-viewall-pill neu-mobile-neumorphic relative z-20 block w-full h-full rounded-[30px] transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+                className="group hero-viewall-pill neu-mobile-neumorphic relative z-20 block w-full h-full rounded-[30px] neu-raised transform-gpu will-change-transform"
               >
-                <div className="absolute inset-0 z-0 overflow-hidden rounded-[30px] pointer-events-none animate-color-shift">
+                <div 
+                  className="absolute inset-0 z-0 overflow-hidden rounded-[30px] pointer-events-none animate-color-shift"
+                  style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
+                >
                   <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
                   <div
-                    className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
+                    className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[8] group-hover:contrast-[1.5] group-hover:brightness-[1.25] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
                     style={{
                       maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
                       WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
@@ -149,7 +152,7 @@ export function HeroSection() {
                         "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
                     }}
                   />
-                  <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.12] dark:group-hover:bg-white/[0.06] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                  <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.28] dark:group-hover:bg-white/[0.12] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-[1]" />
                 </div>
                 <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                   <div className="flex items-center gap-1.5">
@@ -461,12 +464,15 @@ export function HeroSection() {
                   <div className="relative h-full p-2.5 xl:p-3.5 pb-2 xl:pb-2.5">
                     <Link
                       href="/projects"
-                      className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] xl:rounded-[36px] neu-raised transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+                      className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] xl:rounded-[36px] neu-raised transform-gpu will-change-transform"
                     >
-                      <div className="absolute inset-0 z-0 overflow-hidden rounded-[30px] xl:rounded-[36px] pointer-events-none animate-color-shift">
+                      <div 
+                        className="absolute inset-0 z-0 overflow-hidden rounded-[30px] xl:rounded-[36px] pointer-events-none animate-color-shift"
+                        style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
+                      >
                         <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
                         <div
-                          className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
+                          className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[8] group-hover:contrast-[1.5] group-hover:brightness-[1.25] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
                           style={{
                             maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
                             WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
@@ -487,7 +493,7 @@ export function HeroSection() {
                               "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
                           }}
                         />
-                        <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.12] dark:group-hover:bg-white/[0.06] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                        <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.28] dark:group-hover:bg-white/[0.12] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
                       </div>
                       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                         <div className="flex items-center gap-2 xl:gap-2.5">

@@ -82,12 +82,26 @@
 
   /* --- Class to keep neumorphism on mobile for specific elements --- */
   .neu-mobile-neumorphic {
+    border: none !important;
+    background: linear-gradient(145deg, var(--neu-gradient-light), var(--neu-gradient-dark));
     box-shadow:
       calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
+      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
     border-color: transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  @media (hover: hover) {
+    .neu-mobile-neumorphic:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow:
+        calc(-1 * var(--neu-shadow-distance) - 3px) calc(-1 * var(--neu-shadow-distance) - 3px) calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-light),
+        calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-dark);
+    }
   }
   .neu-mobile-neumorphic:active {
+    transform: translateY(2px) scale(0.95);
     box-shadow:
       inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
       inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
@@ -121,10 +135,10 @@
   /* --- Hover: lift up — card rises off surface with bigger shadow --- */
   @media (hover: hover) {
     .neu-raised:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px) scale(1.01);
       box-shadow:
-        calc(-1 * var(--neu-shadow-distance) - 2px) calc(-1 * var(--neu-shadow-distance) - 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-light),
-        calc(var(--neu-shadow-distance) + 2px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-dark),
+        calc(-1 * var(--neu-shadow-distance) - 3px) calc(-1 * var(--neu-shadow-distance) - 3px) calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-light),
+        calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-dark),
         inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
         inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
     }
@@ -637,6 +651,7 @@ html.light-theme .hero-section {
   }
 
   /* Center Bento Container: Pure Neumorphic (inherits from .neu-container) */
+  /* Center Bento Container: Pure Neumorphic (inherits from .neu-container) */
   .hero-flat-desktop .neu-container {
     background-color: var(--neu-surface) !important;
     background-image: none !important;
@@ -654,31 +669,6 @@ html.light-theme .hero-section {
 
   .hero-flat-desktop .hero-education-card {
     background-image: none !important;
-  }
-
-  /* View-All Pill: Flat Neumorphic (no drop shadows) */
-  .hero-flat-desktop .hero-viewall-pill {
-    background-color: var(--neu-surface) !important;
-    background-image: none !important;
-    box-shadow: 
-      calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark) !important;
-    border: none !important;
-    transform: none !important;
-  }
-
-  .hero-flat-desktop .hero-viewall-pill:hover {
-    transform: none !important;
-    box-shadow: 
-      calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark) !important;
-  }
-
-  .hero-flat-desktop .hero-viewall-surface {
-    background-color: var(--neu-surface) !important;
-    border-radius: inherit !important;
-    box-shadow: none !important;
-    opacity: 1 !important;
   }
 
   /* Consolidated all desktop states above */
