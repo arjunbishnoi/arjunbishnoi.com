@@ -14,13 +14,13 @@
   /* --- Neumorphic CSS Custom Properties --- */
   :root {
     /* Light mode neumorphic surface */
-    --neu-surface: #e6e6e6;
-    --neu-surface-dimmed: #adadad;
-    --neu-shadow-dark: rgba(140, 140, 140, 0.75); /* Darker drop shadow */
+    --neu-surface: #dddddd;
+    --neu-surface-dimmed: #a5a5a5;
+    --neu-shadow-dark: rgba(135, 135, 135, 0.75); /* Darker drop shadow */
     --neu-shadow-light: rgba(255, 255, 255, 0.95); /* Brighter highlight */
     --neu-shadow-distance: 6px;
     --neu-shadow-blur: 14px;
-    --neu-inset-shadow-dark: rgba(140, 140, 140, 0.65); /* Darker inset shadow */
+    --neu-inset-shadow-dark: rgba(135, 135, 135, 0.65); /* Darker inset shadow */
     --neu-inset-shadow-light: rgba(255, 255, 255, 0.85); /* Brighter inset highlight */
     --neu-sweep-distance: 16px;
     --neu-sweep-blur: 40px;
@@ -32,13 +32,13 @@
     --hero-gradient-stop: 30%;
     
     /* Project-specific background matching main background in light mode */
-    --projects-background: 0 0% 88%;
-    --projects-surface: #e6e6e6;
+    --projects-background: 0 0% 87%;
+    --projects-surface: #dddddd;
     
     /* Mobile flat border */
     --neu-flat-border: rgba(0, 0, 0, 0.1);
-    --neu-gradient-light: #f5f5f5;
-    --neu-gradient-dark: #d5d5d5;
+    --neu-gradient-light: #ededed;
+    --neu-gradient-dark: #cdcdcd;
     --hero-bio-bg: #121212;
     /* Home sections under hero: one shared gap (Featured / Projects / Blog) on small screens */
     --home-stack-gap-after: 4rem;
@@ -107,6 +107,14 @@
       inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
       inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
       inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+  }
+
+  /* Tighten mobile project card shadows so they don't spill */
+  @media (max-width: 767px) {
+    .hero-viewall-pill.neu-mobile-neumorphic {
+      --neu-shadow-distance: 4px;
+      --neu-shadow-blur: 10px;
+    }
   }
 
   @media (min-width: 768px) {
@@ -259,8 +267,8 @@
 
 @layer base {
   :root {
-    /* Set background to exactly match --neu-surface #e0e0e0 */
-    --background: 0 0% 90%;
+    /* Set background to exactly match --neu-surface #dddddd */
+    --background: 0 0% 87%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
