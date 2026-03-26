@@ -223,7 +223,7 @@ export function HeroSection() {
 
         {/* 3. Unified Mobile Bio + Education Card */}
         <div className="home-mobile-bio-shell hero-bio-card w-full -mt-16 relative z-0 rounded-t-[32px] rounded-b-[40px] border border-zinc-200/50 border-t-0 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
-          <div className={cn("flex flex-col pt-[84px] px-8 text-left transition-all duration-500", bioExpanded ? "pb-10" : "pb-6")}>
+          <div className={cn("flex flex-col pt-[84px] px-8 text-left transition-all duration-500", bioExpanded ? "pb-0" : "pb-6")}>
             <div className="flex flex-col">
               {/* Mission Title */}
 
@@ -336,7 +336,7 @@ export function HeroSection() {
                 </div>
 
                 {/* Always render the rest (skills) below inside the same block so parent width accurately collapses/expands smoothly */}
-                <div className="hero-skills-card pt-8 pb-4 flex justify-center w-full">
+                <div className={cn("hero-skills-card pt-8 flex justify-center w-full", bioExpanded ? "pb-0" : "pb-4")}>
                   <div className="grid grid-cols-3 gap-y-6 gap-x-8 w-full max-w-[280px]">
                     {heroSkills.slice(0, 18).map((skill, i) => (
                       <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
@@ -356,7 +356,7 @@ export function HeroSection() {
           <motion.div 
             className="relative z-40 flex justify-center mb-5"
             initial={false}
-            animate={{ marginTop: bioExpanded ? "1.25rem" : "-0.5rem" }}
+            animate={{ marginTop: bioExpanded ? "2.75rem" : "-0.5rem" }}
             transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
           >
             <button
