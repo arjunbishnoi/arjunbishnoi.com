@@ -421,6 +421,14 @@ html.mobile-menu-open body {
   margin-bottom: 1.75rem;
 }
 
+.hero-copy-unified {
+  font-size: 0.9375rem;
+}
+
+.hero-education-secondary {
+  font-size: 0.8125rem;
+}
+
 section.relative.overflow-hidden.hero-section {
   min-height: 20rem;
 }

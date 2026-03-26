@@ -164,7 +164,10 @@ export const heroSkills = [
     { name: 'Git', logoUrl: 'https://cdn.simpleicons.org/git/71717A' },
     { name: 'Next.js', logoUrl: 'https://cdn.simpleicons.org/nextdotjs/71717A' },
     { name: 'Node.js', logoUrl: 'https://cdn.simpleicons.org/nodedotjs/71717A' },
-    { name: 'Docker', logoUrl: 'https://cdn.simpleicons.org/docker/71717A' }
+    { name: 'Docker', logoUrl: 'https://cdn.simpleicons.org/docker/71717A' },
+    { name: 'PostgreSQL', logoUrl: 'https://cdn.simpleicons.org/postgresql/71717A' },
+    { name: 'MongoDB', logoUrl: 'https://cdn.simpleicons.org/mongodb/71717A' },
+    { name: 'Supabase', logoUrl: 'https://cdn.simpleicons.org/supabase/71717A' }
 ]
 
 export const blogs = [
