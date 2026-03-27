@@ -1,4 +1,4 @@
-const baseUrl = "https://arjunbishnoi.com";
+const baseUrl = "https://www.arjunbishnoi.com";
 
 const sitemapEntries = [
   {

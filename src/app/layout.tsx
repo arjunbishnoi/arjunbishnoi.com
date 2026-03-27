@@ -7,13 +7,18 @@ import { Header } from "@/components/layout/Header";
 import { PageLoadFadeIn } from "@/components/layout/PageLoadFadeIn";
 import { socialLinks } from "@/lib/site-data";
 
-const siteUrl = "https://arjunbishnoi.com";
+const siteUrl = "https://www.arjunbishnoi.com";
+const siteName = "Arjun Bishnoi";
+const siteAlternateName = "arjunbishnoi.com";
 const personImageUrl = `${siteUrl}/arjun-bishnoi.jpg`;
+const portraitImageUrl = `${siteUrl}/arjun-bishnoi-portrait.jpg`;
 const shareImageUrl = `${siteUrl}/og-homepage-v1.jpg?v=4`;
 const shareImageAlt = "Arjun Bishnoi homepage preview featuring Mobile Apps, AI & Design";
 const siteTitle = "Arjun Bishnoi \u2014 Mobile Apps, AI & Design";
 const profileDescription =
   "Developer & Designer. I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.";
+const personImageDescription =
+  "Headshot of Arjun Bishnoi, developer and designer focused on cross-platform mobile apps, AI, and product design.";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,7 +37,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: siteTitle,
   description: profileDescription,
-  applicationName: "Arjun Bishnoi",
+  applicationName: siteName,
   authors: [{ name: "Arjun Bishnoi", url: siteUrl }],
   generator: "Next.js",
   keywords: [
@@ -48,6 +53,17 @@ export const metadata: Metadata = {
   referrer: "origin-when-cross-origin",
   creator: "Arjun Bishnoi",
   publisher: "Arjun Bishnoi",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   manifest: "/site.webmanifest",
   icons: {
     icon: [
@@ -67,7 +83,7 @@ export const metadata: Metadata = {
     title: siteTitle,
     description: profileDescription,
     url: `${siteUrl}/`,
-    siteName: "Arjun Bishnoi",
+    siteName,
     images: [
       {
         url: shareImageUrl,
@@ -88,13 +104,13 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: "Arjun Bishnoi",
+    title: siteName,
     statusBarStyle: "black-translucent",
   },
   other: {
     "mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-title": "Arjun Bishnoi",
-    "og:site_name": "Arjun Bishnoi",
+    "apple-mobile-web-app-title": siteName,
+    "og:site_name": siteName,
   },
 };
 
@@ -112,13 +128,14 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: `${siteUrl}/`,
-      name: "Arjun Bishnoi",
+      name: siteName,
+      alternateName: siteAlternateName,
     },
     {
       "@type": "ProfilePage",
       "@id": `${siteUrl}/#profile-page`,
       url: `${siteUrl}/`,
-      name: "Arjun Bishnoi",
+      name: siteName,
       description: profileDescription,
       isPartOf: { "@id": `${siteUrl}/#website` },
       about: { "@id": `${siteUrl}/#person` },
@@ -128,17 +145,22 @@ const jsonLd = {
     {
       "@type": "ImageObject",
       "@id": `${siteUrl}/#headshot`,
+      name: siteName,
       url: personImageUrl,
       contentUrl: personImageUrl,
-      caption: siteTitle,
+      description: personImageDescription,
+      caption: siteName,
+      thumbnailUrl: portraitImageUrl,
+      creator: { "@id": `${siteUrl}/#person` },
+      creditText: siteName,
       representativeOfPage: true,
     },
     {
       "@type": "Person",
       "@id": `${siteUrl}/#person`,
-      name: "Arjun Bishnoi",
+      name: siteName,
       url: siteUrl,
-      image: { "@id": `${siteUrl}/#headshot` },
+      image: [{ "@id": `${siteUrl}/#headshot` }, portraitImageUrl],
       description: profileDescription,
       jobTitle: "Mobile Application Developer, AI Engineer, and UI/UX Designer",
       sameAs: [socialLinks.github, socialLinks.linkedin, socialLinks.behance],
