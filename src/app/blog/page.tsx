@@ -3,8 +3,8 @@ import { Footer } from "@/components/layout/Footer"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Blog — Arjun Bishnoi",
-  description: "Mobile Apps, AI & Design.",
+  title: "Blog \u2014 Arjun Bishnoi",
+  description: "Mobile Apps, AI & Design",
   robots: { index: false, follow: true },
 }
 

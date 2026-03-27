@@ -103,7 +103,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0.24 }}
           >
-            <span className="block lg:inline">Mobile apps, AI and design.</span>
+            <span className="block lg:inline">{"Mobile Apps, AI & Design."}</span>
           </motion.p>
         </div>
       </div>

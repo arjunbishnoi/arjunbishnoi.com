@@ -9,7 +9,11 @@ import { socialLinks } from "@/lib/site-data";
 
 const siteUrl = "https://arjunbishnoi.com";
 const personImageUrl = `${siteUrl}/arjun-bishnoi.jpg`;
-const profileDescription = "I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.";
+const shareImageUrl = `${siteUrl}/og-homepage-v1.jpg?v=2`;
+const shareImageAlt = "Arjun Bishnoi homepage preview featuring Mobile Apps, AI & Design";
+const siteTitle = "Arjun Bishnoi \u2014 Mobile Apps, AI & Design";
+const profileDescription =
+  "Developer & Designer. I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,7 +30,7 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Arjun Bishnoi — Mobile apps, AI and design",
+  title: siteTitle,
   description: profileDescription,
   applicationName: "Arjun Bishnoi",
   authors: [{ name: "Arjun Bishnoi", url: siteUrl }],
@@ -60,26 +64,27 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Arjun Bishnoi — Mobile apps, AI and design",
+    title: siteTitle,
     description: profileDescription,
     url: `${siteUrl}/`,
     siteName: "Arjun Bishnoi",
     images: [
       {
-        url: personImageUrl,
+        url: shareImageUrl,
         width: 1200,
-        height: 1200,
-        alt: "Arjun Bishnoi headshot",
+        height: 630,
+        type: "image/jpeg",
+        alt: shareImageAlt,
       },
     ],
     locale: "en_CA",
-    type: "profile",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arjun Bishnoi — Mobile apps, AI and design",
+    title: siteTitle,
     description: profileDescription,
-    images: [personImageUrl],
+    images: [shareImageUrl],
   },
   appleWebApp: {
     capable: true,
@@ -125,7 +130,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#headshot`,
       url: personImageUrl,
       contentUrl: personImageUrl,
-      caption: "Arjun Bishnoi — Mobile apps, AI and design",
+      caption: siteTitle,
       representativeOfPage: true,
     },
     {

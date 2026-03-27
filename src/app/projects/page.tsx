@@ -7,18 +7,18 @@ import { ExternalLink } from "lucide-react"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Projects — Arjun Bishnoi",
-  description: "Mobile Apps, AI & Design.",
+  title: "Projects \u2014 Arjun Bishnoi",
+  description: "Mobile Apps, AI & Design",
   openGraph: {
-    title: "Projects — Arjun Bishnoi",
-    description: "Mobile Apps, AI & Design.",
+    title: "Projects \u2014 Arjun Bishnoi",
+    description: "Mobile Apps, AI & Design",
     url: "https://arjunbishnoi.com/projects",
     images: [{ url: "https://arjunbishnoi.com/arjun-bishnoi.jpg" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Projects — Arjun Bishnoi",
-    description: "Mobile Apps, AI & Design.",
+    title: "Projects \u2014 Arjun Bishnoi",
+    description: "Mobile Apps, AI & Design",
     images: ["https://arjunbishnoi.com/arjun-bishnoi.jpg"],
   },
 }
