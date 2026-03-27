@@ -78,10 +78,10 @@ export function HeroSection() {
     >
 
       {/* Universal Hero Title */}
-      <div className="w-full z-20 px-6 pt-[max(6.85rem,calc(env(safe-area-inset-top)+5.95rem))] md:pt-14 lg:pt-16 xl:pt-20 pb-0">
+      <div className="w-full z-20 px-6 pt-[max(6.85rem,calc(env(safe-area-inset-top)+5.95rem))] md:pt-14 lg:pt-18 pb-0">
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6 text-center flex flex-col items-center">
           <motion.div
-            className="mt-1 sm:mt-2 md:mt-0 mb-5 sm:mb-6 md:mb-12 lg:mb-8 xl:mb-7 lg:scale-[0.88] xl:scale-[0.82] origin-center"
+            className="mt-1 sm:mt-2 md:mt-0 mb-5 sm:mb-6 md:mb-12 lg:mb-6 xl:mb-5 lg:scale-[0.88] xl:scale-[0.82] origin-center"
             initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0 }}
@@ -89,7 +89,7 @@ export function HeroSection() {
             <MobbinIconStack />
           </motion.div>
           <motion.h1
-            className="font-sans font-semibold whitespace-nowrap text-[1.86rem] sm:text-[2.78rem] md:text-[3rem] lg:text-[2.8rem] xl:text-[3.1rem] leading-[1.02] tracking-[-0.05em] sm:tracking-[-0.035em] md:tracking-[-0.04em] lg:tracking-[-0.038em]"
+            className="font-sans font-semibold whitespace-nowrap text-[1.86rem] sm:text-[2.78rem] md:text-[3rem] lg:text-[2.35rem] xl:text-[2.55rem] leading-[1.02] tracking-[-0.05em] sm:tracking-[-0.035em] md:tracking-[-0.04em] lg:tracking-[-0.038em]"
             initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0.16 }}
@@ -98,12 +98,12 @@ export function HeroSection() {
             <span className="inline text-black dark:text-white">& Designer</span>
           </motion.h1>
           <motion.p
-            className="mt-1.5 text-center text-base leading-[1.28] md:mt-3 md:text-xl lg:text-xl xl:text-[1.35rem] md:leading-relaxed text-zinc-500 dark:text-zinc-400 lg:max-w-none lg:whitespace-nowrap lg:mb-4 xl:mb-6"
+            className="mt-1.5 text-center text-base leading-[1.28] md:mt-3 md:text-xl lg:text-lg xl:text-xl md:leading-relaxed opacity-90 lg:max-w-none lg:whitespace-nowrap"
             initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0.24 }}
           >
-            <span className="block lg:inline">{"Mobile Apps, AI & Design."}</span>
+            <span className="block lg:inline">Mobile Apps, AI &amp; Design.</span>
           </motion.p>
         </div>
       </div>
@@ -118,46 +118,42 @@ export function HeroSection() {
         
         {/* 1. Interactive Featured Bento Grid (Restored to Top) */}
         <div className="w-[95%] sm:w-[94%] mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
-          <div className="w-full neu-container overflow-visible aspect-[4/4.2] grid grid-rows-[40%_20%_20%_20%]">
+          <div className="w-full neu-container overflow-visible aspect-[342/340] grid grid-rows-[40%_20%_20%_20%]">
             {/* Row 1: Flat All Projects rectangle */}
             <div className="relative h-full p-3 pb-2.5">
               <Link
                 href="/projects"
-                className="group hero-viewall-pill neu-mobile-neumorphic relative z-20 block w-full h-full rounded-[30px] neu-raised transform-gpu will-change-transform"
+                className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] overflow-hidden transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
               >
-                <div 
-                  className="absolute inset-0 z-0 overflow-hidden rounded-[30px] pointer-events-none animate-color-shift"
-                  style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                >
-                  <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
+                  <div className="hero-viewall-surface absolute inset-0 bg-white" />
                   <div
-                    className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[8] group-hover:contrast-[1.5] group-hover:brightness-[1.25] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
+                    className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                     style={{
-                      maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-                      WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
+                      maskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
+                      WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
                     }}
                   >
-                    <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
+                    <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
                   </div>
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.28),transparent_75%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.22),transparent_70%)] pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-[1] animate-glow-pulse" />
                   <div
-                    className="absolute inset-0 opacity-[0.28] dark:opacity-[0.25] group-hover:opacity-[0.42] mix-blend-multiply dark:mix-blend-screen pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                    className="absolute inset-0 opacity-[0.28] group-hover:opacity-[0.42] mix-blend-multiply pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                     style={{
                       backgroundImage:
                         "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
                     }}
                   />
-                  <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.28] dark:group-hover:bg-white/[0.12] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-[1]" />
+                  <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.16] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
                 </div>
                 <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[1.125rem] tracking-[-0.005em] font-semibold text-zinc-900 dark:text-white">View all projects</span>
-                    <ArrowUpRight className="w-5 h-5 text-zinc-900 dark:text-white" strokeWidth={2.5} />
+                    <span className="text-[1.125rem] tracking-[-0.005em] font-semibold text-zinc-900">View all projects</span>
+                    <ArrowUpRight className="w-5 h-5 text-zinc-900" strokeWidth={2.5} />
                   </div>
                 </div>
               </Link>
@@ -165,18 +161,18 @@ export function HeroSection() {
               <div className="absolute bottom-0 left-0 w-1/2 h-2.5 border-r neu-separator pointer-events-none" />
             </div>
             <div className="grid grid-cols-2">
-              <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
                 <div className="whitespace-nowrap">Mobile Apps</div>
               </Link>
-              <Link href="/ai" className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <Link href="/ai" className="flex items-center justify-center border-b neu-separator text-zinc-900 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
                 <div className="whitespace-nowrap">AI/ML</div>
               </Link>
             </div>
             <div className="grid grid-cols-2">
-              <Link href="/design" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <Link href="/design" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
                 <div className="whitespace-nowrap">Design</div>
               </Link>
-              <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
+              <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center border-b neu-separator text-zinc-900 font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
                 <div className="whitespace-nowrap">Resume</div>
               </a>
             </div>
@@ -196,7 +192,7 @@ export function HeroSection() {
                 </div>
               </a>
               <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors">
-                <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-900 group-hover:opacity-100 opacity-90">
                   <svg viewBox="0 0 24 24" className="block w-[1.4rem] h-[1.4rem] fill-current" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
@@ -217,148 +213,99 @@ export function HeroSection() {
         <div id="about" className="lg:hidden scroll-mt-24" />
         <AboutProfileCard
           imageSizes="(max-width: 768px) 100vw, 342px"
-          className="mt-6 lg:hidden relative z-10"
+          className="mt-6 lg:hidden"
           priority
         />
 
         {/* 3. Unified Mobile Bio + Education Card */}
-        <div className="home-mobile-bio-shell hero-bio-card w-full -mt-16 relative z-0 rounded-t-[32px] rounded-b-[40px] border border-zinc-200/50 border-t-0 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
-          <div className={cn("flex flex-col pt-[84px] px-8 text-left transition-all duration-500", bioExpanded ? "pb-0" : "pb-6")}>
-            <div className="flex flex-col">
-              {/* Mission Title */}
-
+        <div className="home-mobile-bio-shell hero-bio-card w-full mt-8 relative rounded-[40px] bg-[#f3f3f4] dark:bg-black border border-zinc-200/50 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
+          <div className="flex flex-col pt-8 pb-14 px-8 text-left">
+            <div className="flex flex-col gap-8">
               {/* Professional Titles */}
               <div className="flex flex-col items-center text-center gap-0 shrink-0">
-                {["Cross-platform App Developer", "UI/UX Designer", "AI Engineer"].map((title, idx) => (
-                  <div key={idx} className="flex items-center justify-center w-full">
-                    <span className="hero-copy-unified text-zinc-900 dark:text-white leading-[1.6] tracking-[-0.015em] font-[600]">{title}</span>
+                {["Cross-platform App Developer", "AI Engineer", "UI/UX Designer"].map((title, idx) => (
+                  <div key={idx} className="flex items-center justify-center">
+                    <span className="text-zinc-900 dark:text-white text-[14.5px] leading-[1.6] tracking-[-0.015em] font-[500]">{title}</span>
                   </div>
                 ))}
               </div>
 
+              {/* Mission Title */}
+              <h3 className="text-2xl sm:text-xl font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight text-center">
+                Bridging design <br/>& engineering.
+              </h3>
+
               {/* Description */}
-              <p className="hero-copy-unified mt-[10px] text-left font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">
-                I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.
+              <p className="text-[0.85rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-300">
+                I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.
               </p>
 
               {/* Education block: collapsed shows clipped/faded preview; expanded reveals full timeline + skills below */}
-              <div className="relative w-full mt-[20px]">
-                <motion.div
-                  className="w-full relative"
-                  initial={{ opacity: 0, height: "7rem" }}
-                  animate={{ opacity: 1, height: bioExpanded ? "auto" : "7rem" }}
-                  transition={{ 
-                    opacity: { duration: prefersReducedMotion ? 0 : 0.22 },
-                    height: { type: "spring", duration: 0.4, bounce: 0.15 }
-                  }}
-                >
-                <div className="hero-education-card relative rounded-[28px] bg-transparent border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-4 pb-1 pl-0 pr-5 flex flex-col overflow-hidden ml-[-10px]">
-                  {/* Milestone 1 */}
-                  <div className="flex flex-row items-start gap-2">
-                    <div className="flex flex-col items-center self-stretch w-5 shrink-0 relative">
-                      {/* Segment 1: start slightly below circle 1 with rounded top */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-[23px] bottom-0 w-[3px] bg-[#a8a8a8] dark:bg-zinc-500 z-0 rounded-t-full" />
-                      <motion.div 
-                        className="w-[14px] h-[14px] relative mt-[5px] rounded-full shrink-0 z-10" 
-                        animate={{ backgroundColor: ["#FFFFFF", "#4EB627", "#FFFFFF"] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                      />
+              <motion.div
+                className={cn(
+                  "w-full overflow-visible relative",
+                  bioExpanded ? "max-h-[2000px]" : "max-h-[9rem]"
+                )}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.22 }}
+              >
+                <div className="hero-education-card relative rounded-[28px] bg-[#f3f3f4] border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-3 pb-4 px-0 flex flex-col gap-3">
+                <div className="absolute left-0 top-2 bottom-3 w-[1px] bg-zinc-300 dark:bg-zinc-600 dark:opacity-80" />
+                <div className="relative pl-7 group">
+                  <div className="absolute left-0 top-[3.3px] w-[15px] h-[15px] rounded-full bg-[#3f7d66] border-0 z-10 box-border -translate-x-1/2" />
+                  <div className="space-y-0">
+                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Applied A.I. Solutions Development</p>
+                    <div className="my-2 flex">
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded-md border border-emerald-700/30 text-[0.7rem] font-bold uppercase tracking-wider leading-none bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
+                        Ongoing
+                      </span>
                     </div>
-                    <div className="flex-1 pt-0 pb-4">
-                      <p className="hero-copy-unified font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.6]">
-                        Applied A.I. Solutions Development
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border-[1px] border-black/80 dark:border-white/80 text-[0.65rem] font-semibold tracking-wider leading-none align-middle bg-transparent text-black dark:text-white">
-                          Ongoing
-                        </span>
-                      </p>
-                      <p className="hero-education-secondary font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">George Brown College, Toronto</p>
-                      <p className="hero-education-secondary font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">Postgraduate</p>
-                    </div>
-                  </div>
-
-                  {/* Milestone 2 */}
-                  <div className="flex flex-row items-start gap-2">
-                    <div className="flex flex-col items-center self-stretch w-5 shrink-0 relative">
-                      {/* Segment 2: pass through row 2 */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#a8a8a8] dark:bg-zinc-500 z-0" />
-                      <div className="w-[12px] h-[12px] relative mt-[6px] rounded-full bg-[#a8a8a8] dark:bg-zinc-500 shrink-0 z-10" />
-                    </div>
-                    <div className="flex-1 pt-0 pb-4">
-                      <p className={cn(
-                        "hero-copy-unified font-[600] tracking-[-0.015em] leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
-                      )}>
-                        Mobile Application Development and Strategy
-                      </p>
-                      <p className={cn(
-                        "hero-education-secondary font-normal leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
-                      )}>
-                        George Brown College, Toronto
-                      </p>
-                      <p className={cn(
-                        "hero-education-secondary font-normal leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
-                      )}>
-                        Postgraduate
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Milestone 3 */}
-                  <div className="flex flex-row items-start gap-2">
-                    <div className="flex flex-col items-center self-stretch w-5 shrink-0 relative">
-                      {/* Segment 3: end at center of circle 3 with rounded bottom */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[12px] w-[3px] bg-[#a8a8a8] dark:bg-zinc-500 z-0 rounded-b-full" />
-                      <div className="w-[12px] h-[12px] relative mt-[6px] rounded-full bg-[#a8a8a8] dark:bg-zinc-500 shrink-0 z-10" />
-                    </div>
-                    <div className="flex-1 pt-0 pb-1">
-                      <p className={cn(
-                        "hero-copy-unified font-[600] tracking-[-0.015em] leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
-                      )}>
-                        B.Sc. Information Technology
-                      </p>
-                      <p className={cn(
-                        "hero-education-secondary font-normal leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
-                      )}>
-                        Amity University, Noida
-                      </p>
-                      <p className={cn(
-                        "hero-education-secondary font-normal leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
-                      )}>
-                        Bachelor&apos;s Degree
-                      </p>
-                    </div>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
                   </div>
                 </div>
 
-                {/* Always render the rest (skills) below inside the same block so parent width accurately collapses/expands smoothly */}
-                <div className={cn("hero-skills-card pt-8 flex justify-center w-full", bioExpanded ? "pb-0" : "pb-4")}>
-                  <div className="grid grid-cols-3 gap-y-6 gap-x-8 w-full max-w-[280px]">
-                    {heroSkills.slice(0, 18).map((skill, i) => (
-                      <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
-                        <div className="w-7 h-7 relative grayscale dark:invert-[0.92] dark:opacity-90">
-                          <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
+                <div className="relative pl-7">
+                  <div className="absolute left-0 top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-400 border-0 z-10 -translate-x-1/2" />
+                  <div className="space-y-0">
+                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">Mobile Application Development and Strategy</p>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Postgraduate</p>
+                  </div>
+                </div>
+
+                <div className="relative pl-7">
+                  <div className="absolute left-0 top-[6.3px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-400 border-0 z-10 -translate-x-1/2" />
+                  <div className="space-y-0">
+                    <p className="text-[0.9rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-normal">B.Sc. Information Technology</p>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Amity University, Noida</p>
+                    <p className="text-[0.85rem] font-normal leading-normal text-zinc-900 dark:text-zinc-100">Graduation</p>
+                  </div>
+                </div>
+
+                {/* When expanded, show the rest (skills) below inside the same block */}
+                {bioExpanded && (
+                  <div className="pt-8">
+                    <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
+                      {heroSkills.slice(0, 12).map((skill, i) => (
+                        <div key={i} className="flex flex-col items-center gap-1.5 opacity-80">
+                          <div className="w-7 h-7 relative grayscale dark:invert-[0.92] dark:opacity-90">
+                            <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
+                          </div>
+                          <span className="text-[0.55rem] font-bold text-zinc-600 dark:text-zinc-300 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
                         </div>
-                        <span className="text-[0.55rem] font-bold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-                </motion.div>
+                )}
               </div>
-            </div>
+
+            </motion.div>
           </div>
+
           {/* View more / View less pill button - stays at the end of the rectangle */}
-          <motion.div 
-            className="relative z-40 flex justify-center mb-5"
-            initial={false}
-            animate={{ marginTop: bioExpanded ? "2.75rem" : "-0.5rem" }}
-            transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
-          >
+          <div className={cn(!bioExpanded ? "-mt-6" : "mt-5", "relative z-20 flex justify-center")}>
             <button
               type="button"
               onClick={() => setBioExpanded((v) => !v)}
@@ -375,30 +322,13 @@ export function HeroSection() {
                 strokeWidth={2.25}
               />
             </button>
-          </motion.div>
+          </div>
 
-          <AnimatePresence>
-            {!bioExpanded && (
-              <>
-                 <motion.div 
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-30 dark:hidden block"
-                    style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(206, 206, 206, 0.2) 30%, rgba(206, 206, 206, 0.85) 75%, #cecece 100%)' }}
-                   initial={{ opacity: 0 }}
-                   animate={{ opacity: 1 }}
-                   exit={{ opacity: 0 }}
-                   transition={{ duration: 0.3 }}
-                 />
-                  <motion.div 
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-30 dark:block hidden"
-                    style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(38, 38, 38, 0.2) 30%, rgba(38, 38, 38, 0.85) 75%, #262626 100%)' }}
-                   initial={{ opacity: 0 }}
-                   animate={{ opacity: 1 }}
-                   exit={{ opacity: 0 }}
-                   transition={{ duration: 0.3 }}
-                 />
-              </>
-            )}
-          </AnimatePresence>
+          {/* Card-level fade so collapsed gradient always reaches the card's bottom edge */}
+          {!bioExpanded && (
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 rounded-b-[40px] bg-gradient-to-t from-[#f3f3f4] via-[#f3f3f4]/90 to-transparent dark:from-black dark:via-black/90 z-10" />
+          )}
+          </div>
         </div>
 
 
@@ -414,91 +344,94 @@ export function HeroSection() {
       >
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6">
           
-          <div className="grid grid-cols-3 gap-6 xl:gap-7 items-start">
+          <div className="grid grid-cols-3 gap-6 xl:gap-7 items-stretch">
             
-            {/* COLUMN 1: Bio + Skills (Merged) */}
-            <div className="hero-bio-skills-merged-card col-span-1 self-stretch overflow-hidden bg-[#e5e5e5] dark:bg-[#161616] rounded-[40px] flex flex-col">
-              {/* Top Section: Bio */}
-              <div className="pt-6 xl:pt-8 px-6 xl:px-8 text-left">
-                {/* 3 Professional Titles */}
-                <div className="flex flex-col gap-0 shrink-0 items-start text-left mb-2 xl:mb-3">
-                  {[
-                    "Cross-platform App Developer",
-                    "UI/UX Designer",
-                    "AI Engineer"
-                  ].map((title, idx) => (
-                    <div key={idx} className="flex items-center justify-start w-full">
-                      <span className="hero-copy-unified text-zinc-900 dark:text-white leading-[1.6] tracking-[-0.015em] font-[600]">
-                        {title}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Short Description */}
-                <p className="hero-copy-unified font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">
-                  I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.
-                </p>
-              </div>
-
-              {/* Bottom Section: Skills */}
-              <div className="mt-auto flex justify-center px-6 xl:px-8 pb-8 xl:pb-10 pt-6 xl:pt-8">
-                <div className="grid grid-cols-3 gap-y-5 gap-x-6 xl:gap-y-6 xl:gap-x-8 w-full max-w-[280px] xl:max-w-[300px]">
-                  {heroSkills.slice(0, 18).map((skill, i) => (
-                    <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
-                      <div className="w-7 h-7 xl:w-8 xl:h-8 relative grayscale dark:invert-[0.92] dark:opacity-90">
-                        <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
+            {/* COLUMN 1: Bio + Extended Skills */}
+            <div className="flex flex-col">
+              <div className="hero-bio-card w-full h-full relative rounded-[40px] bg-white dark:bg-black border border-zinc-200/50 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
+                {/* Unified Bio Section with Consistent Spacing */}
+                <div className="flex flex-col h-full p-8 pt-5 xl:p-10 xl:pt-7 pb-6 text-left overflow-hidden">
+                  
+                  {/* 1. Top 3 Professional Titles — centered */}
+                  <div className="flex flex-col gap-0 shrink-0 items-center text-center mb-8 pt-0">
+                    {[
+                      "Cross-platform App Developer",
+                      "AI Engineer",
+                      "UI/UX Designer"
+                    ].map((title, idx) => (
+                      <div key={idx} className="flex items-center justify-center w-full">
+                        <span className="text-zinc-900 dark:text-white text-[14.5px] leading-[1.6] tracking-[-0.015em] font-[500]">
+                          {title}
+                        </span>
                       </div>
-                      <span className="text-[0.55rem] xl:text-[0.6rem] font-bold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
+                    ))}
+                  </div>
+
+                  {/* 2. Main Mission Title — centered */}
+                  <h3 className="text-xl xl:text-[1.35rem] font-bold leading-[1.2] text-zinc-900 dark:text-white tracking-tight mb-8 text-center">
+                    Bridging design <br/>& engineering.
+                  </h3>
+
+                  {/* 3. Short Description */}
+                  <p className="text-[0.85rem] xl:text-[0.9rem] font-normal leading-[1.6] text-zinc-900 dark:text-zinc-100 mb-12">I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision. Consistent, hands-on and always evolving.</p>
+
+                  {/* 4. Skill Icons (desktop: last) */}
+                  <div className="mt-auto">
+                    <div className="grid grid-cols-3 gap-y-7 gap-x-5 w-full">
+                      {heroSkills.slice(0, 12).map((skill, i) => (
+                        <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
+                          <div className="w-7 h-7 xl:w-8 xl:h-8 relative grayscale dark:invert-[0.92] dark:opacity-90">
+                            <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
+                          </div>
+                          <span className="text-[0.55rem] xl:text-[0.6rem] font-bold text-zinc-600 dark:text-zinc-300 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
+
               </div>
             </div>
 
             {/* COLUMN 2: Bento (Row 1) + Featured project (Row 2) */}
             <div className="flex flex-col gap-6 xl:gap-7">
               {/* ROW 1: Interactive Bento */}
-              <div className="w-full relative aspect-[4/5.6] lg:aspect-[4/5] neu-container overflow-visible rounded-[40px] xl:rounded-[40px] grid grid-rows-[34%_22%_22%_22%] lg:grid-rows-[40%_20%_20%_20%] shrink-0 min-h-0">
+              <div className="w-full relative aspect-[4/5] neu-container overflow-visible rounded-[40px] xl:rounded-[40px] grid grid-rows-[40%_20%_20%_20%] shrink-0 min-h-0">
                   {/* Row 1: Raised All Projects rectangle */}
                   <div className="relative h-full p-2.5 xl:p-3.5 pb-2 xl:pb-2.5">
                     <Link
                       href="/projects"
-                      className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] xl:rounded-[36px] neu-raised transform-gpu will-change-transform"
+                      className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] xl:rounded-[36px] overflow-hidden transform-gpu transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
                     >
-                      <div 
-                        className="absolute inset-0 z-0 overflow-hidden rounded-[30px] xl:rounded-[36px] pointer-events-none animate-color-shift"
-                        style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                      >
-                        <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
+                      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none animate-color-shift">
+                        <div className="hero-viewall-surface absolute inset-0 bg-white" />
                         <div
-                          className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[8] group-hover:contrast-[1.5] group-hover:brightness-[1.25] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
+                          className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[6.2] group-hover:contrast-[1.34] group-hover:brightness-[1.2] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                           style={{
-                            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-                            WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
+                            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
+                            WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 68%)",
                           }}
                         >
-                          <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
+                          <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
                         </div>
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.28),transparent_75%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.22),transparent_70%)] pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-[1] animate-glow-pulse" />
                         <div
-                          className="absolute inset-0 opacity-[0.28] dark:opacity-[0.25] group-hover:opacity-[0.42] mix-blend-multiply dark:mix-blend-screen pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                          className="absolute inset-0 opacity-[0.28] group-hover:opacity-[0.42] mix-blend-multiply pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                           style={{
                             backgroundImage:
                               "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
                           }}
                         />
-                        <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.28] dark:group-hover:bg-white/[0.12] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                        <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.16] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
                       </div>
                       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                         <div className="flex items-center gap-2 xl:gap-2.5">
-                          <span className="text-[1.2rem] xl:text-[1.3rem] tracking-[-0.005em] font-semibold text-zinc-900 dark:text-white">View all projects</span>
-                          <ArrowUpRight className="w-5 h-5 xl:w-6 xl:h-6 text-zinc-900 dark:text-white" strokeWidth={2.5} />
+                          <span className="text-[1.2rem] xl:text-[1.3rem] tracking-[-0.005em] font-semibold text-zinc-900">View all projects</span>
+                          <ArrowUpRight className="w-5 h-5 xl:w-6 xl:h-6 text-zinc-900" strokeWidth={2.5} />
                         </div>
                       </div>
                     </Link>
@@ -506,18 +439,18 @@ export function HeroSection() {
                     <div className="absolute bottom-0 left-0 w-1/2 h-2 xl:h-2.5 border-r neu-separator pointer-events-none" />
                   </div>
                   <div className="grid grid-cols-2">
-                    <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
+                    <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">Mobile Apps</div>
                     </Link>
-                    <Link href="/ai" className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
+                    <Link href="/ai" className="flex items-center justify-center border-b neu-separator text-zinc-900 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">AI/ML</div>
                     </Link>
                   </div>
                   <div className="grid grid-cols-2">
-                    <Link href="/design" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
+                    <Link href="/design" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">Design</div>
                     </Link>
-                    <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
+                    <a href={socialLinks.resume} download={socialLinks.resumeDownloadName} className="flex items-center justify-center border-b neu-separator text-zinc-900 font-normal text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">Resume</div>
                     </a>
                   </div>
@@ -537,7 +470,7 @@ export function HeroSection() {
                       </div>
                     </a>
                     <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group hover:bg-zinc-100/10 transition-colors">
-                      <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center transition-colors text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90 group-hover:scale-110">
+                      <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center transition-colors text-zinc-900 group-hover:opacity-100 opacity-90 group-hover:scale-110">
                         <svg viewBox="0 0 24 24" className="block w-6 h-6 xl:w-7 xl:h-7 fill-current" xmlns="http://www.w3.org/2000/svg">
                           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
@@ -565,58 +498,47 @@ export function HeroSection() {
             </div>
 
             {/* COLUMN 3: Education + Profile */}
-            <div className="flex flex-col gap-6 xl:gap-7 col-span-1 self-stretch">
-              {/* TOP CARD: Education Timeline Card (Moved from top left) */}
-              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-[#e5e5e5] dark:bg-[#161616] border-0 pt-5 pb-5 pl-6 pr-8 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-9 flex flex-col overflow-hidden">
-                <div className="relative flex-1 flex flex-col pt-1 pb-1">
-                  {/* Milestone 1 */}
-                  <div className="flex flex-row items-start gap-2 xl:gap-2.5 flex-1">
-                    <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
-                      {/* Segment 1: start slightly below circle 1 with rounded top */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-0 w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0 rounded-t-full" />
-                      <motion.div 
-                        className="w-[14px] h-[14px] relative mt-[4px] rounded-full shrink-0 z-10" 
-                        animate={{ backgroundColor: ["#FFFFFF", "#4EB627", "#FFFFFF"] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                    </div>
-                    <div className="flex-1 pt-0">
-                      <p className="hero-copy-unified font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">
+            <div className="flex flex-col gap-6 xl:gap-7">
+              {/* ROW 1: Education Timeline Card */}
+              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-white dark:bg-black border-0 pt-5 pb-5 pl-5 pr-6 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-8 flex flex-col overflow-hidden">
+
+                
+                <div className="relative flex-1 flex flex-col justify-between">
+                  {/* Vertical Line - monochrome */}
+                  <div className="absolute left-[7px] top-[11px] bottom-[42px] w-[1px] bg-zinc-300 dark:bg-zinc-600 dark:opacity-80" />
+                  
+                  {/* Timeline Item 1 - top circle solid green, centered on line */}
+                  <div className="relative pl-6 group">
+                    <div className="absolute left-[7.5px] top-[2.27px] xl:top-[3.4px] w-[15px] h-[15px] rounded-full bg-[#3f7d66] border-0 z-10 box-border -translate-x-1/2" />
+                    <div className="space-y-0">
+                      <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">
                         Applied A.I. Solutions Development
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border-[1px] border-black/80 dark:border-white/80 text-[0.7rem] font-semibold tracking-wider leading-none align-middle mb-0.5 bg-transparent text-black dark:text-white">
+                        <span className="ml-2 inline-flex items-center px-1.5 py-0.5 rounded-md border border-emerald-700/30 text-[0.7rem] font-bold uppercase tracking-wider leading-none align-middle mb-0.5 bg-emerald-700/15 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/35">
                           Ongoing
                         </span>
                       </p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">George Brown College, Toronto</p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Postgraduate</p>
+                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
+                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">Postgraduate</p>
                     </div>
                   </div>
 
-                  {/* Milestone 2 */}
-                  <div className="flex flex-row items-start gap-2 xl:gap-2.5 flex-1">
-                    <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
-                      {/* Segment 2: pass through row 2 */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0" />
-                      <div className="w-[12px] h-[12px] relative mt-[5px] rounded-full bg-[#bababa] dark:bg-zinc-600 shrink-0 z-10" />
-                    </div>
-                    <div className="flex-1 pt-0">
-                      <p className="hero-copy-unified font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">Mobile Application Development and Strategy</p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">George Brown College, Toronto</p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Postgraduate</p>
+                  {/* Timeline Item 2 - dark grey, centered on line */}
+                  <div className="relative pl-6">
+                    <div className="absolute left-[7.5px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-500 border-0 z-10 -translate-x-1/2" />
+                    <div className="space-y-0">
+                      <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">Mobile Application Development and Strategy</p>
+                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">George Brown College, Toronto</p>
+                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">Postgraduate</p>
                     </div>
                   </div>
 
-                  {/* Milestone 3 */}
-                  <div className="flex flex-row items-start gap-2 xl:gap-2.5">
-                    <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
-                      {/* Segment 3: extend past bottom edge */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-[-100px] w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0 rounded-none" />
-                      <div className="w-[12px] h-[12px] relative mt-[5px] rounded-full bg-[#bababa] dark:bg-zinc-600 shrink-0 z-10" />
-                    </div>
-                    <div className="flex-1 pt-0">
-                      <p className="hero-copy-unified font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">B.Sc. Information Technology</p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Amity University, Noida</p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Bachelor&apos;s Degree</p>
+                  {/* Timeline Item 3 - dark grey, centered on line */}
+                  <div className="relative pl-6">
+                    <div className="absolute left-[7.5px] top-[5.27px] xl:top-[6.4px] w-[9px] h-[9px] rounded-full bg-zinc-500 dark:bg-zinc-400 border-0 z-10 -translate-x-1/2" />
+                    <div className="space-y-0">
+                      <p className="text-[0.86rem] xl:text-[0.96rem] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-[1.42]">B.Sc. Information Technology</p>
+                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">Amity University, Noida</p>
+                      <p className="text-[0.81rem] xl:text-[0.86rem] font-normal leading-[1.42] text-zinc-900 dark:text-zinc-100">Graduation</p>
                     </div>
                   </div>
                 </div>
