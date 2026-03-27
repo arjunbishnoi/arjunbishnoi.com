@@ -1,4 +1,6 @@
-const baseUrl = "https://www.arjunbishnoi.com";
+import { siteConfig } from "@/lib/site-config";
+
+const baseUrl = siteConfig.url;
 
 const sitemapEntries = [
   {

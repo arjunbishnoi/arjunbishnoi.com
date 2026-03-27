@@ -1,28 +1,13 @@
-import { Footer } from "@/components/layout/Footer"
+import { ComingSoonPage } from "@/components/layout/ComingSoonPage";
+import { buildPageMetadata } from "@/lib/site-metadata";
 
-import { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Design \u2014 Arjun Bishnoi",
+export const metadata = buildPageMetadata({
+  title: "Design",
   description: "Mobile Apps, AI & Design",
-  robots: { index: false, follow: true },
-}
+  index: false,
+  path: "/design",
+});
 
 export default function UIUXDesignPage() {
-  return (
-    <main className="min-h-screen bg-background text-foreground">
-      <div className="pt-32 pb-24 px-6">
-        <div className="mx-auto max-w-7xl">
-          <h1 className="text-4xl font-bold text-foreground sm:text-5xl">
-            UI/UX Design
-            <span className="block text-xl text-primary mt-2">Pixel-perfect experiences</span>
-          </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-            Coming soon.
-          </p>
-        </div>
-      </div>
-      <Footer />
-    </main>
-  )
+  return <ComingSoonPage title="UI/UX Design" subtitle="Pixel-perfect experiences" />;
 }

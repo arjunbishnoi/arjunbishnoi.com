@@ -1,27 +1,17 @@
 import { ProjectCard } from "@/components/projects/ProjectCard"
 import { projects } from "@/lib/site-data"
 import { Footer } from "@/components/layout/Footer"
+import { buildPageMetadata } from "@/lib/site-metadata";
+import { siteConfig } from "@/lib/site-config";
 import Image from "next/image"
 import { ExternalLink } from "lucide-react"
 
-import { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Projects \u2014 Arjun Bishnoi",
-  description: "Mobile Apps, AI & Design",
-  openGraph: {
-    title: "Projects \u2014 Arjun Bishnoi",
-    description: "Mobile Apps, AI & Design",
-    url: "https://arjunbishnoi.com/projects",
-    images: [{ url: "https://arjunbishnoi.com/arjun-bishnoi.jpg" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Projects \u2014 Arjun Bishnoi",
-    description: "Mobile Apps, AI & Design",
-    images: ["https://arjunbishnoi.com/arjun-bishnoi.jpg"],
-  },
-}
+export const metadata = buildPageMetadata({
+  title: "Projects",
+  path: "/projects",
+  includeSocial: true,
+  imageUrl: siteConfig.images.headshot,
+});
 
 export default function ProjectsPage() {
   const featuredProject = projects.find(p => p.featured) || projects[0]

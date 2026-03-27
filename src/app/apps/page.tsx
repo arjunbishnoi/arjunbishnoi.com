@@ -1,28 +1,13 @@
-import { Footer } from "@/components/layout/Footer"
+import { ComingSoonPage } from "@/components/layout/ComingSoonPage";
+import { buildPageMetadata } from "@/lib/site-metadata";
 
-import { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Mobile Apps \u2014 Arjun Bishnoi",
+export const metadata = buildPageMetadata({
+  title: "Mobile Apps",
   description: "Mobile Apps, AI & Design",
-  robots: { index: false, follow: true },
-}
+  index: false,
+  path: "/apps",
+});
 
 export default function MobileAppsPage() {
-  return (
-    <main className="min-h-screen bg-background text-foreground">
-      <div className="pt-32 pb-24 px-6">
-        <div className="mx-auto max-w-7xl">
-          <h1 className="text-4xl font-bold text-foreground sm:text-5xl">
-            Mobile Apps
-            <span className="block text-xl text-primary mt-2">Cross-platform development</span>
-          </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-            Coming soon.
-          </p>
-        </div>
-      </div>
-      <Footer />
-    </main>
-  )
+  return <ComingSoonPage title="Mobile Apps" subtitle="Cross-platform development" />;
 }
