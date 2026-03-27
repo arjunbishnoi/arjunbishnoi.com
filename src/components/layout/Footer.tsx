@@ -1,7 +1,9 @@
 import Link from "next/link"
 import Image from "next/image"
-import { navigationItems, projects, socialLinks } from "@/lib/site-data"
 import { Mail, ArrowRight } from "lucide-react"
+import { navigationItems } from "@/lib/content/navigation"
+import { projects } from "@/lib/content/projects"
+import { socialLinks } from "@/lib/content/social-links"
 
 export function Footer() {
   return (

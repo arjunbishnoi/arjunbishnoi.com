@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { projects } from "@/lib/site-data"
+import { projects } from "@/lib/content/projects"
 
 export function FeaturedSection() {
   // Pick the first featured project (Cryptocurrency Tracker)

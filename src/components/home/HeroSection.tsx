@@ -3,12 +3,19 @@
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowUpRight, ChevronDown } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
-import { socialLinks, projects, heroSkills } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
+import { heroDescription } from "@/lib/content/hero-content"
+import { projects } from "@/lib/content/projects"
+import { socialLinks } from "@/lib/content/social-links"
 import { MobbinIconStack } from "./MobbinIconStack"
 import { AboutProfileCard } from "./AboutProfileCard"
+import { HeroEducationTimeline } from "./hero/HeroEducationTimeline"
+import { HeroProfessionalTitles } from "./hero/HeroProfessionalTitles"
+import { HeroSkillsGrid } from "./hero/HeroSkillsGrid"
+import { HeroSocialLinksRow } from "./hero/HeroSocialLinksRow"
+import { HeroViewAllProjectsPill } from "./hero/HeroViewAllProjectsPill"
 
 const VIEWALL_BLOB_COLORS = [
   "bg-cyan-500/62",
@@ -119,51 +126,7 @@ export function HeroSection() {
         {/* 1. Interactive Featured Bento Grid (Restored to Top) */}
         <div className="w-[95%] sm:w-[94%] mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
           <div className="w-full neu-container overflow-visible aspect-[4/4.2] grid grid-rows-[40%_20%_20%_20%]">
-            {/* Row 1: Flat All Projects rectangle */}
-            <div className="relative h-full p-3 pb-2.5">
-              <Link
-                href="/projects"
-                className="group hero-viewall-pill neu-mobile-neumorphic relative z-20 block w-full h-full rounded-[30px] neu-raised transform-gpu will-change-transform"
-              >
-                <div 
-                  className="absolute inset-0 z-0 overflow-hidden rounded-[30px] pointer-events-none animate-color-shift"
-                  style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                >
-                  <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
-                  <div
-                    className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[8] group-hover:contrast-[1.5] group-hover:brightness-[1.25] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
-                    style={{
-                      maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-                      WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-                    }}
-                  >
-                    <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
-                    <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
-                  </div>
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.28),transparent_75%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.22),transparent_70%)] pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-[1] animate-glow-pulse" />
-                  <div
-                    className="absolute inset-0 opacity-[0.28] dark:opacity-[0.25] group-hover:opacity-[0.42] mix-blend-multiply dark:mix-blend-screen pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
-                    }}
-                  />
-                  <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.28] dark:group-hover:bg-white/[0.12] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-[1]" />
-                </div>
-                <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[1.125rem] tracking-[-0.005em] font-semibold text-zinc-900 dark:text-white">View all projects</span>
-                    <ArrowUpRight className="w-5 h-5 text-zinc-900 dark:text-white" strokeWidth={2.5} />
-                  </div>
-                </div>
-              </Link>
-              {/* Mobile: match divider to the view-all pill bottom edge (bottom padding gap) */}
-              <div className="absolute bottom-0 left-0 w-1/2 h-2.5 border-r neu-separator pointer-events-none" />
-            </div>
+            <HeroViewAllProjectsPill variant="mobile" blobColors={viewAllBlobColors} />
             <div className="grid grid-cols-2">
               <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors">
                 <div className="whitespace-nowrap">Mobile Apps</div>
@@ -180,36 +143,7 @@ export function HeroSection() {
                 <div className="whitespace-nowrap">Resume</div>
               </a>
             </div>
-            <div className="grid grid-cols-4">
-              <Link href="#contact" className="flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors">
-                <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-rose-500 group-hover:opacity-100 opacity-90">
-                  <svg viewBox="0 0 24 24" className="block w-[1.4rem] h-[1.4rem] fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M7 2.75C5.38503 2.75 3.92465 3.15363 2.86466 4.1379C1.79462 5.13152 1.25 6.60705 1.25 8.5V15.5C1.25 17.393 1.79462 18.8685 2.86466 19.8621C3.92465 20.8464 5.38503 21.25 7 21.25H17C18.615 21.25 20.0754 20.8464 21.1353 19.8621C22.2054 18.8685 22.75 17.393 22.75 15.5V8.5C22.75 6.60705 22.2054 5.13152 21.1353 4.1379C20.0754 3.15363 18.615 2.75 17 2.75H7ZM19.2285 8.3623C19.5562 8.10904 19.6166 7.63802 19.3633 7.31026C19.1101 6.98249 18.6391 6.9221 18.3113 7.17537L12.7642 11.4616C12.3141 11.8095 11.6858 11.8095 11.2356 11.4616L5.6886 7.17537C5.36083 6.9221 4.88982 6.98249 4.63655 7.31026C4.38328 7.63802 4.44367 8.10904 4.77144 8.3623L10.3185 12.6486C11.3089 13.4138 12.691 13.4138 13.6814 12.6486L19.2285 8.3623Z" />
-                  </svg>
-                </div>
-              </Link>
-              <a href={socialLinks.behance} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors">
-                <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-[#1769FF] group-hover:opacity-100 opacity-90">
-                  <svg viewBox="-40 -40 3413 3413" className="block w-[1.4rem] h-[1.4rem] fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M1667 0c920 0 1667 746 1667 1667 0 920-746 1667-1667 1667C747 3334 0 2588 0 1667 0 747 746 0 1667 0zm-408 1059c57 0 109 5 156 15s87 27 121 49c33 23 59 53 78 91 18 37 27 85 27 140 0 60-14 110-41 151-28 40-68 73-122 99 74 21 128 58 164 111s54 117 54 192c0 61-12 113-35 157-24 44-55 80-94 108s-85 49-136 62c-50 13-102 20-156 20H696V1060h563zm704 96h484v118h-484v-118zm108 890c36 35 87 52 154 52 48 0 90-12 124-36s55-50 63-77h209c-34 104-85 178-154 223s-153 67-250 67c-68 0-129-11-184-33s-101-53-140-93c-38-40-67-88-88-144-20-56-31-118-31-184 0-65 11-125 32-181 22-56 51-104 91-145 39-41 86-73 140-96 54-24 114-35 181-35 73 0 137 14 192 43 55 28 100 67 135 115s60 103 76 164 21 125 17 193h-624c0 68 23 133 59 167zm273-454c-28-31-76-48-134-48-38 0-69 6-94 19s-45 29-60 48-26 39-32 61c-6 21-10 40-11 57h387c-6-61-27-105-55-137zm-1118-50c47 0 85-11 116-33 30-22 45-58 45-108 0-28-5-51-15-69s-24-32-41-42-36-17-58-21-44-6-67-6H960v279h266zm14 508c26 0 50-2 73-8 24-5 44-13 62-25 17-12 32-27 43-48 11-20 16-46 16-77 0-61-17-105-52-132-34-26-80-39-137-39H960v329h281v1z" />
-                  </svg>
-                </div>
-              </a>
-              <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group active:bg-zinc-100/10 transition-colors">
-                <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90">
-                  <svg viewBox="0 0 24 24" className="block w-[1.4rem] h-[1.4rem] fill-current" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                  </svg>
-                </div>
-              </a>
-              <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center group active:bg-zinc-100/10 transition-colors">
-                <div className="w-11 h-11 rounded-full flex items-center justify-center transition-colors text-[#0A66C2] group-hover:opacity-100 opacity-90">
-                  <svg viewBox="0 0 24 24" className="block w-[1.4rem] h-[1.4rem] fill-current" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
-                </div>
-              </a>
-            </div>
+            <HeroSocialLinksRow variant="mobile" />
           </div>
         </div>
 
@@ -225,20 +159,11 @@ export function HeroSection() {
         <div className="home-mobile-bio-shell hero-bio-card w-full -mt-16 relative z-0 rounded-t-[32px] rounded-b-[40px] border border-zinc-200/50 border-t-0 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
           <div className={cn("flex flex-col pt-[84px] px-8 text-left transition-all duration-500", bioExpanded ? "pb-0" : "pb-6")}>
             <div className="flex flex-col">
-              {/* Mission Title */}
-
-              {/* Professional Titles */}
-              <div className="flex flex-col items-center text-center gap-0 shrink-0">
-                {["Cross-platform App Developer", "UI/UX Designer", "AI Engineer"].map((title, idx) => (
-                  <div key={idx} className="flex items-center justify-center w-full">
-                    <span className="hero-copy-unified text-zinc-900 dark:text-white leading-[1.6] tracking-[-0.015em] font-[600]">{title}</span>
-                  </div>
-                ))}
-              </div>
+              <HeroProfessionalTitles variant="mobile" />
 
               {/* Description */}
               <p className="hero-copy-unified mt-[10px] text-left font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">
-                I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.
+                {heroDescription}
               </p>
 
               {/* Education block: collapsed shows clipped/faded preview; expanded reveals full timeline + skills below */}
@@ -252,101 +177,11 @@ export function HeroSection() {
                     height: { type: "spring", duration: 0.4, bounce: 0.15 }
                   }}
                 >
-                <div className="hero-education-card relative rounded-[28px] bg-transparent border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-4 pb-1 pl-0 pr-5 flex flex-col overflow-hidden ml-[-10px]">
-                  {/* Milestone 1 */}
-                  <div className="flex flex-row items-start gap-2">
-                    <div className="flex flex-col items-center self-stretch w-5 shrink-0 relative">
-                      {/* Segment 1: start slightly below circle 1 with rounded top */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-[23px] bottom-0 w-[3px] bg-[#a8a8a8] dark:bg-zinc-500 z-0 rounded-t-full" />
-                      <motion.div 
-                        className="w-[14px] h-[14px] relative mt-[5px] rounded-full shrink-0 z-10" 
-                        animate={{ backgroundColor: ["#FFFFFF", "#4EB627", "#FFFFFF"] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                    </div>
-                    <div className="flex-1 pt-0 pb-4">
-                      <p className="hero-copy-unified font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.6]">
-                        Applied A.I. Solutions Development
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border-[1px] border-black/80 dark:border-white/80 text-[0.65rem] font-semibold tracking-wider leading-none align-middle bg-transparent text-black dark:text-white">
-                          Ongoing
-                        </span>
-                      </p>
-                      <p className="hero-education-secondary font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">George Brown College, Toronto</p>
-                      <p className="hero-education-secondary font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">Postgraduate</p>
-                    </div>
-                  </div>
-
-                  {/* Milestone 2 */}
-                  <div className="flex flex-row items-start gap-2">
-                    <div className="flex flex-col items-center self-stretch w-5 shrink-0 relative">
-                      {/* Segment 2: pass through row 2 */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#a8a8a8] dark:bg-zinc-500 z-0" />
-                      <div className="w-[12px] h-[12px] relative mt-[6px] rounded-full bg-[#a8a8a8] dark:bg-zinc-500 shrink-0 z-10" />
-                    </div>
-                    <div className="flex-1 pt-0 pb-4">
-                      <p className={cn(
-                        "hero-copy-unified font-[600] tracking-[-0.015em] leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
-                      )}>
-                        Mobile Application Development and Strategy
-                      </p>
-                      <p className={cn(
-                        "hero-education-secondary font-normal leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
-                      )}>
-                        George Brown College, Toronto
-                      </p>
-                      <p className={cn(
-                        "hero-education-secondary font-normal leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
-                      )}>
-                        Postgraduate
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Milestone 3 */}
-                  <div className="flex flex-row items-start gap-2">
-                    <div className="flex flex-col items-center self-stretch w-5 shrink-0 relative">
-                      {/* Segment 3: end at center of circle 3 with rounded bottom */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[12px] w-[3px] bg-[#a8a8a8] dark:bg-zinc-500 z-0 rounded-b-full" />
-                      <div className="w-[12px] h-[12px] relative mt-[6px] rounded-full bg-[#a8a8a8] dark:bg-zinc-500 shrink-0 z-10" />
-                    </div>
-                    <div className="flex-1 pt-0 pb-1">
-                      <p className={cn(
-                        "hero-copy-unified font-[600] tracking-[-0.015em] leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-900 dark:text-white"
-                      )}>
-                        B.Sc. Information Technology
-                      </p>
-                      <p className={cn(
-                        "hero-education-secondary font-normal leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
-                      )}>
-                        Amity University, Noida
-                      </p>
-                      <p className={cn(
-                        "hero-education-secondary font-normal leading-[1.6] transition-colors duration-300",
-                        !bioExpanded ? "text-zinc-400 dark:text-zinc-500" : "text-[#636366] dark:text-zinc-400"
-                      )}>
-                        Bachelor&apos;s Degree
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <HeroEducationTimeline variant="mobile" collapsedPreview={!bioExpanded} />
 
                 {/* Always render the rest (skills) below inside the same block so parent width accurately collapses/expands smoothly */}
                 <div className={cn("hero-skills-card pt-8 flex justify-center w-full", bioExpanded ? "pb-0" : "pb-4")}>
-                  <div className="grid grid-cols-3 gap-y-6 gap-x-8 w-full max-w-[280px]">
-                    {heroSkills.slice(0, 18).map((skill, i) => (
-                      <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
-                        <div className="w-7 h-7 relative grayscale dark:invert-[0.92] dark:opacity-90">
-                          <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
-                        </div>
-                        <span className="text-[0.55rem] font-bold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <HeroSkillsGrid variant="mobile" />
                 </div>
                 </motion.div>
               </div>
@@ -420,39 +255,17 @@ export function HeroSection() {
             <div className="hero-bio-skills-merged-card col-span-1 self-stretch overflow-hidden bg-[#e5e5e5] dark:bg-[#161616] rounded-[40px] flex flex-col">
               {/* Top Section: Bio */}
               <div className="pt-6 xl:pt-8 px-6 xl:px-8 text-left">
-                {/* 3 Professional Titles */}
-                <div className="flex flex-col gap-0 shrink-0 items-start text-left mb-2 xl:mb-3">
-                  {[
-                    "Cross-platform App Developer",
-                    "UI/UX Designer",
-                    "AI Engineer"
-                  ].map((title, idx) => (
-                    <div key={idx} className="flex items-center justify-start w-full">
-                      <span className="hero-copy-unified text-zinc-900 dark:text-white leading-[1.6] tracking-[-0.015em] font-[600]">
-                        {title}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                <HeroProfessionalTitles variant="desktop" />
 
                 {/* Short Description */}
                 <p className="hero-copy-unified font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">
-                  I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.
+                  {heroDescription}
                 </p>
               </div>
 
               {/* Bottom Section: Skills */}
               <div className="mt-auto flex justify-center px-6 xl:px-8 pb-8 xl:pb-10 pt-6 xl:pt-8">
-                <div className="grid grid-cols-3 gap-y-5 gap-x-6 xl:gap-y-6 xl:gap-x-8 w-full max-w-[280px] xl:max-w-[300px]">
-                  {heroSkills.slice(0, 18).map((skill, i) => (
-                    <div key={i} className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
-                      <div className="w-7 h-7 xl:w-8 xl:h-8 relative grayscale dark:invert-[0.92] dark:opacity-90">
-                        <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
-                      </div>
-                      <span className="text-[0.55rem] xl:text-[0.6rem] font-bold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-[0.02em]">{skill.name}</span>
-                    </div>
-                  ))}
-                </div>
+                <HeroSkillsGrid variant="desktop" />
               </div>
             </div>
 
@@ -460,51 +273,7 @@ export function HeroSection() {
             <div className="flex flex-col gap-6 xl:gap-7">
               {/* ROW 1: Interactive Bento */}
               <div className="w-full relative aspect-[4/5.6] lg:aspect-[4/5] neu-container overflow-visible rounded-[40px] xl:rounded-[40px] grid grid-rows-[34%_22%_22%_22%] lg:grid-rows-[40%_20%_20%_20%] shrink-0 min-h-0">
-                  {/* Row 1: Raised All Projects rectangle */}
-                  <div className="relative h-full p-2.5 xl:p-3.5 pb-2 xl:pb-2.5">
-                    <Link
-                      href="/projects"
-                      className="group hero-viewall-pill relative z-20 block w-full h-full rounded-[30px] xl:rounded-[36px] neu-raised transform-gpu will-change-transform"
-                    >
-                      <div 
-                        className="absolute inset-0 z-0 overflow-hidden rounded-[30px] xl:rounded-[36px] pointer-events-none animate-color-shift"
-                        style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                      >
-                        <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
-                        <div
-                          className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[8] group-hover:contrast-[1.5] group-hover:brightness-[1.25] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
-                          style={{
-                            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-                            WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-                          }}
-                        >
-                          <div className={`absolute -top-[14%] -left-[10%] w-[62%] h-[72%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[0]} animate-lava [--drift-name:drift-orbit] [--drift-duration:8s] [--morph-name:morph] [--morph-duration:6s] [--color-duration:12s] [--glow-blur:74px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute -top-[4%] right-[-12%] w-[58%] h-[68%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[1]} animate-lava [--drift-name:drift-cross] [--drift-duration:10s] [--morph-name:morph-alt] [--morph-duration:7s] [--color-duration:14s] [--drift-delay:0.5s] [--color-delay:1s] [--glow-blur:80px] scale-120`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute top-[30%] left-[18%] w-[48%] h-[55%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[2]} animate-lava [--drift-name:drift-wide] [--drift-duration:9s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:13s] [--drift-delay:0.4s] [--color-delay:1.5s] [--glow-blur:76px] scale-125`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute bottom-[-14%] left-[4%] w-[56%] h-[66%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[3]} animate-lava [--drift-name:drift-orbit] [--drift-duration:12s] [--morph-name:morph-alt] [--morph-duration:9s] [--color-duration:16s] [--drift-delay:1s] [--color-delay:2s] [--glow-blur:78px] scale-115`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute bottom-[-10%] right-[2%] w-[52%] h-[60%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[4]} animate-lava [--drift-name:drift-cross] [--drift-duration:11s] [--morph-name:morph] [--morph-duration:10s] [--color-duration:15s] [--drift-delay:1.2s] [--color-delay:2.5s] [--glow-blur:80px] scale-110`} style={{ filter: "blur(var(--glow-blur))" }} />
-                          <div className={`absolute top-[18%] left-[38%] w-[28%] h-[34%] rounded-full mix-blend-multiply dark:mix-blend-screen ${viewAllBlobColors[5]} animate-lava [--drift-name:drift-wide] [--drift-duration:14s] [--morph-name:morph] [--morph-duration:8s] [--color-duration:18s] [--drift-delay:1.5s] [--glow-blur:54px] scale-140`} style={{ filter: "blur(var(--glow-blur))" }} />
-                        </div>
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.28),transparent_75%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.22),transparent_70%)] pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-[1] animate-glow-pulse" />
-                        <div
-                          className="absolute inset-0 opacity-[0.28] dark:opacity-[0.25] group-hover:opacity-[0.42] mix-blend-multiply dark:mix-blend-screen pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                          style={{
-                            backgroundImage:
-                              "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
-                          }}
-                        />
-                        <div className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.28] dark:group-hover:bg-white/[0.12] transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
-                      </div>
-                      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
-                        <div className="flex items-center gap-2 xl:gap-2.5">
-                          <span className="text-[1.2rem] xl:text-[1.3rem] tracking-[-0.005em] font-semibold text-zinc-900 dark:text-white">View all projects</span>
-                          <ArrowUpRight className="w-5 h-5 xl:w-6 xl:h-6 text-zinc-900 dark:text-white" strokeWidth={2.5} />
-                        </div>
-                      </div>
-                    </Link>
-                    {/* Draw divider only in the bottom-padding gap so it stops at the view-all section bottom */}
-                    <div className="absolute bottom-0 left-0 w-1/2 h-2 xl:h-2.5 border-r neu-separator pointer-events-none" />
-                  </div>
+                  <HeroViewAllProjectsPill variant="desktop" blobColors={viewAllBlobColors} />
                   <div className="grid grid-cols-2">
                     <Link href="/apps" className="flex items-center justify-center border-r border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors">
                       <div className="whitespace-nowrap">Mobile Apps</div>
@@ -521,36 +290,7 @@ export function HeroSection() {
                       <div className="whitespace-nowrap">Resume</div>
                     </a>
                   </div>
-                  <div className="grid grid-cols-4">
-                    <Link href="#contact" className="flex items-center justify-center border-r neu-separator group hover:bg-zinc-100/10 transition-colors">
-                      <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center transition-colors text-rose-500 group-hover:opacity-100 opacity-90 group-hover:scale-110">
-                        <svg viewBox="0 0 24 24" className="block w-6 h-6 xl:w-7 xl:h-7 fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                          <path fillRule="evenodd" clipRule="evenodd" d="M7 2.75C5.38503 2.75 3.92465 3.15363 2.86466 4.1379C1.79462 5.13152 1.25 6.60705 1.25 8.5V15.5C1.25 17.393 1.79462 18.8685 2.86466 19.8621C3.92465 20.8464 5.38503 21.25 7 21.25H17C18.615 21.25 20.0754 20.8464 21.1353 19.8621C22.2054 18.8685 22.75 17.393 22.75 15.5V8.5C22.75 6.60705 22.2054 5.13152 21.1353 4.1379C20.0754 3.15363 18.615 2.75 17 2.75H7ZM19.2285 8.3623C19.5562 8.10904 19.6166 7.63802 19.3633 7.31026C19.1101 6.98249 18.6391 6.9221 18.3113 7.17537L12.7642 11.4616C12.3141 11.8095 11.6858 11.8095 11.2356 11.4616L5.6886 7.17537C5.36083 6.9221 4.88982 6.98249 4.63655 7.31026C4.38328 7.63802 4.44367 8.10904 4.77144 8.3623L10.3185 12.6486C11.3089 13.4138 12.691 13.4138 13.6814 12.6486L19.2285 8.3623Z" />
-                        </svg>
-                      </div>
-                    </Link>
-                    <a href={socialLinks.behance} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group hover:bg-zinc-100/10 transition-colors">
-                      <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center transition-colors text-[#1769FF] group-hover:opacity-100 opacity-90 group-hover:scale-110">
-                        <svg viewBox="-40 -40 3413 3413" className="block w-6 h-6 xl:w-7 xl:h-7 fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                          <path fillRule="evenodd" clipRule="evenodd" d="M1667 0c920 0 1667 746 1667 1667 0 920-746 1667-1667 1667C747 3334 0 2588 0 1667 0 747 746 0 1667 0zm-408 1059c57 0 109 5 156 15s87 27 121 49c33 23 59 53 78 91 18 37 27 85 27 140 0 60-14 110-41 151-28 40-68 73-122 99 74 21 128 58 164 111s54 117 54 192c0 61-12 113-35 157-24 44-55 80-94 108s-85 49-136 62c-50 13-102 20-156 20H696V1060h563zm704 96h484v118h-484v-118zm108 890c36 35 87 52 154 52 48 0 90-12 124-36s55-50 63-77h209c-34 104-85 178-154 223s-153 67-250 67c-68 0-129-11-184-33s-101-53-140-93c-38-40-67-88-88-144-20-56-31-118-31-184 0-65 11-125 32-181 22-56 51-104 91-145 39-41 86-73 140-96 54-24 114-35 181-35 73 0 137 14 192 43 55 28 100 67 135 115s60 103 76 164 21 125 17 193h-624c0 68 23 133 59 167zm273-454c-28-31-76-48-134-48-38 0-69 6-94 19s-45 29-60 48-26 39-32 61c-6 21-10 40-11 57h387c-6-61-27-105-55-137zm-1118-50c47 0 85-11 116-33 30-22 45-58 45-108 0-28-5-51-15-69s-24-32-41-42-36-17-58-21-44-6-67-6H960v279h266zm14 508c26 0 50-2 73-8 24-5 44-13 62-25 17-12 32-27 43-48 11-20 16-46 16-77 0-61-17-105-52-132-34-26-80-39-137-39H960v329h281v1z" />
-                        </svg>
-                      </div>
-                    </a>
-                    <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border-r neu-separator group hover:bg-zinc-100/10 transition-colors">
-                      <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center transition-colors text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90 group-hover:scale-110">
-                        <svg viewBox="0 0 24 24" className="block w-6 h-6 xl:w-7 xl:h-7 fill-current" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </svg>
-                      </div>
-                    </a>
-                    <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center group hover:bg-zinc-100/10 transition-colors">
-                      <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center transition-colors text-[#0A66C2] group-hover:opacity-100 opacity-90 group-hover:scale-110">
-                        <svg viewBox="0 0 24 24" className="block w-6 h-6 xl:w-7 xl:h-7 fill-current" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                      </div>
-                    </a>
-                  </div>
+                  <HeroSocialLinksRow variant="desktop" />
                 </div>
 
               {/* ROW 2: Featured Project (Square) — swapped with education (column 3 row 1) */}
@@ -567,60 +307,7 @@ export function HeroSection() {
             {/* COLUMN 3: Education + Profile */}
             <div className="flex flex-col gap-6 xl:gap-7 col-span-1 self-stretch">
               {/* TOP CARD: Education Timeline Card (Moved from top left) */}
-              <div className="hero-education-card w-full relative aspect-square rounded-[40px] bg-[#e5e5e5] dark:bg-[#161616] border-0 pt-5 pb-5 pl-6 pr-8 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-9 flex flex-col overflow-hidden">
-                <div className="relative flex-1 flex flex-col pt-1 pb-1">
-                  {/* Milestone 1 */}
-                  <div className="flex flex-row items-start gap-2 xl:gap-2.5 flex-1">
-                    <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
-                      {/* Segment 1: start slightly below circle 1 with rounded top */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-0 w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0 rounded-t-full" />
-                      <motion.div 
-                        className="w-[14px] h-[14px] relative mt-[4px] rounded-full shrink-0 z-10" 
-                        animate={{ backgroundColor: ["#FFFFFF", "#4EB627", "#FFFFFF"] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                    </div>
-                    <div className="flex-1 pt-0">
-                      <p className="hero-copy-unified font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">
-                        Applied A.I. Solutions Development
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full border-[1px] border-black/80 dark:border-white/80 text-[0.7rem] font-semibold tracking-wider leading-none align-middle mb-0.5 bg-transparent text-black dark:text-white">
-                          Ongoing
-                        </span>
-                      </p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">George Brown College, Toronto</p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Postgraduate</p>
-                    </div>
-                  </div>
-
-                  {/* Milestone 2 */}
-                  <div className="flex flex-row items-start gap-2 xl:gap-2.5 flex-1">
-                    <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
-                      {/* Segment 2: pass through row 2 */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0" />
-                      <div className="w-[12px] h-[12px] relative mt-[5px] rounded-full bg-[#bababa] dark:bg-zinc-600 shrink-0 z-10" />
-                    </div>
-                    <div className="flex-1 pt-0">
-                      <p className="hero-copy-unified font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">Mobile Application Development and Strategy</p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">George Brown College, Toronto</p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Postgraduate</p>
-                    </div>
-                  </div>
-
-                  {/* Milestone 3 */}
-                  <div className="flex flex-row items-start gap-2 xl:gap-2.5">
-                    <div className="flex flex-col items-center w-5 shrink-0 h-full relative">
-                      {/* Segment 3: extend past bottom edge */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-[-100px] w-[3px] bg-[#bababa] dark:bg-zinc-600 z-0 rounded-none" />
-                      <div className="w-[12px] h-[12px] relative mt-[5px] rounded-full bg-[#bababa] dark:bg-zinc-600 shrink-0 z-10" />
-                    </div>
-                    <div className="flex-1 pt-0">
-                      <p className="hero-copy-unified font-[600] text-zinc-900 dark:text-white tracking-[-0.015em] leading-[1.4]">B.Sc. Information Technology</p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Amity University, Noida</p>
-                      <p className="hero-education-secondary font-normal leading-[1.4] text-[#636366] dark:text-zinc-400">Bachelor&apos;s Degree</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <HeroEducationTimeline variant="desktop" />
 
               {/* ROW 2: Profile Card */}
               <div className="w-full relative aspect-[4/5] rounded-[40px] xl:rounded-[40px] overflow-hidden neu-raised shadow-none border-none shrink-0 pointer-events-none select-none">

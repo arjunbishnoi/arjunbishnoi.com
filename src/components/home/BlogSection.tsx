@@ -3,9 +3,8 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
-
-import { blogs } from "@/lib/site-data"
 import { BlogCard } from "@/components/home/BlogCard"
+import { blogs } from "@/lib/content/blogs"
 
 export function BlogSection() {
   return (

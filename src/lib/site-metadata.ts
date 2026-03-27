@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { socialLinks } from "@/lib/site-data";
 import { defaultKeywords, siteConfig } from "@/lib/site-config";
+import { socialLinks } from "@/lib/content/social-links";
 
 const personImageDescription =
   "Headshot of Arjun Bishnoi, developer and designer focused on cross-platform mobile apps, AI, and product design.";

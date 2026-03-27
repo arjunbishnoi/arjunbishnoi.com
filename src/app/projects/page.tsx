@@ -1,10 +1,10 @@
 import { ProjectCard } from "@/components/projects/ProjectCard"
-import { projects } from "@/lib/site-data"
 import { Footer } from "@/components/layout/Footer"
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { siteConfig } from "@/lib/site-config";
 import Image from "next/image"
 import { ExternalLink } from "lucide-react"
+import { projects } from "@/lib/content/projects"
 
 export const metadata = buildPageMetadata({
   title: "Projects",

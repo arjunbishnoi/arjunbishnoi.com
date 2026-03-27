@@ -3,9 +3,8 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
-
-import { projects } from "@/lib/site-data"
 import { ProjectCard } from "@/components/projects/ProjectCard"
+import { projects } from "@/lib/content/projects"
 
 export function ProjectsSection() {
   const featuredProjects = projects.filter(p => p.featured)
