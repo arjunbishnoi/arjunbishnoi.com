@@ -9,7 +9,7 @@ import { socialLinks } from "@/lib/site-data";
 
 const siteUrl = "https://arjunbishnoi.com";
 const personImageUrl = `${siteUrl}/arjun-bishnoi.jpg`;
-const shareImageUrl = `${siteUrl}/og-homepage-v1.jpg?v=2`;
+const shareImageUrl = `${siteUrl}/og-homepage-v1.png?v=3`;
 const shareImageAlt = "Arjun Bishnoi homepage preview featuring Mobile Apps, AI & Design";
 const siteTitle = "Arjun Bishnoi \u2014 Mobile Apps, AI & Design";
 const profileDescription =
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
         url: shareImageUrl,
         width: 1200,
         height: 630,
-        type: "image/jpeg",
+        type: "image/png",
         alt: shareImageAlt,
       },
     ],
