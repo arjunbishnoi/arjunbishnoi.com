@@ -1,27 +1,36 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ArrowUpRight, AtSign, Check, Download, Loader2 } from "lucide-react"
-import { SocialBrandIcon } from "@/components/social/SocialBrandIcon"
-import { socialLinks } from "@/lib/content/social-links"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import {
+  ArrowUpRight,
+  AtSign,
+  Check,
+  Download,
+  Loader2,
+  MessageSquare,
+  X,
+} from "lucide-react";
+import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
+import { socialLinks } from "@/lib/content/social-links";
+import { cn } from "@/lib/utils";
 
 const socialPillClass = cn(
-  "group relative flex min-h-[3.25rem] w-full items-center gap-3 rounded-[28px] px-5 py-3.5 text-left shadow-none",
+  "group relative flex min-h-[4rem] w-full items-center gap-3 rounded-[32px] px-6 py-4 text-left shadow-none",
   "transition-[background-color,transform] duration-200 ease-out",
   "hover:scale-[0.995]",
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:focus-visible:outline-white",
-)
+);
 
-const iconSvgClass = "block h-5 w-5 shrink-0 fill-current md:h-[1.375rem] md:w-[1.375rem]"
-const iconLucideClass = "h-5 w-5 shrink-0 md:h-[1.375rem] md:w-[1.375rem]"
-const contactRequestTimeoutMs = 10000
+const iconSvgClass =
+  "block h-5 w-5 shrink-0 fill-current md:h-[1.375rem] md:w-[1.375rem]";
+const iconLucideClass = "h-5 w-5 shrink-0 md:h-[1.375rem] md:w-[1.375rem]";
+const contactRequestTimeoutMs = 10000;
 const contactCardBaseClass =
-  "hero-bio-card flex w-full flex-col rounded-[40px] border border-zinc-200/50 shadow-none dark:border-white/10"
+  "hero-bio-card flex w-full flex-col rounded-[40px] border border-zinc-200/50 shadow-none dark:border-white/10";
 const contactDesktopCardClass = cn(
   contactCardBaseClass,
   "max-w-[24rem] px-5 py-5 md:max-w-[26rem] md:px-6 md:py-6 lg:max-w-[27rem] xl:max-w-[28.5rem] xl:px-8 xl:py-7",
-)
+);
 
 const socialCards = [
   {
@@ -30,7 +39,8 @@ const socialCards = [
     href: socialLinks.github,
     kind: "brand" as const,
     brand: "github" as const,
-    pillClassName: "bg-zinc-900 text-white hover:bg-black dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100",
+    pillClassName:
+      "bg-zinc-900 text-white hover:bg-black dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100",
     labelClassName: "text-white dark:text-zinc-950",
     suffixClassName: "text-white/65 dark:text-zinc-950/60",
   },
@@ -40,7 +50,8 @@ const socialCards = [
     href: socialLinks.linkedin,
     kind: "brand" as const,
     brand: "linkedin" as const,
-    pillClassName: "bg-[#0A66C2] text-white hover:bg-[#0958a8] dark:bg-[#0A66C2] dark:text-white dark:hover:bg-[#0c78e1]",
+    pillClassName:
+      "bg-[#0A66C2] text-white hover:bg-[#0958a8] dark:bg-[#0A66C2] dark:text-white dark:hover:bg-[#0c78e1]",
     labelClassName: "text-white",
     suffixClassName: "text-white/70",
   },
@@ -50,7 +61,8 @@ const socialCards = [
     href: socialLinks.behance,
     kind: "brand" as const,
     brand: "behance" as const,
-    pillClassName: "bg-[#1769FF] text-white hover:bg-[#1158d6] dark:bg-[#1769FF] dark:text-white dark:hover:bg-[#3b82ff]",
+    pillClassName:
+      "bg-[#1769FF] text-white hover:bg-[#1158d6] dark:bg-[#1769FF] dark:text-white dark:hover:bg-[#3b82ff]",
     labelClassName: "text-white",
     suffixClassName: "text-white/70",
   },
@@ -59,35 +71,45 @@ const socialCards = [
     href: socialLinks.resume,
     kind: "download" as const,
     download: true,
-    pillClassName: "bg-zinc-500 text-white hover:bg-zinc-600 dark:bg-zinc-400 dark:text-zinc-950 dark:hover:bg-zinc-300",
+    pillClassName:
+      "bg-zinc-500 text-white hover:bg-zinc-600 dark:bg-zinc-400 dark:text-zinc-950 dark:hover:bg-zinc-300",
     labelClassName: "text-white dark:text-zinc-950",
   },
   {
     name: "contact@arjunbishnoi.com",
     href: socialLinks.email,
     kind: "email" as const,
-    pillClassName: "bg-zinc-200 text-zinc-700 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-600",
+    pillClassName:
+      "bg-[#cfcfd6] text-zinc-800 hover:bg-zinc-400 dark:bg-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-600",
     labelClassName: "text-zinc-700 dark:text-zinc-100",
   },
-] as const
+] as const;
 
 export function ContactSection() {
-  const sectionRef = null
+  const sectionRef = null;
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
     message: "",
-  })
-  const [isLoading, setIsLoading] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
-  const [errorMessage, setErrorMessage] = useState("")
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const toggleContactForm = () => {
+    setIsContactFormOpen((previous) => !previous);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setErrorMessage("")
-    const abortController = new AbortController()
-    const timeoutId = window.setTimeout(() => abortController.abort(), contactRequestTimeoutMs)
+    e.preventDefault();
+    setIsLoading(true);
+    setErrorMessage("");
+    const abortController = new AbortController();
+    const timeoutId = window.setTimeout(
+      () => abortController.abort(),
+      contactRequestTimeoutMs,
+    );
 
     try {
       const response = await fetch("/api/contact", {
@@ -103,39 +125,41 @@ export function ContactSection() {
           _subject: "New Portfolio Contact",
           _captcha: "false",
         }),
-      })
+      });
 
-      const data = await response.json().catch(() => null)
+      const data = await response.json().catch(() => null);
 
       if (response.ok) {
-        setIsSuccess(true)
-        setForm({ name: "", email: "", message: "" })
+        setIsSuccess(true);
+        setForm({ name: "", email: "", message: "" });
 
         setTimeout(() => {
-          setIsSuccess(false)
-        }, 3000)
+          setIsSuccess(false);
+        }, 3000);
       } else {
-        throw new Error(data?.error || data?.message || "Failed to send message")
+        throw new Error(
+          data?.error || data?.message || "Failed to send message",
+        );
       }
     } catch (error) {
-      console.error("Submission error:", error)
+      console.error("Submission error:", error);
       setErrorMessage(
         error instanceof DOMException && error.name === "AbortError"
           ? "The request took too long. Please try again."
-          : "Something went wrong. Please try again later."
-      )
+          : "Something went wrong. Please try again later.",
+      );
     } finally {
-      window.clearTimeout(timeoutId)
-      setIsLoading(false)
+      window.clearTimeout(timeoutId);
+      setIsLoading(false);
     }
-  }
+  };
 
   const fieldClass = cn(
     "block min-h-[3.25rem] w-full rounded-[28px] border border-transparent bg-white px-5 py-3.5 text-foreground shadow-none",
     "placeholder:text-muted-foreground/45 transition-[box-shadow] duration-200",
     "outline-none focus:ring-1 focus:ring-zinc-400/30",
     "dark:bg-white/[0.04] dark:focus:ring-white/15",
-  )
+  );
 
   const socialGrid = (
     <div className="flex h-full w-full flex-col justify-center gap-3 md:gap-3.5">
@@ -145,7 +169,11 @@ export function ContactSection() {
           href={card.href}
           target="_blank"
           rel="noopener noreferrer"
-          download={card.kind === "download" ? socialLinks.resumeDownloadName : undefined}
+          download={
+            card.kind === "download"
+              ? socialLinks.resumeDownloadName
+              : undefined
+          }
           className={cn(socialPillClass, card.pillClassName)}
           aria-label={`${card.name} profile`}
         >
@@ -153,27 +181,79 @@ export function ContactSection() {
             {card.kind === "brand" ? (
               <SocialBrandIcon brand={card.brand} className={iconSvgClass} />
             ) : card.kind === "download" ? (
-              <Download className={iconLucideClass} strokeWidth={1.85} aria-hidden />
+              <Download
+                className={iconLucideClass}
+                strokeWidth={1.85}
+                aria-hidden
+              />
             ) : (
-              <AtSign className={iconLucideClass} strokeWidth={1.85} aria-hidden />
+              <AtSign
+                className={iconLucideClass}
+                strokeWidth={1.85}
+                aria-hidden
+              />
             )}
-            <span className="flex min-w-0 items-center gap-1 truncate text-[0.9rem] font-semibold tracking-tight">
-              <span className={cn("shrink-0", card.labelClassName)}>{card.name}</span>
+            <span className="flex min-w-0 items-center gap-1 truncate text-[0.95rem] font-semibold tracking-tight">
+              <span className={cn("shrink-0", card.labelClassName)}>
+                {card.name}
+              </span>
               {"suffix" in card && card.suffix ? (
-                <span className={cn("truncate font-normal", card.suffixClassName)}>{card.suffix}</span>
+                <span
+                  className={cn("truncate font-normal", card.suffixClassName)}
+                >
+                  {card.suffix}
+                </span>
               ) : null}
             </span>
           </div>
-          <ArrowUpRight className="h-5 w-5 shrink-0" strokeWidth={2.5} aria-hidden />
+          <ArrowUpRight
+            className="h-5 w-5 shrink-0"
+            strokeWidth={2.5}
+            aria-hidden
+          />
         </a>
       ))}
+
+      <button
+        type="button"
+        onClick={toggleContactForm}
+        className={cn(
+          socialPillClass,
+          "bg-white text-zinc-900 hover:bg-zinc-100 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100",
+        )}
+        aria-expanded={isContactFormOpen}
+        aria-controls="contact-form-panel"
+      >
+        <div className="flex min-w-0 flex-1 items-center gap-3">
+          <MessageSquare
+            className={iconLucideClass}
+            strokeWidth={1.85}
+            aria-hidden
+          />
+          <span className="truncate text-[0.95rem] font-semibold tracking-tight">
+            Send message
+          </span>
+        </div>
+        {isContactFormOpen ? (
+          <X className="h-5 w-5 shrink-0" strokeWidth={2.5} aria-hidden />
+        ) : (
+          <ArrowUpRight
+            className="h-5 w-5 shrink-0"
+            strokeWidth={2.5}
+            aria-hidden
+          />
+        )}
+      </button>
     </div>
-  )
+  );
 
   const contactForm = (
     <form onSubmit={handleSubmit} className="flex flex-1 flex-col space-y-5">
       <div>
-        <label htmlFor="name" className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80">
+        <label
+          htmlFor="name"
+          className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
+        >
           Name
         </label>
         <input
@@ -190,7 +270,10 @@ export function ContactSection() {
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80">
+        <label
+          htmlFor="email"
+          className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
+        >
           Email
         </label>
         <input
@@ -207,7 +290,10 @@ export function ContactSection() {
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col">
-        <label htmlFor="message" className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80">
+        <label
+          htmlFor="message"
+          className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
+        >
           Message
         </label>
         <textarea
@@ -216,7 +302,10 @@ export function ContactSection() {
           name="message"
           id="message"
           rows={4}
-          className={cn(fieldClass, "min-h-[140px] flex-1 resize-y md:min-h-[168px] lg:min-h-[184px]")}
+          className={cn(
+            fieldClass,
+            "min-h-[140px] flex-1 resize-y md:min-h-[168px] lg:min-h-[184px]",
+          )}
           placeholder="Your message here..."
           required
           disabled={isLoading || isSuccess}
@@ -243,14 +332,22 @@ export function ContactSection() {
             <Loader2 className="-ml-1 mr-2.5 h-5 w-5 shrink-0 animate-spin text-white dark:text-zinc-900" />
           )}
           {isSuccess && <Check className="-ml-1 mr-2 h-5 w-5 shrink-0" />}
-          <span>{isLoading ? "Sending..." : isSuccess ? "Message sent" : "Send message"}</span>
+          <span>
+            {isLoading
+              ? "Sending..."
+              : isSuccess
+                ? "Message sent"
+                : "Send message"}
+          </span>
         </button>
         {errorMessage && (
-          <p className="mt-3 text-center text-sm text-red-600 dark:text-red-400">{errorMessage}</p>
+          <p className="mt-3 text-center text-sm text-red-600 dark:text-red-400">
+            {errorMessage}
+          </p>
         )}
       </div>
     </form>
-  )
+  );
 
   return (
     <section
@@ -266,23 +363,41 @@ export function ContactSection() {
 
       <div className="mx-auto max-w-7xl px-6 pt-4 sm:pt-6 lg:px-8">
         <div className="mx-auto max-w-[24rem] sm:max-w-[26rem] md:max-w-[27rem] lg:max-w-[55.5rem] xl:max-w-[58.75rem]">
-          <div className="grid grid-cols-1 gap-7 md:gap-8 lg:grid-cols-2 lg:gap-6 xl:gap-7">
+          <div
+            className={cn(
+              "grid grid-cols-1 gap-7 md:gap-8 lg:gap-6 xl:gap-7",
+              isContactFormOpen ? "lg:grid-cols-2" : "lg:grid-cols-1",
+            )}
+          >
             <div className="flex w-full min-h-0 flex-col lg:h-full lg:justify-center">
-              <div className={cn(contactDesktopCardClass, "mx-auto lg:mr-auto")}>
-                <div className="flex flex-col justify-center">
-                  {socialGrid}
-                </div>
+              <div
+                className={cn(
+                  "mx-auto flex h-full w-full max-w-[24rem] flex-col justify-center sm:max-w-[26rem] md:max-w-[27rem] lg:max-w-[27rem] xl:max-w-[28.5rem]",
+                  isContactFormOpen ? "lg:ml-0 lg:mr-auto" : "lg:mx-auto",
+                )}
+              >
+                {socialGrid}
               </div>
             </div>
 
-            <div className="flex w-full min-h-0 flex-col lg:h-full">
-              <div className={cn(contactDesktopCardClass, "mx-auto lg:ml-auto lg:mr-0 lg:h-full")}>
-                {contactForm}
+            {isContactFormOpen ? (
+              <div
+                id="contact-form-panel"
+                className="flex w-full min-h-0 flex-col lg:h-full"
+              >
+                <div
+                  className={cn(
+                    contactDesktopCardClass,
+                    "mx-auto lg:ml-auto lg:mr-0 lg:h-full",
+                  )}
+                >
+                  {contactForm}
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
