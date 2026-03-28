@@ -28,13 +28,19 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Building for Production
 
-This project is configured for static export (`output: 'export'`).
+This project uses the standard Next.js production build and deploys cleanly on Vercel.
 
 ```bash
 npm run build
 ```
 
-The output will be in the `out` directory.
+The build output is written to `.next`.
+
+## Contact Relay
+
+The contact form posts to the app's `/api/contact` route first so failures are visible in Vercel logs.
+
+If you want to change the upstream relay target, set `CONTACT_FORM_ENDPOINT`.
 
 ## Project Structure
 
@@ -45,4 +51,3 @@ The output will be in the `out` directory.
   - `home`: Homepage specific sections
 - `src/lib`: Utilities and site data
 - `public`: Static assets
-

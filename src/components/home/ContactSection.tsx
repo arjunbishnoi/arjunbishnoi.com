@@ -1,50 +1,73 @@
 "use client"
 
 import { useState } from "react"
-import { Loader2, Check, Download, Mail } from "lucide-react"
+import { ArrowUpRight, AtSign, Check, Download, Loader2 } from "lucide-react"
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon"
-import { cn } from "@/lib/utils"
 import { socialLinks } from "@/lib/content/social-links"
+import { cn } from "@/lib/utils"
 
-/** Matches BlogCard / project card body copy */
-const sectionBodyClass =
-  "text-base md:text-lg text-foreground font-normal leading-relaxed"
-
-/** Hero-style flat rectangles: rounded-[40px], white surface, subtle border — no neumorphic lift */
-const bentoTile = cn(
-  "group relative flex min-h-[100px] flex-col items-center justify-center gap-1 rounded-[40px] px-2.5 py-3 text-center",
-  "sm:min-h-[108px] md:min-h-0 md:h-full md:min-h-[128px] md:gap-1.5 lg:min-h-[136px]",
-  "border border-zinc-200/90 bg-white shadow-none",
-  "transition-[border-color,background-color,transform] duration-200 ease-out",
-  "hover:border-zinc-300 hover:bg-zinc-50/80",
-  "dark:border-white/[0.12] dark:bg-white/[0.04] dark:hover:border-white/[0.18] dark:hover:bg-white/[0.07]",
+const socialPillClass = cn(
+  "group relative flex min-h-[3.25rem] w-full items-center gap-3 rounded-[28px] px-5 py-3.5 text-left shadow-none",
+  "transition-[background-color,transform] duration-200 ease-out",
+  "hover:scale-[0.995]",
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:focus-visible:outline-white",
 )
 
 const iconSvgClass = "block h-5 w-5 shrink-0 fill-current md:h-[1.375rem] md:w-[1.375rem]"
 const iconLucideClass = "h-5 w-5 shrink-0 md:h-[1.375rem] md:w-[1.375rem]"
 const contactRequestTimeoutMs = 10000
+const contactCardBaseClass =
+  "hero-bio-card flex w-full flex-col rounded-[40px] border border-zinc-200/50 shadow-none dark:border-white/10"
+const contactDesktopCardClass = cn(
+  contactCardBaseClass,
+  "max-w-[24rem] px-5 py-5 md:max-w-[26rem] md:px-6 md:py-6 lg:max-w-[27rem] xl:max-w-[28.5rem] xl:px-8 xl:py-7",
+)
+
 const socialCards = [
   {
     name: "GitHub",
+    suffix: "/arjunbishnoi",
     href: socialLinks.github,
+    kind: "brand" as const,
     brand: "github" as const,
-    tileClassName: "text-zinc-900 dark:text-white",
-    labelClassName: "text-zinc-600 dark:text-zinc-300",
+    pillClassName: "bg-zinc-900 text-white hover:bg-black dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100",
+    labelClassName: "text-white dark:text-zinc-950",
+    suffixClassName: "text-white/65 dark:text-zinc-950/60",
   },
   {
     name: "LinkedIn",
+    suffix: "/in/arjunbishnoi",
     href: socialLinks.linkedin,
+    kind: "brand" as const,
     brand: "linkedin" as const,
-    tileClassName: "text-[#0A66C2]",
-    labelClassName: "text-[#0A66C2]/90",
+    pillClassName: "bg-[#0A66C2] text-white hover:bg-[#0958a8] dark:bg-[#0A66C2] dark:text-white dark:hover:bg-[#0c78e1]",
+    labelClassName: "text-white",
+    suffixClassName: "text-white/70",
   },
   {
     name: "Behance",
+    suffix: "/arjunbishnoi",
     href: socialLinks.behance,
+    kind: "brand" as const,
     brand: "behance" as const,
-    tileClassName: "text-[#1769FF]",
-    labelClassName: "text-[#1769FF]/90",
+    pillClassName: "bg-[#1769FF] text-white hover:bg-[#1158d6] dark:bg-[#1769FF] dark:text-white dark:hover:bg-[#3b82ff]",
+    labelClassName: "text-white",
+    suffixClassName: "text-white/70",
+  },
+  {
+    name: "Resume",
+    href: socialLinks.resume,
+    kind: "download" as const,
+    download: true,
+    pillClassName: "bg-zinc-500 text-white hover:bg-zinc-600 dark:bg-zinc-400 dark:text-zinc-950 dark:hover:bg-zinc-300",
+    labelClassName: "text-white dark:text-zinc-950",
+  },
+  {
+    name: "contact@arjunbishnoi.com",
+    href: socialLinks.email,
+    kind: "email" as const,
+    pillClassName: "bg-zinc-200 text-zinc-700 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-600",
+    labelClassName: "text-zinc-700 dark:text-zinc-100",
   },
 ] as const
 
@@ -55,7 +78,6 @@ export function ContactSection() {
     email: "",
     message: "",
   })
-
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
@@ -68,11 +90,10 @@ export function ContactSection() {
     const timeoutId = window.setTimeout(() => abortController.abort(), contactRequestTimeoutMs)
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/contact@arjunbishnoi.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         signal: abortController.signal,
         body: JSON.stringify({
@@ -84,7 +105,7 @@ export function ContactSection() {
         }),
       })
 
-      const data = await response.json()
+      const data = await response.json().catch(() => null)
 
       if (response.ok) {
         setIsSuccess(true)
@@ -94,7 +115,7 @@ export function ContactSection() {
           setIsSuccess(false)
         }, 3000)
       } else {
-        throw new Error(data.message || "Failed to send message")
+        throw new Error(data?.error || data?.message || "Failed to send message")
       }
     } catch (error) {
       console.error("Submission error:", error)
@@ -110,10 +131,125 @@ export function ContactSection() {
   }
 
   const fieldClass = cn(
-    "block w-full rounded-[28px] border border-zinc-200/90 bg-white px-5 py-3.5 text-foreground shadow-none",
-    "placeholder:text-muted-foreground/45 transition-[border-color,box-shadow] duration-200",
-    "outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400/30",
-    "dark:border-white/[0.12] dark:bg-white/[0.04] dark:focus:border-white/25 dark:focus:ring-white/15",
+    "block min-h-[3.25rem] w-full rounded-[28px] border border-transparent bg-white px-5 py-3.5 text-foreground shadow-none",
+    "placeholder:text-muted-foreground/45 transition-[box-shadow] duration-200",
+    "outline-none focus:ring-1 focus:ring-zinc-400/30",
+    "dark:bg-white/[0.04] dark:focus:ring-white/15",
+  )
+
+  const socialGrid = (
+    <div className="flex h-full w-full flex-col justify-center gap-3 md:gap-3.5">
+      {socialCards.map((card) => (
+        <a
+          key={card.name}
+          href={card.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          download={card.kind === "download" ? socialLinks.resumeDownloadName : undefined}
+          className={cn(socialPillClass, card.pillClassName)}
+          aria-label={`${card.name} profile`}
+        >
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            {card.kind === "brand" ? (
+              <SocialBrandIcon brand={card.brand} className={iconSvgClass} />
+            ) : card.kind === "download" ? (
+              <Download className={iconLucideClass} strokeWidth={1.85} aria-hidden />
+            ) : (
+              <AtSign className={iconLucideClass} strokeWidth={1.85} aria-hidden />
+            )}
+            <span className="flex min-w-0 items-center gap-1 truncate text-[0.9rem] font-semibold tracking-tight">
+              <span className={cn("shrink-0", card.labelClassName)}>{card.name}</span>
+              {"suffix" in card && card.suffix ? (
+                <span className={cn("truncate font-normal", card.suffixClassName)}>{card.suffix}</span>
+              ) : null}
+            </span>
+          </div>
+          <ArrowUpRight className="h-5 w-5 shrink-0" strokeWidth={2.5} aria-hidden />
+        </a>
+      ))}
+    </div>
+  )
+
+  const contactForm = (
+    <form onSubmit={handleSubmit} className="flex flex-1 flex-col space-y-5">
+      <div>
+        <label htmlFor="name" className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80">
+          Name
+        </label>
+        <input
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          type="text"
+          name="name"
+          id="name"
+          className={fieldClass}
+          placeholder="Your name"
+          required
+          disabled={isLoading || isSuccess}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="email" className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80">
+          Email
+        </label>
+        <input
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          type="email"
+          name="email"
+          id="email"
+          className={fieldClass}
+          placeholder="your.email@example.com"
+          required
+          disabled={isLoading || isSuccess}
+        />
+      </div>
+
+      <div className="flex min-h-0 flex-1 flex-col">
+        <label htmlFor="message" className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80">
+          Message
+        </label>
+        <textarea
+          value={form.message}
+          onChange={(e) => setForm({ ...form, message: e.target.value })}
+          name="message"
+          id="message"
+          rows={4}
+          className={cn(fieldClass, "min-h-[140px] flex-1 resize-y md:min-h-[168px] lg:min-h-[184px]")}
+          placeholder="Your message here..."
+          required
+          disabled={isLoading || isSuccess}
+        />
+      </div>
+
+      <div className="pt-1">
+        <button
+          type="submit"
+          className={cn(
+            "flex min-h-[3.25rem] w-full items-center justify-center rounded-[28px] border border-transparent bg-black px-8 py-3.5 text-base font-semibold tracking-tight text-white shadow-none",
+            "transition-[background-color,border-color,transform] duration-200 ease-out",
+            "hover:bg-zinc-900",
+            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black",
+            "active:scale-[0.99] active:border-black",
+            "dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100 dark:focus-visible:outline-white dark:active:border-white",
+            isSuccess &&
+              "bg-emerald-600 text-white hover:bg-emerald-700 dark:bg-emerald-500/90 dark:text-white dark:hover:bg-emerald-500",
+            isLoading && "cursor-not-allowed opacity-75",
+          )}
+          disabled={isLoading || isSuccess}
+        >
+          {isLoading && (
+            <Loader2 className="-ml-1 mr-2.5 h-5 w-5 shrink-0 animate-spin text-white dark:text-zinc-900" />
+          )}
+          {isSuccess && <Check className="-ml-1 mr-2 h-5 w-5 shrink-0" />}
+          <span>{isLoading ? "Sending..." : isSuccess ? "Message sent" : "Send message"}</span>
+        </button>
+        {errorMessage && (
+          <p className="mt-3 text-center text-sm text-red-600 dark:text-red-400">{errorMessage}</p>
+        )}
+      </div>
+    </form>
   )
 
   return (
@@ -129,143 +265,21 @@ export function ContactSection() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pt-4 sm:pt-6 lg:px-8">
-        <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-10 xl:gap-14">
-          {/* Left: copy + bento */}
-          <div className="flex min-h-0 flex-col gap-7 lg:h-full lg:gap-8">
-            <p className={cn(sectionBodyClass, "text-left text-foreground/90 sm:text-center lg:text-left")}>
-              I&apos;m currently open to new opportunities and collaborations. Whether you have a question, a
-              project in mind, or just want to say hello, feel free to reach out!
-            </p>
-
-            <div
-              className={cn(
-                "grid w-full min-h-0 grid-cols-2",
-                /* One gap value for both axes — reads even on every breakpoint */
-                "gap-4",
-                "md:grid-cols-3 auto-rows-auto",
-                "lg:flex-1",
-              )}
-            >
-              {socialCards.map((card) => (
-                <a
-                  key={card.name}
-                  href={card.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(bentoTile, card.tileClassName)}
-                  aria-label={`${card.name} profile`}
-                >
-                  <SocialBrandIcon brand={card.brand} className={iconSvgClass} />
-                  <span className={cn("text-[0.8125rem] font-medium tracking-wide", card.labelClassName)}>
-                    {card.name}
-                  </span>
-                </a>
-              ))}
-
-              <a
-                href={socialLinks.resume}
-                download={socialLinks.resumeDownloadName}
-                className={cn(
-                  bentoTile,
-                  "flex-row gap-2.5 text-zinc-900 dark:text-white md:col-span-2 md:gap-3",
-                )}
-              >
-                <Download className={iconLucideClass} strokeWidth={1.85} aria-hidden />
-                <span className="text-[0.9375rem] font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-                  Resume
-                </span>
-              </a>
-
-              <a href={socialLinks.email} className={cn(bentoTile, "col-span-2 text-rose-500 md:col-span-1")}>
-                <Mail className={iconLucideClass} strokeWidth={1.85} aria-hidden />
-                <span className="max-w-full truncate px-1 text-[0.7rem] font-medium leading-snug sm:text-xs md:text-[0.8125rem]">
-                  contact@arjunbishnoi.com
-                </span>
-              </a>
+        <div className="mx-auto max-w-[24rem] sm:max-w-[26rem] md:max-w-[27rem] lg:max-w-[55.5rem] xl:max-w-[58.75rem]">
+          <div className="grid grid-cols-1 gap-7 md:gap-8 lg:grid-cols-2 lg:gap-6 xl:gap-7">
+            <div className="flex w-full min-h-0 flex-col lg:h-full lg:justify-center">
+              <div className={cn(contactDesktopCardClass, "mx-auto lg:mr-auto")}>
+                <div className="flex flex-col justify-center">
+                  {socialGrid}
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* Right: form */}
-          <div className="flex w-full min-h-0 flex-col lg:h-full lg:pl-2 xl:pl-6">
-            <form onSubmit={handleSubmit} className="flex flex-1 flex-col space-y-5">
-              <div>
-                <label htmlFor="name" className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80">
-                  Name
-                </label>
-                <input
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  type="text"
-                  name="name"
-                  id="name"
-                  className={fieldClass}
-                  placeholder="Your name"
-                  required
-                  disabled={isLoading || isSuccess}
-                />
+            <div className="flex w-full min-h-0 flex-col lg:h-full">
+              <div className={cn(contactDesktopCardClass, "mx-auto lg:ml-auto lg:mr-0 lg:h-full")}>
+                {contactForm}
               </div>
-
-              <div>
-                <label htmlFor="email" className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80">
-                  Email
-                </label>
-                <input
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  type="email"
-                  name="email"
-                  id="email"
-                  className={fieldClass}
-                  placeholder="your.email@example.com"
-                  required
-                  disabled={isLoading || isSuccess}
-                />
-              </div>
-
-              <div className="flex min-h-0 flex-1 flex-col">
-                <label htmlFor="message" className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80">
-                  Message
-                </label>
-                <textarea
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  name="message"
-                  id="message"
-                  rows={4}
-                  className={cn(fieldClass, "min-h-[140px] flex-1 resize-y md:min-h-[168px] lg:min-h-[184px]")}
-                  placeholder="Your message here..."
-                  required
-                  disabled={isLoading || isSuccess}
-                />
-              </div>
-
-              <div className="pt-1">
-                <button
-                  type="submit"
-                  className={cn(
-                    "flex min-h-[3.25rem] w-full items-center justify-center rounded-[40px] border border-black bg-black px-8 py-3.5 text-base font-semibold tracking-tight text-white shadow-none",
-                    "transition-[background-color,border-color,transform] duration-200 ease-out",
-                    "hover:border-zinc-800 hover:bg-zinc-900",
-                    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black",
-                    "active:scale-[0.99]",
-                    "dark:border-white/20 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100 dark:hover:border-white/30 dark:focus-visible:outline-white",
-                    isSuccess &&
-                      "border-emerald-600 bg-emerald-600 text-white hover:border-emerald-700 hover:bg-emerald-700 dark:border-emerald-400/50 dark:bg-emerald-500/90 dark:text-white dark:hover:bg-emerald-500",
-                    isLoading && "cursor-not-allowed opacity-75",
-                  )}
-                  disabled={isLoading || isSuccess}
-                >
-                  {isLoading && (
-                    <Loader2 className="-ml-1 mr-2.5 h-5 w-5 shrink-0 animate-spin text-white dark:text-zinc-900" />
-                  )}
-                  {isSuccess && <Check className="-ml-1 mr-2 h-5 w-5 shrink-0" />}
-                  <span>{isLoading ? "Sending…" : isSuccess ? "Message sent" : "Send message"}</span>
-                </button>
-                {errorMessage && (
-                  <p className="mt-3 text-center text-sm text-red-600 dark:text-red-400">{errorMessage}</p>
-                )}
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

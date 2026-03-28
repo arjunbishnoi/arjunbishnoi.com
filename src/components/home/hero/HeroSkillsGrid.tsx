@@ -33,7 +33,7 @@ export function HeroSkillsGrid({ variant, className }: HeroSkillsGridProps) {
               isDesktop ? "w-7 h-7 xl:w-8 xl:h-8" : "w-7 h-7"
             )}
           >
-            <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" unoptimized />
+            <Image src={skill.logoUrl} alt={skill.name} fill className="object-contain" />
           </div>
           <span
             className={cn(
