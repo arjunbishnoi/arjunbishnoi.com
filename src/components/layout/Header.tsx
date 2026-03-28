@@ -8,6 +8,7 @@ import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
 import { Moon, Sun, Mail } from "lucide-react"
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon"
+import { mainLinks } from "@/lib/content/main-links"
 import { socialLinks } from "@/lib/content/social-links"
 import { cn } from "@/lib/utils"
 
@@ -25,21 +26,6 @@ export function Header() {
     open: { height: "auto" },
     closed: { height: "3.4375rem" },
   }
-  type MobileMenuItem = {
-    name: string
-    href: string
-    isDownload?: boolean
-  }
-  const mobileMenuItems: ReadonlyArray<MobileMenuItem> = [
-    { name: 'Projects', href: '/projects' },
-    { name: 'Mobile Apps', href: '/apps' },
-    { name: 'AI/ML', href: '/ai' },
-    { name: 'Design', href: '/design' },
-    { name: 'Resume', href: socialLinks.resume, isDownload: true },
-    { name: 'Contact', href: '/#contact' },
-    { name: 'About', href: '/#about' },
-    { name: 'Blog', href: '/blog' },
-  ] as const
   const mobileMenuListVariants = {
     open: {
       opacity: 1,
@@ -328,7 +314,7 @@ export function Header() {
             className="flex flex-col space-y-3"
             variants={mobileMenuListVariants}
           >
-            {mobileMenuItems.map((item) => (
+            {mainLinks.map((item) => (
               <motion.li
                 key={item.name}
                 variants={mobileMenuItemVariants}
@@ -336,7 +322,7 @@ export function Header() {
                 {item.isDownload ? (
                   <a
                     href={item.href}
-                    download={socialLinks.resumeDownloadName}
+                    download={item.downloadName}
                     className="text-xl tracking-tight font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
                   >
                     {item.name}

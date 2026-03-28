@@ -1,6 +1,8 @@
 export type NavigationItem = {
   name: string
   href: string
+  isDownload?: boolean
+  downloadName?: string
 }
 
 export type SocialLinks = {

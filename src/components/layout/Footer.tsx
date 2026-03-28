@@ -1,147 +1,63 @@
 import Link from "next/link"
-import Image from "next/image"
-import { Mail, ArrowRight } from "lucide-react"
-import { navigationItems } from "@/lib/content/navigation"
-import { projects } from "@/lib/content/projects"
+import { SocialBrandIcon } from "@/components/social/SocialBrandIcon"
+import { mainLinks } from "@/lib/content/main-links"
 import { socialLinks } from "@/lib/content/social-links"
 
 export function Footer() {
+  const footerColorClass = "text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors"
+
+  const footerSocialItems = [
+    { name: "Behance", href: socialLinks.behance, brand: "behance" as const },
+    { name: "GitHub", href: socialLinks.github, brand: "github" as const },
+    { name: "LinkedIn", href: socialLinks.linkedin, brand: "linkedin" as const },
+  ]
+
   return (
-    <footer className="bg-[#121212] dark:bg-[#e0e0e0] border-t border-white/10 dark:border-black/10 transition-colors">
-      {/* Sitemap Section */}
-      <div className="py-12 border-b border-white/10 dark:border-black/10">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Site Navigation */}
-            <div>
-              <h3 className="text-lg font-semibold text-white dark:text-black mb-4">Navigation</h3>
-              <ul className="space-y-2">
-                {navigationItems.map((item) => (
-                  <li key={item.name}>
-                    {item.href.startsWith("/") ? (
-                      <Link
-                        href={item.href}
-                        className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors"
-                      >
-                        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                      </Link>
-                    ) : (
-                      <a
-                        href={item.href}
-                        className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors"
-                      >
-                        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                      </a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Projects Links */}
-            <div>
-              <h3 className="text-lg font-semibold text-white dark:text-black mb-4">Projects</h3>
-              <ul className="space-y-2">
-                {projects.slice(0, 3).map((project) => (
-                  <li key={project.id}>
-                    <a
-                      href={project.sourceUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors"
-                    >
-                      {project.title}
-                    </a>
-                  </li>
-                ))}
-                <li>
-                  <Link
-                    href="/projects"
-                    className="text-primary hover:text-primary/80 transition-colors font-semibold flex items-center group"
-                  >
-                    View all projects
-                    <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Contact Information */}
-            <div>
-              <h3 className="text-lg font-semibold text-white dark:text-black mb-4">Contact</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <Mail className="h-5 w-5 mr-2 text-gray-400 dark:text-gray-600" />
-                  <a
-                    href={socialLinks.email}
-                    className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors"
-                  >
-                    contact@arjunbishnoi.com
-                  </a>
-                </li>
-                <li className="flex items-center">
-                  <Image src="/github-mark.png" alt="GitHub" width={22} height={22} className="mr-2 object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all cursor-pointer" />
-                  <a
-                    href={socialLinks.github}
-                    rel="me"
-                    className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors"
-                  >
-                    github.com/arjunbishnoi
-                  </a>
-                </li>
-                <li className="flex items-center">
-                  <Image src="/linkedin-mark.png" alt="LinkedIn" width={22} height={22} className="mr-2 object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all cursor-pointer" />
-                  <a
-                    href={socialLinks.linkedin}
-                    rel="me"
-                    className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors"
-                  >
-                    linkedin.com/in/arjunbishnoi
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Copyright & Socials */}
+    <footer className="bg-[#121212] dark:bg-[#e0e0e0] transition-colors">
       <div className="py-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-sm text-gray-400 dark:text-gray-600">
-                © {new Date().getFullYear()} Arjun Bishnoi. All rights reserved.
-              </p>
+          <div className="flex flex-col items-stretch gap-6 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-6">
+            <div className="order-2 flex items-center justify-center gap-3 md:order-1 md:justify-self-start">
+              {footerSocialItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center justify-center w-10 h-10 rounded-full ${footerColorClass}`}
+                  aria-label={item.name}
+                >
+                  <SocialBrandIcon brand={item.brand} className="w-[1.875rem] h-[1.875rem]" />
+                </a>
+              ))}
             </div>
 
-            <div className="flex space-x-6 items-center">
-              <a
-                href={socialLinks.github}
-                target="_blank"
-                rel="me noopener noreferrer"
-                className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black"
-              >
-                <span className="sr-only">GitHub</span>
-                <Image src="/github-mark.png" alt="GitHub" width={28} height={28} className="object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all" />
-              </a>
-              <a
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="me noopener noreferrer"
-                className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black"
-              >
-                <span className="sr-only">LinkedIn</span>
-                <Image src="/linkedin-mark.png" alt="LinkedIn" width={28} height={28} className="object-contain filter brightness-0 invert opacity-70 hover:opacity-100 dark:filter-none dark:opacity-60 dark:hover:opacity-100 transition-all" />
-              </a>
-              <a
-                href={socialLinks.email}
-                className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black"
-              >
-                <span className="sr-only">Email</span>
-                <Mail className="h-6 w-6" />
-              </a>
-            </div>
+            <ul className="order-1 space-y-3 text-left md:order-2 md:justify-self-center md:space-y-0 md:flex md:flex-wrap md:items-center md:justify-center md:gap-x-8 md:gap-y-3">
+              {mainLinks.map((item) => (
+                <li key={item.name}>
+                  {item.isDownload ? (
+                    <a
+                      href={item.href}
+                      download={item.downloadName}
+                      className={footerColorClass}
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className={footerColorClass}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            <p className={`${footerColorClass} order-3 text-center md:justify-self-end md:text-right`}>
+              Arjun Bishnoi © 2026
+            </p>
           </div>
         </div>
       </div>
