@@ -1,16 +1,21 @@
-import Link from "next/link"
-import { SocialBrandIcon } from "@/components/social/SocialBrandIcon"
-import { mainLinks } from "@/lib/content/main-links"
-import { socialLinks } from "@/lib/content/social-links"
+import Link from "next/link";
+import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
+import { mainLinks } from "@/lib/content/main-links";
+import { socialLinks } from "@/lib/content/social-links";
 
 export function Footer() {
-  const footerColorClass = "text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors"
+  const footerColorClass =
+    "text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors";
 
   const footerSocialItems = [
     { name: "Behance", href: socialLinks.behance, brand: "behance" as const },
     { name: "GitHub", href: socialLinks.github, brand: "github" as const },
-    { name: "LinkedIn", href: socialLinks.linkedin, brand: "linkedin" as const },
-  ]
+    {
+      name: "LinkedIn",
+      href: socialLinks.linkedin,
+      brand: "linkedin" as const,
+    },
+  ];
 
   return (
     <footer className="bg-[#121212] dark:bg-[#e0e0e0] transition-colors">
@@ -27,7 +32,10 @@ export function Footer() {
                   className={`flex items-center justify-center w-10 h-10 rounded-full ${footerColorClass}`}
                   aria-label={item.name}
                 >
-                  <SocialBrandIcon brand={item.brand} className="w-[1.875rem] h-[1.875rem]" />
+                  <SocialBrandIcon
+                    brand={item.brand}
+                    className="w-[1.875rem] h-[1.875rem]"
+                  />
                 </a>
               ))}
             </div>
@@ -44,10 +52,7 @@ export function Footer() {
                       {item.name}
                     </a>
                   ) : (
-                    <Link
-                      href={item.href}
-                      className={footerColorClass}
-                    >
+                    <Link href={item.href} className={footerColorClass}>
                       {item.name}
                     </Link>
                   )}
@@ -55,12 +60,14 @@ export function Footer() {
               ))}
             </ul>
 
-            <p className={`${footerColorClass} order-3 text-center md:justify-self-end md:text-right`}>
+            <p
+              className={`${footerColorClass} order-3 text-center md:justify-self-end md:text-right`}
+            >
               Arjun Bishnoi © 2026
             </p>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
