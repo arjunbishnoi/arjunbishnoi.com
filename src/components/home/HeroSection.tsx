@@ -80,7 +80,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center md:h-auto md:pt-16 lg:pt-20 md:pb-0"
+      className="relative overflow-hidden flex flex-col items-center md:h-auto md:pt-16 lg:pt-20 pb-2 md:pb-6 lg:pb-10"
       style={{ background: "var(--neu-surface)" }}
     >
 
@@ -124,7 +124,7 @@ export function HeroSection() {
       >
         
         {/* 1. Interactive Featured Bento Grid (Restored to Top) */}
-        <div className="w-[95%] sm:w-[94%] mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
+        <div className="w-[95%] sm:w-[94%] mx-auto mt-4 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
           <div className="w-full neu-container overflow-visible aspect-[4/4.2] grid grid-rows-[40%_20%_20%_20%]">
             <HeroViewAllProjectsPill variant="mobile" blobColors={viewAllBlobColors} />
             <div className="grid grid-cols-2">
@@ -151,7 +151,7 @@ export function HeroSection() {
         <div id="about" className="lg:hidden scroll-mt-24" />
         <AboutProfileCard
           imageSizes="(max-width: 768px) 100vw, 342px"
-          className="mt-6 lg:hidden relative z-10"
+          className="mt-4 lg:hidden relative z-10"
           priority
         />
 
@@ -324,7 +324,7 @@ export function HeroSection() {
       </motion.div>
 
       {/* Scroll down indicator */}
-      <div className="hidden md:flex w-full flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-0 md:mt-8 relative z-40">
+      <div className="hidden md:flex lg:hidden w-full flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-0 md:mt-8 relative z-40">
         <div className={cn(
             "mt-3 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",
             scrolledDown ? "opacity-0 pointer-events-none" : "opacity-70"

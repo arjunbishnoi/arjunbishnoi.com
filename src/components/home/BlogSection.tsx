@@ -10,15 +10,13 @@ export function BlogSection() {
   return (
     <section id="blog" className="home-stack-gap-after relative py-0 bg-background">
       {/* Static Full-Width Header — no top padding <md; gap from Projects is margin-only */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-4 pt-0 md:pt-8 lg:pt-10">
-        <div className="flex items-center justify-between w-full relative">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-3 sm:pb-4 md:pb-10 lg:pb-14 pt-0 md:pt-16 lg:pt-20">
+        <div className="flex items-center justify-between md:justify-center md:gap-8 w-full relative">
           
-          {/* Title Left */}
-          <div className="flex items-center pr-4 pb-1">
-            <span className="text-[1.625rem] md:text-3xl lg:text-4xl text-black dark:text-white font-bold">
-              Blog
-            </span>
-          </div>
+          {/* Title (Centered on md+) */}
+          <h2 className="font-sans font-semibold text-black dark:text-white leading-[1.02] tracking-[-0.02em] sm:tracking-[-0.035em] md:tracking-[-0.04em] lg:tracking-[-0.038em] text-[2.2rem] md:text-4xl lg:text-5xl xl:text-6xl">
+            Blog
+          </h2>
 
           {/* View all pill (matches home bio CTA) */}
           <Link

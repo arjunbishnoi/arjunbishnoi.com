@@ -353,10 +353,10 @@ export function ContactSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative z-40 bg-background pb-24 pt-2 max-md:pb-20 md:pb-32 md:pt-6 lg:pb-40 lg:pt-8"
+      className="relative z-40 bg-background pb-16 pt-2 md:pb-20 md:pt-16 lg:pb-24 lg:pt-20"
     >
-      <div className="mx-auto max-w-7xl px-6 pb-3 sm:pb-4 lg:px-8">
-        <h2 className="text-[1.625rem] font-bold tracking-tight text-black md:text-3xl lg:text-4xl dark:text-white">
+      <div className="mx-auto max-w-7xl px-6 pb-3 sm:pb-4 lg:px-8 md:text-center md:pb-10 lg:pb-14">
+        <h2 className="font-sans font-semibold text-black dark:text-white leading-[1.02] tracking-[-0.02em] sm:tracking-[-0.035em] md:tracking-[-0.04em] lg:tracking-[-0.038em] text-[2.2rem] md:text-4xl lg:text-5xl xl:text-6xl">
           Contact
         </h2>
       </div>

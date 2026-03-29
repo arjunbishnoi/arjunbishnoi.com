@@ -10,7 +10,7 @@ export function FeaturedSection() {
 
   return (
     <section className="home-stack-gap-after md:hidden pt-0 pb-0 bg-background">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-6 -mt-2 md:mt-0">
         <Link href={featured.sourceUrl} target="_blank" rel="noopener noreferrer">
           {/* Square cover image only (no title/category on mobile) */}
           <div
