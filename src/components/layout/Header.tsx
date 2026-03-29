@@ -191,7 +191,7 @@ export function Header() {
                     priority
                   />
                 </div>
-                <span className="hidden sm:block text-[1.15rem] tracking-[-0.035em] font-sans font-semibold text-black dark:text-white whitespace-nowrap">
+                <span className="hidden sm:block lg:hidden text-[1.15rem] tracking-[-0.035em] font-sans font-semibold text-black dark:text-white whitespace-nowrap">
                   Arjun Bishnoi
                 </span>
               </Link>
