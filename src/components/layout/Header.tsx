@@ -28,7 +28,7 @@ export function Header() {
   };
   const mobileMenuPanelVariants = {
     open: { height: "auto" },
-    closed: { height: "3.4375rem" },
+    closed: { height: "3rem" },
   };
   const mobileMenuListVariants = {
     open: {
@@ -145,8 +145,8 @@ export function Header() {
   };
 
   // Spacing model (mobile)
-  const mobileLeftInset = 12;
-  const mobileRightInset = 12;
+  const mobileLeftInset = 8;
+  const mobileRightInset = 8;
 
   return (
     <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
