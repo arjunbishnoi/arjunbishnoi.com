@@ -8,7 +8,6 @@ import {
   Download,
   Loader2,
   MessageSquare,
-  X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
