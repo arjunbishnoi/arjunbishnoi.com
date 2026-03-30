@@ -110,7 +110,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0.24 }}
           >
-            <span className="block lg:inline">{"Developer & Designer."}</span>
+            <span className="block lg:inline">{"Developer and designer."}</span>
           </motion.p>
         </div>
       </div>

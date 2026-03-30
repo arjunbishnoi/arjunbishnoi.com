@@ -12,7 +12,7 @@ export const heroProfessionalTitles = [
 ] as const
 
 export const heroDescription =
-  "I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision."
+  "Developer and designer building cross-platform mobile apps at the intersection of AI and design. Functional, intelligent, and crafted with precision."
 
 export const heroEducationItems: HeroEducationItem[] = [
   {

@@ -3,7 +3,7 @@ import { defaultKeywords, siteConfig } from "@/lib/site-config";
 import { socialLinks } from "@/lib/content/social-links";
 
 const personImageDescription =
-  "Headshot of Arjun Bishnoi, developer and designer focused on cross-platform mobile apps, AI, and product design.";
+  "Developer and designer building cross-platform mobile apps at the intersection of AI and design. Functional, intelligent, and crafted with precision.";
 
 export const rootMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

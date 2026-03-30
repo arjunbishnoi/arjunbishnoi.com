@@ -5,8 +5,9 @@ export const siteConfig = {
   url: "https://www.arjunbishnoi.com",
   title: "Arjun Bishnoi — Mobile Apps, AI & Design",
   description:
-    "Developer & Designer. I build cross-platform mobile apps at the intersection of AI and design. Functional, intelligent and crafted with precision.",
-  sectionDescription: "Mobile Apps, AI & Design",
+    "Developer and designer building cross-platform mobile apps at the intersection of AI and design. Functional, intelligent, and crafted with precision.",
+  sectionDescription:
+    "Developer and designer building cross-platform mobile apps at the intersection of AI and design. Functional, intelligent, and crafted with precision.",
   shareImage: {
     url: "https://www.arjunbishnoi.com/og-homepage-v1.jpg?v=4",
     alt: "Arjun Bishnoi homepage preview featuring Mobile Apps, AI & Design",
