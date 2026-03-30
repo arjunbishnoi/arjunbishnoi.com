@@ -113,19 +113,22 @@ export function ContactSection() {
     );
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        signal: abortController.signal,
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
-          _subject: "New Portfolio Contact",
-          _captcha: "false",
-        }),
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT ?? "https://formsubmit.co/ajax/contact@arjunbishnoi.com", 
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          signal: abortController.signal,
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            message: form.message,
+            _subject: "New Portfolio Contact",
+            _captcha: "false",
+          }),
       });
 
       const data = await response.json().catch(() => null);
