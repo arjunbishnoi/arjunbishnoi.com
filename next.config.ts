@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/resume',
-        destination: '/Resume - Arjun Bishnoi.pdf',
+        destination: '/Resume%20-%20Arjun%20Bishnoi.pdf',
         permanent: true,
       },
     ];

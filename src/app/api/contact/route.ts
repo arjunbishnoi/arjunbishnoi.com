@@ -41,12 +41,17 @@ export async function POST(request: Request) {
   const abortController = new AbortController();
   const timeoutId = setTimeout(() => abortController.abort(), contactRequestTimeoutMs);
 
+  const origin = request.headers.get("origin") ?? "https://www.arjunbishnoi.com";
+  const referer = request.headers.get("referer") ?? "https://www.arjunbishnoi.com/";
+
   try {
     const response = await fetch(contactRelayEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "Origin": origin,
+        "Referer": referer,
       },
       signal: abortController.signal,
       body: JSON.stringify({
@@ -60,14 +65,14 @@ export async function POST(request: Request) {
 
     const responseBody = await response.json().catch(() => null);
 
-    if (!response.ok) {
+    if (!response.ok || responseBody?.success === "false" || responseBody?.success === false) {
       console.error("Contact relay error", {
         status: response.status,
         responseBody,
       });
 
       return NextResponse.json(
-        { error: "Something went wrong. Please try again later." },
+        { error: "Something went wrong. Please try again." },
         { status: 502 }
       );
     }
@@ -84,7 +89,7 @@ export async function POST(request: Request) {
       {
         error: isAbortError
           ? "The request took too long. Please try again."
-          : "Something went wrong. Please try again later.",
+          : "Something went wrong. Please try again.",
       },
       { status: 502 }
     );

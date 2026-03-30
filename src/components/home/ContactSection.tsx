@@ -30,7 +30,7 @@ const contactCardBaseClass =
   "hero-bio-card flex w-full flex-col rounded-[40px] border border-zinc-200/50 shadow-none dark:border-white/10";
 const contactDesktopCardClass = cn(
   contactCardBaseClass,
-  "max-w-[24rem] px-5 py-5 md:max-w-[26rem] md:px-6 md:py-6 lg:h-[28.375rem] lg:max-w-[27rem] xl:h-[28.375rem] xl:max-w-[28.5rem] xl:px-8 xl:py-7",
+  "max-w-[24rem] px-5 py-5 md:max-w-[26rem] md:px-6 md:py-6 lg:max-w-[27rem] xl:max-w-[28.5rem] xl:px-8 xl:py-6",
 );
 
 const socialCards = [
@@ -136,6 +136,7 @@ export function ContactSection() {
 
         setTimeout(() => {
           setIsSuccess(false);
+          setIsContactFormOpen(false);
         }, 3000);
       } else {
         throw new Error(
@@ -147,7 +148,7 @@ export function ContactSection() {
       setErrorMessage(
         error instanceof DOMException && error.name === "AbortError"
           ? "The request took too long. Please try again."
-          : "Something went wrong. Please try again later.",
+          : "Something went wrong. Please try again.",
       );
     } finally {
       window.clearTimeout(timeoutId);
@@ -162,12 +163,40 @@ export function ContactSection() {
     "dark:bg-white/[0.04] dark:focus:ring-white/15",
   );
 
+  const contactFormListVariants = {
+    open: {
+      transition: { staggerChildren: 0.03, delayChildren: 0.05 },
+    },
+    closed: {
+      transition: { staggerChildren: 0 },
+    },
+  };
+
+  const contactFormItemVariants = {
+    open: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: "spring" as const, stiffness: 300, damping: 24 } 
+    },
+    closed: { 
+      opacity: 0, 
+      y: -15, 
+      transition: { duration: 0.08, ease: "easeOut" as const } 
+    },
+  };
+
   const contactForm = (
-    <form onSubmit={handleSubmit} className="flex h-full flex-col space-y-5 lg:space-y-4">
-      <div>
+    <motion.form 
+      onSubmit={handleSubmit} 
+      className="flex flex-col space-y-5 lg:space-y-3"
+      variants={contactFormListVariants}
+      initial="closed"
+      animate={isContactFormOpen ? "open" : "closed"}
+    >
+      <motion.div variants={contactFormItemVariants}>
         <label
           htmlFor="name"
-          className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
+          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
         >
           Name
         </label>
@@ -182,12 +211,12 @@ export function ContactSection() {
           required
           disabled={isLoading || isSuccess}
         />
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div variants={contactFormItemVariants}>
         <label
           htmlFor="email"
-          className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
+          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
         >
           Email
         </label>
@@ -202,12 +231,12 @@ export function ContactSection() {
           required
           disabled={isLoading || isSuccess}
         />
-      </div>
+      </motion.div>
 
-      <div className="flex min-h-0 flex-1 flex-col">
+      <motion.div variants={contactFormItemVariants} className="flex flex-col">
         <label
           htmlFor="message"
-          className="mb-2 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
+          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
         >
           Message
         </label>
@@ -216,18 +245,18 @@ export function ContactSection() {
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           name="message"
           id="message"
-          rows={4}
+          rows={3}
           className={cn(
             fieldClass,
-            "min-h-[140px] flex-1 resize-y md:min-h-[168px] lg:min-h-[96px]",
+            "min-h-[140px] resize-y lg:min-h-[130px] lg:h-[130px]",
           )}
           placeholder="Your message here..."
           required
           disabled={isLoading || isSuccess}
         />
-      </div>
+      </motion.div>
 
-      <div className="pt-1">
+      <motion.div variants={contactFormItemVariants} className="pt-1">
         <button
           type="submit"
           className={cn(
@@ -260,8 +289,8 @@ export function ContactSection() {
             {errorMessage}
           </p>
         )}
-      </div>
-    </form>
+      </motion.div>
+    </motion.form>
   );
 
   const socialGrid = (
@@ -352,16 +381,20 @@ export function ContactSection() {
         <AnimatePresence initial={false}>
           {isContactFormOpen && (
             <motion.div
-              initial={{ height: 0, opacity: 0, marginTop: 0 }}
-              animate={{ height: "auto", opacity: 1, marginTop: "-3rem" }}
-              exit={{ height: 0, opacity: 0, marginTop: 0 }}
-              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-              className="relative z-0 w-full overflow-hidden lg:hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ 
+                height: 0, 
+                opacity: 0, 
+                transition: { type: "spring", duration: 0.3, bounce: 0.1, delay: 0.12 }
+              }}
+              transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
+              className="relative z-0 w-full overflow-hidden lg:hidden -mt-8 mb-8"
             >
               <div
                 className={cn(
                   contactCardBaseClass,
-                  "pt-[5rem] pb-6 px-5 sm:px-6 rounded-t-[32px] border-t-0 border-x border-b",
+                  "pt-[4rem] pb-6 px-5 sm:px-6 rounded-t-none border-t-0 border-x border-b",
                 )}
               >
                 {contactForm}
@@ -389,39 +422,50 @@ export function ContactSection() {
 
       <div className="mx-auto max-w-7xl px-6 pt-4 sm:pt-6 md:pt-2 lg:pt-2 lg:px-8">
         <div className="mx-auto max-w-[24rem] sm:max-w-[26rem] md:max-w-[27rem] lg:max-w-[55.5rem] xl:max-w-[58.75rem]">
-          <div
-            className={cn(
-              "grid grid-cols-1 gap-7 md:gap-8 lg:gap-6 xl:gap-7",
-              isContactFormOpen ? "lg:grid-cols-2" : "lg:grid-cols-1",
-            )}
+          <motion.div
+            layout
+            className="flex flex-col lg:flex-row items-center lg:items-start justify-center w-full min-h-0 gap-7 md:gap-8 lg:gap-0"
+            transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
           >
-            <div className="flex w-full min-h-0 flex-col">
-              <div
-                className={cn(
-                  "mx-auto flex w-full max-w-[24rem] flex-col sm:max-w-[26rem] md:max-w-[27rem] lg:max-w-[27rem] xl:max-w-[28.5rem]",
-                  isContactFormOpen ? "lg:ml-0 lg:mr-auto" : "lg:mx-auto",
-                )}
-              >
-                {socialGrid}
-              </div>
-            </div>
+            <motion.div
+              layout
+              className="flex w-full min-h-0 flex-col max-w-[24rem] sm:max-w-[26rem] md:max-w-[27rem] lg:max-w-[27rem] xl:max-w-[28.5rem] flex-shrink-0 relative z-10"
+              transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
+            >
+              {socialGrid}
+            </motion.div>
 
-            {isContactFormOpen ? (
-              <div
-                id="contact-form-panel"
-                className="hidden lg:flex w-full min-h-0 flex-col"
-              >
-                <div
-                  className={cn(
-                    contactDesktopCardClass,
-                    "mx-auto lg:ml-auto lg:mr-0",
-                  )}
+            <AnimatePresence>
+              {isContactFormOpen ? (
+                <motion.div
+                  id="contact-form-panel"
+                  initial={{ opacity: 0, width: 0, marginLeft: 0, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, width: "auto", marginLeft: "1.5rem", filter: "blur(0px)" }}
+                  exit={{ opacity: 0, width: 0, marginLeft: 0, filter: "blur(8px)" }}
+                  transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
+                  className="hidden lg:flex min-h-0 flex-col overflow-visible origin-left relative z-0"
                 >
-                  {contactForm}
-                </div>
-              </div>
-            ) : null}
-          </div>
+                  <motion.div
+                    initial={{ x: 30 }}
+                    animate={{ x: 0 }}
+                    exit={{ x: 30 }}
+                    transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
+                    className="w-[27rem] xl:w-[28.5rem] flex-shrink-0"
+                  >
+                    <div
+                      className={cn(
+                        contactDesktopCardClass,
+                        "mx-0 w-full lg:max-w-none xl:max-w-none",
+                        !errorMessage ? "lg:h-[28.375rem]" : "lg:min-h-[28.375rem]"
+                      )}
+                    >
+                      {contactForm}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </section>

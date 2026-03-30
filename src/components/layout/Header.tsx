@@ -32,17 +32,23 @@ export function Header() {
   };
   const mobileMenuListVariants = {
     open: {
-      opacity: 1,
       transition: { staggerChildren: 0.03, delayChildren: 0.05 },
     },
     closed: {
-      opacity: 0,
-      transition: { staggerChildren: 0.03, staggerDirection: -1 as const },
+      transition: { staggerChildren: 0 },
     },
   };
   const mobileMenuItemVariants = {
-    open: { opacity: 1, y: 0 },
-    closed: { opacity: 0, y: -10 },
+    open: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: "spring" as const, stiffness: 300, damping: 24 } 
+    },
+    closed: { 
+      opacity: 0, 
+      y: -15, 
+      transition: { duration: 0.08, ease: "easeOut" as const } 
+    },
   };
   const menuSocialItems = [
     { name: "Behance", href: socialLinks.behance, brand: "behance" as const },
@@ -54,8 +60,16 @@ export function Header() {
     },
   ] as const;
   const mobileMenuSocialVariants = {
-    open: { opacity: 1, y: 0, transition: { delay: 0.15 } },
-    closed: { opacity: 0, y: -10 },
+    open: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { delay: 0.15, type: "spring" as const, stiffness: 300, damping: 24 } 
+    },
+    closed: { 
+      opacity: 0, 
+      y: -15, 
+      transition: { duration: 0.08, ease: "easeOut" as const } 
+    },
   };
   const mobileMenuIconTopVariants = {
     open: { rotate: [0, 0, 45], y: [0, 4, 4] },
@@ -81,20 +95,32 @@ export function Header() {
   // Lock scroll and toggle global menu-open state for page dimming.
   useEffect(() => {
     const root = document.documentElement;
+    let timeoutId: number;
 
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      root.classList.add("mobile-menu-open");
     } else {
-      document.body.style.overflow = "";
+      root.classList.remove("mobile-menu-open");
+      // Delay restoring scrollbar until closing animation finishes
+      // to prevent centering layout shifts from moving menu items left
+      timeoutId = window.setTimeout(() => {
+        document.body.style.overflow = "";
+      }, 350);
     }
 
-    root.classList.toggle("mobile-menu-open", isMobileMenuOpen);
-
     return () => {
-      document.body.style.overflow = "";
-      root.classList.remove("mobile-menu-open");
+      window.clearTimeout(timeoutId);
     };
   }, [isMobileMenuOpen]);
+
+  // Failsafe unmount cleanup
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.classList.remove("mobile-menu-open");
+    };
+  }, []);
 
   // Close mobile menu when clicking/tapping outside of it.
   // Use click capture so timing matches the X button (also click-based),
@@ -333,12 +359,10 @@ export function Header() {
 
           {/* Menu Content */}
           <motion.div
-            layout="position"
             initial={false}
             animate={mobileMenuAnimationState}
             className={cn(
-              "pl-[17px] pr-[12px] pb-[22px] w-full flex flex-col",
-              isMobileMenuOpen ? "pt-6" : "pt-3",
+              "pl-[17px] pr-[12px] pb-[22px] w-full flex flex-col pt-6",
               isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none",
             )}
           >
