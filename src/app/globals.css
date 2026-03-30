@@ -20,8 +20,18 @@
     --neu-shadow-light: rgba(255, 255, 255, 0.95); /* Brighter highlight */
     --neu-shadow-distance: 6px;
     --neu-shadow-blur: 14px;
-    --neu-inset-shadow-dark: rgba(135, 135, 135, 0.65); /* Darker inset shadow */
-    --neu-inset-shadow-light: rgba(255, 255, 255, 0.85); /* Brighter inset highlight */
+    --neu-inset-shadow-dark: rgba(
+      135,
+      135,
+      135,
+      0.65
+    ); /* Darker inset shadow */
+    --neu-inset-shadow-light: rgba(
+      255,
+      255,
+      255,
+      0.85
+    ); /* Brighter inset highlight */
     --neu-sweep-distance: 16px;
     --neu-sweep-blur: 40px;
     --neu-sweep-shadow-dark: rgba(0, 0, 0, 0.1);
@@ -30,11 +40,11 @@
     --hero-gradient-top: #000000;
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 55%, #000000);
     --hero-gradient-stop: 30%;
-    
+
     /* Project-specific background matching main background in light mode */
     --projects-background: 0 0% 87%;
     --projects-surface: #dddddd;
-    
+
     /* Mobile flat border */
     --neu-flat-border: rgba(0, 0, 0, 0.1);
     --neu-gradient-light: #ededed;
@@ -52,10 +62,15 @@
     --hero-bio-gradient-light: #2c2c2c;
     --hero-bio-gradient-dark: #202020;
     /* Dark mode neumorphic surface — perfectly neutral, darker gray */
-    --neu-surface: #1c1c1c; 
+    --neu-surface: #1c1c1c;
     --neu-surface-dimmed: #121212;
     --neu-shadow-dark: rgba(0, 0, 0, 0.94); /* Deep, rich shadow */
-    --neu-shadow-light: rgba(255, 255, 255, 0.1); /* Subdued, professional highlight */
+    --neu-shadow-light: rgba(
+      255,
+      255,
+      255,
+      0.1
+    ); /* Subdued, professional highlight */
     --neu-shadow-distance: 8px;
     --neu-shadow-blur: 22px;
     --neu-inset-shadow-dark: rgba(0, 0, 0, 0.94);
@@ -68,11 +83,11 @@
     --hero-gradient-top: #ffffff;
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 65%, #ffffff);
     --hero-gradient-stop: 52%;
- 
+
     /* Project-specific background: match main background in dark mode */
     --projects-background: 0 0% 10%; /* #1a1a1a */
     --projects-surface: #1a1a1a;
-    
+
     /* Mobile flat border */
     --neu-flat-border: rgba(255, 255, 255, 0.08);
   }
@@ -82,36 +97,61 @@
     background: var(--neu-surface);
     border: 3px solid var(--neu-flat-border); /* Flat on mobile with subtle border */
     box-shadow: none; /* Removed for flat mobile design */
-    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.3s ease,
+      border-color 0.3s ease;
   }
 
   /* --- Class to keep neumorphism on mobile for specific elements --- */
   .neu-mobile-neumorphic {
     border: none !important;
-    background: linear-gradient(145deg, var(--neu-gradient-light), var(--neu-gradient-dark));
+    background: linear-gradient(
+      145deg,
+      var(--neu-gradient-light),
+      var(--neu-gradient-dark)
+    );
     box-shadow:
-      calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
-      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+      calc(-1 * var(--neu-shadow-distance))
+        calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur)
+        var(--neu-shadow-light),
+      var(--neu-shadow-distance) var(--neu-shadow-distance)
+        var(--neu-shadow-blur) var(--neu-shadow-dark),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+        var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance))
+        calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+        var(--neu-sweep-shadow-light);
     border-color: transparent;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
   @media (hover: hover) {
     .neu-mobile-neumorphic:hover {
       transform: translateY(-4px) scale(1.01);
       box-shadow:
-        calc(-1 * var(--neu-shadow-distance) - 3px) calc(-1 * var(--neu-shadow-distance) - 3px) calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-light),
-        calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-dark);
+        calc(-1 * var(--neu-shadow-distance) - 3px)
+          calc(-1 * var(--neu-shadow-distance) - 3px)
+          calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-light),
+        calc(var(--neu-shadow-distance) + 3px)
+          calc(var(--neu-shadow-distance) + 3px)
+          calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-dark);
     }
   }
   .neu-mobile-neumorphic:active {
     transform: translateY(2px) scale(0.95);
     box-shadow:
-      inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
-      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
-      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+      inset var(--neu-shadow-distance) var(--neu-shadow-distance)
+        var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
+      inset calc(-1 * var(--neu-shadow-distance))
+        calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur)
+        var(--neu-inset-shadow-light),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+        var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance))
+        calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+        var(--neu-sweep-shadow-light);
   }
 
   /* Tighten mobile project card shadows so they don't spill */
@@ -130,12 +170,22 @@
     .neu-raised,
     .neu-mobile-neumorphic {
       border: none;
-      background: linear-gradient(145deg, var(--neu-gradient-light), var(--neu-gradient-dark));
+      background: linear-gradient(
+        145deg,
+        var(--neu-gradient-light),
+        var(--neu-gradient-dark)
+      );
       box-shadow:
-        calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-        var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
-        inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-        inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+        calc(-1 * var(--neu-shadow-distance))
+          calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur)
+          var(--neu-shadow-light),
+        var(--neu-shadow-distance) var(--neu-shadow-distance)
+          var(--neu-shadow-blur) var(--neu-shadow-dark),
+        inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+          var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+        inset calc(-1 * var(--neu-sweep-distance))
+          calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+          var(--neu-sweep-shadow-light);
     }
   }
 
@@ -143,10 +193,16 @@
   .neu-pressed {
     background: var(--neu-surface);
     box-shadow:
-      inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
-      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
-      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+      inset var(--neu-shadow-distance) var(--neu-shadow-distance)
+        var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
+      inset calc(-1 * var(--neu-shadow-distance))
+        calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur)
+        var(--neu-inset-shadow-light),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+        var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance))
+        calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+        var(--neu-sweep-shadow-light);
   }
 
   /* --- Hover: lift up — card rises off surface with bigger shadow --- */
@@ -154,10 +210,17 @@
     .neu-raised:hover {
       transform: translateY(-4px) scale(1.01);
       box-shadow:
-        calc(-1 * var(--neu-shadow-distance) - 3px) calc(-1 * var(--neu-shadow-distance) - 3px) calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-light),
-        calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-dark),
-        inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-        inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+        calc(-1 * var(--neu-shadow-distance) - 3px)
+          calc(-1 * var(--neu-shadow-distance) - 3px)
+          calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-light),
+        calc(var(--neu-shadow-distance) + 3px)
+          calc(var(--neu-shadow-distance) + 3px)
+          calc(var(--neu-shadow-blur) + 10px) var(--neu-shadow-dark),
+        inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+          var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+        inset calc(-1 * var(--neu-sweep-distance))
+          calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+          var(--neu-sweep-shadow-light);
     }
   }
 
@@ -165,10 +228,16 @@
   .neu-raised:active {
     transform: translateY(2px) scale(0.95);
     box-shadow:
-      inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
-      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
-      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+      inset var(--neu-shadow-distance) var(--neu-shadow-distance)
+        var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
+      inset calc(-1 * var(--neu-shadow-distance))
+        calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur)
+        var(--neu-inset-shadow-light),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+        var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance))
+        calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+        var(--neu-sweep-shadow-light);
   }
 
   /* --- Accent-colored cards: same lift/press with color-appropriate shadows --- */
@@ -178,78 +247,101 @@
       box-shadow:
         -8px -9px 16px var(--neu-shadow-light),
         8px 9px 16px var(--neu-shadow-dark),
-        inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-        inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+        inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+          var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+        inset calc(-1 * var(--neu-sweep-distance))
+          calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+          var(--neu-sweep-shadow-light);
     }
   }
   .neu-raised-accent:active {
     transform: translateY(2px) scale(0.95);
     box-shadow:
-      inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
-      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
-      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+      inset var(--neu-shadow-distance) var(--neu-shadow-distance)
+        var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
+      inset calc(-1 * var(--neu-shadow-distance))
+        calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur)
+        var(--neu-inset-shadow-light),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+        var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance))
+        calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+        var(--neu-sweep-shadow-light);
   }
 
   /* --- Container state: for parent elements on mobile --- */
   .neu-container {
-    background: linear-gradient(145deg, var(--neu-gradient-light), var(--neu-gradient-dark));
+    background: linear-gradient(
+      145deg,
+      var(--neu-gradient-light),
+      var(--neu-gradient-dark)
+    );
     border-radius: 40px;
     box-shadow:
-      calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-      var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark);
+      calc(-1 * var(--neu-shadow-distance))
+        calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur)
+        var(--neu-shadow-light),
+      var(--neu-shadow-distance) var(--neu-shadow-distance)
+        var(--neu-shadow-blur) var(--neu-shadow-dark);
   }
 
   .neu-separator {
     border-color: var(--neu-flat-border);
   }
 
-
   /* Slightly shrink the full mobile hero neumorphic shape without changing layout flow. */
   .hero-mobile-main-shape-wrap {
     transform-origin: top center;
   }
 
-/* MobbinIconStack: responsive translateY spacing via CSS var (prevents SSR/hydration layout shift) */
-.mobbin-icon-stack {
-  --mobbin-icon-offset: 10px;
-}
-
-@media (min-width: 768px) {
+  /* MobbinIconStack: responsive translateY spacing via CSS var (prevents SSR/hydration layout shift) */
   .mobbin-icon-stack {
-    --mobbin-icon-offset: 16px;
+    --mobbin-icon-offset: 10px;
   }
-}
 
-@media (min-width: 1024px) {
-  .mobbin-icon-stack {
-    --mobbin-icon-offset: 12px;
+  @media (min-width: 768px) {
+    .mobbin-icon-stack {
+      --mobbin-icon-offset: 16px;
+    }
   }
-}
+
+  @media (min-width: 1024px) {
+    .mobbin-icon-stack {
+      --mobbin-icon-offset: 12px;
+    }
+  }
 
   @media (max-width: 767px) {
-  .hero-mobile-main-shape-wrap {
-    transform: scale(0.91);
+    .hero-mobile-main-shape-wrap {
+      transform: scale(0.91);
+    }
   }
-  }
-
 
   /* --- Subtle flat neumorphic (for small elements like social icons) --- */
   .neu-flat {
     background: var(--neu-surface);
     border: 3px solid var(--neu-flat-border); /* Flat on mobile with subtle border */
     box-shadow: none; /* Removed for flat mobile design */
-    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.3s ease,
+      border-color 0.3s ease;
   }
 
   @media (min-width: 768px) {
     .neu-flat {
       border: none;
       box-shadow:
-        calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-shadow-light),
-        var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-shadow-dark),
-        inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-        inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+        calc(-1 * var(--neu-shadow-distance))
+          calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur)
+          var(--neu-shadow-light),
+        var(--neu-shadow-distance) var(--neu-shadow-distance)
+          var(--neu-shadow-blur) var(--neu-shadow-dark),
+        inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+          var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+        inset calc(-1 * var(--neu-sweep-distance))
+          calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+          var(--neu-sweep-shadow-light);
     }
   }
 
@@ -257,20 +349,33 @@
     .neu-flat:hover {
       transform: translateY(-3px);
       box-shadow:
-        calc(-1 * var(--neu-shadow-distance) - 2px) calc(-1 * var(--neu-shadow-distance) - 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-light),
-        calc(var(--neu-shadow-distance) + 2px) calc(var(--neu-shadow-distance) + 3px) calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-dark),
-        inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-        inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+        calc(-1 * var(--neu-shadow-distance) - 2px)
+          calc(-1 * var(--neu-shadow-distance) - 3px)
+          calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-light),
+        calc(var(--neu-shadow-distance) + 2px)
+          calc(var(--neu-shadow-distance) + 3px)
+          calc(var(--neu-shadow-blur) + 4px) var(--neu-shadow-dark),
+        inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+          var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+        inset calc(-1 * var(--neu-sweep-distance))
+          calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+          var(--neu-sweep-shadow-light);
     }
   }
 
   .neu-flat:active {
     transform: translateY(2px) scale(0.95);
     box-shadow:
-      inset var(--neu-shadow-distance) var(--neu-shadow-distance) var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
-      inset calc(-1 * var(--neu-shadow-distance)) calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur) var(--neu-inset-shadow-light),
-      inset var(--neu-sweep-distance) var(--neu-sweep-distance) var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
-      inset calc(-1 * var(--neu-sweep-distance)) calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur) var(--neu-sweep-shadow-light);
+      inset var(--neu-shadow-distance) var(--neu-shadow-distance)
+        var(--neu-shadow-blur) var(--neu-inset-shadow-dark),
+      inset calc(-1 * var(--neu-shadow-distance))
+        calc(-1 * var(--neu-shadow-distance)) var(--neu-shadow-blur)
+        var(--neu-inset-shadow-light),
+      inset var(--neu-sweep-distance) var(--neu-sweep-distance)
+        var(--neu-sweep-blur) var(--neu-sweep-shadow-dark),
+      inset calc(-1 * var(--neu-sweep-distance))
+        calc(-1 * var(--neu-sweep-distance)) var(--neu-sweep-blur)
+        var(--neu-sweep-shadow-light);
   }
 }
 
@@ -305,7 +410,7 @@
   }
   .dark {
     /* Set background to exactly match --neu-surface #1a1a1a (HSL: 0, 0%, 10%) */
-    --background: 0 0% 10%; 
+    --background: 0 0% 10%;
     --foreground: 0 0% 98%;
     --card: 0 0% 10%;
     --card-foreground: 0 0% 98%;
@@ -351,7 +456,9 @@ html {
   color: var(--text-color, #ffffff);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 body {
@@ -360,11 +467,15 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   overflow: unset;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 #site-content {
-  transition: filter 300ms ease, opacity 300ms ease;
+  transition:
+    filter 300ms ease,
+    opacity 300ms ease;
 }
 
 html.mobile-menu-open #site-content {
@@ -402,7 +513,10 @@ html.mobile-menu-open body {
   text-align: center;
   width: 100%;
   line-height: 0.95;
-  transition: font-size 0.3s ease, margin 0.3s ease, line-height 0.3s ease;
+  transition:
+    font-size 0.3s ease,
+    margin 0.3s ease,
+    line-height 0.3s ease;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
@@ -532,10 +646,10 @@ section.relative.overflow-hidden.hero-section {
   --color-primary: #ffffff;
   --color-primary-content: #000000;
   --color-accent: #6366f1;
-  --navbar-height: 3rem;
+  --navbar-height: 3.25rem;
   --background-color: #121212;
   --text-color: #ffffff;
-  --gray-text: #9CA3AF;
+  --gray-text: #9ca3af;
   --card-bg: rgba(17, 24, 39, 0.5);
   --card-border: rgba(55, 65, 81, 0.5);
   --input-bg: rgba(17, 24, 39, 0.5);
@@ -549,7 +663,7 @@ section.relative.overflow-hidden.hero-section {
 .dark-theme {
   --background-color: #121212;
   --text-color: #ffffff;
-  --gray-text: #9CA3AF;
+  --gray-text: #9ca3af;
   --card-bg: rgba(17, 24, 39, 0.5);
   --color-primary: #ffffff;
   --color-primary-content: #000000;
@@ -717,19 +831,41 @@ html.light-theme .hero-skills-card {
   outline: none !important;
 }
 
-html.light-theme .hero-bio-card :is(.text-zinc-900, .text-zinc-800, .text-zinc-700, .text-zinc-600, .text-zinc-500, .text-black) {
+html.light-theme
+  .hero-bio-card
+  :is(
+    .text-zinc-900,
+    .text-zinc-800,
+    .text-zinc-700,
+    .text-zinc-600,
+    .text-zinc-500,
+    .text-black
+  ) {
   color: #1c1c1e !important;
 }
 
-html.light-theme .hero-bio-card :is(.text-zinc-100, .text-zinc-200, .text-zinc-300, .text-zinc-400) {
+html.light-theme
+  .hero-bio-card
+  :is(.text-zinc-100, .text-zinc-200, .text-zinc-300, .text-zinc-400) {
   color: #636366 !important;
 }
 
-html.light-theme .hero-education-card :is(.text-zinc-900, .text-zinc-800, .text-zinc-700, .text-zinc-600, .text-zinc-500, .text-black) {
+html.light-theme
+  .hero-education-card
+  :is(
+    .text-zinc-900,
+    .text-zinc-800,
+    .text-zinc-700,
+    .text-zinc-600,
+    .text-zinc-500,
+    .text-black
+  ) {
   color: #1c1c1e !important;
 }
 
-html.light-theme .hero-education-card :is(.text-zinc-100, .text-zinc-200, .text-zinc-300, .text-zinc-400) {
+html.light-theme
+  .hero-education-card
+  :is(.text-zinc-100, .text-zinc-200, .text-zinc-300, .text-zinc-400) {
   color: #636366 !important;
 }
 
@@ -790,7 +926,7 @@ html.light-theme footer {
   border-color: var(--divider-color) !important;
 }
 
-html.light-theme footer [class*="text-gray-"], 
+html.light-theme footer [class*="text-gray-"],
 html.light-theme footer p {
   color: #a1a1aa !important;
 }
@@ -828,97 +964,177 @@ html.light-theme ::selection {
   color: var(--color-primary-content);
 }
 
-  /* --- Dreamy Glow Animations --- */
-  @keyframes drift {
-    0%, 100% { transform: translate(0, 0); }
-    16% { transform: translate(40%, -30%); }
-    33% { transform: translate(-20%, 50%); }
-    50% { transform: translate(60%, 20%); }
-    66% { transform: translate(-40%, -20%); }
-    83% { transform: translate(20%, 40%); }
+/* --- Dreamy Glow Animations --- */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  16% {
+    transform: translate(40%, -30%);
+  }
+  33% {
+    transform: translate(-20%, 50%);
+  }
+  50% {
+    transform: translate(60%, 20%);
+  }
+  66% {
+    transform: translate(-40%, -20%);
+  }
+  83% {
+    transform: translate(20%, 40%);
+  }
+}
+
+@keyframes drift-wide {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  14% {
+    transform: translate(50%, 30%);
+  }
+  28% {
+    transform: translate(-30%, -40%);
+  }
+  42% {
+    transform: translate(70%, -10%);
+  }
+  57% {
+    transform: translate(-50%, 40%);
+  }
+  71% {
+    transform: translate(30%, -50%);
+  }
+  85% {
+    transform: translate(-60%, 10%);
+  }
+}
+
+@keyframes drift-cross {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(60%, 40%);
+  }
+  40% {
+    transform: translate(-40%, -30%);
+  }
+  60% {
+    transform: translate(-60%, 50%);
+  }
+  80% {
+    transform: translate(40%, -40%);
+  }
+}
+
+@keyframes drift-orbit {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  12% {
+    transform: translate(50%, -20%);
+  }
+  25% {
+    transform: translate(70%, 30%);
+  }
+  37% {
+    transform: translate(20%, 60%);
+  }
+  50% {
+    transform: translate(-40%, 50%);
+  }
+  62% {
+    transform: translate(-70%, 10%);
+  }
+  75% {
+    transform: translate(-50%, -40%);
+  }
+  87% {
+    transform: translate(-10%, -50%);
+  }
+}
+
+@keyframes morph {
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+@keyframes morph-alt {
+  0%,
+  100% {
+    border-radius: 40% 60% 60% 40% / 70% 30% 30% 70%;
+  }
+  50% {
+    border-radius: 60% 40% 40% 60% / 30% 70% 70% 30%;
+  }
+}
+
+@keyframes colorShift {
+  0%,
+  100% {
+    filter: blur(var(--glow-blur, 0px)) hue-rotate(0deg);
+  }
+  50% {
+    filter: blur(var(--glow-blur, 0px)) hue-rotate(180deg);
+  }
+}
+
+/* --- Unified Lava Flow Class --- */
+.animate-lava {
+  animation:
+    var(--drift-name, drift) var(--drift-duration, 20s) ease-in-out infinite
+      var(--drift-delay, 0s),
+    var(--morph-name, morph) var(--morph-duration, 18s) ease-in-out infinite
+      var(--morph-delay, 0s),
+    colorShift var(--color-duration, 25s) linear infinite var(--color-delay, 0s);
+}
+
+/* Home (mobile / <md): identical gap between Featured → Projects → Blog → Contact (single margin, no padding stack) */
+@media (max-width: 767.98px) {
+  .home-stack-gap-after {
+    margin-bottom: var(--home-stack-gap-after);
+  }
+}
+
+/* Mobile bio block (below hero shape): pure black in dark mode; nested education slightly lifted */
+@media (max-width: 1023.98px) {
+  .dark .home-mobile-bio-shell.hero-bio-card {
+    background-color: var(--hero-bio-bg) !important;
+    background-image: none !important;
+    box-shadow: none !important;
   }
 
-  @keyframes drift-wide {
-    0%, 100% { transform: translate(0, 0); }
-    14% { transform: translate(50%, 30%); }
-    28% { transform: translate(-30%, -40%); }
-    42% { transform: translate(70%, -10%); }
-    57% { transform: translate(-50%, 40%); }
-    71% { transform: translate(30%, -50%); }
-    85% { transform: translate(-60%, 10%); }
+  /* No separate surface behind education — same black as bio card */
+  .dark .home-mobile-bio-shell .hero-education-card {
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
   }
+}
 
-  @keyframes drift-cross {
-    0%, 100% { transform: translate(0, 0); }
-    20% { transform: translate(60%, 40%); }
-    40% { transform: translate(-40%, -30%); }
-    60% { transform: translate(-60%, 50%); }
-    80% { transform: translate(40%, -40%); }
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
   }
-
-  @keyframes drift-orbit {
-    0%, 100% { transform: translate(0, 0); }
-    12% { transform: translate(50%, -20%); }
-    25% { transform: translate(70%, 30%); }
-    37% { transform: translate(20%, 60%); }
-    50% { transform: translate(-40%, 50%); }
-    62% { transform: translate(-70%, 10%); }
-    75% { transform: translate(-50%, -40%); }
-    87% { transform: translate(-10%, -50%); }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
   }
+}
 
-  @keyframes morph {
-    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-  }
-
-  @keyframes morph-alt {
-    0%, 100% { border-radius: 40% 60% 60% 40% / 70% 30% 30% 70%; }
-    50% { border-radius: 60% 40% 40% 60% / 30% 70% 70% 30%; }
-  }
-
-  @keyframes colorShift {
-    0%, 100% { filter: blur(var(--glow-blur, 0px)) hue-rotate(0deg); }
-    50% { filter: blur(var(--glow-blur, 0px)) hue-rotate(180deg); }
-  }
-
-  /* --- Unified Lava Flow Class --- */
-  .animate-lava {
-    animation: 
-      var(--drift-name, drift) var(--drift-duration, 20s) ease-in-out infinite var(--drift-delay, 0s),
-      var(--morph-name, morph) var(--morph-duration, 18s) ease-in-out infinite var(--morph-delay, 0s),
-      colorShift var(--color-duration, 25s) linear infinite var(--color-delay, 0s);
-  }
-
-  /* Home (mobile / <md): identical gap between Featured → Projects → Blog → Contact (single margin, no padding stack) */
-  @media (max-width: 767.98px) {
-    .home-stack-gap-after {
-      margin-bottom: var(--home-stack-gap-after);
-    }
-  }
-
-  /* Mobile bio block (below hero shape): pure black in dark mode; nested education slightly lifted */
-  @media (max-width: 1023.98px) {
-    .dark .home-mobile-bio-shell.hero-bio-card {
-      background-color: var(--hero-bio-bg) !important;
-      background-image: none !important;
-      box-shadow: none !important;
-    }
-
-    /* No separate surface behind education — same black as bio card */
-    .dark .home-mobile-bio-shell .hero-education-card {
-      background-color: transparent !important;
-      background-image: none !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-  }
-
-  @keyframes glow-pulse {
-    0%, 100% { opacity: 0.3; transform: scale(0.95); }
-    50% { opacity: 0.7; transform: scale(1.05); }
-  }
-
-  .animate-glow-pulse {
-    animation: glow-pulse 4s ease-in-out infinite;
-  }
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}

@@ -28,7 +28,7 @@ export function Header() {
   };
   const mobileMenuPanelVariants = {
     open: { height: "auto" },
-    closed: { height: "3rem" },
+    closed: { height: "3.25rem" },
   };
   const mobileMenuListVariants = {
     open: {
@@ -181,7 +181,17 @@ export function Header() {
                 aria-label="Go to homepage"
                 onClick={handleLogoClick}
               >
-                <div className="flex items-center justify-center w-10 h-10">
+                <motion.div
+                  className="flex items-center justify-center w-10 h-10"
+                  initial={false}
+                  animate={isMobileMenuOpen ? "open" : "closed"}
+                  variants={{
+                    open: { scale: 1.5, y: 1.5 },
+                    closed: { scale: 1, y: 0 },
+                  }}
+                  transition={menuPanelTransition}
+                  style={{ transformOrigin: "top left" }}
+                >
                   <Image
                     src="/arjun-bishnoi-logo-circle.png"
                     alt="Arjun Bishnoi"
@@ -190,7 +200,7 @@ export function Header() {
                     className="w-[1.875rem] h-[1.875rem] rounded-full object-cover"
                     priority
                   />
-                </div>
+                </motion.div>
                 <span className="hidden sm:block lg:hidden text-[1.15rem] tracking-[-0.035em] font-sans font-semibold text-black dark:text-white whitespace-nowrap">
                   Arjun Bishnoi
                 </span>
@@ -239,7 +249,7 @@ export function Header() {
                     >
                       <Moon
                         className="w-[1.125rem] h-[1.125rem]"
-                        strokeWidth={2}
+                        strokeWidth={2.1}
                       />
                     </motion.div>
                   )}
@@ -290,7 +300,7 @@ export function Header() {
                     className="w-[1.4375rem] h-[1.4375rem]"
                   >
                     <motion.path
-                      d="M3.5 6H16.5"
+                      d="M3.5 6H15.9"
                       stroke="currentColor"
                       strokeWidth="2"
                       strokeLinecap="round"
@@ -303,7 +313,7 @@ export function Header() {
                       transition={{ duration: 0.2 }}
                     />
                     <motion.path
-                      d="M3.5 14H16.5"
+                      d="M3.5 14H15.9"
                       stroke="currentColor"
                       strokeWidth="2"
                       strokeLinecap="round"
@@ -327,7 +337,8 @@ export function Header() {
             initial={false}
             animate={mobileMenuAnimationState}
             className={cn(
-              "pl-[17px] pr-[12px] pt-3 pb-[22px] w-full flex flex-col",
+              "pl-[17px] pr-[12px] pb-[22px] w-full flex flex-col",
+              isMobileMenuOpen ? "pt-6" : "pt-3",
               isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none",
             )}
           >
