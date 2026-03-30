@@ -1,7 +1,6 @@
 export const siteConfig = {
   name: "Arjun Bishnoi",
   shortName: "Arjun Bishnoi",
-  alternateName: "arjunbishnoi.com",
   url: "https://www.arjunbishnoi.com",
   title: "Arjun Bishnoi — Mobile Apps, AI & Design",
   description:

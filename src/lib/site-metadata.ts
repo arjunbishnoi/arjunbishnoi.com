@@ -85,7 +85,6 @@ export const homepageJsonLd = {
       "@id": `${siteConfig.url}/#website`,
       url: `${siteConfig.url}/`,
       name: siteConfig.name,
-      alternateName: siteConfig.alternateName,
     },
     {
       "@type": "ProfilePage",
