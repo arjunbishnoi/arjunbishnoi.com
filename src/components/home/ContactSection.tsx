@@ -10,6 +10,7 @@ import {
   MessageSquare,
   X,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { socialLinks } from "@/lib/content/social-links";
 import { cn } from "@/lib/utils";
@@ -29,7 +30,7 @@ const contactCardBaseClass =
   "hero-bio-card flex w-full flex-col rounded-[40px] border border-zinc-200/50 shadow-none dark:border-white/10";
 const contactDesktopCardClass = cn(
   contactCardBaseClass,
-  "max-w-[24rem] px-5 py-5 md:max-w-[26rem] md:px-6 md:py-6 lg:max-w-[27rem] xl:max-w-[28.5rem] xl:px-8 xl:py-7",
+  "max-w-[24rem] px-5 py-5 md:max-w-[26rem] md:px-6 md:py-6 lg:h-[28.375rem] lg:max-w-[27rem] xl:h-[28.375rem] xl:max-w-[28.5rem] xl:px-8 xl:py-7",
 );
 
 const socialCards = [
@@ -40,9 +41,9 @@ const socialCards = [
     kind: "brand" as const,
     brand: "github" as const,
     pillClassName:
-      "bg-zinc-900 text-white hover:bg-black dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100",
-    labelClassName: "text-white dark:text-zinc-950",
-    suffixClassName: "text-white/65 dark:text-zinc-950/60",
+      "bg-zinc-900 text-white hover:bg-black dark:bg-black dark:text-white dark:hover:bg-black",
+    labelClassName: "text-white dark:text-white",
+    suffixClassName: "text-white/65 dark:text-white/65",
   },
   {
     name: "LinkedIn",
@@ -72,16 +73,16 @@ const socialCards = [
     kind: "download" as const,
     download: true,
     pillClassName:
-      "bg-zinc-500 text-white hover:bg-zinc-600 dark:bg-zinc-400 dark:text-zinc-950 dark:hover:bg-zinc-300",
-    labelClassName: "text-white dark:text-zinc-950",
+      "bg-zinc-500 text-white hover:bg-zinc-600 dark:bg-zinc-600 dark:text-white dark:hover:bg-zinc-700",
+    labelClassName: "text-white dark:text-white",
   },
   {
     name: "contact@arjunbishnoi.com",
     href: socialLinks.email,
     kind: "email" as const,
     pillClassName:
-      "bg-[#cfcfd6] text-zinc-800 hover:bg-zinc-400 dark:bg-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-600",
-    labelClassName: "text-zinc-700 dark:text-zinc-100",
+      "bg-zinc-500 text-white hover:bg-zinc-600 dark:bg-zinc-600 dark:text-white dark:hover:bg-zinc-700",
+    labelClassName: "text-white dark:text-white",
   },
 ] as const;
 
@@ -161,94 +162,8 @@ export function ContactSection() {
     "dark:bg-white/[0.04] dark:focus:ring-white/15",
   );
 
-  const socialGrid = (
-    <div className="flex h-full w-full flex-col justify-center gap-3 md:gap-3.5">
-      {socialCards.map((card) => (
-        <a
-          key={card.name}
-          href={card.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          download={
-            card.kind === "download"
-              ? socialLinks.resumeDownloadName
-              : undefined
-          }
-          className={cn(socialPillClass, card.pillClassName)}
-          aria-label={`${card.name} profile`}
-        >
-          <div className="flex min-w-0 flex-1 items-center gap-3">
-            {card.kind === "brand" ? (
-              <SocialBrandIcon brand={card.brand} className={iconSvgClass} />
-            ) : card.kind === "download" ? (
-              <Download
-                className={iconLucideClass}
-                strokeWidth={1.85}
-                aria-hidden
-              />
-            ) : (
-              <AtSign
-                className={iconLucideClass}
-                strokeWidth={1.85}
-                aria-hidden
-              />
-            )}
-            <span className="flex min-w-0 items-center gap-1 truncate text-[0.95rem] font-semibold tracking-tight">
-              <span className={cn("shrink-0", card.labelClassName)}>
-                {card.name}
-              </span>
-              {"suffix" in card && card.suffix ? (
-                <span
-                  className={cn("truncate font-normal", card.suffixClassName)}
-                >
-                  {card.suffix}
-                </span>
-              ) : null}
-            </span>
-          </div>
-          <ArrowUpRight
-            className="h-5 w-5 shrink-0"
-            strokeWidth={2.5}
-            aria-hidden
-          />
-        </a>
-      ))}
-
-      <button
-        type="button"
-        onClick={toggleContactForm}
-        className={cn(
-          socialPillClass,
-          "bg-white text-zinc-900 hover:bg-zinc-100 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100",
-        )}
-        aria-expanded={isContactFormOpen}
-        aria-controls="contact-form-panel"
-      >
-        <div className="flex min-w-0 flex-1 items-center gap-3">
-          <MessageSquare
-            className={iconLucideClass}
-            strokeWidth={1.85}
-            aria-hidden
-          />
-          <span className="truncate text-[0.95rem] font-semibold tracking-tight">
-            Send message
-          </span>
-        </div>
-        {isContactFormOpen ? (
-          <X className="h-5 w-5 shrink-0" strokeWidth={2.5} aria-hidden />
-        ) : (
-          <ArrowUpRight
-            className="h-5 w-5 shrink-0"
-            strokeWidth={2.5}
-            aria-hidden
-          />
-        )}
-      </button>
-    </div>
-  );
-
   const contactForm = (
-    <form onSubmit={handleSubmit} className="flex flex-1 flex-col space-y-5">
+    <form onSubmit={handleSubmit} className="flex h-full flex-col space-y-5 lg:space-y-4">
       <div>
         <label
           htmlFor="name"
@@ -304,7 +219,7 @@ export function ContactSection() {
           rows={4}
           className={cn(
             fieldClass,
-            "min-h-[140px] flex-1 resize-y md:min-h-[168px] lg:min-h-[184px]",
+            "min-h-[140px] flex-1 resize-y md:min-h-[168px] lg:min-h-[96px]",
           )}
           placeholder="Your message here..."
           required
@@ -349,19 +264,130 @@ export function ContactSection() {
     </form>
   );
 
+  const socialGrid = (
+    <div className="flex w-full flex-col gap-3 md:gap-3.5">
+      {socialCards.map((card) => (
+        <a
+          key={card.name}
+          href={card.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          download={
+            card.kind === "download"
+              ? socialLinks.resumeDownloadName
+              : undefined
+          }
+          className={cn(socialPillClass, card.pillClassName)}
+          aria-label={`${card.name} profile`}
+        >
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            {card.kind === "brand" ? (
+              <SocialBrandIcon brand={card.brand} className={iconSvgClass} />
+            ) : card.kind === "download" ? (
+              <Download
+                className={iconLucideClass}
+                strokeWidth={1.85}
+                aria-hidden
+              />
+            ) : (
+              <AtSign
+                className={iconLucideClass}
+                strokeWidth={1.85}
+                aria-hidden
+              />
+            )}
+            <span className="flex min-w-0 items-center gap-1 truncate text-[0.95rem] font-semibold tracking-tight">
+              <span className={cn("shrink-0", card.labelClassName)}>
+                {card.name}
+              </span>
+              {"suffix" in card && card.suffix ? (
+                <span
+                  className={cn("truncate font-normal", card.suffixClassName)}
+                >
+                  {card.suffix}
+                </span>
+              ) : null}
+            </span>
+          </div>
+          <ArrowUpRight
+            className="h-5 w-5 shrink-0"
+            strokeWidth={2.5}
+            aria-hidden
+          />
+        </a>
+      ))}
+
+      <div className="relative z-10 flex w-full flex-col">
+        <button
+          type="button"
+          onClick={toggleContactForm}
+          className={cn(
+            socialPillClass,
+            "relative z-10 bg-white text-zinc-900 hover:bg-zinc-100 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100",
+          )}
+          aria-expanded={isContactFormOpen}
+          aria-controls="contact-form-panel"
+        >
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            <MessageSquare
+              className={iconLucideClass}
+              strokeWidth={1.85}
+              aria-hidden
+            />
+            <span className="truncate text-[0.95rem] font-semibold tracking-tight">
+              Send message
+            </span>
+          </div>
+          {isContactFormOpen ? (
+            <X className="h-5 w-5 shrink-0" strokeWidth={2.5} aria-hidden />
+          ) : (
+            <ArrowUpRight
+              className="h-5 w-5 shrink-0"
+              strokeWidth={2.5}
+              aria-hidden
+            />
+          )}
+        </button>
+
+        <AnimatePresence initial={false}>
+          {isContactFormOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0, marginTop: 0 }}
+              animate={{ height: "auto", opacity: 1, marginTop: "-3rem" }}
+              exit={{ height: 0, opacity: 0, marginTop: 0 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+              className="relative z-0 w-full overflow-hidden lg:hidden"
+            >
+              <div
+                className={cn(
+                  contactCardBaseClass,
+                  "pt-[5rem] pb-6 px-5 sm:px-6 rounded-t-[32px] border-t-0 border-x border-b",
+                )}
+              >
+                {contactForm}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+
+
+
   return (
     <section
       id="contact"
       ref={sectionRef}
       className="relative z-40 bg-background pb-16 pt-2 md:pb-20 md:pt-16 lg:pb-24 lg:pt-20"
     >
-      <div className="mx-auto max-w-7xl px-6 pb-3 sm:pb-4 lg:px-8 md:text-center md:pb-10 lg:pb-14">
+      <div className="mx-auto max-w-7xl px-6 pb-3 sm:pb-4 lg:px-8 md:text-center md:pb-6 lg:pb-8">
         <h2 className="font-sans font-semibold text-black dark:text-white leading-[1.02] tracking-[-0.02em] sm:tracking-[-0.035em] md:tracking-[-0.04em] lg:tracking-[-0.038em] text-[2.2rem] md:text-4xl lg:text-5xl xl:text-6xl">
           Contact
         </h2>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 pt-4 sm:pt-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 pt-4 sm:pt-6 md:pt-2 lg:pt-2 lg:px-8">
         <div className="mx-auto max-w-[24rem] sm:max-w-[26rem] md:max-w-[27rem] lg:max-w-[55.5rem] xl:max-w-[58.75rem]">
           <div
             className={cn(
@@ -369,10 +395,10 @@ export function ContactSection() {
               isContactFormOpen ? "lg:grid-cols-2" : "lg:grid-cols-1",
             )}
           >
-            <div className="flex w-full min-h-0 flex-col lg:h-full lg:justify-center">
+            <div className="flex w-full min-h-0 flex-col">
               <div
                 className={cn(
-                  "mx-auto flex h-full w-full max-w-[24rem] flex-col justify-center sm:max-w-[26rem] md:max-w-[27rem] lg:max-w-[27rem] xl:max-w-[28.5rem]",
+                  "mx-auto flex w-full max-w-[24rem] flex-col sm:max-w-[26rem] md:max-w-[27rem] lg:max-w-[27rem] xl:max-w-[28.5rem]",
                   isContactFormOpen ? "lg:ml-0 lg:mr-auto" : "lg:mx-auto",
                 )}
               >
@@ -383,12 +409,12 @@ export function ContactSection() {
             {isContactFormOpen ? (
               <div
                 id="contact-form-panel"
-                className="flex w-full min-h-0 flex-col lg:h-full"
+                className="hidden lg:flex w-full min-h-0 flex-col"
               >
                 <div
                   className={cn(
                     contactDesktopCardClass,
-                    "mx-auto lg:ml-auto lg:mr-0 lg:h-full",
+                    "mx-auto lg:ml-auto lg:mr-0",
                   )}
                 >
                   {contactForm}
