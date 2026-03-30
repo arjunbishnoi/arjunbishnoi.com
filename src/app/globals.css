@@ -63,7 +63,7 @@
     --hero-bio-gradient-dark: #202020;
     /* Dark mode neumorphic surface — perfectly neutral, darker gray */
     --neu-surface: #1c1c1c;
-    --neu-surface-dimmed: #121212;
+    --neu-surface-dimmed: #2a2a2a;
     --neu-shadow-dark: rgba(0, 0, 0, 0.94); /* Deep, rich shadow */
     --neu-shadow-light: rgba(
       255,
@@ -481,6 +481,10 @@ body {
 html.mobile-menu-open #site-content {
   filter: brightness(0.74) saturate(0.9);
   pointer-events: none;
+}
+
+html.dark.mobile-menu-open #site-content {
+  filter: brightness(1.5) saturate(0.9);
 }
 
 html.mobile-menu-open,

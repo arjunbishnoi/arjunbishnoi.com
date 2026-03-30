@@ -11,6 +11,7 @@ import {
   X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { socialLinks } from "@/lib/content/social-links";
 import { cn } from "@/lib/utils";
@@ -27,7 +28,7 @@ const iconSvgClass =
 const iconLucideClass = "h-5 w-5 shrink-0 md:h-[1.375rem] md:w-[1.375rem]";
 const contactRequestTimeoutMs = 10000;
 const contactCardBaseClass =
-  "hero-bio-card flex w-full flex-col rounded-[40px] border border-zinc-200/50 shadow-none dark:border-white/10";
+  "bg-white dark:bg-white flex w-full flex-col rounded-[40px] border border-zinc-200/50 shadow-none dark:border-white/10";
 const contactDesktopCardClass = cn(
   contactCardBaseClass,
   "max-w-[24rem] px-5 py-5 md:max-w-[26rem] md:px-6 md:py-6 lg:max-w-[27rem] xl:max-w-[28.5rem] xl:px-8 xl:py-6",
@@ -97,6 +98,16 @@ export function ContactSection() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const panelTransition = { type: "spring" as const, duration: 0.3, bounce: 0.1 };
 
   const toggleContactForm = () => {
     setIsContactFormOpen((previous) => !previous);
@@ -160,10 +171,9 @@ export function ContactSection() {
   };
 
   const fieldClass = cn(
-    "block min-h-[3.25rem] w-full rounded-[28px] border border-transparent bg-white px-5 py-3.5 text-foreground shadow-none",
-    "placeholder:text-muted-foreground/45 transition-[box-shadow] duration-200",
-    "outline-none focus:ring-1 focus:ring-zinc-400/30",
-    "dark:bg-white/[0.04] dark:focus:ring-white/15",
+    "block min-h-[3.25rem] w-full rounded-[28px] border border-transparent bg-zinc-100 dark:bg-zinc-100 px-5 py-3.5 text-zinc-900 dark:text-zinc-950 shadow-none",
+    "placeholder:text-zinc-500 transition-[box-shadow] duration-200",
+    "outline-none focus:ring-1 focus:ring-zinc-400/50",
   );
 
   const contactFormListVariants = {
@@ -178,12 +188,14 @@ export function ContactSection() {
   const contactFormItemVariants = {
     open: { 
       opacity: 1, 
+      x: 0,
       y: 0, 
       transition: { type: "spring" as const, stiffness: 300, damping: 24 } 
     },
     closed: { 
       opacity: 0, 
-      y: -15, 
+      x: isDesktop ? 20 : 0,
+      y: isDesktop ? 0 : -15, 
       transition: { duration: 0.08, ease: "easeOut" as const } 
     },
   };
@@ -199,7 +211,7 @@ export function ContactSection() {
       <motion.div variants={contactFormItemVariants}>
         <label
           htmlFor="name"
-          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
+          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-600"
         >
           Name
         </label>
@@ -219,7 +231,7 @@ export function ContactSection() {
       <motion.div variants={contactFormItemVariants}>
         <label
           htmlFor="email"
-          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
+          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-600"
         >
           Email
         </label>
@@ -239,7 +251,7 @@ export function ContactSection() {
       <motion.div variants={contactFormItemVariants} className="flex flex-col">
         <label
           htmlFor="message"
-          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-foreground/80"
+          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-600"
         >
           Message
         </label>
@@ -268,7 +280,7 @@ export function ContactSection() {
             "hover:bg-zinc-900",
             "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black",
             "active:scale-[0.99] active:border-black",
-            "dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100 dark:focus-visible:outline-white dark:active:border-white",
+            "dark:bg-black dark:text-white dark:hover:bg-zinc-900 dark:focus-visible:outline-black",
             isSuccess &&
               "bg-emerald-600 text-white hover:bg-emerald-700 dark:bg-emerald-500/90 dark:text-white dark:hover:bg-emerald-500",
             isLoading && "cursor-not-allowed opacity-75",
@@ -349,13 +361,21 @@ export function ContactSection() {
         </a>
       ))}
 
-      <div className="relative z-10 flex w-full flex-col">
+      <motion.div
+        layout
+        transition={{ layout: panelTransition }}
+        className={cn(
+          "relative z-10 flex w-full flex-col overflow-hidden transition-[background-color,transform] duration-200",
+          "rounded-[32px] bg-white dark:bg-white shadow-none border border-transparent dark:border-white/10",
+          !isContactFormOpen && "hover:scale-[0.995]"
+        )}
+      >
         <button
           type="button"
           onClick={toggleContactForm}
           className={cn(
-            socialPillClass,
-            "relative z-10 bg-white text-zinc-900 hover:bg-zinc-100 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100",
+            "flex min-h-[4rem] w-full items-center justify-between gap-3 px-6 py-4 text-left transition-colors duration-200 ease-out",
+            "text-zinc-900 dark:text-zinc-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
           )}
           aria-expanded={isContactFormOpen}
           aria-controls="contact-form-panel"
@@ -370,15 +390,35 @@ export function ContactSection() {
               Send message
             </span>
           </div>
-          {isContactFormOpen ? (
-            <X className="h-5 w-5 shrink-0" strokeWidth={2.5} aria-hidden />
-          ) : (
-            <ArrowUpRight
-              className="h-5 w-5 shrink-0"
-              strokeWidth={2.5}
-              aria-hidden
+          <motion.svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-5 w-5 shrink-0"
+            initial={false}
+            animate={isContactFormOpen ? "open" : "closed"}
+            variants={{
+              open: { scale: 1.15 },
+              closed: { scale: 1 }
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 22 }}
+            aria-hidden
+          >
+            <path d="M 7 17 L 17 7" />
+            <motion.path
+              variants={{
+                closed: { d: "M 7 7 L 17 7 L 17 17" },
+                open: { d: "M 7 7 L 12 12 L 17 17" }
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 22 }}
             />
-          )}
+          </motion.svg>
         </button>
 
         <AnimatePresence initial={false}>
@@ -389,23 +429,18 @@ export function ContactSection() {
               exit={{ 
                 height: 0, 
                 opacity: 0, 
-                transition: { type: "spring", duration: 0.3, bounce: 0.1, delay: 0.12 }
+                transition: panelTransition
               }}
-              transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
-              className="relative z-0 w-full overflow-hidden lg:hidden -mt-8 mb-8"
+              transition={panelTransition}
+              className="relative z-0 w-full lg:hidden"
             >
-              <div
-                className={cn(
-                  contactCardBaseClass,
-                  "pt-[4rem] pb-6 px-5 sm:px-6 rounded-t-none border-t-0 border-x border-b",
-                )}
-              >
+              <div className="px-5 sm:px-6 pb-6 pt-1">
                 {contactForm}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </div>
   );
 
@@ -428,12 +463,12 @@ export function ContactSection() {
           <motion.div
             layout
             className="flex flex-col lg:flex-row items-center lg:items-start justify-center w-full min-h-0 gap-7 md:gap-8 lg:gap-0"
-            transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
+            transition={panelTransition}
           >
             <motion.div
               layout
               className="flex w-full min-h-0 flex-col max-w-[24rem] sm:max-w-[26rem] md:max-w-[27rem] lg:max-w-[27rem] xl:max-w-[28.5rem] flex-shrink-0 relative z-10"
-              transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
+              transition={panelTransition}
             >
               {socialGrid}
             </motion.div>
@@ -445,14 +480,14 @@ export function ContactSection() {
                   initial={{ opacity: 0, width: 0, marginLeft: 0, filter: "blur(8px)" }}
                   animate={{ opacity: 1, width: "auto", marginLeft: "1.5rem", filter: "blur(0px)" }}
                   exit={{ opacity: 0, width: 0, marginLeft: 0, filter: "blur(8px)" }}
-                  transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
+                  transition={panelTransition}
                   className="hidden lg:flex min-h-0 flex-col overflow-visible origin-left relative z-0"
                 >
                   <motion.div
                     initial={{ x: 30 }}
                     animate={{ x: 0 }}
                     exit={{ x: 30 }}
-                    transition={{ type: "spring", duration: 0.3, bounce: 0.1 }}
+                    transition={panelTransition}
                     className="w-[27rem] xl:w-[28.5rem] flex-shrink-0"
                   >
                     <div
