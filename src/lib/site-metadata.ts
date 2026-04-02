@@ -111,6 +111,9 @@ export const homepageJsonLd = {
       thumbnailUrl: siteConfig.images.portrait,
       creator: { "@id": `${siteConfig.url}/#person` },
       creditText: siteConfig.name,
+      copyrightNotice: `© ${new Date().getFullYear()} ${siteConfig.name}`,
+      license: `${siteConfig.url}/`,
+      acquireLicensePage: `${siteConfig.url}/#contact`,
       representativeOfPage: true,
     },
     {
