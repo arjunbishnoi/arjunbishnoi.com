@@ -14,14 +14,18 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <HeroSection />
+    <main className="flex flex-col min-h-[100dvh] bg-background text-foreground">
+      <div className="flex-1 flex flex-col">
+        <HeroSection />
 
-      <FeaturedSection />
-      <ProjectsSection />
-      <BlogSection />
-      <ContactSection />
-      <Footer />
+        <FeaturedSection />
+        <ProjectsSection />
+        <BlogSection />
+        <ContactSection />
+      </div>
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </main>
   );
 }

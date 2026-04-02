@@ -14,11 +14,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/skills',
-        destination: '/#skills',
-        permanent: true,
-      },
-      {
         source: '/resume',
         destination: '/Resume%20-%20Arjun%20Bishnoi.pdf',
         permanent: true,

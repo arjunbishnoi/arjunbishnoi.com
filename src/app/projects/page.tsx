@@ -9,6 +9,7 @@ import { projects } from "@/lib/content/projects"
 export const metadata = buildPageMetadata({
   title: "Projects",
   path: "/projects",
+  description: "A curated selection of projects showcasing full-stack development, UI/UX design, and mobile app creation by Arjun Bishnoi.",
   includeSocial: true,
   imageUrl: siteConfig.images.headshot,
 });
@@ -17,10 +18,11 @@ export default function ProjectsPage() {
   const featuredProject = projects.find(p => p.featured) || projects[0]
   
   return (
-    <main className="min-h-screen bg-background text-foreground pt-24">
+    <main className="flex flex-col min-h-[100dvh] bg-background text-foreground pt-24">
       
-      {/* Header with animated gradient underline */}
-      <div className="pt-8 pb-8 relative overflow-hidden">
+      <div className="flex-1">
+        {/* Header with animated gradient underline */}
+        <div className="pt-8 pb-8 relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl font-bold text-foreground sm:text-5xl">
@@ -93,7 +95,11 @@ export default function ProjectsPage() {
         </section>
       </div>
       
-      <Footer />
+      </div>
+      
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </main>
   )
 }

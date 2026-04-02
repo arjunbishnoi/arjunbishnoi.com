@@ -10,6 +10,7 @@ import { Moon, Sun, Mail } from "lucide-react";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { mainLinks } from "@/lib/content/main-links";
 import { socialLinks } from "@/lib/content/social-links";
+import { scrollToAboutSection } from "@/lib/scroll-to-about";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -19,6 +20,14 @@ export function Header() {
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
   const [hasMounted, setHasMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const mobileMenuAnimationState = isMobileMenuOpen ? "open" : "closed";
   const menuPanelTransition = {
@@ -28,7 +37,7 @@ export function Header() {
   };
   const mobileMenuPanelVariants = {
     open: { height: "auto" },
-    closed: { height: "3.25rem" },
+    closed: { height: "var(--navbar-height)" },
   };
   const mobileMenuListVariants = {
     open: {
@@ -166,6 +175,24 @@ export function Header() {
     }
     setIsMobileMenuOpen(false);
   };
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    setIsMobileMenuOpen(false);
+    // For hash links on the current page, handle scroll manually
+    // because Next.js Link doesn't trigger native hashchange
+    if (href.startsWith("/#") && pathname === "/") {
+      e.preventDefault();
+      const hash = href.slice(1); // e.g. "#about"
+      history.pushState(null, "", hash);
+      if (hash === "#about") {
+        scrollToAboutSection();
+      } else {
+        // For other hash sections (contact, skills, etc.), use native scroll
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
@@ -178,7 +205,7 @@ export function Header() {
     <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
       <div
         className={cn(
-          "w-full mx-auto transition-[max-width,padding] duration-500 ease-soft-out px-6 md:max-w-[34.25rem] max-w-5xl",
+          "w-full mx-auto transition-[max-width,padding] duration-500 ease-soft-out px-6 md:max-w-[36rem] lg:max-w-[38rem] xl:max-w-[40rem] max-w-5xl",
         )}
       >
         <motion.div
@@ -198,7 +225,7 @@ export function Header() {
           <div className="relative flex items-center justify-between h-[var(--navbar-height)] min-h-[var(--navbar-height)] w-full pl-0 pr-0 md:pl-0 md:pr-0 lg:pl-0 lg:pr-0">
             {/* Logo - Anchored Left */}
             <div
-              className="flex-shrink-0 relative z-10 flex items-center justify-center"
+              className="flex-shrink-0 relative z-10 flex items-center justify-center md:!left-[8px] transition-all duration-300"
               style={{ left: `${mobileLeftInset}px` }}
             >
               <Link
@@ -208,7 +235,7 @@ export function Header() {
                 onClick={handleLogoClick}
               >
                 <motion.div
-                  className="flex items-center justify-center w-10 h-10"
+                  className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12"
                   initial={false}
                   animate={isMobileMenuOpen ? "open" : "closed"}
                   variants={{
@@ -223,11 +250,11 @@ export function Header() {
                     alt="Arjun Bishnoi"
                     width={34}
                     height={34}
-                    className="w-[1.875rem] h-[1.875rem] rounded-full object-cover"
+                    className="w-[1.875rem] h-[1.875rem] md:w-[2.25rem] md:h-[2.25rem] rounded-full object-cover"
                     priority
                   />
                 </motion.div>
-                <span className="hidden sm:block lg:hidden text-[1.15rem] tracking-[-0.035em] font-sans font-semibold text-black dark:text-white whitespace-nowrap">
+                <span className="hidden sm:block lg:hidden text-[1.15rem] tracking-[-0.035em] font-sans font-semibold transition-colors duration-500 ease-soft-out text-black dark:text-white whitespace-nowrap">
                   Arjun Bishnoi
                 </span>
               </Link>
@@ -235,49 +262,49 @@ export function Header() {
 
             {/* Actions - Anchored Right */}
             <div
-              className="absolute top-0 bottom-0 flex items-center z-10"
+              className="absolute top-0 bottom-0 flex items-center z-10 md:!right-[6px] transition-all duration-300"
               style={{ right: `${mobileRightInset}px` }}
             >
               <motion.div layout transition={{ layout: menuPanelTransition }}>
                 <button
                   onClick={toggleTheme}
-                  className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
+                  className="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full transition-colors duration-500 ease-soft-out text-black dark:text-white focus:outline-none shrink-0"
                   aria-label="Toggle theme"
                 >
-                  {resolvedTheme === "dark" ? (
-                    <motion.div
-                      key="sun"
-                      initial={
-                        hasMounted
-                          ? { rotate: -90, scale: 0, opacity: 0 }
-                          : { rotate: 0, scale: 1, opacity: 1 }
-                      }
-                      animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                      exit={{ rotate: 90, scale: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-                    >
-                      <Sun
-                        className="w-[1.125rem] h-[1.125rem]"
-                        strokeWidth={2.8}
-                      />
-                    </motion.div>
+                  {hasMounted ? (
+                    <AnimatePresence initial={false}>
+                      {resolvedTheme === "dark" ? (
+                        <motion.div
+                          key="sun"
+                          className="absolute inset-0 flex items-center justify-center"
+                          initial={{ rotate: 90, scale: 0, opacity: 0 }}
+                          animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                          exit={{ rotate: -90, scale: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                        >
+                          <Sun
+                            className="w-[1.125rem] h-[1.125rem] md:w-[1.35rem] md:h-[1.35rem]"
+                            strokeWidth={2.8}
+                          />
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="moon"
+                          className="absolute inset-0 flex items-center justify-center"
+                          initial={{ rotate: 90, scale: 0, opacity: 0 }}
+                          animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                          exit={{ rotate: -90, scale: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                        >
+                          <Moon
+                            className="w-[1.125rem] h-[1.125rem] md:w-[1.35rem] md:h-[1.35rem]"
+                            strokeWidth={2.1}
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   ) : (
-                    <motion.div
-                      key="moon"
-                      initial={
-                        hasMounted
-                          ? { rotate: 90, scale: 0, opacity: 0 }
-                          : { rotate: 0, scale: 1, opacity: 1 }
-                      }
-                      animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                      exit={{ rotate: -90, scale: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-                    >
-                      <Moon
-                        className="w-[1.125rem] h-[1.125rem]"
-                        strokeWidth={2.1}
-                      />
-                    </motion.div>
+                    <div className="w-[1.125rem] h-[1.125rem] md:w-[1.35rem] md:h-[1.35rem]" />
                   )}
                 </button>
               </motion.div>
@@ -286,7 +313,7 @@ export function Header() {
                 {isMailShown && (
                   <motion.div
                     initial={{ width: 0 }}
-                    animate={{ width: 48 }}
+                    animate={{ width: isDesktop ? 56 : 48 }}
                     exit={{ width: 0 }}
                     transition={menuPanelTransition}
                     className="overflow-hidden flex items-center justify-end"
@@ -300,10 +327,10 @@ export function Header() {
                     >
                       <Link
                         href="/#contact"
-                        className="flex items-center justify-center w-10 h-10 rounded-full transition-colors text-black dark:text-white focus:outline-none shrink-0"
+                        className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full transition-colors duration-500 ease-soft-out text-black dark:text-white focus:outline-none shrink-0"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        <Mail className="w-5 h-5" strokeWidth={2} />
+                        <Mail className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2} />
                       </Link>
                     </motion.div>
                   </motion.div>
@@ -313,7 +340,7 @@ export function Header() {
               <motion.div layout transition={{ layout: menuPanelTransition }}>
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="ml-1.5 flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full cursor-pointer transition-colors text-black dark:text-white focus:outline-none"
+                  className="ml-1.5 flex flex-shrink-0 items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer transition-colors duration-500 ease-soft-out text-black dark:text-white focus:outline-none"
                 >
                   <span className="sr-only">Open main menu</span>
                   <motion.svg
@@ -323,7 +350,7 @@ export function Header() {
                     viewBox="0 0 20 20"
                     initial={false}
                     animate={mobileMenuAnimationState}
-                    className="w-[1.4375rem] h-[1.4375rem]"
+                    className="w-[1.4375rem] h-[1.4375rem] md:w-[1.7rem] md:h-[1.7rem]"
                   >
                     <motion.path
                       d="M3.5 6H15.9"
@@ -384,7 +411,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       className="text-xl tracking-tight font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={(e) => handleNavClick(e, item.href)}
                     >
                       {item.name}
                     </Link>

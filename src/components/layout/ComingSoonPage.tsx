@@ -12,8 +12,8 @@ export function ComingSoonPage({
   description = "Coming soon.",
 }: ComingSoonPageProps) {
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <div className="pt-32 pb-24 px-6">
+    <main className="flex flex-col min-h-[100dvh] bg-background text-foreground">
+      <div className="flex-1 pt-32 pb-24 px-6">
         <div className="mx-auto max-w-7xl">
           <h1 className="text-4xl font-bold text-foreground sm:text-5xl">
             {title}
@@ -22,7 +22,9 @@ export function ComingSoonPage({
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl">{description}</p>
         </div>
       </div>
-      <Footer />
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </main>
   );
 }

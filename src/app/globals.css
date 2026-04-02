@@ -664,6 +664,12 @@ section.relative.overflow-hidden.hero-section {
   color-scheme: dark;
 }
 
+@media (min-width: 768px) {
+  :root {
+    --navbar-height: 3.75rem;
+  }
+}
+
 .dark-theme {
   --background-color: #121212;
   --text-color: #ffffff;

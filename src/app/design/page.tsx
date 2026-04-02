@@ -5,7 +5,6 @@ export const metadata = buildPageMetadata({
   title: "Design",
   description: "Mobile Apps, AI & Design",
   index: false,
-  path: "/design",
 });
 
 export default function UIUXDesignPage() {

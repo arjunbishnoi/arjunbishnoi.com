@@ -7,6 +7,9 @@ const personImageDescription =
 
 export const rootMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: "/",
+  },
   title: siteConfig.title,
   description: siteConfig.description,
   applicationName: siteConfig.name,

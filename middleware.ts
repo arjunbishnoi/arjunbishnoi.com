@@ -1,21 +1,18 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const apexHost = "arjunbishnoi.com";
-const canonicalHost = "www.arjunbishnoi.com";
-
 export function middleware(request: NextRequest) {
-  const host = request.headers.get("host");
+  const { pathname } = request.nextUrl;
 
-  if (host !== apexHost) {
-    return NextResponse.next();
+  // Strip trailing slashes (except root "/") to prevent duplicate URLs
+  // e.g. /projects/ → /projects, /skills/ → /skills
+  if (pathname !== "/" && pathname.endsWith("/")) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.replace(/\/+$/, "");
+    return NextResponse.redirect(url, 301);
   }
 
-  const url = request.nextUrl.clone();
-  url.protocol = "https";
-  url.host = canonicalHost;
-
-  return NextResponse.redirect(url, 308);
+  return NextResponse.next();
 }
 
 export const config = {

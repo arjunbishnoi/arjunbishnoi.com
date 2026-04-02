@@ -5,7 +5,6 @@ export const metadata = buildPageMetadata({
   title: "AI",
   description: "Mobile Apps, AI & Design",
   index: false,
-  path: "/ai",
 });
 
 export default function AIEngineeringPage() {

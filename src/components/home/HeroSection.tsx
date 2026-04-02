@@ -16,6 +16,7 @@ import { HeroProfessionalTitles } from "./hero/HeroProfessionalTitles";
 import { HeroSkillsGrid } from "./hero/HeroSkillsGrid";
 import { HeroSocialLinksRow } from "./hero/HeroSocialLinksRow";
 import { HeroViewAllProjectsPill } from "./hero/HeroViewAllProjectsPill";
+import { scrollToAboutSection } from "@/lib/scroll-to-about";
 
 const VIEWALL_BLOB_COLORS = [
   "bg-cyan-500/62",
@@ -63,6 +64,18 @@ export function HeroSection() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Handle #about on initial page load and direct URL entry
+  useEffect(() => {
+    function handleHash() {
+      if (window.location.hash === "#about") {
+        scrollToAboutSection();
+      }
+    }
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
   }, []);
 
   useEffect(() => {
@@ -179,7 +192,7 @@ export function HeroSection() {
         </div>
 
         {/* 2. Profile Card */}
-        <div id="about" className="lg:hidden scroll-mt-24" />
+        <div data-about-mobile />
         <AboutProfileCard
           imageSizes="(max-width: 768px) 100vw, 342px"
           className="mt-6 lg:hidden relative z-10"
@@ -295,8 +308,8 @@ export function HeroSection() {
 
       {/* Desktop 2-Row 3-Column Cinematic Layout */}
       <motion.div
-        className="hidden lg:flex flex-col w-full z-20 pb-0 mt-12 xl:mt-14 items-center scroll-mt-28 hero-flat-desktop"
-        id="about"
+        data-about-desktop
+        className="hidden lg:flex flex-col w-full z-20 pb-0 mt-12 xl:mt-14 items-center hero-flat-desktop"
         initial={{
           opacity: prefersReducedMotion ? 1 : 0,
           y: prefersReducedMotion ? 0 : 26,

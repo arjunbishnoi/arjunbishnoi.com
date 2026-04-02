@@ -5,7 +5,6 @@ export const metadata = buildPageMetadata({
   title: "Mobile Apps",
   description: "Mobile Apps, AI & Design",
   index: false,
-  path: "/apps",
 });
 
 export default function MobileAppsPage() {

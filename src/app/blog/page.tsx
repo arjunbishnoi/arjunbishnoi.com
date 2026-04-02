@@ -5,7 +5,6 @@ export const metadata = buildPageMetadata({
   title: "Blog",
   description: "Mobile Apps, AI & Design",
   index: false,
-  path: "/blog",
 });
 
 export default function BlogPage() {

@@ -1,3 +1,11 @@
 {
-    "framework": "nextjs"
+  "framework": "nextjs",
+  "redirects": [
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "arjunbishnoi.com" }],
+      "destination": "https://www.arjunbishnoi.com/:path",
+      "permanent": true
+    }
+  ]
 }
