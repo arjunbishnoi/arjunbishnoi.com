@@ -73,11 +73,7 @@ export const rootMetadata: Metadata = {
     title: siteConfig.name,
     statusBarStyle: "black-translucent",
   },
-  other: {
-    "mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-title": siteConfig.name,
-    "og:site_name": siteConfig.name,
-  },
+  other: {},
 };
 
 export const homepageJsonLd = {
