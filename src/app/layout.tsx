@@ -6,6 +6,7 @@ import { ThemeColorMeta } from "@/components/ThemeColorMeta";
 import { Header } from "@/components/layout/Header";
 import { PageLoadFadeIn } from "@/components/layout/PageLoadFadeIn";
 import { homepageJsonLd, rootMetadata } from "@/lib/site-metadata";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({
           <ThemeColorMeta />
           <Header />
           <PageLoadFadeIn>{children}</PageLoadFadeIn>
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
