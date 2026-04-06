@@ -120,7 +120,7 @@ export const homepageJsonLd = {
       "@id": `${siteConfig.url}/#person`,
       name: siteConfig.name,
       url: siteConfig.url,
-      image: [{ "@id": `${siteConfig.url}/#headshot` }, siteConfig.images.portrait],
+      image: { "@id": `${siteConfig.url}/#headshot` },
       description: siteConfig.description,
       jobTitle: "Mobile Application Developer, AI Engineer, and UI/UX Designer",
       sameAs: [socialLinks.github, socialLinks.linkedin, socialLinks.behance],

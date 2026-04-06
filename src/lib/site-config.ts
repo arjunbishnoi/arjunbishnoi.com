@@ -13,7 +13,7 @@ export const siteConfig = {
   },
   images: {
     headshot: "https://arjunbishnoi.com/arjun-bishnoi.jpg",
-    portrait: "https://arjunbishnoi.com/arjun-bishnoi-portrait.jpg",
+    portrait: "https://arjunbishnoi.com/arjun-bishnoi.jpg",
   },
 } as const;
 

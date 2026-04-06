@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 
 const indexedRoutes = [
-  { path: "/", priority: 1, images: [siteConfig.images.headshot, siteConfig.images.portrait] },
+  { path: "/", priority: 1, images: [siteConfig.images.headshot] },
   { path: "/projects", priority: 0.8, images: [siteConfig.images.headshot] },
   { path: "/resume", priority: 0.85, images: [siteConfig.images.headshot] },
 ] as const;
