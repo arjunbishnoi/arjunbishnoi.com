@@ -72,8 +72,7 @@ const socialCards = [
   {
     name: "Resume",
     href: socialLinks.resume,
-    kind: "download" as const,
-    download: true,
+    kind: "resume" as const,
     pillClassName:
       "bg-zinc-500 text-white hover:bg-zinc-600 dark:bg-zinc-600 dark:text-white dark:hover:bg-zinc-700",
     labelClassName: "text-white dark:text-white",
@@ -244,18 +243,19 @@ export function ContactSection() {
           href={card.href}
           target="_blank"
           rel="noopener noreferrer"
-          download={
-            card.kind === "download"
-              ? socialLinks.resumeDownloadName
-              : undefined
-          }
           className={cn(socialPillClass, card.pillClassName)}
-          aria-label={`${card.name} profile`}
+          aria-label={
+            card.kind === "resume"
+              ? "View resume"
+              : card.kind === "email"
+                ? `Email ${card.name}`
+                : `${card.name} profile`
+          }
         >
           <div className="flex min-w-0 flex-1 items-center gap-3">
             {card.kind === "brand" ? (
               <SocialBrandIcon brand={card.brand} className={iconSvgClass} />
-            ) : card.kind === "download" ? (
+            ) : card.kind === "resume" ? (
               <Download
                 className={iconLucideClass}
                 strokeWidth={1.85}

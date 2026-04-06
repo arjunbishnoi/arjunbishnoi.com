@@ -10,7 +10,10 @@ export const rootMetadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: siteConfig.title,
+  title: {
+    default: siteConfig.title,
+    template: `%s - ${siteConfig.name}`,
+  },
   description: siteConfig.description,
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
@@ -147,7 +150,8 @@ export function buildPageMetadata({
   includeSocial = false,
   imageUrl = siteConfig.images.headshot,
 }: PageMetadataOptions): Metadata {
-  const pageTitle = title === siteConfig.name ? siteConfig.name : title;
+  const pageTitle = title === siteConfig.name ? { absolute: siteConfig.name } : title;
+  const socialTitle = title === siteConfig.name ? siteConfig.name : `${title} - ${siteConfig.name}`;
   const metadata: Metadata = {
     title: pageTitle,
     description,
@@ -161,14 +165,14 @@ export function buildPageMetadata({
   if (includeSocial && path) {
     const pageUrl = new URL(path, siteConfig.url).toString();
     metadata.openGraph = {
-      title: pageTitle,
+      title: socialTitle,
       description,
       url: pageUrl,
       images: [{ url: imageUrl }],
     };
     metadata.twitter = {
       card: "summary_large_image",
-      title: pageTitle,
+      title: socialTitle,
       description,
       images: [imageUrl],
     };

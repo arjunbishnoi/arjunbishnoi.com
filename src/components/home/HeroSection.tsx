@@ -179,13 +179,12 @@ export function HeroSection() {
               >
                 <div className="whitespace-nowrap">Design</div>
               </Link>
-              <a
+              <Link
                 href={socialLinks.resume}
-                download={socialLinks.resumeDownloadName}
                 className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors"
               >
                 <div className="whitespace-nowrap">Resume</div>
-              </a>
+              </Link>
             </div>
             <HeroSocialLinksRow variant="mobile" />
           </div>
@@ -366,13 +365,12 @@ export function HeroSection() {
                   >
                     <div className="whitespace-nowrap">Design</div>
                   </Link>
-                  <a
+                  <Link
                     href={socialLinks.resume}
-                    download={socialLinks.resumeDownloadName}
                     className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors"
                   >
                     <div className="whitespace-nowrap">Resume</div>
-                  </a>
+                  </Link>
                 </div>
                 <HeroSocialLinksRow variant="desktop" />
               </div>

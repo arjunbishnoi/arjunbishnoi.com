@@ -651,21 +651,21 @@ section.relative.overflow-hidden.hero-section {
 }
 
 :root {
-  --color-primary: #ffffff;
-  --color-primary-content: #000000;
-  --color-accent: #6366f1;
+  --color-primary: #1c1c1e;
+  --color-primary-content: #ffffff;
+  --color-accent: #5856d6;
   --navbar-height: 3.25rem;
-  --background-color: #121212;
-  --text-color: #ffffff;
-  --gray-text: #9ca3af;
-  --card-bg: rgba(17, 24, 39, 0.5);
-  --card-border: rgba(55, 65, 81, 0.5);
-  --input-bg: rgba(17, 24, 39, 0.5);
-  --divider-color: #1f2937;
-  --progress-bg: #374151;
-  --secondary-text: #d1d5db;
-  --muted-text: #9ca3af;
-  color-scheme: dark;
+  --background-color: #ffffff;
+  --text-color: #1c1c1e;
+  --gray-text: #636366;
+  --card-bg: #f2f2f7;
+  --card-border: #d1d1d6;
+  --input-bg: #f2f2f7;
+  --divider-color: #d1d1d6;
+  --progress-bg: #d1d1d6;
+  --secondary-text: #3a3a3c;
+  --muted-text: #8e8e93;
+  color-scheme: light;
 }
 
 @media (min-width: 768px) {

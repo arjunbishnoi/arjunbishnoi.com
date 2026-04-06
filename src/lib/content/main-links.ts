@@ -6,7 +6,7 @@ export const mainLinks: NavigationItem[] = [
   { name: "Mobile Apps", href: "/apps" },
   { name: "AI/ML", href: "/ai" },
   { name: "Design", href: "/design" },
-  { name: "Resume", href: socialLinks.resume, isDownload: true, downloadName: socialLinks.resumeDownloadName },
+  { name: "Resume", href: socialLinks.resume },
   { name: "Contact", href: "/#contact" },
   { name: "About", href: "/#about" },
   { name: "Blog", href: "/blog" },

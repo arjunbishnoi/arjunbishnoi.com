@@ -11,6 +11,7 @@ export type SocialLinks = {
   behance: string
   email: string
   resume: string
+  resumeFile: string
   resumeDownloadName: string
 }
 
