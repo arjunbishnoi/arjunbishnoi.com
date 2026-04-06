@@ -2,8 +2,7 @@ export const siteConfig = {
   name: "Arjun Bishnoi",
   shortName: "Arjun Bishnoi",
   url: "https://arjunbishnoi.com",
-  title: "Arjun Bishnoi",
-  titleSuffix: "Mobile Apps, AI & Design",
+  title: "Arjun Bishnoi - Mobile Apps, AI & Design",
   description:
     "Developer and designer building cross-platform mobile apps at the intersection of AI and design. Functional, intelligent, and crafted with precision.",
   sectionDescription:

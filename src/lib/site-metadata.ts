@@ -10,10 +10,7 @@ export const rootMetadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
+  title: siteConfig.title,
   description: siteConfig.description,
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
@@ -49,7 +46,7 @@ export const rootMetadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: `${siteConfig.name} - ${siteConfig.titleSuffix}`,
+    title: siteConfig.title,
     description: siteConfig.description,
     url: `${siteConfig.url}/`,
     siteName: siteConfig.name,
@@ -67,7 +64,7 @@ export const rootMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} - ${siteConfig.titleSuffix}`,
+    title: siteConfig.title,
     description: siteConfig.description,
     images: [siteConfig.shareImage.url],
   },
