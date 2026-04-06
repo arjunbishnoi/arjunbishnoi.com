@@ -47,6 +47,17 @@ export function HeroSection() {
   const [viewAllBlobColors, setViewAllBlobColors] =
     useState<string[]>(VIEWALL_BLOB_COLORS);
   const [bioExpanded, setBioExpanded] = useState(false);
+  const [isDesktop, setIsDesktop] = useState<boolean>(false); // Default to Mobile for SSR priority
+
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 1024px)");
+    setIsDesktop(mql.matches);
+
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+
   const prefersReducedMotion = useReducedMotion();
   const snapTransition = prefersReducedMotion
     ? { duration: 0 }
@@ -193,9 +204,9 @@ export function HeroSection() {
         {/* 2. Profile Card */}
         <div data-about-mobile />
         <AboutProfileCard
-          imageSizes="(max-width: 768px) 100vw, 342px"
+          imageSizes="(max-width: 768px) 100vw, (min-width: 1024px) 342px, 342px"
           className="mt-6 lg:hidden relative z-10"
-          priority
+          priority={!isDesktop}
         />
 
         {/* 3. Unified Mobile Bio + Education Card */}
@@ -395,9 +406,9 @@ export function HeroSection() {
               {/* ROW 2: Profile Card */}
               <div className="w-full relative aspect-[4/5] rounded-[40px] xl:rounded-[40px] overflow-hidden neu-raised shadow-none border-none shrink-0 pointer-events-none select-none">
                 <AboutProfileCard
-                  imageSizes="(min-width: 1280px) 21rem, 19.5rem"
+                  imageSizes="(max-width: 768px) 100vw, (min-width: 1024px) 342px, 342px"
                   className="absolute inset-0 w-full h-full rounded-none"
-                  priority
+                  priority={isDesktop}
                 />
               </div>
             </div>

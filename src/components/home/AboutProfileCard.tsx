@@ -28,6 +28,7 @@ export function AboutProfileCard({
         className="object-cover"
         sizes={imageSizes}
         priority={priority}
+        loading={priority ? undefined : "eager"}
       />
       <figcaption className="absolute bottom-5 z-10 flex w-full flex-row flex-wrap items-center justify-center gap-x-2 px-5 text-center text-[14px] leading-[20px] tracking-[-0.015em] font-[440]">
         <span className="text-white">Arjun Bishnoi</span>
