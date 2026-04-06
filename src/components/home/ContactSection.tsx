@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useActionState } from "react";
 import {
   ArrowUpRight,
   AtSign,
@@ -9,11 +9,13 @@ import {
   Loader2,
   MessageSquare,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useEffect } from "react";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { socialLinks } from "@/lib/content/social-links";
 import { cn } from "@/lib/utils";
+import { submitContact } from "@/app/actions/contact";
+import { SubmitButton } from "./SubmitButton";
 
 const socialPillClass = cn(
   "group relative flex min-h-[4rem] w-full items-center gap-3 rounded-[32px] px-6 py-4 text-left shadow-none",
@@ -94,9 +96,13 @@ export function ContactSection() {
     email: "",
     message: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  
+  const [state, formAction] = useActionState(submitContact, {
+    success: false,
+    message: null,
+    error: null,
+  });
+
   const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
@@ -112,62 +118,14 @@ export function ContactSection() {
     setIsContactFormOpen((previous) => !previous);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setErrorMessage("");
-    const abortController = new AbortController();
-    const timeoutId = window.setTimeout(
-      () => abortController.abort(),
-      contactRequestTimeoutMs,
-    );
-
-    try {
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT ?? "https://formsubmit.co/ajax/contact@arjunbishnoi.com", 
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          signal: abortController.signal,
-          body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            message: form.message,
-            _subject: "New Portfolio Contact",
-            _captcha: "false",
-          }),
-      });
-
-      const data = await response.json().catch(() => null);
-
-      if (response.ok) {
-        setIsSuccess(true);
-        setForm({ name: "", email: "", message: "" });
-
-        setTimeout(() => {
-          setIsSuccess(false);
-          setIsContactFormOpen(false);
-        }, 3000);
-      } else {
-        throw new Error(
-          data?.error || data?.message || "Failed to send message",
-        );
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      setErrorMessage(
-        error instanceof DOMException && error.name === "AbortError"
-          ? "The request took too long. Please try again."
-          : "Something went wrong. Please try again.",
-      );
-    } finally {
-      window.clearTimeout(timeoutId);
-      setIsLoading(false);
+  useEffect(() => {
+    if (state.success) {
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => {
+        setIsContactFormOpen(false);
+      }, 3000);
     }
-  };
+  }, [state.success]);
 
   const fieldClass = cn(
     "block min-h-[3.25rem] w-full rounded-[28px] border border-transparent bg-zinc-100 dark:bg-zinc-100 px-5 py-3.5 text-zinc-900 dark:text-zinc-950 shadow-none",
@@ -201,7 +159,7 @@ export function ContactSection() {
 
   const contactForm = (
     <motion.form 
-      onSubmit={handleSubmit} 
+      action={formAction} 
       className="flex flex-col space-y-5 lg:space-y-3"
       variants={contactFormListVariants}
       initial="closed"
@@ -223,7 +181,6 @@ export function ContactSection() {
           className={fieldClass}
           placeholder="Your name"
           required
-          disabled={isLoading || isSuccess}
         />
       </motion.div>
 
@@ -243,7 +200,6 @@ export function ContactSection() {
           className={fieldClass}
           placeholder="your.email@example.com"
           required
-          disabled={isLoading || isSuccess}
         />
       </motion.div>
 
@@ -266,41 +222,14 @@ export function ContactSection() {
           )}
           placeholder="Your message here..."
           required
-          disabled={isLoading || isSuccess}
         />
       </motion.div>
 
       <motion.div variants={contactFormItemVariants} className="pt-1">
-        <button
-          type="submit"
-          className={cn(
-            "flex min-h-[3.25rem] w-full items-center justify-center rounded-[28px] border border-transparent bg-black px-8 py-3.5 text-base font-semibold tracking-tight text-white shadow-none",
-            "transition-[background-color,border-color,transform] duration-200 ease-out",
-            "hover:bg-zinc-900",
-            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black",
-            "active:scale-[0.99] active:border-black",
-            "dark:bg-black dark:text-white dark:hover:bg-zinc-900 dark:focus-visible:outline-black",
-            isSuccess &&
-              "bg-emerald-600 text-white hover:bg-emerald-700 dark:bg-emerald-500/90 dark:text-white dark:hover:bg-emerald-500",
-            isLoading && "cursor-not-allowed opacity-75",
-          )}
-          disabled={isLoading || isSuccess}
-        >
-          {isLoading && (
-            <Loader2 className="-ml-1 mr-2.5 h-5 w-5 shrink-0 animate-spin text-white dark:text-zinc-900" />
-          )}
-          {isSuccess && <Check className="-ml-1 mr-2 h-5 w-5 shrink-0" />}
-          <span>
-            {isLoading
-              ? "Sending..."
-              : isSuccess
-                ? "Message sent"
-                : "Send message"}
-          </span>
-        </button>
-        {errorMessage && (
+        <SubmitButton isSuccess={state.success} />
+        {state.error && (
           <p className="mt-3 text-center text-sm text-red-600 dark:text-red-400">
-            {errorMessage}
+            {state.error}
           </p>
         )}
       </motion.div>
@@ -493,7 +422,7 @@ export function ContactSection() {
                       className={cn(
                         contactDesktopCardClass,
                         "mx-0 w-full lg:max-w-none xl:max-w-none",
-                        !errorMessage ? "lg:h-[28.375rem]" : "lg:min-h-[28.375rem]"
+                        !state.error ? "lg:h-[28.375rem]" : "lg:min-h-[28.375rem]"
                       )}
                     >
                       {contactForm}

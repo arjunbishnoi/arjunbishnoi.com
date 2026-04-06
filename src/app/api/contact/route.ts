@@ -41,8 +41,8 @@ export async function POST(request: Request) {
   const abortController = new AbortController();
   const timeoutId = setTimeout(() => abortController.abort(), contactRequestTimeoutMs);
 
-  const origin = request.headers.get("origin") ?? "https://www.arjunbishnoi.com";
-  const referer = request.headers.get("referer") ?? "https://www.arjunbishnoi.com/";
+  const origin = request.headers.get("origin") ?? "https://arjunbishnoi.com";
+  const referer = request.headers.get("referer") ?? "https://arjunbishnoi.com/";
 
   try {
     const response = await fetch(contactRelayEndpoint, {

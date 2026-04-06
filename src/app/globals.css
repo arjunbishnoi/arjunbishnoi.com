@@ -54,6 +54,8 @@
     --hero-bio-gradient-dark: #b8b8b8;
     /* Home sections under hero: one shared gap (Featured / Projects / Blog) on small screens */
     --home-stack-gap-after: 4rem;
+    --mobbin-stack-mid-bg: #999999;
+    --mobbin-stack-back-bg: #d1d1d1;
   }
 
   .dark {
@@ -90,6 +92,8 @@
 
     /* Mobile flat border */
     --neu-flat-border: rgba(255, 255, 255, 0.08);
+    --mobbin-stack-mid-bg: #8a8a8a;
+    --mobbin-stack-back-bg: #505050;
   }
 
   /* --- Raised state: element pops out of surface --- */

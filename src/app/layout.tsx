@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeColorMeta } from "@/components/ThemeColorMeta";
 import { Header } from "@/components/layout/Header";
 import { PageLoadFadeIn } from "@/components/layout/PageLoadFadeIn";
+import { getThemeInitScript } from "@/lib/theme";
 import { homepageJsonLd, rootMetadata } from "@/lib/site-metadata";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -21,7 +22,9 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-export const metadata: Metadata = rootMetadata;
+export async function generateMetadata(): Promise<Metadata> {
+  return rootMetadata;
+}
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -33,19 +36,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const themeInitScript = getThemeInitScript();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${instrumentSerif.variable} font-sans antialiased`}>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
         />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           <ThemeColorMeta />
           <Header />
           <PageLoadFadeIn>{children}</PageLoadFadeIn>

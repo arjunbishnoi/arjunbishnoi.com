@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { motion, useReducedMotion } from "framer-motion"
+import { motion, useReducedMotion } from "motion/react"
 import { usePathname } from "next/navigation"
 
 export function PageLoadFadeIn({ children }: { children: React.ReactNode }) {

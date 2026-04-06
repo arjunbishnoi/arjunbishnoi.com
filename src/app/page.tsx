@@ -6,11 +6,13 @@ import { BlogSection } from "@/components/home/BlogSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { Footer } from "@/components/layout/Footer";
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    alternates: {
+      canonical: "/",
+    },
+  };
+}
 
 export default function Home() {
   return (

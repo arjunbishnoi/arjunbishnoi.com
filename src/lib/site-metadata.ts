@@ -10,7 +10,10 @@ export const rootMetadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: siteConfig.title,
+  title: {
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
+  },
   description: siteConfig.description,
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
@@ -46,7 +49,7 @@ export const rootMetadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: siteConfig.title,
+    title: `${siteConfig.name} - ${siteConfig.titleSuffix}`,
     description: siteConfig.description,
     url: `${siteConfig.url}/`,
     siteName: siteConfig.name,
@@ -64,7 +67,7 @@ export const rootMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.title,
+    title: `${siteConfig.name} - ${siteConfig.titleSuffix}`,
     description: siteConfig.description,
     images: [siteConfig.shareImage.url],
   },
@@ -107,7 +110,7 @@ export const homepageJsonLd = {
       thumbnailUrl: siteConfig.images.portrait,
       creator: { "@id": `${siteConfig.url}/#person` },
       creditText: siteConfig.name,
-      copyrightNotice: `© ${new Date().getFullYear()} ${siteConfig.name}`,
+      copyrightNotice: `(c) ${new Date().getFullYear()} ${siteConfig.name}`,
       license: `${siteConfig.url}/`,
       acquireLicensePage: `${siteConfig.url}/#contact`,
       representativeOfPage: true,
@@ -147,7 +150,7 @@ export function buildPageMetadata({
   includeSocial = false,
   imageUrl = siteConfig.images.headshot,
 }: PageMetadataOptions): Metadata {
-  const pageTitle = `${title} — ${siteConfig.name}`;
+  const pageTitle = title === siteConfig.name ? siteConfig.name : title;
   const metadata: Metadata = {
     title: pageTitle,
     description,

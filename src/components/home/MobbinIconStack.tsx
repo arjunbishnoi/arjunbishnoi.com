@@ -1,8 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { useTheme } from "next-themes"
+import { motion, AnimatePresence } from "motion/react"
 
 const icons = [
   {
@@ -61,7 +60,6 @@ const icons = [
 
 export function MobbinIconStack() {
   const [index, setIndex] = useState(0)
-  const { resolvedTheme } = useTheme()
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -70,16 +68,10 @@ export function MobbinIconStack() {
     return () => clearInterval(timer)
   }, [])
 
-  const isDark = resolvedTheme === "dark"
-
   // Use CSS variables for responsive offset to avoid SSR -> hydration shifts.
   // Defined in globals.css under `.mobbin-icon-stack`.
   const midY = "calc(var(--mobbin-icon-offset) * -1)"
   const backY = "calc(var(--mobbin-icon-offset) * -2)"
-  
-  // Define background colors for light/dark modes
-  const midBg = isDark ? "#8A8A8A" : "#999999"
-  const backBg = isDark ? "#505050" : "#D1D1D1" // Colors swapped at user request
 
   return (
     <div className="mobbin-icon-stack relative w-14 h-14 md:w-[88px] md:h-[88px] lg:w-[68px] lg:h-[68px] xl:w-16 xl:h-16 flex items-center justify-center pointer-events-none select-none overflow-visible">
@@ -99,13 +91,21 @@ export function MobbinIconStack() {
                 opacity: 1,
                 scale: isFront ? 1 : isMid ? 0.85 : 0.7,
                 y: isFront ? 0 : isMid ? midY : backY,
-                background: isFront ? icon.bg : isMid ? midBg : backBg,
+                background: isFront
+                  ? icon.bg
+                  : isMid
+                    ? "var(--mobbin-stack-mid-bg)"
+                    : "var(--mobbin-stack-back-bg)",
               }}
               animate={{ 
                 opacity: 1,
                 scale: isFront ? 1 : isMid ? 0.85 : 0.7,
                 y: isFront ? 0 : isMid ? midY : backY,
-                background: isFront ? icon.bg : isMid ? midBg : backBg,
+                background: isFront
+                  ? icon.bg
+                  : isMid
+                    ? "var(--mobbin-stack-mid-bg)"
+                    : "var(--mobbin-stack-back-bg)",
                 zIndex: 10 - relPos,
               }}
               exit={{ opacity: 0, y: 15 }}

@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import { heroEducationItems } from "@/lib/content/hero-content"
 import { cn } from "@/lib/utils"
 

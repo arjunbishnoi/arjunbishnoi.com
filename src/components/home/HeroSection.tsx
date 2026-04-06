@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { heroDescription } from "@/lib/content/hero-content";
 import { projects } from "@/lib/content/projects";
@@ -384,6 +384,7 @@ export function HeroSection() {
                   alt={projects[0].title}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
                 />
               </div>
             </div>

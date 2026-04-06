@@ -3,6 +3,7 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 
 export const metadata = buildPageMetadata({
   title: "AI",
+  path: "/ai",
   description: "Mobile Apps, AI & Design",
   index: false,
 });

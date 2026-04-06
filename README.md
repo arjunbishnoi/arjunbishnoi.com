@@ -4,12 +4,12 @@ Web & Mobile Designer / Developer portfolio website built with modern web techno
 
 ## Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [Shadcn UI](https://ui.shadcn.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Engine**: [React 19](https://react.dev/) (Server Actions, useActionState)
+- **Language**: [TypeScript 6.0](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v3.4](https://tailwindcss.com/)
+- **Animations**: [Motion 12](https://motion.dev/)
+- **State Management**: [Zustand 5](https://github.com/pmndrs/zustand)
 - **Icons**: [Lucide React](https://lucide.dev/)
 
 ## Getting Started
