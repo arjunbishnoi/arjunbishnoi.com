@@ -52,10 +52,10 @@ export function HeroSection() {
     ? { duration: 0 }
     : {
         type: "spring" as const,
-        // Softer spring + a bit more damping reduction = more visible bounce, less "snappy-fast"
-        stiffness: 360,
-        damping: 20,
-        mass: 0.85,
+        // Refined for a smoother, premium feel: more damping for controlled motion, higher mass for presence.
+        stiffness: 280,
+        damping: 28,
+        mass: 1,
       };
 
   useEffect(() => {
@@ -121,7 +121,7 @@ export function HeroSection() {
               y: prefersReducedMotion ? 0 : 16,
             }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ ...snapTransition, delay: 0.16 }}
+            transition={{ ...snapTransition, delay: 0.1 }}
           >
             <span className="inline text-black dark:text-white">
               Arjun Bishnoi
@@ -134,7 +134,7 @@ export function HeroSection() {
               y: prefersReducedMotion ? 0 : 14,
             }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ ...snapTransition, delay: 0.24 }}
+            transition={{ ...snapTransition, delay: 0.2 }}
           >
             <span className="block lg:inline">{"Developer and designer."}</span>
           </motion.p>
@@ -149,7 +149,7 @@ export function HeroSection() {
           y: prefersReducedMotion ? 0 : 26,
         }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ ...snapTransition, delay: 0.42 }}
+        transition={{ ...snapTransition, delay: 0.3 }}
       >
         {/* 1. Interactive Featured Bento Grid (Restored to Top) */}
         <div className="w-[95%] sm:w-[94%] mx-auto mt-10 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
@@ -314,7 +314,7 @@ export function HeroSection() {
           y: prefersReducedMotion ? 0 : 26,
         }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ ...snapTransition, delay: 0.42 }}
+        transition={{ ...snapTransition, delay: 0.3 }}
       >
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6">
           <div className="grid grid-cols-3 gap-6 xl:gap-7 items-start">

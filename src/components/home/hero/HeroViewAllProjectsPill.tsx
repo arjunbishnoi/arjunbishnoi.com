@@ -40,7 +40,10 @@ export function HeroViewAllProjectsPill({ variant, blobColors }: HeroViewAllProj
         >
           <div className="hero-viewall-surface absolute inset-0 bg-transparent" />
           <div
-            className="absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] group-hover:saturate-[8] group-hover:contrast-[1.5] group-hover:brightness-[1.25] transition-[filter] duration-700 dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]"
+            className={cn(
+              "absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] transition-[filter] duration-700 dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]",
+              isDesktop && "group-hover:saturate-[8] group-hover:contrast-[1.5] group-hover:brightness-[1.25]"
+            )}
             style={{
               maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
               WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
@@ -56,11 +59,17 @@ export function HeroViewAllProjectsPill({ variant, blobColors }: HeroViewAllProj
             ))}
           </div>
           <div
-            className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.28),transparent_75%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.22),transparent_70%)] pointer-events-none transition-opacity duration-700 z-[1] animate-glow-pulse"
+            className={cn(
+              "absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.28),transparent_75%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.22),transparent_70%)] pointer-events-none transition-opacity duration-700 z-[1]",
+              isDesktop && "animate-glow-pulse"
+            )}
             style={smoothTransitionTiming}
           />
           <div
-            className="absolute inset-0 opacity-[0.28] dark:opacity-[0.25] group-hover:opacity-[0.42] mix-blend-multiply dark:mix-blend-screen pointer-events-none transition-opacity duration-700"
+            className={cn(
+              "absolute inset-0 opacity-[0.28] dark:opacity-[0.25] mix-blend-multiply dark:mix-blend-screen pointer-events-none transition-opacity duration-700",
+              isDesktop && "group-hover:opacity-[0.42]"
+            )}
             style={{
               backgroundImage:
                 "radial-gradient(circle at 18% 22%, rgba(59, 130, 246, 0.58), transparent 46%), radial-gradient(circle at 80% 24%, rgba(236, 72, 153, 0.52), transparent 50%), radial-gradient(circle at 58% 76%, rgba(234, 179, 8, 0.44), transparent 52%), radial-gradient(circle at 34% 74%, rgba(16, 185, 129, 0.4), transparent 50%), radial-gradient(circle at 68% 52%, rgba(168, 85, 247, 0.36), transparent 48%)",
@@ -68,7 +77,10 @@ export function HeroViewAllProjectsPill({ variant, blobColors }: HeroViewAllProj
             }}
           />
           <div
-            className="absolute inset-0 pointer-events-none bg-white/0 group-hover:bg-white/[0.28] dark:group-hover:bg-white/[0.12] transition-colors duration-700 z-[1]"
+            className={cn(
+              "absolute inset-0 pointer-events-none bg-white/0 transition-colors duration-700 z-[1]",
+              isDesktop && "group-hover:bg-white/[0.28] dark:group-hover:bg-white/[0.12]"
+            )}
             style={smoothTransitionTiming}
           />
         </div>
