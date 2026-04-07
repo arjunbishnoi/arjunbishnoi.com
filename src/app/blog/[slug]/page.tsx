@@ -40,11 +40,13 @@ export async function generateMetadata({
   }
 
   return buildPageMetadata({
-    title: `${article.title} | Blog`,
+    title: article.title,
+    absoluteTitle: true,
     path: `/blog/${article.slug}`,
-    description: article.description,
+    description: article.deck,
     includeSocial: true,
-    socialTitle: `${article.title} | Blog | ${siteConfig.name}`,
+    socialTitle: article.title,
+    twitterCard: "summary",
     openGraphType: "article",
     publishedTime: article.publishedAt,
     imageUrl: new URL(article.image, siteConfig.url).toString(),

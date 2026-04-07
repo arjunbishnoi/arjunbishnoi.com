@@ -158,8 +158,10 @@ type PageMetadataOptions = {
   includeSocial?: boolean;
   imageUrl?: string;
   socialTitle?: string;
+  absoluteTitle?: boolean;
   openGraphType?: "website" | "article";
   publishedTime?: string;
+  twitterCard?: "summary" | "summary_large_image";
 };
 
 export function buildPageMetadata({
@@ -170,10 +172,13 @@ export function buildPageMetadata({
   includeSocial = false,
   imageUrl = siteConfig.shareImage.url,
   socialTitle,
+  absoluteTitle = false,
   openGraphType = "website",
   publishedTime,
+  twitterCard = "summary_large_image",
 }: PageMetadataOptions): Metadata {
-  const pageTitle = title === siteConfig.name ? { absolute: siteConfig.name } : title;
+  const pageTitle =
+    absoluteTitle || title === siteConfig.name ? { absolute: title } : title;
   const resolvedSocialTitle =
     socialTitle ??
     (title === siteConfig.name ? siteConfig.name : `${title} - ${siteConfig.name}`);
@@ -201,7 +206,7 @@ export function buildPageMetadata({
         : {}),
     };
     metadata.twitter = {
-      card: "summary_large_image",
+      card: twitterCard,
       title: resolvedSocialTitle,
       description,
       images: [imageUrl],
