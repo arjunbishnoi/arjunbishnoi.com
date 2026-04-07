@@ -7,6 +7,7 @@
 3. Run local quality gates:
    - `npm run lint`
    - `npm run typecheck`
+   - `npm run test`
    - `npm run build`
 4. Open a PR with a concise summary and testing notes.
 

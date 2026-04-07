@@ -43,6 +43,7 @@ Run these before creating a PR:
 ```bash
 npm run lint
 npm run typecheck
+npm run test
 npm run build
 ```
 

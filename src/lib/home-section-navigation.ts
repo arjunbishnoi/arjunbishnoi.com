@@ -2,16 +2,16 @@
 
 import { scrollToAboutSection } from "@/lib/scroll-to-about";
 import { scrollToContactSection } from "@/lib/scroll-to-contact";
+import {
+  isHomeSectionHash,
+  parseHomeSectionFromValues,
+  type HomeSectionHash,
+} from "@/lib/home-section-parser";
 
-export type HomeSectionHash = "#about" | "#contact";
+export { isHomeSectionHash, parseHomeSectionFromValues };
 
 function normalizeHash(hash: string) {
   return hash.trim().toLowerCase();
-}
-
-export function isHomeSectionHash(hash: string): hash is HomeSectionHash {
-  const normalized = normalizeHash(hash);
-  return normalized === "#about" || normalized === "#contact";
 }
 
 export function scrollToHomeSection(hash: HomeSectionHash) {
@@ -29,24 +29,7 @@ export function navigateToHomeSection(hash: HomeSectionHash) {
 }
 
 export function readHomeSectionFromLocation(): HomeSectionHash | null {
-  const hash = normalizeHash(window.location.hash);
-  if (isHomeSectionHash(hash)) {
-    return hash;
-  }
-
-  const section = new URLSearchParams(window.location.search)
-    .get("section")
-    ?.toLowerCase();
-
-  if (section === "about") {
-    return "#about";
-  }
-
-  if (section === "contact") {
-    return "#contact";
-  }
-
-  return null;
+  return parseHomeSectionFromValues(window.location.hash, window.location.search);
 }
 
 export function syncHomeSectionFromLocation() {

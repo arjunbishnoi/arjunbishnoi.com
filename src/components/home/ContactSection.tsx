@@ -1,53 +1,27 @@
 "use client";
 
-import { useState, useActionState, useEffect } from "react";
-import { ArrowUpRight, AtSign, Download, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { cn } from "@/lib/utils";
-import { submitContact } from "@/app/actions/contact";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { ContactForm } from "@/components/home/contact/ContactForm";
+import { ContactLinkPills } from "@/components/home/contact/ContactLinkPills";
+import { ContactMessageCard } from "@/components/home/contact/ContactMessageCard";
+import { useContactFormPanel } from "@/components/home/contact/use-contact-form-panel";
 import {
-  socialPillClass,
-  iconSvgClass,
-  iconLucideClass,
   panelTransition,
   contactDesktopCardClass,
-  socialCards,
 } from "@/components/home/contact/contact-config";
 
 export function ContactSection() {
-  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [state, formAction] = useActionState(submitContact, {
-    success: false,
-    message: null,
-    error: null,
-  });
+  const {
+    isContactFormOpen,
+    form,
+    setForm,
+    formAction,
+    state,
+    toggleContactForm,
+  } = useContactFormPanel();
   const isDesktop = useMediaQuery("(min-width: 1024px)", true);
-
-  const toggleContactForm = () => {
-    setIsContactFormOpen((previous) => !previous);
-  };
-
-  useEffect(() => {
-    if (!state.success) return;
-
-    setForm({ name: "", email: "", message: "" });
-    const closeTimeoutId = window.setTimeout(() => {
-      setIsContactFormOpen(false);
-    }, 3000);
-
-    return () => {
-      window.clearTimeout(closeTimeoutId);
-    };
-  }, [state.success]);
 
   const contactForm = (
     <ContactForm
@@ -62,136 +36,12 @@ export function ContactSection() {
 
   const socialGrid = (
     <div className="flex w-full flex-col gap-3 md:gap-3.5">
-      {socialCards.map((card) => (
-        <a
-          key={card.name}
-          href={card.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(socialPillClass, card.pillClassName)}
-          aria-label={
-            card.kind === "resume"
-              ? "View resume"
-              : card.kind === "email"
-                ? `Email ${card.name}`
-                : `${card.name} profile`
-          }
-        >
-          <div className="flex min-w-0 flex-1 items-center gap-3">
-            {card.kind === "brand" ? (
-              <SocialBrandIcon brand={card.brand} className={iconSvgClass} />
-            ) : card.kind === "resume" ? (
-              <Download
-                className={iconLucideClass}
-                strokeWidth={1.85}
-                aria-hidden
-              />
-            ) : (
-              <AtSign
-                className={iconLucideClass}
-                strokeWidth={1.85}
-                aria-hidden
-              />
-            )}
-            <span className="flex min-w-0 items-center gap-1 truncate text-[0.95rem] font-semibold tracking-tight">
-              <span className={cn("shrink-0", card.labelClassName)}>
-                {card.name}
-              </span>
-              {"suffix" in card && card.suffix ? (
-                <span
-                  className={cn("truncate font-normal", card.suffixClassName)}
-                >
-                  {card.suffix}
-                </span>
-              ) : null}
-            </span>
-          </div>
-          <ArrowUpRight
-            className="h-5 w-5 shrink-0"
-            strokeWidth={2.5}
-            aria-hidden
-          />
-        </a>
-      ))}
-
-      <motion.div
-        layout
-        transition={{ layout: panelTransition }}
-        className={cn(
-          "relative z-10 flex w-full flex-col overflow-hidden transition-[background-color,transform] duration-200",
-          "rounded-[32px] bg-white dark:bg-white shadow-none border border-transparent dark:border-white/10",
-          !isContactFormOpen && "hover:scale-[0.995]",
-        )}
-      >
-        <button
-          type="button"
-          onClick={toggleContactForm}
-          className={cn(
-            "flex min-h-[4rem] w-full items-center justify-between gap-3 px-6 py-4 text-left transition-colors duration-200 ease-out",
-            "text-zinc-900 dark:text-zinc-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900",
-          )}
-          aria-expanded={isContactFormOpen}
-          aria-controls="contact-form-panel"
-        >
-          <div className="flex min-w-0 flex-1 items-center gap-3">
-            <MessageSquare
-              className={iconLucideClass}
-              strokeWidth={1.85}
-              aria-hidden
-            />
-            <span className="truncate text-[0.95rem] font-semibold tracking-tight">
-              Send message
-            </span>
-          </div>
-          <motion.svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-5 w-5 shrink-0"
-            initial={false}
-            animate={isContactFormOpen ? "open" : "closed"}
-            variants={{
-              open: { scale: 1.15 },
-              closed: { scale: 1 },
-            }}
-            transition={{ type: "spring", stiffness: 400, damping: 22 }}
-            aria-hidden
-          >
-            <path d="M 7 17 L 17 7" />
-            <motion.path
-              variants={{
-                closed: { d: "M 7 7 L 17 7 L 17 17" },
-                open: { d: "M 7 7 L 12 12 L 17 17" },
-              }}
-              transition={{ type: "spring", stiffness: 400, damping: 22 }}
-            />
-          </motion.svg>
-        </button>
-
-        <AnimatePresence initial={false}>
-          {isContactFormOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{
-                height: 0,
-                opacity: 0,
-                transition: panelTransition,
-              }}
-              transition={panelTransition}
-              className="relative z-0 w-full lg:hidden"
-            >
-              <div className="px-5 sm:px-6 pb-6 pt-1">{contactForm}</div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+      <ContactLinkPills />
+      <ContactMessageCard
+        isOpen={isContactFormOpen}
+        onToggle={toggleContactForm}
+        mobileForm={contactForm}
+      />
     </div>
   );
 

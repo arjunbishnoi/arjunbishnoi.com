@@ -1,6 +1,6 @@
 "use client";
 
-import { SCROLL_SETTLE_DELAY_MS, clampScrollTop } from "@/lib/scroll-utils";
+import { runAfterScrollSettle, smoothScrollTo } from "@/lib/scroll-utils";
 
 const MOBILE_HEADER_OFFSET = 104;
 const DESKTOP_HEADER_OFFSET = 96;
@@ -20,7 +20,7 @@ export function scrollToContactSection() {
   if (!target) return;
 
   // Wait for route/layout transitions to settle before measuring.
-  setTimeout(() => {
+  runAfterScrollSettle(() => {
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
     const headerOffset = isDesktop
       ? DESKTOP_HEADER_OFFSET
@@ -30,9 +30,6 @@ export function scrollToContactSection() {
     const absoluteTop = rect.top + window.scrollY;
     const desiredTop = absoluteTop - headerOffset;
 
-    window.scrollTo({
-      top: clampScrollTop(desiredTop),
-      behavior: "smooth",
-    });
-  }, SCROLL_SETTLE_DELAY_MS);
+    smoothScrollTo(desiredTop);
+  });
 }

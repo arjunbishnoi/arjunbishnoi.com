@@ -35,5 +35,6 @@ This repository uses a feature-oriented structure on top of the Next.js App Rout
 
 - Lint: `npm run lint`
 - Type check: `npm run typecheck`
+- Tests: `npm run test`
 - Build verification: `npm run build`
 - Full local gate: `npm run check`

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -8,11 +8,9 @@ import { motion, AnimatePresence } from "motion/react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { MobileMenuContent } from "@/components/layout/header/MobileMenuContent";
-import {
-  isHomeSectionHash,
-  scrollToHomeSection,
-} from "@/lib/home-section-navigation";
 import { cn } from "@/lib/utils";
+import { useHeaderNavigation } from "@/components/layout/header/use-header-navigation";
+import { useMobileMenuLifecycle } from "@/components/layout/header/use-mobile-menu-lifecycle";
 import {
   menuPanelTransition,
   mobileMenuPanelVariants,
@@ -23,171 +21,29 @@ import {
 } from "@/components/layout/header/constants";
 
 export function Header() {
-  const MENU_CLOSE_DELAY_MS = 360;
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const mobileMenuContainerRef = useRef<HTMLDivElement>(null);
+  const {
+    isMobileMenuOpen,
+    mobileMenuAnimationState,
+    mobileMenuContainerRef,
+    setIsMobileMenuOpen,
+    closeMobileMenuThen,
+  } = useMobileMenuLifecycle();
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
   const [hasMounted, setHasMounted] = useState(false);
 
-  const mobileMenuAnimationState = isMobileMenuOpen ? "open" : "closed";
-
-  const releaseGlobalMenuLocks = () => {
-    document.body.style.overflow = "";
-    document.documentElement.classList.remove("mobile-menu-open");
-  };
+  const { handleLogoClick, handleNavClick } = useHeaderNavigation({
+    pathname,
+    router,
+    closeMobileMenuThen,
+    setIsMobileMenuOpen,
+  });
 
   useEffect(() => {
     setHasMounted(true);
   }, []);
 
-  // Lock scroll and toggle global menu-open state for page dimming.
-  useEffect(() => {
-    const root = document.documentElement;
-    let timeoutId: number;
-
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-      root.classList.add("mobile-menu-open");
-    } else {
-      root.classList.remove("mobile-menu-open");
-      // Delay restoring scrollbar until closing animation finishes
-      // to prevent centering layout shifts from moving menu items left
-      timeoutId = window.setTimeout(() => {
-        document.body.style.overflow = "";
-      }, MENU_CLOSE_DELAY_MS);
-    }
-
-    return () => {
-      window.clearTimeout(timeoutId);
-    };
-  }, [isMobileMenuOpen]);
-
-  // Failsafe unmount cleanup
-  useEffect(() => {
-    return () => {
-      releaseGlobalMenuLocks();
-    };
-  }, []);
-
-  // Browser back/forward restore (for example when returning from PDFs)
-  // can keep global locks or stale UI state. Force-reset on return to tab/page.
-  useEffect(() => {
-    const syncFromPageRestore = () => {
-      releaseGlobalMenuLocks();
-      setIsMobileMenuOpen(false);
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        syncFromPageRestore();
-      }
-    };
-
-    window.addEventListener("pageshow", syncFromPageRestore);
-    window.addEventListener("focus", syncFromPageRestore);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      window.removeEventListener("pageshow", syncFromPageRestore);
-      window.removeEventListener("focus", syncFromPageRestore);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, []);
-
-  // Close mobile menu when clicking/tapping outside of it.
-  // Use click capture so timing matches the X button (also click-based),
-  // and preventDefault so taps do not "fall through" to underlying links.
-  useEffect(() => {
-    if (!isMobileMenuOpen) {
-      return;
-    }
-
-    const handleOutsideInteraction = (event: MouseEvent) => {
-      const target = event.target;
-      if (!(target instanceof Node)) {
-        return;
-      }
-
-      if (mobileMenuContainerRef.current?.contains(target)) {
-        return;
-      }
-
-      event.preventDefault();
-      event.stopPropagation();
-      setIsMobileMenuOpen(false);
-    };
-
-    document.addEventListener("click", handleOutsideInteraction, true);
-
-    return () => {
-      document.removeEventListener("click", handleOutsideInteraction, true);
-    };
-  }, [isMobileMenuOpen]);
-
-  const closeMobileMenuThen = (afterClose: () => void) => {
-    if (!isMobileMenuOpen) {
-      afterClose();
-      return;
-    }
-
-    setIsMobileMenuOpen(false);
-    window.setTimeout(() => {
-      releaseGlobalMenuLocks();
-      afterClose();
-    }, MENU_CLOSE_DELAY_MS);
-  };
-
-  const resetToHomeView = () => {
-    if (pathname !== "/") {
-      router.push("/");
-      return;
-    }
-
-    if (window.location.hash) {
-      history.replaceState(null, "", "/");
-    }
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-
-    closeMobileMenuThen(resetToHomeView);
-  };
-
-  const handleNavClick = (e: React.MouseEvent, href: string) => {
-    const runHashScroll = (hash: string) => {
-      const normalizedHash = hash.toLowerCase();
-      if (isHomeSectionHash(normalizedHash)) {
-        scrollToHomeSection(normalizedHash);
-        return;
-      }
-
-      const el = document.querySelector(normalizedHash);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    };
-
-    // For hash links on the current page, handle scroll manually
-    // because Next.js Link doesn't trigger native hashchange
-    if (href.startsWith("/#") && pathname === "/") {
-      e.preventDefault();
-      const hash = href.slice(1); // e.g. "#about"
-      history.pushState(null, "", hash);
-
-      closeMobileMenuThen(() => runHashScroll(hash));
-      return;
-    }
-
-    setIsMobileMenuOpen(false);
-  };
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };

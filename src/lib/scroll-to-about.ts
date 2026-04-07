@@ -1,6 +1,6 @@
 "use client";
 
-import { SCROLL_SETTLE_DELAY_MS, clampScrollTop } from "@/lib/scroll-utils";
+import { runAfterScrollSettle, smoothScrollTo } from "@/lib/scroll-utils";
 
 const MOBILE_HEADER_OFFSET = 80;
 
@@ -26,7 +26,7 @@ export function scrollToAboutSection() {
   if (!finalTarget) return;
 
   // Wait for any animations/transitions to settle
-  setTimeout(() => {
+  runAfterScrollSettle(() => {
     const rect = finalTarget.getBoundingClientRect();
     const absoluteTop = rect.top + window.scrollY;
 
@@ -37,16 +37,10 @@ export function scrollToAboutSection() {
       const contentTop = Math.min(window.innerHeight - 1, Math.max(0, headerBottom));
       const contentCenter = contentTop + (window.innerHeight - contentTop) / 2;
       const desiredTop = absoluteTop + rect.height / 2 - contentCenter;
-      window.scrollTo({
-        top: clampScrollTop(desiredTop),
-        behavior: "smooth",
-      });
+      smoothScrollTo(desiredTop);
     } else {
       // Place profile card top just below the floating header
-      window.scrollTo({
-        top: Math.max(0, absoluteTop - MOBILE_HEADER_OFFSET),
-        behavior: "smooth",
-      });
+      smoothScrollTo(absoluteTop - MOBILE_HEADER_OFFSET);
     }
-  }, SCROLL_SETTLE_DELAY_MS);
+  });
 }

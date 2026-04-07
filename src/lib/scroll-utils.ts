@@ -12,3 +12,14 @@ export function getMaxScrollTop() {
 export function clampScrollTop(top: number) {
   return Math.min(Math.max(0, top), getMaxScrollTop());
 }
+
+export function smoothScrollTo(top: number) {
+  window.scrollTo({
+    top: clampScrollTop(top),
+    behavior: "smooth",
+  });
+}
+
+export function runAfterScrollSettle(callback: () => void) {
+  window.setTimeout(callback, SCROLL_SETTLE_DELAY_MS);
+}
