@@ -17,6 +17,7 @@ import { HeroSkillsGrid } from "./hero/HeroSkillsGrid";
 import { HeroSocialLinksRow } from "./hero/HeroSocialLinksRow";
 import { HeroViewAllProjectsPill } from "./hero/HeroViewAllProjectsPill";
 import { scrollToAboutSection } from "@/lib/scroll-to-about";
+import { useIsFirstPageLoad } from "@/hooks/use-is-first-page-load";
 
 const VIEWALL_BLOB_COLORS = [
   "bg-cyan-500/62",
@@ -48,6 +49,7 @@ export function HeroSection() {
     useState<string[]>(VIEWALL_BLOB_COLORS);
   const [bioExpanded, setBioExpanded] = useState(false);
   const [isDesktop, setIsDesktop] = useState<boolean>(false); // Default to Mobile for SSR priority
+  const isFirstLoad = useIsFirstPageLoad();
 
   useEffect(() => {
     const mql = window.matchMedia("(min-width: 1024px)");
@@ -116,10 +118,14 @@ export function HeroSection() {
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6 text-center flex flex-col items-center">
           <motion.div
             className="mt-1 sm:mt-2 md:mt-0 mb-5 sm:mb-6 md:mb-12 lg:mb-8 xl:mb-7 lg:scale-[0.88] xl:scale-[0.82] origin-center"
-            initial={{
-              opacity: prefersReducedMotion ? 1 : 0,
-              y: prefersReducedMotion ? 0 : 18,
-            }}
+            initial={
+              isFirstLoad
+                ? {
+                    opacity: prefersReducedMotion ? 1 : 0,
+                    y: prefersReducedMotion ? 0 : 18,
+                  }
+                : false
+            }
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0 }}
           >
@@ -127,10 +133,14 @@ export function HeroSection() {
           </motion.div>
           <motion.h1
             className="font-sans font-semibold whitespace-nowrap text-[2.4rem] sm:text-[3.5rem] md:text-[3.8rem] lg:text-[4rem] xl:text-[4.5rem] leading-[1.02] tracking-[-0.05em] sm:tracking-[-0.035em] md:tracking-[-0.04em] lg:tracking-[-0.038em]"
-            initial={{
-              opacity: prefersReducedMotion ? 1 : 0,
-              y: prefersReducedMotion ? 0 : 16,
-            }}
+            initial={
+              isFirstLoad
+                ? {
+                    opacity: prefersReducedMotion ? 1 : 0,
+                    y: prefersReducedMotion ? 0 : 16,
+                  }
+                : false
+            }
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0.1 }}
           >
@@ -140,10 +150,14 @@ export function HeroSection() {
           </motion.h1>
           <motion.p
             className="mt-1.5 text-center text-base leading-[1.28] md:mt-3 md:text-xl lg:text-xl xl:text-[1.35rem] md:leading-relaxed text-zinc-500 dark:text-zinc-400 lg:max-w-none lg:whitespace-nowrap lg:mb-4 xl:mb-6"
-            initial={{
-              opacity: prefersReducedMotion ? 1 : 0,
-              y: prefersReducedMotion ? 0 : 14,
-            }}
+            initial={
+              isFirstLoad
+                ? {
+                    opacity: prefersReducedMotion ? 1 : 0,
+                    y: prefersReducedMotion ? 0 : 14,
+                  }
+                : false
+            }
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...snapTransition, delay: 0.2 }}
           >
@@ -155,10 +169,14 @@ export function HeroSection() {
       {/* Mobile Stack Layout */}
       <motion.div
         className="w-full z-20 px-6 pb-8 lg:hidden flex flex-col items-center"
-        initial={{
-          opacity: prefersReducedMotion ? 1 : 0,
-          y: prefersReducedMotion ? 0 : 26,
-        }}
+        initial={
+          isFirstLoad
+            ? {
+                opacity: prefersReducedMotion ? 1 : 0,
+                y: prefersReducedMotion ? 0 : 26,
+              }
+            : false
+        }
         animate={{ opacity: 1, y: 0 }}
         transition={{ ...snapTransition, delay: 0.3 }}
       >
@@ -197,7 +215,9 @@ export function HeroSection() {
                 <div className="whitespace-nowrap">Resume</div>
               </Link>
             </div>
-            <HeroSocialLinksRow variant="mobile" />
+            <div id="hero-mail-anchor" className="h-full">
+              <HeroSocialLinksRow variant="mobile" />
+            </div>
           </div>
         </div>
 
@@ -294,7 +314,7 @@ export function HeroSection() {
                     background:
                       "linear-gradient(to bottom, transparent 0%, rgba(206, 206, 206, 0.2) 30%, rgba(206, 206, 206, 0.85) 75%, #cecece 100%)",
                   }}
-                  initial={{ opacity: 0 }}
+                  initial={isFirstLoad ? { opacity: 0 } : false}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
@@ -305,7 +325,7 @@ export function HeroSection() {
                     background:
                       "linear-gradient(to bottom, transparent 0%, rgba(38, 38, 38, 0.2) 30%, rgba(38, 38, 38, 0.85) 75%, #262626 100%)",
                   }}
-                  initial={{ opacity: 0 }}
+                  initial={isFirstLoad ? { opacity: 0 } : false}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
@@ -320,10 +340,14 @@ export function HeroSection() {
       <motion.div
         data-about-desktop
         className="hidden lg:flex flex-col w-full z-20 pb-0 mt-12 xl:mt-14 items-center hero-flat-desktop"
-        initial={{
-          opacity: prefersReducedMotion ? 1 : 0,
-          y: prefersReducedMotion ? 0 : 26,
-        }}
+        initial={
+          isFirstLoad
+            ? {
+                opacity: prefersReducedMotion ? 1 : 0,
+                y: prefersReducedMotion ? 0 : 26,
+              }
+            : false
+        }
         animate={{ opacity: 1, y: 0 }}
         transition={{ ...snapTransition, delay: 0.3 }}
       >
@@ -383,7 +407,9 @@ export function HeroSection() {
                     <div className="whitespace-nowrap">Resume</div>
                   </Link>
                 </div>
-                <HeroSocialLinksRow variant="desktop" />
+                <div id="hero-mail-anchor-desktop" className="h-full">
+                  <HeroSocialLinksRow variant="desktop" />
+                </div>
               </div>
 
               {/* ROW 2: Featured Project (Square) — swapped with education (column 3 row 1) */}

@@ -22,8 +22,11 @@ export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
   const iconClassName = isDesktop ? "block w-6 h-6 xl:w-7 xl:h-7 fill-current" : "block w-[1.4rem] h-[1.4rem] fill-current"
 
   return (
-    <div className="grid grid-cols-4">
-      <Link href="#contact" className={cn(tileClassName, "border-r neu-separator")}>
+    <div className="grid grid-cols-4 h-full">
+      <Link 
+        href="#contact" 
+        className={cn(tileClassName, "border-r neu-separator")}
+      >
         <div className={cn(iconWrapClassName, "text-rose-500 group-hover:opacity-100 opacity-90")}>
           <SocialBrandIcon brand="email" className={iconClassName} />
         </div>

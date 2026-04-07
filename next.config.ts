@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/resume',
+        destination: '/Arjun-Bishnoi-Resume.pdf',
+        permanent: true,
+      },
+      {
         source: '/about',
         destination: '/#about',
         permanent: true,

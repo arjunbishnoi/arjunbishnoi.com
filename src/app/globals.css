@@ -452,7 +452,7 @@
 
 /* Custom Styles from main.css */
 html {
-  scroll-behavior: smooth;
+  /* Removed scroll-behavior: smooth to prevent animated back-button restoration */
   scroll-padding-top: 3rem;
   overflow-y: scroll;
   overflow-x: hidden;
