@@ -39,14 +39,14 @@ export function HeroBentoRows({
         <Link href="/design" className={linkClass}>
           <div className="whitespace-nowrap">Design</div>
         </Link>
-        <Link
+        <a
           href={socialLinks.resume}
           target="_blank"
           rel="noopener noreferrer"
           className={rightLinkClass}
         >
           <div className="whitespace-nowrap">Resume</div>
-        </Link>
+        </a>
       </div>
       <div id={socialAnchorId} className="h-full">
         <HeroSocialLinksRow variant={variant} />
