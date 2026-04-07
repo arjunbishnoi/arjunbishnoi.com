@@ -1,5 +1,9 @@
 "use client";
 
+import { SCROLL_SETTLE_DELAY_MS, clampScrollTop } from "@/lib/scroll-utils";
+
+const MOBILE_HEADER_OFFSET = 80;
+
 /**
  * Scrolls to the correct "about" section based on screen size.
  * Desktop (lg+): centers the bento grid in the viewport.
@@ -33,18 +37,16 @@ export function scrollToAboutSection() {
       const contentTop = Math.min(window.innerHeight - 1, Math.max(0, headerBottom));
       const contentCenter = contentTop + (window.innerHeight - contentTop) / 2;
       const desiredTop = absoluteTop + rect.height / 2 - contentCenter;
-      const maxTop = Math.max(
-        0,
-        document.documentElement.scrollHeight - window.innerHeight,
-      );
-      window.scrollTo({ top: Math.min(Math.max(0, desiredTop), maxTop), behavior: "smooth" });
+      window.scrollTo({
+        top: clampScrollTop(desiredTop),
+        behavior: "smooth",
+      });
     } else {
       // Place profile card top just below the floating header
-      const headerOffset = 80;
       window.scrollTo({
-        top: absoluteTop - headerOffset,
+        top: Math.max(0, absoluteTop - MOBILE_HEADER_OFFSET),
         behavior: "smooth",
       });
     }
-  }, 150);
+  }, SCROLL_SETTLE_DELAY_MS);
 }

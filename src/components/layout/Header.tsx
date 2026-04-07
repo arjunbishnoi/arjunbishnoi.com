@@ -28,20 +28,11 @@ import {
 export function Header() {
   const MENU_CLOSE_DELAY_MS = 360;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const mobileMenuContainerRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
   const [hasMounted, setHasMounted] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const mobileMenuAnimationState = isMobileMenuOpen ? "open" : "closed";
 
@@ -49,19 +40,6 @@ export function Header() {
     document.body.style.overflow = "";
     document.documentElement.classList.remove("mobile-menu-open");
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     setHasMounted(true);
@@ -81,7 +59,7 @@ export function Header() {
       // to prevent centering layout shifts from moving menu items left
       timeoutId = window.setTimeout(() => {
         document.body.style.overflow = "";
-      }, 350);
+      }, MENU_CLOSE_DELAY_MS);
     }
 
     return () => {
@@ -151,8 +129,18 @@ export function Header() {
     };
   }, [isMobileMenuOpen]);
 
-  // Shrink when scrolled (on all devices now)
-  const showFullLogo = !isScrolled || isMobileMenuOpen;
+  const closeMobileMenuThen = (afterClose: () => void) => {
+    if (!isMobileMenuOpen) {
+      afterClose();
+      return;
+    }
+
+    setIsMobileMenuOpen(false);
+    window.setTimeout(() => {
+      releaseGlobalMenuLocks();
+      afterClose();
+    }, MENU_CLOSE_DELAY_MS);
+  };
 
   const resetToHomeView = () => {
     if (pathname !== "/") {
@@ -173,22 +161,10 @@ export function Header() {
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    if (isMobileMenuOpen) {
-      setIsMobileMenuOpen(false);
-      window.setTimeout(() => {
-        releaseGlobalMenuLocks();
-        resetToHomeView();
-      }, MENU_CLOSE_DELAY_MS);
-      return;
-    }
-
-    resetToHomeView();
+    closeMobileMenuThen(resetToHomeView);
   };
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
-    const wasMenuOpen = isMobileMenuOpen;
-    setIsMobileMenuOpen(false);
-
     const runHashScroll = (hash: string) => {
       if (hash === "#about") {
         scrollToAboutSection();
@@ -213,15 +189,11 @@ export function Header() {
       const hash = href.slice(1); // e.g. "#about"
       history.pushState(null, "", hash);
 
-      if (wasMenuOpen) {
-        window.setTimeout(() => {
-          releaseGlobalMenuLocks();
-          runHashScroll(hash);
-        }, 360);
-      } else {
-        runHashScroll(hash);
-      }
+      closeMobileMenuThen(() => runHashScroll(hash));
+      return;
     }
+
+    setIsMobileMenuOpen(false);
   };
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");

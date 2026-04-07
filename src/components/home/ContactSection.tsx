@@ -46,12 +46,16 @@ export function ContactSection() {
   };
 
   useEffect(() => {
-    if (state.success) {
-      setForm({ name: "", email: "", message: "" });
-      setTimeout(() => {
-        setIsContactFormOpen(false);
-      }, 3000);
-    }
+    if (!state.success) return;
+
+    setForm({ name: "", email: "", message: "" });
+    const closeTimeoutId = window.setTimeout(() => {
+      setIsContactFormOpen(false);
+    }, 3000);
+
+    return () => {
+      window.clearTimeout(closeTimeoutId);
+    };
   }, [state.success]);
 
   const fieldClass = cn(

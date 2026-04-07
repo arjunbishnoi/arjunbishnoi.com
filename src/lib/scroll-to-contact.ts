@@ -1,5 +1,10 @@
 "use client";
 
+import { SCROLL_SETTLE_DELAY_MS, clampScrollTop } from "@/lib/scroll-utils";
+
+const MOBILE_HEADER_OFFSET = 104;
+const DESKTOP_HEADER_OFFSET = 96;
+
 /**
  * Scrolls to the contact heading with responsive behavior.
  * Mobile/small screens: keep the heading below the floating header with extra breathing room.
@@ -17,19 +22,17 @@ export function scrollToContactSection() {
   // Wait for route/layout transitions to settle before measuring.
   setTimeout(() => {
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    const headerOffset = isDesktop ? 96 : 104;
+    const headerOffset = isDesktop
+      ? DESKTOP_HEADER_OFFSET
+      : MOBILE_HEADER_OFFSET;
 
     const rect = target.getBoundingClientRect();
     const absoluteTop = rect.top + window.scrollY;
-    const desiredTop = Math.max(0, absoluteTop - headerOffset);
-    const maxTop = Math.max(
-      0,
-      document.documentElement.scrollHeight - window.innerHeight,
-    );
+    const desiredTop = absoluteTop - headerOffset;
 
     window.scrollTo({
-      top: Math.min(desiredTop, maxTop),
+      top: clampScrollTop(desiredTop),
       behavior: "smooth",
     });
-  }, 150);
+  }, SCROLL_SETTLE_DELAY_MS);
 }
