@@ -86,7 +86,7 @@ export function BlogDirectory() {
                       value={query}
                       onChange={(event) => setQuery(event.target.value)}
                       placeholder="Search blogs..."
-                      className="h-full w-full bg-transparent pr-10 text-sm font-medium text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45"
+                      className="h-full w-full bg-transparent pr-10 text-[16px] font-medium text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45"
                       aria-label="Search blogs"
                     />
                     {hasQuery ? (
