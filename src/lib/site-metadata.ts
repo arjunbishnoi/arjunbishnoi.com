@@ -5,6 +5,15 @@ import { socialLinks } from "@/lib/content/social-links";
 const personImageDescription =
   "Developer and designer building cross-platform mobile apps at the intersection of AI and design. Functional, intelligent, and crafted with precision.";
 
+const mainSitelinkPages = [
+  { name: "Projects", path: "/projects" },
+  { name: "Mobile Apps", path: "/apps" },
+  { name: "AI/ML", path: "/ai" },
+  { name: "Design", path: "/design" },
+  { name: "Blog", path: "/blog" },
+  { name: "Resume", path: "/resume" },
+] as const;
+
 export const rootMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   alternates: {
@@ -89,6 +98,13 @@ export const homepageJsonLd = {
       name: siteConfig.name,
       alternateName: [...siteConfig.alternateNames],
     },
+    ...mainSitelinkPages.map((page) => ({
+      "@type": "SiteNavigationElement",
+      "@id": `${siteConfig.url}${page.path}#site-navigation`,
+      name: page.name,
+      url: `${siteConfig.url}${page.path}`,
+      isPartOf: { "@id": `${siteConfig.url}/#website` },
+    })),
     {
       "@type": "ProfilePage",
       "@id": `${siteConfig.url}/#profile-page`,
@@ -141,6 +157,9 @@ type PageMetadataOptions = {
   index?: boolean;
   includeSocial?: boolean;
   imageUrl?: string;
+  socialTitle?: string;
+  openGraphType?: "website" | "article";
+  publishedTime?: string;
 };
 
 export function buildPageMetadata({
@@ -149,10 +168,15 @@ export function buildPageMetadata({
   description = siteConfig.sectionDescription,
   index = true,
   includeSocial = false,
-  imageUrl = siteConfig.images.headshot,
+  imageUrl = siteConfig.shareImage.url,
+  socialTitle,
+  openGraphType = "website",
+  publishedTime,
 }: PageMetadataOptions): Metadata {
   const pageTitle = title === siteConfig.name ? { absolute: siteConfig.name } : title;
-  const socialTitle = title === siteConfig.name ? siteConfig.name : `${title} - ${siteConfig.name}`;
+  const resolvedSocialTitle =
+    socialTitle ??
+    (title === siteConfig.name ? siteConfig.name : `${title} - ${siteConfig.name}`);
   const metadata: Metadata = {
     title: pageTitle,
     description,
@@ -166,14 +190,19 @@ export function buildPageMetadata({
   if (includeSocial && path) {
     const pageUrl = new URL(path, siteConfig.url).toString();
     metadata.openGraph = {
-      title: socialTitle,
+      title: resolvedSocialTitle,
       description,
       url: pageUrl,
+      siteName: siteConfig.name,
+      type: openGraphType,
       images: [{ url: imageUrl }],
+      ...(openGraphType === "article" && publishedTime
+        ? { publishedTime }
+        : {}),
     };
     metadata.twitter = {
       card: "summary_large_image",
-      title: socialTitle,
+      title: resolvedSocialTitle,
       description,
       images: [imageUrl],
     };

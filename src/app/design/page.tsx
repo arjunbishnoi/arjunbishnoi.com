@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
   title: "Design",
   path: "/design",
   description: "Design projects and writing by Arjun Bishnoi.",
-  index: false,
+  includeSocial: true,
 });
 
 export default function UIUXDesignPage() {

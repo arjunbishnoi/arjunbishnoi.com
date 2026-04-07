@@ -20,6 +20,26 @@ export function Footer() {
     "text-gray-400 dark:text-gray-600 transition-colors";
 
   const handleNavClick = (event: React.MouseEvent, href: string) => {
+    if (href.startsWith("/") && !href.includes("#") && pathname === href) {
+      event.preventDefault();
+
+      // Normalize the URL back to the clean route and return to top.
+      if (
+        window.location.pathname !== href ||
+        window.location.search ||
+        window.location.hash
+      ) {
+        history.replaceState(null, "", href);
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
+      return;
+    }
+
     if (!href.startsWith("/#") || pathname !== "/") {
       return;
     }

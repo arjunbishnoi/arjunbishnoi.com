@@ -40,10 +40,13 @@ export async function generateMetadata({
   }
 
   return buildPageMetadata({
-    title: article.title,
+    title: `${article.title} | Blog`,
     path: `/blog/${article.slug}`,
     description: article.description,
     includeSocial: true,
+    socialTitle: `${article.title} | Blog | ${siteConfig.name}`,
+    openGraphType: "article",
+    publishedTime: article.publishedAt,
     imageUrl: new URL(article.image, siteConfig.url).toString(),
   });
 }
@@ -62,9 +65,42 @@ export default async function BlogArticlePage({
     "text-[1rem] font-normal leading-[1.64] tracking-[-0.01em] text-black/84 dark:text-white/82 sm:text-[1.03rem] lg:text-[1.08rem]";
   const bodyTextClassName =
     "text-[1rem] font-normal leading-[1.64] tracking-[-0.01em] text-black/84 dark:text-white/82 sm:text-[1.03rem] lg:text-[1.08rem]";
+  const articleUrl = new URL(
+    `/blog/${article.slug}`,
+    siteConfig.url,
+  ).toString();
+  const articleImageUrl = new URL(article.image, siteConfig.url).toString();
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    name: article.title,
+    description: article.description,
+    image: [articleImageUrl],
+    datePublished: article.publishedAt,
+    dateModified: article.publishedAt,
+    mainEntityOfPage: articleUrl,
+    url: articleUrl,
+    author: {
+      "@type": "Person",
+      name: article.author,
+      url: siteConfig.url,
+    },
+    publisher: {
+      "@type": "Person",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    articleSection: article.category,
+    keywords: article.tags,
+  };
 
   return (
     <main className="flex min-h-[100dvh] flex-col bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="flex-1 px-6 pb-24 pt-28 sm:pt-32 lg:pb-32 lg:pt-40">
         <article className="mx-auto w-full max-w-[1400px]">
           <header className={PAGE_HERO_STACK_CLASSNAME}>
@@ -86,14 +122,14 @@ export default async function BlogArticlePage({
             </div>
 
             <div
-              className={`mx-auto mt-10 w-full space-y-6 sm:mt-12 ${bodyTextClassName}`}
+              className={`mx-auto mt-14 w-full space-y-6 sm:mt-16 lg:mt-20 ${bodyTextClassName}`}
             >
               {article.introduction.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
 
-            <div className="mx-auto mt-14 w-full space-y-14 sm:mt-16 sm:space-y-16 lg:mt-18 lg:space-y-[4.5rem]">
+            <div className="mx-auto mt-14 w-full space-y-14 sm:mt-16 sm:space-y-16 lg:mt-20 lg:space-y-20">
               {article.sections.map((section) => (
                 <section key={section.title}>
                   <h2 className={BLOG_POST_SECTION_TITLE_CLASSNAME}>

@@ -9,8 +9,9 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "Projects",
   path: "/projects",
-  description: "Selected mobile app and product engineering projects by Arjun Bishnoi.",
-  index: false,
+  description:
+    "Selected mobile app and product engineering projects by Arjun Bishnoi.",
+  includeSocial: true,
 });
 
 export default function ProjectsPage() {

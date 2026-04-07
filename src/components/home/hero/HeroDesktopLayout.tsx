@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "motion/react";
 import { heroDescription } from "@/lib/content/hero-content";
 import { projects } from "@/lib/content/projects";
@@ -26,6 +27,9 @@ export function HeroDesktopLayout({
   viewAllBlobColors,
   isDesktop,
 }: HeroDesktopLayoutProps) {
+  const featuredProject =
+    projects.find((project) => project.featured) ?? projects[0];
+
   return (
     <motion.div
       data-about-desktop
@@ -72,15 +76,22 @@ export function HeroDesktopLayout({
               />
             </div>
 
-            <div className="w-full relative aspect-square rounded-[40px] xl:rounded-[40px] overflow-hidden neu-raised shadow-none border-none shrink-0 pointer-events-none select-none">
-              <Image
-                src={projects[0].image}
-                alt={projects[0].title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 33vw"
-              />
-            </div>
+            <Link
+              href={featuredProject.url}
+              className="project-card-link group block w-full shrink-0 rounded-none overflow-hidden h-full focus:outline-none"
+              aria-label={`View ${featuredProject.title}`}
+            >
+              <div className="aspect-square relative overflow-hidden bg-muted rounded-[40px] neu-pressed">
+                <Image
+                  src={featuredProject.image}
+                  alt={featuredProject.title}
+                  fill
+                  className="project-card-media object-cover transition-transform duration-500 ease-out"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 mix-blend-overlay pointer-events-none" />
+              </div>
+            </Link>
           </div>
 
           <div className="flex flex-col gap-6 xl:gap-7 col-span-1 self-stretch">

@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
   title: "Mobile Apps",
   path: "/apps",
   description: "Mobile app projects and writing by Arjun Bishnoi.",
-  index: false,
+  includeSocial: true,
 });
 
 export default function MobileAppsPage() {

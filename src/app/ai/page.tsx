@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
   title: "AI/ML",
   path: "/ai",
   description: "AI projects and writing by Arjun Bishnoi.",
-  index: false,
+  includeSocial: true,
 });
 
 export default function AIEngineeringPage() {
