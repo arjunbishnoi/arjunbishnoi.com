@@ -82,9 +82,16 @@ export function BlogDirectory() {
                   >
                     <input
                       ref={mobileSearchInputRef}
-                      type="text"
+                      type="search"
                       value={query}
                       onChange={(event) => setQuery(event.target.value)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                          event.preventDefault();
+                          event.currentTarget.blur();
+                        }
+                      }}
+                      enterKeyHint="search"
                       placeholder="Search blogs..."
                       className="h-full w-full bg-transparent pr-10 text-[16px] font-medium text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45"
                       aria-label="Search blogs"
