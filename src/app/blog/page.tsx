@@ -3,7 +3,6 @@ import { BlogDirectory } from "@/components/blog/BlogDirectory";
 import {
   LANDING_HERO_STACK_CLASSNAME,
   LANDING_SECTION_TITLE_CLASSNAME,
-  LANDING_HERO_SUBTITLE_CLASSNAME,
 } from "@/lib/home-title-styles";
 import { buildPageMetadata } from "@/lib/site-metadata";
 
@@ -23,9 +22,6 @@ export default function BlogPage() {
             <h1 className={LANDING_SECTION_TITLE_CLASSNAME}>
               <span className="inline">Blog</span>
             </h1>
-            <p className={LANDING_HERO_SUBTITLE_CLASSNAME}>
-              <span className="block lg:inline">Thoughts and insights.</span>
-            </p>
           </div>
         </div>
 
