@@ -1,4 +1,9 @@
 import Image from "next/image"
+import {
+  BLOG_POST_BODY_TEXT_CLASSNAME,
+  ENTRY_CATEGORY_PILL_TEXT_CLASSNAME,
+  ENTRY_TITLE_CLASSNAME,
+} from "@/lib/home-title-styles"
 
 interface ProjectProps {
   project: {
@@ -36,16 +41,16 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
       </div>
       
       <div className="flex flex-col flex-grow pt-1">
-        <h3 className="text-base md:text-lg text-foreground font-semibold line-clamp-1 mb-2">
+        <h3 className={`${ENTRY_TITLE_CLASSNAME} line-clamp-2 pb-[0.08em] mb-3`}>
           {project.title}
         </h3>
         
-        <p className="text-base md:text-lg text-foreground font-normal mb-4">
+        <p className={`${BLOG_POST_BODY_TEXT_CLASSNAME} mb-4 line-clamp-2`}>
           {shortSubtitle}
         </p>
         
         <div className="mb-2">
-          <span className="inline-block text-sm md:text-base text-foreground/80 bg-black/5 dark:bg-white/10 rounded-full px-4 py-1">
+          <span className={`inline-block rounded-full bg-black/5 px-4 py-1 dark:bg-white/10 ${ENTRY_CATEGORY_PILL_TEXT_CLASSNAME}`}>
             {category}
           </span>
         </div>

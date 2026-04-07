@@ -65,10 +65,10 @@ export function BlogDirectory() {
   }, [activeCategory, query]);
 
   return (
-    <section className="mt-8 lg:mt-4">
+    <section className="mt-[clamp(1.6rem,3vw,2.6rem)]">
       <div className="mx-auto w-full max-w-[1200px]">
         <div>
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="mx-auto flex w-[80%] max-w-[27rem] items-center justify-center gap-2 sm:w-[82%] md:w-[88%] lg:hidden">
             <div className="relative h-12 min-w-0 flex-1">
               <AnimatePresence mode="sync" initial={false}>
                 {isSearchOpen ? (

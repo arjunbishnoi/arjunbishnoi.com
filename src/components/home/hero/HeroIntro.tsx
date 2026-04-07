@@ -4,8 +4,9 @@ import { motion } from "motion/react";
 import { MobbinIconStack } from "@/components/home/MobbinIconStack";
 import type { HeroSnapTransition } from "@/components/home/hero/types";
 import {
-  HOME_SECTION_TITLE_CLASSNAME,
-  HOME_TITLE_SUBTITLE_CLASSNAME,
+  LANDING_HERO_STACK_CLASSNAME,
+  LANDING_HERO_SUBTITLE_CLASSNAME,
+  PAGE_HERO_TITLE_CLASSNAME,
 } from "@/lib/home-title-styles";
 
 type HeroIntroProps = {
@@ -37,36 +38,38 @@ export function HeroIntro({
         >
           <MobbinIconStack />
         </motion.div>
-        <motion.h1
-          className={HOME_SECTION_TITLE_CLASSNAME}
-          initial={
-            isFirstLoad
-              ? {
-                  opacity: prefersReducedMotion ? 1 : 0,
-                  y: prefersReducedMotion ? 0 : 16,
-                }
-              : false
-          }
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...snapTransition, delay: 0.1 }}
-        >
-          <span className="inline">Arjun Bishnoi</span>
-        </motion.h1>
-        <motion.p
-          className={HOME_TITLE_SUBTITLE_CLASSNAME}
-          initial={
-            isFirstLoad
-              ? {
-                  opacity: prefersReducedMotion ? 1 : 0,
-                  y: prefersReducedMotion ? 0 : 14,
-                }
-              : false
-          }
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...snapTransition, delay: 0.2 }}
-        >
-          <span className="block lg:inline">Developer and designer.</span>
-        </motion.p>
+        <div className={LANDING_HERO_STACK_CLASSNAME}>
+          <motion.h1
+            className={PAGE_HERO_TITLE_CLASSNAME}
+            initial={
+              isFirstLoad
+                ? {
+                    opacity: prefersReducedMotion ? 1 : 0,
+                    y: prefersReducedMotion ? 0 : 16,
+                  }
+                : false
+            }
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...snapTransition, delay: 0.1 }}
+          >
+            <span className="inline">Arjun Bishnoi</span>
+          </motion.h1>
+          <motion.p
+            className={LANDING_HERO_SUBTITLE_CLASSNAME}
+            initial={
+              isFirstLoad
+                ? {
+                    opacity: prefersReducedMotion ? 1 : 0,
+                    y: prefersReducedMotion ? 0 : 14,
+                  }
+                : false
+            }
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...snapTransition, delay: 0.2 }}
+          >
+            <span className="block lg:inline">Developer and designer.</span>
+          </motion.p>
+        </div>
       </div>
     </div>
   );

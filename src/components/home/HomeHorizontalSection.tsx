@@ -16,6 +16,7 @@ type HomeHorizontalSectionProps<T> = {
   items: T[];
   getItemKey: (item: T, index: number) => string | number;
   renderItem: (item: T) => ReactNode;
+  titleClassName?: string;
 };
 
 export function HomeHorizontalSection<T>({
@@ -27,6 +28,7 @@ export function HomeHorizontalSection<T>({
   items,
   getItemKey,
   renderItem,
+  titleClassName,
 }: HomeHorizontalSectionProps<T>) {
   const carouselRef = usePersistedHorizontalScroll(storageKey);
 
@@ -37,7 +39,7 @@ export function HomeHorizontalSection<T>({
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-3 sm:pb-4 md:pb-6 lg:pb-8 pt-0 md:pt-16 lg:pt-20">
         <div className="flex items-center justify-between w-full relative">
-          <h2 className={HOME_SECTION_TITLE_CLASSNAME}>{title}</h2>
+          <h2 className={titleClassName ?? HOME_SECTION_TITLE_CLASSNAME}>{title}</h2>
 
           <Link
             href={viewAllHref}

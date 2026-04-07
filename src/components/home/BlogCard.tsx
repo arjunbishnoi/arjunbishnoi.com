@@ -1,4 +1,10 @@
+import Link from "next/link";
 import Image from "next/image";
+import {
+  BLOG_POST_BODY_TEXT_CLASSNAME,
+  ENTRY_CATEGORY_PILL_TEXT_CLASSNAME,
+  ENTRY_TITLE_CLASSNAME,
+} from "@/lib/home-title-styles";
 
 interface BlogProps {
   blog: {
@@ -18,35 +24,58 @@ export function BlogCard({ blog }: BlogProps) {
     blog.category ??
     (blog.tags && blog.tags.length > 0 ? blog.tags[0] : "Blog");
   const shortSubtitle = blog.description.split(".")[0] + ".";
+  const isLinked = blog.url && blog.url !== "#";
 
-  return (
-    <div className="rounded-none overflow-hidden h-full flex flex-col">
+  const cardContent = (
+    <>
       <div className="aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-4">
         <Image
           src={blog.image}
           alt={blog.title}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
           sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 mix-blend-overlay pointer-events-none" />
       </div>
 
       <div className="flex flex-col flex-grow pt-1">
-        <h3 className="text-base md:text-lg text-foreground font-semibold mb-2">
+        <h3
+          className={`${ENTRY_TITLE_CLASSNAME} line-clamp-2 pb-[0.08em] mb-3`}
+        >
           {blog.title}
         </h3>
 
-        <p className="text-base md:text-lg text-foreground font-normal mb-4 line-clamp-1">
+        <p className={`${BLOG_POST_BODY_TEXT_CLASSNAME} mb-4 line-clamp-2`}>
           {shortSubtitle}
         </p>
 
         <div className="mb-2">
-          <span className="inline-block text-sm md:text-base text-foreground/80 bg-black/5 dark:bg-white/10 rounded-full px-4 py-1">
+          <span
+            className={`inline-block rounded-full bg-black/5 px-4 py-1 dark:bg-white/10 ${ENTRY_CATEGORY_PILL_TEXT_CLASSNAME}`}
+          >
             {category}
           </span>
         </div>
       </div>
-    </div>
+    </>
+  );
+
+  if (!isLinked) {
+    return (
+      <div className="rounded-none overflow-hidden h-full flex flex-col">
+        {cardContent}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href={blog.url}
+      className="group block rounded-none overflow-hidden h-full focus:outline-none"
+      aria-label={`Read ${blog.title}`}
+    >
+      <div className="flex h-full flex-col">{cardContent}</div>
+    </Link>
   );
 }
