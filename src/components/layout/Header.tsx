@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-import { Moon, Sun, Mail } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { mainLinks } from "@/lib/content/main-links";
@@ -48,15 +48,15 @@ export function Header() {
     },
   };
   const mobileMenuItemVariants = {
-    open: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { type: "spring" as const, stiffness: 300, damping: 24 } 
+    open: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring" as const, stiffness: 300, damping: 24 },
     },
-    closed: { 
-      opacity: 0, 
-      y: -15, 
-      transition: { duration: 0.08, ease: "easeOut" as const } 
+    closed: {
+      opacity: 0,
+      y: -15,
+      transition: { duration: 0.08, ease: "easeOut" as const },
     },
   };
   const menuSocialItems = [
@@ -69,15 +69,20 @@ export function Header() {
     },
   ] as const;
   const mobileMenuSocialVariants = {
-    open: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { delay: 0.15, type: "spring" as const, stiffness: 300, damping: 24 } 
+    open: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.15,
+        type: "spring" as const,
+        stiffness: 300,
+        damping: 24,
+      },
     },
-    closed: { 
-      opacity: 0, 
-      y: -15, 
-      transition: { duration: 0.08, ease: "easeOut" as const } 
+    closed: {
+      opacity: 0,
+      y: -15,
+      transition: { duration: 0.08, ease: "easeOut" as const },
     },
   };
   const mobileMenuIconTopVariants = {
@@ -89,41 +94,18 @@ export function Header() {
     closed: { rotate: [-45, 0, 0], y: [-4, -4, 0] },
   };
 
-  const [isHeroMailPastTop, setIsHeroMailPastTop] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-
-      if (pathname === "/") {
-        // Find all potential anchors and pick the one that's currently visible in the layout
-        const anchors = Array.from(document.querySelectorAll("#hero-mail-anchor, #hero-mail-anchor-desktop"));
-        const activeAnchor = anchors.find(el => (el as HTMLElement).offsetParent !== null);
-        
-        if (activeAnchor) {
-          const rect = activeAnchor.getBoundingClientRect();
-          // Element's BOTTOM is past the viewport top (y <= 0)
-          // This means the hero icon has completely scrolled out of view
-          setIsHeroMailPastTop(rect.bottom <= 0);
-        } else {
-          setIsHeroMailPastTop(false);
-        }
-      }
     };
 
-    // Initial check
     handleScroll();
-
-    // 10ms delay ensures state is synchronized AFTER native scroll restoration
-    const timer = setTimeout(() => {
-      window.addEventListener("scroll", handleScroll);
-    }, 10);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [pathname]);
+  }, []);
 
   useEffect(() => {
     setHasMounted(true);
@@ -191,11 +173,6 @@ export function Header() {
 
   // Shrink when scrolled (on all devices now)
   const showFullLogo = !isScrolled || isMobileMenuOpen;
-  
-  // Mail icon logic:
-  // 1. On other pages: always show (except when mobile menu is open)
-  // 2. On homepage: only show after hero mail icon has scrolled past the top
-  const isMailShown = (pathname !== "/" ? true : isHeroMailPastTop) && !isMobileMenuOpen;
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (pathname === "/") {
@@ -296,28 +273,6 @@ export function Header() {
               className="absolute top-0 bottom-0 z-10 flex items-center justify-end gap-1 sm:gap-1.5 md:!right-[8px]"
               style={{ right: `${mobileRightInset}px` }}
             >
-              <AnimatePresence initial={false}>
-                {isMailShown && (
-                  <motion.div
-                    key="mail-wrapper"
-                    initial={{ opacity: 0, scale: 0.2, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, scale: 0.2, filter: "blur(4px)" }}
-                    transition={{ type: "spring", stiffness: 450, damping: 30 }}
-                    className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center overflow-visible"
-                    style={{ originX: 0.5, originY: 0.5 }}
-                  >
-                    <Link
-                      href="/#contact"
-                      className="flex items-center justify-center w-full h-full rounded-full transition-colors duration-500 ease-soft-out text-black dark:text-white focus:outline-none"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      <Mail className="w-[1.2rem] h-[1.2rem] md:w-[1.4rem] md:h-[1.4rem]" strokeWidth={2} />
-                    </Link>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
               <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
                 <button
                   onClick={toggleTheme}
@@ -330,12 +285,19 @@ export function Header() {
                         key="sun"
                         className={cn(
                           "absolute inset-0 flex items-center justify-center",
-                          !hasMounted && "hidden dark:flex"
+                          !hasMounted && "hidden dark:flex",
                         )}
-                        initial={hasMounted ? { rotate: 90, scale: 0, opacity: 0 } : false}
+                        initial={
+                          hasMounted
+                            ? { rotate: 90, scale: 0, opacity: 0 }
+                            : false
+                        }
                         animate={{ rotate: 0, scale: 1, opacity: 1 }}
                         exit={{ rotate: -90, scale: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
+                        transition={{
+                          duration: 0.25,
+                          ease: [0.32, 0.72, 0, 1],
+                        }}
                       >
                         <Sun
                           className="w-[1.125rem] h-[1.125rem] md:w-[1.35rem] md:h-[1.35rem]"
@@ -348,12 +310,19 @@ export function Header() {
                         key="moon"
                         className={cn(
                           "absolute inset-0 flex items-center justify-center",
-                          !hasMounted && "dark:hidden flex"
+                          !hasMounted && "dark:hidden flex",
                         )}
-                        initial={hasMounted ? { rotate: 90, scale: 0, opacity: 0 } : false}
+                        initial={
+                          hasMounted
+                            ? { rotate: 90, scale: 0, opacity: 0 }
+                            : false
+                        }
                         animate={{ rotate: 0, scale: 1, opacity: 1 }}
                         exit={{ rotate: -90, scale: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
+                        transition={{
+                          duration: 0.25,
+                          ease: [0.32, 0.72, 0, 1],
+                        }}
                       >
                         <Moon
                           className="w-[1.125rem] h-[1.125rem] md:w-[1.35rem] md:h-[1.35rem]"
