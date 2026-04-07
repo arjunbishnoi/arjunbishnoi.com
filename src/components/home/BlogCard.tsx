@@ -52,7 +52,7 @@ export function BlogCard({ blog }: BlogProps) {
 
         <div className="mb-2">
           <span
-            className={`inline-block rounded-full bg-black/5 px-4 py-1 dark:bg-white/10 ${ENTRY_CATEGORY_PILL_TEXT_CLASSNAME}`}
+            className={`inline-block rounded-full bg-black/10 px-4 py-1 dark:bg-white/20 ${ENTRY_CATEGORY_PILL_TEXT_CLASSNAME}`}
           >
             {category}
           </span>

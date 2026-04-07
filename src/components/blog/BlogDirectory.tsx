@@ -124,7 +124,7 @@ export function BlogDirectory() {
                       onChange={(event) =>
                         setActiveCategory(event.target.value as BlogCategory)
                       }
-                      className="h-full w-full appearance-none rounded-full bg-black/5 pl-4 pr-12 indent-0 text-sm font-medium text-black focus:outline-none dark:bg-white/10 dark:text-white"
+                      className="h-full w-full appearance-none rounded-full bg-black/10 pl-4 pr-12 indent-0 text-sm font-medium text-black focus:outline-none dark:bg-white/20 dark:text-white"
                       aria-label="Select blog category"
                     >
                       {blogCategories.map((category) => (
@@ -193,7 +193,7 @@ export function BlogDirectory() {
               <motion.div
                 layout
                 transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                className="scrollbar-hide mx-auto max-w-full overflow-x-auto rounded-full bg-black/5 p-1 dark:bg-white/10"
+                className="scrollbar-hide mx-auto max-w-full overflow-x-auto rounded-full bg-black/10 p-1 dark:bg-white/20"
               >
                 <div className="flex min-w-max items-center gap-1">
                   {blogCategories.map((category) => {
