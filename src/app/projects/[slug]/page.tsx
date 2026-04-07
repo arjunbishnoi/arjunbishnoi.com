@@ -76,23 +76,23 @@ export default async function ProjectArticlePage({
           </header>
 
           <div className="mx-auto mt-14 max-w-[44rem] sm:mt-16 lg:mt-20 lg:max-w-[52rem]">
-            <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-[40px] lg:max-w-[22rem] xl:max-w-[24rem]">
+            <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-[40px] lg:max-w-[38rem] xl:max-w-[40rem]">
               <Image
                 src={article.image}
                 alt={`${article.title} cover image`}
                 fill
                 className="object-cover"
-                sizes="(min-width: 1280px) 24rem, (min-width: 1024px) 22rem, (min-width: 640px) 44rem, calc(100vw - 3rem)"
+                sizes="(min-width: 1280px) 40rem, (min-width: 1024px) 38rem, (min-width: 640px) 44rem, calc(100vw - 3rem)"
               />
             </div>
 
-            <div className={`mt-10 space-y-6 sm:mt-12 ${bodyTextClassName}`}>
+            <div className={`mx-auto mt-10 w-full space-y-6 sm:mt-12 ${bodyTextClassName}`}>
               {article.introduction.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
 
-            <div className="mt-14 space-y-14 sm:mt-16 sm:space-y-16 lg:mt-18 lg:space-y-[4.5rem]">
+            <div className="mx-auto mt-14 w-full space-y-14 sm:mt-16 sm:space-y-16 lg:mt-18 lg:space-y-[4.5rem]">
               {article.sections.map((section) => (
                 <section key={section.title}>
                   <h2 className={BLOG_POST_SECTION_TITLE_CLASSNAME}>
@@ -109,7 +109,7 @@ export default async function ProjectArticlePage({
               ))}
             </div>
 
-            <section className="mt-16 sm:mt-20">
+            <section className="mx-auto mt-16 w-full sm:mt-20">
               <p className="text-[0.82rem] font-medium tracking-[-0.012em] text-black/60 dark:text-white/60 sm:text-[0.88rem]">
                 Built by
               </p>
