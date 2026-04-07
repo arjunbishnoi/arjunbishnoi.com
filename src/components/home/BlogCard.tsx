@@ -33,7 +33,7 @@ export function BlogCard({ blog }: BlogProps) {
           src={blog.image}
           alt={blog.title}
           fill
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+          className="blog-card-media object-cover transition-transform duration-500 ease-out"
           sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 mix-blend-overlay pointer-events-none" />
@@ -72,7 +72,7 @@ export function BlogCard({ blog }: BlogProps) {
   return (
     <Link
       href={blog.url}
-      className="group block rounded-none overflow-hidden h-full focus:outline-none"
+      className="blog-card-link group block rounded-none overflow-hidden h-full focus:outline-none"
       aria-label={`Read ${blog.title}`}
     >
       <div className="flex h-full flex-col">{cardContent}</div>

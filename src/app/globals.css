@@ -1045,3 +1045,9 @@ html.light-theme ::selection {
 .animate-glow-pulse {
   animation: glow-pulse 4s ease-in-out infinite;
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .blog-card-link:hover .blog-card-media {
+    transform: scale(1.05);
+  }
+}
