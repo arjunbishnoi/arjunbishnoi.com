@@ -36,6 +36,22 @@ npm run build
 
 The build output is written to `.next`.
 
+## Quality Checks
+
+Run these before creating a PR:
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
+
+Or run all checks in one command:
+
+```bash
+npm run check
+```
+
 ## Contact Relay
 
 The contact form uses a shared server-side relay with unified validation, timeout handling, and lightweight rate limiting.
@@ -59,3 +75,8 @@ Optional relay tuning environment variables:
   - `home`: Homepage specific sections
 - `src/lib`: Utilities and site data
 - `public`: Static assets
+
+## Engineering Standards
+
+- Architecture reference: `ARCHITECTURE.md`
+- Contribution and naming rules: `CONTRIBUTING.md`

@@ -7,8 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
-import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
-import { mainLinks } from "@/lib/content/main-links";
+import { MobileMenuContent } from "@/components/layout/header/MobileMenuContent";
 import {
   isHomeSectionHash,
   scrollToHomeSection,
@@ -17,12 +16,8 @@ import { cn } from "@/lib/utils";
 import {
   menuPanelTransition,
   mobileMenuPanelVariants,
-  mobileMenuListVariants,
-  mobileMenuItemVariants,
-  mobileMenuSocialVariants,
   mobileMenuIconTopVariants,
   mobileMenuIconBottomVariants,
-  menuSocialItems,
   mobileLeftInset,
   mobileRightInset,
 } from "@/components/layout/header/constants";
@@ -368,76 +363,12 @@ export function Header() {
             </div>
           </div>
 
-          {/* Menu Content */}
-          <motion.div
-            initial={false}
-            animate={mobileMenuAnimationState}
-            className={cn(
-              "pl-[17px] pr-[12px] pb-[22px] w-full flex flex-col pt-6",
-              isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none",
-            )}
-          >
-            <motion.ul
-              className="flex flex-col space-y-3"
-              variants={mobileMenuListVariants}
-            >
-              {mainLinks.map((item) => (
-                <motion.li key={item.name} variants={mobileMenuItemVariants}>
-                  {item.isDownload ? (
-                    <a
-                      href={item.href}
-                      download={item.downloadName}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-xl tracking-tight font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
-                    >
-                      {item.name}
-                    </a>
-                  ) : item.href.toLowerCase().endsWith(".pdf") ? (
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-xl tracking-tight font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
-                    <Link
-                      href={item.href}
-                      className="text-xl tracking-tight font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
-                      onClick={(e) => handleNavClick(e, item.href)}
-                    >
-                      {item.name}
-                    </Link>
-                  )}
-                </motion.li>
-              ))}
-            </motion.ul>
-
-            {/* Social Icons Row */}
-            <motion.div
-              className="flex -ml-[17px] w-[calc(100%+29px)] items-center justify-center gap-[17px] mt-5 opacity-90"
-              variants={mobileMenuSocialVariants}
-            >
-              {menuSocialItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 rounded-full text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
-                  aria-label={item.name}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <SocialBrandIcon
-                    brand={item.brand}
-                    className="w-[1.875rem] h-[1.875rem]"
-                  />
-                </a>
-              ))}
-            </motion.div>
-          </motion.div>
+          <MobileMenuContent
+            isMobileMenuOpen={isMobileMenuOpen}
+            mobileMenuAnimationState={mobileMenuAnimationState}
+            onNavClick={handleNavClick}
+            onCloseMenu={() => setIsMobileMenuOpen(false)}
+          />
         </motion.div>
       </div>
     </header>

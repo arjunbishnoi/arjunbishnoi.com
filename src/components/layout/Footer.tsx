@@ -1,11 +1,45 @@
+"use client";
+
+import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { mainLinks } from "@/lib/content/main-links";
 import { socialLinks } from "@/lib/content/social-links";
+import {
+  isHomeSectionHash,
+  scrollToHomeSection,
+} from "@/lib/home-section-navigation";
 
 export function Footer() {
+  const pathname = usePathname();
+
   const footerColorClass =
     "text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors";
+  const footerStaticTextClass =
+    "text-gray-400 dark:text-gray-600 transition-colors";
+
+  const handleNavClick = (event: React.MouseEvent, href: string) => {
+    if (!href.startsWith("/#") || pathname !== "/") {
+      return;
+    }
+
+    event.preventDefault();
+    const hash = href.slice(1);
+    const normalizedHash = hash.toLowerCase();
+
+    history.pushState(null, "", hash);
+
+    if (isHomeSectionHash(normalizedHash)) {
+      scrollToHomeSection(normalizedHash);
+      return;
+    }
+
+    const section = document.querySelector(normalizedHash);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const footerSocialItems = [
     { name: "Behance", href: socialLinks.behance, brand: "behance" as const },
@@ -51,8 +85,21 @@ export function Footer() {
                     >
                       {item.name}
                     </a>
+                  ) : item.href.toLowerCase().endsWith(".pdf") ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={footerColorClass}
+                    >
+                      {item.name}
+                    </a>
                   ) : (
-                    <Link href={item.href} className={footerColorClass}>
+                    <Link
+                      href={item.href}
+                      className={footerColorClass}
+                      onClick={(event) => handleNavClick(event, item.href)}
+                    >
                       {item.name}
                     </Link>
                   )}
@@ -61,7 +108,7 @@ export function Footer() {
             </ul>
 
             <p
-              className={`${footerColorClass} order-3 text-center md:justify-self-end md:text-right`}
+              className={`${footerStaticTextClass} order-3 text-center md:justify-self-end md:text-right`}
             >
               Arjun Bishnoi © 2026
             </p>

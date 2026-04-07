@@ -6,15 +6,14 @@ import { motion, AnimatePresence } from "motion/react";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { cn } from "@/lib/utils";
 import { submitContact } from "@/app/actions/contact";
-import { SubmitButton } from "./SubmitButton";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { ContactForm } from "@/components/home/contact/ContactForm";
 import {
   socialPillClass,
   iconSvgClass,
   iconLucideClass,
   panelTransition,
   contactDesktopCardClass,
-  contactFormListVariants,
-  createContactFormItemVariants,
   socialCards,
 } from "@/components/home/contact/contact-config";
 
@@ -31,15 +30,7 @@ export function ContactSection() {
     message: null,
     error: null,
   });
-
-  const [isDesktop, setIsDesktop] = useState(true);
-
-  useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const isDesktop = useMediaQuery("(min-width: 1024px)", true);
 
   const toggleContactForm = () => {
     setIsContactFormOpen((previous) => !previous);
@@ -58,91 +49,15 @@ export function ContactSection() {
     };
   }, [state.success]);
 
-  const fieldClass = cn(
-    "block min-h-[3.25rem] w-full rounded-[28px] border border-transparent bg-zinc-100 dark:bg-zinc-100 px-5 py-3.5 text-zinc-900 dark:text-zinc-950 shadow-none",
-    "placeholder:text-zinc-500 transition-[box-shadow] duration-200",
-    "outline-none focus:ring-1 focus:ring-zinc-400/50",
-  );
-
-  const contactFormItemVariants = createContactFormItemVariants(isDesktop);
-
   const contactForm = (
-    <motion.form
-      action={formAction}
-      className="flex flex-col space-y-5 lg:space-y-3"
-      variants={contactFormListVariants}
-      initial="closed"
-      animate={isContactFormOpen ? "open" : "closed"}
-    >
-      <motion.div variants={contactFormItemVariants}>
-        <label
-          htmlFor="name"
-          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-600"
-        >
-          Name
-        </label>
-        <input
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-          type="text"
-          name="name"
-          id="name"
-          className={fieldClass}
-          placeholder="Your name"
-          required
-        />
-      </motion.div>
-
-      <motion.div variants={contactFormItemVariants}>
-        <label
-          htmlFor="email"
-          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-600"
-        >
-          Email
-        </label>
-        <input
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          type="email"
-          name="email"
-          id="email"
-          className={fieldClass}
-          placeholder="your.email@example.com"
-          required
-        />
-      </motion.div>
-
-      <motion.div variants={contactFormItemVariants} className="flex flex-col">
-        <label
-          htmlFor="message"
-          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-600"
-        >
-          Message
-        </label>
-        <textarea
-          value={form.message}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
-          name="message"
-          id="message"
-          rows={3}
-          className={cn(
-            fieldClass,
-            "min-h-[140px] resize-y lg:min-h-[130px] lg:h-[130px]",
-          )}
-          placeholder="Your message here..."
-          required
-        />
-      </motion.div>
-
-      <motion.div variants={contactFormItemVariants} className="pt-1">
-        <SubmitButton isSuccess={state.success} />
-        {state.error && (
-          <p className="mt-3 text-center text-sm text-red-600 dark:text-red-400">
-            {state.error}
-          </p>
-        )}
-      </motion.div>
-    </motion.form>
+    <ContactForm
+      values={form}
+      onValuesChange={setForm}
+      formAction={formAction}
+      state={state}
+      isDesktop={isDesktop}
+      isOpen={isContactFormOpen}
+    />
   );
 
   const socialGrid = (
