@@ -8,19 +8,36 @@
 export function scrollToAboutSection() {
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const target = document.querySelector(
-    isDesktop ? "[data-about-desktop]" : "[data-about-mobile]"
+    isDesktop ? "[data-about-desktop-grid]" : "[data-about-mobile]"
   ) as HTMLElement | null;
-  if (!target) return;
+  const desktopBentoFallbackTarget = document.querySelector(
+    "[data-about-desktop-bento]"
+  ) as HTMLElement | null;
+  const desktopFallbackTarget = document.querySelector(
+    "[data-about-desktop]"
+  ) as HTMLElement | null;
+  const finalTarget = isDesktop
+    ? target ?? desktopBentoFallbackTarget ?? desktopFallbackTarget
+    : target;
+  if (!finalTarget) return;
 
   // Wait for any animations/transitions to settle
   setTimeout(() => {
-    const rect = target.getBoundingClientRect();
+    const rect = finalTarget.getBoundingClientRect();
     const absoluteTop = rect.top + window.scrollY;
 
     if (isDesktop) {
-      // Center the bento grid vertically in the viewport
-      const offset = absoluteTop - (window.innerHeight - rect.height) / 2;
-      window.scrollTo({ top: Math.max(0, offset), behavior: "smooth" });
+      // Center the full desktop bento grid in the usable area below the floating header.
+      const headerEl = document.querySelector("header");
+      const headerBottom = headerEl?.getBoundingClientRect().bottom ?? 0;
+      const contentTop = Math.min(window.innerHeight - 1, Math.max(0, headerBottom));
+      const contentCenter = contentTop + (window.innerHeight - contentTop) / 2;
+      const desiredTop = absoluteTop + rect.height / 2 - contentCenter;
+      const maxTop = Math.max(
+        0,
+        document.documentElement.scrollHeight - window.innerHeight,
+      );
+      window.scrollTo({ top: Math.min(Math.max(0, desiredTop), maxTop), behavior: "smooth" });
     } else {
       // Place profile card top just below the floating header
       const headerOffset = 80;

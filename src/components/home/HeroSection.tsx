@@ -16,40 +16,34 @@ import { HeroProfessionalTitles } from "./hero/HeroProfessionalTitles";
 import { HeroSkillsGrid } from "./hero/HeroSkillsGrid";
 import { HeroSocialLinksRow } from "./hero/HeroSocialLinksRow";
 import { HeroViewAllProjectsPill } from "./hero/HeroViewAllProjectsPill";
+import {
+  VIEWALL_BLOB_COLORS,
+  shuffleColors,
+  rotateColors,
+} from "./hero/view-all-blob-colors";
 import { scrollToAboutSection } from "@/lib/scroll-to-about";
+import { scrollToContactSection } from "@/lib/scroll-to-contact";
 import { useIsFirstPageLoad } from "@/hooks/use-is-first-page-load";
 
-const VIEWALL_BLOB_COLORS = [
-  "bg-cyan-500/62",
-  "bg-pink-500/58",
-  "bg-violet-500/56",
-  "bg-lime-500/44",
-  "bg-orange-500/46",
-  "bg-rose-400/65",
-];
-
-function shuffleColors(colors: string[]) {
-  const next = [...colors];
-  for (let i = next.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [next[i], next[j]] = [next[j], next[i]];
-  }
-  return next;
-}
-
-function rotateColors(colors: string[], offset: number) {
-  const next = [...colors];
-  const shift = ((offset % next.length) + next.length) % next.length;
-  return next.map((_, i) => next[(i + shift) % next.length]);
-}
+const HERO_BIO_EXPANDED_STORAGE_KEY = "home.hero.bioExpanded";
 
 export function HeroSection() {
   const [scrolledDown, setScrolledDown] = useState(false);
   const [viewAllBlobColors, setViewAllBlobColors] =
     useState<string[]>(VIEWALL_BLOB_COLORS);
-  const [bioExpanded, setBioExpanded] = useState(false);
+  const [bioExpanded, setBioExpanded] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return sessionStorage.getItem(HERO_BIO_EXPANDED_STORAGE_KEY) === "true";
+  });
   const [isDesktop, setIsDesktop] = useState<boolean>(false); // Default to Mobile for SSR priority
   const isFirstLoad = useIsFirstPageLoad();
+
+  useEffect(() => {
+    sessionStorage.setItem(HERO_BIO_EXPANDED_STORAGE_KEY, String(bioExpanded));
+  }, [bioExpanded]);
 
   useEffect(() => {
     const mql = window.matchMedia("(min-width: 1024px)");
@@ -79,11 +73,16 @@ export function HeroSection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle #about on initial page load and direct URL entry
+  // Handle in-page hash navigation on initial load and direct URL entry.
   useEffect(() => {
     function handleHash() {
       if (window.location.hash === "#about") {
         scrollToAboutSection();
+        return;
+      }
+
+      if (window.location.hash === "#contact") {
+        scrollToContactSection();
       }
     }
     handleHash();
@@ -210,6 +209,8 @@ export function HeroSection() {
               </Link>
               <Link
                 href={socialLinks.resume}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.95rem] text-center active:bg-zinc-100/10 transition-colors"
               >
                 <div className="whitespace-nowrap">Resume</div>
@@ -352,7 +353,10 @@ export function HeroSection() {
         transition={{ ...snapTransition, delay: 0.3 }}
       >
         <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6">
-          <div className="grid grid-cols-3 gap-6 xl:gap-7 items-start">
+          <div
+            data-about-desktop-grid
+            className="grid grid-cols-3 gap-6 xl:gap-7 items-start"
+          >
             {/* COLUMN 1: Bio + Skills (Merged) */}
             <div className="hero-bio-skills-merged-card col-span-1 self-stretch overflow-hidden bg-[#e5e5e5] dark:bg-[#161616] rounded-[40px] flex flex-col">
               {/* Top Section: Bio */}
@@ -374,7 +378,10 @@ export function HeroSection() {
             {/* COLUMN 2: Bento (Row 1) + Featured project (Row 2) */}
             <div className="flex flex-col gap-6 xl:gap-7">
               {/* ROW 1: Interactive Bento */}
-              <div className="w-full relative aspect-[4/5.6] lg:aspect-[4/5] neu-container overflow-visible rounded-[40px] xl:rounded-[40px] grid grid-rows-[34%_22%_22%_22%] lg:grid-rows-[40%_20%_20%_20%] shrink-0 min-h-0">
+              <div
+                data-about-desktop-bento
+                className="w-full relative aspect-[4/5.6] lg:aspect-[4/5] neu-container overflow-visible rounded-[40px] xl:rounded-[40px] grid grid-rows-[34%_22%_22%_22%] lg:grid-rows-[40%_20%_20%_20%] shrink-0 min-h-0"
+              >
                 <HeroViewAllProjectsPill
                   variant="desktop"
                   blobColors={viewAllBlobColors}
@@ -402,6 +409,8 @@ export function HeroSection() {
                   </Link>
                   <Link
                     href={socialLinks.resume}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center border-b neu-separator text-zinc-900 dark:text-white font-medium text-[0.81rem] xl:text-[0.86rem] hover:bg-zinc-100/10 transition-colors"
                   >
                     <div className="whitespace-nowrap">Resume</div>

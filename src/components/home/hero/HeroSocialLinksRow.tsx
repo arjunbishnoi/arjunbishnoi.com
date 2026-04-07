@@ -1,33 +1,48 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { socialLinks } from "@/lib/content/social-links"
-import { SocialBrandIcon } from "@/components/social/SocialBrandIcon"
-import { cn } from "@/lib/utils"
+import Link from "next/link";
+import { socialLinks } from "@/lib/content/social-links";
+import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
+import { cn } from "@/lib/utils";
+import { scrollToContactSection } from "@/lib/scroll-to-contact";
 
 type HeroSocialLinksRowProps = {
-  variant: "mobile" | "desktop"
-}
+  variant: "mobile" | "desktop";
+};
 
 export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
-  const isDesktop = variant === "desktop"
+  const isDesktop = variant === "desktop";
   const tileClassName = cn(
     "flex items-center justify-center group transition-colors",
-    isDesktop ? "hover:bg-zinc-100/10" : "active:bg-zinc-100/10"
-  )
+    isDesktop ? "hover:bg-zinc-100/10" : "active:bg-zinc-100/10",
+  );
   const iconWrapClassName = cn(
     "rounded-full flex items-center justify-center transition-colors",
-    isDesktop ? "w-12 h-12 xl:w-14 xl:h-14 group-hover:scale-110" : "w-11 h-11"
-  )
-  const iconClassName = isDesktop ? "block w-6 h-6 xl:w-7 xl:h-7 fill-current" : "block w-[1.4rem] h-[1.4rem] fill-current"
+    isDesktop ? "w-12 h-12 xl:w-14 xl:h-14 group-hover:scale-110" : "w-11 h-11",
+  );
+  const iconClassName = isDesktop
+    ? "block w-6 h-6 xl:w-7 xl:h-7 fill-current"
+    : "block w-[1.4rem] h-[1.4rem] fill-current";
+
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    history.pushState(null, "", "/#contact");
+    scrollToContactSection();
+  };
 
   return (
     <div className="grid grid-cols-4 h-full">
-      <Link 
-        href="#contact" 
+      <Link
+        href="/#contact"
+        onClick={handleContactClick}
         className={cn(tileClassName, "border-r neu-separator")}
       >
-        <div className={cn(iconWrapClassName, "text-rose-500 group-hover:opacity-100 opacity-90")}>
+        <div
+          className={cn(
+            iconWrapClassName,
+            "text-rose-500 group-hover:opacity-100 opacity-90",
+          )}
+        >
           <SocialBrandIcon brand="email" className={iconClassName} />
         </div>
       </Link>
@@ -37,7 +52,12 @@ export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
         rel="noopener noreferrer"
         className={cn(tileClassName, "border-r neu-separator")}
       >
-        <div className={cn(iconWrapClassName, "text-[#1769FF] group-hover:opacity-100 opacity-90")}>
+        <div
+          className={cn(
+            iconWrapClassName,
+            "text-[#1769FF] group-hover:opacity-100 opacity-90",
+          )}
+        >
           <SocialBrandIcon brand="behance" className={iconClassName} />
         </div>
       </a>
@@ -47,15 +67,30 @@ export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
         rel="noopener noreferrer"
         className={cn(tileClassName, "border-r neu-separator")}
       >
-        <div className={cn(iconWrapClassName, "text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90")}>
+        <div
+          className={cn(
+            iconWrapClassName,
+            "text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90",
+          )}
+        >
           <SocialBrandIcon brand="github" className={iconClassName} />
         </div>
       </a>
-      <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className={tileClassName}>
-        <div className={cn(iconWrapClassName, "text-[#0A66C2] group-hover:opacity-100 opacity-90")}>
+      <a
+        href={socialLinks.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={tileClassName}
+      >
+        <div
+          className={cn(
+            iconWrapClassName,
+            "text-[#0A66C2] group-hover:opacity-100 opacity-90",
+          )}
+        >
           <SocialBrandIcon brand="linkedin" className={iconClassName} />
         </div>
       </a>
     </div>
-  )
+  );
 }

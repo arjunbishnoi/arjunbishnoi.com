@@ -3,22 +3,36 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { mainLinks } from "@/lib/content/main-links";
-import { socialLinks } from "@/lib/content/social-links";
 import { scrollToAboutSection } from "@/lib/scroll-to-about";
+import { scrollToContactSection } from "@/lib/scroll-to-contact";
 import { cn } from "@/lib/utils";
+import {
+  menuPanelTransition,
+  mobileMenuPanelVariants,
+  mobileMenuListVariants,
+  mobileMenuItemVariants,
+  mobileMenuSocialVariants,
+  mobileMenuIconTopVariants,
+  mobileMenuIconBottomVariants,
+  menuSocialItems,
+  mobileLeftInset,
+  mobileRightInset,
+} from "@/components/layout/header/constants";
 
 export function Header() {
+  const MENU_CLOSE_DELAY_MS = 360;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const mobileMenuContainerRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
+  const router = useRouter();
   const [hasMounted, setHasMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
 
@@ -30,68 +44,10 @@ export function Header() {
   }, []);
 
   const mobileMenuAnimationState = isMobileMenuOpen ? "open" : "closed";
-  const menuPanelTransition = {
-    type: "spring" as const,
-    duration: 0.3,
-    bounce: 0.1,
-  };
-  const mobileMenuPanelVariants = {
-    open: { height: "auto" },
-    closed: { height: "var(--navbar-height)" },
-  };
-  const mobileMenuListVariants = {
-    open: {
-      transition: { staggerChildren: 0.03, delayChildren: 0.05 },
-    },
-    closed: {
-      transition: { staggerChildren: 0 },
-    },
-  };
-  const mobileMenuItemVariants = {
-    open: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring" as const, stiffness: 300, damping: 24 },
-    },
-    closed: {
-      opacity: 0,
-      y: -15,
-      transition: { duration: 0.08, ease: "easeOut" as const },
-    },
-  };
-  const menuSocialItems = [
-    { name: "Behance", href: socialLinks.behance, brand: "behance" as const },
-    { name: "GitHub", href: socialLinks.github, brand: "github" as const },
-    {
-      name: "LinkedIn",
-      href: socialLinks.linkedin,
-      brand: "linkedin" as const,
-    },
-  ] as const;
-  const mobileMenuSocialVariants = {
-    open: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.15,
-        type: "spring" as const,
-        stiffness: 300,
-        damping: 24,
-      },
-    },
-    closed: {
-      opacity: 0,
-      y: -15,
-      transition: { duration: 0.08, ease: "easeOut" as const },
-    },
-  };
-  const mobileMenuIconTopVariants = {
-    open: { rotate: [0, 0, 45], y: [0, 4, 4] },
-    closed: { rotate: [45, 0, 0], y: [4, 4, 0] },
-  };
-  const mobileMenuIconBottomVariants = {
-    open: { rotate: [0, 0, -45], y: [0, -4, -4] },
-    closed: { rotate: [-45, 0, 0], y: [-4, -4, 0] },
+
+  const releaseGlobalMenuLocks = () => {
+    document.body.style.overflow = "";
+    document.documentElement.classList.remove("mobile-menu-open");
   };
 
   useEffect(() => {
@@ -136,8 +92,32 @@ export function Header() {
   // Failsafe unmount cleanup
   useEffect(() => {
     return () => {
-      document.body.style.overflow = "";
-      document.documentElement.classList.remove("mobile-menu-open");
+      releaseGlobalMenuLocks();
+    };
+  }, []);
+
+  // Browser back/forward restore (for example when returning from PDFs)
+  // can keep global locks or stale UI state. Force-reset on return to tab/page.
+  useEffect(() => {
+    const syncFromPageRestore = () => {
+      releaseGlobalMenuLocks();
+      setIsMobileMenuOpen(false);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        syncFromPageRestore();
+      }
+    };
+
+    window.addEventListener("pageshow", syncFromPageRestore);
+    window.addEventListener("focus", syncFromPageRestore);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("pageshow", syncFromPageRestore);
+      window.removeEventListener("focus", syncFromPageRestore);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
@@ -174,41 +154,78 @@ export function Header() {
   // Shrink when scrolled (on all devices now)
   const showFullLogo = !isScrolled || isMobileMenuOpen;
 
-  const handleLogoClick = (e: React.MouseEvent) => {
-    if (pathname === "/") {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+  const resetToHomeView = () => {
+    if (pathname !== "/") {
+      router.push("/");
+      return;
     }
-    setIsMobileMenuOpen(false);
+
+    if (window.location.hash) {
+      history.replaceState(null, "", "/");
+    }
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+      window.setTimeout(() => {
+        releaseGlobalMenuLocks();
+        resetToHomeView();
+      }, MENU_CLOSE_DELAY_MS);
+      return;
+    }
+
+    resetToHomeView();
   };
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
+    const wasMenuOpen = isMobileMenuOpen;
     setIsMobileMenuOpen(false);
+
+    const runHashScroll = (hash: string) => {
+      if (hash === "#about") {
+        scrollToAboutSection();
+        return;
+      }
+
+      if (hash === "#contact") {
+        scrollToContactSection();
+        return;
+      }
+
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
     // For hash links on the current page, handle scroll manually
     // because Next.js Link doesn't trigger native hashchange
     if (href.startsWith("/#") && pathname === "/") {
       e.preventDefault();
       const hash = href.slice(1); // e.g. "#about"
       history.pushState(null, "", hash);
-      if (hash === "#about") {
-        scrollToAboutSection();
+
+      if (wasMenuOpen) {
+        window.setTimeout(() => {
+          releaseGlobalMenuLocks();
+          runHashScroll(hash);
+        }, 360);
       } else {
-        // For other hash sections (contact, skills, etc.), use native scroll
-        const el = document.querySelector(hash);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        runHashScroll(hash);
       }
     }
   };
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
-
-  // Spacing model (mobile)
-  const mobileLeftInset = 8;
-  const mobileRightInset = 8;
 
   return (
     <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
@@ -400,7 +417,18 @@ export function Header() {
                     <a
                       href={item.href}
                       download={item.downloadName}
+                      onClick={() => setIsMobileMenuOpen(false)}
                       className="text-xl tracking-tight font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                    >
+                      {item.name}
+                    </a>
+                  ) : item.href.toLowerCase().endsWith(".pdf") ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-xl tracking-tight font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
                     >
                       {item.name}
                     </a>
