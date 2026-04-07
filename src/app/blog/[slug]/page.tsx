@@ -75,13 +75,13 @@ export default async function BlogArticlePage({
           </header>
 
           <div className="mx-auto mt-14 max-w-[44rem] sm:mt-16 lg:mt-20 lg:max-w-[52rem]">
-            <div className="relative aspect-square overflow-hidden rounded-[40px] border border-black/[0.08] bg-black/[0.03] shadow-[0_26px_56px_-38px_rgba(0,0,0,0.45)] dark:border-white/[0.12] dark:bg-white/[0.03]">
+            <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-[40px] lg:max-w-[22rem] xl:max-w-[24rem]">
               <Image
                 src={article.image}
                 alt={`${article.title} cover image`}
                 fill
                 className="object-cover"
-                sizes="(min-width: 1024px) 52rem, (min-width: 640px) 44rem, calc(100vw - 3rem)"
+                sizes="(min-width: 1280px) 24rem, (min-width: 1024px) 22rem, (min-width: 640px) 44rem, calc(100vw - 3rem)"
               />
             </div>
 
