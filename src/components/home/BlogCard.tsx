@@ -1,20 +1,23 @@
-import Image from "next/image"
+import Image from "next/image";
 
 interface BlogProps {
   blog: {
-    id: string
-    title: string
-    description: string
-    image: string
-    tags: string[]
-    date: string
-    url: string
-  }
+    id: string;
+    title: string;
+    description: string;
+    image: string;
+    category?: string;
+    tags: string[];
+    date: string;
+    url: string;
+  };
 }
 
 export function BlogCard({ blog }: BlogProps) {
-  const category = blog.tags && blog.tags.length > 0 ? blog.tags[0] : "Blog";
-  const shortSubtitle = blog.description.split('.')[0] + '.'
+  const category =
+    blog.category ??
+    (blog.tags && blog.tags.length > 0 ? blog.tags[0] : "Blog");
+  const shortSubtitle = blog.description.split(".")[0] + ".";
 
   return (
     <div className="rounded-none overflow-hidden h-full flex flex-col">
@@ -28,7 +31,7 @@ export function BlogCard({ blog }: BlogProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 mix-blend-overlay pointer-events-none" />
       </div>
-      
+
       <div className="flex flex-col flex-grow pt-1">
         <h3 className="text-base md:text-lg text-foreground font-semibold mb-2">
           {blog.title}
@@ -37,7 +40,7 @@ export function BlogCard({ blog }: BlogProps) {
         <p className="text-base md:text-lg text-foreground font-normal mb-4 line-clamp-1">
           {shortSubtitle}
         </p>
-        
+
         <div className="mb-2">
           <span className="inline-block text-sm md:text-base text-foreground/80 bg-black/5 dark:bg-white/10 rounded-full px-4 py-1">
             {category}
@@ -45,5 +48,5 @@ export function BlogCard({ blog }: BlogProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -3,6 +3,10 @@
 import { motion } from "motion/react";
 import { MobbinIconStack } from "@/components/home/MobbinIconStack";
 import type { HeroSnapTransition } from "@/components/home/hero/types";
+import {
+  HOME_SECTION_TITLE_CLASSNAME,
+  HOME_TITLE_SUBTITLE_CLASSNAME,
+} from "@/lib/home-title-styles";
 
 type HeroIntroProps = {
   isFirstLoad: boolean;
@@ -34,7 +38,7 @@ export function HeroIntro({
           <MobbinIconStack />
         </motion.div>
         <motion.h1
-          className="font-sans font-semibold whitespace-nowrap text-[2.4rem] sm:text-[3.5rem] md:text-[3.8rem] lg:text-[4rem] xl:text-[4.5rem] leading-[1.02] tracking-[-0.05em] sm:tracking-[-0.035em] md:tracking-[-0.04em] lg:tracking-[-0.038em]"
+          className={HOME_SECTION_TITLE_CLASSNAME}
           initial={
             isFirstLoad
               ? {
@@ -46,12 +50,10 @@ export function HeroIntro({
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...snapTransition, delay: 0.1 }}
         >
-          <span className="inline text-black dark:text-white">
-            Arjun Bishnoi
-          </span>
+          <span className="inline">Arjun Bishnoi</span>
         </motion.h1>
         <motion.p
-          className="mt-1.5 text-center text-base leading-[1.28] md:mt-3 md:text-xl lg:text-xl xl:text-[1.35rem] md:leading-relaxed text-zinc-500 dark:text-zinc-400 lg:max-w-none lg:whitespace-nowrap lg:mb-4 xl:mb-6"
+          className={HOME_TITLE_SUBTITLE_CLASSNAME}
           initial={
             isFirstLoad
               ? {
