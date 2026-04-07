@@ -20,7 +20,10 @@ export type Project = {
   title: string
   description: string
   image: string
+  category?: string
   tags: string[]
+  date: string
+  url: string
   sourceUrl: string
   featured?: boolean
   challenge?: string

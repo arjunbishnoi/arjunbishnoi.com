@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image"
 import {
   BLOG_POST_BODY_TEXT_CLASSNAME,
@@ -11,21 +12,24 @@ interface ProjectProps {
     title: string
     description: string
     image: string
+    category?: string
     tags: string[]
+    date: string
+    url: string
     sourceUrl: string
   }
   showDate?: boolean
 }
 
 export function ProjectCard({ project, showDate = false }: ProjectProps) {
-  // Extract a subtitle or create a short one from the description, and determine a category/date.
-  // We'll mock a category and date since they aren't directly in the site-data yet.
   const shortSubtitle = project.description.split('.')[0] + '.'; 
-  const category = project.tags && project.tags.length > 0 ? project.tags[0] : "Project";
-  const dateStr = project.id === "cryptotracker" ? "12 Nov 2024" : project.id === "4rent" ? "05 Mar 2023" : "22 Jul 2022";
+  const category =
+    project.category ??
+    (project.tags && project.tags.length > 0 ? project.tags[0] : "Project");
+  const isLinked = project.url && project.url !== "#";
 
-  return (
-    <div className="rounded-none overflow-hidden h-full flex flex-col">
+  const cardContent = (
+    <>
       <div 
         className="aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-4 neu-pressed"
         style={{ '--neu-surface': 'var(--projects-surface, var(--background))' } as React.CSSProperties}
@@ -34,7 +38,7 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover"
+          className="project-card-media object-cover transition-transform duration-500 ease-out"
           sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 mix-blend-overlay pointer-events-none" />
@@ -57,10 +61,28 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
         
         {showDate && (
           <div className="text-sm md:text-base text-muted-foreground">
-            {dateStr}
+            {project.date}
           </div>
         )}
       </div>
-    </div>
-  )
+    </>
+  );
+
+  if (!isLinked) {
+    return (
+      <div className="rounded-none overflow-hidden h-full flex flex-col">
+        {cardContent}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href={project.url}
+      className="project-card-link group block rounded-none overflow-hidden h-full focus:outline-none"
+      aria-label={`View ${project.title}`}
+    >
+      <div className="flex h-full flex-col">{cardContent}</div>
+    </Link>
+  );
 }

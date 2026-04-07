@@ -1050,4 +1050,8 @@ html.light-theme ::selection {
   .blog-card-link:hover .blog-card-media {
     transform: scale(1.05);
   }
+
+  .project-card-link:hover .project-card-media {
+    transform: scale(1.05);
+  }
 }

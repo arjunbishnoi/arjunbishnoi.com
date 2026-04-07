@@ -3,23 +3,23 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Search, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { BlogCard } from "@/components/home/BlogCard";
+import { ProjectCard } from "@/components/projects/ProjectCard";
 import {
-  blogCategories,
-  type BlogCategory,
-} from "@/lib/content/blog-categories";
-import { blogs } from "@/lib/content/blogs";
+  projectCategories,
+  type ProjectCategory,
+} from "@/lib/content/project-categories";
+import { projects } from "@/lib/content/projects";
 
 function normalize(value: string) {
   return value.trim().toLowerCase();
 }
 
-function getBlogCategory(blog: (typeof blogs)[number]) {
-  return blog.category ?? blog.tags[0] ?? "Blog";
+function getProjectCategory(project: (typeof projects)[number]) {
+  return project.category ?? project.tags[0] ?? "Projects";
 }
 
-export function BlogDirectory() {
-  const [activeCategory, setActiveCategory] = useState<BlogCategory>("All");
+export function ProjectDirectory() {
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("All");
   const [query, setQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const mobileSearchInputRef = useRef<HTMLInputElement>(null);
@@ -37,16 +37,16 @@ export function BlogDirectory() {
     }
   }, [isSearchOpen]);
 
-  const filteredBlogs = useMemo(() => {
+  const filteredProjects = useMemo(() => {
     const normalizedQuery = normalize(query);
     const normalizedActive = normalize(activeCategory);
 
-    return blogs.filter((blog) => {
-      const category = getBlogCategory(blog);
+    return projects.filter((project) => {
+      const category = getProjectCategory(project);
       const categoryMatches =
         activeCategory === "All" ||
         normalize(category) === normalizedActive ||
-        blog.tags.some((tag) => normalize(tag) === normalizedActive);
+        project.tags.some((tag) => normalize(tag) === normalizedActive);
 
       if (!categoryMatches) {
         return false;
@@ -56,7 +56,12 @@ export function BlogDirectory() {
         return true;
       }
 
-      const haystack = [blog.title, blog.description, category, ...blog.tags]
+      const haystack = [
+        project.title,
+        project.description,
+        category,
+        ...project.tags,
+      ]
         .join(" ")
         .toLowerCase();
 
@@ -92,9 +97,9 @@ export function BlogDirectory() {
                         }
                       }}
                       enterKeyHint="search"
-                      placeholder="Search blogs..."
+                      placeholder="Search projects..."
                       className="h-full w-full bg-transparent pr-10 text-[16px] font-medium text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45"
-                      aria-label="Search blogs"
+                      aria-label="Search projects"
                     />
                     {hasQuery ? (
                       <button
@@ -122,12 +127,12 @@ export function BlogDirectory() {
                     <select
                       value={activeCategory}
                       onChange={(event) =>
-                        setActiveCategory(event.target.value as BlogCategory)
+                        setActiveCategory(event.target.value as ProjectCategory)
                       }
                       className="h-full w-full appearance-none rounded-full bg-black/5 pl-4 pr-12 indent-0 text-sm font-medium text-black focus:outline-none dark:bg-white/10 dark:text-white"
-                      aria-label="Select blog category"
+                      aria-label="Select project category"
                     >
-                      {blogCategories.map((category) => (
+                      {projectCategories.map((category) => (
                         <option key={category} value={category}>
                           {category}
                         </option>
@@ -156,7 +161,7 @@ export function BlogDirectory() {
               }}
               className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-white transition-transform active:scale-[0.98] dark:bg-white dark:text-black"
               aria-label={
-                !isSearchOpen ? "Open blog search" : "Close blog search"
+                !isSearchOpen ? "Open project search" : "Close project search"
               }
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -196,7 +201,7 @@ export function BlogDirectory() {
                 className="scrollbar-hide mx-auto max-w-full overflow-x-auto rounded-full bg-black/5 p-1 dark:bg-white/10"
               >
                 <div className="flex min-w-max items-center gap-1">
-                  {blogCategories.map((category) => {
+                  {projectCategories.map((category) => {
                     const isActive = category === activeCategory;
 
                     return (
@@ -208,7 +213,7 @@ export function BlogDirectory() {
                       >
                         {isActive ? (
                           <motion.span
-                            layoutId="blog-category-pill"
+                            layoutId="project-category-pill"
                             className="absolute inset-0 rounded-full bg-black dark:bg-white"
                             transition={{
                               type: "spring",
@@ -262,14 +267,14 @@ export function BlogDirectory() {
                     type="text"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
-                    placeholder="Search blogs..."
+                    placeholder="Search projects..."
                     className={[
                       "h-full min-w-0 flex-1 bg-transparent text-sm font-medium text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45",
                       isSearchOpen
                         ? "pointer-events-auto opacity-100"
                         : "pointer-events-none w-0 opacity-0",
                     ].join(" ")}
-                    aria-label="Search blogs"
+                    aria-label="Search projects"
                   />
                   {isSearchOpen && hasQuery ? (
                     <button
@@ -302,7 +307,9 @@ export function BlogDirectory() {
                         : "h-12 w-12 bg-black text-white dark:bg-white dark:text-black",
                     ].join(" ")}
                     aria-label={
-                      !isSearchOpen ? "Open blog search" : "Close blog search"
+                      !isSearchOpen
+                        ? "Open project search"
+                        : "Close project search"
                     }
                   >
                     {isSearchOpen ? (
@@ -320,10 +327,10 @@ export function BlogDirectory() {
           </div>
         </div>
 
-        {filteredBlogs.length > 0 ? (
+        {filteredProjects.length > 0 ? (
           <div className="mt-14 lg:mt-20 xl:mt-24 grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {filteredBlogs.map((blog) => (
-              <BlogCard key={blog.id} blog={blog} />
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         ) : (
