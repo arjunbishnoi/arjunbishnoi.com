@@ -3,7 +3,10 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { BlogShareButton } from "@/components/blog/BlogShareButton";
 import { Footer } from "@/components/layout/Footer";
-import { blogArticles, getBlogArticleBySlug } from "@/lib/content/blog-articles";
+import {
+  blogArticles,
+  getBlogArticleBySlug,
+} from "@/lib/content/blog-articles";
 import {
   BLOG_POST_SECTION_TITLE_CLASSNAME,
   PAGE_HERO_STACK_CLASSNAME,
@@ -65,20 +68,24 @@ export default async function BlogArticlePage({
       <div className="flex-1 px-6 pb-24 pt-28 sm:pt-32 lg:pb-32 lg:pt-40">
         <article className="mx-auto w-full max-w-[1400px]">
           <header className={PAGE_HERO_STACK_CLASSNAME}>
-            <p className={heroMetaTextClassName}>
-              {article.publishedLabel}
-            </p>
-            <h1 className={PAGE_HERO_TITLE_CLASSNAME}>
-              {article.title}
-            </h1>
-            <p className={PAGE_HERO_SUBTITLE_CLASSNAME}>
-              {article.deck}
-            </p>
+            <p className={heroMetaTextClassName}>{article.publishedLabel}</p>
+            <h1 className={PAGE_HERO_TITLE_CLASSNAME}>{article.title}</h1>
+            <p className={PAGE_HERO_SUBTITLE_CLASSNAME}>{article.deck}</p>
             <BlogShareButton title={article.title} />
           </header>
 
           <div className="mx-auto mt-14 max-w-[44rem] sm:mt-16 lg:mt-20 lg:max-w-[52rem]">
-            <div className={`space-y-6 ${bodyTextClassName}`}>
+            <div className="relative aspect-square overflow-hidden rounded-[40px] border border-black/[0.08] bg-black/[0.03] shadow-[0_26px_56px_-38px_rgba(0,0,0,0.45)] dark:border-white/[0.12] dark:bg-white/[0.03]">
+              <Image
+                src={article.image}
+                alt={`${article.title} cover image`}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 52rem, (min-width: 640px) 44rem, calc(100vw - 3rem)"
+              />
+            </div>
+
+            <div className={`mt-10 space-y-6 sm:mt-12 ${bodyTextClassName}`}>
               {article.introduction.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -90,7 +97,9 @@ export default async function BlogArticlePage({
                   <h2 className={BLOG_POST_SECTION_TITLE_CLASSNAME}>
                     {section.title}
                   </h2>
-                  <div className={`mt-4 space-y-6 sm:mt-5 ${bodyTextClassName}`}>
+                  <div
+                    className={`mt-4 space-y-6 sm:mt-5 ${bodyTextClassName}`}
+                  >
                     {section.paragraphs.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}

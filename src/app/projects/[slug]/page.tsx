@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/layout/Footer";
 import { ProjectShareButton } from "@/components/projects/ProjectShareButton";
@@ -33,7 +34,8 @@ export async function generateMetadata({
     return buildPageMetadata({
       title: "Projects",
       path: "/projects",
-      description: "Selected mobile app and product engineering projects by Arjun Bishnoi.",
+      description:
+        "Selected mobile app and product engineering projects by Arjun Bishnoi.",
       index: false,
     });
   }
@@ -74,7 +76,17 @@ export default async function ProjectArticlePage({
           </header>
 
           <div className="mx-auto mt-14 max-w-[44rem] sm:mt-16 lg:mt-20 lg:max-w-[52rem]">
-            <div className={`space-y-6 ${bodyTextClassName}`}>
+            <div className="relative aspect-square overflow-hidden rounded-[40px] border border-black/[0.08] bg-black/[0.03] shadow-[0_26px_56px_-38px_rgba(0,0,0,0.45)] dark:border-white/[0.12] dark:bg-white/[0.03]">
+              <Image
+                src={article.image}
+                alt={`${article.title} cover image`}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 52rem, (min-width: 640px) 44rem, calc(100vw - 3rem)"
+              />
+            </div>
+
+            <div className={`mt-10 space-y-6 sm:mt-12 ${bodyTextClassName}`}>
               {article.introduction.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -86,7 +98,9 @@ export default async function ProjectArticlePage({
                   <h2 className={BLOG_POST_SECTION_TITLE_CLASSNAME}>
                     {section.title}
                   </h2>
-                  <div className={`mt-4 space-y-6 sm:mt-5 ${bodyTextClassName}`}>
+                  <div
+                    className={`mt-4 space-y-6 sm:mt-5 ${bodyTextClassName}`}
+                  >
                     {section.paragraphs.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}
