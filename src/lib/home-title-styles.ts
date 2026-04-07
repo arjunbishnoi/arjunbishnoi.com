@@ -23,10 +23,10 @@ export const LANDING_HERO_SUBTITLE_CLASSNAME =
   "m-0 w-full max-w-none text-[1.06rem] font-normal leading-[1.58] tracking-[-0.01em] text-black/60 dark:text-white/64 sm:text-[1.1rem] lg:max-w-[30rem] lg:text-[1.24rem] xl:max-w-[29rem] xl:text-[1.32rem]";
 
 export const BLOG_POST_SECTION_TITLE_CLASSNAME =
-  "w-full max-w-none text-[clamp(1.5rem,2.65vw,2.15rem)] font-medium leading-[1.08] tracking-[-0.045em] text-black dark:text-white";
+  "w-full max-w-none text-[clamp(1.5rem,2.65vw,2.15rem)] font-medium leading-[1.18] tracking-[-0.045em] text-black dark:text-white sm:leading-[1.14] md:leading-[1.08]";
 
 export const ENTRY_TITLE_CLASSNAME =
-  "w-full max-w-none text-[clamp(1.38rem,2.35vw,1.95rem)] font-medium leading-[1.12] tracking-[-0.038em] text-black dark:text-white";
+  "w-full max-w-none text-[clamp(1.38rem,2.35vw,1.95rem)] font-medium leading-[1.22] tracking-[-0.038em] text-black dark:text-white sm:leading-[1.18] md:leading-[1.12]";
 
 export const BLOG_POST_BODY_TEXT_CLASSNAME =
   "text-[1rem] font-normal leading-[1.64] tracking-[-0.01em] text-black/84 dark:text-white/82 sm:text-[1.03rem] lg:text-[1.08rem]";

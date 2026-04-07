@@ -5,6 +5,7 @@ import { BlogShareButton } from "@/components/blog/BlogShareButton";
 import { Footer } from "@/components/layout/Footer";
 import { blogArticles, getBlogArticleBySlug } from "@/lib/content/blog-articles";
 import {
+  BLOG_POST_SECTION_TITLE_CLASSNAME,
   PAGE_HERO_STACK_CLASSNAME,
   PAGE_HERO_SUBTITLE_CLASSNAME,
   PAGE_HERO_TITLE_CLASSNAME,
@@ -86,7 +87,7 @@ export default async function BlogArticlePage({
             <div className="mt-14 space-y-14 sm:mt-16 sm:space-y-16 lg:mt-18 lg:space-y-[4.5rem]">
               {article.sections.map((section) => (
                 <section key={section.title}>
-                  <h2 className="w-full max-w-none text-[clamp(1.5rem,2.65vw,2.15rem)] font-medium leading-[1] tracking-[-0.045em] text-black dark:text-white">
+                  <h2 className={BLOG_POST_SECTION_TITLE_CLASSNAME}>
                     {section.title}
                   </h2>
                   <div className={`mt-4 space-y-6 sm:mt-5 ${bodyTextClassName}`}>
