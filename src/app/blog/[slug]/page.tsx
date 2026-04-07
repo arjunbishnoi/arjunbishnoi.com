@@ -85,7 +85,9 @@ export default async function BlogArticlePage({
               />
             </div>
 
-            <div className={`mx-auto mt-10 w-full space-y-6 sm:mt-12 ${bodyTextClassName}`}>
+            <div
+              className={`mx-auto mt-10 w-full space-y-6 sm:mt-12 ${bodyTextClassName}`}
+            >
               {article.introduction.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
