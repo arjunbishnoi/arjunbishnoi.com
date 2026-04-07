@@ -4,7 +4,7 @@ import Link from "next/link";
 import { socialLinks } from "@/lib/content/social-links";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { cn } from "@/lib/utils";
-import { scrollToContactSection } from "@/lib/scroll-to-contact";
+import { navigateToHomeSection } from "@/lib/home-section-navigation";
 
 type HeroSocialLinksRowProps = {
   variant: "mobile" | "desktop";
@@ -26,8 +26,7 @@ export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
 
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    history.pushState(null, "", "/#contact");
-    scrollToContactSection();
+    navigateToHomeSection("#contact");
   };
 
   return (

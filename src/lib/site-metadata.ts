@@ -8,7 +8,7 @@ const personImageDescription =
 export const rootMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   alternates: {
-    canonical: "/",
+    canonical: siteConfig.canonicalHomeUrl,
   },
   title: {
     default: siteConfig.title,
@@ -51,7 +51,7 @@ export const rootMetadata: Metadata = {
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
-    url: `${siteConfig.url}/`,
+    url: siteConfig.canonicalHomeUrl,
     siteName: siteConfig.name,
     images: [
       {
@@ -85,8 +85,9 @@ export const homepageJsonLd = {
     {
       "@type": "WebSite",
       "@id": `${siteConfig.url}/#website`,
-      url: `${siteConfig.url}/`,
+      url: siteConfig.canonicalHomeUrl,
       name: siteConfig.name,
+      alternateName: [...siteConfig.alternateNames],
     },
     {
       "@type": "ProfilePage",

@@ -1,5 +1,11 @@
 "use server";
 
+import { headers } from "next/headers";
+import {
+  extractClientIdentifierFromHeader,
+  relayContactForm,
+} from "@/lib/contact/contact-relay";
+
 export type ContactState = {
   success: boolean;
   message: string | null;
@@ -7,58 +13,40 @@ export type ContactState = {
 };
 
 export async function submitContact(
-  prevState: ContactState,
+  _prevState: ContactState,
   formData: FormData
 ): Promise<ContactState> {
-  const name = formData.get("name") as string;
-  const email = formData.get("email") as string;
-  const message = formData.get("message") as string;
+  const name = String(formData.get("name") ?? "");
+  const email = String(formData.get("email") ?? "");
+  const message = String(formData.get("message") ?? "");
 
-  if (!name || !email || !message) {
+  const requestHeaders = await headers();
+  const clientIdentifier = extractClientIdentifierFromHeader(
+    requestHeaders.get("x-forwarded-for"),
+    requestHeaders.get("x-real-ip") ?? requestHeaders.get("cf-connecting-ip"),
+  );
+
+  const result = await relayContactForm(
+    { name, email, message },
+    {
+      clientIdentifier,
+      origin: requestHeaders.get("origin") ?? undefined,
+      referer: requestHeaders.get("referer") ?? undefined,
+      subject: "New Portfolio Contact",
+    },
+  );
+
+  if (!result.ok) {
     return {
       success: false,
       message: null,
-      error: "Please fill in all fields.",
+      error: result.error,
     };
   }
 
-  try {
-    const endpoint =
-      process.env.CONTACT_FORM_ENDPOINT ??
-      "https://formsubmit.co/ajax/contact@arjunbishnoi.com";
-
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        message,
-        _subject: "New Portfolio Contact (Server Action)",
-        _captcha: "false",
-      }),
-    });
-
-    const data = await response.json().catch(() => null);
-
-    if (!response.ok) {
-      throw new Error(data?.message || "Failed to send message via Server Action.");
-    }
-
-    return {
-      success: true,
-      message: "Message sent! I'll get back to you soon.",
-      error: null,
-    };
-  } catch (error) {
-    console.error("Server Action Error:", error);
-    return {
-      success: false,
-      message: null,
-      error: "Something went wrong. Please try again later.",
-    };
-  }
+  return {
+    success: true,
+    message: result.message,
+    error: null,
+  };
 }

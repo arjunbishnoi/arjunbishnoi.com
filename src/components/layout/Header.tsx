@@ -9,8 +9,10 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { mainLinks } from "@/lib/content/main-links";
-import { scrollToAboutSection } from "@/lib/scroll-to-about";
-import { scrollToContactSection } from "@/lib/scroll-to-contact";
+import {
+  isHomeSectionHash,
+  scrollToHomeSection,
+} from "@/lib/home-section-navigation";
 import { cn } from "@/lib/utils";
 import {
   menuPanelTransition,
@@ -166,17 +168,13 @@ export function Header() {
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     const runHashScroll = (hash: string) => {
-      if (hash === "#about") {
-        scrollToAboutSection();
+      const normalizedHash = hash.toLowerCase();
+      if (isHomeSectionHash(normalizedHash)) {
+        scrollToHomeSection(normalizedHash);
         return;
       }
 
-      if (hash === "#contact") {
-        scrollToContactSection();
-        return;
-      }
-
-      const el = document.querySelector(hash);
+      const el = document.querySelector(normalizedHash);
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
       }

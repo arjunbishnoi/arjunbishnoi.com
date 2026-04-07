@@ -5,11 +5,12 @@ import { ProjectsSection } from "@/components/home/ProjectsSection";
 import { BlogSection } from "@/components/home/BlogSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { Footer } from "@/components/layout/Footer";
+import { siteConfig } from "@/lib/site-config";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: {
-      canonical: "/",
+      canonical: siteConfig.canonicalHomeUrl,
     },
   };
 }

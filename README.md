@@ -38,9 +38,17 @@ The build output is written to `.next`.
 
 ## Contact Relay
 
-The contact form posts to the app's `/api/contact` route first so failures are visible in Vercel logs.
+The contact form uses a shared server-side relay with unified validation, timeout handling, and lightweight rate limiting.
+
+Both the Server Action and `/api/contact` route use the same relay logic.
 
 If you want to change the upstream relay target, set `CONTACT_FORM_ENDPOINT`.
+
+Optional relay tuning environment variables:
+
+- `CONTACT_REQUEST_TIMEOUT_MS`
+- `CONTACT_RATE_LIMIT_WINDOW_MS`
+- `CONTACT_RATE_LIMIT_MAX_REQUESTS`
 
 ## Project Structure
 

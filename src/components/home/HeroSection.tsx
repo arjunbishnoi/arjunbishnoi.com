@@ -21,8 +21,7 @@ import {
   shuffleColors,
   rotateColors,
 } from "./hero/view-all-blob-colors";
-import { scrollToAboutSection } from "@/lib/scroll-to-about";
-import { scrollToContactSection } from "@/lib/scroll-to-contact";
+import { syncHomeSectionFromLocation } from "@/lib/home-section-navigation";
 import { useIsFirstPageLoad } from "@/hooks/use-is-first-page-load";
 
 const HERO_BIO_EXPANDED_STORAGE_KEY = "home.hero.bioExpanded";
@@ -73,21 +72,20 @@ export function HeroSection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle in-page hash navigation on initial load and direct URL entry.
+  // Handle in-page section navigation from hash or query redirect intents.
   useEffect(() => {
-    function handleHash() {
-      if (window.location.hash === "#about") {
-        scrollToAboutSection();
-        return;
-      }
+    const handleSectionLocationChange = () => {
+      syncHomeSectionFromLocation();
+    };
 
-      if (window.location.hash === "#contact") {
-        scrollToContactSection();
-      }
-    }
-    handleHash();
-    window.addEventListener("hashchange", handleHash);
-    return () => window.removeEventListener("hashchange", handleHash);
+    handleSectionLocationChange();
+    window.addEventListener("hashchange", handleSectionLocationChange);
+    window.addEventListener("popstate", handleSectionLocationChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleSectionLocationChange);
+      window.removeEventListener("popstate", handleSectionLocationChange);
+    };
   }, []);
 
   useEffect(() => {

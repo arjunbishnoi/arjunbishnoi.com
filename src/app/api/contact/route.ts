@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
-
-const contactRelayEndpoint =
-  process.env.CONTACT_FORM_ENDPOINT ??
-  "https://formsubmit.co/ajax/contact@arjunbishnoi.com";
-const contactRequestTimeoutMs = 10000;
+import {
+  extractClientIdentifierFromHeader,
+  relayContactForm,
+} from "@/lib/contact/contact-relay";
 
 type ContactPayload = {
   name?: string;
@@ -12,10 +11,6 @@ type ContactPayload = {
 };
 
 export const runtime = "nodejs";
-
-function isValidEmail(email: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
 
 export async function POST(request: Request) {
   let payload: ContactPayload;
@@ -26,74 +21,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const name = payload.name?.trim() ?? "";
-  const email = payload.email?.trim() ?? "";
-  const message = payload.message?.trim() ?? "";
+  const clientIdentifier = extractClientIdentifierFromHeader(
+    request.headers.get("x-forwarded-for"),
+    request.headers.get("x-real-ip") ?? request.headers.get("cf-connecting-ip"),
+  );
 
-  if (!name || !email || !message) {
-    return NextResponse.json({ error: "All fields are required." }, { status: 400 });
+  const result = await relayContactForm(payload, {
+    clientIdentifier,
+    origin: request.headers.get("origin") ?? undefined,
+    referer: request.headers.get("referer") ?? undefined,
+    subject: "New Portfolio Contact",
+  });
+
+  if (!result.ok) {
+    return NextResponse.json({ error: result.error }, { status: result.status });
   }
 
-  if (!isValidEmail(email)) {
-    return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
-  }
-
-  const abortController = new AbortController();
-  const timeoutId = setTimeout(() => abortController.abort(), contactRequestTimeoutMs);
-
-  const origin = request.headers.get("origin") ?? "https://arjunbishnoi.com";
-  const referer = request.headers.get("referer") ?? "https://arjunbishnoi.com/";
-
-  try {
-    const response = await fetch(contactRelayEndpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Origin": origin,
-        "Referer": referer,
-      },
-      signal: abortController.signal,
-      body: JSON.stringify({
-        name,
-        email,
-        message,
-        _subject: "New Portfolio Contact",
-        _captcha: "false",
-      }),
-    });
-
-    const responseBody = await response.json().catch(() => null);
-
-    if (!response.ok || responseBody?.success === "false" || responseBody?.success === false) {
-      console.error("Contact relay error", {
-        status: response.status,
-        responseBody,
-      });
-
-      return NextResponse.json(
-        { error: "Something went wrong. Please try again." },
-        { status: 502 }
-      );
-    }
-
-    return NextResponse.json({ message: "Message sent." });
-  } catch (error) {
-    const isAbortError = error instanceof DOMException && error.name === "AbortError";
-
-    console.error("Contact relay request failed", {
-      error: error instanceof Error ? error.message : "Unknown error",
-    });
-
-    return NextResponse.json(
-      {
-        error: isAbortError
-          ? "The request took too long. Please try again."
-          : "Something went wrong. Please try again.",
-      },
-      { status: 502 }
-    );
-  } finally {
-    clearTimeout(timeoutId);
-  }
+  return NextResponse.json({ message: result.message });
 }

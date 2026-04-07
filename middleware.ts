@@ -2,11 +2,24 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, hostname } = request.nextUrl;
+  const shouldStripTrailingSlash = pathname !== "/" && pathname.endsWith("/");
+
+  // Canonicalize host to apex domain to avoid duplicate home-page variants.
+  if (hostname === "www.arjunbishnoi.com") {
+    const url = request.nextUrl.clone();
+    url.hostname = "arjunbishnoi.com";
+
+    if (shouldStripTrailingSlash) {
+      url.pathname = pathname.replace(/\/+$/, "");
+    }
+
+    return NextResponse.redirect(url, 308);
+  }
 
   // Strip trailing slashes (except root "/") to prevent duplicate URLs
   // e.g. /projects/ → /projects, /skills/ → /skills
-  if (pathname !== "/" && pathname.endsWith("/")) {
+  if (shouldStripTrailingSlash) {
     const url = request.nextUrl.clone();
     url.pathname = pathname.replace(/\/+$/, "");
     return NextResponse.redirect(url, 301);
