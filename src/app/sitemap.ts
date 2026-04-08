@@ -51,12 +51,6 @@ const indexedRoutes = [
     changeFrequency: "monthly" as const,
     images: [siteConfig.images.headshot],
   },
-  {
-    path: "/Arjun-Bishnoi-Resume.pdf",
-    priority: 0.3,
-    changeFrequency: "yearly" as const,
-    images: [],
-  },
 ] as const;
 
 function toAbsoluteUrl(path: string) {

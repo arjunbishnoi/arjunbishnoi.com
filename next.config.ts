@@ -9,14 +9,17 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/resume',
-        destination: '/Arjun-Bishnoi-Resume.pdf',
-        permanent: true,
-      },
-      {
         source: '/about',
         destination: '/?section=about',
         permanent: true,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/resume',
+        destination: '/Arjun-Bishnoi-Resume.pdf',
       },
     ];
   },
