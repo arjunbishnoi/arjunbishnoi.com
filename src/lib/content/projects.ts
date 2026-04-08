@@ -12,7 +12,7 @@ export const projects: Project[] = [
     description:
       cryptoTrackerArticle?.description ??
       "Monitor the live cryptocurrency market in real-time. Track your favorite coins, view detailed statistics, and manage your personal portfolio on the go. Stay informed with instant price alerts and interactive performance charts.",
-    image: cryptoTrackerArticle?.image ?? "/cryptotracker.jpeg",
+    image: cryptoTrackerArticle?.image ?? "/cryptotracker.jpg",
     category: cryptoTrackerArticle?.category ?? "React Native",
     tags:
       cryptoTrackerArticle?.tags ??
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     description:
       fourRentArticle?.description ??
       "Find your next home with this modern rental marketplace. Browse through high-resolution property galleries, check detailed pricing, and save your favorite listings. Streamline your search with smart filters and instant landlord communication.",
-    image: fourRentArticle?.image ?? "/4rent.jpeg",
+    image: fourRentArticle?.image ?? "/4rent.jpg",
     category: fourRentArticle?.category ?? "SwiftUI",
     tags:
       fourRentArticle?.tags ??

@@ -28,7 +28,7 @@ export const projectArticles: ProjectArticle[] = [
       "A mobile-first market tracker for live cryptocurrency prices, portfolio monitoring, and watchlist management with a clearer real-time product experience.",
     deck:
       "A React Native market app focused on live data clarity, portfolio visibility, and a fast mobile decision loop.",
-    image: "/cryptotracker.jpeg",
+    image: "/cryptotracker.jpg",
     category: "React Native",
     tags: ["Mobile App", "React Native", "Expo", "Firebase", "CoinLore API"],
     publishedAt: "2026-03-18",
@@ -85,7 +85,7 @@ export const projectArticles: ProjectArticle[] = [
       "A rental marketplace concept for browsing listings, comparing properties, and narrowing housing decisions through a more considered mobile search experience.",
     deck:
       "An iOS rental product designed to make property search feel more visual, filtered, and decision-oriented.",
-    image: "/4rent.jpeg",
+    image: "/4rent.jpg",
     category: "SwiftUI",
     tags: ["Mobile App", "SwiftUI", "Combine", "MVVM", "iOS"],
     publishedAt: "2026-02-06",
