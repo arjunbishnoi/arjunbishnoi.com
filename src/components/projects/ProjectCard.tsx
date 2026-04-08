@@ -30,14 +30,7 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
 
   const cardContent = (
     <>
-      <div
-        className="aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-4 neu-pressed"
-        style={
-          {
-            "--neu-surface": "var(--projects-surface, var(--background))",
-          } as React.CSSProperties
-        }
-      >
+      <div className="aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-4">
         <Image
           src={project.image}
           alt={project.title}
@@ -45,7 +38,6 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
           className="project-card-media object-cover transition-transform duration-500 ease-out"
           sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 mix-blend-overlay pointer-events-none" />
       </div>
 
       <div className="flex flex-col flex-grow pt-1">

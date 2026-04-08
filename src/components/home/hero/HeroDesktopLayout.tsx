@@ -81,7 +81,7 @@ export function HeroDesktopLayout({
               className="project-card-link group block w-full shrink-0 rounded-none overflow-hidden h-full focus:outline-none"
               aria-label={`View ${featuredProject.title}`}
             >
-              <div className="aspect-square relative overflow-hidden bg-muted rounded-[40px] neu-pressed">
+              <div className="aspect-square relative overflow-hidden bg-muted rounded-[40px]">
                 <Image
                   src={featuredProject.image}
                   alt={featuredProject.title}
@@ -89,7 +89,6 @@ export function HeroDesktopLayout({
                   className="project-card-media object-cover transition-transform duration-500 ease-out"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20 mix-blend-overlay pointer-events-none" />
               </div>
             </Link>
           </div>
