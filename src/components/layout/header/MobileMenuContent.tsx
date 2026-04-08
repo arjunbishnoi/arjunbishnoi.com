@@ -3,6 +3,7 @@ import type { MouseEvent } from "react";
 import { motion } from "motion/react";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
 import { mainLinks } from "@/lib/content/main-links";
+import { socialLinks } from "@/lib/content/social-links";
 import {
   menuSocialItems,
   mobileMenuListVariants,
@@ -60,8 +61,21 @@ export function MobileMenuContent({
             ) : (
               <Link
                 href={item.href}
+                target={item.href === socialLinks.resume ? "_blank" : undefined}
+                rel={
+                  item.href === socialLinks.resume
+                    ? "noopener noreferrer"
+                    : undefined
+                }
                 className="text-xl tracking-tight font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
-                onClick={(event) => onNavClick(event, item.href)}
+                onClick={(event) => {
+                  if (item.href === socialLinks.resume) {
+                    onCloseMenu();
+                    return;
+                  }
+
+                  onNavClick(event, item.href);
+                }}
               >
                 {item.name}
               </Link>

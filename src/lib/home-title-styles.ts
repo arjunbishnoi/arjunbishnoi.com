@@ -20,7 +20,7 @@ export const LANDING_HERO_STACK_CLASSNAME =
   "mx-auto flex max-w-[44rem] flex-col items-center gap-2 text-center lg:max-w-[52rem] lg:gap-4";
 
 export const LANDING_HERO_SUBTITLE_CLASSNAME =
-  "m-0 w-full max-w-none text-[1.06rem] font-normal leading-[1.58] tracking-[-0.01em] text-black/60 dark:text-white/64 sm:text-[1.1rem] lg:max-w-[30rem] lg:text-[1.24rem] xl:max-w-[29rem] xl:text-[1.32rem]";
+  "m-0 w-full max-w-none text-[1.06rem] font-normal leading-[1.58] tracking-[-0.01em] text-black/62 dark:text-zinc-300 sm:text-[1.1rem] lg:max-w-[30rem] lg:text-[1.24rem] xl:max-w-[29rem] xl:text-[1.32rem]";
 
 export const BLOG_POST_SECTION_TITLE_CLASSNAME =
   "w-full max-w-none text-[clamp(1.5rem,2.65vw,2.15rem)] font-medium leading-[1.18] tracking-[-0.045em] text-black dark:text-white sm:leading-[1.14] md:leading-[1.08]";

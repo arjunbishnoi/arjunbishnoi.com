@@ -117,8 +117,22 @@ export function Footer() {
                   ) : (
                     <Link
                       href={item.href}
+                      target={
+                        item.href === socialLinks.resume ? "_blank" : undefined
+                      }
+                      rel={
+                        item.href === socialLinks.resume
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       className={footerColorClass}
-                      onClick={(event) => handleNavClick(event, item.href)}
+                      onClick={(event) => {
+                        if (item.href === socialLinks.resume) {
+                          return;
+                        }
+
+                        handleNavClick(event, item.href);
+                      }}
                     >
                       {item.name}
                     </Link>

@@ -256,7 +256,7 @@ export function SegmentDirectory({ segment }: { segment: SegmentKey }) {
                           event.target.value as SegmentDirectoryCategory,
                         )
                       }
-                      className="h-full w-full appearance-none rounded-full bg-black/5 pl-4 pr-12 indent-0 text-sm font-medium text-black focus:outline-none dark:bg-white/10 dark:text-white"
+                      className="h-full w-full appearance-none rounded-full bg-black/10 pl-4 pr-12 indent-0 text-sm font-medium text-black focus:outline-none dark:bg-white/20 dark:text-white"
                       aria-label="Select content category"
                     >
                       {segmentDirectoryCategories.map((category) => (

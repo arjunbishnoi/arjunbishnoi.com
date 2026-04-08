@@ -52,10 +52,7 @@ export function ContactSection() {
       className="relative z-40 bg-background pb-16 pt-2 md:pb-20 md:pt-16 lg:pb-24 lg:pt-20"
     >
       <div className="mx-auto max-w-7xl px-6 pb-3 sm:pb-4 lg:px-8 md:text-center md:pb-6 lg:pb-8">
-        <h2
-          data-contact-heading
-          className={LANDING_SECTION_TITLE_CLASSNAME}
-        >
+        <h2 data-contact-heading className={LANDING_SECTION_TITLE_CLASSNAME}>
           Contact
         </h2>
       </div>
