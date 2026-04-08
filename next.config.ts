@@ -13,13 +13,23 @@ const nextConfig: NextConfig = {
         destination: '/?section=about',
         permanent: true,
       },
+      {
+        source: '/arjun-bishnoi-resume.pdf',
+        destination: '/resume',
+        permanent: true,
+      },
+      {
+        source: '/Arjun-Bishnoi-Resume.pdf',
+        destination: '/resume',
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
     return [
       {
         source: '/resume',
-        destination: '/Arjun-Bishnoi-Resume.pdf',
+        destination: '/arjun-bishnoi-resume.pdf',
       },
     ];
   },

@@ -6,6 +6,6 @@ export const socialLinks: SocialLinks = {
   behance: "https://behance.net/arjunbishnoi",
   email: "mailto:contact@arjunbishnoi.com",
   resume: "/resume",
-  resumeFile: "/Arjun-Bishnoi-Resume.pdf",
-  resumeDownloadName: "Arjun-Bishnoi-Resume.pdf",
+  resumeFile: "/arjun-bishnoi-resume.pdf",
+  resumeDownloadName: "arjun-bishnoi-resume.pdf",
 }

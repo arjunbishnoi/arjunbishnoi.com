@@ -3,7 +3,16 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const { pathname, hostname } = request.nextUrl;
+  const decodedPathname = decodeURIComponent(pathname).toLowerCase();
   const shouldStripTrailingSlash = pathname !== "/" && pathname.endsWith("/");
+
+  // Consolidate legacy resume filename URL variants to canonical /resume.
+  if (decodedPathname === "/resume - arjun bishnoi.pdf") {
+    const url = request.nextUrl.clone();
+    url.hostname = "arjunbishnoi.com";
+    url.pathname = "/resume";
+    return NextResponse.redirect(url, 301);
+  }
 
   // Canonicalize host to apex domain to avoid duplicate home-page variants.
   if (hostname === "www.arjunbishnoi.com") {
