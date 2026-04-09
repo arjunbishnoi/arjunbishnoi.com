@@ -13,12 +13,12 @@ type HeroSocialLinksRowProps = {
 export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
   const isDesktop = variant === "desktop";
   const tileClassName = cn(
-    "flex items-center justify-center group transition-colors",
+    "pill-interactive flex items-center justify-center group transition-colors",
     isDesktop ? "hover:bg-zinc-100/10" : "active:bg-zinc-100/10",
   );
   const iconWrapClassName = cn(
     "rounded-full flex items-center justify-center transition-colors",
-    isDesktop ? "w-12 h-12 xl:w-14 xl:h-14 group-hover:scale-110" : "w-11 h-11",
+    isDesktop ? "w-12 h-12 xl:w-14 xl:h-14" : "w-11 h-11",
   );
   const iconClassName = isDesktop
     ? "block w-6 h-6 xl:w-7 xl:h-7 fill-current"

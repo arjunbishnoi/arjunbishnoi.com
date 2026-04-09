@@ -7,7 +7,7 @@ import {
 } from "@/lib/home-title-styles";
 
 interface ProjectProps {
-  project: {
+  workItem: {
     id: string;
     title: string;
     description: string;
@@ -21,21 +21,23 @@ interface ProjectProps {
   showDate?: boolean;
 }
 
-export function ProjectCard({ project, showDate = false }: ProjectProps) {
-  const shortSubtitle = project.description.split(".")[0] + ".";
+type WorkCardProps = ProjectProps;
+
+export function WorkCard({ workItem, showDate = false }: WorkCardProps) {
+  const shortSubtitle = workItem.description.split(".")[0] + ".";
   const category =
-    project.category ??
-    (project.tags && project.tags.length > 0 ? project.tags[0] : "Project");
-  const isLinked = project.url && project.url !== "#";
+    workItem.category ??
+    (workItem.tags && workItem.tags.length > 0 ? workItem.tags[0] : "Work");
+  const isLinked = workItem.url && workItem.url !== "#";
 
   const cardContent = (
     <>
-      <div className="aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-4">
+      <div className="cover-card-interactive aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-4">
         <Image
-          src={project.image}
-          alt={project.title}
+          src={workItem.image}
+          alt={workItem.title}
           fill
-          className="project-card-media object-cover transition-transform duration-500 ease-out"
+          className="project-card-media object-cover"
           sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
@@ -44,7 +46,7 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
         <h3
           className={`${ENTRY_TITLE_CLASSNAME} line-clamp-2 pb-[0.08em] mb-3`}
         >
-          {project.title}
+          {workItem.title}
         </h3>
 
         <p className={`${BLOG_POST_BODY_TEXT_CLASSNAME} mb-4 line-clamp-2`}>
@@ -61,7 +63,7 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
 
         {showDate && (
           <div className="text-sm md:text-base text-muted-foreground">
-            {project.date}
+            {workItem.date}
           </div>
         )}
       </div>
@@ -78,9 +80,9 @@ export function ProjectCard({ project, showDate = false }: ProjectProps) {
 
   return (
     <Link
-      href={project.url}
-      className="project-card-link group block rounded-none overflow-hidden h-full focus:outline-none"
-      aria-label={`View ${project.title}`}
+      href={workItem.url}
+      className="project-card-link group block rounded-none h-full focus:outline-none"
+      aria-label={`View ${workItem.title}`}
     >
       <div className="flex h-full flex-col">{cardContent}</div>
     </Link>

@@ -11,7 +11,7 @@ describe("isHomeSectionHash", () => {
   });
 
   it("rejects unsupported values", () => {
-    expect(isHomeSectionHash("#projects")).toBe(false);
+    expect(isHomeSectionHash("#work")).toBe(false);
     expect(isHomeSectionHash("about")).toBe(false);
   });
 });
@@ -32,6 +32,6 @@ describe("parseHomeSectionFromValues", () => {
   });
 
   it("returns null for unknown sections", () => {
-    expect(parseHomeSectionFromValues("#unknown", "?section=projects")).toBeNull();
+    expect(parseHomeSectionFromValues("#unknown", "?section=work")).toBeNull();
   });
 });

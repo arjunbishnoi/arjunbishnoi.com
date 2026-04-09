@@ -16,7 +16,7 @@ const indexedRoutes = [
     images: [siteConfig.images.headshot],
   },
   {
-    path: "/projects",
+    path: "/work",
     priority: 0.9,
     changeFrequency: "weekly" as const,
     images: [siteConfig.images.headshot],
@@ -83,7 +83,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const projectEntries: MetadataRoute.Sitemap = projectArticles.map(
     (article) => ({
-      url: `${siteConfig.url}/projects/${article.slug}`,
+      url: `${siteConfig.url}/work/${article.slug}`,
       lastModified: new Date(article.publishedAt),
       changeFrequency: "monthly",
       priority: 0.78,

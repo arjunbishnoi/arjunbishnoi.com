@@ -9,7 +9,7 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "AI/ML",
   path: "/ai",
-  description: "AI projects and writing by Arjun Bishnoi.",
+  description: "AI work and writing by Arjun Bishnoi.",
   includeSocial: true,
 });
 

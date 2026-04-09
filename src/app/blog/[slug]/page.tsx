@@ -112,8 +112,8 @@ export default async function BlogArticlePage({
             <BlogShareButton title={article.title} />
           </header>
 
-          <div className="mx-auto mt-14 max-w-[44rem] sm:mt-16 lg:mt-20 lg:max-w-[52rem]">
-            <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-[40px] lg:max-w-[38rem] xl:max-w-[40rem]">
+          <div className="mx-auto mt-8 lg:mt-9 max-w-[44rem] lg:max-w-[52rem]">
+            <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-[40px] lg:rounded-[46px] xl:rounded-[52px] lg:max-w-[38rem] xl:max-w-[40rem]">
               <Image
                 src={article.image}
                 alt={`${article.title} cover image`}

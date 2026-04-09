@@ -3,23 +3,95 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Search, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { ProjectCard } from "@/components/projects/ProjectCard";
+import { WorkCard } from "@/components/work/WorkCard";
 import {
-  projectCategories,
-  type ProjectCategory,
+  projectCategories as workCategories,
+  type ProjectCategory as WorkCategory,
 } from "@/lib/content/project-categories";
-import { projects } from "@/lib/content/projects";
+import { workItems } from "@/lib/content/work";
 
 function normalize(value: string) {
   return value.trim().toLowerCase();
 }
 
-function getProjectCategory(project: (typeof projects)[number]) {
-  return project.category ?? project.tags[0] ?? "Projects";
+const workCategoryKeywords: Record<Exclude<WorkCategory, "All">, string[]> = {
+  "Mobile Apps": [
+    "mobile app",
+    "mobile apps",
+    "react native",
+    "expo",
+    "swiftui",
+    "ios",
+    "kotlin",
+    "android",
+  ],
+  "AI/ML": [
+    "ai",
+    "ai/ml",
+    "ml",
+    "machine learning",
+    "artificial intelligence",
+    "llm",
+    "openai",
+    "langchain",
+    "pytorch",
+    "tensorflow",
+  ],
+  Design: [
+    "design",
+    "ui",
+    "ux",
+    "ui/ux",
+    "web design",
+    "product design",
+    "figma",
+  ],
+};
+
+function escapeRegex(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-export function ProjectDirectory() {
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("All");
+function includesKeyword(value: string, keyword: string) {
+  const normalizedValue = normalize(value);
+  const normalizedKeyword = normalize(keyword);
+
+  if (!normalizedValue || !normalizedKeyword) {
+    return false;
+  }
+
+  if (normalizedKeyword.length <= 3) {
+    const pattern = new RegExp(`\\b${escapeRegex(normalizedKeyword)}\\b`);
+    return pattern.test(normalizedValue);
+  }
+
+  return normalizedValue.includes(normalizedKeyword);
+}
+
+function matchesWorkCategory(
+  workItem: (typeof workItems)[number],
+  category: WorkCategory,
+) {
+  if (category === "All") {
+    return true;
+  }
+
+  const searchableValues = [
+    workItem.title,
+    workItem.description,
+    workItem.category ?? "",
+    ...workItem.tags,
+  ];
+
+  const keywords = workCategoryKeywords[category];
+
+  return searchableValues.some((value) =>
+    keywords.some((keyword) => includesKeyword(value, keyword)),
+  );
+}
+
+export function WorkDirectory() {
+  const [activeCategory, setActiveCategory] = useState<WorkCategory>("All");
   const [query, setQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const mobileSearchInputRef = useRef<HTMLInputElement>(null);
@@ -37,16 +109,11 @@ export function ProjectDirectory() {
     }
   }, [isSearchOpen]);
 
-  const filteredProjects = useMemo(() => {
+  const filteredWorkItems = useMemo(() => {
     const normalizedQuery = normalize(query);
-    const normalizedActive = normalize(activeCategory);
 
-    return projects.filter((project) => {
-      const category = getProjectCategory(project);
-      const categoryMatches =
-        activeCategory === "All" ||
-        normalize(category) === normalizedActive ||
-        project.tags.some((tag) => normalize(tag) === normalizedActive);
+    return workItems.filter((workItem) => {
+      const categoryMatches = matchesWorkCategory(workItem, activeCategory);
 
       if (!categoryMatches) {
         return false;
@@ -57,10 +124,10 @@ export function ProjectDirectory() {
       }
 
       const haystack = [
-        project.title,
-        project.description,
-        category,
-        ...project.tags,
+        workItem.title,
+        workItem.description,
+        workItem.category ?? "",
+        ...workItem.tags,
       ]
         .join(" ")
         .toLowerCase();
@@ -97,9 +164,9 @@ export function ProjectDirectory() {
                         }
                       }}
                       enterKeyHint="search"
-                      placeholder="Search projects..."
+                      placeholder="Search work..."
                       className="h-full w-full bg-transparent pr-10 text-[16px] font-medium text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45"
-                      aria-label="Search projects"
+                      aria-label="Search work"
                     />
                     {hasQuery ? (
                       <button
@@ -127,12 +194,12 @@ export function ProjectDirectory() {
                     <select
                       value={activeCategory}
                       onChange={(event) =>
-                        setActiveCategory(event.target.value as ProjectCategory)
+                        setActiveCategory(event.target.value as WorkCategory)
                       }
                       className="h-full w-full appearance-none rounded-full bg-black/10 pl-4 pr-12 indent-0 text-sm font-medium text-black focus:outline-none dark:bg-white/20 dark:text-white"
-                      aria-label="Select project category"
+                      aria-label="Select work category"
                     >
-                      {projectCategories.map((category) => (
+                      {workCategories.map((category) => (
                         <option key={category} value={category}>
                           {category}
                         </option>
@@ -161,7 +228,7 @@ export function ProjectDirectory() {
               }}
               className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-white transition-transform active:scale-[0.98] dark:bg-white dark:text-black"
               aria-label={
-                !isSearchOpen ? "Open project search" : "Close project search"
+                !isSearchOpen ? "Open work search" : "Close work search"
               }
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -201,7 +268,7 @@ export function ProjectDirectory() {
                 className="scrollbar-hide mx-auto max-w-full overflow-x-auto rounded-full bg-black/10 p-1 dark:bg-white/20"
               >
                 <div className="flex min-w-max items-center gap-1">
-                  {projectCategories.map((category) => {
+                  {workCategories.map((category) => {
                     const isActive = category === activeCategory;
 
                     return (
@@ -213,7 +280,7 @@ export function ProjectDirectory() {
                       >
                         {isActive ? (
                           <motion.span
-                            layoutId="project-category-pill"
+                            layoutId="work-category-pill"
                             className="absolute inset-0 rounded-full bg-black dark:bg-white"
                             transition={{
                               type: "spring",
@@ -267,14 +334,14 @@ export function ProjectDirectory() {
                     type="text"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
-                    placeholder="Search projects..."
+                    placeholder="Search work..."
                     className={[
                       "h-full min-w-0 flex-1 bg-transparent text-sm font-medium text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45",
                       isSearchOpen
                         ? "pointer-events-auto opacity-100"
                         : "pointer-events-none w-0 opacity-0",
                     ].join(" ")}
-                    aria-label="Search projects"
+                    aria-label="Search work"
                   />
                   {isSearchOpen && hasQuery ? (
                     <button
@@ -307,9 +374,7 @@ export function ProjectDirectory() {
                         : "h-12 w-12 bg-black text-white dark:bg-white dark:text-black",
                     ].join(" ")}
                     aria-label={
-                      !isSearchOpen
-                        ? "Open project search"
-                        : "Close project search"
+                      !isSearchOpen ? "Open work search" : "Close work search"
                     }
                   >
                     {isSearchOpen ? (
@@ -327,10 +392,10 @@ export function ProjectDirectory() {
           </div>
         </div>
 
-        {filteredProjects.length > 0 ? (
+        {filteredWorkItems.length > 0 ? (
           <div className="mt-14 lg:mt-20 xl:mt-24 grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+            {filteredWorkItems.map((workItem) => (
+              <WorkCard key={workItem.id} workItem={workItem} />
             ))}
           </div>
         ) : (

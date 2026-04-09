@@ -6,7 +6,7 @@ const personImageDescription =
   "Developer and designer building cross-platform mobile apps at the intersection of AI and design. Functional, intelligent, and crafted with precision.";
 
 const mainSitelinkPages = [
-  { name: "Projects", path: "/projects" },
+  { name: "Work", path: "/work" },
   { name: "Mobile Apps", path: "/apps" },
   { name: "AI/ML", path: "/ai" },
   { name: "Design", path: "/design" },

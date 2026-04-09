@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { socialLinks } from "@/lib/content/social-links";
 import { HeroSocialLinksRow } from "@/components/home/hero/HeroSocialLinksRow";
-import { HeroViewAllProjectsPill } from "@/components/home/hero/HeroViewAllProjectsPill";
+import { HeroViewWorkPill } from "@/components/home/hero/HeroViewWorkPill";
 
 type HeroBentoRowsProps = {
   variant: "mobile" | "desktop";
@@ -26,7 +26,7 @@ export function HeroBentoRows({
 
   return (
     <>
-      <HeroViewAllProjectsPill variant={variant} blobColors={blobColors} />
+      <HeroViewWorkPill variant={variant} blobColors={blobColors} />
       <div className="grid grid-cols-2">
         <Link href="/apps" className={linkClass}>
           <div className="whitespace-nowrap">Mobile Apps</div>

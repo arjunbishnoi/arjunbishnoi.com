@@ -9,7 +9,7 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "Design",
   path: "/design",
-  description: "Design projects and writing by Arjun Bishnoi.",
+  description: "Design work and writing by Arjun Bishnoi.",
   includeSocial: true,
 });
 

@@ -3,8 +3,7 @@ import { cn } from "@/lib/utils";
 
 export const socialPillClass = cn(
   "group relative flex min-h-[4rem] w-full items-center gap-3 rounded-[32px] px-6 py-4 text-left shadow-none",
-  "transition-[background-color,transform] duration-200 ease-out",
-  "hover:scale-[0.995]",
+  "pill-interactive transition-[background-color] duration-200 ease-out",
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:focus-visible:outline-white",
 );
 

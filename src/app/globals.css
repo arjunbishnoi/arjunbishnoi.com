@@ -94,9 +94,9 @@
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 55%, #000000);
     --hero-gradient-stop: 30%;
 
-    /* Project-specific background matching main background in light mode */
-    --projects-background: 0 0% 87%;
-    --projects-surface: #dddddd;
+    /* Work-specific background matching main background in light mode */
+    --work-background: 0 0% 87%;
+    --work-surface: #dddddd;
 
     /* Mobile flat border */
     --neu-flat-border: rgba(0, 0, 0, 0.1);
@@ -105,7 +105,7 @@
     --hero-bio-bg: #cecece;
     --hero-bio-gradient-light: #d6d6d6;
     --hero-bio-gradient-dark: #b8b8b8;
-    /* Home sections under hero: one shared gap (Featured / Projects / Blog) on small screens */
+    /* Home sections under hero: one shared gap (Featured / Work / Blog) on small screens */
     --home-stack-gap-after: 4rem;
     --mobbin-stack-mid-bg: #999999;
     --mobbin-stack-back-bg: #d1d1d1;
@@ -139,9 +139,9 @@
     --hero-gradient-bottom: color-mix(in srgb, var(--neu-surface) 65%, #ffffff);
     --hero-gradient-stop: 52%;
 
-    /* Project-specific background: match main background in dark mode */
-    --projects-background: 0 0% 10%; /* #1a1a1a */
-    --projects-surface: #1a1a1a;
+    /* Work-specific background: match main background in dark mode */
+    --work-background: 0 0% 10%; /* #1a1a1a */
+    --work-surface: #1a1a1a;
 
     /* Mobile flat border */
     --neu-flat-border: rgba(255, 255, 255, 0.08);
@@ -185,7 +185,7 @@
     box-shadow: var(--neu-shadow-pressed);
   }
 
-  /* Tighten mobile project card shadows so they don't spill */
+  /* Tighten mobile work card shadows so they don't spill */
   @media (max-width: 767px) {
     .hero-viewall-pill.neu-mobile-neumorphic {
       --neu-shadow-distance: 4px;
@@ -1006,7 +1006,7 @@ html.light-theme ::selection {
     colorShift var(--color-duration, 25s) linear infinite var(--color-delay, 0s);
 }
 
-/* Home (mobile / <md): identical gap between Featured → Projects → Blog → Contact (single margin, no padding stack) */
+/* Home (mobile / <md): identical gap between Featured -> Work -> Blog -> Contact (single margin, no padding stack) */
 @media (max-width: 767.98px) {
   .home-stack-gap-after {
     margin-bottom: var(--home-stack-gap-after);
@@ -1046,12 +1046,40 @@ html.light-theme ::selection {
   animation: glow-pulse 4s ease-in-out infinite;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .blog-card-link:hover .blog-card-media {
-    transform: scale(1.05);
-  }
+/* Cover-image interaction: smooth growth on hover (pointer devices) and button-like press on click/tap. */
+.cover-card-interactive {
+  transform: scale(1);
+  transform-origin: center center;
+  will-change: transform;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
 
-  .project-card-link:hover .project-card-media {
-    transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+  .blog-card-link:hover .cover-card-interactive,
+  .project-card-link:hover .cover-card-interactive {
+    transform: scale(1.03);
   }
+}
+
+.blog-card-link:active .cover-card-interactive,
+.project-card-link:active .cover-card-interactive {
+  transform: scale(0.992);
+}
+
+/* Shared interaction for pill-shaped buttons/links. */
+.pill-interactive {
+  transform: scale(1);
+  transform-origin: center center;
+  will-change: transform;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pill-interactive:hover {
+    transform: scale(1.02);
+  }
+}
+
+.pill-interactive:active {
+  transform: scale(0.985);
 }

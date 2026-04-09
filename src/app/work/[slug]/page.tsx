@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/layout/Footer";
-import { ProjectShareButton } from "@/components/projects/ProjectShareButton";
+import { WorkShareButton } from "@/components/work/WorkShareButton";
 import {
   projectArticles,
   getProjectArticleBySlug,
@@ -32,10 +32,10 @@ export async function generateMetadata({
 
   if (!article) {
     return buildPageMetadata({
-      title: "Projects",
-      path: "/projects",
+      title: "Work",
+      path: "/work",
       description:
-        "Selected mobile app and product engineering projects by Arjun Bishnoi.",
+        "Selected mobile app and product engineering work by Arjun Bishnoi.",
       index: false,
     });
   }
@@ -43,7 +43,7 @@ export async function generateMetadata({
   return buildPageMetadata({
     title: article.title,
     absoluteTitle: true,
-    path: `/projects/${article.slug}`,
+    path: `/work/${article.slug}`,
     description: article.deck,
     includeSocial: true,
     socialTitle: article.title,
@@ -69,7 +69,7 @@ export default async function ProjectArticlePage({
   const bodyTextClassName =
     "text-[1rem] font-normal leading-[1.64] tracking-[-0.01em] text-black/84 dark:text-white/82 sm:text-[1.03rem] lg:text-[1.08rem]";
   const articleUrl = new URL(
-    `/projects/${article.slug}`,
+    `/work/${article.slug}`,
     siteConfig.url,
   ).toString();
   const articleImageUrl = new URL(article.image, siteConfig.url).toString();
@@ -94,7 +94,7 @@ export default async function ProjectArticlePage({
       name: siteConfig.name,
       url: siteConfig.url,
     },
-    articleSection: "Projects",
+    articleSection: "Work",
     keywords: article.tags,
   };
 
@@ -110,11 +110,11 @@ export default async function ProjectArticlePage({
             <p className={heroMetaTextClassName}>{article.publishedLabel}</p>
             <h1 className={PAGE_HERO_TITLE_CLASSNAME}>{article.title}</h1>
             <p className={PAGE_HERO_SUBTITLE_CLASSNAME}>{article.deck}</p>
-            <ProjectShareButton title={article.title} />
+            <WorkShareButton title={article.title} />
           </header>
 
-          <div className="mx-auto mt-14 max-w-[44rem] sm:mt-16 lg:mt-20 lg:max-w-[52rem]">
-            <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-[40px] lg:max-w-[38rem] xl:max-w-[40rem]">
+          <div className="mx-auto mt-8 lg:mt-9 max-w-[44rem] lg:max-w-[52rem]">
+            <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-[40px] lg:rounded-[46px] xl:rounded-[52px] lg:max-w-[38rem] xl:max-w-[40rem]">
               <Image
                 src={article.image}
                 alt={`${article.title} cover image`}

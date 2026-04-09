@@ -28,12 +28,12 @@ export function BlogCard({ blog }: BlogProps) {
 
   const cardContent = (
     <>
-      <div className="aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-4">
+      <div className="cover-card-interactive aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-4">
         <Image
           src={blog.image}
           alt={blog.title}
           fill
-          className="blog-card-media object-cover transition-transform duration-500 ease-out"
+          className="blog-card-media object-cover"
           sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
@@ -71,7 +71,7 @@ export function BlogCard({ blog }: BlogProps) {
   return (
     <Link
       href={blog.url}
-      className="blog-card-link group block rounded-none overflow-hidden h-full focus:outline-none"
+      className="blog-card-link group block rounded-none h-full focus:outline-none"
       aria-label={`Read ${blog.title}`}
     >
       <div className="flex h-full flex-col">{cardContent}</div>

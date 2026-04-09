@@ -4,13 +4,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Search, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { BlogCard } from "@/components/home/BlogCard";
-import { ProjectCard } from "@/components/projects/ProjectCard";
+import { WorkCard } from "@/components/work/WorkCard";
 import { blogs } from "@/lib/content/blogs";
-import { projects } from "@/lib/content/projects";
+import { workItems } from "@/lib/content/work";
 
 export type SegmentKey = "apps" | "ai" | "design";
 
-const segmentDirectoryCategories = ["All", "Project", "Blog"] as const;
+const segmentDirectoryCategories = ["All", "Work", "Blog"] as const;
 type SegmentDirectoryCategory = (typeof segmentDirectoryCategories)[number];
 
 const segmentKeywords: Record<SegmentKey, string[]> = {
@@ -50,10 +50,10 @@ const segmentKeywords: Record<SegmentKey, string[]> = {
 type SegmentDirectoryEntry =
   | {
       id: string;
-      kind: "Project";
+      kind: "Work";
       searchable: string;
       sortKey: number;
-      project: (typeof projects)[number];
+      workItem: (typeof workItems)[number];
     }
   | {
       id: string;
@@ -100,31 +100,31 @@ function parseSortKey(value: string) {
 }
 
 function buildSegmentEntries(segment: SegmentKey): SegmentDirectoryEntry[] {
-  const projectEntries: SegmentDirectoryEntry[] = projects
-    .filter((project) =>
+  const workEntries: SegmentDirectoryEntry[] = workItems
+    .filter((workItem) =>
       belongsToSegment(
         [
-          project.title,
-          project.description,
-          project.category ?? "",
-          ...project.tags,
+          workItem.title,
+          workItem.description,
+          workItem.category ?? "",
+          ...workItem.tags,
         ],
         segment,
       ),
     )
-    .map((project) => ({
-      id: project.id,
-      kind: "Project",
+    .map((workItem) => ({
+      id: workItem.id,
+      kind: "Work",
       searchable: [
-        project.title,
-        project.description,
-        project.category ?? "",
-        ...project.tags,
+        workItem.title,
+        workItem.description,
+        workItem.category ?? "",
+        ...workItem.tags,
       ]
         .join(" ")
         .toLowerCase(),
-      sortKey: parseSortKey(project.date),
-      project,
+      sortKey: parseSortKey(workItem.date),
+      workItem,
     }));
 
   const blogEntries: SegmentDirectoryEntry[] = blogs
@@ -149,9 +149,7 @@ function buildSegmentEntries(segment: SegmentKey): SegmentDirectoryEntry[] {
       blog,
     }));
 
-  return [...projectEntries, ...blogEntries].sort(
-    (a, b) => b.sortKey - a.sortKey,
-  );
+  return [...workEntries, ...blogEntries].sort((a, b) => b.sortKey - a.sortKey);
 }
 
 export function SegmentDirectory({ segment }: { segment: SegmentKey }) {
@@ -455,11 +453,8 @@ export function SegmentDirectory({ segment }: { segment: SegmentKey }) {
         {filteredEntries.length > 0 ? (
           <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:mt-20 xl:mt-24 xl:grid-cols-3">
             {filteredEntries.map((entry) =>
-              entry.kind === "Project" ? (
-                <ProjectCard
-                  key={`project-${entry.id}`}
-                  project={entry.project}
-                />
+              entry.kind === "Work" ? (
+                <WorkCard key={`work-${entry.id}`} workItem={entry.workItem} />
               ) : (
                 <BlogCard key={`blog-${entry.id}`} blog={entry.blog} />
               ),

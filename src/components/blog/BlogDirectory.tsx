@@ -14,8 +14,80 @@ function normalize(value: string) {
   return value.trim().toLowerCase();
 }
 
-function getBlogCategory(blog: (typeof blogs)[number]) {
-  return blog.category ?? blog.tags[0] ?? "Blog";
+const blogCategoryKeywords: Record<Exclude<BlogCategory, "All">, string[]> = {
+  "Mobile Apps": [
+    "mobile app",
+    "mobile apps",
+    "react native",
+    "expo",
+    "swiftui",
+    "ios",
+    "kotlin",
+    "android",
+  ],
+  "AI/ML": [
+    "ai",
+    "ai/ml",
+    "ml",
+    "machine learning",
+    "artificial intelligence",
+    "llm",
+    "openai",
+    "langchain",
+    "pytorch",
+    "tensorflow",
+  ],
+  Design: [
+    "design",
+    "ui",
+    "ux",
+    "ui/ux",
+    "web design",
+    "product design",
+    "figma",
+  ],
+};
+
+function escapeRegex(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function includesKeyword(value: string, keyword: string) {
+  const normalizedValue = normalize(value);
+  const normalizedKeyword = normalize(keyword);
+
+  if (!normalizedValue || !normalizedKeyword) {
+    return false;
+  }
+
+  if (normalizedKeyword.length <= 3) {
+    const pattern = new RegExp(`\\b${escapeRegex(normalizedKeyword)}\\b`);
+    return pattern.test(normalizedValue);
+  }
+
+  return normalizedValue.includes(normalizedKeyword);
+}
+
+function matchesBlogCategory(
+  blog: (typeof blogs)[number],
+  category: BlogCategory,
+) {
+  if (category === "All") {
+    return true;
+  }
+
+  const searchableValues = [
+    blog.title,
+    blog.description,
+    blog.category ?? "",
+    ...blog.tags,
+  ];
+
+  const keywords = blogCategoryKeywords[category];
+
+  return searchableValues.some((value) =>
+    keywords.some((keyword) => includesKeyword(value, keyword)),
+  );
 }
 
 export function BlogDirectory() {
@@ -39,14 +111,9 @@ export function BlogDirectory() {
 
   const filteredBlogs = useMemo(() => {
     const normalizedQuery = normalize(query);
-    const normalizedActive = normalize(activeCategory);
 
     return blogs.filter((blog) => {
-      const category = getBlogCategory(blog);
-      const categoryMatches =
-        activeCategory === "All" ||
-        normalize(category) === normalizedActive ||
-        blog.tags.some((tag) => normalize(tag) === normalizedActive);
+      const categoryMatches = matchesBlogCategory(blog, activeCategory);
 
       if (!categoryMatches) {
         return false;
@@ -56,7 +123,12 @@ export function BlogDirectory() {
         return true;
       }
 
-      const haystack = [blog.title, blog.description, category, ...blog.tags]
+      const haystack = [
+        blog.title,
+        blog.description,
+        blog.category ?? "",
+        ...blog.tags,
+      ]
         .join(" ")
         .toLowerCase();
 

@@ -27,7 +27,7 @@ export function middleware(request: NextRequest) {
   }
 
   // Strip trailing slashes (except root "/") to prevent duplicate URLs
-  // e.g. /projects/ → /projects, /skills/ → /skills
+  // e.g. /work/ -> /work, /skills/ -> /skills
   if (shouldStripTrailingSlash) {
     const url = request.nextUrl.clone();
     url.pathname = pathname.replace(/\/+$/, "");

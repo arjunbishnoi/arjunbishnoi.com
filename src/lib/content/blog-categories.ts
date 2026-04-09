@@ -1,11 +1,5 @@
-export const blogCategories = [
-  "All",
-  "Mobile Apps",
-  "AI/ML",
-  "Design",
-  "Development",
-  "Product",
-  "Philosophy",
-] as const;
+import { projectCategories } from "./project-categories";
+
+export const blogCategories = projectCategories;
 
 export type BlogCategory = (typeof blogCategories)[number];

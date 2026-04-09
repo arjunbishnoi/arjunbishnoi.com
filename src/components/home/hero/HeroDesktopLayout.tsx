@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { heroDescription } from "@/lib/content/hero-content";
-import { projects } from "@/lib/content/projects";
+import { workItems } from "@/lib/content/work";
 import { AboutProfileCard } from "@/components/home/AboutProfileCard";
 import { HeroEducationTimeline } from "@/components/home/hero/HeroEducationTimeline";
 import { HeroProfessionalTitles } from "@/components/home/hero/HeroProfessionalTitles";
@@ -27,8 +27,8 @@ export function HeroDesktopLayout({
   viewAllBlobColors,
   isDesktop,
 }: HeroDesktopLayoutProps) {
-  const featuredProject =
-    projects.find((project) => project.featured) ?? projects[0];
+  const featuredWorkItem =
+    workItems.find((item) => item.featured) ?? workItems[0];
 
   return (
     <motion.div
@@ -77,16 +77,16 @@ export function HeroDesktopLayout({
             </div>
 
             <Link
-              href={featuredProject.url}
-              className="project-card-link group block w-full shrink-0 rounded-none overflow-hidden h-full focus:outline-none"
-              aria-label={`View ${featuredProject.title}`}
+              href={featuredWorkItem.url}
+              className="project-card-link group block w-full shrink-0 rounded-none h-full focus:outline-none"
+              aria-label={`View ${featuredWorkItem.title}`}
             >
-              <div className="aspect-square relative overflow-hidden bg-muted rounded-[40px]">
+              <div className="cover-card-interactive aspect-square relative overflow-hidden bg-muted rounded-[40px]">
                 <Image
-                  src={featuredProject.image}
-                  alt={featuredProject.title}
+                  src={featuredWorkItem.image}
+                  alt={featuredWorkItem.title}
                   fill
-                  className="project-card-media object-cover transition-transform duration-500 ease-out"
+                  className="project-card-media object-cover"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                 />
               </div>

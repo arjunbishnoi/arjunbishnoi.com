@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { Share2 } from "lucide-react";
 
-type ProjectShareButtonProps = {
+type WorkShareButtonProps = {
   title: string;
 };
 
-export function ProjectShareButton({ title }: ProjectShareButtonProps) {
+export function WorkShareButton({ title }: WorkShareButtonProps) {
   const [copied, setCopied] = useState(false);
 
   const handleShare = async () => {
@@ -35,8 +35,8 @@ export function ProjectShareButton({ title }: ProjectShareButtonProps) {
     <button
       type="button"
       onClick={handleShare}
-      className="flex h-10 items-center justify-center gap-2 rounded-full bg-black px-5 text-[0.85rem] font-medium tracking-[-0.018em] text-white transition-transform duration-200 active:scale-[0.98] dark:bg-white dark:text-black md:h-12 md:gap-2.5 md:px-7 md:text-[1rem] lg:h-14 lg:px-8 lg:text-[1.08rem]"
-      aria-label="Share this project"
+      className="pill-interactive flex h-10 items-center justify-center gap-2 rounded-full bg-black px-5 text-[0.85rem] font-medium tracking-[-0.018em] text-white dark:bg-white dark:text-black md:h-12 md:gap-2.5 md:px-7 md:text-[1rem] lg:h-14 lg:px-8 lg:text-[1.08rem]"
+      aria-label="Share this work"
     >
       {copied ? "Copied link" : "Share"}
       <Share2

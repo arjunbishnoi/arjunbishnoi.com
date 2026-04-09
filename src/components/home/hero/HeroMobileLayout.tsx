@@ -119,9 +119,8 @@ export function HeroMobileLayout({
               type="button"
               onClick={onToggleBioExpanded}
               className={cn(
-                "z-20 w-fit mx-auto flex items-center justify-center gap-2 rounded-full bg-black text-white px-5 py-2.5 text-[0.85rem] font-medium",
+                "pill-interactive z-20 w-fit mx-auto flex items-center justify-center gap-2 rounded-full bg-black text-white px-5 py-2.5 text-[0.85rem] font-medium",
                 "dark:bg-white dark:text-black",
-                "transition-transform duration-200 active:scale-[0.98]",
               )}
               aria-expanded={bioExpanded}
             >

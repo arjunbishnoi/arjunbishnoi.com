@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/home/HeroSection";
 import { FeaturedSection } from "@/components/home/FeaturedSection";
-import { ProjectsSection } from "@/components/home/ProjectsSection";
+import { WorkSection } from "@/components/home/WorkSection";
 import { BlogSection } from "@/components/home/BlogSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { Footer } from "@/components/layout/Footer";
@@ -22,7 +22,7 @@ export default function Home() {
         <HeroSection />
 
         <FeaturedSection />
-        <ProjectsSection />
+        <WorkSection />
         <BlogSection />
         <ContactSection />
       </div>

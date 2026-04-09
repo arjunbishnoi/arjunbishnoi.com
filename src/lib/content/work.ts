@@ -5,7 +5,7 @@ const cryptoTrackerArticle = getProjectArticleBySlug("cryptocurrency-tracker")
 const fourRentArticle = getProjectArticleBySlug("4rent")
 const carRentalArticle = getProjectArticleBySlug("car-rental")
 
-export const projects: Project[] = [
+export const workItems: Project[] = [
   {
     id: "cryptotracker",
     title: cryptoTrackerArticle?.title ?? "Cryptocurrency Tracker",
@@ -18,7 +18,7 @@ export const projects: Project[] = [
       cryptoTrackerArticle?.tags ??
       ["Mobile App", "React Native", "Expo", "Firebase", "CoinLore API"],
     date: cryptoTrackerArticle?.cardDate ?? "18 Mar 2026",
-    url: cryptoTrackerArticle ? `/projects/${cryptoTrackerArticle.slug}` : "#",
+    url: cryptoTrackerArticle ? `/work/${cryptoTrackerArticle.slug}` : "#",
     sourceUrl: "https://github.com/arjunbishnoi/CryptoTracker",
     featured: true,
     challenge:
@@ -38,7 +38,7 @@ export const projects: Project[] = [
       fourRentArticle?.tags ??
       ["Mobile App", "SwiftUI", "Combine", "MVVM", "iOS"],
     date: fourRentArticle?.cardDate ?? "06 Feb 2026",
-    url: fourRentArticle ? `/projects/${fourRentArticle.slug}` : "#",
+    url: fourRentArticle ? `/work/${fourRentArticle.slug}` : "#",
     sourceUrl: "https://github.com/arjunbishnoi/4rent",
     featured: true,
   },
@@ -54,7 +54,7 @@ export const projects: Project[] = [
       carRentalArticle?.tags ??
       ["Mobile App", "Kotlin", "MVVM", "Jetpack Navigation", "Retrofit", "Room", "Hilt"],
     date: carRentalArticle?.cardDate ?? "12 Dec 2025",
-    url: carRentalArticle ? `/projects/${carRentalArticle.slug}` : "#",
+    url: carRentalArticle ? `/work/${carRentalArticle.slug}` : "#",
     sourceUrl: "https://github.com/arjunbishnoi/CarRental",
     featured: true,
   },

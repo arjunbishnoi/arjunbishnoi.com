@@ -9,7 +9,7 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "Mobile Apps",
   path: "/apps",
-  description: "Mobile app projects and writing by Arjun Bishnoi.",
+  description: "Mobile app work and writing by Arjun Bishnoi.",
   includeSocial: true,
 });
 
