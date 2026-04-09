@@ -48,6 +48,10 @@ export function Header() {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
+  const mobileMenuAriaLabel = isMobileMenuOpen
+    ? "Close main menu"
+    : "Open main menu";
+
   return (
     <header className="fixed w-full top-2 sm:top-4 md:top-5 lg:top-6 z-50 flex justify-center pointer-events-none">
       <div
@@ -176,8 +180,11 @@ export function Header() {
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   className="flex items-center justify-center w-full h-full rounded-full cursor-pointer transition-colors duration-500 ease-soft-out text-black dark:text-white focus:outline-none"
+                  aria-controls="mobile-menu-panel"
+                  aria-expanded={isMobileMenuOpen}
+                  aria-label={mobileMenuAriaLabel}
                 >
-                  <span className="sr-only">Open main menu</span>
+                  <span className="sr-only">{mobileMenuAriaLabel}</span>
                   <motion.svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="23"

@@ -51,6 +51,15 @@ export function ContactForm({
       initial="closed"
       animate={isOpen ? "open" : "closed"}
     >
+      <input
+        type="text"
+        name="company"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden
+      />
+
       <motion.div variants={contactFormItemVariants}>
         <label
           htmlFor="name"

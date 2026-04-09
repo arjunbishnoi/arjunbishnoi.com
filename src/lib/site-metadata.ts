@@ -11,7 +11,6 @@ const mainSitelinkPages = [
   { name: "AI/ML", path: "/ai" },
   { name: "Design", path: "/design" },
   { name: "Blog", path: "/blog" },
-  { name: "Resume", path: "/resume" },
 ] as const;
 
 export const rootMetadata: Metadata = {

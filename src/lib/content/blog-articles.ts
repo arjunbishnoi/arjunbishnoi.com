@@ -21,7 +21,7 @@ export type BlogArticle = {
 
 export const blogArticles: BlogArticle[] = [
   {
-    slug: "the-future-of-ui",
+    slug: "the-future-of-ui-design-in-2026",
     title: "The Future of UI Design in 2026",
     description:
       "Exploring upcoming interface patterns, from calmer interaction models to more adaptive product systems. How AI is changing the way digital experiences are structured and refined.",
@@ -84,7 +84,7 @@ export const blogArticles: BlogArticle[] = [
     ],
   },
   {
-    slug: "optimizing-react-performance",
+    slug: "optimizing-react-rendering-at-scale",
     title: "Optimizing React Rendering at Scale",
     description:
       "Deep dive into advanced performance mechanics in React 19. How we reduced time-to-interactive by 40% using concurrent features and server components.",
@@ -146,7 +146,7 @@ export const blogArticles: BlogArticle[] = [
     ],
   },
   {
-    slug: "building-for-accessibility",
+    slug: "building-for-true-digital-accessibility",
     title: "Building for True Digital Accessibility",
     description:
       "Why WCAG compliance is only the starting point. Practical ways to design and build interfaces that remain usable, readable, and resilient across real-world conditions.",

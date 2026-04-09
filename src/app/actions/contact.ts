@@ -19,6 +19,7 @@ export async function submitContact(
   const name = String(formData.get("name") ?? "");
   const email = String(formData.get("email") ?? "");
   const message = String(formData.get("message") ?? "");
+  const company = String(formData.get("company") ?? "");
 
   const requestHeaders = await headers();
   const clientIdentifier = extractClientIdentifierFromHeader(
@@ -27,7 +28,7 @@ export async function submitContact(
   );
 
   const result = await relayContactForm(
-    { name, email, message },
+    { name, email, message, company },
     {
       clientIdentifier,
       origin: requestHeaders.get("origin") ?? undefined,

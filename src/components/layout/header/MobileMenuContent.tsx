@@ -26,8 +26,10 @@ export function MobileMenuContent({
 }: MobileMenuContentProps) {
   return (
     <motion.div
+      id="mobile-menu-panel"
       initial={false}
       animate={mobileMenuAnimationState}
+      aria-hidden={!isMobileMenuOpen}
       className={[
         "pl-[17px] pr-[12px] pb-[22px] w-full flex flex-col pt-6",
         isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none",

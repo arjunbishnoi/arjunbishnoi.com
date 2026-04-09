@@ -1,13 +1,13 @@
 import type { BlogPost } from "./types"
 import { getBlogArticleBySlug } from "./blog-articles"
 
-const uiDesignArticle = getBlogArticleBySlug("the-future-of-ui")
-const reactPerformanceArticle = getBlogArticleBySlug("optimizing-react-performance")
-const accessibilityArticle = getBlogArticleBySlug("building-for-accessibility")
+const uiDesignArticle = getBlogArticleBySlug("the-future-of-ui-design-in-2026")
+const reactPerformanceArticle = getBlogArticleBySlug("optimizing-react-rendering-at-scale")
+const accessibilityArticle = getBlogArticleBySlug("building-for-true-digital-accessibility")
 
 export const blogs: BlogPost[] = [
   {
-    id: "the-future-of-ui",
+    id: "the-future-of-ui-design-in-2026",
     title: uiDesignArticle?.title ?? "The Future of UI Design in 2026",
     description:
       uiDesignArticle?.description ??
@@ -19,7 +19,7 @@ export const blogs: BlogPost[] = [
     url: uiDesignArticle ? `/blog/${uiDesignArticle.slug}` : "#",
   },
   {
-    id: "optimizing-react-performance",
+    id: "optimizing-react-rendering-at-scale",
     title: reactPerformanceArticle?.title ?? "Optimizing React Rendering at Scale",
     description:
       reactPerformanceArticle?.description ??
@@ -31,7 +31,7 @@ export const blogs: BlogPost[] = [
     url: reactPerformanceArticle ? `/blog/${reactPerformanceArticle.slug}` : "#",
   },
   {
-    id: "building-for-accessibility",
+    id: "building-for-true-digital-accessibility",
     title: accessibilityArticle?.title ?? "Building for True Digital Accessibility",
     description:
       accessibilityArticle?.description ??

@@ -8,6 +8,7 @@ type ContactPayload = {
   name?: string;
   email?: string;
   message?: string;
+  company?: string;
 };
 
 export const runtime = "nodejs";

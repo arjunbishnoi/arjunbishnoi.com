@@ -13,6 +13,12 @@ const CONTACT_RATE_LIMIT_WINDOW_MS = Number(
 const CONTACT_RATE_LIMIT_MAX_REQUESTS = Number(
   process.env.CONTACT_RATE_LIMIT_MAX_REQUESTS ?? 5,
 );
+const CONTACT_ALLOWED_ORIGINS = process.env.CONTACT_ALLOWED_ORIGINS;
+const UPSTASH_REDIS_REST_URL = process.env.UPSTASH_REDIS_REST_URL;
+const UPSTASH_REDIS_REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
+const HAS_DISTRIBUTED_RATE_LIMIT = Boolean(
+  UPSTASH_REDIS_REST_URL && UPSTASH_REDIS_REST_TOKEN,
+);
 
 const DEFAULT_ORIGIN = "https://arjunbishnoi.com";
 const DEFAULT_REFERER = "https://arjunbishnoi.com/";
@@ -26,6 +32,7 @@ type ContactPayload = {
   name: string;
   email: string;
   message: string;
+  company?: string;
 };
 
 type RelayOptions = {
@@ -54,6 +61,56 @@ function normalizeText(value: string | null | undefined) {
   return value?.trim() ?? "";
 }
 
+function normalizeOrigin(value: string | undefined) {
+  if (!value) return null;
+
+  try {
+    return new URL(value).origin.toLowerCase();
+  } catch {
+    return null;
+  }
+}
+
+function getAllowedOrigins() {
+  const configured = CONTACT_ALLOWED_ORIGINS
+    ? CONTACT_ALLOWED_ORIGINS.split(",")
+        .map((value) => normalizeOrigin(value.trim()))
+        .filter((value): value is string => Boolean(value))
+    : [];
+
+  if (configured.length > 0) {
+    return new Set(configured);
+  }
+
+  const defaults = [DEFAULT_ORIGIN, "https://www.arjunbishnoi.com"];
+
+  if (process.env.NODE_ENV !== "production") {
+    defaults.push(
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "http://127.0.0.1:3000",
+      "http://127.0.0.1:3001",
+    );
+  }
+
+  return new Set(
+    defaults
+      .map((value) => normalizeOrigin(value))
+      .filter((value): value is string => Boolean(value)),
+  );
+}
+
+function isAllowedRequestOrigin(origin: string | undefined, referer: string | undefined) {
+  const allowedOrigins = getAllowedOrigins();
+  const requestOrigin = normalizeOrigin(origin) ?? normalizeOrigin(referer);
+
+  if (!requestOrigin) {
+    return process.env.NODE_ENV !== "production";
+  }
+
+  return allowedOrigins.has(requestOrigin);
+}
+
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -64,7 +121,7 @@ function normalizeClientIdentifier(value: string | null | undefined) {
   return normalized.slice(0, 120);
 }
 
-function consumeRateLimit(identifier: string) {
+function consumeInMemoryRateLimit(identifier: string) {
   const now = Date.now();
   const key = normalizeClientIdentifier(identifier);
   const existing = rateLimitStore.get(key);
@@ -87,6 +144,72 @@ function consumeRateLimit(identifier: string) {
   existing.count += 1;
   rateLimitStore.set(key, existing);
   return { allowed: true };
+}
+
+async function runRedisCommand(commandPath: string) {
+  if (!UPSTASH_REDIS_REST_URL || !UPSTASH_REDIS_REST_TOKEN) {
+    return null;
+  }
+
+  const response = await fetch(`${UPSTASH_REDIS_REST_URL}/${commandPath}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${UPSTASH_REDIS_REST_TOKEN}`,
+    },
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json().catch(() => null);
+}
+
+async function consumeRateLimit(identifier: string) {
+  const key = normalizeClientIdentifier(identifier);
+
+  if (!HAS_DISTRIBUTED_RATE_LIMIT) {
+    return consumeInMemoryRateLimit(key);
+  }
+
+  try {
+    const redisKey = `contact:rate-limit:${key}`;
+    const encodedKey = encodeURIComponent(redisKey);
+    const incrementResult = await runRedisCommand(`incr/${encodedKey}`);
+    const count = Number(incrementResult?.result);
+
+    if (!Number.isFinite(count)) {
+      return consumeInMemoryRateLimit(key);
+    }
+
+    if (count === 1) {
+      await runRedisCommand(
+        `pexpire/${encodedKey}/${CONTACT_RATE_LIMIT_WINDOW_MS}`,
+      );
+    }
+
+    if (count > CONTACT_RATE_LIMIT_MAX_REQUESTS) {
+      const ttlResult = await runRedisCommand(`pttl/${encodedKey}`);
+      const retryAfterMs = Number(ttlResult?.result);
+
+      return {
+        allowed: false,
+        retryAfterSeconds:
+          Number.isFinite(retryAfterMs) && retryAfterMs > 0
+            ? Math.ceil(retryAfterMs / 1000)
+            : Math.ceil(CONTACT_RATE_LIMIT_WINDOW_MS / 1000),
+      };
+    }
+
+    return { allowed: true };
+  } catch (error) {
+    console.error("Distributed rate limit failed, falling back to memory", {
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+
+    return consumeInMemoryRateLimit(key);
+  }
 }
 
 function validatePayload(payload: ContactPayload) {
@@ -121,10 +244,29 @@ export async function relayContactForm(
   rawPayload: Partial<ContactPayload>,
   options: RelayOptions,
 ): Promise<ContactRelayResult> {
+  if (!isAllowedRequestOrigin(options.origin, options.referer)) {
+    return {
+      ok: false,
+      status: 403,
+      error: "Invalid request origin.",
+    };
+  }
+
+  const honeypotValue = normalizeText(rawPayload.company);
+  if (honeypotValue) {
+    // Return a success-like response to avoid giving bots a useful signal.
+    return {
+      ok: true,
+      status: 200,
+      message: "Message sent! I'll get back to you soon.",
+    };
+  }
+
   const payload: ContactPayload = {
     name: normalizeText(rawPayload.name),
     email: normalizeText(rawPayload.email),
     message: normalizeText(rawPayload.message),
+    company: "",
   };
 
   const validationError = validatePayload(payload);
@@ -132,7 +274,7 @@ export async function relayContactForm(
     return { ok: false, status: 400, error: validationError };
   }
 
-  const rateLimit = consumeRateLimit(options.clientIdentifier);
+  const rateLimit = await consumeRateLimit(options.clientIdentifier);
   if (!rateLimit.allowed) {
     return {
       ok: false,
@@ -160,7 +302,7 @@ export async function relayContactForm(
       body: JSON.stringify({
         ...payload,
         _subject: options.subject ?? "New Portfolio Contact",
-        _captcha: "false",
+        _captcha: "true",
       }),
     });
 

@@ -3,11 +3,6 @@ import { blogArticles } from "@/lib/content/blog-articles";
 import { projectArticles } from "@/lib/content/project-articles";
 import { siteConfig } from "@/lib/site-config";
 
-const contentPublishDates = [
-  ...blogArticles.map((article) => article.publishedAt),
-  ...projectArticles.map((article) => article.publishedAt),
-];
-
 const indexedRoutes = [
   {
     path: "/",
@@ -42,12 +37,6 @@ const indexedRoutes = [
   {
     path: "/design",
     priority: 0.8,
-    changeFrequency: "monthly" as const,
-    images: [siteConfig.images.headshot],
-  },
-  {
-    path: "/resume",
-    priority: 0.6,
     changeFrequency: "monthly" as const,
     images: [siteConfig.images.headshot],
   },
