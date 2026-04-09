@@ -1,16 +1,24 @@
 import type { NextConfig } from "next";
 
+const isProduction = process.env.NODE_ENV === "production";
+const scriptSrcDirective = isProduction
+  ? "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com"
+  : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com";
+const connectSrcDirective = isProduction
+  ? "connect-src 'self' https://formsubmit.co https://vitals.vercel-insights.com"
+  : "connect-src 'self' ws://localhost:* ws://127.0.0.1:* http://localhost:* http://127.0.0.1:* https://formsubmit.co https://vitals.vercel-insights.com";
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
   "frame-ancestors 'none'",
   "frame-src 'none'",
-  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+  scriptSrcDirective,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob: https:",
-  "connect-src 'self' https://formsubmit.co https://vitals.vercel-insights.com",
+  connectSrcDirective,
   "form-action 'self' https://formsubmit.co",
 ].join("; ");
 
@@ -21,12 +29,12 @@ const globalSecurityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+    value: "camera=(), microphone=(), geolocation=()",
   },
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   { key: "Cross-Origin-Resource-Policy", value: "same-site" },
   { key: "X-DNS-Prefetch-Control", value: "on" },
-  ...(process.env.NODE_ENV === "production"
+  ...(isProduction
     ? [
         {
           key: "Strict-Transport-Security",

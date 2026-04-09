@@ -6,8 +6,12 @@ This repository uses a feature-oriented structure on top of the Next.js App Rout
 
 - `src/app`: Routes, metadata, and server entry points.
 - `src/components`: Reusable UI grouped by domain (`home`, `layout`, `social`).
+  - `directory`: Shared category/search controls used by Blog/Work/Segment directories.
+  - `cards`: Shared content card primitives used by blog/work listings.
 - `src/hooks`: Reusable React hooks.
 - `src/lib`: Domain utilities, content data, metadata helpers.
+  - `content/*-data`: Large domain datasets split into focused modules with thin compatibility exports.
+  - `directory`: Shared filtering/search helpers used across list directories.
 - `public`: Static assets and generated web metadata files.
 
 ## Design Principles
