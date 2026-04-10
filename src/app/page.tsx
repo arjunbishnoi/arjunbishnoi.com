@@ -6,13 +6,17 @@ import { BlogSection } from "@/components/home/BlogSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/lib/site-config";
+import { buildPageMetadata } from "@/lib/site-metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return {
-    alternates: {
-      canonical: siteConfig.canonicalHomeUrl,
-    },
-  };
+  return buildPageMetadata({
+    title: siteConfig.name,
+    path: "/",
+    description: siteConfig.description,
+    includeSocial: true,
+    socialTitle: siteConfig.name,
+    absoluteTitle: true,
+  });
 }
 
 export default function Home() {
