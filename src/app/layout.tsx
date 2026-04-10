@@ -40,7 +40,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${instrumentSerif.variable} font-sans antialiased`}>
+      <body
+        className={`${inter.variable} ${instrumentSerif.variable} font-sans antialiased`}
+      >
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
