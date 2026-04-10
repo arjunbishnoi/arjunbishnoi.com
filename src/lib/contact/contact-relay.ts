@@ -82,7 +82,7 @@ function getAllowedOrigins() {
     return new Set(configured);
   }
 
-  const defaults = [DEFAULT_ORIGIN, "https://www.arjunbishnoi.com"];
+  const defaults = [DEFAULT_ORIGIN];
 
   if (process.env.NODE_ENV !== "production") {
     defaults.push(

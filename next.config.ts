@@ -75,6 +75,12 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.arjunbishnoi.com' }],
+        destination: 'https://arjunbishnoi.com/:path*',
+        permanent: true,
+      },
+      {
         source: '/projects',
         destination: '/work',
         permanent: true,
