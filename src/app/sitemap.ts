@@ -43,7 +43,7 @@ const indexedRoutes = [
 ] as const;
 
 function toAbsoluteUrl(path: string) {
-  return path === "/" ? `${siteConfig.url}/` : `${siteConfig.url}${path}`;
+  return path === "/" ? siteConfig.canonicalHomeUrl : `${siteConfig.url}${path}`;
 }
 
 function toAbsoluteImage(url: string) {

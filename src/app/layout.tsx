@@ -6,7 +6,7 @@ import { ThemeColorMeta } from "@/components/ThemeColorMeta";
 import { Header } from "@/components/layout/Header";
 import { PageLoadFadeIn } from "@/components/layout/PageLoadFadeIn";
 import { getThemeInitScript } from "@/lib/theme";
-import { homepageJsonLd, rootMetadata } from "@/lib/site-metadata";
+import { rootMetadata, websiteJsonLd } from "@/lib/site-metadata";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
@@ -44,7 +44,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <ThemeProvider>
           <ThemeColorMeta />

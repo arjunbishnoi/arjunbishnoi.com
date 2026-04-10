@@ -87,12 +87,17 @@ export const rootMetadata: Metadata = {
   other: {},
 };
 
-export const homepageJsonLd = {
+const websiteId = `${siteConfig.url}/#website`;
+const profilePageId = `${siteConfig.url}/#profile-page`;
+const personId = `${siteConfig.url}/#person`;
+const headshotId = `${siteConfig.url}/#headshot`;
+
+export const websiteJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": `${siteConfig.url}/#website`,
+      "@id": websiteId,
       url: siteConfig.canonicalHomeUrl,
       name: siteConfig.name,
       alternateName: [...siteConfig.alternateNames],
@@ -102,45 +107,51 @@ export const homepageJsonLd = {
       "@id": `${siteConfig.url}${page.path}#site-navigation`,
       name: page.name,
       url: `${siteConfig.url}${page.path}`,
-      isPartOf: { "@id": `${siteConfig.url}/#website` },
+      isPartOf: { "@id": websiteId },
     })),
+  ],
+};
+
+export const homepageJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
     {
       "@type": "ProfilePage",
-      "@id": `${siteConfig.url}/#profile-page`,
-      url: `${siteConfig.url}/`,
+      "@id": profilePageId,
+      url: siteConfig.canonicalHomeUrl,
       name: siteConfig.name,
       description: siteConfig.description,
-      isPartOf: { "@id": `${siteConfig.url}/#website` },
-      about: { "@id": `${siteConfig.url}/#person` },
-      mainEntity: { "@id": `${siteConfig.url}/#person` },
-      primaryImageOfPage: { "@id": `${siteConfig.url}/#headshot` },
+      isPartOf: { "@id": websiteId },
+      about: { "@id": personId },
+      mainEntity: { "@id": personId },
+      primaryImageOfPage: { "@id": headshotId },
     },
     {
       "@type": "ImageObject",
-      "@id": `${siteConfig.url}/#headshot`,
+      "@id": headshotId,
       name: siteConfig.name,
       url: siteConfig.images.headshot,
       contentUrl: siteConfig.images.headshot,
       description: personImageDescription,
       caption: siteConfig.name,
       thumbnailUrl: siteConfig.images.portrait,
-      creator: { "@id": `${siteConfig.url}/#person` },
+      creator: { "@id": personId },
       creditText: siteConfig.name,
       copyrightNotice: `(c) ${new Date().getFullYear()} ${siteConfig.name}`,
-      license: `${siteConfig.url}/`,
+      license: siteConfig.canonicalHomeUrl,
       acquireLicensePage: `${siteConfig.url}/#contact`,
       representativeOfPage: true,
     },
     {
       "@type": "Person",
-      "@id": `${siteConfig.url}/#person`,
+      "@id": personId,
       name: siteConfig.name,
-      url: siteConfig.url,
-      image: { "@id": `${siteConfig.url}/#headshot` },
+      url: siteConfig.canonicalHomeUrl,
+      image: { "@id": headshotId },
       description: siteConfig.description,
       jobTitle: "Mobile Application Developer, AI Engineer, and UI/UX Designer",
       sameAs: [socialLinks.github, socialLinks.linkedin, socialLinks.behance],
-      mainEntityOfPage: { "@id": `${siteConfig.url}/#profile-page` },
+      mainEntityOfPage: { "@id": profilePageId },
       worksFor: {
         "@type": "Organization",
         name: "Freelance",

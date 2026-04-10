@@ -6,7 +6,7 @@ import { BlogSection } from "@/components/home/BlogSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/lib/site-config";
-import { buildPageMetadata } from "@/lib/site-metadata";
+import { buildPageMetadata, homepageJsonLd } from "@/lib/site-metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({
@@ -22,6 +22,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Home() {
   return (
     <main className="flex flex-col min-h-[100dvh] bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
+      />
       <div className="flex-1 flex flex-col">
         <HeroSection />
 
