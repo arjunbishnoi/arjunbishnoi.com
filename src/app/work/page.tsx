@@ -9,8 +9,15 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "Work",
   path: "/work",
-  description:
-    "Selected mobile app and product engineering work by Arjun Bishnoi.",
+  description: "Selected work in mobile apps, AI, and product engineering.",
+  keywords: [
+    "Work",
+    "Case Studies",
+    "Mobile Apps",
+    "AI",
+    "Product Engineering",
+  ],
+  socialDescription: "Case studies from concept to shipped product.",
   includeSocial: true,
 });
 

@@ -9,7 +9,9 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "Design",
   path: "/design",
-  description: "Design work and writing by Arjun Bishnoi.",
+  description: "Interface and product design focused on clarity and usability.",
+  keywords: ["Design", "UI", "UX", "Design Systems", "Product Design", "Figma"],
+  socialDescription: "Design systems and UX decisions for complex products.",
   includeSocial: true,
 });
 

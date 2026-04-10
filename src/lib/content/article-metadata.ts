@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/site-metadata";
-import { siteConfig } from "@/lib/site-config";
+import { defaultKeywords, siteConfig } from "@/lib/site-config";
 
 type ArticleMetadataShape = {
   slug: string;
   title: string;
+  description: string;
   deck: string;
+  category: string;
+  tags: string[];
+  author: string;
   publishedAt: string;
   image: string;
 };
@@ -32,16 +36,28 @@ export function buildArticleMetadata({
     });
   }
 
+  const socialTitle = `${article.title} | ${siteConfig.name}`;
+  const socialDescription = article.deck;
+
   return buildPageMetadata({
     title: article.title,
     absoluteTitle: true,
     path: `${basePath}/${article.slug}`,
-    description: article.deck,
+    description: article.description,
+    keywords: [...new Set([...defaultKeywords, article.category, ...article.tags])],
+    authors: [{ name: article.author, url: siteConfig.canonicalHomeUrl }],
+    creator: article.author,
+    publisher: siteConfig.name,
     includeSocial: true,
-    socialTitle: article.title,
-    twitterCard: "summary",
+    socialTitle,
+    socialDescription,
+    twitterCard: "summary_large_image",
     openGraphType: "article",
     publishedTime: article.publishedAt,
+    articleSection: article.category,
+    articleTags: article.tags,
+    articleAuthors: [article.author],
     imageUrl: new URL(article.image, siteConfig.url).toString(),
+    imageAlt: `${article.title} by ${siteConfig.name}`,
   });
 }

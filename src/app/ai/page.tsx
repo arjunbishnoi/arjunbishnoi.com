@@ -9,7 +9,17 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "AI/ML",
   path: "/ai",
-  description: "AI work and writing by Arjun Bishnoi.",
+  description:
+    "Applied AI work focused on reliability, utility, and product fit.",
+  keywords: [
+    "AI",
+    "Machine Learning",
+    "LLM",
+    "Applied AI",
+    "AI Product Engineering",
+  ],
+  socialDescription:
+    "AI features designed for real workflows and clear outcomes.",
   includeSocial: true,
 });
 

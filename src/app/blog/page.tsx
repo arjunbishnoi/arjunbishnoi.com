@@ -9,7 +9,9 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "Blog",
   path: "/blog",
-  description: "Mobile Apps, AI & Design",
+  description: "Writing on mobile apps, AI, and design.",
+  keywords: ["Blog", "Mobile Apps", "AI", "Design", "Product Engineering"],
+  socialDescription: "Practical notes on building clear, useful products.",
   includeSocial: true,
 });
 

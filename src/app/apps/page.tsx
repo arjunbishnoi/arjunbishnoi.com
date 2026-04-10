@@ -9,7 +9,18 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "Mobile Apps",
   path: "/apps",
-  description: "Mobile app work and writing by Arjun Bishnoi.",
+  description: "Cross-platform apps built for speed, clarity, and reliability.",
+  keywords: [
+    "Mobile Apps",
+    "React Native",
+    "Expo",
+    "SwiftUI",
+    "Kotlin",
+    "iOS",
+    "Android",
+  ],
+  socialDescription:
+    "React Native, SwiftUI, and Kotlin projects with product discipline.",
   includeSocial: true,
 });
 

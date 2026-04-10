@@ -165,12 +165,21 @@ type PageMetadataOptions = {
   path?: string;
   description?: string;
   index?: boolean;
+  keywords?: string[];
+  authors?: Metadata["authors"];
+  creator?: string;
+  publisher?: string;
   includeSocial?: boolean;
   imageUrl?: string;
+  imageAlt?: string;
   socialTitle?: string;
+  socialDescription?: string;
   absoluteTitle?: boolean;
   openGraphType?: "website" | "article";
   publishedTime?: string;
+  articleSection?: string;
+  articleTags?: string[];
+  articleAuthors?: string[];
   twitterCard?: "summary" | "summary_large_image";
 };
 
@@ -179,12 +188,21 @@ export function buildPageMetadata({
   path,
   description = siteConfig.sectionDescription,
   index = true,
+  keywords,
+  authors,
+  creator,
+  publisher,
   includeSocial = false,
   imageUrl = siteConfig.shareImage.url,
+  imageAlt,
   socialTitle,
+  socialDescription,
   absoluteTitle = false,
   openGraphType = "website",
   publishedTime,
+  articleSection,
+  articleTags,
+  articleAuthors,
   twitterCard = "summary_large_image",
 }: PageMetadataOptions): Metadata {
   const pageTitle =
@@ -192,10 +210,15 @@ export function buildPageMetadata({
   const resolvedSocialTitle =
     socialTitle ??
     (title === siteConfig.name ? siteConfig.name : `${title} - ${siteConfig.name}`);
+  const resolvedSocialDescription = socialDescription ?? description;
   const metadata: Metadata = {
     title: pageTitle,
     description,
     robots: { index, follow: true },
+    ...(keywords ? { keywords } : {}),
+    ...(authors ? { authors } : {}),
+    ...(creator ? { creator } : {}),
+    ...(publisher ? { publisher } : {}),
   };
 
   if (path) {
@@ -206,19 +229,29 @@ export function buildPageMetadata({
     const pageUrl = new URL(path, siteConfig.url).toString();
     metadata.openGraph = {
       title: resolvedSocialTitle,
-      description,
+      description: resolvedSocialDescription,
       url: pageUrl,
       siteName: siteConfig.name,
       type: openGraphType,
-      images: [{ url: imageUrl }],
+      images: [
+        {
+          url: imageUrl,
+          alt: imageAlt ?? `${resolvedSocialTitle} preview image`,
+        },
+      ],
       ...(openGraphType === "article" && publishedTime
-        ? { publishedTime }
+        ? {
+            publishedTime,
+            ...(articleSection ? { section: articleSection } : {}),
+            ...(articleTags?.length ? { tags: articleTags } : {}),
+            ...(articleAuthors?.length ? { authors: articleAuthors } : {}),
+          }
         : {}),
     };
     metadata.twitter = {
       card: twitterCard,
       title: resolvedSocialTitle,
-      description,
+      description: resolvedSocialDescription,
       images: [imageUrl],
     };
   }
