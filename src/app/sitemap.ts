@@ -40,6 +40,12 @@ const indexedRoutes = [
     changeFrequency: "monthly" as const,
     images: [siteConfig.images.headshot],
   },
+  {
+    path: "/resume",
+    priority: 0.7,
+    changeFrequency: "monthly" as const,
+    images: [siteConfig.images.headshot],
+  },
 ] as const;
 
 function toAbsoluteUrl(path: string) {

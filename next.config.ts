@@ -44,31 +44,12 @@ const globalSecurityHeaders = [
     : []),
 ] as const;
 
-const resumeNoIndexHeaders = [
-  {
-    key: "X-Robots-Tag",
-    value: "noindex, noarchive",
-  },
-] as const;
-
 const nextConfig: NextConfig = {
   async headers() {
     return [
       {
         source: "/(.*)",
         headers: [...globalSecurityHeaders],
-      },
-      {
-        source: "/resume",
-        headers: [...resumeNoIndexHeaders],
-      },
-      {
-        source: "/arjun-bishnoi-resume.pdf",
-        headers: [...resumeNoIndexHeaders],
-      },
-      {
-        source: "/Arjun-Bishnoi-Resume.pdf",
-        headers: [...resumeNoIndexHeaders],
       },
     ];
   },
