@@ -36,7 +36,7 @@ export function buildArticleMetadata({
     });
   }
 
-  const socialTitle = `${article.title} | ${siteConfig.name}`;
+  const socialTitle = article.title;
   const socialDescription = article.deck;
 
   return buildPageMetadata({

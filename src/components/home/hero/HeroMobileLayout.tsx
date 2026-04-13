@@ -9,6 +9,7 @@ import { HeroEducationTimeline } from "@/components/home/hero/HeroEducationTimel
 import { HeroProfessionalTitles } from "@/components/home/hero/HeroProfessionalTitles";
 import { HeroSkillsGrid } from "@/components/home/hero/HeroSkillsGrid";
 import { HeroBentoRows } from "@/components/home/hero/HeroBentoRows";
+import { HeroGithubActivityCard } from "@/components/home/hero/HeroGithubActivityCard";
 import type { HeroSnapTransition } from "@/components/home/hero/types";
 
 type HeroMobileLayoutProps = {
@@ -35,7 +36,7 @@ export function HeroMobileLayout({
   return (
     <>
       <motion.div
-        className="w-full z-20 px-6 pb-8 lg:hidden flex flex-col items-center"
+        className="w-full z-20 px-6 lg:hidden flex flex-col items-center"
         initial={
           isFirstLoad
             ? {
@@ -96,9 +97,13 @@ export function HeroMobileLayout({
                     collapsedPreview={!bioExpanded}
                   />
 
+                  <div className="flex justify-center w-full pt-10">
+                    <HeroGithubActivityCard variant="naked" />
+                  </div>
+
                   <div
                     className={cn(
-                      "hero-skills-card pt-8 flex justify-center w-full",
+                      "hero-skills-card pt-14 flex justify-center w-full",
                       bioExpanded ? "pb-0" : "pb-4",
                     )}
                   >

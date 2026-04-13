@@ -5,7 +5,6 @@ import Link from "next/link";
 import { workItems } from "@/lib/content/work";
 
 export function FeaturedSection() {
-  // Pick the first featured work item (Cryptocurrency Tracker)
   const featured = workItems.find((item) => item.featured) ?? workItems[0];
 
   return (

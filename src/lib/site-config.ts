@@ -10,12 +10,12 @@ export const siteConfig = {
   sectionDescription:
     "Developer and designer building cross-platform mobile apps at the intersection of AI and design. Functional, intelligent, and crafted with precision.",
   shareImage: {
-    url: "https://arjunbishnoi.com/og-homepage-v1.jpg?v=4",
+    url: "https://arjunbishnoi.com/og-homepage-v1.jpg",
     alt: "Arjun Bishnoi homepage preview featuring Mobile Apps, AI & Design",
   },
   images: {
-    headshot: "https://arjunbishnoi.com/arjun-bishnoi.jpg",
-    portrait: "https://arjunbishnoi.com/arjun-bishnoi.jpg",
+    headshot: "https://arjunbishnoi.com/og-homepage-v1.jpg",
+    portrait: "https://arjunbishnoi.com/og-homepage-v1.jpg",
   },
 } as const;
 

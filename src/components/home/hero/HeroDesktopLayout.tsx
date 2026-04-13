@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "motion/react";
 import { heroDescription } from "@/lib/content/hero-content";
-import { workItems } from "@/lib/content/work";
 import { AboutProfileCard } from "@/components/home/AboutProfileCard";
 import { HeroEducationTimeline } from "@/components/home/hero/HeroEducationTimeline";
+import { HeroGithubActivityCard } from "@/components/home/hero/HeroGithubActivityCard";
 import { HeroProfessionalTitles } from "@/components/home/hero/HeroProfessionalTitles";
 import { HeroSkillsGrid } from "@/components/home/hero/HeroSkillsGrid";
 import { HeroBentoRows } from "@/components/home/hero/HeroBentoRows";
@@ -27,9 +25,6 @@ export function HeroDesktopLayout({
   viewAllBlobColors,
   isDesktop,
 }: HeroDesktopLayoutProps) {
-  const featuredWorkItem =
-    workItems.find((item) => item.featured) ?? workItems[0];
-
   return (
     <motion.div
       data-about-desktop
@@ -76,21 +71,7 @@ export function HeroDesktopLayout({
               />
             </div>
 
-            <Link
-              href={featuredWorkItem.url}
-              className="project-card-link group block w-full shrink-0 rounded-none h-full focus:outline-none"
-              aria-label={`View ${featuredWorkItem.title}`}
-            >
-              <div className="cover-card-interactive aspect-square relative overflow-hidden bg-muted rounded-[40px]">
-                <Image
-                  src={featuredWorkItem.image}
-                  alt={featuredWorkItem.title}
-                  fill
-                  className="project-card-media object-cover"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                />
-              </div>
-            </Link>
+            <HeroGithubActivityCard />
           </div>
 
           <div className="flex flex-col gap-6 xl:gap-7 col-span-1 self-stretch">
