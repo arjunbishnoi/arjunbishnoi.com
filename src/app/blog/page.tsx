@@ -11,7 +11,6 @@ export const metadata = buildPageMetadata({
   path: "/blog",
   description: "Writing on mobile apps, AI, and design.",
   keywords: ["Blog", "Mobile Apps", "AI", "Design", "Product Engineering"],
-  socialDescription: "Practical notes on building clear, useful products.",
   includeSocial: true,
 });
 
