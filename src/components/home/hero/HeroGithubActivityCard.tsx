@@ -43,7 +43,7 @@ const PLACEHOLDER_COLUMNS: GridColumn[] = Array.from(
 );
 
 const LEVEL_CLASSNAMES = [
-  "bg-zinc-200 dark:bg-zinc-800/80",
+  "bg-zinc-200 dark:bg-zinc-600",
   "bg-[#a7ecac]",
   "bg-[#7fdb82]",
   "bg-[#58be59]",
@@ -84,11 +84,11 @@ function ActivityGrid({ columns }: { columns: GridColumn[] }) {
         </span>
       </div>
       <div className="flex flex-col gap-1.5 w-fit mx-auto">
-        <div className="grid grid-flow-col auto-cols-max gap-[5px] lg:gap-[6px]">
+        <div className="grid grid-flow-col auto-cols-max gap-[7px] lg:gap-[6px]">
           {displayColumns.map((column) => (
             <div
               key={column.key}
-              className="grid grid-rows-7 gap-[5px] lg:gap-[6px]"
+              className="grid grid-rows-7 gap-[7px] lg:gap-[6px]"
             >
               {column.days.map((day) => {
                 // Completely hide future days to match GitHub behavior
@@ -186,7 +186,7 @@ export function HeroGithubActivityCard({ variant = "default" }: { variant?: "def
   }
 
   return (
-    <div className="hero-education-card relative flex aspect-square w-full flex-col overflow-hidden rounded-[40px] border-none">
+    <div className="hero-education-card relative flex aspect-square w-full flex-col overflow-hidden rounded-[40px] border-none dark:bg-[#161616]">
       {content}
     </div>
   );
