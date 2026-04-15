@@ -1,9 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
-import { socialLinks } from "@/lib/content/social-links";
 import { cn } from "@/lib/utils";
 import {
   type GithubActivityDay,
@@ -67,23 +64,31 @@ function getMonthLabel(key: string) {
 }
 
 function ActivityGrid({ columns }: { columns: GridColumn[] }) {
-  const monthLabels = columns.map((column, index) => {
-    if (index === 0) return ""; // GitHub doesn't label the bleeding-edge starting month chunk
+  const displayColumns = columns.slice(1); // remove leftmost partial-week column
+  const monthLabels = displayColumns.map((column, index) => {
     const currentMonth = getMonthLabel(column.key);
-    const previousMonth = getMonthLabel(columns[index - 1].key);
+    // For the first displayed column, compare against the removed column so we
+    // still show a month label if a new month starts right after the removed week.
+    const previousColumn = index === 0 ? columns[0] : displayColumns[index - 1];
+    const previousMonth = getMonthLabel(previousColumn.key);
     return currentMonth !== previousMonth ? currentMonth : "";
   });
 
   const todayStr = new Date().toISOString().slice(0, 10);
 
   return (
-    <div className="flex flex-col justify-between w-full h-full">
+    <div className="flex flex-col justify-center items-center w-full h-full">
+      <div className="w-full flex justify-center items-center mb-5 lg:mb-5">
+        <span className="hero-copy-unified text-zinc-900 dark:text-white leading-[1.6] tracking-[-0.015em] font-[600]">
+          GitHub activity
+        </span>
+      </div>
       <div className="flex flex-col gap-1.5 w-fit mx-auto">
-        <div className="grid grid-flow-col auto-cols-max gap-[6px]">
-          {columns.map((column) => (
+        <div className="grid grid-flow-col auto-cols-max gap-[5px] lg:gap-[6px]">
+          {displayColumns.map((column) => (
             <div
               key={column.key}
-              className="grid grid-rows-7 gap-[6px]"
+              className="grid grid-rows-7 gap-[5px] lg:gap-[6px]"
             >
               {column.days.map((day) => {
                 // Completely hide future days to match GitHub behavior
@@ -95,7 +100,7 @@ function ActivityGrid({ columns }: { columns: GridColumn[] }) {
                     title={day.label}
                     aria-label={day.label}
                     className={cn(
-                      "h-[18px] w-[18px] rounded-[4px] lg:h-[16px] lg:w-[16px]",
+                      "h-[16px] w-[16px] rounded-[4px] lg:h-[16px] lg:w-[16px]",
                       LEVEL_CLASSNAMES[day.level]
                     )}
                   />
@@ -104,11 +109,11 @@ function ActivityGrid({ columns }: { columns: GridColumn[] }) {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-12 gap-[6px] w-full px-[1px] pt-1.5">
+        <div className="grid grid-cols-11 gap-[6px] w-full px-[1px] pt-1.5">
           {monthLabels.map((label, index) => (
             <div key={`month-${index}`} className="col-span-1">
               <div className="w-0 overflow-visible flex items-start">
-                <span className="whitespace-nowrap hero-education-secondary font-normal leading-none text-[#636366] dark:text-zinc-400">
+                <span className="whitespace-nowrap hero-copy-unified font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">
                   {label}
                 </span>
               </div>
@@ -117,17 +122,6 @@ function ActivityGrid({ columns }: { columns: GridColumn[] }) {
         </div>
       </div>
       
-      <div className="w-full flex justify-center items-end mt-6 lg:mt-0">
-        <div className="bg-[#b8b8b8] lg:bg-[#cacaca] dark:bg-[#676770] lg:dark:bg-zinc-500 rounded-full flex items-center gap-1.5 px-5 py-2.5 transition-colors group-hover:bg-[#acacac] lg:group-hover:bg-[#b8b8b8] dark:group-hover:bg-zinc-500 lg:dark:group-hover:bg-zinc-400">
-          <span className="hero-copy-unified font-medium text-zinc-900 dark:text-white">
-            GitHub activity
-          </span>
-          <ArrowUpRight 
-            className="w-4 h-4 text-zinc-900 dark:text-white" 
-            strokeWidth={2.5} 
-          />
-        </div>
-      </div>
     </div>
   );
 }
@@ -180,15 +174,11 @@ export function HeroGithubActivityCard({ variant = "default" }: { variant?: "def
     : PLACEHOLDER_COLUMNS;
 
   const content = (
-    <Link
-      href={socialLinks.github}
-      aria-label="Open GitHub profile"
-      className="group relative flex h-full items-center justify-center rounded-[40px]"
-    >
+    <div className="group relative flex h-full items-center justify-center rounded-[40px]">
       <div className={cn("h-full w-full", variant === "naked" ? "" : "px-5 py-8 xl:px-6 xl:py-9")}>
         <ActivityGrid columns={columns} />
       </div>
-    </Link>
+    </div>
   );
 
   if (variant === "naked") {

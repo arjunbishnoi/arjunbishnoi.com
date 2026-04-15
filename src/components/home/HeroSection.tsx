@@ -21,13 +21,13 @@ export function HeroSection() {
   const [scrolledDown, setScrolledDown] = useState(false);
   const [viewAllBlobColors, setViewAllBlobColors] =
     useState<string[]>(VIEWALL_BLOB_COLORS);
-  const [bioExpanded, setBioExpanded] = useState(() => {
-    if (typeof window === "undefined") {
-      return false;
-    }
+  const [bioExpanded, setBioExpanded] = useState(false);
 
-    return sessionStorage.getItem(HERO_BIO_EXPANDED_STORAGE_KEY) === "true";
-  });
+  // Sync from sessionStorage after mount to avoid SSR/client hydration mismatch.
+  useEffect(() => {
+    const stored = sessionStorage.getItem(HERO_BIO_EXPANDED_STORAGE_KEY) === "true";
+    if (stored) setBioExpanded(true);
+  }, []);
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const isFirstLoad = useIsFirstPageLoad();
   useHomeSectionSync();
