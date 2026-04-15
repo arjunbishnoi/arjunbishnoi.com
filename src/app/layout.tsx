@@ -8,6 +8,7 @@ import { PageLoadFadeIn } from "@/components/layout/PageLoadFadeIn";
 import { getThemeInitScript } from "@/lib/theme";
 import { rootMetadata, websiteJsonLd } from "@/lib/site-metadata";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,6 +56,7 @@ export default function RootLayout({
           <Header />
           <PageLoadFadeIn>{children}</PageLoadFadeIn>
           <SpeedInsights />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
