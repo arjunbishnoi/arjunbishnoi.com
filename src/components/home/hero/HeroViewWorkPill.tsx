@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { PILL_BUTTON_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 import { cn } from "@/lib/utils";
 
 type HeroViewWorkPillProps = {
@@ -113,7 +112,7 @@ export function HeroViewWorkPill({
           >
             <span
               className={cn(
-                "text-[1.15rem] sm:text-[1.2rem] md:text-[1.25rem] lg:text-[1.3rem] font-semibold leading-[1.5] tracking-[-0.01em] text-zinc-900 dark:text-white"
+                "text-[1.15rem] sm:text-[1.2rem] md:text-[1.25rem] lg:text-[1.3rem] font-semibold leading-[1.5] tracking-[-0.01em] text-zinc-900 dark:text-white",
               )}
             >
               View work
@@ -121,7 +120,7 @@ export function HeroViewWorkPill({
             <ArrowUpRight
               className={cn(
                 "text-zinc-900 dark:text-white shrink-0",
-                "w-[22px] h-[22px] md:w-6 md:h-6"
+                "w-[22px] h-[22px] md:w-6 md:h-6",
               )}
               strokeWidth={2.5}
             />

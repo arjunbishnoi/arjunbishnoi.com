@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { MobbinIconStack } from "@/components/home/MobbinIconStack";
 import type { HeroSnapTransition } from "@/components/home/hero/types";
 import {
   LANDING_HERO_STACK_CLASSNAME,
@@ -23,21 +22,6 @@ export function HeroIntro({
   return (
     <div className="w-full z-20 px-6 pt-[max(9rem,calc(env(safe-area-inset-top)+8.1rem))] md:pt-20 lg:pt-28 xl:pt-32 pb-0">
       <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6 text-center flex flex-col items-center">
-        {/* <motion.div
-           className="mt-1 sm:mt-2 md:mt-0 mb-6 sm:mb-8 md:mb-16 lg:mb-11 xl:mb-9 lg:scale-[0.88] xl:scale-[0.82] origin-center"
-           initial={
-             isFirstLoad
-               ? {
-                   opacity: prefersReducedMotion ? 1 : 0,
-                   y: prefersReducedMotion ? 0 : 18,
-                 }
-               : false
-           }
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ ...snapTransition, delay: 0 }}
-         >
-           <MobbinIconStack />
-         </motion.div> */}
         <div className={LANDING_HERO_STACK_CLASSNAME}>
           <motion.h1
             className={PAGE_HERO_TITLE_CLASSNAME}

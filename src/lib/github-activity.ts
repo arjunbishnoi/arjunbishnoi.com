@@ -41,10 +41,6 @@ function formatUtcDateKey(date: Date) {
   return date.toISOString().slice(0, 10);
 }
 
-function parseUtcDate(dateKey: string) {
-  return new Date(`${dateKey}T00:00:00.000Z`);
-}
-
 function shiftUtcDays(date: Date, amount: number) {
   const next = new Date(date);
   next.setUTCDate(next.getUTCDate() + amount);

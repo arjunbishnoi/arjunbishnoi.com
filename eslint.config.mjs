@@ -1,4 +1,4 @@
-import { defineConfig, globalIgnores } from "eslint/config";
+import { defineConfig } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 
 const eslintConfig = defineConfig([
@@ -23,7 +23,30 @@ const eslintConfig = defineConfig([
       "no-restricted-imports": [
         "error",
         {
-          patterns: ["@/components/*", "@/components/**"],
+          patterns: [
+            "@/components/*",
+            "@/components/**",
+            "@/app/*",
+            "@/app/**",
+            "@/hooks/*",
+            "@/hooks/**",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ["src/hooks/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            "@/components/*",
+            "@/components/**",
+            "@/app/*",
+            "@/app/**",
+          ],
         },
       ],
     },
