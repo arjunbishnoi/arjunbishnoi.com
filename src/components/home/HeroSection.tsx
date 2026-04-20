@@ -74,7 +74,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="home-stack-gap-after relative overflow-hidden flex flex-col items-center md:h-auto md:pt-16 lg:pt-20 md:pb-6 lg:pb-10"
+      className="home-stack-gap-after relative overflow-hidden flex flex-col items-center md:h-auto md:pt-20 lg:pt-[5.25rem] md:pb-6 lg:pb-10"
       style={{ background: "var(--neu-surface)" }}
     >
       <HeroIntro

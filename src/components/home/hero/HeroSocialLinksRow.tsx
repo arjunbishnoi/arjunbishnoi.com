@@ -18,11 +18,11 @@ export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
   );
   const iconWrapClassName = cn(
     "rounded-full flex items-center justify-center transition-colors",
-    isDesktop ? "w-12 h-12 xl:w-14 xl:h-14" : "w-11 h-11",
+    isDesktop ? "w-12 h-12 xl:w-14 xl:h-14" : "w-[3.4rem] h-[3.4rem]",
   );
   const iconClassName = isDesktop
     ? "block w-6 h-6 xl:w-7 xl:h-7 fill-current"
-    : "block w-[1.4rem] h-[1.4rem] fill-current";
+    : "block w-[1.75rem] h-[1.75rem] fill-current";
 
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -72,7 +72,7 @@ export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
             "text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90",
           )}
         >
-          <SocialBrandIcon brand="email" className={iconClassName} />
+          <SocialBrandIcon brand="globe" className={iconClassName} />
         </div>
       </Link>
       <a

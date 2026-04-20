@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 
-type SocialBrand = "email" | "behance" | "github" | "linkedin"
+type SocialBrand = "globe" | "behance" | "github" | "linkedin"
 
 type SocialBrandIconProps = {
   brand: SocialBrand
@@ -8,14 +8,21 @@ type SocialBrandIconProps = {
 }
 
 export function SocialBrandIcon({ brand, className }: SocialBrandIconProps) {
-  if (brand === "email") {
+  if (brand === "globe") {
     return (
       <svg viewBox="0 0 24 24" className={cn("fill-current", className)} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M7 2.75C5.38503 2.75 3.92465 3.15363 2.86466 4.1379C1.79462 5.13152 1.25 6.60705 1.25 8.5V15.5C1.25 17.393 1.79462 18.8685 2.86466 19.8621C3.92465 20.8464 5.38503 21.25 7 21.25H17C18.615 21.25 20.0754 20.8464 21.1353 19.8621C22.2054 18.8685 22.75 17.393 22.75 15.5V8.5C22.75 6.60705 22.2054 5.13152 21.1353 4.1379C20.0754 3.15363 18.615 2.75 17 2.75H7ZM19.2285 8.3623C19.5562 8.10904 19.6166 7.63802 19.3633 7.31026C19.1101 6.98249 18.6391 6.9221 18.3113 7.17537L12.7642 11.4616C12.3141 11.8095 11.6858 11.8095 11.2356 11.4616L5.6886 7.17537C5.36083 6.9221 4.88982 6.98249 4.63655 7.31026C4.38328 7.63802 4.44367 8.10904 4.77144 8.3623L10.3185 12.6486C11.3089 13.4138 12.691 13.4138 13.6814 12.6486L19.2285 8.3623Z"
-        />
+        <circle cx="12" cy="12" r="12" />
+        <g 
+          fill="none" 
+          stroke="var(--neu-surface)" 
+          strokeWidth="1.6" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        >
+           <circle cx="12" cy="12" r="9.2"/>
+           <path d="M12 2.8a15.3 15.3 0 0 1 4 9.2 15.3 15.3 0 0 1-4 9.2 15.3 15.3 0 0 1-4-9.2 15.3 15.3 0 0 1 4-9.2z"/>
+           <path d="M2.8 12h18.4"/>
+        </g>
       </svg>
     )
   }
@@ -40,7 +47,11 @@ export function SocialBrandIcon({ brand, className }: SocialBrandIconProps) {
   if (brand === "linkedin") {
     return (
       <svg viewBox="0 0 24 24" className={cn("fill-current", className)} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0zm-3 17.5h-3v-9h3v9zM7.5 7.1a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8zm11.5 10.4h-3v-5c0-1.2-.5-1.9-1.5-1.9-1 0-1.5.7-1.5 1.9v5H10v-9h3v1.2h.1c.4-1 1.5-1.5 2.5-1.5 2 0 3.5 1.5 3.5 4v5.3z"
+        />
       </svg>
     )
   }

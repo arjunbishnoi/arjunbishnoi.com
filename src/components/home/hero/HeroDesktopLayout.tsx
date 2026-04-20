@@ -29,7 +29,7 @@ export function HeroDesktopLayout({
   return (
     <motion.div
       data-about-desktop
-      className="hidden lg:flex flex-col w-full z-20 pb-0 mt-12 xl:mt-14 items-center hero-flat-desktop"
+      className="hidden lg:flex flex-col w-full z-20 pb-0 mt-28 xl:mt-32 items-center hero-flat-desktop"
       initial={
         isFirstLoad
           ? {
