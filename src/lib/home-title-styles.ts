@@ -53,7 +53,7 @@ export const NAV_LINK_TEXT_CLASSNAME =
   "text-xl font-semibold tracking-[-0.015em]";
 
 export const EMPTY_STATE_TITLE_CLASSNAME =
-  "text-[clamp(2rem,4vw,3rem)] font-semibold leading-[1.04] tracking-[-0.022em] text-foreground";
+  "text-[clamp(2rem,4vw,3rem)] font-semibold leading-[1.04] tracking-[-0.028em] text-foreground";
 
 export const HOME_SECTION_TITLE_CLASSNAME =
   "m-0 font-sans font-semibold text-black dark:text-white leading-[1.06] tracking-[-0.016em] text-[2.2rem] md:text-4xl lg:text-5xl xl:text-6xl";
@@ -65,10 +65,10 @@ export const PAGE_HERO_STACK_CLASSNAME =
   "mx-auto flex max-w-[44rem] flex-col items-center gap-5 text-center lg:max-w-[52rem]";
 
 export const PAGE_HERO_TITLE_CLASSNAME =
-  "m-0 max-w-[15ch] text-[clamp(2.18rem,4.65vw,3.72rem)] font-medium leading-[1.04] tracking-[-0.024em] text-balance text-black dark:text-white";
+  "m-0 max-w-[15ch] text-[clamp(2.18rem,4.65vw,3.72rem)] font-medium leading-[1.04] tracking-[-0.03em] text-balance text-black dark:text-white";
 
 export const LANDING_SECTION_TITLE_CLASSNAME =
-  "m-0 text-[clamp(2.18rem,4.65vw,3.72rem)] font-medium leading-[1.04] tracking-[-0.024em] text-black dark:text-white";
+  "m-0 text-[clamp(2.18rem,4.65vw,3.72rem)] font-medium leading-[1.04] tracking-[-0.03em] text-black dark:text-white";
 
 export const PAGE_HERO_SUBTITLE_CLASSNAME =
   `m-0 w-full max-w-none ${BODY_TEXT_CLASSNAME} lg:max-w-[27.5rem] xl:max-w-[26.5rem]`;
