@@ -41,7 +41,7 @@ const skillIconColors: Record<string, string> = {
   TensorFlow: "#FF6F00",
   "Rest APIs": "#16A34A",
   "AI/ML": "#EE4C2C",
-  Firebase: "#FFCA28",
+  Firebase: "#F57C00",
   Git: "#F05032",
   "Next.js": "#111111",
   "Node.js": "#339933",
@@ -78,8 +78,8 @@ const SLOT_Z_INDEX: Record<StackSlot, number> = {
 
 const VISUAL_ICON_OPACITY: Record<StackVisualRole, number> = {
   front: 1,
-  middle: 1,
-  back: 1,
+  middle: 0,
+  back: 0,
   exiting: 1,
 };
 
@@ -92,24 +92,25 @@ const VISUAL_ICON_SCALE: Record<StackVisualRole, number> = {
 
 const VISUAL_OVERLAY_OPACITY: Record<StackVisualRole, number> = {
   front: 0,
-  middle: 0.76,
-  back: 0.88,
+  middle: 1,
+  back: 1,
   exiting: 0,
 };
 
 const VISIBLE_CARD_COUNT = 3;
 const STACK_SCALE_STEP = 0.18;
 const CYCLE_INTERVAL_MS = 2000;
-const EXIT_FADE_DURATION_MS = 200;
+const EXIT_FADE_DURATION_MS = 500;
 
 const STACK_LAYOUT_TRANSITION = {
   type: "spring" as const,
-  duration: 0.8,
-  bounce: 0,
+  stiffness: 260,
+  damping: 28,
+  mass: 1,
 };
 
 const STACK_FADE_TRANSITION = {
-  duration: 0.26,
+  duration: 0.35,
   ease: [0.33, 1, 0.68, 1] as const,
 };
 
@@ -120,8 +121,9 @@ const STACK_CARD_TRANSITION = {
 
 const STACK_EXIT_TRANSITION = {
   layout: STACK_LAYOUT_TRANSITION,
-  opacity: STACK_FADE_TRANSITION,
-  y: STACK_FADE_TRANSITION,
+  opacity: { duration: 0.25, ease: "easeOut" },
+  y: { type: "spring", stiffness: 260, damping: 28, mass: 1 },
+  scale: { type: "spring", stiffness: 260, damping: 28, mass: 1 },
 } as const;
 
 type ExitingCard = {
@@ -200,7 +202,7 @@ function StackCardFace({
       <motion.div
         aria-hidden
         className="absolute inset-0"
-        style={{ backgroundColor: overlayColor }}
+        style={{ backgroundColor: overlayColor, willChange: "opacity" }}
         animate={{ opacity: VISUAL_OVERLAY_OPACITY[role] }}
         transition={
           prefersReducedMotion ? { duration: 0 } : STACK_FADE_TRANSITION
@@ -210,6 +212,7 @@ function StackCardFace({
 
       <motion.div
         className="relative flex h-full w-full items-center justify-center"
+        style={{ willChange: "transform, opacity" }}
         animate={{
           opacity: VISUAL_ICON_OPACITY[role],
           scale: VISUAL_ICON_SCALE[role],
@@ -318,8 +321,8 @@ export function MobbinIconStack() {
                 transition={
                   prefersReducedMotion ? { duration: 0 } : STACK_CARD_TRANSITION
                 }
-                style={{ transformOrigin: "top center" }}
-                className="absolute inset-0 overflow-hidden rounded-[18px] shadow-sm md:rounded-[26.4px] lg:rounded-[20px] xl:rounded-[18px]"
+                style={{ transformOrigin: "top center", willChange: "transform, opacity" }}
+                className="absolute inset-0 overflow-hidden rounded-[32%] shadow-sm"
               >
                 <StackCardFace
                   icon={icon}
@@ -343,15 +346,16 @@ export function MobbinIconStack() {
                 initial={false}
                 animate={{
                   opacity: 0,
+                  scale: prefersReducedMotion ? 1 : 0.82,
                   y: prefersReducedMotion
                     ? 0
-                    : "calc(var(--mobbin-icon-offset) * 0.45)",
+                    : "calc(var(--mobbin-icon-offset) * 3.5)",
                 }}
                 transition={
                   prefersReducedMotion ? { duration: 0 } : STACK_EXIT_TRANSITION
                 }
-                style={{ transformOrigin: "top center" }}
-                className="absolute inset-0 overflow-hidden rounded-[18px] shadow-sm md:rounded-[26.4px] lg:rounded-[20px] xl:rounded-[18px]"
+                style={{ transformOrigin: "top center", willChange: "transform, opacity" }}
+                className="absolute inset-0 overflow-hidden rounded-[32%] shadow-sm"
               >
                 <StackCardFace
                   icon={exitingCard.icon}

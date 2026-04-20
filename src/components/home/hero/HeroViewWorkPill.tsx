@@ -113,7 +113,7 @@ export function HeroViewWorkPill({
           >
             <span
               className={cn(
-                "text-[1.05rem] sm:text-[1.1rem] md:text-[1.15rem] font-semibold leading-[1.5] tracking-[-0.01em] text-zinc-900 dark:text-white"
+                "text-[1.15rem] sm:text-[1.2rem] md:text-[1.25rem] lg:text-[1.3rem] font-semibold leading-[1.5] tracking-[-0.01em] text-zinc-900 dark:text-white"
               )}
             >
               View work

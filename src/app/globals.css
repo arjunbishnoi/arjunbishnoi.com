@@ -108,7 +108,7 @@
     /* Home sections under hero: one shared gap (Featured / Work / Blog) on small screens */
     --home-stack-gap-after: 4rem;
     --mobbin-stack-mid-bg: #999999;
-    --mobbin-stack-back-bg: #d1d1d1;
+    --mobbin-stack-back-bg: #cccccc;
   }
 
   .dark {
@@ -276,18 +276,18 @@
 
   /* MobbinIconStack: responsive translateY spacing via CSS var (prevents SSR/hydration layout shift) */
   .mobbin-icon-stack {
-    --mobbin-icon-offset: 10px;
+    --mobbin-icon-offset: 8px;
   }
 
   @media (min-width: 768px) {
     .mobbin-icon-stack {
-      --mobbin-icon-offset: 16px;
+      --mobbin-icon-offset: 12px;
     }
   }
 
   @media (min-width: 1024px) {
     .mobbin-icon-stack {
-      --mobbin-icon-offset: 12px;
+      --mobbin-icon-offset: 9px;
     }
   }
 

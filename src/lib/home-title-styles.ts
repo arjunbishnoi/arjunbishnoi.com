@@ -74,10 +74,10 @@ export const PAGE_HERO_SUBTITLE_CLASSNAME =
   `m-0 w-full max-w-none ${BODY_TEXT_CLASSNAME} lg:max-w-[27.5rem] xl:max-w-[26.5rem]`;
 
 export const LANDING_HERO_STACK_CLASSNAME =
-  "mx-auto flex max-w-[44rem] flex-col items-center gap-2 text-center lg:max-w-[52rem] lg:gap-4";
+  "mx-auto flex max-w-[44rem] flex-col items-center gap-2 text-center lg:max-w-[52rem] lg:gap-3";
 
 export const LANDING_HERO_SUBTITLE_CLASSNAME =
-  "m-0 w-full max-w-none text-[1.05rem] sm:text-[1.1rem] md:text-[1.15rem] font-semibold leading-[1.5] tracking-[-0.01em] text-zinc-900 dark:text-white";
+  "m-0 w-full max-w-none hero-copy-unified lg:text-[1.15rem] xl:text-[1.2rem] font-normal leading-[1.62] tracking-[-0.004em] text-[#636366] dark:text-zinc-400";
 
 export const BLOG_POST_SECTION_TITLE_CLASSNAME =
   "w-full max-w-none text-[clamp(1.5rem,2.65vw,2.15rem)] font-medium leading-[1.18] tracking-[-0.02em] text-black dark:text-white";
