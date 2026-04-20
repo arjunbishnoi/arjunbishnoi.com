@@ -24,7 +24,7 @@ export function HeroIntro({
     <div className="w-full z-20 px-6 pt-[max(6.85rem,calc(env(safe-area-inset-top)+5.95rem))] md:pt-14 lg:pt-16 xl:pt-20 pb-0">
       <div className="w-full max-w-[1040px] mx-auto px-4 lg:px-6 text-center flex flex-col items-center">
         <motion.div
-          className="mt-1 sm:mt-2 md:mt-0 mb-8 sm:mb-9 md:mb-16 lg:mb-12 xl:mb-10 lg:scale-[0.88] xl:scale-[0.82] origin-center"
+          className="mt-1 sm:mt-2 md:mt-0 mb-6 sm:mb-8 md:mb-16 lg:mb-12 xl:mb-10 lg:scale-[0.88] xl:scale-[0.82] origin-center"
           initial={
             isFirstLoad
               ? {

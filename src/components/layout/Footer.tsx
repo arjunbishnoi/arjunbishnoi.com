@@ -62,8 +62,8 @@ export function Footer() {
   };
 
   const footerSocialItems = [
-    { name: "GitHub", href: socialLinks.github, brand: "github" as const },
     { name: "Behance", href: socialLinks.behance, brand: "behance" as const },
+    { name: "GitHub", href: socialLinks.github, brand: "github" as const },
     {
       name: "LinkedIn",
       href: socialLinks.linkedin,

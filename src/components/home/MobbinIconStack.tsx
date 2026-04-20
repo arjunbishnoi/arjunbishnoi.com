@@ -31,24 +31,24 @@ const skillTileBackgrounds: Record<string, string> = {
 };
 
 const skillIconColors: Record<string, string> = {
-  "React Native": "#61DAFB",
+  "React Native": "#0082A8",
   Python: "#3776AB",
   Figma: "#A259FF",
   Swift: "#FFFFFF",
   Kotlin: "#7F52FF",
   Typescript: "#FFFFFF",
   Expo: "#111111",
-  TensorFlow: "#FF6F00",
+  TensorFlow: "#D35400",
   "Rest APIs": "#16A34A",
   "AI/ML": "#EE4C2C",
-  Firebase: "#F57C00",
-  Git: "#F05032",
+  Firebase: "#D86A00",
+  Git: "#D94226",
   "Next.js": "#111111",
-  "Node.js": "#339933",
-  Docker: "#2496ED",
+  "Node.js": "#267A26",
+  Docker: "#0062C4",
   PostgreSQL: "#336791",
-  MongoDB: "#47A248",
-  Supabase: "#3ECF8E",
+  MongoDB: "#217221",
+  Supabase: "#1E9E51",
 };
 
 const icons = heroSkills.map((skill) => ({

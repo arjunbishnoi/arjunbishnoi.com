@@ -31,35 +31,6 @@ export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
 
   return (
     <div className="grid grid-cols-4 h-full">
-      <Link
-        href="/#contact"
-        onClick={handleContactClick}
-        className={cn(tileClassName, "border-r neu-separator")}
-      >
-        <div
-          className={cn(
-            iconWrapClassName,
-            "text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90",
-          )}
-        >
-          <SocialBrandIcon brand="email" className={iconClassName} />
-        </div>
-      </Link>
-      <a
-        href={socialLinks.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cn(tileClassName, "border-r neu-separator")}
-      >
-        <div
-          className={cn(
-            iconWrapClassName,
-            "text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90",
-          )}
-        >
-          <SocialBrandIcon brand="github" className={iconClassName} />
-        </div>
-      </a>
       <a
         href={socialLinks.behance}
         target="_blank"
@@ -75,6 +46,35 @@ export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
           <SocialBrandIcon brand="behance" className={iconClassName} />
         </div>
       </a>
+      <a
+        href={socialLinks.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(tileClassName, "border-r neu-separator")}
+      >
+        <div
+          className={cn(
+            iconWrapClassName,
+            "text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90",
+          )}
+        >
+          <SocialBrandIcon brand="github" className={iconClassName} />
+        </div>
+      </a>
+      <Link
+        href="/#contact"
+        onClick={handleContactClick}
+        className={cn(tileClassName, "border-r neu-separator")}
+      >
+        <div
+          className={cn(
+            iconWrapClassName,
+            "text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90",
+          )}
+        >
+          <SocialBrandIcon brand="email" className={iconClassName} />
+        </div>
+      </Link>
       <a
         href={socialLinks.linkedin}
         target="_blank"
