@@ -12,12 +12,11 @@ interface ProjectProps {
     url: string;
     sourceUrl: string;
   };
-  showDate?: boolean;
 }
 
 type WorkCardProps = ProjectProps;
 
-export function WorkCard({ workItem, showDate = false }: WorkCardProps) {
+export function WorkCard({ workItem }: WorkCardProps) {
   const category =
     workItem.category ??
     (workItem.tags && workItem.tags.length > 0 ? workItem.tags[0] : "Work");
@@ -25,21 +24,14 @@ export function WorkCard({ workItem, showDate = false }: WorkCardProps) {
   return (
     <EntryCard
       title={workItem.title}
-      description={workItem.description}
       image={workItem.image}
       category={category}
+      date={workItem.date}
       fallbackCategory="Work"
       url={workItem.url}
       linkClassName="project-card-link"
       mediaClassName="project-card-media"
       ariaLabelPrefix="View"
-      footer={
-        showDate ? (
-          <div className="text-sm md:text-base text-muted-foreground">
-            {workItem.date}
-          </div>
-        ) : undefined
-      }
     />
   );
 }

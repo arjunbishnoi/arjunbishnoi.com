@@ -80,13 +80,16 @@ export const LANDING_HERO_SUBTITLE_CLASSNAME =
   "m-0 w-full max-w-none hero-copy-unified lg:text-[1.15rem] xl:text-[1.2rem] font-normal leading-[1.62] tracking-[-0.004em] text-[#636366] dark:text-zinc-400";
 
 export const BLOG_POST_SECTION_TITLE_CLASSNAME =
-  "w-full max-w-none text-[clamp(1.5rem,2.65vw,2.15rem)] font-medium leading-[1.18] tracking-[-0.02em] text-black dark:text-white";
+  "w-full max-w-none text-[clamp(1.5rem,2.65vw,2.15rem)] font-semibold leading-[1.18] tracking-[-0.02em] text-black dark:text-white";
 
 export const ENTRY_TITLE_CLASSNAME =
-  "w-full max-w-none text-[clamp(1.38rem,2.35vw,1.95rem)] font-medium leading-[1.24] tracking-[-0.016em] text-black dark:text-white";
+  "m-0 w-full max-w-none text-[clamp(1.28rem,2.15vw,1.78rem)] font-medium leading-[1.04] tracking-[-0.03em] text-balance text-black dark:text-white";
 
 export const BLOG_POST_BODY_TEXT_CLASSNAME =
   BODY_TEXT_CLASSNAME;
 
 export const ENTRY_CATEGORY_PILL_TEXT_CLASSNAME =
-  "text-[0.92rem] font-normal leading-[1.4] tracking-[-0.004em] text-foreground/78 md:text-[0.98rem]";
+  `${HERO_SUPPORTING_TEXT_CLASSNAME} text-zinc-900 dark:text-white`;
+
+export const ENTRY_DATE_TEXT_CLASSNAME =
+  HERO_MUTED_TEXT_CLASSNAME;

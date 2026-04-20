@@ -2,16 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import {
-  BLOG_POST_BODY_TEXT_CLASSNAME,
   ENTRY_CATEGORY_PILL_TEXT_CLASSNAME,
+  ENTRY_DATE_TEXT_CLASSNAME,
   ENTRY_TITLE_CLASSNAME,
 } from "@/lib/home-title-styles";
 
 type EntryCardProps = {
   title: string;
-  description: string;
   image: string;
   category?: string;
+  date?: string;
   fallbackCategory: string;
   url?: string;
   linkClassName: string;
@@ -20,15 +20,11 @@ type EntryCardProps = {
   footer?: ReactNode;
 };
 
-function getShortDescription(value: string) {
-  return `${value.split(".")[0]}.`;
-}
-
 export function EntryCard({
   title,
-  description,
   image,
   category,
+  date,
   fallbackCategory,
   url,
   linkClassName,
@@ -37,12 +33,11 @@ export function EntryCard({
   footer,
 }: EntryCardProps) {
   const resolvedCategory = category ?? fallbackCategory;
-  const shortSubtitle = getShortDescription(description);
   const linkUrl = url && url !== "#" ? url : null;
 
   const cardContent = (
     <>
-      <div className="cover-card-interactive aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-4">
+      <div className="cover-card-interactive aspect-square relative overflow-hidden bg-muted rounded-[40px] mb-[1.125rem]">
         <Image
           src={image}
           alt={title}
@@ -59,16 +54,11 @@ export function EntryCard({
           {title}
         </h3>
 
-        <p className={`${BLOG_POST_BODY_TEXT_CLASSNAME} mb-4 line-clamp-2`}>
-          {shortSubtitle}
-        </p>
-
-        <div className="mb-2">
-          <span
-            className={`inline-block rounded-full bg-black/10 px-4 py-1 dark:bg-white/20 ${ENTRY_CATEGORY_PILL_TEXT_CLASSNAME}`}
-          >
+        <div className="mb-2 flex items-center gap-3">
+          <span className={ENTRY_CATEGORY_PILL_TEXT_CLASSNAME}>
             {resolvedCategory}
           </span>
+          {date ? <span className={ENTRY_DATE_TEXT_CLASSNAME}>{date}</span> : null}
         </div>
 
         {footer}

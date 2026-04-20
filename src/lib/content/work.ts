@@ -8,9 +8,9 @@ const carRentalArticle = getProjectArticleBySlug("car-rental")
 export const workItems: Project[] = [
   {
     id: "cryptotracker",
-    title: cryptoTrackerArticle?.title ?? "Cryptocurrency Tracker",
+    title: cryptoTrackerArticle?.title ?? "Cryptocurrency tracker",
     description:
-      cryptoTrackerArticle?.description ??
+      cryptoTrackerArticle?.deck ??
       "Monitor the live cryptocurrency market in real-time. Track your favorite coins, view detailed statistics, and manage your personal portfolio on the go. Stay informed with instant price alerts and interactive performance charts.",
     image: cryptoTrackerArticle?.image ?? "/cryptotracker.jpg",
     category: cryptoTrackerArticle?.category ?? "React Native",
@@ -30,7 +30,7 @@ export const workItems: Project[] = [
     id: "4rent",
     title: fourRentArticle?.title ?? "4rent",
     description:
-      fourRentArticle?.description ??
+      fourRentArticle?.deck ??
       "Find your next home with this modern rental marketplace. Browse through high-resolution property galleries, check detailed pricing, and save your favorite listings. Streamline your search with smart filters and instant landlord communication.",
     image: fourRentArticle?.image ?? "/4rent.jpg",
     category: fourRentArticle?.category ?? "SwiftUI",
@@ -44,9 +44,9 @@ export const workItems: Project[] = [
   },
   {
     id: "carrental",
-    title: carRentalArticle?.title ?? "Car Rental",
+    title: carRentalArticle?.title ?? "Car rental",
     description:
-      carRentalArticle?.description ??
+      carRentalArticle?.deck ??
       "Make booking your next vehicle effortless. Search through available cars, filter by your specific needs, pick your dates, and complete your reservation. Enjoy a seamless checkout experience with real-time availability and transparent pricing.",
     image: carRentalArticle?.image ?? "/carrental.png",
     category: carRentalArticle?.category ?? "Kotlin",

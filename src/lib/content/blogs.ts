@@ -8,9 +8,9 @@ const accessibilityArticle = getBlogArticleBySlug("building-for-true-digital-acc
 export const blogs: BlogPost[] = [
   {
     id: "the-future-of-ui-design-in-2026",
-    title: uiDesignArticle?.title ?? "The Future of UI Design in 2026",
+    title: uiDesignArticle?.title ?? "The future of UI design in 2026",
     description:
-      uiDesignArticle?.description ??
+      uiDesignArticle?.deck ??
       "Exploring upcoming trends in web interfaces, from spatial computing to hyper-minimalist neobrutalism. How AI is changing the way we interact with digital products.",
     image: uiDesignArticle?.image ?? "/blog-covers/design-systems.jpg",
     category: uiDesignArticle?.category ?? "Design",
@@ -20,9 +20,9 @@ export const blogs: BlogPost[] = [
   },
   {
     id: "optimizing-react-rendering-at-scale",
-    title: reactPerformanceArticle?.title ?? "Optimizing React Rendering at Scale",
+    title: reactPerformanceArticle?.title ?? "Optimizing React rendering at scale",
     description:
-      reactPerformanceArticle?.description ??
+      reactPerformanceArticle?.deck ??
       "Deep dive into advanced performance mechanics in React 19. How we reduced time-to-interactive by 40% using concurrent features and server components.",
     image: reactPerformanceArticle?.image ?? "/blog-covers/frontend-architecture.jpg",
     category: reactPerformanceArticle?.category ?? "Engineering",
@@ -32,9 +32,9 @@ export const blogs: BlogPost[] = [
   },
   {
     id: "building-for-true-digital-accessibility",
-    title: accessibilityArticle?.title ?? "Building for True Digital Accessibility",
+    title: accessibilityArticle?.title ?? "Building for true digital accessibility",
     description:
-      accessibilityArticle?.description ??
+      accessibilityArticle?.deck ??
       "Why WCAG compliance is just the baseline. Practical strategies for designing accessible experiences that work seamlessly for all users and modern devices.",
     image: accessibilityArticle?.image ?? "/blog-covers/product-design.jpg",
     category: accessibilityArticle?.category ?? "Product",

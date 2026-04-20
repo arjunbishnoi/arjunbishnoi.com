@@ -3,7 +3,7 @@ import type { BlogArticle } from "./types";
 export const blogArticles: BlogArticle[] = [
   {
     slug: "the-future-of-ui-design-in-2026",
-    title: "The Future of UI Design in 2026",
+    title: "The future of UI design in 2026",
     description:
       "Exploring upcoming interface patterns, from calmer interaction models to more adaptive product systems. How AI is changing the way digital experiences are structured and refined.",
     deck:
@@ -66,7 +66,7 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "optimizing-react-rendering-at-scale",
-    title: "Optimizing React Rendering at Scale",
+    title: "Optimizing React rendering at scale",
     description:
       "Deep dive into advanced performance mechanics in React 19. How we reduced time-to-interactive by 40% using concurrent features and server components.",
     deck:
@@ -128,7 +128,7 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "building-for-true-digital-accessibility",
-    title: "Building for True Digital Accessibility",
+    title: "Building for true digital accessibility",
     description:
       "Why WCAG compliance is only the starting point. Practical ways to design and build interfaces that remain usable, readable, and resilient across real-world conditions.",
     deck:

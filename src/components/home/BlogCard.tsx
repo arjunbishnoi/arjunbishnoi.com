@@ -21,9 +21,9 @@ export function BlogCard({ blog }: BlogProps) {
   return (
     <EntryCard
       title={blog.title}
-      description={blog.description}
       image={blog.image}
       category={category}
+      date={blog.date}
       fallbackCategory="Blog"
       url={blog.url}
       linkClassName="blog-card-link"

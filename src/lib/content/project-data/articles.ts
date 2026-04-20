@@ -3,7 +3,7 @@ import type { ProjectArticle } from "./types";
 export const projectArticles: ProjectArticle[] = [
   {
     slug: "cryptocurrency-tracker",
-    title: "Cryptocurrency Tracker",
+    title: "Cryptocurrency tracker",
     description:
       "A mobile-first market tracker for live cryptocurrency prices, portfolio monitoring, and watchlist management with a clearer real-time product experience.",
     deck:
@@ -117,7 +117,7 @@ export const projectArticles: ProjectArticle[] = [
   },
   {
     slug: "car-rental",
-    title: "Car Rental",
+    title: "Car rental",
     description:
       "A mobile booking flow for searching cars, filtering availability, and completing reservations with a cleaner Android-first travel product experience.",
     deck:
