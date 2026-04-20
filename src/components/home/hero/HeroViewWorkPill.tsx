@@ -113,18 +113,15 @@ export function HeroViewWorkPill({
           >
             <span
               className={cn(
-                `${PILL_BUTTON_TEXT_CLASSNAME} text-zinc-900 dark:text-white`,
-                isDesktop
-                  ? "text-[1.1rem] xl:text-[1.18rem]"
-                  : "text-[1rem]",
+                "text-[1.05rem] sm:text-[1.1rem] md:text-[1.15rem] font-semibold leading-[1.5] tracking-[-0.01em] text-zinc-900 dark:text-white"
               )}
             >
               View work
             </span>
             <ArrowUpRight
               className={cn(
-                "text-zinc-900 dark:text-white",
-                isDesktop ? "w-5 h-5 xl:w-6 xl:h-6" : "w-5 h-5",
+                "text-zinc-900 dark:text-white shrink-0",
+                "w-[22px] h-[22px] md:w-6 md:h-6"
               )}
               strokeWidth={2.5}
             />
