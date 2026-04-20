@@ -58,7 +58,9 @@ export function EntryCard({
           <span className={ENTRY_CATEGORY_PILL_TEXT_CLASSNAME}>
             {resolvedCategory}
           </span>
-          {date ? <span className={ENTRY_DATE_TEXT_CLASSNAME}>{date}</span> : null}
+          {date ? (
+            <span className={ENTRY_DATE_TEXT_CLASSNAME}>{date}</span>
+          ) : null}
         </div>
 
         {footer}
