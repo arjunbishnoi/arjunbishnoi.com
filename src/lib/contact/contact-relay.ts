@@ -295,8 +295,8 @@ export async function relayContactForm(
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Origin: options.origin ?? DEFAULT_ORIGIN,
-        Referer: options.referer ?? DEFAULT_REFERER,
+        Origin: DEFAULT_ORIGIN,
+        Referer: DEFAULT_REFERER,
       },
       signal: abortController.signal,
       body: JSON.stringify({
