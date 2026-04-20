@@ -2,6 +2,7 @@
 
 import { useFormStatus } from "react-dom";
 import { Loader2, Check } from "lucide-react";
+import { FORM_BUTTON_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 import { cn } from "@/lib/utils";
 
 interface SubmitButtonProps {
@@ -15,7 +16,7 @@ export function SubmitButton({ isSuccess }: SubmitButtonProps) {
     <button
       type="submit"
       className={cn(
-        "flex min-h-[3.25rem] w-full items-center justify-center rounded-[28px] border border-transparent bg-black px-8 py-3.5 text-base font-semibold tracking-tight text-white shadow-none",
+        `flex min-h-[3.25rem] w-full items-center justify-center rounded-[28px] border border-transparent bg-black px-8 py-3.5 ${FORM_BUTTON_TEXT_CLASSNAME} text-white shadow-none`,
         "transition-[background-color,border-color,transform] duration-200 ease-out",
         "hover:bg-zinc-900",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black",

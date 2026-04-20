@@ -2,6 +2,10 @@
 
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import {
+  HERO_MUTED_TEXT_CLASSNAME,
+  PILL_BUTTON_TEXT_CLASSNAME,
+} from "@/lib/home-title-styles";
 import { cn } from "@/lib/utils";
 import { heroDescription } from "@/lib/content/hero-content";
 import { AboutProfileCard } from "@/components/home/AboutProfileCard";
@@ -75,7 +79,7 @@ export function HeroMobileLayout({
             <div className="flex flex-col">
               <HeroProfessionalTitles variant="mobile" />
 
-              <p className="hero-copy-unified mt-[10px] text-left font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">
+              <p className={cn("mt-[10px] text-left", HERO_MUTED_TEXT_CLASSNAME)}>
                 {heroDescription}
               </p>
 
@@ -124,7 +128,7 @@ export function HeroMobileLayout({
               type="button"
               onClick={onToggleBioExpanded}
               className={cn(
-                "pill-interactive z-20 w-fit mx-auto flex items-center justify-center gap-2 rounded-full bg-black text-white px-5 py-2.5 text-[0.85rem] font-medium",
+                `pill-interactive z-20 mx-auto flex w-fit items-center justify-center gap-2 rounded-full bg-black px-5 py-2.5 text-white ${PILL_BUTTON_TEXT_CLASSNAME}`,
                 "dark:bg-white dark:text-black",
               )}
               aria-expanded={bioExpanded}

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { MouseEvent } from "react";
 import { motion } from "motion/react";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
+import { NAV_LINK_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 import { mainLinks } from "@/lib/content/main-links";
 import { socialLinks } from "@/lib/content/social-links";
 import {
@@ -46,7 +47,7 @@ export function MobileMenuContent({
                 href={item.href}
                 download={item.downloadName}
                 onClick={onCloseMenu}
-                className="text-xl tracking-tight font-semibold transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group"
+                className={`${NAV_LINK_TEXT_CLASSNAME} transition-colors text-foreground hover:text-foreground inline-flex items-center gap-1 group`}
               >
                 {item.name}
               </a>
@@ -56,7 +57,7 @@ export function MobileMenuContent({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={onCloseMenu}
-                className="text-xl tracking-tight font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
+                className={`${NAV_LINK_TEXT_CLASSNAME} transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground`}
               >
                 {item.name}
               </a>
@@ -69,7 +70,7 @@ export function MobileMenuContent({
                     ? "noopener noreferrer"
                     : undefined
                 }
-                className="text-xl tracking-tight font-semibold transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground"
+                className={`${NAV_LINK_TEXT_CLASSNAME} transition-colors hover:text-foreground inline-flex items-center gap-1 group text-foreground`}
                 onClick={(event) => {
                   if (item.href === socialLinks.resume) {
                     onCloseMenu();

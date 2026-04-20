@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { PROFILE_CAPTION_TEXT_CLASSNAME } from "@/lib/home-title-styles"
 import { cn } from "@/lib/utils"
 
 type AboutProfileCardProps = {
@@ -30,7 +31,7 @@ export function AboutProfileCard({
         priority={priority}
         loading={priority ? undefined : "eager"}
       />
-      <figcaption className="absolute bottom-5 z-10 flex w-full flex-row flex-wrap items-center justify-center gap-x-2 px-5 text-center text-[14px] leading-[20px] tracking-[-0.015em] font-[440]">
+      <figcaption className={`absolute bottom-5 z-10 flex w-full flex-row flex-wrap items-center justify-center gap-x-2 px-5 text-center ${PROFILE_CAPTION_TEXT_CLASSNAME}`}>
         <span className="text-white">Arjun Bishnoi</span>
         <span className="text-white/[0.7]">Toronto, Canada</span>
       </figcaption>

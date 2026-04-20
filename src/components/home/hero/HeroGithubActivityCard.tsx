@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import {
+  HERO_MUTED_TEXT_CLASSNAME,
+  HERO_SUPPORTING_TEXT_CLASSNAME,
+} from "@/lib/home-title-styles";
 import { cn } from "@/lib/utils";
 import {
   type GithubActivityDay,
@@ -79,7 +83,7 @@ function ActivityGrid({ columns }: { columns: GridColumn[] }) {
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
       <div className="w-full flex justify-center items-center mb-5 lg:mb-5">
-        <span className="hero-copy-unified text-zinc-900 dark:text-white leading-[1.6] tracking-[-0.015em] font-[600]">
+        <span className={`${HERO_SUPPORTING_TEXT_CLASSNAME} text-zinc-900 dark:text-white`}>
           GitHub activity
         </span>
       </div>
@@ -113,7 +117,7 @@ function ActivityGrid({ columns }: { columns: GridColumn[] }) {
           {monthLabels.map((label, index) => (
             <div key={`month-${index}`} className="col-span-1">
               <div className="w-0 overflow-visible flex items-start">
-                <span className="whitespace-nowrap hero-copy-unified font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">
+                <span className={cn("whitespace-nowrap", HERO_MUTED_TEXT_CLASSNAME)}>
                   {label}
                 </span>
               </div>

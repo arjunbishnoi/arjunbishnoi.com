@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { PILL_BUTTON_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 import { cn } from "@/lib/utils";
 
 type HeroViewWorkPillProps = {
@@ -58,7 +59,7 @@ export function HeroViewWorkPill({
             className={cn(
               "absolute inset-0 overflow-hidden pointer-events-none saturate-[3] contrast-[1.2] transition-[filter] duration-700 dark:opacity-85 dark:saturate-[4] dark:contrast-[1.25]",
               isDesktop &&
-                "group-hover:saturate-[8] group-hover:contrast-[1.5] group-hover:brightness-[1.25]",
+                "group-hover:saturate-[5.5] group-hover:contrast-[1.35] group-hover:brightness-[1.08] dark:group-hover:saturate-[4.6] dark:group-hover:contrast-[1.18] dark:group-hover:brightness-[1.03]",
             )}
             style={{
               maskImage:
@@ -98,7 +99,7 @@ export function HeroViewWorkPill({
             className={cn(
               "absolute inset-0 pointer-events-none bg-white/0 transition-colors duration-700 z-[1]",
               isDesktop &&
-                "group-hover:bg-white/[0.28] dark:group-hover:bg-white/[0.12]",
+                "group-hover:bg-white/[0.18] dark:group-hover:bg-white/[0.045]",
             )}
             style={smoothTransitionTiming}
           />
@@ -112,10 +113,10 @@ export function HeroViewWorkPill({
           >
             <span
               className={cn(
-                "tracking-[-0.005em] font-semibold text-zinc-900 dark:text-white",
+                `${PILL_BUTTON_TEXT_CLASSNAME} text-zinc-900 dark:text-white`,
                 isDesktop
-                  ? "text-[1.2rem] xl:text-[1.3rem]"
-                  : "text-[1.125rem]",
+                  ? "text-[1.1rem] xl:text-[1.18rem]"
+                  : "text-[1rem]",
               )}
             >
               View work

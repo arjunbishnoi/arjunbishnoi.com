@@ -8,6 +8,7 @@ import { HeroGithubActivityCard } from "@/components/home/hero/HeroGithubActivit
 import { HeroProfessionalTitles } from "@/components/home/hero/HeroProfessionalTitles";
 import { HeroSkillsGrid } from "@/components/home/hero/HeroSkillsGrid";
 import { HeroBentoRows } from "@/components/home/hero/HeroBentoRows";
+import { HERO_MUTED_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 import type { HeroSnapTransition } from "@/components/home/hero/types";
 
 type HeroDesktopLayoutProps = {
@@ -49,7 +50,7 @@ export function HeroDesktopLayout({
             <div className="pt-6 xl:pt-8 px-6 xl:px-8 text-left">
               <HeroProfessionalTitles variant="desktop" />
 
-              <p className="hero-copy-unified font-normal leading-[1.6] text-[#636366] dark:text-zinc-400">
+              <p className={HERO_MUTED_TEXT_CLASSNAME}>
                 {heroDescription}
               </p>
             </div>

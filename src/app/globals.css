@@ -415,6 +415,8 @@ body {
   color: var(--text-color, #ffffff);
   min-height: 100vh;
   overflow: unset;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "rlig" 1, "calt" 1, "cv11" 1, "ss01" 1;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
@@ -859,4 +861,9 @@ section.relative.overflow-hidden.hero-section {
 
 .pill-interactive:active {
   transform: scale(0.985);
+}
+
+html.theme-switching .hero-viewall-pill,
+html.theme-switching .hero-viewall-pill * {
+  transition: none !important;
 }

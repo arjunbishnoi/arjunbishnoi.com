@@ -1,6 +1,11 @@
 "use client"
 
 import { motion } from "motion/react"
+import {
+  BADGE_TEXT_CLASSNAME,
+  HERO_SECONDARY_TEXT_CLASSNAME,
+  HERO_SUPPORTING_TEXT_CLASSNAME,
+} from "@/lib/home-title-styles"
 import { heroEducationItems } from "@/lib/content/hero-content"
 import { cn } from "@/lib/utils"
 
@@ -15,8 +20,7 @@ export function HeroEducationTimeline({
 }: HeroEducationTimelineProps) {
   const isDesktop = variant === "desktop"
   const lineColorClassName = isDesktop ? "bg-[#bababa] dark:bg-zinc-600" : "bg-[#a8a8a8] dark:bg-zinc-500"
-  const titleLeadingClassName = isDesktop ? "leading-[1.4]" : "leading-[1.6]"
-  const secondaryLeadingClassName = isDesktop ? "leading-[1.4]" : "leading-[1.6]"
+  const titleLeadingClassName = isDesktop ? "leading-[1.45]" : "leading-[1.52]"
 
   return (
     <div
@@ -96,7 +100,7 @@ export function HeroEducationTimeline({
               <div className={cn("flex-1 pt-0", !isDesktop && !isLast ? "pb-4" : "", !isDesktop && isLast ? "pb-1" : "")}>
                 <p
                   className={cn(
-                    "hero-copy-unified font-[600] tracking-[-0.015em]",
+                    HERO_SUPPORTING_TEXT_CLASSNAME,
                     titleLeadingClassName,
                     isDimmed ? "text-zinc-400 dark:text-zinc-500 transition-colors duration-300" : "text-zinc-900 dark:text-white"
                   )}
@@ -105,7 +109,7 @@ export function HeroEducationTimeline({
                   {item.ongoing && (
                     <span
                       className={cn(
-                        "ml-2 inline-flex items-center rounded-full border-[1px] border-black/80 dark:border-white/80 font-semibold tracking-wider leading-none align-middle bg-transparent text-black dark:text-white",
+                        `ml-2 inline-flex items-center rounded-full border-[1px] border-black/80 dark:border-white/80 ${BADGE_TEXT_CLASSNAME} align-middle bg-transparent text-black dark:text-white`,
                         isDesktop
                           ? "px-2 py-0.5 text-[0.7rem] mb-0.5"
                           : "px-2 py-0.5 text-[0.65rem]"
@@ -117,8 +121,7 @@ export function HeroEducationTimeline({
                 </p>
                 <p
                   className={cn(
-                    "hero-education-secondary font-normal",
-                    secondaryLeadingClassName,
+                    HERO_SECONDARY_TEXT_CLASSNAME,
                     isDimmed ? "text-zinc-400 dark:text-zinc-500 transition-colors duration-300" : "text-[#636366] dark:text-zinc-400"
                   )}
                 >
@@ -126,8 +129,7 @@ export function HeroEducationTimeline({
                 </p>
                 <p
                   className={cn(
-                    "hero-education-secondary font-normal",
-                    secondaryLeadingClassName,
+                    HERO_SECONDARY_TEXT_CLASSNAME,
                     isDimmed ? "text-zinc-400 dark:text-zinc-500 transition-colors duration-300" : "text-[#636366] dark:text-zinc-400"
                   )}
                 >

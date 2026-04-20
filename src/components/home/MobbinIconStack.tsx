@@ -1,135 +1,368 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "motion/react"
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  LayoutGroup,
+  motion,
+  useReducedMotion,
+} from "motion/react";
+import { heroSkills } from "@/lib/content/skills";
 
-const icons = [
-  {
-    name: "Swift",
-    bg: "#F05138",
-    logo: (
-      <svg className="w-full h-full" viewBox="0 0 333334 333015" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="173948" y1="-2539.76" x2="125024" y2="274914">
-            <stop offset="0" stopColor="#e5a235"/><stop offset="1" stopColor="#d23629"/>
-          </linearGradient>
-          <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="196383" y1="-1115.35" x2="137302" y2="333952">
-            <stop offset="0" stopColor="#f9b13d"/><stop offset="1" stopColor="#e63830"/>
-          </linearGradient>
-        </defs>
-        <g fillRule="nonzero">
-          <path d="M73350 243h186101c41094-298 73883 32298 73883 73585v185770c0 40626-32789 73763-73883 73415H73350c-39718 0-72999-32789-72999-73415V73828C351 32541 33632-523 73350 243z" fill="url(#a)"/>
-          <path d="M281382 272374s-12972-21008-34183-21008c-21660 0-32351 21008-75206 21008-92987 0-137068-76506-138071-78316 0 519 519 519 519 519L0 158396V73558C0 32462 33572 1 73099 1h66538l48550 49735c52 0 52-519 532-1015 110252 76190 74705 158613 74705 158613s30525 34574 17958 65042z" fill="url(#b)"/>
-          <path d="M189263 49490c109868 74795 74378 157625 74378 157625s30534 34878 18035 65459c0 0-12991-21231-34161-21231-21219 0-33928 21231-75302 21231-94193 0-137215-78533-137215-78533 83546 56856 141921 16544 141921 16544C138636 188424 57167 83892 57167 83892c70392 59101 100324 74754 100324 74754-17690-14066-68076-87098-68076-87098 41046 40763 121543 98528 121543 98528 22163-64076-21694-120586-21694-120586z" fill="#fefefe"/>
-        </g>
-      </svg>
-    ),
-  },
-  {
-    name: "Kotlin",
-    bg: "#FFFFFF",
-    logo: (
-      <svg className="w-[60%] h-[60%]" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="kotlin-grad" x1="500.003" x2="-.097" y1="579.106" y2="1079.206" gradientTransform="translate(15.534 -96.774) scale(.1939)" gradientUnits="userSpaceOnUse">
-            <stop offset=".003" stopColor="#e44857"/>
-            <stop offset=".469" stopColor="#c711e1"/>
-            <stop offset="1" stopColor="#7f52ff"/>
-          </linearGradient>
-        </defs>
-        <path fill="url(#kotlin-grad)" d="M112.484 112.484H15.516V15.516h96.968L64 64Zm0 0"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Figma",
-    bg: "#9FE870",
-    logo: (
-      <svg className="w-[55%] h-[55%]" viewBox="0 0 346 512.36" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd" xmlns="http://www.w3.org/2000/svg">
-        <g fillRule="nonzero">
-          <path fill="#00B6FF" d="M172.53 246.9c0-42.04 34.09-76.11 76.12-76.11h11.01c.3.01.63-.01.94-.01 47.16 0 85.4 38.25 85.4 85.4 0 47.15-38.24 85.39-85.4 85.39-.31 0-.64-.01-.95-.01l-11 .01c-42.03 0-76.12-34.09-76.12-76.12V246.9z"/>
-          <path fill="#24CB71" d="M0 426.98c0-47.16 38.24-85.41 85.4-85.41l87.13.01v84.52c0 47.65-39.06 86.26-86.71 86.26C38.67 512.36 0 474.13 0 426.98z"/>
-          <path fill="#FF7237" d="M172.53.01v170.78h87.13c.3-.01.63.01.94.01 47.16 0 85.4-38.25 85.4-85.4C346 38.24 307.76 0 260.6 0c-.31 0-.64.01-.95.01h-87.12z"/>
-          <path fill="#FF3737" d="M0 85.39c0 47.16 38.24 85.4 85.4 85.4h87.13V.01H85.39C38.24.01 0 38.24 0 85.39z"/>
-          <path fill="#874FFF" d="M0 256.18c0 47.16 38.24 85.4 85.4 85.4h87.13V170.8H85.39C38.24 170.8 0 209.03 0 256.18z"/>
-        </g>
-      </svg>
-    ),
-  },
-]
+const skillTileBackgrounds: Record<string, string> = {
+  "React Native": "#D9F7FF",
+  Python: "#FFE08A",
+  Figma: "#C6FF9B",
+  Swift: "#F05138",
+  Kotlin: "#F5F3FF",
+  Typescript: "#3178C6",
+  Expo: "#F3F4F6",
+  TensorFlow: "#FFE7C2",
+  "Rest APIs": "#D5F5E8",
+  "AI/ML": "#FDE2E2",
+  Firebase: "#FFF1B8",
+  Git: "#FFE1D6",
+  "Next.js": "#FFFFFF",
+  "Node.js": "#DCF6D9",
+  Docker: "#DCEEFB",
+  PostgreSQL: "#DCE7F7",
+  MongoDB: "#D9F0DB",
+  Supabase: "#D7F8E8",
+};
 
-export function MobbinIconStack() {
-  const [index, setIndex] = useState(0)
+const skillIconColors: Record<string, string> = {
+  "React Native": "#61DAFB",
+  Python: "#3776AB",
+  Figma: "#A259FF",
+  Swift: "#FFFFFF",
+  Kotlin: "#7F52FF",
+  Typescript: "#FFFFFF",
+  Expo: "#111111",
+  TensorFlow: "#FF6F00",
+  "Rest APIs": "#16A34A",
+  "AI/ML": "#EE4C2C",
+  Firebase: "#FFCA28",
+  Git: "#F05032",
+  "Next.js": "#111111",
+  "Node.js": "#339933",
+  Docker: "#2496ED",
+  PostgreSQL: "#336791",
+  MongoDB: "#47A248",
+  Supabase: "#3ECF8E",
+};
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % icons.length)
-    }, 2000)
-    return () => clearInterval(timer)
-  }, [])
+const icons = heroSkills.map((skill) => ({
+  ...skill,
+  bg: skillTileBackgrounds[skill.name] ?? "#F3F4F6",
+  iconColor: skillIconColors[skill.name] ?? "#111111",
+}));
 
-  // Use CSS variables for responsive offset to avoid SSR -> hydration shifts.
-  // Defined in globals.css under `.mobbin-icon-stack`.
-  const midY = "calc(var(--mobbin-icon-offset) * -1)"
-  const backY = "calc(var(--mobbin-icon-offset) * -2)"
+type StackIcon = (typeof icons)[number];
+
+type StackSlot = "front" | "middle" | "back";
+type StackVisualRole = StackSlot | "exiting";
+
+const STACK_SLOTS: StackSlot[] = ["front", "middle", "back"];
+
+const SLOT_DEPTH: Record<StackSlot, number> = {
+  front: 0,
+  middle: 1,
+  back: 2,
+};
+
+const SLOT_Z_INDEX: Record<StackSlot, number> = {
+  front: 36,
+  middle: 28,
+  back: 20,
+};
+
+const VISUAL_ICON_OPACITY: Record<StackVisualRole, number> = {
+  front: 1,
+  middle: 1,
+  back: 1,
+  exiting: 1,
+};
+
+const VISUAL_ICON_SCALE: Record<StackVisualRole, number> = {
+  front: 1,
+  middle: 1,
+  back: 1,
+  exiting: 1,
+};
+
+const VISUAL_OVERLAY_OPACITY: Record<StackVisualRole, number> = {
+  front: 0,
+  middle: 0.76,
+  back: 0.88,
+  exiting: 0,
+};
+
+const VISIBLE_CARD_COUNT = 3;
+const STACK_SCALE_STEP = 0.18;
+const CYCLE_INTERVAL_MS = 2000;
+const EXIT_FADE_DURATION_MS = 200;
+
+const STACK_LAYOUT_TRANSITION = {
+  type: "spring" as const,
+  duration: 0.8,
+  bounce: 0,
+};
+
+const STACK_FADE_TRANSITION = {
+  duration: 0.26,
+  ease: [0.33, 1, 0.68, 1] as const,
+};
+
+const STACK_CARD_TRANSITION = {
+  layout: STACK_LAYOUT_TRANSITION,
+  opacity: STACK_FADE_TRANSITION,
+} as const;
+
+const STACK_EXIT_TRANSITION = {
+  layout: STACK_LAYOUT_TRANSITION,
+  opacity: STACK_FADE_TRANSITION,
+  y: STACK_FADE_TRANSITION,
+} as const;
+
+type ExitingCard = {
+  id: number;
+  icon: StackIcon;
+};
+
+function maskStyles(logoUrl: string, iconColor: string) {
+  return {
+    backgroundColor: iconColor,
+    maskImage: `url(${logoUrl})`,
+    WebkitMaskImage: `url(${logoUrl})`,
+    maskRepeat: "no-repeat" as const,
+    WebkitMaskRepeat: "no-repeat" as const,
+    maskPosition: "center" as const,
+    WebkitMaskPosition: "center" as const,
+    maskSize: "contain" as const,
+    WebkitMaskSize: "contain" as const,
+  };
+}
+
+function getScale(depth: number) {
+  return 1 - STACK_SCALE_STEP * depth;
+}
+
+function getBackEntryAnimation() {
+  return {
+    opacity: 0,
+    y: "calc(var(--mobbin-icon-offset) * -2.2)",
+    scale: getScale(2),
+  };
+}
+
+function getSlotFrameStyle(slot: StackSlot): React.CSSProperties {
+  const depth = SLOT_DEPTH[slot];
+  const scale = getScale(depth);
+  const insetPercent = (1 - scale) * 50;
+
+  return {
+    left: `${insetPercent}%`,
+    top: `calc(var(--mobbin-icon-offset) * ${-depth})`,
+    width: `${scale * 100}%`,
+    height: `${scale * 100}%`,
+    zIndex: SLOT_Z_INDEX[slot],
+  };
+}
+
+function getExitFrameStyle(): React.CSSProperties {
+  return {
+    left: "0%",
+    top: "calc(var(--mobbin-icon-offset) * 1)",
+    width: "100%",
+    height: "100%",
+    zIndex: 44,
+  };
+}
+
+function StackCardFace({
+  icon,
+  role,
+  prefersReducedMotion,
+}: {
+  icon: StackIcon;
+  role: StackVisualRole;
+  prefersReducedMotion: boolean;
+}) {
+  const overlayColor =
+    role === "middle"
+      ? "var(--mobbin-stack-mid-bg)"
+      : "var(--mobbin-stack-back-bg)";
 
   return (
-    <div className="mobbin-icon-stack relative w-14 h-14 md:w-[88px] md:h-[88px] lg:w-[68px] lg:h-[68px] xl:w-16 xl:h-16 flex items-center justify-center pointer-events-none select-none overflow-visible">
-      <AnimatePresence initial={false} mode="popLayout">
-        {icons.map((icon, i) => {
-          const relPos = (i - index + icons.length) % icons.length
-          const isFront = relPos === 0
-          const isMid = relPos === 1
-          const isBack = relPos === 2
-          
-          if (!(isFront || isMid || isBack)) return null
+    <>
+      <div className="absolute inset-0" style={{ backgroundColor: icon.bg }} />
+
+      <motion.div
+        aria-hidden
+        className="absolute inset-0"
+        style={{ backgroundColor: overlayColor }}
+        animate={{ opacity: VISUAL_OVERLAY_OPACITY[role] }}
+        transition={
+          prefersReducedMotion ? { duration: 0 } : STACK_FADE_TRANSITION
+        }
+        initial={false}
+      />
+
+      <motion.div
+        className="relative flex h-full w-full items-center justify-center"
+        animate={{
+          opacity: VISUAL_ICON_OPACITY[role],
+          scale: VISUAL_ICON_SCALE[role],
+        }}
+        transition={
+          prefersReducedMotion ? { duration: 0 } : STACK_FADE_TRANSITION
+        }
+        initial={false}
+      >
+        <div
+          aria-label={icon.name}
+          role="img"
+          className="h-[58%] w-[58%] md:h-[56%] md:w-[56%]"
+          style={maskStyles(icon.logoUrl, icon.iconColor)}
+        />
+      </motion.div>
+    </>
+  );
+}
+
+export function MobbinIconStack() {
+  const [frontIndex, setFrontIndex] = useState(0);
+  const [exitingCard, setExitingCard] = useState<ExitingCard | null>(null);
+  const prefersReducedMotion = !!useReducedMotion();
+  const cycleIdRef = useRef(0);
+  const canCycle = icons.length > VISIBLE_CARD_COUNT;
+
+  useEffect(() => {
+    if (!canCycle) return;
+
+    const timer = window.setInterval(() => {
+      setFrontIndex((previous) => {
+        cycleIdRef.current += 1;
+        setExitingCard({
+          id: cycleIdRef.current,
+          icon: icons[previous % icons.length],
+        });
+
+        return (previous + 1) % icons.length;
+      });
+    }, CYCLE_INTERVAL_MS);
+
+    return () => window.clearInterval(timer);
+  }, [canCycle]);
+
+  useEffect(() => {
+    if (!exitingCard) return;
+
+    const timer = window.setTimeout(
+      () => {
+        setExitingCard((current) =>
+          current?.id === exitingCard.id ? null : current,
+        );
+      },
+      prefersReducedMotion ? 0 : EXIT_FADE_DURATION_MS,
+    );
+
+    return () => window.clearTimeout(timer);
+  }, [exitingCard, prefersReducedMotion]);
+
+  const slotAssignments = useMemo<Record<StackSlot, StackIcon> | null>(() => {
+    if (icons.length === 0) return null;
+
+    return {
+      front: icons[frontIndex % icons.length],
+      middle: icons[(frontIndex + 1) % icons.length],
+      back: icons[(frontIndex + 2) % icons.length],
+    };
+  }, [frontIndex]);
+
+  const preloadIcon =
+    canCycle && icons.length > 0
+      ? icons[(frontIndex + VISIBLE_CARD_COUNT) % icons.length]
+      : null;
+
+  useEffect(() => {
+    if (!preloadIcon) return;
+
+    const image = new window.Image();
+    image.src = preloadIcon.logoUrl;
+  }, [preloadIcon]);
+
+  if (!slotAssignments) return null;
+
+  return (
+    <div className="mobbin-icon-stack pointer-events-none relative flex h-14 w-14 select-none items-center justify-center overflow-visible md:h-[88px] md:w-[88px] lg:h-[68px] lg:w-[68px] xl:h-16 xl:w-16">
+      <LayoutGroup id="hero-app-icon-stack">
+        {STACK_SLOTS.map((slot) => {
+          const icon = slotAssignments[slot];
 
           return (
-            <motion.div
-              key={icon.name}
-              initial={{
-                opacity: 1,
-                scale: isFront ? 1 : isMid ? 0.85 : 0.7,
-                y: isFront ? 0 : isMid ? midY : backY,
-                background: isFront
-                  ? icon.bg
-                  : isMid
-                    ? "var(--mobbin-stack-mid-bg)"
-                    : "var(--mobbin-stack-back-bg)",
-              }}
-              animate={{ 
-                opacity: 1,
-                scale: isFront ? 1 : isMid ? 0.85 : 0.7,
-                y: isFront ? 0 : isMid ? midY : backY,
-                background: isFront
-                  ? icon.bg
-                  : isMid
-                    ? "var(--mobbin-stack-mid-bg)"
-                    : "var(--mobbin-stack-back-bg)",
-                zIndex: 10 - relPos,
-              }}
-              exit={{ opacity: 0, y: 15 }}
-              transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-              className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-[18px] md:rounded-[26.4px] lg:rounded-[20px] xl:rounded-[18px] shadow-sm transform-gpu"
+            <div
+              key={slot}
+              className="absolute overflow-visible"
+              style={getSlotFrameStyle(slot)}
             >
-              <AnimatePresence>
-                {isFront && (
-                  <motion.div
-                    key={`logo-${icon.name}`}
-                    initial={{ opacity: 1, scale: 1 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ delay: 0.1, duration: 0.4 }}
-                    className="w-full h-full flex items-center justify-center"
-                  >
-                    {icon.logo}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          )
+              <motion.div
+                key={icon.name}
+                layoutId={`hero-app-icon-card-${icon.name}`}
+                initial={
+                  slot === "back" && !prefersReducedMotion
+                    ? getBackEntryAnimation()
+                    : false
+                }
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={
+                  prefersReducedMotion ? { duration: 0 } : STACK_CARD_TRANSITION
+                }
+                style={{ transformOrigin: "top center" }}
+                className="absolute inset-0 overflow-hidden rounded-[18px] shadow-sm md:rounded-[26.4px] lg:rounded-[20px] xl:rounded-[18px]"
+              >
+                <StackCardFace
+                  icon={icon}
+                  role={slot}
+                  prefersReducedMotion={prefersReducedMotion}
+                />
+              </motion.div>
+            </div>
+          );
         })}
-      </AnimatePresence>
+
+        <AnimatePresence initial={false}>
+          {exitingCard ? (
+            <div
+              className="absolute overflow-visible"
+              style={getExitFrameStyle()}
+            >
+              <motion.div
+                key={`exit-${exitingCard.id}`}
+                layoutId={`hero-app-icon-card-${exitingCard.icon.name}`}
+                initial={false}
+                animate={{
+                  opacity: 0,
+                  y: prefersReducedMotion
+                    ? 0
+                    : "calc(var(--mobbin-icon-offset) * 0.45)",
+                }}
+                transition={
+                  prefersReducedMotion ? { duration: 0 } : STACK_EXIT_TRANSITION
+                }
+                style={{ transformOrigin: "top center" }}
+                className="absolute inset-0 overflow-hidden rounded-[18px] shadow-sm md:rounded-[26.4px] lg:rounded-[20px] xl:rounded-[18px]"
+              >
+                <StackCardFace
+                  icon={exitingCard.icon}
+                  role="exiting"
+                  prefersReducedMotion={prefersReducedMotion}
+                />
+              </motion.div>
+            </div>
+          ) : null}
+        </AnimatePresence>
+      </LayoutGroup>
     </div>
-  )
+  );
 }

@@ -59,8 +59,8 @@ export default {
 				}
 			},
 			fontFamily: {
-				sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-				serif: ['var(--font-instrument-serif)', 'Georgia', 'serif'],
+				sans: ['var(--font-inter)', '"Segoe UI"', '"Helvetica Neue"', 'Arial', '"Liberation Sans"', 'sans-serif'],
+				serif: ['var(--font-inter)', '"Segoe UI"', '"Helvetica Neue"', 'Arial', '"Liberation Sans"', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

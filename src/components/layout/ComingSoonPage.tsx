@@ -1,4 +1,8 @@
 import { Footer } from "@/components/layout/Footer";
+import {
+  EMPTY_STATE_TITLE_CLASSNAME,
+  SUBTLE_BODY_TEXT_CLASSNAME,
+} from "@/lib/home-title-styles";
 import { cn } from "@/lib/utils";
 
 type ComingSoonPageProps = {
@@ -35,7 +39,7 @@ export function ComingSoonPage({
         >
           <h1
             className={cn(
-              "text-4xl font-bold text-foreground sm:text-5xl",
+              EMPTY_STATE_TITLE_CLASSNAME,
               titleClassName,
             )}
           >
@@ -46,7 +50,7 @@ export function ComingSoonPage({
           </p>
           <p
             className={cn(
-              "mt-6 max-w-2xl text-lg text-muted-foreground",
+              `mt-6 max-w-2xl ${SUBTLE_BODY_TEXT_CLASSNAME}`,
               centered && "mx-auto",
             )}
           >

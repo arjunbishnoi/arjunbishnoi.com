@@ -17,10 +17,22 @@ type ThemeContextValue = {
 
 const ThemeContext = React.createContext<ThemeContextValue | null>(null);
 
+let themeSwitchCleanupTimeout: number | null = null;
+
 function applyTheme(theme: Theme) {
   const root = document.documentElement;
+  root.classList.add("theme-switching");
   root.classList.toggle("dark", theme === "dark");
   root.style.colorScheme = theme;
+
+  if (themeSwitchCleanupTimeout !== null) {
+    window.clearTimeout(themeSwitchCleanupTimeout);
+  }
+
+  themeSwitchCleanupTimeout = window.setTimeout(() => {
+    root.classList.remove("theme-switching");
+    themeSwitchCleanupTimeout = null;
+  }, 220);
 }
 
 function readTheme(): Theme {

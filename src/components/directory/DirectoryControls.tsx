@@ -3,6 +3,10 @@
 import { useEffect, useRef } from "react";
 import { ChevronDown, Search, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import {
+  COMPACT_TITLE_TEXT_CLASSNAME,
+  CONTROL_TEXT_CLASSNAME,
+} from "@/lib/home-title-styles";
 
 type DirectoryControlsProps<TCategory extends string> = {
   categories: readonly TCategory[];
@@ -39,7 +43,7 @@ export function DirectoryControls<TCategory extends string>({
   closeSearchAriaLabel,
   categoryPillLayoutId,
   desktopCategoryShellClassName = "scrollbar-hide mx-auto max-w-full overflow-x-auto rounded-full bg-black/10 p-1 dark:bg-white/20",
-  mobileSelectClassName = "h-full w-full appearance-none rounded-full bg-black/10 pl-4 pr-12 indent-0 text-sm font-medium text-black focus:outline-none dark:bg-white/20 dark:text-white",
+  mobileSelectClassName = `h-full w-full appearance-none rounded-full bg-black/10 pl-4 pr-12 indent-0 ${CONTROL_TEXT_CLASSNAME} text-black focus:outline-none dark:bg-white/20 dark:text-white`,
   mobileSearchShellClassName = "absolute inset-0 flex items-center rounded-full bg-black/5 pl-4 pr-2 dark:bg-white/10",
   desktopSearchShellClassName = "bg-black/5 pl-4 pr-1 dark:bg-white/10",
 }: DirectoryControlsProps<TCategory>) {
@@ -103,7 +107,7 @@ export function DirectoryControls<TCategory extends string>({
                   }}
                   enterKeyHint="search"
                   placeholder={searchPlaceholder}
-                  className="h-full w-full bg-transparent pr-10 text-[16px] font-medium text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45"
+                  className={`h-full w-full bg-transparent pr-10 ${CONTROL_TEXT_CLASSNAME} text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45`}
                   aria-label={searchAriaLabel}
                 />
                 {hasQuery ? (
@@ -204,7 +208,7 @@ export function DirectoryControls<TCategory extends string>({
                     key={category}
                     type="button"
                     onClick={() => onCategoryChange(category)}
-                    className="relative h-10 rounded-full px-4 text-sm font-medium sm:px-5"
+                    className={`relative h-10 rounded-full px-4 ${COMPACT_TITLE_TEXT_CLASSNAME} sm:px-5`}
                   >
                     {isActive ? (
                       <motion.span
@@ -264,7 +268,7 @@ export function DirectoryControls<TCategory extends string>({
                 onChange={(event) => onQueryChange(event.target.value)}
                 placeholder={searchPlaceholder}
                 className={[
-                  "h-full min-w-0 flex-1 bg-transparent text-sm font-medium text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45",
+                  `h-full min-w-0 flex-1 bg-transparent ${CONTROL_TEXT_CLASSNAME} text-black placeholder:font-medium placeholder:text-black/45 focus:outline-none dark:text-white dark:placeholder:text-white/45`,
                   isSearchOpen
                     ? "pointer-events-auto opacity-100"
                     : "pointer-events-none w-0 opacity-0",

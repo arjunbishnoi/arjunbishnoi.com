@@ -39,27 +39,12 @@ export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
         <div
           className={cn(
             iconWrapClassName,
-            "text-rose-500 group-hover:opacity-100 opacity-90",
+            "text-zinc-900 dark:text-white group-hover:opacity-100 opacity-90",
           )}
         >
           <SocialBrandIcon brand="email" className={iconClassName} />
         </div>
       </Link>
-      <a
-        href={socialLinks.behance}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cn(tileClassName, "border-r neu-separator")}
-      >
-        <div
-          className={cn(
-            iconWrapClassName,
-            "text-[#1769FF] group-hover:opacity-100 opacity-90",
-          )}
-        >
-          <SocialBrandIcon brand="behance" className={iconClassName} />
-        </div>
-      </a>
       <a
         href={socialLinks.github}
         target="_blank"
@@ -73,6 +58,21 @@ export function HeroSocialLinksRow({ variant }: HeroSocialLinksRowProps) {
           )}
         >
           <SocialBrandIcon brand="github" className={iconClassName} />
+        </div>
+      </a>
+      <a
+        href={socialLinks.behance}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(tileClassName, "border-r neu-separator")}
+      >
+        <div
+          className={cn(
+            iconWrapClassName,
+            "text-[#1769FF] group-hover:opacity-100 opacity-90",
+          )}
+        >
+          <SocialBrandIcon brand="behance" className={iconClassName} />
         </div>
       </a>
       <a

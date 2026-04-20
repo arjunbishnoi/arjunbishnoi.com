@@ -2,10 +2,14 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { Footer } from "@/components/layout/Footer";
 import {
+  ATTRIBUTION_NAME_TEXT_CLASSNAME,
   BLOG_POST_SECTION_TITLE_CLASSNAME,
+  BODY_TEXT_CLASSNAME,
+  INLINE_ACTION_TEXT_CLASSNAME,
   PAGE_HERO_STACK_CLASSNAME,
   PAGE_HERO_SUBTITLE_CLASSNAME,
   PAGE_HERO_TITLE_CLASSNAME,
+  SMALL_META_TEXT_CLASSNAME,
 } from "@/lib/home-title-styles";
 import { siteConfig } from "@/lib/site-config";
 
@@ -49,10 +53,6 @@ export function ArticleDetailPage({
   sourceUrl,
   sourceLinkLabel = "View source code",
 }: ArticleDetailPageProps) {
-  const heroMetaTextClassName =
-    "text-[1rem] font-normal leading-[1.64] tracking-[-0.01em] text-black/84 dark:text-white/82 sm:text-[1.03rem] lg:text-[1.08rem]";
-  const bodyTextClassName =
-    "text-[1rem] font-normal leading-[1.64] tracking-[-0.01em] text-black/84 dark:text-white/82 sm:text-[1.03rem] lg:text-[1.08rem]";
   const articleUrl = new URL(
     `${routePrefix}/${article.slug}`,
     siteConfig.url,
@@ -92,7 +92,7 @@ export function ArticleDetailPage({
       <div className="flex-1 px-6 pb-24 pt-28 sm:pt-32 lg:pb-32 lg:pt-40">
         <article className="mx-auto w-full max-w-[1400px]">
           <header className={PAGE_HERO_STACK_CLASSNAME}>
-            <p className={heroMetaTextClassName}>{article.publishedLabel}</p>
+            <p className={BODY_TEXT_CLASSNAME}>{article.publishedLabel}</p>
             <h1 className={PAGE_HERO_TITLE_CLASSNAME}>{article.title}</h1>
             <p className={PAGE_HERO_SUBTITLE_CLASSNAME}>{article.deck}</p>
             {shareButton}
@@ -110,7 +110,7 @@ export function ArticleDetailPage({
             </div>
 
             <div
-              className={`mx-auto mt-14 w-full space-y-6 sm:mt-16 lg:mt-20 ${bodyTextClassName}`}
+              className={`mx-auto mt-14 w-full space-y-6 sm:mt-16 lg:mt-20 ${BODY_TEXT_CLASSNAME}`}
             >
               {article.introduction.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -123,9 +123,7 @@ export function ArticleDetailPage({
                   <h2 className={BLOG_POST_SECTION_TITLE_CLASSNAME}>
                     {section.title}
                   </h2>
-                  <div
-                    className={`mt-4 space-y-6 sm:mt-5 ${bodyTextClassName}`}
-                  >
+                  <div className={`mt-4 space-y-6 sm:mt-5 ${BODY_TEXT_CLASSNAME}`}>
                     {section.paragraphs.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}
@@ -135,10 +133,10 @@ export function ArticleDetailPage({
             </div>
 
             <section className="mx-auto mt-16 w-full sm:mt-20">
-              <p className="text-[0.82rem] font-medium tracking-[-0.012em] text-black/60 dark:text-white/60 sm:text-[0.88rem]">
+              <p className={SMALL_META_TEXT_CLASSNAME}>
                 {attributionLabel}
               </p>
-              <p className="mt-3 text-[1.18rem] font-medium leading-[1.08] tracking-[-0.032em] text-black dark:text-white sm:text-[1.35rem]">
+              <p className={`mt-3 ${ATTRIBUTION_NAME_TEXT_CLASSNAME}`}>
                 {article.author}
               </p>
               {sourceUrl ? (
@@ -146,7 +144,7 @@ export function ArticleDetailPage({
                   href={sourceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 inline-flex text-[1rem] font-medium leading-[1.4] tracking-[-0.018em] text-black/84 underline underline-offset-4 transition-colors hover:text-black dark:text-white/82 dark:hover:text-white"
+                  className={`mt-5 inline-flex ${INLINE_ACTION_TEXT_CLASSNAME} text-black/84 underline underline-offset-4 transition-colors hover:text-black dark:text-white/82 dark:hover:text-white`}
                 >
                   {sourceLinkLabel}
                 </a>

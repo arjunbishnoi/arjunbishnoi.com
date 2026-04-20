@@ -15,9 +15,9 @@ export function Footer() {
   const pathname = usePathname();
 
   const footerColorClass =
-    "text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors";
+    "text-white dark:text-black transition-opacity hover:opacity-75";
   const footerStaticTextClass =
-    "text-gray-400 dark:text-gray-600 transition-colors";
+    "text-zinc-400 dark:text-zinc-700 transition-colors";
 
   const handleNavClick = (event: React.MouseEvent, href: string) => {
     if (href.startsWith("/") && !href.includes("#") && pathname === href) {
@@ -62,8 +62,8 @@ export function Footer() {
   };
 
   const footerSocialItems = [
-    { name: "Behance", href: socialLinks.behance, brand: "behance" as const },
     { name: "GitHub", href: socialLinks.github, brand: "github" as const },
+    { name: "Behance", href: socialLinks.behance, brand: "behance" as const },
     {
       name: "LinkedIn",
       href: socialLinks.linkedin,
@@ -73,10 +73,10 @@ export function Footer() {
 
   return (
     <footer className="bg-[#121212] dark:bg-[#e0e0e0] transition-colors">
-      <div className="py-8">
+      <div className="py-4 md:py-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col items-stretch gap-6 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-6">
-            <div className="order-2 flex items-center justify-center gap-3 md:order-1 md:justify-self-start">
+          <div className="flex flex-col items-stretch md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-6">
+            <div className="order-1 flex items-center justify-center gap-3 py-4 md:order-1 md:justify-self-start md:py-0">
               {footerSocialItems.map((item) => (
                 <a
                   key={item.name}
@@ -94,7 +94,7 @@ export function Footer() {
               ))}
             </div>
 
-            <ul className="order-1 space-y-3 text-left md:order-2 md:justify-self-center md:space-y-0 md:flex md:flex-wrap md:items-center md:justify-center md:gap-x-8 md:gap-y-3">
+            <ul className="order-2 space-y-3 py-2 text-center md:order-2 md:justify-self-center md:space-y-0 md:flex md:flex-wrap md:items-center md:justify-center md:gap-x-8 md:gap-y-3 md:py-0 md:text-left">
               {mainLinks.map((item) => (
                 <li key={item.name}>
                   {item.isDownload ? (
@@ -142,7 +142,7 @@ export function Footer() {
             </ul>
 
             <p
-              className={`${footerStaticTextClass} order-3 text-center md:justify-self-end md:text-right`}
+              className={`${footerStaticTextClass} order-3 py-4 text-center md:justify-self-end md:py-0 md:text-right`}
             >
               Arjun Bishnoi © 2026
             </p>

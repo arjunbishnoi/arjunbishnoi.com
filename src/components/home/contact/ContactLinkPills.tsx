@@ -1,5 +1,7 @@
+import type { RefObject } from "react";
 import { ArrowUpRight, AtSign, Download } from "lucide-react";
 import { SocialBrandIcon } from "@/components/social/SocialBrandIcon";
+import { COMPACT_TITLE_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 import { cn } from "@/lib/utils";
 import {
   iconLucideClass,
@@ -8,12 +10,17 @@ import {
   socialPillClass,
 } from "@/components/home/contact/contact-config";
 
-export function ContactLinkPills() {
+type ContactLinkPillsProps = {
+  emailPillRef?: RefObject<HTMLAnchorElement | null>;
+};
+
+export function ContactLinkPills({ emailPillRef }: ContactLinkPillsProps) {
   return (
     <>
       {socialCards.map((card) => (
         <a
           key={card.name}
+          ref={card.kind === "email" ? emailPillRef : undefined}
           href={card.href}
           target="_blank"
           rel="noopener noreferrer"
@@ -42,7 +49,7 @@ export function ContactLinkPills() {
                 aria-hidden
               />
             )}
-            <span className="flex min-w-0 items-center gap-1 truncate text-[0.95rem] font-semibold tracking-tight">
+            <span className={`flex min-w-0 items-center gap-1 truncate ${COMPACT_TITLE_TEXT_CLASSNAME}`}>
               <span className={cn("shrink-0", card.labelClassName)}>
                 {card.name}
               </span>

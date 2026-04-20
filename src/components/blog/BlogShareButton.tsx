@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Share2 } from "lucide-react";
+import { PILL_BUTTON_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 
 type BlogShareButtonProps = {
   title: string;
@@ -35,7 +36,7 @@ export function BlogShareButton({ title }: BlogShareButtonProps) {
     <button
       type="button"
       onClick={handleShare}
-      className="pill-interactive flex h-10 items-center justify-center gap-2 rounded-full bg-black px-5 text-[0.85rem] font-medium tracking-[-0.018em] text-white dark:bg-white dark:text-black md:h-12 md:gap-2.5 md:px-7 md:text-[1rem] lg:h-14 lg:px-8 lg:text-[1.08rem]"
+      className={`pill-interactive flex h-10 items-center justify-center gap-2 rounded-full bg-black px-5 ${PILL_BUTTON_TEXT_CLASSNAME} text-white dark:bg-white dark:text-black md:h-12 md:gap-2.5 md:px-7 lg:h-14 lg:px-8`}
       aria-label="Share this post"
     >
       {copied ? "Copied link" : "Share"}

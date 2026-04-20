@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { COMPACT_TITLE_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 import { cn } from "@/lib/utils";
 import {
   iconLucideClass,
@@ -44,7 +45,7 @@ export function ContactMessageCard({
             strokeWidth={1.85}
             aria-hidden
           />
-          <span className="truncate text-[0.95rem] font-semibold tracking-tight">
+          <span className={`truncate ${COMPACT_TITLE_TEXT_CLASSNAME}`}>
             Send message
           </span>
         </div>

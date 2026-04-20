@@ -5,7 +5,10 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePersistedHorizontalScroll } from "@/hooks/use-persisted-horizontal-scroll";
-import { HOME_SECTION_TITLE_CLASSNAME } from "@/lib/home-title-styles";
+import {
+  HOME_SECTION_TITLE_CLASSNAME,
+  PILL_BUTTON_TEXT_CLASSNAME,
+} from "@/lib/home-title-styles";
 
 type HomeHorizontalSectionProps<T> = {
   id: string;
@@ -46,7 +49,7 @@ export function HomeHorizontalSection<T>({
           <Link
             href={viewAllHref}
             className={cn(
-              "pill-interactive flex-none h-10 md:h-12 lg:h-14 flex items-center justify-center gap-2 md:gap-2.5 rounded-full bg-black text-white px-5 md:px-7 lg:px-8 text-[0.85rem] md:text-[1rem] lg:text-[1.08rem] font-medium md:translate-y-[3px] lg:translate-y-[4px]",
+              `pill-interactive flex-none h-10 md:h-12 lg:h-14 flex items-center justify-center gap-2 md:gap-2.5 rounded-full bg-black text-white px-5 md:px-7 lg:px-8 ${PILL_BUTTON_TEXT_CLASSNAME} md:translate-y-[3px] lg:translate-y-[4px]`,
               "dark:bg-white dark:text-black",
             )}
             aria-label={viewAllAriaLabel}

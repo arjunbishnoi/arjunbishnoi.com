@@ -1,5 +1,6 @@
 "use client"
 
+import { HERO_SUPPORTING_TEXT_CLASSNAME } from "@/lib/home-title-styles"
 import { heroProfessionalTitles } from "@/lib/content/hero-content"
 import { cn } from "@/lib/utils"
 
@@ -19,7 +20,7 @@ export function HeroProfessionalTitles({ variant }: HeroProfessionalTitlesProps)
     <div className={containerClassName}>
       {heroProfessionalTitles.map((title) => (
         <div key={title} className={rowClassName}>
-          <span className={cn("hero-copy-unified text-zinc-900 dark:text-white leading-[1.6] tracking-[-0.015em] font-[600]")}>
+          <span className={cn(HERO_SUPPORTING_TEXT_CLASSNAME, "text-zinc-900 dark:text-white")}>
             {title}
           </span>
         </div>

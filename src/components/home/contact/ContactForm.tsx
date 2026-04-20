@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { FORM_LABEL_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 import { cn } from "@/lib/utils";
 import { SubmitButton } from "@/components/home/SubmitButton";
 import {
@@ -63,7 +64,7 @@ export function ContactForm({
       <motion.div variants={contactFormItemVariants}>
         <label
           htmlFor="name"
-          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-600"
+          className={`mb-1.5 ml-1 block ${FORM_LABEL_TEXT_CLASSNAME}`}
         >
           Name
         </label>
@@ -84,7 +85,7 @@ export function ContactForm({
       <motion.div variants={contactFormItemVariants}>
         <label
           htmlFor="email"
-          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-600"
+          className={`mb-1.5 ml-1 block ${FORM_LABEL_TEXT_CLASSNAME}`}
         >
           Email
         </label>
@@ -105,7 +106,7 @@ export function ContactForm({
       <motion.div variants={contactFormItemVariants} className="flex flex-col">
         <label
           htmlFor="message"
-          className="mb-1.5 ml-1 block text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-600"
+          className={`mb-1.5 ml-1 block ${FORM_LABEL_TEXT_CLASSNAME}`}
         >
           Message
         </label>

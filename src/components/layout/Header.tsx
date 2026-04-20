@@ -9,6 +9,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { MobileMenuContent } from "@/components/layout/header/MobileMenuContent";
 import { cn } from "@/lib/utils";
+import { WORDMARK_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 import { useHeaderNavigation } from "@/components/layout/header/use-header-navigation";
 import { useMobileMenuLifecycle } from "@/components/layout/header/use-mobile-menu-lifecycle";
 import {
@@ -104,7 +105,7 @@ export function Header() {
                     priority
                   />
                 </motion.div>
-                <span className="hidden sm:block lg:hidden text-[1.15rem] tracking-[-0.035em] font-sans font-semibold transition-colors duration-500 ease-soft-out text-black dark:text-white whitespace-nowrap">
+                <span className={`hidden sm:block lg:hidden ${WORDMARK_TEXT_CLASSNAME} transition-colors duration-500 ease-soft-out text-black dark:text-white whitespace-nowrap`}>
                   Arjun Bishnoi
                 </span>
               </Link>

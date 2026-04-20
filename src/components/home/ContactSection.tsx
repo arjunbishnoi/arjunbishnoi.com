@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
@@ -14,6 +15,7 @@ import {
 import { LANDING_SECTION_TITLE_CLASSNAME } from "@/lib/home-title-styles";
 
 export function ContactSection() {
+  const emailPillRef = useRef<HTMLAnchorElement>(null);
   const {
     isContactFormOpen,
     form,
@@ -23,6 +25,39 @@ export function ContactSection() {
     toggleContactForm,
   } = useContactFormPanel();
   const isDesktop = useMediaQuery("(min-width: 1024px)", true);
+
+  useEffect(() => {
+    if (isDesktop || !isContactFormOpen || !emailPillRef.current) {
+      return;
+    }
+
+    let firstFrameId = 0;
+    let secondFrameId = 0;
+
+    firstFrameId = window.requestAnimationFrame(() => {
+      secondFrameId = window.requestAnimationFrame(() => {
+        const pillRect = emailPillRef.current?.getBoundingClientRect();
+        const headerRect = document.querySelector("header")?.getBoundingClientRect();
+
+        if (!pillRect || !headerRect) {
+          return;
+        }
+
+        const desiredTop = headerRect.bottom + 6;
+        const nextScrollTop = window.scrollY + pillRect.top - desiredTop;
+
+        window.scrollTo({
+          top: nextScrollTop,
+          behavior: "smooth",
+        });
+      });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(firstFrameId);
+      window.cancelAnimationFrame(secondFrameId);
+    };
+  }, [isContactFormOpen, isDesktop]);
 
   const contactForm = (
     <ContactForm
@@ -37,7 +72,7 @@ export function ContactSection() {
 
   const socialGrid = (
     <div className="flex w-full flex-col gap-3 md:gap-3.5">
-      <ContactLinkPills />
+      <ContactLinkPills emailPillRef={emailPillRef} />
       <ContactMessageCard
         isOpen={isContactFormOpen}
         onToggle={toggleContactForm}

@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { SKILL_LABEL_TEXT_CLASSNAME } from "@/lib/home-title-styles"
 import { heroSkills } from "@/lib/content/skills"
 import { cn } from "@/lib/utils"
 
@@ -37,7 +38,7 @@ export function HeroSkillsGrid({ variant, className }: HeroSkillsGridProps) {
           </div>
           <span
             className={cn(
-              "font-bold text-zinc-600 dark:text-zinc-400 text-center leading-tight tracking-[0.02em]",
+              SKILL_LABEL_TEXT_CLASSNAME,
               isDesktop ? "text-[0.55rem] xl:text-[0.6rem]" : "text-[0.55rem]"
             )}
           >
