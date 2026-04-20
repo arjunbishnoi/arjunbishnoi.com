@@ -82,14 +82,17 @@ export const LANDING_HERO_SUBTITLE_CLASSNAME =
 export const BLOG_POST_SECTION_TITLE_CLASSNAME =
   "w-full max-w-none text-[clamp(1.5rem,2.65vw,2.15rem)] font-semibold leading-[1.18] tracking-[-0.02em] text-black dark:text-white";
 
+export const ENTRY_LISTING_TEXT_CLASSNAME =
+  "m-0 text-[clamp(0.94rem,1.35vw,1.06rem)] font-medium leading-[1.2] tracking-[-0.012em] text-black dark:text-white";
+
 export const ENTRY_TITLE_CLASSNAME =
-  "m-0 w-full max-w-none text-[clamp(1.28rem,2.15vw,1.78rem)] font-medium leading-[1.04] tracking-[-0.03em] text-balance text-black dark:text-white";
+  "m-0 text-[clamp(1.44rem,2.55vw,1.98rem)] font-medium leading-[1.12] tracking-[-0.026em] text-black dark:text-white";
 
 export const BLOG_POST_BODY_TEXT_CLASSNAME =
   BODY_TEXT_CLASSNAME;
 
 export const ENTRY_CATEGORY_PILL_TEXT_CLASSNAME =
-  `${HERO_SUPPORTING_TEXT_CLASSNAME} text-zinc-900 dark:text-white`;
+  ENTRY_LISTING_TEXT_CLASSNAME;
 
 export const ENTRY_DATE_TEXT_CLASSNAME =
-  HERO_MUTED_TEXT_CLASSNAME;
+  "m-0 text-[clamp(0.94rem,1.35vw,1.06rem)] font-medium leading-[1.2] tracking-[-0.012em] text-zinc-600 dark:text-zinc-400";
