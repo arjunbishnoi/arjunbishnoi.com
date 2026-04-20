@@ -302,7 +302,7 @@ export async function relayContactForm(
       body: JSON.stringify({
         ...payload,
         _subject: options.subject ?? "New Portfolio Contact",
-        _captcha: "true",
+        _captcha: "false",
       }),
     });
 
