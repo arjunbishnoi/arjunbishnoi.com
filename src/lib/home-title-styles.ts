@@ -80,7 +80,7 @@ export const LANDING_HERO_SUBTITLE_CLASSNAME =
   "m-0 w-full max-w-none hero-copy-unified lg:text-[1.15rem] xl:text-[1.2rem] font-normal leading-[1.62] tracking-[-0.004em] text-[#636366] dark:text-zinc-400";
 
 export const BLOG_POST_SECTION_TITLE_CLASSNAME =
-  "w-full max-w-none text-[clamp(1.5rem,2.65vw,2.15rem)] font-semibold leading-[1.18] tracking-[-0.02em] text-black dark:text-white";
+  "w-full max-w-none text-[clamp(1.5rem,2.65vw,2.15rem)] font-semibold leading-[1.18] tracking-[-0.022em] text-black dark:text-white";
 
 export const ENTRY_LISTING_TEXT_CLASSNAME =
   "m-0 text-[clamp(0.94rem,1.35vw,1.06rem)] font-medium leading-[1.2] tracking-[-0.012em] text-black dark:text-white";
