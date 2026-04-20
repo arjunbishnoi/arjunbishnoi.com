@@ -74,7 +74,7 @@ export const PAGE_HERO_SUBTITLE_CLASSNAME =
   `m-0 w-full max-w-none ${BODY_TEXT_CLASSNAME} lg:max-w-[27.5rem] xl:max-w-[26.5rem]`;
 
 export const LANDING_HERO_STACK_CLASSNAME =
-  "mx-auto flex max-w-[44rem] flex-col items-center gap-1 sm:gap-2 text-center lg:max-w-[52rem] lg:gap-3";
+  "mx-auto flex max-w-[44rem] flex-col items-center gap-1 sm:gap-2 text-center lg:max-w-[52rem] lg:gap-2";
 
 export const LANDING_HERO_SUBTITLE_CLASSNAME =
   "m-0 w-full max-w-none hero-copy-unified lg:text-[1.15rem] xl:text-[1.2rem] font-normal leading-[1.62] tracking-[-0.004em] text-[#636366] dark:text-zinc-400";
