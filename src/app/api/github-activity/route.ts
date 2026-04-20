@@ -7,7 +7,8 @@ import {
 
 export const runtime = "nodejs";
 
-const CACHE_CONTROL = "public, s-maxage=21600, stale-while-revalidate=86400";
+const SUCCESS_CACHE_CONTROL = "public, s-maxage=21600, stale-while-revalidate=86400";
+const ERROR_CACHE_CONTROL = "no-store";
 
 export async function GET() {
   const username = extractGitHubUsername(socialLinks.github);
@@ -15,7 +16,12 @@ export async function GET() {
   if (!username) {
     return NextResponse.json(
       { error: "GitHub username is not configured." },
-      { status: 500 },
+      {
+        status: 500,
+        headers: {
+          "Cache-Control": ERROR_CACHE_CONTROL,
+        },
+      },
     );
   }
 
@@ -24,7 +30,7 @@ export async function GET() {
 
     return NextResponse.json(activity, {
       headers: {
-        "Cache-Control": CACHE_CONTROL,
+        "Cache-Control": SUCCESS_CACHE_CONTROL,
       },
     });
   } catch {
@@ -33,7 +39,7 @@ export async function GET() {
       {
         status: 502,
         headers: {
-          "Cache-Control": CACHE_CONTROL,
+          "Cache-Control": ERROR_CACHE_CONTROL,
         },
       },
     );

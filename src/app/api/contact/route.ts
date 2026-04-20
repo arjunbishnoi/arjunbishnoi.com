@@ -22,10 +22,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const clientIdentifier = extractClientIdentifierFromHeader(
-    request.headers.get("x-forwarded-for"),
-    request.headers.get("x-real-ip") ?? request.headers.get("cf-connecting-ip"),
-  );
+  const clientIdentifier = extractClientIdentifierFromHeader({
+    forwardedFor: request.headers.get("x-forwarded-for"),
+    realIp: request.headers.get("x-real-ip"),
+    cfConnectingIp: request.headers.get("cf-connecting-ip"),
+    userAgent: request.headers.get("user-agent"),
+  });
 
   const result = await relayContactForm(payload, {
     clientIdentifier,

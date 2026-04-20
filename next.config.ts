@@ -7,6 +7,7 @@ const scriptSrcDirective = isProduction
 const connectSrcDirective = isProduction
   ? "connect-src 'self' https://formsubmit.co https://vitals.vercel-insights.com"
   : "connect-src 'self' ws://localhost:* ws://127.0.0.1:* http://localhost:* http://127.0.0.1:* https://formsubmit.co https://vitals.vercel-insights.com";
+const scriptSrcAttrDirective = "script-src-attr 'none'";
 
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -15,6 +16,7 @@ const contentSecurityPolicy = [
   "frame-ancestors 'none'",
   "frame-src 'none'",
   scriptSrcDirective,
+  scriptSrcAttrDirective,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob: https:",
@@ -55,12 +57,6 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.arjunbishnoi.com' }],
-        destination: 'https://arjunbishnoi.com/:path*',
-        permanent: true,
-      },
       {
         source: '/projects',
         destination: '/work',

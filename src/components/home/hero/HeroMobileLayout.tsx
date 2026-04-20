@@ -52,7 +52,7 @@ export function HeroMobileLayout({
         animate={{ opacity: 1, y: 0 }}
         transition={{ ...snapTransition, delay: 0.3 }}
       >
-        <div className="w-[95%] sm:w-[94%] mx-auto mt-[5.25rem] sm:mt-20 md:mt-20 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
+        <div className="w-[95%] sm:w-[94%] mx-auto mt-[3.5rem] sm:mt-12 md:mt-12 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
           <div className="w-full neu-container overflow-visible aspect-[4/4.2] grid grid-rows-[40%_20%_20%_20%]">
             <HeroBentoRows
               variant="mobile"
@@ -79,7 +79,9 @@ export function HeroMobileLayout({
             <div className="flex flex-col">
               <HeroProfessionalTitles variant="mobile" />
 
-              <p className={cn("mt-[10px] text-left", HERO_MUTED_TEXT_CLASSNAME)}>
+              <p
+                className={cn("mt-[10px] text-left", HERO_MUTED_TEXT_CLASSNAME)}
+              >
                 {heroDescription}
               </p>
 

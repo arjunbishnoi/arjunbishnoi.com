@@ -19,6 +19,7 @@ const UPSTASH_REDIS_REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
 const HAS_DISTRIBUTED_RATE_LIMIT = Boolean(
   UPSTASH_REDIS_REST_URL && UPSTASH_REDIS_REST_TOKEN,
 );
+const REQUIRES_DISTRIBUTED_RATE_LIMIT = process.env.NODE_ENV === "production";
 
 const DEFAULT_ORIGIN = "https://arjunbishnoi.com";
 const DEFAULT_REFERER = "https://arjunbishnoi.com/";
@@ -118,7 +119,22 @@ function isValidEmail(email: string) {
 function normalizeClientIdentifier(value: string | null | undefined) {
   const normalized = normalizeText(value).toLowerCase();
   if (!normalized) return "anonymous";
-  return normalized.slice(0, 120);
+  return normalized.slice(0, 180);
+}
+
+function normalizeIpCandidate(value: string | null | undefined) {
+  const candidate = normalizeText(value);
+  if (!candidate) {
+    return null;
+  }
+
+  const cleaned = candidate.replace(/[\[\]]/g, "");
+
+  if (/^[a-f0-9:.]+$/i.test(cleaned) || /^\d{1,3}(?:\.\d{1,3}){3}$/.test(cleaned)) {
+    return cleaned;
+  }
+
+  return null;
 }
 
 function consumeInMemoryRateLimit(identifier: string) {
@@ -232,12 +248,30 @@ function validatePayload(payload: ContactPayload) {
   return null;
 }
 
-export function extractClientIdentifierFromHeader(
-  forwardedFor: string | null,
-  fallback: string | null,
-) {
-  const ipFromForwardedFor = forwardedFor?.split(",")[0]?.trim();
-  return normalizeClientIdentifier(ipFromForwardedFor || fallback || "anonymous");
+type ClientIdentifierHeaders = {
+  forwardedFor?: string | null;
+  realIp?: string | null;
+  cfConnectingIp?: string | null;
+  userAgent?: string | null;
+};
+
+export function extractClientIdentifierFromHeader({
+  forwardedFor,
+  realIp,
+  cfConnectingIp,
+  userAgent,
+}: ClientIdentifierHeaders) {
+  const ipFromForwardedFor = normalizeIpCandidate(
+    forwardedFor?.split(",")[0]?.trim() ?? null,
+  );
+  const trustedIp =
+    normalizeIpCandidate(cfConnectingIp) ??
+    normalizeIpCandidate(realIp) ??
+    ipFromForwardedFor ??
+    "anonymous";
+  const normalizedUserAgent = normalizeText(userAgent).slice(0, 120) || "unknown-agent";
+
+  return normalizeClientIdentifier(`${trustedIp}:${normalizedUserAgent}`);
 }
 
 export async function relayContactForm(
@@ -272,6 +306,15 @@ export async function relayContactForm(
   const validationError = validatePayload(payload);
   if (validationError) {
     return { ok: false, status: 400, error: validationError };
+  }
+
+  if (REQUIRES_DISTRIBUTED_RATE_LIMIT && !HAS_DISTRIBUTED_RATE_LIMIT) {
+    console.error("Distributed contact form rate limit is required in production.");
+    return {
+      ok: false,
+      status: 503,
+      error: "Contact form is temporarily unavailable. Please try again later.",
+    };
   }
 
   const rateLimit = await consumeRateLimit(options.clientIdentifier);

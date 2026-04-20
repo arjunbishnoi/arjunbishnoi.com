@@ -1,6 +1,7 @@
 const GITHUB_ACTIVITY_URL = "https://github.com";
 
 export const GITHUB_ACTIVITY_WINDOW_DAYS = 200;
+const GITHUB_ACTIVITY_REQUEST_TIMEOUT_MS = 8000;
 
 export type GithubActivityDay = {
   date: string;
@@ -152,7 +153,7 @@ export function buildGithubActivitySummary(
               date: dayKey,
               count: 0,
               level: 0,
-              label: `${RANGE_FORMATTER.format(dayDate)} · Outside the last 30 days`,
+              label: `${RANGE_FORMATTER.format(dayDate)} · Outside the tracked window`,
               isPadding: true,
             },
       );
@@ -186,19 +187,30 @@ export async function getGithubActivitySummary(
   const htmlResponses = await Promise.all(
     [...years].map(async (year) => {
       const contributionsUrl = `${GITHUB_ACTIVITY_URL}/users/${username}/contributions?from=${year}-01-01&to=${year}-12-31`;
-      const response = await fetch(contributionsUrl, {
-        headers: {
-          Accept: "text/html",
-          "User-Agent": `${username}.portfolio-site`,
-        },
-        next: { revalidate: 0 },
-      });
+      const abortController = new AbortController();
+      const timeoutId = setTimeout(
+        () => abortController.abort(),
+        GITHUB_ACTIVITY_REQUEST_TIMEOUT_MS,
+      );
 
-      if (!response.ok) {
-        throw new Error(`GitHub activity request failed with ${response.status}`);
+      try {
+        const response = await fetch(contributionsUrl, {
+          headers: {
+            Accept: "text/html",
+            "User-Agent": `${username}.portfolio-site`,
+          },
+          next: { revalidate: 0 },
+          signal: abortController.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error(`GitHub activity request failed with ${response.status}`);
+        }
+
+        return response.text();
+      } finally {
+        clearTimeout(timeoutId);
       }
-
-      return response.text();
     }),
   );
   const html = (await Promise.all(htmlResponses)).join("\n");

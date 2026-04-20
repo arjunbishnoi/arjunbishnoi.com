@@ -22,10 +22,12 @@ export async function submitContact(
   const company = String(formData.get("company") ?? "");
 
   const requestHeaders = await headers();
-  const clientIdentifier = extractClientIdentifierFromHeader(
-    requestHeaders.get("x-forwarded-for"),
-    requestHeaders.get("x-real-ip") ?? requestHeaders.get("cf-connecting-ip"),
-  );
+  const clientIdentifier = extractClientIdentifierFromHeader({
+    forwardedFor: requestHeaders.get("x-forwarded-for"),
+    realIp: requestHeaders.get("x-real-ip"),
+    cfConnectingIp: requestHeaders.get("cf-connecting-ip"),
+    userAgent: requestHeaders.get("user-agent"),
+  });
 
   const result = await relayContactForm(
     { name, email, message, company },

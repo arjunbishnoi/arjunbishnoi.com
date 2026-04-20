@@ -3,7 +3,14 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const { pathname, hostname } = request.nextUrl;
-  const decodedPathname = decodeURIComponent(pathname).toLowerCase();
+  let decodedPathname = pathname.toLowerCase();
+
+  try {
+    decodedPathname = decodeURIComponent(pathname).toLowerCase();
+  } catch {
+    // Keep original lowercase pathname if decoding fails.
+  }
+
   const shouldStripTrailingSlash = pathname !== "/" && pathname.endsWith("/");
 
   // Consolidate legacy resume filename URL variants to canonical /resume.

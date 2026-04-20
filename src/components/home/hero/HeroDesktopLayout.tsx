@@ -29,7 +29,7 @@ export function HeroDesktopLayout({
   return (
     <motion.div
       data-about-desktop
-      className="hidden lg:flex flex-col w-full z-20 pb-0 mt-28 xl:mt-32 items-center hero-flat-desktop"
+      className="hidden lg:flex flex-col w-full z-20 pb-0 mt-16 xl:mt-20 items-center hero-flat-desktop"
       initial={
         isFirstLoad
           ? {
@@ -50,9 +50,7 @@ export function HeroDesktopLayout({
             <div className="pt-6 xl:pt-8 px-6 xl:px-8 text-left">
               <HeroProfessionalTitles variant="desktop" />
 
-              <p className={HERO_MUTED_TEXT_CLASSNAME}>
-                {heroDescription}
-              </p>
+              <p className={HERO_MUTED_TEXT_CLASSNAME}>{heroDescription}</p>
             </div>
 
             <div className="mt-auto flex justify-center px-6 xl:px-8 pb-8 xl:pb-10 pt-6 xl:pt-8">

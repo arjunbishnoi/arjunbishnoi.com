@@ -82,28 +82,40 @@ describe("parseGithubContributionDays", () => {
 });
 
 describe("buildGithubActivitySummary", () => {
-  it("builds a padded weekly calendar for the last 30 days", () => {
+  it("builds a padded weekly calendar for the tracked window", () => {
     const summary = buildGithubActivitySummary(
       "arjunbishnoi",
       parseGithubContributionDays(sampleContributionHtml),
       new Date("2026-04-13T12:00:00.000Z"),
     );
 
-    expect(summary.rangeLabel).toBe("Mar 15 - Apr 13");
+    expect(summary.rangeLabel).toBe("Sep 26 - Apr 13");
     expect(summary.totalContributions).toBe(19);
     expect(summary.activeDays).toBe(2);
     expect(summary.maxDayCount).toBe(12);
-    expect(summary.weeks).toHaveLength(5);
-    expect(summary.weeks[0]?.days[0]?.isPadding).toBe(false);
+    expect(summary.weeks).toHaveLength(30);
     expect(summary.weeks[0]?.days[0]).toMatchObject({
-      date: "2026-03-15",
+      date: "2025-09-21",
       count: 0,
-      isPadding: false,
+      isPadding: true,
     });
-    expect(summary.weeks[4]?.days[1]).toMatchObject({
-      date: "2026-04-13",
-      count: 12,
-      isPadding: false,
-    });
+
+    const allDays = summary.weeks.flatMap((week) => week.days);
+
+    expect(allDays).toContainEqual(
+      expect.objectContaining({
+        date: "2026-03-15",
+        count: 0,
+        isPadding: false,
+      }),
+    );
+
+    expect(allDays).toContainEqual(
+      expect.objectContaining({
+        date: "2026-04-13",
+        count: 12,
+        isPadding: false,
+      }),
+    );
   });
 });
