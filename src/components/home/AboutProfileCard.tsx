@@ -18,15 +18,15 @@ export function AboutProfileCard({
   return (
     <figure
       className={cn(
-        "relative w-full aspect-[4/5] overflow-hidden rounded-[40px] bg-[#e9e5de] dark:bg-zinc-900/70",
+        "relative w-full aspect-[4/5] overflow-hidden rounded-[40px] dark:bg-[#161616]",
         className
       )}
     >
       <Image
-        src="/arjun-bishnoi-portrait.jpg"
+        src="/arjun-bishnoi-portrait-cutout.png"
         alt="Portrait of Arjun Bishnoi"
         fill
-        className="object-cover"
+        className="object-contain object-bottom"
         sizes={imageSizes}
         priority={priority}
         loading={priority ? undefined : "eager"}

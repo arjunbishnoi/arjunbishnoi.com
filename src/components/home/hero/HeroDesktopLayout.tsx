@@ -46,14 +46,16 @@ export function HeroDesktopLayout({
           data-about-desktop-grid
           className="grid grid-cols-3 gap-6 xl:gap-7 items-start"
         >
-          <div className="hero-bio-skills-merged-card col-span-1 self-stretch overflow-hidden bg-[#e5e5e5] dark:bg-[#161616] rounded-[40px] flex flex-col">
-            <div className="pt-6 xl:pt-8 px-6 xl:px-8 text-left">
-              <HeroProfessionalTitles variant="desktop" />
+          <div className="col-span-1 self-stretch flex flex-col gap-6 xl:gap-7">
+            <div className="hero-education-card overflow-hidden rounded-[40px] dark:bg-[#161616] flex flex-col">
+              <div className="pt-6 xl:pt-8 px-6 xl:px-8 pb-6 xl:pb-8 text-left">
+                <HeroProfessionalTitles variant="desktop" />
 
-              <p className={HERO_MUTED_TEXT_CLASSNAME}>{heroDescription}</p>
+                <p className={HERO_MUTED_TEXT_CLASSNAME}>{heroDescription}</p>
+              </div>
             </div>
 
-            <div className="mt-auto flex justify-center px-6 xl:px-8 pb-8 xl:pb-10 pt-6 xl:pt-8">
+            <div className="hero-education-card flex-1 overflow-hidden rounded-[40px] dark:bg-[#161616] flex flex-col items-center justify-center px-6 xl:px-8 py-6 xl:py-8">
               <HeroSkillsGrid variant="desktop" />
             </div>
           </div>
@@ -76,7 +78,7 @@ export function HeroDesktopLayout({
           <div className="flex flex-col gap-6 xl:gap-7 col-span-1 self-stretch">
             <HeroEducationTimeline variant="desktop" />
 
-            <div className="w-full relative aspect-[4/5] rounded-[40px] xl:rounded-[40px] overflow-hidden neu-raised shadow-none border-none shrink-0 pointer-events-none select-none">
+            <div className="w-full relative aspect-[4/5] rounded-[40px] xl:rounded-[40px] overflow-hidden hero-education-card dark:bg-[#161616] shadow-none border-none shrink-0 pointer-events-none select-none">
               <AboutProfileCard
                 imageSizes="(max-width: 768px) 100vw, (min-width: 1024px) 342px, 342px"
                 className="absolute inset-0 w-full h-full rounded-none"

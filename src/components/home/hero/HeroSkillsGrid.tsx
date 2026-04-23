@@ -23,7 +23,7 @@ export function HeroSkillsGrid({ variant, className }: HeroSkillsGridProps) {
         className
       )}
     >
-      {heroSkills.slice(0, 18).map((skill) => (
+      {heroSkills.slice(0, isDesktop ? 15 : 18).map((skill) => (
         <div
           key={skill.name}
           className="flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity"

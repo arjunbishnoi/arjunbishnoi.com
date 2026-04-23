@@ -102,7 +102,7 @@
     --neu-flat-border: rgba(0, 0, 0, 0.1);
     --neu-gradient-light: #ededed;
     --neu-gradient-dark: #cdcdcd;
-    --hero-bio-bg: #cecece;
+    --hero-bio-bg: #c4c4c4;
     --hero-bio-gradient-light: #d6d6d6;
     --hero-bio-gradient-dark: #b8b8b8;
     /* Home sections under hero: one shared gap (Featured / Work / Blog) on small screens */
@@ -294,6 +294,13 @@
   @media (max-width: 767px) {
     .hero-mobile-main-shape-wrap {
       transform: scale(0.91);
+    }
+  }
+
+  /* On md (768px-1023px) reset scale - bento width is constrained via max-width */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .hero-mobile-main-shape-wrap {
+      transform: none;
     }
   }
 

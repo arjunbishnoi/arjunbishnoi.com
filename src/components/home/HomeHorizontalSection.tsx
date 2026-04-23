@@ -64,10 +64,10 @@ export function HomeHorizontalSection<T>({
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-0 pt-4 md:pt-2 lg:pt-2 lg:px-8 pb-0 md:pb-6">
+      <div className="mx-auto max-w-7xl px-0 pt-4 md:pt-2 lg:pt-2 md:px-6 lg:px-8 pb-0 md:pb-6">
         <div
           ref={carouselRef}
-          className="flex md:grid md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory px-6 md:px-0 scroll-pl-6 scroll-pr-6 md:scroll-pl-0 md:scroll-pr-0 pt-2 pb-2 -mt-2 -mb-2 scrollbar-hide"
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory px-6 md:px-0 scroll-pl-6 scroll-pr-6 md:scroll-pl-0 md:scroll-pr-0 pt-2 pb-2 -mt-2 -mb-2 scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {items.map((item, index) => {

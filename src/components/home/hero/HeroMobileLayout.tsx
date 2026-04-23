@@ -52,8 +52,8 @@ export function HeroMobileLayout({
         animate={{ opacity: 1, y: 0 }}
         transition={{ ...snapTransition, delay: 0.3 }}
       >
-        <div className="w-[95%] sm:w-[94%] mx-auto mt-[3.5rem] sm:mt-12 md:mt-12 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
-          <div className="w-full neu-container overflow-visible aspect-[4/4.2] grid grid-rows-[40%_20%_20%_20%]">
+        <div className="w-[95%] sm:w-[94%] md:w-[24rem] mx-auto mt-[3.5rem] sm:mt-12 md:mt-12 mb-0 flex flex-col items-center hero-mobile-main-shape-wrap">
+          <div className="w-full neu-container overflow-visible aspect-[4/4.2] md:aspect-[4/3.8] grid grid-rows-[40%_20%_20%_20%]">
             <HeroBentoRows
               variant="mobile"
               blobColors={viewAllBlobColors}
@@ -65,11 +65,11 @@ export function HeroMobileLayout({
         <div data-about-mobile />
         <AboutProfileCard
           imageSizes="(max-width: 768px) 100vw, (min-width: 1024px) 342px, 342px"
-          className="mt-6 lg:hidden relative z-10"
+          className="mt-6 lg:hidden relative z-10 md:max-w-[24rem] bg-[#b6b6b6] dark:bg-[#4a4a4a]"
           priority={!isDesktop}
         />
 
-        <div className="home-mobile-bio-shell hero-bio-card w-full -mt-16 relative z-0 rounded-t-[32px] rounded-b-[40px] border border-zinc-200/50 border-t-0 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
+        <div className="home-mobile-bio-shell hero-bio-card w-full md:max-w-[24rem] -mt-16 relative z-0 rounded-t-[32px] rounded-b-[40px] border border-zinc-200/50 border-t-0 dark:border-white/10 flex flex-col overflow-hidden shadow-none">
           <div
             className={cn(
               "flex flex-col pt-[84px] px-8 text-left transition-all duration-500",
@@ -153,7 +153,7 @@ export function HeroMobileLayout({
                   className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] rounded-b-[40px] z-30 dark:hidden block"
                   style={{
                     background:
-                      "linear-gradient(to bottom, transparent 0%, rgba(206, 206, 206, 0.2) 30%, rgba(206, 206, 206, 0.85) 75%, #cecece 100%)",
+                      "linear-gradient(to bottom, transparent 0%, rgba(196, 196, 196, 0.2) 30%, rgba(196, 196, 196, 0.85) 75%, #c4c4c4 100%)",
                   }}
                   initial={isFirstLoad ? { opacity: 0 } : false}
                   animate={{ opacity: 1 }}
@@ -177,7 +177,7 @@ export function HeroMobileLayout({
         </div>
       </motion.div>
 
-      <div className="hidden md:flex lg:hidden w-full flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-0 md:mt-8 relative z-40">
+      <div className="hidden md:flex lg:hidden w-full max-w-[24rem] mx-auto flex-col items-center justify-center mb-0 pb-0 sm:pb-0 sm:mb-0 md:mb-0 md:pb-0 mt-0 md:mt-8 relative z-40">
         <div
           className={cn(
             "mt-3 md:mt-2 pb-0 md:pb-0 flex justify-center transition-opacity duration-300 lg:opacity-40 lg:hover:opacity-100",

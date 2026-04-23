@@ -27,7 +27,7 @@ export function HeroEducationTimeline({
       className={cn(
         "hero-education-card flex flex-col overflow-hidden",
         isDesktop
-          ? "w-full relative aspect-square rounded-[40px] bg-[#e5e5e5] dark:bg-[#161616] border-0 pt-5 pb-5 pl-6 pr-8 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-9"
+          ? "w-full relative aspect-square rounded-[40px] dark:bg-[#161616] border-0 pt-5 pb-5 pl-6 pr-8 xl:pt-7 xl:pb-7 xl:pl-7 xl:pr-9"
           : "relative rounded-[28px] bg-transparent border border-zinc-200/40 dark:bg-transparent dark:border-transparent pt-4 pb-1 pl-0 pr-5 ml-[-10px]"
       )}
     >
