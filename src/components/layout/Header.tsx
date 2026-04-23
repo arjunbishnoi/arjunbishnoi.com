@@ -9,7 +9,6 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { MobileMenuContent } from "@/components/layout/header/MobileMenuContent";
 import { cn } from "@/lib/utils";
-import { WORDMARK_TEXT_CLASSNAME } from "@/lib/home-title-styles";
 import { useHeaderNavigation } from "@/components/layout/header/use-header-navigation";
 import { useMobileMenuLifecycle } from "@/components/layout/header/use-mobile-menu-lifecycle";
 import {
@@ -81,7 +80,7 @@ export function Header() {
             >
               <Link
                 href="/"
-                className="relative flex items-center cursor-pointer gap-2.5"
+                className="relative flex items-center cursor-pointer"
                 aria-label="Go to homepage"
                 onClick={handleLogoClick}
               >
@@ -105,9 +104,7 @@ export function Header() {
                     priority
                   />
                 </motion.div>
-                <span className={`hidden sm:block lg:hidden ${WORDMARK_TEXT_CLASSNAME} transition-colors duration-500 ease-soft-out text-black dark:text-white whitespace-nowrap`}>
-                  Arjun Bishnoi
-                </span>
+
               </Link>
             </div>
 
