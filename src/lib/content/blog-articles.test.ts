@@ -14,7 +14,7 @@ describe("blog-articles", () => {
     const article = getBlogArticleBySlug("the-future-of-ui-design-in-2026");
 
     expect(article).toBeDefined();
-    expect(article?.title).toBe("The Future of UI Design in 2026");
+    expect(article?.title).toBe("The future of UI design in 2026");
   });
 
   it("returns undefined for unknown slug", () => {

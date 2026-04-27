@@ -14,7 +14,7 @@ describe("project-articles", () => {
     const article = getProjectArticleBySlug("cryptocurrency-tracker");
 
     expect(article).toBeDefined();
-    expect(article?.title).toBe("Cryptocurrency Tracker");
+    expect(article?.title).toBe("Cryptocurrency tracker");
   });
 
   it("returns undefined for unknown slug", () => {
