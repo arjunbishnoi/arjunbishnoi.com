@@ -64,7 +64,22 @@ export function ArticleDetailPage({
     headline: article.title,
     name: article.title,
     description: article.description,
-    image: [articleImageUrl],
+    image: [
+      {
+        "@type": "ImageObject",
+        url: articleImageUrl,
+        contentUrl: articleImageUrl,
+        creator: {
+          "@type": "Person",
+          name: article.author,
+          url: siteConfig.url,
+        },
+        creditText: article.author,
+        copyrightNotice: `(c) ${new Date().getFullYear()} ${article.author}`,
+        license: siteConfig.canonicalHomeUrl,
+        acquireLicensePage: `${siteConfig.url}/#contact`,
+      },
+    ],
     thumbnailUrl: articleImageUrl,
     datePublished: article.publishedAt,
     dateModified: article.publishedAt,
