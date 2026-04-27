@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
   title: "AI/ML",
   path: "/ai",
   description:
-    "Applied AI work focused on reliability, utility, and product fit.",
+    "Discover applied artificial intelligence and machine learning work. Projects focused on LLM integration, reliability, utility, and real product fit.",
   keywords: [
     "AI",
     "Machine Learning",
@@ -18,8 +18,6 @@ export const metadata = buildPageMetadata({
     "Applied AI",
     "AI Product Engineering",
   ],
-  socialDescription:
-    "AI features designed for real workflows and clear outcomes.",
   includeSocial: true,
 });
 

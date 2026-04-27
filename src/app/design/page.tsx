@@ -9,9 +9,9 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "Design",
   path: "/design",
-  description: "Interface and product design focused on clarity and usability.",
+  description:
+    "Explore UI/UX design case studies and concepts. Product design work focused on clear interfaces, usable design systems, and thoughtful user experiences.",
   keywords: ["Design", "UI", "UX", "Design Systems", "Product Design", "Figma"],
-  socialDescription: "Design systems and UX decisions for complex products.",
   includeSocial: true,
 });
 

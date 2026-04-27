@@ -9,7 +9,8 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata = buildPageMetadata({
   title: "Mobile Apps",
   path: "/apps",
-  description: "Cross-platform apps built for speed, clarity, and reliability.",
+  description:
+    "Explore cross-platform mobile applications built for speed, clarity, and reliability. Featuring native iOS, Android, and React Native projects.",
   keywords: [
     "Mobile Apps",
     "React Native",
@@ -19,8 +20,6 @@ export const metadata = buildPageMetadata({
     "iOS",
     "Android",
   ],
-  socialDescription:
-    "React Native, SwiftUI, and Kotlin projects with product discipline.",
   includeSocial: true,
 });
 
