@@ -102,6 +102,16 @@ const nextConfig: NextConfig = {
         destination: '/resume',
         permanent: true,
       },
+      {
+        source: '/Resume - Arjun Bishnoi.pdf',
+        destination: '/resume',
+        permanent: true,
+      },
+      {
+        source: '/Resume%20-%20Arjun%20Bishnoi.pdf',
+        destination: '/resume',
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
