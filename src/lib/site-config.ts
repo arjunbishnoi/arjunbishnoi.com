@@ -14,8 +14,8 @@ export const siteConfig = {
     alt: "Arjun Bishnoi homepage preview featuring Mobile Apps, AI & Design",
   },
   images: {
-    headshot: "https://arjunbishnoi.com/og-homepage-v1.jpg",
-    portrait: "https://arjunbishnoi.com/og-homepage-v1.jpg",
+    headshot: "https://arjunbishnoi.com/arjun-bishnoi.jpg",
+    portrait: "https://arjunbishnoi.com/arjun-bishnoi-logo-square.jpg",
   },
 } as const;
 

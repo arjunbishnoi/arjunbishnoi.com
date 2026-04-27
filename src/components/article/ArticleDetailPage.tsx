@@ -65,6 +65,7 @@ export function ArticleDetailPage({
     name: article.title,
     description: article.description,
     image: [articleImageUrl],
+    thumbnailUrl: articleImageUrl,
     datePublished: article.publishedAt,
     dateModified: article.publishedAt,
     mainEntityOfPage: articleUrl,
